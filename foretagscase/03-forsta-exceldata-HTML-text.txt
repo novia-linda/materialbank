@@ -7,6 +7,19 @@
 <title>Förstå Excel-data med AI · Företagscase</title>
 <link href="../assets/css/shared.css" rel="stylesheet"/>
 <script defer src="../assets/js/shared.js"></script>
+
+  <meta name="materialbank:id" content="case-forsta-excel">
+  <meta name="materialbank:type" content="case">
+  <meta name="materialbank:summary" content="Inspiration från ett företag som använde AI för att förstå återkommande Excel-data, hitta mönster och formulera bättre frågor.">
+  <meta name="materialbank:topics" content="inspiration,data,effektivisering">
+  <meta name="materialbank:platforms" content="microsoft,google">
+  <meta name="materialbank:level" content="nasta-steg">
+  <meta name="materialbank:intents" content="inspireras,forsta">
+  <meta name="materialbank:duration" content="3">
+  <meta name="materialbank:keywords" content="företagscase,Excel,Google Sheets,data,analys,kalkylblad,mönster">
+  <meta name="materialbank:featured" content="true">
+  <meta name="materialbank:status" content="published">
+  <meta name="keywords" content="företagscase, Excel, Google Sheets, data, analys, kalkylblad, mönster">
 </head>
 <body class="page-case">
 <a class="skip-link" href="#main">Hoppa till innehållet</a>

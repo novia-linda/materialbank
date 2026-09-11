@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Hitta rätt AI-material för ditt företag genom sökord och enkla val om behov, verktygsmiljö och tid.">
+  <title>Hitta rätt material · AI i praktiken</title>
+  <link rel="stylesheet" href="assets/css/shared.css">
+  <script defer src="assets/js/shared.js"></script>
+  <script defer src="assets/js/resources-data.js"></script>
+  <script defer src="assets/js/resource-engine.js"></script>
+</head>
+<body class="page-resource-engine">
+<a class="skip-link" href="#main">Hoppa till innehållet</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html"><span class="brand-mark"></span><span>AI i praktiken<small>AI Boost · materialbank</small></span></a>
+    <nav class="main-nav" aria-label="Huvudnavigation">
+      <a href="index.html">Start</a>
+      <a href="skapa-video/index.html">Visuellt material</a>
+      <a href="foretagscase/index.html">Företagscase</a>
+      <a class="nav-cta" href="#filter">Bygg min lista</a>
+    </nav>
+    <button class="mobile-menu" type="button" aria-label="Öppna meny" aria-expanded="false">Meny</button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="engine-hero">
+    <div class="container">
+      <span class="pilot-badge">Vanlig sök- och filterlogik · ingen AI behövs</span>
+      <h1>Vad vill du ha hjälp med?</h1>
+      <p>Skriv ett sökord eller välj några alternativ. Motorn använder materialets taggar och metadata för att plocka fram en kort lista som passar ditt behov.</p>
+    </div>
+  </section>
+
+  <div class="container engine-layout" id="filter">
+    <aside class="filter-panel">
+      <h2>Bygg din lista</h2>
+      <p class="small-note" style="margin-top:-3px">Du behöver inte fylla i allt. Ett enda val räcker.</p>
+
+      <div class="engine-searchbox">
+        <label for="resource-search"><strong>Sök med egna ord</strong><span>Exempel: färger, Excel, agent, video, tonalitet</span></label>
+        <div class="engine-searchrow"><input id="resource-search" type="search" placeholder="Vad letar du efter?" autocomplete="off"><button class="btn btn-primary" id="build-resource-list" type="button">Visa mina förslag →</button></div>
+      </div>
+
+      <div class="filter-group"><span class="filter-title">Vad vill du ha hjälp med?</span><div class="engine-options">
+        <button class="engine-option" type="button" data-group="topic" data-value="visuellt-material">Bilder & visuellt</button>
+        <button class="engine-option" type="button" data-group="topic" data-value="video">Video</button>
+        <button class="engine-option" type="button" data-group="topic" data-value="ai-agenter">AI-agenter</button>
+        <button class="engine-option" type="button" data-group="topic" data-value="inspiration">Inspiration</button>
+        <button class="engine-option" type="button" data-group="topic" data-value="kommunikation">Text & kommunikation</button>
+        <button class="engine-option" type="button" data-group="topic" data-value="data">Data & analys</button>
+        <button class="engine-option" type="button" data-group="topic" data-value="effektivisering">Spara tid</button>
+      </div></div>
+
+      <div class="filter-group"><span class="filter-title">Vilken miljö använder du?</span><div class="engine-options">
+        <button class="engine-option is-active" type="button" data-group="platform" data-value="any">Spelar ingen roll</button>
+        <button class="engine-option" type="button" data-group="platform" data-value="microsoft">Microsoft</button>
+        <button class="engine-option" type="button" data-group="platform" data-value="google">Google</button>
+      </div></div>
+
+      <div class="filter-group"><span class="filter-title">Vad vill du helst göra?</span><div class="engine-options">
+        <button class="engine-option is-active" type="button" data-group="intent" data-value="any">Lite av varje</button>
+        <button class="engine-option" type="button" data-group="intent" data-value="lara">Lära mig</button>
+        <button class="engine-option" type="button" data-group="intent" data-value="prova">Prova själv</button>
+        <button class="engine-option" type="button" data-group="intent" data-value="inspireras">Få inspiration</button>
+        <button class="engine-option" type="button" data-group="intent" data-value="forsta">Förstå möjligheterna</button>
+      </div></div>
+
+      <div class="filter-group"><span class="filter-title">Hur mycket tid har du?</span><div class="engine-options">
+        <button class="engine-option is-active" type="button" data-group="time" data-value="any">Spelar ingen roll</button>
+        <button class="engine-option" type="button" data-group="time" data-value="5">Max 5 min</button>
+        <button class="engine-option" type="button" data-group="time" data-value="10">Max 10 min</button>
+        <button class="engine-option" type="button" data-group="time" data-value="15">Max 15 min</button>
+      </div></div>
+
+      <div class="engine-bottomrow"><div id="selection-summary" class="engine-selection" aria-live="polite"></div></div>
+      <button class="btn secondary" style="width:100%;margin-top:10px" id="clear-resource-filters" type="button">Nollställ val</button>
+    </aside>
+
+    <section class="engine-main">
+      <div class="engine-intro">
+        <span class="eyebrow">Så fungerar det</span>
+        <h2>Du väljer – motorn rankar.</h2>
+        <p>Taggarna bor tillsammans med materialet på GitHub. Det betyder att samma motor kan rekommendera både GitHub-guider och externa resurser, till exempel videor på Novia Video.</p>
+      </div>
+
+      <div id="results-anchor"></div>
+      <div class="results-head"><div><span class="eyebrow">För dig</span><h2>Din rekommenderade lista</h2><p id="result-count">Skriv ett sökord eller gör några val till vänster.</p></div></div>
+      <div id="playlist-results"><div class="engine-empty">Skriv ett sökord eller gör några val och klicka på <strong>Visa mina förslag</strong>.</div></div>
+      <div class="engine-tools"><button class="btn btn-dark" type="button" id="print-playlist">Skriv ut / spara PDF</button><button class="btn secondary" type="button" id="copy-playlist">Kopiera länklista</button></div>
+
+      <section style="margin-top:52px">
+        <div class="section-header" style="margin-bottom:18px"><div><span class="eyebrow">Fortsätt upptäcka</span><h2>Fler träffar</h2><p>Här visas fler resurser som ligger nära dina val. Du kan lägga till dem i listan.</p></div></div>
+        <div id="more-results" class="engine-results"></div>
+      </section>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container"><div class="footer-grid"><div><h3>Hitta rätt material</h3><p>Motorn använder vanlig JavaScript-logik och metadata. Ingen AI behövs.</p></div><div><h3>Tillbaka</h3><p><a href="index.html">Materialbanken</a><br><a href="skapa-video/index.html">Visuellt material</a></p></div><div><h3>Externa resurser</h3><p>Novia Video och andra länkar kan läggas in i samma katalog utan att kopieras till GitHub.</p></div></div><div class="footer-note">AI Boost · Materialbanken är under uppbyggnad.</div></div>
+</footer>
+</body>
+</html>

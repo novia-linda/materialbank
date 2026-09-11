@@ -37,6 +37,40 @@
     }
   };
 
+  function initMobileNavigation(){
+    const menuBtn=document.querySelector('.mobile-menu');
+    const nav=document.querySelector('.main-nav');
+    if(!menuBtn || !nav) return;
+    menuBtn.addEventListener('click',()=>{
+      const open=nav.dataset.open==='true';
+      nav.dataset.open=String(!open);
+      menuBtn.setAttribute('aria-expanded',String(!open));
+      menuBtn.textContent=!open?'Stäng':'Meny';
+      if(!open){
+        nav.style.display='flex';
+        nav.style.position='absolute';
+        nav.style.top='64px';
+        nav.style.left='0';
+        nav.style.right='0';
+        nav.style.background='#101214';
+        nav.style.padding='18px 20px 24px';
+        nav.style.flexDirection='column';
+        nav.style.alignItems='flex-start';
+        nav.style.borderTop='1px solid rgba(255,255,255,.1)';
+      }else{
+        nav.removeAttribute('style');
+      }
+    });
+    nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+      if(window.matchMedia('(max-width:980px)').matches){
+        nav.dataset.open='false';
+        nav.removeAttribute('style');
+        menuBtn.setAttribute('aria-expanded','false');
+        menuBtn.textContent='Meny';
+      }
+    }));
+  }
+
   function initAgentCandidateCheck(){
     const boxes=[...document.querySelectorAll('.agent-check')];
     const out=document.getElementById('result');
@@ -109,6 +143,58 @@
     dlg.addEventListener('click',e=>{if(e.target===dlg) dlg.close();});
   }
 
+  function initCopyButtons(){
+    const buttons=[...document.querySelectorAll('[data-copy-target]')];
+    if(!buttons.length) return;
+    buttons.forEach(button=>{
+      button.addEventListener('click',async()=>{
+        const id=button.getAttribute('data-copy-target');
+        const target=id ? document.getElementById(id) : null;
+        if(!target) return;
+        const text=target.innerText || target.textContent || '';
+        const status=button.parentElement ? button.parentElement.querySelector('.copy-status') : null;
+        try{
+          await navigator.clipboard.writeText(text.trim());
+          if(status) status.textContent='Kopierat.';
+        }catch(e){
+          if(status) status.textContent='Markera texten och kopiera manuellt.';
+        }
+      });
+    });
+  }
+
+
+  function initChoiceGroups(){
+    const groups=[...document.querySelectorAll('[data-choice-group]')];
+    if(!groups.length) return;
+    groups.forEach(group=>{
+      const buttons=[...group.querySelectorAll('[data-choice]')];
+      const panels=[...group.querySelectorAll('[data-choice-panel]')];
+      if(!buttons.length || !panels.length) return;
+
+      group.classList.add('choice-enhanced');
+      panels.forEach(panel=>panel.hidden=true);
+      buttons.forEach(button=>button.setAttribute('aria-pressed','false'));
+
+      const selectChoice=key=>{
+        buttons.forEach(button=>{
+          const active=button.dataset.choice===key;
+          button.classList.toggle('is-active',active);
+          button.setAttribute('aria-pressed',active?'true':'false');
+        });
+        panels.forEach(panel=>{
+          panel.hidden=panel.dataset.choicePanel!==key;
+        });
+        const activePanel=panels.find(panel=>panel.dataset.choicePanel===key);
+        if(activePanel) activePanel.scrollIntoView({behavior:'smooth',block:'nearest'});
+      };
+
+      buttons.forEach(button=>button.addEventListener('click',()=>selectChoice(button.dataset.choice)));
+      const defaultChoice=group.dataset.choiceDefault;
+      if(defaultChoice) selectChoice(defaultChoice);
+    });
+  }
+
   function injectProjectBranding(){
     if(PROJECT_BRANDING.strip.enabled && PROJECT_BRANDING.strip.text){
       const strip=document.createElement('div');
@@ -155,9 +241,12 @@
   }
 
   document.addEventListener('DOMContentLoaded',()=>{
+    initMobileNavigation();
     initAgentCandidateCheck();
     initInstructionBuilder();
     initLightboxes();
+    initCopyButtons();
+    initChoiceGroups();
     injectProjectBranding();
   });
 })();

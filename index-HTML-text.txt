@@ -1,109 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="sv">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta name="description" content="Översikt över Novias praktiska AI-guider för småföretagare."/>
-<title>Praktiska AI-guider · Novia</title>
-<link href="assets/css/shared.css" rel="stylesheet"/>
-<script defer src="assets/js/shared.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Praktiska AI-guider, företagscase och en resursmotor för småföretagare inom AI Boost.">
+  <title>AI i praktiken · Materialbank</title>
+  <link rel="stylesheet" href="assets/css/shared.css">
+  <script defer src="assets/js/shared.js"></script>
 </head>
 <body class="page-index">
 <a class="skip-link" href="#main">Hoppa till innehållet</a>
-<header class="sitebar">
-  <div class="sitebar-inner">
-    <a class="brand" href="index.html"><span class="brand-mark"></span>Novia · Praktisk AI-guide</a>
-    <div class="series">Materialbank</div>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html"><span class="brand-mark"></span><span>AI i praktiken<small>AI Boost · materialbank</small></span></a>
+    <nav class="main-nav" aria-label="Huvudnavigation">
+      <a href="#guider">Så här gör du</a>
+      <a href="#agenter">AI-agenter</a>
+      <a href="#case">Företagscase</a>
+      <a class="nav-cta" href="hitta.html">Hitta rätt material</a>
+    </nav>
+    <button class="mobile-menu" type="button" aria-label="Öppna meny" aria-expanded="false">Meny</button>
   </div>
 </header>
 
-<section class="hero" id="top">
-  <div class="hero-inner">
-    <p class="eyebrow">Materialbank · under uppbyggnad</p>
-    <h1>Praktiska AI-guider för småföretagare</h1>
-    <p class="lead">Här samlas de guider och demosidor som hittills har skapats. Sidan är tills vidare bara en enkel innehållsförteckning.</p>
-  </div>
-</section>
-
 <main id="main">
-  <section class="wide section">
-    <div class="section-head">
-      <p class="eyebrow">Inspiration</p>
-      <h2>Företagscase från AI Boost</h2>
-      <p>Fyra anonymiserade exempel på hur småföretag har arbetat med konkreta AI-problem tillsammans med studerande.</p>
-    </div>
-    <div class="resource-list">
-      <article class="resource-item"><div><span class="status">Fyra case</span><h3>AI i praktiken – inspiration för småföretagare</h3><p>Återanvänd material, jämför dokument, förstå Excel-data och skriv i företagets egen röst.</p></div><a class="btn secondary" href="foretagscase/index.html">Öppna →</a></article>
-    </div>
-  </section>
-  <section class="wide section">
-    <div class="section-head">
-      <p class="eyebrow">AI-agenter</p>
-      <h2>Kom igång med en enkel AI-agent</h2>
-      <p>Börja med grunderna, skriv instruktionerna och bygg sedan samma idé i ett konkret verktyg.</p>
-    </div>
-
-    <div class="resource-list">
-      <article class="resource-item">
-        <div>
-          <span class="status">Del 1</span>
-          <h3>Vad är en AI-agent?</h3>
-          <p>En enkel introduktion till skillnaden mellan vanlig AI-chatt och en återanvändbar agent.</p>
+  <section class="landing-hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow">AI Boost · AI i praktiken</span>
+        <h1>Små bitar. Rätt innehåll. När du behöver det.</h1>
+        <p>Korta guider, konkreta företagsexempel och praktiska idéer för dig som vill börja använda AI utan att göra det onödigt krångligt.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="hitta.html">Hitta material som passar mig →</a>
+          <a class="btn btn-light" href="#borja">Jag vill bara bläddra</a>
         </div>
-        <a class="btn secondary" href="01-vad-ar-en-ai-agent.html">Öppna →</a>
-      </article>
-
-      <article class="resource-item">
-        <div>
-          <span class="status">Del 2</span>
-          <h3>Skriv instruktioner till en AI-agent</h3>
-          <p>Planera agenten med fem delar: uppgift, input, kunskap, regler och output.</p>
-        </div>
-        <a class="btn secondary" href="02-skriv-instruktioner-till-ai-agent.html">Öppna →</a>
-      </article>
-
-      <article class="resource-item">
-        <div>
-          <span class="status">Del 3</span>
-          <h3>Bygg agenten i Microsoft Copilot</h3>
-          <p>Praktisk steg-för-steg-guide för att skapa och testa en enkel agent i Copilot.</p>
-        </div>
-        <a class="btn secondary" href="03-bygg-agent-i-microsoft-copilot.html">Öppna →</a>
-      </article>
-
-      <article class="resource-item">
-        <div>
-          <span class="status">Arbetsmaterial</span>
-          <h3>Demo-manus: bygg en Gem i Google Gemini</h3>
-          <p>Manus för den kommande praktiska Gemini-guiden. Den färdiga steg-för-steg-sidan byggs senare.</p>
-        </div>
-        <a class="btn secondary" href="04-gemini-gem-demo-manuskript.html">Öppna →</a>
-      </article>
+      </div>
     </div>
   </section>
 
-  <section class="wide section">
-    <div class="section-head">
-      <p class="eyebrow">Video</p>
-      <h2>Kom igång med Google Vids</h2>
-      <p>Skapa en enkel marknadsföringsvideo med bilder, text, övergångar och musik.</p>
-    </div>
-
-    <div class="resource-list">
-      <article class="resource-item">
-        <div>
-          <span class="status">Steg för steg</span>
-          <h3>Google Vids – snabbstart för småföretagare</h3>
-          <p>Från tom videofil till en kort färdig video som kan sparas och delas.</p>
-        </div>
-        <a class="btn secondary" href="google-vids-snabbstart-smaforetagare.html">Öppna →</a>
-      </article>
+  <section class="helper-strip" aria-label="Personlig hjälp">
+    <div class="container helper-inner">
+      <div><strong>Vet du inte var du ska börja?</strong><p>Svara på några korta frågor eller skriv vad du behöver hjälp med. Motorn plockar fram en liten lista som passar dina val.</p></div>
+      <a class="btn btn-dark" href="hitta.html">Bygg min lista →</a>
     </div>
   </section>
 
-  <section class="wide intro">
-    <div class="notice"><strong>Materialbanken byggs vidare.</strong> Nya guider kan läggas till här utan att de befintliga sidorna behöver byggas om. Design och gemensamma funktioner styrs centralt via <code>assets/css/shared.css</code> och <code>assets/js/shared.js</code>.</div>
+  <section class="landing-section" id="borja">
+    <div class="container">
+      <div class="section-header">
+        <div><span class="eyebrow">Fyra vägar in</span><h2>Vad vill du göra just nu?</h2><p>Du behöver inte följa någon kursordning. Börja där ditt behov finns idag.</p></div>
+      </div>
+      <div class="grid grid-4">
+        <a class="route-card" href="hitta.html"><img src="assets/site/interview.svg" alt=""><div class="route-content"><h3>Hitta rätt material</h3><p>Sök eller välj några alternativ och få en kort rekommenderad lista.</p></div></a>
+        <a class="route-card" href="skapa-video/index.html"><img src="assets/site/guide.svg" alt=""><div class="route-content"><h3>Skapa visuellt</h3><p>Färger, bildstil, AI-bilder och enkel video.</p></div></a>
+        <a class="route-card" href="01-vad-ar-en-ai-agent.html"><img src="assets/site/workshop.svg" alt=""><div class="route-content"><h3>Bygg en AI-agent</h3><p>Förstå idén, skriv instruktionerna och prova i ett verktyg.</p></div></a>
+        <a class="route-card" href="foretagscase/index.html"><img src="assets/site/case.svg" alt=""><div class="route-content"><h3>Se vad andra gjort</h3><p>Korta företagscase som går att översätta till den egna vardagen.</p></div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-section alt" id="guider">
+    <div class="container">
+      <div class="section-header">
+        <div><span class="eyebrow">Börja enkelt</span><h2>Tre saker du kan prova direkt</h2><p>Varje guide är gjord för att kunna fungera fristående. Ta den som känns relevant just nu.</p></div>
+        <a class="link" href="hitta.html">Sök bland allt material →</a>
+      </div>
+      <div class="grid grid-3">
+        <article class="entry-card"><img src="assets/site/guide.svg" alt=""><div class="entry-body"><div class="meta"><span class="chip red">Cirka 5 min</span><span class="chip">Visuellt</span></div><h3>Hitta färger som passar ihop</h3><p>Låt AI analysera ditt företag eller din logo och visa flera färgpaletter sida vid sida.</p><a class="card-link" href="skapa-video/02-hitta-farger-med-ai.html">Öppna guiden →</a></div></article>
+        <article class="entry-card"><img src="assets/site/workshop.svg" alt=""><div class="entry-body"><div class="meta"><span class="chip red">Cirka 4 min</span><span class="chip">AI-agent</span></div><h3>Vad är en AI-agent?</h3><p>Se skillnaden mellan en vanlig AI-chatt och en återanvändbar assistent med tydliga instruktioner.</p><a class="card-link" href="01-vad-ar-en-ai-agent.html">Öppna guiden →</a></div></article>
+        <article class="entry-card"><img src="assets/site/case.svg" alt=""><div class="entry-body"><div class="meta"><span class="chip red">Praktisk guide</span><span class="chip">Google</span></div><h3>Skapa en enkel video i Google Vids</h3><p>Har du några bilder färdiga kan du sätta ihop dem med kort text, övergångar och musik.</p><a class="card-link" href="google-vids-snabbstart-smaforetagare.html">Öppna guiden →</a></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-section soft" id="agenter">
+    <div class="container">
+      <div class="section-header"><div><span class="eyebrow">AI-agenter</span><h2>Gör samma typ av AI-hjälp återanvändbar</h2><p>Börja med vad agenten ska göra. Fortsätt sedan med input, kunskap, regler och hur resultatet ska se ut.</p></div></div>
+      <div class="grid grid-3">
+        <article class="entry-card"><div class="entry-body"><div class="meta"><span class="chip">Introduktion</span></div><h3>Vad är en AI-agent?</h3><p>En kort förklaring innan du bygger något.</p><a class="card-link" href="01-vad-ar-en-ai-agent.html">Läs →</a></div></article>
+        <article class="entry-card"><div class="entry-body"><div class="meta"><span class="chip">Instruktioner</span></div><h3>Skriv agentens instruktioner</h3><p>En enkel modell som fungerar oberoende av vilket verktyg du väljer.</p><a class="card-link" href="02-skriv-instruktioner-till-ai-agent.html">Läs →</a></div></article>
+        <article class="entry-card"><div class="entry-body"><div class="meta"><span class="chip">Microsoft Copilot</span></div><h3>Bygg din första agent</h3><p>Följ skärmbilderna och skapa ett konkret första exempel.</p><a class="card-link" href="03-bygg-agent-i-microsoft-copilot.html">Öppna →</a></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-section" id="case">
+    <div class="container">
+      <div class="section-header"><div><span class="eyebrow">Inspiration</span><h2>Studerande + företag</h2><p>Korta case från AI Boost-samarbeten. Fokus ligger på vad ett annat litet företag provade – och vilken idé du själv kan ta med dig.</p></div><a class="link" href="foretagscase/index.html">Se alla case →</a></div>
+      <div class="grid grid-2">
+        <div class="quote-panel"><span class="eyebrow" style="color:#f2c94c">Fyra exempel</span><strong>Från en konkret vardagsutmaning till något som AI kan hjälpa till med.</strong><p>Återanvänd material, jämför dokument, förstå Excel-data och skriv utkast i företagets egen röst.</p></div>
+        <div class="quote-panel" style="background:#d7193f"><span class="eyebrow" style="color:#fff">Behöver du något annat?</span><strong>Motorn söker i samma materialbank.</strong><p>Välj till exempel Microsoft eller Google, visuellt material, inspiration, data eller AI-agenter – och hur mycket tid du har.</p><p><a class="btn btn-light" href="hitta.html">Hitta rätt material →</a></p></div>
+      </div>
+    </div>
   </section>
 </main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><h3>AI i praktiken</h3><p>En växande materialbank med korta, praktiska resurser för småföretagare.</p></div>
+      <div><h3>Innehåll</h3><p><a href="skapa-video/index.html">Visuellt material</a><br><a href="01-vad-ar-en-ai-agent.html">AI-agenter</a><br><a href="foretagscase/index.html">Företagscase</a></p></div>
+      <div><h3>Hitta rätt</h3><p><a href="hitta.html">Bygg din lista</a></p></div>
+    </div>
+    <div class="footer-note">AI Boost · Materialbanken är under uppbyggnad.</div>
+  </div>
+</footer>
 </body>
 </html>

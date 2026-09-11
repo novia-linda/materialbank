@@ -1,51 +1,65 @@
-# Materialbank – shared CSS/JavaScript structure
+# Materialbank – GitHub Pages
 
-This package is prepared for a public GitHub repository served with GitHub Pages.
+Detta paket är byggt för det publika GitHub-repot `novia-linda/materialbank` och använder gemensam CSS och JavaScript.
 
-## Structure
+## Gemensamma filer
 
+- `assets/css/shared.css` – design för alla sidor
+- `assets/js/shared.js` – gemensamma interaktioner, kopieringsknappar, vägval och framtida projekt-/finansiärbranding
+- `assets/brand/` – reserverad för framtida projekt- och finansiärlogotyper
+- `assets/copilot/` – Copilot-skärmbilder
+- `assets/vids/` – Google Vids-skärmbilder
+
+## Sidor i roten
+
+- `index.html` – materialbankens startsida
 - `01-vad-ar-en-ai-agent.html`
 - `02-skriv-instruktioner-till-ai-agent.html`
 - `03-bygg-agent-i-microsoft-copilot.html`
+- `04-gemini-gem-demo-manuskript.html`
 - `google-vids-snabbstart-smaforetagare.html`
-- `04-gemini-gem-demo-manuskript.html` (teacher/demo planning page)
-- `assets/css/shared.css` – all visual styling
-- `assets/js/shared.js` – all shared interactions and future project/funder branding
-- `assets/copilot/` – Copilot screenshots
-- `assets/vids/` – Google Vids screenshots
-- `assets/brand/` – reserved for future project/funder logos
-- `vba-demo-kunskap.txt` – demo knowledge file
 
-## Why this structure
+## Visuellt material
 
-All public pages now reference the same CSS and JavaScript files. There are no embedded `<style>` or functional inline `<script>` blocks in the pages.
+Mappen `skapa-video/` behåller sitt befintliga namn för att gamla länkar och GitHub-filer ska kunna skrivas över, men innehållet är nu en fristående verktygslåda – inte en steg-för-steg-kurs.
 
-If the project's visual requirements change later, start with `assets/css/shared.css`. The branding variables are at the very top of the file. Changing those variables changes the visual system across all pages.
+- `skapa-video/index.html` – översikt: **Skapa visuellt material med AI**
+- `skapa-video/01-planera-video-med-ai.html` – **Planera innehåll med AI**, med val för video eller bilder/visuellt material
+- `skapa-video/02-hitta-farger-med-ai.html` – fristående färgguide
+- `skapa-video/03-valj-bildstil.html` – fristående bildstilsguide
+- `skapa-video/04-skapa-bilder-som-hor-ihop.html` – fristående guide för konsekventa AI-bilder
+- `skapa-video/06-redo-att-publicera.html` – publiceringskontroll med val för video eller bildmaterial
 
-If a common project/funder strip or logo footer must be added later, edit the `PROJECT_BRANDING` block near the top of `assets/js/shared.js`. It is currently disabled, so the pages keep the current Novia look. Add logo files to `assets/brand/`, enable the block, and all pages can receive the same branding without editing each HTML page.
-
-## GitHub Pages
-
-Upload/merge the **contents** of this package into the root of the `materialbank` repository. Then enable GitHub Pages from the `main` branch / repository root if it is not already enabled.
-
-With a repository named `materialbank`, a page will then have an address such as:
-
-`https://novia-linda.github.io/materialbank/01-vad-ar-en-ai-agent.html`
-
-## Important when renaming files
-
-The HTML files use relative paths. If you rename `assets`, `assets/css/shared.css`, `assets/js/shared.js`, `assets/copilot`, or `assets/vids`, update the corresponding references in the HTML pages.
-
-## Startsida
-
-`index.html` är en enkel innehållsförteckning med länkar till de guider som hittills har skapats.
-
+Google Vids-guiden är den enda sidan som tydligt rekommenderar förberedelser och länkar tillbaka till planering, färger, bildstil och bildserie. Den kan ändå användas direkt av den som redan har bilder.
 
 ## Företagscase
 
-`foretagscase/index.html` är en kort ingång till fyra anonymiserade studerande–företagscase.
-Varje case har en egen sida och en exakt HTML-kopia som `.txt`. Alla sidor använder samma `assets/css/shared.css` och `assets/js/shared.js`.
+`foretagscase/index.html` leder till fyra anonymiserade exempel. Vasabladet-länken är fortfarande en platshållare tills den riktiga artikeladressen läggs in.
 
-Vasabladet-artikeln från 6 maj 2026 har ännu ingen länk i materialet. Byt den inaktiva artikellänken i `foretagscase/index.html` när den riktiga URL:en finns.
+## Uppdatera GitHub
 
-`shared.js` löser nu branding-bilder relativt webbplatsens rot, så framtida projekt-/finansiärlogotyper fungerar även på sidor i undermappar.
+Packa upp ZIP-filen och ladda upp **innehållet** till roten av `materialbank`. När ett filnamn är identiskt med en befintlig fil kan du ersätta den gamla filen med den nya. Paketet använder inga versionssuffix i sidnamnen.
+
+De befintliga mapparna `Images Theme B/`, `vids instructions/`, `Drive_delning/` med flera behöver inte raderas. Flera guider använder redan publicerade GitHub Pages-resurser från `Images Theme B/`.
+
+## Hitta rätt material – metadata och resursmotor
+
+- `hitta.html` – publik sök-/rekommendationsmotor. Ingen AI används.
+- `data/resources.json` – hela resurskatalogen i strukturerad form.
+- `data/external-resources.json` – här kan Novia Video-länkar, artiklar och andra externa resurser läggas till.
+- `data/README.md` – visar exakt hur metadata och externa resurser skrivs.
+- `build_catalog.py` – läser metadata från HTML-sidorna och bygger katalogen.
+- `.github/workflows/build-catalog.yml` – kör katalogbygget automatiskt på GitHub när HTML/metadata ändras.
+- `assets/js/resource-engine.js` – vanlig JavaScript-logik för sökning, filtrering, ranking och personlig lista.
+
+Varje sökbar HTML-sida innehåller `materialbank:*`-metadata i `<head>`. Det gör att själva materialbanken är källan för taggningen. FramtidsHUB behöver alltså i princip bara länka vidare till exempelvis `hitta.html`; tagglogik och resurskatalog behöver inte dupliceras där.
+
+Resurser med `materialbank:status = draft` visas inte i den publika motorn. Gemini-demo-manuset är därför taggat men dolt tills en riktig företagarversion byggs.
+
+## Pilot-inspirerad design
+
+Materialbanken använder nu samma visuella grundidé som FramtidsHUB-piloten: varm pappersbakgrund, mörk toppnavigation, rundade kort, gula hjälpfält, röda accenter och tydliga vägval. Typsnittet är fortsatt **Be Vietnam Pro**.
+
+Designen styrs centralt i `assets/css/shared.css` och interaktivitet i `assets/js/shared.js`. Pilotens abstrakta SVG-resurser ligger i `assets/site/`.
+
+Det betyder att kommande projekt-, EU- eller finansiärkrav fortfarande kan införas centralt utan att varje guidesida behöver byggas om.

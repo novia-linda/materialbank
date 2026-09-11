@@ -1,0 +1,512 @@
+window.MATERIALBANK_RESOURCES = [
+  {
+    "id": "case-forsta-excel",
+    "type": "case",
+    "title": "Förstå Excel-data med AI",
+    "summary": "Inspiration från ett företag som använde AI för att förstå återkommande Excel-data, hitta mönster och formulera bättre frågor.",
+    "url": "foretagscase/03-forsta-exceldata.html",
+    "topics": [
+      "inspiration",
+      "data",
+      "effektivisering"
+    ],
+    "platforms": [
+      "microsoft",
+      "google"
+    ],
+    "level": "nasta-steg",
+    "intents": [
+      "inspireras",
+      "forsta"
+    ],
+    "duration": 3,
+    "keywords": [
+      "företagscase",
+      "Excel",
+      "Google Sheets",
+      "data",
+      "analys",
+      "kalkylblad",
+      "mönster"
+    ],
+    "featured": true,
+    "status": "published",
+    "recommendedBefore": [],
+    "source": "github-pages",
+    "format": "case"
+  },
+  {
+    "id": "case-jamfor-dokument",
+    "type": "case",
+    "title": "Jämför dokument med AI",
+    "summary": "Inspiration från ett företag som testade AI som ett första kontrollager när flera dokument behövde jämföras.",
+    "url": "foretagscase/02-jamfor-dokument.html",
+    "topics": [
+      "inspiration",
+      "effektivisering",
+      "data"
+    ],
+    "platforms": [
+      "verktygsoberoende"
+    ],
+    "level": "nasta-steg",
+    "intents": [
+      "inspireras",
+      "forsta"
+    ],
+    "duration": 3,
+    "keywords": [
+      "företagscase",
+      "dokument",
+      "jämföra",
+      "avvikelse",
+      "orderbekräftelse",
+      "faktura",
+      "kontroll"
+    ],
+    "featured": true,
+    "status": "published",
+    "recommendedBefore": [],
+    "source": "github-pages",
+    "format": "case"
+  },
+  {
+    "id": "case-foretagets-rost",
+    "type": "case",
+    "title": "Skriv i företagets röst",
+    "summary": "Inspiration från ett företag som använde tidigare godkända texter för att få AI-utkast som bättre matchade företagets egen ton.",
+    "url": "foretagscase/04-skriv-i-foretagets-rost.html",
+    "topics": [
+      "inspiration",
+      "kommunikation",
+      "marknadsforing",
+      "effektivisering"
+    ],
+    "platforms": [
+      "verktygsoberoende"
+    ],
+    "level": "kom-igang",
+    "intents": [
+      "inspireras",
+      "forsta"
+    ],
+    "duration": 3,
+    "keywords": [
+      "företagscase",
+      "tonalitet",
+      "företagets röst",
+      "text",
+      "kommunikation",
+      "språk",
+      "marknadsföring"
+    ],
+    "featured": true,
+    "status": "published",
+    "recommendedBefore": [],
+    "source": "github-pages",
+    "format": "case"
+  },
+  {
+    "id": "case-atervinn-material",
+    "type": "case",
+    "title": "Återanvänd befintligt material",
+    "summary": "Inspiration från ett företag som använde AI för att återanvända kunskap som redan fanns men låg i ett format som var svårt att utnyttja.",
+    "url": "foretagscase/01-atervinn-befintligt-material.html",
+    "topics": [
+      "inspiration",
+      "effektivisering",
+      "kommunikation"
+    ],
+    "platforms": [
+      "verktygsoberoende"
+    ],
+    "level": "kom-igang",
+    "intents": [
+      "inspireras",
+      "forsta"
+    ],
+    "duration": 3,
+    "keywords": [
+      "företagscase",
+      "återanvända",
+      "material",
+      "inspelning",
+      "översättning",
+      "kunskap",
+      "återbruk"
+    ],
+    "featured": true,
+    "status": "published",
+    "recommendedBefore": [],
+    "source": "github-pages",
+    "format": "case"
+  },
+  {
+    "id": "copilot-bygg-agent",
+    "type": "guide",
+    "title": "Bygg din första AI-agent i Microsoft Copilot",
+    "summary": "Bygg och testa en enkel AI-agent i Microsoft Copilot med steg-för-steg-instruktioner.",
+    "url": "03-bygg-agent-i-microsoft-copilot.html",
+    "topics": [
+      "ai-agenter",
+      "effektivisering"
+    ],
+    "platforms": [
+      "microsoft"
+    ],
+    "level": "kom-igang",
+    "intents": [
+      "lara",
+      "prova",
+      "skapa"
+    ],
+    "duration": 8,
+    "keywords": [
+      "Copilot",
+      "Microsoft",
+      "agent",
+      "AI-agent",
+      "bygga agent",
+      "Microsoft Copilot"
+    ],
+    "featured": true,
+    "status": "published",
+    "recommendedBefore": [],
+    "source": "github-pages",
+    "format": "webbguide"
+  },
+  {
+    "id": "redo-att-publicera",
+    "type": "guide",
+    "title": "Gör materialet redo att publiceras",
+    "summary": "Gör en snabb slutkontroll av bild- eller videomaterial före publicering: tydlighet, fakta, rättigheter, tillgänglighet och AI-transparens.",
+    "url": "skapa-video/06-redo-att-publicera.html",
+    "topics": [
+      "visuellt-material",
+      "video",
+      "ai-bilder",
+      "marknadsforing",
+      "ansvarsfull-ai"
+    ],
+    "platforms": [
+      "verktygsoberoende"
+    ],
+    "level": "nasta-steg",
+    "intents": [
+      "lara",
+      "prova"
+    ],
+    "duration": 5,
+    "keywords": [
+      "publicera",
+      "publicering",
+      "kontroll",
+      "rättigheter",
+      "tillgänglighet",
+      "AI-genererad",
+      "transparens",
+      "CTA",
+      "captions",
+      "textning"
+    ],
+    "featured": true,
+    "status": "published",
+    "recommendedBefore": [],
+    "source": "github-pages",
+    "format": "webbguide"
+  },
+  {
+    "id": "hitta-farger-ai",
+    "type": "guide",
+    "title": "Hitta färger med AI",
+    "summary": "Låt AI hjälpa dig hitta färger som passar ihop för företagets grafiska material, webb, sociala medier, bilder eller video.",
+    "url": "skapa-video/02-hitta-farger-med-ai.html",
+    "topics": [
+      "visuellt-material",
+      "marknadsforing"
+    ],
+    "platforms": [
+      "verktygsoberoende"
+    ],
+    "level": "kom-igang",
+    "intents": [
+      "lara",
+      "prova",
+      "skapa"
+    ],
+    "duration": 5,
+    "keywords": [
+      "färger",
+      "färgpalett",
+      "HEX",
+      "logo",
+      "grafisk profil",
+      "visuell identitet",
+      "HTML",
+      "design"
+    ],
+    "featured": true,
+    "status": "published",
+    "recommendedBefore": [],
+    "source": "github-pages",
+    "format": "webbguide"
+  },
+  {
+    "id": "google-vids-snabbstart",
+    "type": "guide",
+    "title": "Kom snabbt igång med Google Vids",
+    "summary": "Skapa en enkel video i Google Vids med färdiga bilder, kort text, övergångar och musik.",
+    "url": "google-vids-snabbstart-smaforetagare.html",
+    "topics": [
+      "video",
+      "visuellt-material",
+      "marknadsforing"
+    ],
+    "platforms": [
+      "google"
+    ],
+    "level": "kom-igang",
+    "intents": [
+      "lara",
+      "prova",
+      "skapa"
+    ],
+    "duration": 10,
+    "keywords": [
+      "Google Vids",
+      "video",
+      "bilder",
+      "musik",
+      "text",
+      "övergångar",
+      "marknadsföringsvideo",
+      "Drive"
+    ],
+    "featured": true,
+    "status": "published",
+    "recommendedBefore": [
+      "planera-innehall-ai",
+      "hitta-farger-ai",
+      "valj-bildstil",
+      "ai-bilder-som-hor-ihop"
+    ],
+    "source": "github-pages",
+    "format": "webbguide"
+  },
+  {
+    "id": "planera-innehall-ai",
+    "type": "guide",
+    "title": "Planera innehåll med AI",
+    "summary": "Planera en kort video eller visuellt marknadsföringsmaterial med hjälp av AI utan att börja från ett tomt dokument.",
+    "url": "skapa-video/01-planera-video-med-ai.html",
+    "topics": [
+      "visuellt-material",
+      "video",
+      "marknadsforing",
+      "kommunikation"
+    ],
+    "platforms": [
+      "verktygsoberoende"
+    ],
+    "level": "kom-igang",
+    "intents": [
+      "lara",
+      "prova",
+      "skapa"
+    ],
+    "duration": 5,
+    "keywords": [
+      "planera",
+      "innehåll",
+      "videoidé",
+      "bildidé",
+      "målgrupp",
+      "budskap",
+      "CTA",
+      "storyboard",
+      "marknadsföring"
+    ],
+    "featured": true,
+    "status": "published",
+    "recommendedBefore": [],
+    "source": "github-pages",
+    "format": "webbguide"
+  },
+  {
+    "id": "ai-bilder-som-hor-ihop",
+    "type": "guide",
+    "title": "Skapa AI-bilder som hör ihop",
+    "summary": "Skapa flera AI-bilder som känns som samma serie genom att återanvända en visuell riktning och en referens- eller ankarbild.",
+    "url": "skapa-video/04-skapa-bilder-som-hor-ihop.html",
+    "topics": [
+      "visuellt-material",
+      "ai-bilder",
+      "marknadsforing"
+    ],
+    "platforms": [
+      "verktygsoberoende"
+    ],
+    "level": "nasta-steg",
+    "intents": [
+      "lara",
+      "prova",
+      "skapa"
+    ],
+    "duration": 6,
+    "keywords": [
+      "AI-bilder",
+      "referensbild",
+      "ankarbild",
+      "anchor image",
+      "konsekvens",
+      "samma person",
+      "bildserie",
+      "visual recipe"
+    ],
+    "featured": true,
+    "status": "published",
+    "recommendedBefore": [],
+    "source": "github-pages",
+    "format": "webbguide"
+  },
+  {
+    "id": "ai-agent-instruktioner",
+    "type": "guide",
+    "title": "Skriv instruktioner till en AI-agent",
+    "summary": "Skriv tydliga instruktioner till en AI-agent med fem delar: uppgift, input, kunskap, regler och output.",
+    "url": "02-skriv-instruktioner-till-ai-agent.html",
+    "topics": [
+      "ai-agenter",
+      "effektivisering",
+      "kommunikation"
+    ],
+    "platforms": [
+      "verktygsoberoende"
+    ],
+    "level": "kom-igang",
+    "intents": [
+      "lara",
+      "prova"
+    ],
+    "duration": 5,
+    "keywords": [
+      "agent",
+      "instruktion",
+      "prompt",
+      "uppgift",
+      "input",
+      "kunskap",
+      "regler",
+      "output",
+      "arbetsbeskrivning"
+    ],
+    "featured": true,
+    "status": "published",
+    "recommendedBefore": [],
+    "source": "github-pages",
+    "format": "webbguide"
+  },
+  {
+    "id": "ai-agent-intro",
+    "type": "guide",
+    "title": "Vad är en AI-agent?",
+    "summary": "Förstå vad en AI-agent är, hur den skiljer sig från en vanlig AI-chatt och när den kan vara värd att testa i ett litet företag.",
+    "url": "01-vad-ar-en-ai-agent.html",
+    "topics": [
+      "ai-agenter",
+      "effektivisering"
+    ],
+    "platforms": [
+      "verktygsoberoende"
+    ],
+    "level": "kom-igang",
+    "intents": [
+      "forsta",
+      "lara"
+    ],
+    "duration": 4,
+    "keywords": [
+      "agent",
+      "AI-agent",
+      "AI agent",
+      "chatt",
+      "chatbot",
+      "automation",
+      "arbetsflöde",
+      "återanvändbar",
+      "småföretag"
+    ],
+    "featured": true,
+    "status": "published",
+    "recommendedBefore": [],
+    "source": "github-pages",
+    "format": "webbguide"
+  },
+  {
+    "id": "valj-bildstil",
+    "type": "guide",
+    "title": "Välj bildstil för AI-bilder",
+    "summary": "Utforska olika visuella uttryck och välj en bildstil innan du skapar AI-bilder.",
+    "url": "skapa-video/03-valj-bildstil.html",
+    "topics": [
+      "visuellt-material",
+      "ai-bilder",
+      "marknadsforing"
+    ],
+    "platforms": [
+      "verktygsoberoende"
+    ],
+    "level": "kom-igang",
+    "intents": [
+      "forsta",
+      "lara",
+      "prova"
+    ],
+    "duration": 5,
+    "keywords": [
+      "bildstil",
+      "stil",
+      "AI-bilder",
+      "illustration",
+      "fotorealistisk",
+      "editorial",
+      "grafisk stil",
+      "visuell stil"
+    ],
+    "featured": true,
+    "status": "published",
+    "recommendedBefore": [],
+    "source": "github-pages",
+    "format": "webbguide"
+  },
+  {
+    "id": "gemini-gem-demo-manus",
+    "type": "guide",
+    "title": "Demo-manus: bygg en Gem i Google Gemini",
+    "summary": "Arbetsmanus för en kommande guide om att bygga en Gem i Google Gemini.",
+    "url": "04-gemini-gem-demo-manuskript.html",
+    "topics": [
+      "ai-agenter"
+    ],
+    "platforms": [
+      "google"
+    ],
+    "level": "kom-igang",
+    "intents": [
+      "lara",
+      "prova"
+    ],
+    "duration": 8,
+    "keywords": [
+      "Gemini",
+      "Gem",
+      "Google",
+      "agent"
+    ],
+    "featured": false,
+    "status": "draft",
+    "recommendedBefore": [],
+    "source": "github-pages",
+    "format": "webbguide"
+  }
+];

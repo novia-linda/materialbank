@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="sv"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content="En snabb slutkontroll för småföretagare före publicering av video, bilder eller visuellt material."/><title>Gör materialet redo att publiceras · Novia</title><link rel="stylesheet" href="../assets/css/shared.css"/><script defer src="../assets/js/shared.js"></script>
+  <meta name="materialbank:id" content="redo-att-publicera">
+  <meta name="materialbank:type" content="guide">
+  <meta name="materialbank:summary" content="Gör en snabb slutkontroll av bild- eller videomaterial före publicering: tydlighet, fakta, rättigheter, tillgänglighet och AI-transparens.">
+  <meta name="materialbank:topics" content="visuellt-material,video,ai-bilder,marknadsforing,ansvarsfull-ai">
+  <meta name="materialbank:platforms" content="verktygsoberoende">
+  <meta name="materialbank:level" content="nasta-steg">
+  <meta name="materialbank:intents" content="lara,prova">
+  <meta name="materialbank:duration" content="5">
+  <meta name="materialbank:keywords" content="publicera,publicering,kontroll,rättigheter,tillgänglighet,AI-genererad,transparens,CTA,captions,textning">
+  <meta name="materialbank:featured" content="true">
+  <meta name="materialbank:status" content="published">
+  <meta name="keywords" content="publicera, publicering, kontroll, rättigheter, tillgänglighet, AI-genererad, transparens, CTA, captions, textning">
+</head>
+<body class="page-video-guide"><a class="skip-link" href="#main">Hoppa till innehållet</a><header class="sitebar"><div class="sitebar-inner"><a class="brand" href="index.html"><span class="brand-mark"></span>Visuellt material med AI</a><div class="series">Före publicering</div></div></header>
+<section class="hero"><div class="hero-inner hero-grid"><div><p class="eyebrow">Före publicering · 2–3 minuter</p><h1>Gör materialet redo att publiceras</h1><p class="lead">AI kan hjälpa dig skapa materialet. Den sista kontrollen behöver ändå göras av någon som känner företaget, målgruppen och det som faktiskt får sägas.</p></div><div class="quick-card"><strong>Titta med mottagarens ögon</strong><span>Är budskapet tydligt, trovärdigt och lätt att ta till sig – även för någon som ser materialet för första gången?</span></div></div></section>
+<main id="main">
+<section class="wide intro"><div class="notice"><strong>Börja med tre frågor oavsett format:</strong> Stämmer fakta? Har du rätt att använda materialet? Kan någon missförstå vad som är verkligt, illustrerat eller AI-genererat?</div></section>
+<section class="wide section"><div class="choice-group" data-choice-group>
+<div class="choice-intro"><h2>Vad ska du publicera?</h2><p>Välj format så får du en kort kontrollista som passar just det materialet.</p></div>
+<div class="choice-buttons"><button class="choice-button" type="button" data-choice="video">🎬 Video<span>Kontrollera bland annat ljud, textning, timing och avslutning.</span></button><button class="choice-button" type="button" data-choice="visual">🖼️ Bild eller visuellt material<span>Kontrollera bland annat format, läsbarhet, beskärning och webbanvändning.</span></button></div>
+<p class="choice-hint">Klicka på ett alternativ. Om JavaScript är avstängt visas båda kontrollerna.</p>
+
+<section class="choice-panel" data-choice-panel="video">
+<p class="eyebrow">Video</p><h2>Snabbcheck före publicering</h2>
+<div class="quick-check"><article><strong>Är budskapet tydligt?</strong><p>Förstår man snabbt vad företaget erbjuder och varför videon finns?</p></article><article><strong>Går texten att läsa?</strong><p>Är texten tillräckligt stor, kort och tydlig även på en liten skärm?</p></article><article><strong>Fungerar ljudet?</strong><p>Hörs eventuell berättarröst tydligt över musiken? Börjar och slutar ljudet mjukt?</p></article><article><strong>Behövs textning?</strong><p>Om videon innehåller tal är textning värdefull. Kontrollera automatiska undertexter i stället för att anta att de är korrekta.</p></article><article><strong>Finns ett nästa steg?</strong><p>Ska tittaren kontakta dig, boka, begära offert eller besöka en webbplats? Gör det tydligt när det är relevant.</p></article><article><strong>Stämmer allt?</strong><p>Kontrollera priser, påståenden, kontaktuppgifter och andra fakta. AI kan ha hittat på något.</p></article></div>
+<div class="resource-link"><div><strong>Vill du se ett exempel på en kort video?</strong><span>Demo-videon visar samma typ av enkla upplägg med bilder, text och musik.</span></div><a class="btn secondary" href="https://novia-linda.github.io/materialbank/Images%20Theme%20B/demo%20video.mp4" target="_blank" rel="noopener">Öppna demo →</a></div>
+</section>
+
+<section class="choice-panel" data-choice-panel="visual">
+<p class="eyebrow">Bild och visuellt material</p><h2>Snabbcheck före publicering</h2>
+<div class="quick-check"><article><strong>Är huvudbudskapet tydligt?</strong><p>Ser mottagaren snabbt vad bilden eller materialet vill säga?</p></article><article><strong>Är formatet rätt?</strong><p>Kontrollera proportioner och beskärning för platsen där materialet ska användas.</p></article><article><strong>Går eventuell text att läsa?</strong><p>Testa på liten skärm. Kontrollera kontrast, textstorlek och att inget viktigt hamnar för nära kanten.</p></article><article><strong>Ser materialet ut som ditt företag?</strong><p>Kontrollera färger, logo, tonalitet och om helheten passar det sammanhang där den ska synas.</p></article><article><strong>Stämmer allt?</strong><p>Kontrollera namn, priser, produktdetaljer, kontaktuppgifter och andra påståenden.</p></article><article><strong>Ska bilden användas på webben?</strong><p>Fundera på alternativtext när bilden bär information som annars inte framgår av sidans text.</p></article></div>
+</section>
+</div></section>
+<section class="wide section"><div class="callout-dark"><strong>Rättigheter och AI-transparens gäller oavsett format.</strong><p>Kontrollera var bilder, musik, röster och andra delar kommer från och om du får använda dem. Om AI-genererat eller AI-manipulerat material kan uppfattas som en verklig person, händelse eller dokumentation behöver du tänka särskilt på tydlig transparens. Anpassa informationen efter hur materialet faktiskt har skapats och hur det kan uppfattas.</p></div><details class="guide-details"><summary>Vill du läsa lite mer om realistiska AI-bilder?</summary><div class="details-body"><p>En tydligt illustrerad bild är ofta lättare att känna igen som skapad. En fotorealistisk AI-bild kan däremot lättare uppfattas som ett riktigt fotografi. Var därför extra försiktig med bilder som ser ut att visa verkliga kunder, anställda eller händelser. Den här guiden är praktisk vägledning, inte individuell juridisk rådgivning.</p></div></details></section>
+<div class="wide next"><a class="btn secondary" href="index.html">← Till visuella guider</a></div>
+</main></body></html>

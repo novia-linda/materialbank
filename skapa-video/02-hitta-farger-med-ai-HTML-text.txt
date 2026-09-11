@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="sv"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content="Låt AI hjälpa dig hitta färger som passar ihop för ditt företag och ditt visuella material."/><title>Hitta färger med AI · Novia</title><link rel="stylesheet" href="../assets/css/shared.css"/><script defer src="../assets/js/shared.js"></script>
+  <meta name="materialbank:id" content="hitta-farger-ai">
+  <meta name="materialbank:type" content="guide">
+  <meta name="materialbank:summary" content="Låt AI hjälpa dig hitta färger som passar ihop för företagets grafiska material, webb, sociala medier, bilder eller video.">
+  <meta name="materialbank:topics" content="visuellt-material,marknadsforing">
+  <meta name="materialbank:platforms" content="verktygsoberoende">
+  <meta name="materialbank:level" content="kom-igang">
+  <meta name="materialbank:intents" content="lara,prova,skapa">
+  <meta name="materialbank:duration" content="5">
+  <meta name="materialbank:keywords" content="färger,färgpalett,HEX,logo,grafisk profil,visuell identitet,HTML,design">
+  <meta name="materialbank:featured" content="true">
+  <meta name="materialbank:status" content="published">
+  <meta name="keywords" content="färger, färgpalett, HEX, logo, grafisk profil, visuell identitet, HTML, design">
+</head>
+<body class="page-video-guide"><a class="skip-link" href="#main">Hoppa till innehållet</a><header class="sitebar"><div class="sitebar-inner"><a class="brand" href="index.html"><span class="brand-mark"></span>Visuellt material med AI</a><div class="series">Färger</div></div></header>
+<section class="hero"><div class="hero-inner hero-grid"><div><p class="eyebrow">Färger · cirka 5 minuter</p><h1>Låt AI hjälpa dig hitta färger som passar ihop</h1><p class="lead">Du behöver inte vara grafisk designer. Ge AI lite information om företaget – eller ladda upp din logo – och be den visa flera färgriktningar sida vid sida.</p></div><div class="quick-card"><strong>Tips: be om en HTML-fil</strong><span>I stället för en lång textlista kan AI skapa en liten webbsida med stora färgrutor och HEX-koder som är lätt att jämföra.</span></div></div></section>
+<main id="main">
+<section class="wide intro"><div class="notice"><strong>Det här kan användas till nästan vilket material som helst:</strong> webbplats, sociala medier, presentationer, annonser, flyers, video eller en enkel visuell grund för företaget.</div></section>
+<section class="wide section"><div class="section-head"><p class="eyebrow">Ett enkelt arbetssätt</p><h2>Beskriv → visualisera → välj</h2><p>Du behöver inte bygga en fullständig grafisk profil. Börja med 4–5 färger som fungerar tillsammans och spara deras HEX-koder.</p></div>
+<div class="guide-grid"><article class="guide-card"><strong>Ge AI sammanhang</strong><p>Beskriv bransch, målgrupp och önskad känsla. Bifoga gärna företagets logo om du har en.</p></article><article class="guide-card"><strong>Be om flera alternativ</strong><p>Be AI göra till exempel 8 färgpaletter, inte bara en. Då ser du lättare skillnaden.</p></article><article class="guide-card"><strong>Välj en riktning</strong><p>Spara HEX-koderna. Då kan du använda exakt samma färger i andra verktyg senare.</p></article></div>
+<div class="html-mini"><h3>Så här kan en enkel palett se ut</h3><p class="small-note">Färgerna nedan är bara ett exempel. Poängen är att du kan be AI skapa många sådana alternativ åt dig.</p><div class="swatch-grid"><div class="swatch light" style="background:#7E2E28">#7E2E28</div><div class="swatch light" style="background:#B45248">#B45248</div><div class="swatch" style="background:#E9D7C8">#E9D7C8</div><div class="swatch" style="background:#F5F1EC">#F5F1EC</div><div class="swatch light" style="background:#344247">#344247</div></div></div>
+<div class="prompt-box"><h3>Prompt: skapa en färgkarta som HTML</h3><pre id="prompt-colour">Jag vill hitta en enkel färgriktning för mitt företag.
+
+BRANSCH / VERKSAMHET
+[SKRIV HÄR]
+
+MÅLGRUPP
+[SKRIV HÄR]
+
+KÄNSLA JAG VILL FÖRMEDLA
+[T.EX. VARM, PÅLITLIG, MODERN, LUGN]
+
+[OM DU HAR EN LOGO: Jag bifogar företagets logo. Utgå gärna från färger som redan finns i logon och föreslå kompletterande färger som passar ihop med dem.]
+
+Skapa en färdig HTML-fil som visar 8 tydligt olika färgpaletter för mitt företag.
+
+För varje palett vill jag se:
+- ett namn
+- 5 stora färgrutor
+- HEX-koden för varje färg
+- en kort beskrivning av känslan
+
+Gör sidan ren och lätt att jämföra. Jag vill kunna ladda ner HTML-filen och öppna den direkt i min webbläsare.</pre><div class="copy-row"><button type="button" data-copy-target="prompt-colour">Kopiera prompt</button><span class="copy-status" aria-live="polite"></span></div></div>
+<div class="html-mini"><h3>Vad gör jag med HTML-filen?</h3><ol><li>Ladda ner filen som AI skapar.</li><li>Dubbelklicka på filen.</li><li>Den öppnas som en vanlig webbsida i webbläsaren.</li><li>Jämför alternativen och spara de HEX-koder du vill använda.</li></ol></div>
+<details class="guide-details"><summary>Bonus: du kan fråga om mer än färger</summary><div class="details-body"><p>När du hittat en färgriktning kan du också be AI föreslå exempel på typografi, bildkänsla eller layout som passar samma uttryck. Du behöver inte göra allt på en gång – börja gärna med färgerna.</p></div></details>
+</section>
+<section class="wide section"><div class="section-head"><p class="eyebrow">Relaterat</p><h2>Vill du använda färgerna vidare?</h2></div><div class="related-guides"><article><h3>Hitta bildstil</h3><p>Kombinera färgriktningen med ett tydligt visuellt uttryck.</p><a class="btn secondary" href="03-valj-bildstil.html">Öppna →</a></article><article><h3>Skapa en bildserie</h3><p>Återanvänd färger och stil så att flera AI-bilder hör ihop.</p><a class="btn secondary" href="04-skapa-bilder-som-hor-ihop.html">Öppna →</a></article><article><h3>Till översikten</h3><p>Välj ett helt annat visuellt tema.</p><a class="btn secondary" href="index.html">Öppna →</a></article></div></section>
+</main></body></html>

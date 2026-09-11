@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="sv"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content="Planera video, bilder eller visuellt marknadsföringsmaterial med hjälp av AI."/><title>Planera innehåll med AI · Novia</title><link rel="stylesheet" href="../assets/css/shared.css"/><script defer src="../assets/js/shared.js"></script>
+  <meta name="materialbank:id" content="planera-innehall-ai">
+  <meta name="materialbank:type" content="guide">
+  <meta name="materialbank:summary" content="Planera en kort video eller visuellt marknadsföringsmaterial med hjälp av AI utan att börja från ett tomt dokument.">
+  <meta name="materialbank:topics" content="visuellt-material,video,marknadsforing,kommunikation">
+  <meta name="materialbank:platforms" content="verktygsoberoende">
+  <meta name="materialbank:level" content="kom-igang">
+  <meta name="materialbank:intents" content="lara,prova,skapa">
+  <meta name="materialbank:duration" content="5">
+  <meta name="materialbank:keywords" content="planera,innehåll,videoidé,bildidé,målgrupp,budskap,CTA,storyboard,marknadsföring">
+  <meta name="materialbank:featured" content="true">
+  <meta name="materialbank:status" content="published">
+  <meta name="keywords" content="planera, innehåll, videoidé, bildidé, målgrupp, budskap, CTA, storyboard, marknadsföring">
+</head>
+<body class="page-video-guide"><a class="skip-link" href="#main">Hoppa till innehållet</a><header class="sitebar"><div class="sitebar-inner"><a class="brand" href="index.html"><span class="brand-mark"></span>Visuellt material med AI</a><div class="series">Planera innehåll</div></div></header>
+<section class="hero"><div class="hero-inner hero-grid"><div><p class="eyebrow">Planering · cirka 5 minuter</p><h1>Planera innehåll med hjälp av AI</h1><p class="lead">Du behöver inte börja med en perfekt idé. Ge AI lite sammanhang om företaget, målgruppen och vad materialet ska åstadkomma – och be om tydliga alternativ.</p></div><div class="quick-card"><strong>Du bestämmer – AI hjälper dig tänka</strong><span>AI kan föreslå upplägg och vinklar. Du avgör vad som passar företaget och vad som faktiskt stämmer.</span></div></div></section>
+<main id="main">
+<section class="wide section"><div class="choice-group" data-choice-group>
+<div class="choice-intro"><h2>Vad vill du planera?</h2><p>Välj det som ligger närmast ditt behov. Du kan byta val när som helst.</p></div>
+<div class="choice-buttons"><button class="choice-button" type="button" data-choice="video">🎬 En kort video<span>Exempel: sociala medier, webb, kampanj eller presentation.</span></button><button class="choice-button" type="button" data-choice="visual">🖼️ Bilder och visuellt material<span>Exempel: inlägg, annons, banner, flyer, presentationsbild eller kampanjmaterial.</span></button></div>
+<p class="choice-hint">Klicka på ett alternativ så visas bara den del du behöver. Om JavaScript är avstängt visas båda delarna längre ner.</p>
+
+<section class="choice-panel" data-choice-panel="video">
+<p class="eyebrow">Video</p><h2>Från idé till en enkel scenplan</h2><p>För en kort företagsvideo räcker det långt att först svara på fem frågor: <strong>vad</strong> marknadsför du, <strong>vem</strong> vill du nå, <strong>varför</strong> gör du videon, <strong>vad</strong> är huvudbudskapet och <strong>vad</strong> ska tittaren göra sedan?</p>
+<div class="guide-flow"><div><b>Vad?</b><span>Produkt, tjänst eller evenemang</span></div><div><b>Vem?</b><span>Vem vill du nå?</span></div><div><b>Varför?</b><span>Vad ska videon hjälpa dig uppnå?</span></div><div><b>Budskap?</b><span>En viktig sak att förstå</span></div><div><b>Nästa steg?</b><span>Vad ska tittaren göra?</span></div></div>
+<div class="prompt-box"><h3>Prompt att kopiera</h3><pre id="prompt-plan-video">Jag vill skapa en kort marknadsföringsvideo på cirka 30 sekunder för mitt företag.
+
+DET HÄR VILL JAG MARKNADSFÖRA
+[PRODUKT / TJÄNST / EVENEMANG]
+
+MÅLGRUPP
+[VEM VILL JAG NÅ?]
+
+SYFTE
+[VAD SKA VIDEON HJÄLPA MIG UPPNÅ?]
+
+HUVUDBUDSKAP
+[VAD ÄR DET VIKTIGASTE TITTAREN SKA FÖRSTÅ?]
+
+NÄSTA STEG
+[VAD VILL JAG ATT TITTAREN GÖR?]
+
+Ge mig först 3 enkla och tydligt olika videoidéer. De ska vara realistiska att skapa med stillbilder, kort text, enkla övergångar och musik.
+
+När jag har valt en idé vill jag att du hjälper mig göra den till cirka 5 scener. För varje scen: beskriv vad tittaren ska förstå, ge en enkel bildidé och föreslå mycket kort text på skärmen.
+
+Använd bara den information jag har gett dig. Hitta inte på priser, löften, kundomdömen eller andra företagsfakta.</pre><div class="copy-row"><button type="button" data-copy-target="prompt-plan-video">Kopiera prompt</button><span class="copy-status" aria-live="polite"></span></div></div>
+<details class="guide-details"><summary>Vill du läsa lite mer? En enkel berättelse räcker</summary><div class="details-body"><p>En kort video blir ofta lätt att följa om den har en enkel båge: <strong>visa ett behov eller en situation → visa lösningen eller nyttan → avsluta med ett tydligt nästa steg.</strong> Du behöver inte använda exakt den modellen, men den är en bra start.</p></div></details>
+</section>
+
+<section class="choice-panel" data-choice-panel="visual">
+<p class="eyebrow">Bilder och visuellt material</p><h2>Planera vad bilden ska göra innan du skapar den</h2><p>Här behöver du inte tänka i scener. Börja i stället med <strong>användning, målgrupp, budskap och format</strong>. Då blir AI:s bildidéer mer användbara.</p>
+<div class="guide-grid"><article class="guide-card"><strong>1. Var ska materialet användas?</strong><p>Webb, Instagram, Facebook, presentation, annons, flyer eller något annat?</p></article><article class="guide-card"><strong>2. Vem ska se det?</strong><p>Beskriv målgruppen så konkret som det är relevant för uppgiften.</p></article><article class="guide-card"><strong>3. Vad ska materialet förmedla?</strong><p>Ett huvudbudskap eller en känsla räcker. Försök inte säga allt i samma bild.</p></article></div>
+<div class="prompt-box"><h3>Prompt att kopiera</h3><pre id="prompt-plan-visual">Jag vill planera visuellt material för mitt företag.
+
+FÖRETAG / VERKSAMHET
+[KORT BESKRIVNING]
+
+MATERIALET SKA ANVÄNDAS TILL
+[T.EX. INSTAGRAM-INLÄGG / WEBBANNER / ANNONS / FLYER / PRESENTATION]
+
+MÅLGRUPP
+[VEM SKA SE DET?]
+
+HUVUDBUDSKAP
+[VAD SKA PERSONEN FÖRSTÅ ELLER KÄNNA?]
+
+VIKTIGA FAKTA SOM FÅR FINNAS MED
+[SKRIV HÄR]
+
+FORMAT ELLER PRAKTISKA KRAV
+[T.EX. STÅENDE 4:5 / LIGGANDE 16:9 / PLATS FÖR RUBRIK]
+
+Ge mig 4 tydligt olika visuella idéer. Beskriv för varje idé:
+1. huvudmotivet
+2. kompositionen
+3. vilken känsla idén ger
+4. var text eller logo kan placeras om det behövs
+
+Gör idéerna realistiska och enkla att producera. Använd bara de företagsfakta jag har gett dig.</pre><div class="copy-row"><button type="button" data-copy-target="prompt-plan-visual">Kopiera prompt</button><span class="copy-status" aria-live="polite"></span></div></div>
+<details class="guide-details"><summary>Har du redan en logo eller ett gammalt material?</summary><div class="details-body"><p>Bifoga gärna det som referens och berätta <strong>vad</strong> AI ska lära sig av det: till exempel färger, tonalitet eller layoutkänsla. Be inte AI att gissa vilka delar som måste kopieras.</p></div></details>
+</section>
+</div></section>
+<section class="wide section"><div class="section-head"><p class="eyebrow">Relaterade guider</p><h2>Vill du fortsätta med det visuella?</h2><p>De här guiderna är fristående. Öppna bara den som passar ditt nästa behov.</p></div><div class="related-guides"><article><h3>Hitta färger</h3><p>Låt AI föreslå och visualisera färgpaletter.</p><a class="btn secondary" href="02-hitta-farger-med-ai.html">Öppna →</a></article><article><h3>Hitta bildstil</h3><p>Se exempel innan du väljer hur AI-bilderna ska se ut.</p><a class="btn secondary" href="03-valj-bildstil.html">Öppna →</a></article><article><h3>Google Vids</h3><p>Har du bilderna färdiga? Bygg en enkel video.</p><a class="btn secondary" href="../google-vids-snabbstart-smaforetagare.html">Öppna →</a></article></div></section>
+<div class="wide next"><a class="btn secondary" href="index.html">← Till visuella guider</a></div>
+</main></body></html>
