@@ -37,6 +37,39 @@
     }
   };
 
+
+  /* ---------------------------------------------------------
+     GLOBAL MATERIALBANK NAVIGATION
+     The same black navigation bar is injected on every page.
+     Edit the labels/targets here once to update the whole site.
+     --------------------------------------------------------- */
+  function initGlobalSiteHeader(){
+    const items=[
+      ['Företag berättar','foretag-berattar.html'],
+      ['Så här gör du','sa-har-gor-du.html'],
+      ['Studerande + Företag','foretagscase/index.html'],
+      ['Säkerhet','sakerhet.html'],
+      ['Kunskapsverkstäder','kunskapsverkstader.html']
+    ];
+    const header=document.querySelector('header.site-header, header.sitebar') || document.createElement('header');
+    header.className='site-header global-site-header';
+    const links=items.map(([label,target])=>`<a href="${resolveSiteUrl(target)}">${label}</a>`).join('');
+    header.innerHTML=`
+      <div class="container header-inner">
+        <a class="brand" href="${resolveSiteUrl('index.html')}"><span class="brand-mark"></span><span>AI i praktiken<small>AI Boost · materialbank</small></span></a>
+        <nav class="main-nav" aria-label="Huvudnavigation">
+          ${links}
+          <a class="nav-cta" href="${resolveSiteUrl('hitta.html')}">Hitta rätt material</a>
+        </nav>
+        <button class="mobile-menu" type="button" aria-label="Öppna meny" aria-expanded="false">Meny</button>
+      </div>`;
+    if(!header.isConnected){
+      const skip=document.querySelector('.skip-link, .skip');
+      if(skip && skip.nextSibling) skip.parentNode.insertBefore(header,skip.nextSibling);
+      else document.body.insertBefore(header,document.body.firstChild);
+    }
+  }
+
   function initMobileNavigation(){
     const menuBtn=document.querySelector('.mobile-menu');
     const nav=document.querySelector('.main-nav');
@@ -241,6 +274,7 @@
   }
 
   document.addEventListener('DOMContentLoaded',()=>{
+    initGlobalSiteHeader();
     initMobileNavigation();
     initAgentCandidateCheck();
     initInstructionBuilder();
