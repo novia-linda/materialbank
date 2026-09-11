@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tekniklärare – erfarenhetstrappan och garantiandelen</title>
+<style>
+:root{
+  --ink:#2d3a3f;
+  --muted:#65767b;
+  --line:#d6e0e2;
+  --bg:#f4f7f7;
+  --card:#ffffff;
+  --blue:#4c7f8c;
+  --blue-soft:#eef6f8;
+  --green:#5f8f82;
+  --green-soft:#eef5f3;
+  --yellow:#fff8d9;
+  --yellow-line:#e7d98b;
+  --grey:#eef1f2;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Be Vietnam Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  line-height:1.55;
+}
+.wrap{max-width:1120px;margin:0 auto;padding:34px 18px 70px}
+.hero{
+  background:linear-gradient(135deg,var(--blue-soft),#fff);
+  border:1px solid var(--line);border-left:10px solid var(--blue);
+  padding:30px;
+}
+.eyebrow{
+  text-transform:uppercase;letter-spacing:.08em;font-size:12px;
+  font-weight:850;color:var(--blue);margin-bottom:8px;
+}
+h1{font-size:clamp(28px,4vw,44px);line-height:1.12;margin:0 0 13px}
+h2{font-size:25px;margin:0 0 12px}
+h3{font-size:18px;margin:0 0 8px}
+p{margin:0 0 12px}
+.lead{font-size:18px;max-width:900px}
+.section{margin-top:28px}
+.card{background:#fff;border:1px solid var(--line);padding:22px}
+.note{
+  margin-top:17px;background:#fff;border:1px solid var(--line);
+  padding:15px 17px;
+}
+.note strong{color:var(--blue)}
+.certain{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px;
+}
+@media(max-width:900px){.certain{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.certain{grid-template-columns:1fr}}
+.fact{
+  background:#fff;border:1px solid var(--line);padding:16px;
+  min-height:140px;
+}
+.fact .n{
+  width:31px;height:31px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:var(--blue-soft);color:var(--blue);font-weight:900;margin-bottom:10px;
+}
+.ladder-card{background:#fff;border:1px solid var(--line);padding:24px}
+.ladder{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:8px;align-items:start;
+  position:relative;margin:22px 0 10px;
+}
+.ladder:before{
+  content:"";position:absolute;top:23px;left:10%;right:10%;height:3px;background:#c9d6d9;z-index:0;
+}
+.step{
+  position:relative;z-index:1;text-align:center;cursor:pointer;
+  border:0;background:transparent;padding:0 4px;
+}
+.dot{
+  width:48px;height:48px;border-radius:50%;margin:0 auto 8px;
+  background:#fff;border:3px solid #b8c8cc;
+  display:flex;align-items:center;justify-content:center;font-weight:900;
+}
+.step.active .dot{border-color:var(--blue);background:var(--blue-soft);color:var(--blue)}
+.step.past .dot{border-color:var(--green);background:var(--green-soft);color:var(--green)}
+.step .label{font-weight:850}
+.step .salary{font-size:12px;color:var(--muted)}
+.summary{
+  margin-top:18px;background:var(--blue-soft);border:1px solid #cfe0e4;padding:18px;
+}
+.summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:760px){.summary-grid{grid-template-columns:1fr}}
+.metric{background:#fff;border:1px solid #d8e5e8;padding:14px}
+.metric .big{font-size:27px;font-weight:900;line-height:1.1;margin-top:4px}
+.table-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:720px;background:#fff}
+th,td{border-bottom:1px solid var(--line);padding:12px 11px;text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{background:#f5f8f8;font-size:13px}
+tr.current-row{background:var(--blue-soft)}
+.small{font-size:13px}.muted{color:var(--muted)}
+.calc{background:#fff;border:1px solid var(--line);padding:24px}
+.controls{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;
+}
+@media(max-width:720px){.controls{grid-template-columns:1fr}}
+.control{background:#f8fafa;border:1px solid var(--line);padding:15px}
+label{display:block;font-weight:800;font-size:13px;margin-bottom:6px}
+select,input[type=number]{
+  width:100%;padding:10px 11px;border:1px solid #bdcdd0;border-radius:6px;
+  background:#fff;font:inherit;color:var(--ink);
+}
+.result-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px;
+}
+@media(max-width:800px){.result-grid{grid-template-columns:1fr}}
+.result{
+  border:1px solid var(--line);padding:18px;background:#fff;
+}
+.result.blue{border-top:6px solid var(--blue)}
+.result.green{border-top:6px solid var(--green)}
+.bigmoney{font-size:34px;font-weight:900;line-height:1.1;margin:6px 0 12px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:5px 0}
+.row.total{border-top:1px solid var(--line);margin-top:7px;padding-top:10px;font-weight:900}
+.warning{
+  margin-top:18px;background:var(--yellow);border:1px solid var(--yellow-line);padding:17px 18px;
+}
+.warning strong{display:block;margin-bottom:5px}
+.timeline{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px;
+}
+@media(max-width:800px){.timeline{grid-template-columns:1fr}}
+.titem{background:#fff;border:1px solid var(--line);padding:15px}
+.titem .year{font-size:12px;font-weight:900;color:var(--blue);letter-spacing:.06em}
+.source{
+  margin-top:28px;background:#fff;border:1px solid var(--line);padding:18px 20px;
+  color:var(--muted);font-size:13px;
+}
+.badge{
+  display:inline-block;padding:4px 8px;border-radius:999px;background:var(--grey);
+  font-size:12px;font-weight:800;margin-bottom:8px;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<section class="hero">
+  <div class="eyebrow">Tekniklärare · erfarenhetstrappan</div>
+  <h1>Hur påverkas garantiandelen när en tekniklärare ännu har erfarenhetssteg kvar?</h1>
+  <p class="lead">
+    Fokus ligger på hur garantiandelen påverkas beroende på om en tekniklärare redan nått 20-årssteget
+    eller ännu har ett eller flera erfarenhetssteg framför sig.
+  </p>
+  <div class="note">
+    <strong>Det centrala i avtalet:</strong> erfarenhetsårshöjningar minskar garantiandelens eurobelopp,
+    men den anställdes lön får inte sjunka. En kvarvarande garantiandel fortsätter som ett separat eurotillägg
+    efter övergången till det nya personliga lönesystemet.
+  </div>
+</section>
+
+<section class="section">
+  <h2>1. Fyra saker som avtalet säger tydligt</h2>
+  <div class="certain">
+    <div class="fact"><div class="n">1</div><strong>Saatavuuslisä blir garanti</strong><p class="small muted">För teknik- och trafiklärare omvandlas det tidigare tillägget till en eurobaserad garantiandel.</p></div>
+    <div class="fact"><div class="n">2</div><strong>Garantin indexeras inte normalt</strong><p class="small muted">Garantiandelen höjs inte med kollektivavtalets allmänna löneförhöjningar.</p></div>
+    <div class="fact"><div class="n">3</div><strong>Erfarenhetssteg minskar garantin</strong><p class="small muted">När läraren får en erfarenhetsårshöjning minskar garantiandelens eurobelopp.</p></div>
+    <div class="fact"><div class="n">4</div><strong>Lönen får inte sjunka</strong><p class="small muted">Avtalet anger samtidigt uttryckligen att arbetstagarens lön inte får minska.</p></div>
+  </div>
+</section>
+
+<section class="section ladder-card">
+  <div class="eyebrow">Klicka på ett steg</div>
+  <h2>2. Var befinner sig läraren i erfarenhetstrappan?</h2>
+  <p class="muted">Tabellönerna nedan är lektorsnivåerna från lönetabellen 1.9.2025 och används endast för att visa trappans struktur.</p>
+
+  <div class="ladder">
+    <button class="step active" data-step="5">
+      <div class="dot">5</div><div class="label">5 år</div><div class="salary">4 092,97 €</div>
+    </button>
+    <button class="step" data-step="10">
+      <div class="dot">10</div><div class="label">10 år</div><div class="salary">4 496,23 €</div>
+    </button>
+    <button class="step" data-step="15">
+      <div class="dot">15</div><div class="label">15 år</div><div class="salary">5 063,59 €</div>
+    </button>
+    <button class="step" data-step="20">
+      <div class="dot">20</div><div class="label">20 år</div><div class="salary">5 285,76 €</div>
+    </button>
+  </div>
+
+  <div class="summary">
+    <div class="summary-grid">
+      <div class="metric"><div class="small muted">Valt steg</div><div id="selectedStep" class="big">5 år</div></div>
+      <div class="metric"><div class="small muted">Erfarenhetssteg kvar</div><div id="stepsLeft" class="big">3</div></div>
+      <div class="metric"><div class="small muted">Nästa tabellsteg</div><div id="nextStep" class="big">10 år</div></div>
+    </div>
+    <p id="stepExplanation" style="margin-top:13px">
+      En tekniklärare på 5-årssteget har tre framtida erfarenhetshöjningar kvar: 10, 15 och 20 år.
+      Varje sådan höjning är enligt avtalet en händelse som minskar garantiandelens eurobelopp.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>3. Hur stora är själva tabellstegen?</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Övergång</th>
+          <th>Tabellön före</th>
+          <th>Tabellön efter</th>
+          <th>Ökning i tabellönen</th>
+          <th>Vad avtalet säger om garantin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="row5">
+          <td>5 → 10 år</td><td>4 092,97 €</td><td>4 496,23 €</td><td><strong>+403,26 €</strong></td>
+          <td style="text-align:left">Garantiandelen minskar</td>
+        </tr>
+        <tr id="row10">
+          <td>10 → 15 år</td><td>4 496,23 €</td><td>5 063,59 €</td><td><strong>+567,36 €</strong></td>
+          <td style="text-align:left">Garantiandelen minskar</td>
+        </tr>
+        <tr id="row15">
+          <td>15 → 20 år</td><td>5 063,59 €</td><td>5 285,76 €</td><td><strong>+222,17 €</strong></td>
+          <td style="text-align:left">Garantiandelen minskar</td>
+        </tr>
+        <tr id="row20">
+          <td>20 år</td><td>5 285,76 €</td><td>–</td><td>Inga fler erfarenhetssteg</td>
+          <td style="text-align:left">Ingen framtida minskning via erfarenhetssteg</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small muted" style="margin-top:10px">
+    Viktigt: avtalsutdraget anger att erfarenhetsårshöjningar minskar garantin, men anger inte i den citerade texten
+    en exakt euro-för-euro-formel för hur stor minskningen är.
+  </p>
+</section>
+
+<section class="section calc">
+  <div class="eyebrow">Pedagogisk räknare</div>
+  <h2>4. Testa ett erfarenhetssteg</h2>
+  <p>
+    Här kan du ange en <strong>kvarvarande garantiandel före nästa erfarenhetssteg</strong>.
+    Räknaren visar vad som händer med tabellönen och hur stor garanti som minst skulle behövas
+    för att totalen inte ska sjunka. Det är en matematisk illustration av “lönen får inte sjunka”,
+    inte den officiella beräkningsformeln för garantiandelen.
+  </p>
+
+  <div class="controls">
+    <div class="control">
+      <label for="currentLevel">Nuvarande erfarenhetssteg</label>
+      <select id="currentLevel">
+        <option value="5">5 år</option>
+        <option value="10">10 år</option>
+        <option value="15">15 år</option>
+        <option value="20">20 år</option>
+      </select>
+    </div>
+    <div class="control">
+      <label for="guarantee">Kvarvarande garanti före nästa steg (€)</label>
+      <input id="guarantee" type="number" min="0" step="10" value="1072.36">
+    </div>
+    <div class="control">
+      <label for="personal">Personlig lönedel (€)</label>
+      <input id="personal" type="number" min="0" step="10" value="0">
+    </div>
+    <div class="control">
+      <label>Referens</label>
+      <div class="small muted" id="referenceText">I tabellen 1.9.2025 var skillnaden mellan tekniklön och vanlig lektorslön på 5-årssteget 1 072,36 €.</div>
+    </div>
+  </div>
+
+  <div class="result-grid">
+    <div class="result blue">
+      <span class="badge">FÖRE NÄSTA STEG</span>
+      <h3 id="beforeTitle">5-årssteget</h3>
+      <div class="bigmoney" id="beforeTotal">5 165,33 €</div>
+      <div class="row"><span>Tabellön</span><strong id="beforeBase">4 092,97 €</strong></div>
+      <div class="row"><span>Garanti</span><strong id="beforeGuarantee">+1 072,36 €</strong></div>
+      <div class="row"><span>Personlig lön</span><strong id="beforePersonal">+0 €</strong></div>
+      <div class="row total"><span>Summa i exemplet</span><strong id="beforeTotal2">5 165,33 €</strong></div>
+    </div>
+
+    <div class="result green">
+      <span class="badge">NÄSTA ERFARENHETSSTEG</span>
+      <h3 id="afterTitle">10-årssteget</h3>
+      <div class="bigmoney" id="baseIncrease">+403,26 €</div>
+      <div class="row"><span>Ny tabellön</span><strong id="afterBase">4 496,23 €</strong></div>
+      <div class="row"><span>Tabellökning</span><strong id="afterIncrease">+403,26 €</strong></div>
+      <div class="row"><span>Minsta garanti för oförändrad total</span><strong id="floorGuarantee">669,10 €</strong></div>
+      <div class="row total"><span>Exakt ny garanti enligt avtalet</span><strong>Inte möjlig att räkna ut här</strong></div>
+    </div>
+  </div>
+
+  <div class="warning" id="calcNote">
+    <strong>Så ska resultatet läsas</strong>
+    Om tabellönen stiger med 403,26 € skulle en garanti på 669,10 € räcka för att hålla samma totalsumma i just detta exempel.
+    Avtalet säger att garantin minskar och att lönen inte får sjunka, men den citerade texten specificerar inte att minskningen måste vara exakt 403,26 €.
+  </div>
+</section>
+
+<section class="section">
+  <h2>5. Vad betyder trappan för olika utgångslägen?</h2>
+  <div class="timeline">
+    <div class="titem">
+      <div class="year">5 ÅR</div>
+      <h3>Tre steg kvar</h3>
+      <p class="small">10, 15 och 20 år återstår. Garantin kan därför påverkas av tre framtida erfarenhetsårshöjningar.</p>
+    </div>
+    <div class="titem">
+      <div class="year">10 ÅR</div>
+      <h3>Två steg kvar</h3>
+      <p class="small">15 och 20 år återstår. Garantin kan påverkas av två framtida erfarenhetsårshöjningar.</p>
+    </div>
+    <div class="titem">
+      <div class="year">15 ÅR</div>
+      <h3>Ett steg kvar</h3>
+      <p class="small">Endast 20-årssteget återstår. Därefter finns inga fler erfarenhetssteg som kan minska garantin.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:12px">
+    <strong>20 år:</strong> läraren har redan nått högsta erfarenhetssteget i tabellen.
+    Därför finns ingen framtida erfarenhetsårshöjning som kan minska garantiandelen via just denna mekanism.
+    Garantin kan däremot påverkas av andra regler i avtalet och av hur det lokala personliga lönesystemet byggs upp.
+  </div>
+</section>
+
+<section class="source">
+  <strong>Källgrund för förklaringen</strong><br>
+  Förlikningsförslaget för AMK/YH-avtalet 11.9.2026–31.3.2029 anger bland annat att:
+  garantiandelen inte höjs med kollektivavtalets höjningar, erfarenhetsårshöjningar minskar garantiandelens eurobelopp,
+  arbetstagarens lön ändå inte får sjunka, och kvarvarande garanti efter övergången till det nya personliga lönesystemet
+  är ett separat eurotillägg. Den här sidan är en pedagogisk illustration och ersätter inte kommande officiella tillämpningsanvisningar.
+</section>
+
+</div>
+
+<script>
+(function(){
+  const levels = {
+    5:  {base:4092.97, tech:5165.33, refGuarantee:1072.36, next:10},
+    10: {base:4496.23, tech:5530.36, refGuarantee:1034.13, next:15},
+    15: {base:5063.59, tech:5980.10, refGuarantee:916.51, next:20},
+    20: {base:5285.76, tech:6263.63, refGuarantee:977.87, next:null}
+  };
+  const order=[5,10,15,20];
+  const fmt = n => new Intl.NumberFormat('sv-FI',{minimumFractionDigits:2,maximumFractionDigits:2}).format(n)+' €';
+  const fmt0 = n => new Intl.NumberFormat('sv-FI',{maximumFractionDigits:2}).format(n)+' €';
+
+  const steps = document.querySelectorAll('.step');
+  const currentLevel = document.getElementById('currentLevel');
+  const guarantee = document.getElementById('guarantee');
+  const personal = document.getElementById('personal');
+
+  function selectStep(v, syncInput=true){
+    v=Number(v);
+    steps.forEach(btn=>{
+      const s=Number(btn.dataset.step);
+      btn.classList.toggle('active', s===v);
+      btn.classList.toggle('past', s<v);
+    });
+    const idx=order.indexOf(v);
+    const left=order.length-1-idx;
+    document.getElementById('selectedStep').textContent=v+' år';
+    document.getElementById('stepsLeft').textContent=left;
+    document.getElementById('nextStep').textContent=levels[v].next ? levels[v].next+' år' : 'Inget';
+    let txt='';
+    if(v===5) txt='En tekniklärare på 5-årssteget har tre framtida erfarenhetshöjningar kvar: 10, 15 och 20 år. Varje sådan höjning är enligt avtalet en händelse som minskar garantiandelens eurobelopp.';
+    if(v===10) txt='En tekniklärare på 10-årssteget har två framtida erfarenhetshöjningar kvar: 15 och 20 år. Garantin kan därför minska vid två framtida erfarenhetssteg.';
+    if(v===15) txt='En tekniklärare på 15-årssteget har ett framtida erfarenhetssteg kvar: 20 år. Efter det finns inga fler erfarenhetsårshöjningar i tabellen.';
+    if(v===20) txt='En tekniklärare på 20-årssteget har inga fler erfarenhetssteg kvar. Därför finns ingen framtida minskning av garantin via just erfarenhetsårshöjningar.';
+    document.getElementById('stepExplanation').textContent=txt;
+
+    ['row5','row10','row15','row20'].forEach(id=>document.getElementById(id).classList.remove('current-row'));
+    document.getElementById('row'+v).classList.add('current-row');
+
+    if(syncInput){
+      currentLevel.value=String(v);
+      guarantee.value=levels[v].refGuarantee.toFixed(2);
+      updateCalc();
+    }
+  }
+
+  function updateCalc(){
+    const v=Number(currentLevel.value);
+    const d=levels[v];
+    const g=Math.max(0,parseFloat(guarantee.value)||0);
+    const p=Math.max(0,parseFloat(personal.value)||0);
+
+    document.getElementById('referenceText').textContent=
+      'I tabellen 1.9.2025 var skillnaden mellan tekniklön och vanlig lektorslön på '+v+'-årssteget '+fmt(d.refGuarantee)+'.';
+
+    const before=d.base+g+p;
+    document.getElementById('beforeTitle').textContent=v+'-årssteget';
+    document.getElementById('beforeTotal').textContent=fmt(before);
+    document.getElementById('beforeBase').textContent=fmt(d.base);
+    document.getElementById('beforeGuarantee').textContent='+'+fmt(g);
+    document.getElementById('beforePersonal').textContent='+'+fmt(p);
+    document.getElementById('beforeTotal2').textContent=fmt(before);
+
+    if(!d.next){
+      document.getElementById('afterTitle').textContent='Inget nästa erfarenhetssteg';
+      document.getElementById('baseIncrease').textContent='0 €';
+      document.getElementById('afterBase').textContent=fmt(d.base);
+      document.getElementById('afterIncrease').textContent='0 €';
+      document.getElementById('floorGuarantee').textContent='Ej tillämpligt';
+      document.getElementById('calcNote').innerHTML=
+        '<strong>Så ska resultatet läsas</strong>På 20-årssteget finns ingen ytterligare erfarenhetsårshöjning. Därför kan garantiandelen inte minska via just erfarenhetstrappan. Avtalet innehåller samtidigt andra löne- och övergångsregler som kan påverka lönen.';
+      return;
+    }
+
+    const next=levels[d.next];
+    const inc=next.base-d.base;
+    const floor=Math.max(before - next.base - p, 0);
+    document.getElementById('afterTitle').textContent=d.next+'-årssteget';
+    document.getElementById('baseIncrease').textContent='+'+fmt(inc);
+    document.getElementById('afterBase').textContent=fmt(next.base);
+    document.getElementById('afterIncrease').textContent='+'+fmt(inc);
+    document.getElementById('floorGuarantee').textContent=fmt(floor);
+    document.getElementById('calcNote').innerHTML=
+      '<strong>Så ska resultatet läsas</strong>Om tabellönen stiger med '+fmt(inc)+
+      ' skulle en garanti på '+fmt(floor)+' räcka för att hålla samma totalsumma i just detta exempel. '+
+      'Avtalet säger att garantin minskar och att lönen inte får sjunka, men den citerade texten specificerar inte att minskningen måste vara exakt '+fmt(inc)+'.';
+  }
+
+  steps.forEach(btn=>btn.addEventListener('click',()=>selectStep(btn.dataset.step,true)));
+  currentLevel.addEventListener('change',()=>{
+    const v=Number(currentLevel.value);
+    guarantee.value=levels[v].refGuarantee.toFixed(2);
+    selectStep(v,false);
+    updateCalc();
+  });
+  guarantee.addEventListener('input',updateCalc);
+  personal.addEventListener('input',updateCalc);
+
+  selectStep(5,true);
+})();
+</script>
+</body>
+</html>
