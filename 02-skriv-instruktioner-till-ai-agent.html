@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Praktisk guide för småföretagare: skriv tydliga instruktioner till en AI-agent med uppgift, input, kunskap, regler och output.">
+  <title>Skriv instruktioner till en AI-agent · Novia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--novia-red:#ff1325;--ink:#171717;--text:#344247;--muted:#677176;--line:#d7dfdf;--soft:#f5f7f7;--soft-2:#eef2f2;--white:#fff;--max:1160px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Be Vietnam Pro",Arial,sans-serif;color:var(--text);background:#fff;line-height:1.62}a{color:inherit}button,input,textarea{font:inherit}.skip{position:absolute;left:-9999px;top:8px;background:#000;color:#fff;padding:10px 14px;z-index:99}.skip:focus{left:8px}.sitebar{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}.sitebar-inner{max-width:var(--max);margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{text-decoration:none;color:var(--ink);font-weight:700;letter-spacing:.02em}.brand-mark{display:inline-block;width:28px;height:5px;background:var(--novia-red);margin-right:10px;vertical-align:middle}.series{font-size:13px;color:var(--muted)}
+    .hero{background:var(--ink);color:#fff;border-bottom:8px solid var(--novia-red)}.hero-inner{max-width:var(--max);margin:auto;padding:58px 20px 52px;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:end}.eyebrow{margin:0 0 10px;text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:700;color:var(--novia-red)}.hero .eyebrow{color:#fff}.hero h1{margin:0 0 18px;color:#fff;font-size:clamp(36px,5vw,62px);line-height:1.08;max-width:850px}.lead{margin:0;max-width:850px;font-size:clamp(17px,2vw,22px);color:#e4e8e8}.hero-card{border:1px solid #555;border-left:6px solid var(--novia-red);background:#222;padding:18px 20px}.hero-card strong{display:block;color:#fff;font-size:18px;margin-bottom:6px}.hero-card span{color:#d7dddd;font-size:14px}
+    .wide{max-width:var(--max);margin:auto;padding-left:20px;padding-right:20px}.intro{padding-top:34px}.notice{border:1px solid var(--line);border-left:7px solid var(--novia-red);padding:20px 22px;background:#fff}.notice strong{color:var(--ink)}
+    .section{padding-top:54px}.section-head{border-bottom:1px solid var(--line);padding-bottom:15px;margin-bottom:22px}.section-head h2{font-size:clamp(28px,3vw,39px);line-height:1.18;color:var(--ink);margin:0 0 8px}.section-head p:last-child{margin:0;max-width:870px;color:var(--muted)}
+    .five{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.five div{border:1px solid var(--line);background:var(--soft);padding:14px}.five b{display:block;color:var(--ink);font-size:14px}.five span{font-size:12px;color:var(--muted)}
+    .step{display:grid;grid-template-columns:110px 1fr;gap:22px;padding:28px 0;border-bottom:1px solid var(--line)}.num{font-size:58px;line-height:1;color:#d5dbdc;font-weight:700}.step h3{margin:0 0 9px;color:var(--ink);font-size:27px}.step p{margin-top:0}.question{background:var(--soft);border-left:5px solid var(--novia-red);padding:14px 16px;margin:14px 0}.example{border:1px solid var(--line);padding:14px 16px;background:#fff;margin-top:14px}.example strong{color:var(--ink)}
+    .knowledge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:18px}.knowledge-grid article{border:1px solid var(--line);padding:20px}.knowledge-grid h4{margin:0 0 8px;color:var(--ink);font-size:19px}.tag{display:inline-block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;background:var(--soft-2);padding:4px 7px;margin-bottom:10px}.knowledge-grid article:nth-child(2){border-top:5px solid var(--novia-red)}
+    .template{background:var(--ink);color:#fff;padding:24px;margin-top:18px}.template h3{margin:0 0 12px;color:#fff}.template pre{white-space:pre-wrap;margin:0;background:#222;border-left:5px solid var(--novia-red);padding:16px;color:#f6f6f6;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.55}
+    .builder{border:1px solid var(--line);background:var(--soft);padding:24px}.builder-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field.full{grid-column:1/-1}.field label{display:block;font-weight:700;color:var(--ink);margin-bottom:6px}.field small{display:block;color:var(--muted);margin-bottom:7px}.field textarea,.field input{width:100%;border:1px solid #aeb8ba;background:#fff;color:var(--ink);padding:11px 12px;border-radius:0}.field textarea{min-height:118px;resize:vertical}.field input:focus,.field textarea:focus{outline:3px solid rgba(255,19,37,.18);border-color:var(--novia-red)}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{border:2px solid var(--ink);background:var(--ink);color:#fff;padding:11px 15px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}.btn:hover,.btn:focus{background:var(--novia-red);border-color:var(--novia-red);outline:none}.btn.secondary{background:#fff;color:var(--ink)}.btn.secondary:hover,.btn.secondary:focus{color:#fff}.output{display:none;margin-top:20px;border:1px solid var(--line);background:#fff;padding:18px}.output.show{display:block}.output h3{margin:0 0 10px;color:var(--ink)}.output pre{white-space:pre-wrap;background:var(--soft);border-left:5px solid var(--novia-red);padding:14px;overflow:auto;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px}.copy-status{font-size:13px;color:var(--muted);margin-left:4px}
+    .review{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.review div{border:1px solid var(--line);padding:16px;background:#fff}.review strong{display:block;color:var(--ink);margin-bottom:5px}.next{margin-top:54px;border-top:1px solid var(--line);padding:34px 0 70px;display:flex;justify-content:space-between;gap:20px;align-items:center}.next h2{margin:0 0 8px;color:var(--ink)}.small{font-size:13px;color:var(--muted)}
+    @media(max-width:980px){.hero-inner{grid-template-columns:1fr}.five{grid-template-columns:1fr 1fr}.knowledge-grid{grid-template-columns:1fr}.builder-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.review{grid-template-columns:1fr}.series{display:none}}
+    @media(max-width:650px){.sitebar-inner,.hero-inner,.wide{padding-left:15px;padding-right:15px}.five{grid-template-columns:1fr}.step{grid-template-columns:1fr;gap:5px}.num{font-size:42px}.builder{padding:18px}.next{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+<a class="skip" href="#main">Hoppa till innehållet</a>
+<header class="sitebar"><div class="sitebar-inner"><a class="brand" href="01-vad-ar-en-ai-agent.html"><span class="brand-mark"></span>Novia · Praktisk AI-guide</a><div class="series">AI-agenter · Del 2</div></div></header>
+<section class="hero"><div class="hero-inner"><div><p class="eyebrow">AI-agenter · kom igång</p><h1>Skriv instruktionerna innan du bygger agenten</h1><p class="lead">Du behöver inte börja i Copilot, Gemini eller något annat agentverktyg. Börja med fem enkla frågor. När de är tydliga har du redan gjort den viktigaste delen.</p></div><div class="hero-card"><strong>Fem delar</strong><span>Uppgift · Input · Kunskap · Regler · Output. Det räcker långt för din första enkla agent.</span></div></div></section>
+<main id="main">
+  <section class="wide intro"><div class="notice"><strong>På den här sidan bygger du inte själva agenten ännu.</strong> Du planerar bara instruktionerna. När instruktionerna är klara kan samma grund användas i olika verktyg som stöder agenter eller anpassade AI-assistenter.</div></section>
+
+  <section class="wide section"><div class="section-head"><p class="eyebrow">Överblick</p><h2>Fem frågor som gör agenten tydlig</h2><p>De här delarna hjälper dig skilja på vad agenten ska göra, vad användaren måste ge och vilka fakta och regler som ska styra svaret.</p></div><div class="five"><div><b>1 · Uppgift</b><span>Vad ska agenten hjälpa till med?</span></div><div><b>2 · Input</b><span>Vad varierar från gång till gång?</span></div><div><b>3 · Kunskap</b><span>Vilka fakta behöver agenten?</span></div><div><b>4 · Regler</b><span>Hur ska agenten arbeta?</span></div><div><b>5 · Output</b><span>Hur ska resultatet se ut?</span></div></div></section>
+
+  <section class="wide section">
+    <article class="step"><div class="num">01</div><div><p class="eyebrow">Uppgift</p><h3>Bestäm ett tydligt jobb</h3><p>Börja med en återkommande arbetsuppgift. Första agenten blir ofta bäst om uppdraget är ganska smalt.</p><div class="question"><strong>Fråga dig:</strong> “Vad vill jag att agenten ska hjälpa mig eller en medarbetare att göra om och om igen?”</div><div class="example"><strong>Exempel:</strong> Skapa ett första utkast till offert utifrån en kundförfrågan.</div></div></article>
+
+    <article class="step"><div class="num">02</div><div><p class="eyebrow">Input</p><h3>Bestäm vad användaren behöver ge</h3><p>Input är information som <strong>ändras från fall till fall</strong>. Det kan vara kundens namn, datum, produkt, antal, önskemål eller annan situationsspecifik information.</p><div class="question"><strong>Fråga dig:</strong> “Vilka uppgifter behöver agenten varje gång för att kunna göra ett bra jobb?”</div><div class="example"><strong>Exempel för en offertagent:</strong> tjänst, antal deltagare, önskat datum, genomförandeform och särskilda önskemål.</div></div></article>
+
+    <article class="step"><div class="num">03</div><div><p class="eyebrow">Kunskap</p><h3>Bestäm vad agenten behöver veta</h3><p>Kunskap är fakta som hjälper agenten att göra uppgiften utan att gissa. Det kan vara priser, tjänster, produktinformation, öppettider, policydokument eller arbetsrutiner.</p><div class="question"><strong>Fråga dig:</strong> “Vilka fakta måste agenten känna till för att kunna ge ett användbart svar?”</div>
+      <div class="knowledge-grid">
+        <article><span class="tag">Sätt 1</span><h4>I instruktionerna</h4><p>Passar för kort och ganska stabil information, eller i enklare/gratis agentverktyg där du inte kan lägga till separata kunskapskällor.</p><p class="small"><strong>Exempel:</strong> några standardpriser eller en kort lista med tjänster.</p></article>
+        <article><span class="tag">Sätt 2</span><h4>Som filer eller kunskapskällor</h4><p>Om verktyget stöder det är detta ofta bättre för längre material. Då kan du lägga till exempelvis prislistor, guider, produktblad eller interna instruktioner som agentens kunskap.</p><p class="small"><strong>Tips:</strong> håll källorna relevanta och uppdaterade.</p></article>
+        <article><span class="tag">Sätt 3</span><h4>I den aktuella chatten</h4><p>Användaren kan också ge information just när agenten används. Det passar särskilt för information som är tillfällig, ny eller specifik för ett enda ärende.</p><p class="small"><strong>Exempel:</strong> dagens prislista, kundens mejl eller ett dokument som bara gäller just detta fall.</p></article>
+      </div>
+      <div class="example"><strong>Viktigt:</strong> Hur kunskap läggs till varierar mellan AI-tjänster. En fil som du bifogar i en enskild chatt är inte automatiskt en permanent kunskapskälla för alla framtida chattar.</div>
+    </div></article>
+
+    <article class="step"><div class="num">04</div><div><p class="eyebrow">Regler</p><h3>Bestäm hur agenten ska arbeta</h3><p>Regler styr vad agenten får göra, vad den ska undvika och vad som ska hända när något är oklart.</p><div class="question"><strong>Fråga dig:</strong> “Vilka enkla regler hjälper agenten att göra rätt även när situationen inte är perfekt?”</div><div class="example"><strong>Bra första regler kan vara:</strong><ul><li>Använd bara priser som finns i företagets information.</li><li>Hitta inte på fakta som saknas.</li><li>Fråga efter viktig information om den saknas.</li><li>Var tydlig med vad som är ett utkast och vad som är ett beslut.</li><li>Påminn om mänsklig kontroll när det behövs.</li></ul></div></div></article>
+
+    <article class="step"><div class="num">05</div><div><p class="eyebrow">Output</p><h3>Beskriv hur ett bra svar ska se ut</h3><p>Output betyder resultatet som agenten ska skapa. Ju tydligare du beskriver formen, desto lättare blir det att få användbara och jämna svar.</p><div class="question"><strong>Fråga dig:</strong> “Vad vill jag kunna kopiera, läsa eller använda när agenten är färdig?”</div><div class="example"><strong>Du kan beskriva:</strong> format, rubriker, ton, språk, längd, tabell eller punktlista, vad som ska stå först och vad som alltid måste finnas med.</div></div></article>
+  </section>
+
+  <section class="wide section"><div class="section-head"><p class="eyebrow">Enkel mall</p><h2>Samla allt i en instruktion</h2><p>Du behöver inte skriva avancerade “system prompts”. En tydlig arbetsbeskrivning räcker bra som start.</p></div>
+    <div class="template"><h3>Kopierbar struktur</h3><pre>UPPGIFT
+[Beskriv vad agenten ska hjälpa till med.]
+
+INPUT FRÅN ANVÄNDAREN
+[Lista informationen som varierar från gång till gång.]
+
+KUNSKAP
+[Beskriv vilken företags-, produkt- eller processkunskap agenten behöver och var den finns.]
+
+REGLER
+[Lista de viktigaste reglerna, begränsningarna och vad agenten ska göra om information saknas.]
+
+OUTPUT
+[Beskriv hur det färdiga resultatet ska se ut.]</pre></div>
+  </section>
+
+  <section class="wide section"><div class="section-head"><p class="eyebrow">Prova själv</p><h2>Bygg ett första instruktionsutkast här</h2><p>Fyll i det du vet. Du behöver inte formulera dig perfekt. Knappen sammanställer bara dina anteckningar till en tydlig struktur som du kan kopiera vidare.</p></div>
+    <div class="builder">
+      <div class="builder-grid">
+        <div class="field full"><label for="task">1 · Uppgift</label><small>Vad ska agenten hjälpa till med?</small><input id="task" placeholder="Exempel: Skapa ett första offertutkast utifrån en kundförfrågan."></div>
+        <div class="field"><label for="input">2 · Input från användaren</label><small>Skriv gärna en punkt per rad.</small><textarea id="input" placeholder="Tjänst\nAntal\nDatum\nSärskilda önskemål"></textarea></div>
+        <div class="field"><label for="knowledge">3 · Kunskap</label><small>Vilka fakta behövs och var finns de?</small><textarea id="knowledge" placeholder="Prislista finns som fil\nÖppettider\nLeveransalternativ"></textarea></div>
+        <div class="field"><label for="rules">4 · Regler</label><small>Vad ska agenten göra eller undvika?</small><textarea id="rules" placeholder="Hitta inte på priser\nFråga om viktig information saknas\nMarkera resultatet som utkast"></textarea></div>
+        <div class="field"><label for="output">5 · Output</label><small>Hur ska det färdiga svaret se ut?</small><textarea id="output" placeholder="Kort professionellt utkast med rubrik, sammanfattning, pris, nästa steg och sådant som behöver kontrolleras."></textarea></div>
+      </div>
+      <div class="actions"><button class="btn" type="button" id="build">Skapa instruktionsutkast</button><button class="btn secondary" type="button" id="clear">Rensa</button></div>
+      <div class="output" id="output-box"><h3>Ditt instruktionsutkast</h3><pre id="assembled"></pre><div class="actions"><button class="btn" type="button" id="copy">Kopiera texten</button><span class="copy-status" id="copy-status"></span></div></div>
+    </div>
+  </section>
+
+  <section class="wide section"><div class="section-head"><p class="eyebrow">Innan du går vidare</p><h2>Gör en snabb rimlighetskontroll</h2></div>
+    <div class="review"><div><strong>Är uppgiften tydlig?</strong>En ny medarbetare borde kunna förstå vad agenten ska hjälpa till med.</div><div><strong>Är input och kunskap separerade?</strong>Input ändras från fall till fall. Kunskap är fakta agenten behöver använda.</div><div><strong>Finns regler för det som kan gå fel?</strong>Till exempel saknad information, osäkerhet eller sådant agenten inte får hitta på.</div><div><strong>Vet agenten hur svaret ska se ut?</strong>Beskriv hellre ett konkret resultat än “ge ett bra svar”.</div></div>
+  </section>
+
+  <section class="wide next"><div><p class="eyebrow">Nästa steg</p><h2>Nu är du redo att bygga agenten i ett verktyg</h2><p class="small">I nästa praktiska guide visar vi samma idé steg för steg i Microsoft Copilot. Senare kan samma grund också användas i andra agentverktyg.</p></div><span class="btn" style="background:#777;border-color:#777;cursor:default">Nästa guide: Microsoft Copilot</span></section>
+</main>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const task=$('task'), input=$('input'), knowledge=$('knowledge'), rules=$('rules'), out=$('output');
+  const box=$('output-box'), assembled=$('assembled'), status=$('copy-status');
+  function clean(v){return v.trim()||'[Fyll i här]'}
+  $('build').addEventListener('click',()=>{
+    assembled.textContent=`UPPGIFT\n${clean(task.value)}\n\nINPUT FRÅN ANVÄNDAREN\n${clean(input.value)}\n\nKUNSKAP\n${clean(knowledge.value)}\n\nREGLER\n${clean(rules.value)}\n\nOUTPUT\n${clean(out.value)}`;
+    box.classList.add('show');status.textContent='';box.scrollIntoView({behavior:'smooth',block:'nearest'});
+  });
+  $('clear').addEventListener('click',()=>{[task,input,knowledge,rules,out].forEach(x=>x.value='');box.classList.remove('show');status.textContent=''});
+  $('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(assembled.textContent);status.textContent='Kopierat.'}catch(e){status.textContent='Markera texten ovan och kopiera manuellt.'}});
+})();
+</script>
+</body>
+</html>
