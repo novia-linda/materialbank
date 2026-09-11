@@ -1,0 +1,164 @@
+THEME B – VISUAL STYLE LIBRARY
+Detailed descriptions of styles 01–40
+
+These descriptions explain the visual language of each example in the two style-library images. They focus on reusable style characteristics rather than the specific person, company or scene shown in the examples.
+
+STYLE 01 – PHOTOREALISTIC
+Realistic commercial lifestyle photography. People, objects and materials should have believable proportions, textures and lighting, with natural facial features and a real-world sense of depth. Use soft daylight or realistic indoor light, a clean contemporary setting and restrained colour grading. The result should look like a professionally photographed small-business scene rather than an illustration.
+Keywords: photorealistic, lifestyle photography, natural light, realistic textures, contemporary, professional.
+
+STYLE 02 – CLEAN ILLUSTRATION
+A polished digital illustration with simplified shapes, smooth surfaces and clear outlines. People and objects remain recognisable and proportionate, but details are intentionally reduced. Use a tidy composition, flat or lightly shaded colour areas and a modern business-friendly visual language. The overall feeling should be clear, approachable and professional rather than cartoon-like.
+Keywords: clean digital illustration, simplified shapes, modern, clear, flat colour, professional.
+
+STYLE 03 – WATERCOLOUR
+A soft hand-painted watercolour look with translucent washes, gentle colour transitions and visible paper texture. Edges may be slightly loose or irregular, and some areas can fade softly into the background. Keep the scene light and expressive, with natural-looking colours and an artistic, human quality rather than sharp digital perfection.
+Keywords: watercolour, hand-painted, translucent washes, soft edges, paper texture, artistic.
+
+STYLE 04 – LINE DRAWING
+A minimal black-and-white line illustration built primarily from clean contour lines. Use little or no filled colour, very limited shading and plenty of white space. Details should be communicated through confident strokes and simple forms. The result should feel elegant, instructional and editorial, similar to a refined pen drawing rather than a comic.
+Keywords: line art, black and white, minimal, contour drawing, white space, editorial.
+
+STYLE 05 – 3D RENDER
+A friendly stylised 3D scene with rounded forms, soft materials and smooth studio-like lighting. People and objects should feel three-dimensional and tactile but intentionally simplified, with slightly softened proportions and surfaces. Use realistic depth and shadows while keeping the overall appearance polished, modern and clearly computer-rendered rather than photographic.
+Keywords: 3D render, stylised, rounded forms, soft lighting, tactile, modern.
+
+STYLE 06 – RETRO POSTER
+A bold vintage poster style inspired by mid-century advertising and travel graphics. Use simplified shapes, strong silhouettes, limited colours and slightly aged print textures. Composition should feel designed rather than photographed, with confident blocks of colour and a nostalgic but still readable visual hierarchy.
+Keywords: retro poster, vintage, mid-century, limited palette, bold shapes, print texture.
+
+STYLE 07 – MINIMALIST
+A calm, highly reduced visual style with only the essential objects and shapes. Use generous negative space, a limited colour palette, clean geometry and subtle shadows. Avoid visual clutter, busy textures and unnecessary decoration. The scene should feel quiet, elegant and deliberate, with a premium contemporary design sensibility.
+Keywords: minimalist, clean, negative space, limited palette, calm, elegant.
+
+STYLE 08 – POP ART
+A bold pop-art interpretation with saturated colours, strong outlines, graphic contrast and comic-inspired visual energy. Use simplified forms, punchy colour combinations and optional halftone or print-dot textures. The scene should feel energetic and deliberately stylised, more like a designed poster or magazine graphic than a realistic workplace image.
+Keywords: pop art, bold colours, comic-inspired, halftone, graphic contrast, energetic.
+
+STYLE 09 – SCANDINAVIAN
+A bright Scandinavian editorial look with natural daylight, pale neutral backgrounds, light wood, simple furnishings and restrained accent colours. Keep the composition airy and uncluttered, with soft shadows and an emphasis on calm functionality. The mood should feel modern, human and understated rather than luxurious or decorative.
+Keywords: Scandinavian, bright, airy, natural light, pale neutrals, understated.
+
+STYLE 10 – DARK MOODY
+A cinematic low-key style with deep shadows, selective highlights and a darker, more dramatic atmosphere. Use warm practical lights or directional side light, richer contrast and subdued colours. Keep important faces and actions readable while allowing the environment to fall into shadow. The result should feel sophisticated and film-like.
+Keywords: dark moody, cinematic, low-key lighting, dramatic, deep shadows, film-like.
+
+STYLE 11 – PASTEL
+A soft pastel visual language using light, desaturated colours and gentle tonal transitions. Forms should remain clear, but contrast is low and the overall feeling is calm, warm and slightly dreamy. Use soft pinks, blues, greens, creams or similar tones with delicate shadows and an approachable contemporary mood.
+Keywords: pastel, soft colours, low contrast, dreamy, gentle, contemporary.
+
+STYLE 12 – GEOMETRIC
+A modern geometric interpretation built from clean shapes, angular forms and simplified blocks of colour. Reduce people, furniture and background elements into strong graphic structures while keeping the scene understandable. Use balanced asymmetry, crisp edges and a controlled palette. The result should feel modern, designed and slightly abstract.
+Keywords: geometric, abstract, angular shapes, graphic, modern, structured.
+
+STYLE 13 – COLLAGE
+A creative mixed-media collage combining cut-out figures or objects with paper textures, printed fragments, layered shapes and visible overlaps. Elements may have slightly irregular edges and different surface qualities. The composition should feel intentionally assembled by hand, energetic and editorial, while still keeping the main scene easy to understand.
+Keywords: collage, mixed media, layered paper, cut-outs, editorial, creative.
+
+STYLE 14 – SKETCH
+A hand-drawn pencil-sketch style with visible construction lines, varied line weight and soft graphite shading. Keep some strokes loose and imperfect to preserve the feeling of an artist's working sketch. Use mostly monochrome or very restrained colour. The scene should feel observational, spontaneous and human-made.
+Keywords: pencil sketch, hand-drawn, graphite, loose lines, monochrome, observational.
+
+STYLE 15 – COMIC / CARTOON
+A colourful illustrated style with clear outlines, simplified facial features and expressive poses. Use clean shapes, stronger colours and slightly exaggerated visual clarity, but keep the proportions and business context mature enough for adult communication. The result should feel lively and friendly without becoming childish.
+Keywords: comic, cartoon, colourful, expressive, clean outlines, playful.
+
+STYLE 16 – OIL PAINTING
+A painterly oil-on-canvas appearance with visible brushwork, rich colour variation and textured surfaces. Light and shadow should be modelled through layered paint rather than crisp digital gradients. Edges can vary from sharp focal areas to softer background strokes. The result should feel crafted, expressive and visually rich.
+Keywords: oil painting, painterly, visible brushstrokes, textured, rich colour, artistic.
+
+STYLE 17 – NEON / CYBERPUNK
+A dramatic futuristic style using neon lighting, saturated blues, magentas and violets against darker surroundings. Include glowing screens, reflective surfaces and strong colour contrast. The scene should feel digital, energetic and high-tech, with cinematic light effects. Keep the core business activity readable despite the stylisation.
+Keywords: neon, cyberpunk, futuristic, glowing light, high contrast, high-tech.
+
+STYLE 18 – CLAY / HANDMADE
+A handcrafted clay-model look in which people, furniture and objects appear sculpted from soft modelling material. Shapes are rounded, surfaces slightly matte and tactile, and details intentionally simplified. Use warm studio lighting and gentle shadows. The result should feel friendly, physical and clearly handmade rather than photorealistic.
+Keywords: clay, handmade, tactile, sculpted, rounded, soft 3D.
+
+STYLE 19 – INK & WASH
+A traditional ink-and-wash illustration combining expressive black linework with loose transparent washes of colour or grey. Lines can vary in thickness and remain slightly imperfect. Colour should support rather than fully fill the drawing. The result should feel spontaneous, artistic and sophisticated, like an editorial sketch made with ink and diluted paint.
+Keywords: ink and wash, expressive linework, loose washes, artistic, editorial, hand-drawn.
+
+STYLE 20 – FUTURISTIC MINIMAL
+A sleek, high-tech minimalist look with cool light, clean surfaces, restrained colours and very little visual clutter. Use smooth geometry, subtle gradients, precise spacing and a slightly futuristic atmosphere. Interfaces and objects may feel advanced, but the design should remain quiet and elegant rather than neon-heavy or science-fictional.
+Keywords: futuristic minimal, high-tech, clean, cool light, sleek, restrained.
+
+STYLE 21 – EDITORIAL ILLUSTRATION
+A sophisticated editorial illustration suitable for business magazines, reports and professional campaigns. Use simplified but mature human figures, confident shapes, controlled shading and a restrained palette. Details should be selective rather than exhaustive. The image should communicate the idea quickly while still feeling crafted, contemporary and visually distinctive.
+Keywords: editorial illustration, sophisticated, modern, selective detail, business-friendly, crafted.
+
+STYLE 22 – PAPER COLLAGE
+A layered cut-paper aesthetic where people, plants, furniture and background elements appear made from coloured or textured paper. Use visible overlaps, slight edge irregularities and different paper surfaces to create depth. Keep the composition clean enough for business use while preserving the handmade layered quality.
+Keywords: paper collage, cut paper, layered, textured, handmade, tactile.
+
+STYLE 23 – WOODCUT-INSPIRED
+A bold printmaking style inspired by woodcut or linocut techniques. Use strong carved-looking lines, high contrast, simplified shapes and rough ink texture. Shading can be created with hatching or carved marks rather than smooth gradients. The result should feel graphic, tactile and handmade, with a strong artisanal character.
+Keywords: woodcut, linocut, printmaking, rough texture, carved lines, high contrast.
+
+STYLE 24 – GEOMETRIC POSTER
+A strong poster-like composition built from geometric blocks, bold flat colours and simplified figures. Use clear diagonals, circles, rectangles or angular shapes to organise the image. Contrast should be strong and the visual hierarchy immediate. The result should feel graphic, modern and attention-grabbing rather than realistic.
+Keywords: geometric poster, bold colour, flat shapes, graphic, strong composition, modern.
+
+STYLE 25 – GOUACHE
+A hand-painted gouache style with opaque matte colour, soft but visible brushwork and slightly imperfect edges. Colours can be warm and saturated without becoming glossy. Use layered paint shapes and subtle paper texture. The result should feel artistic, approachable and more solid than transparent watercolour.
+Keywords: gouache, opaque paint, matte colour, soft brushwork, hand-painted, warm.
+
+STYLE 26 – ISOMETRIC ILLUSTRATION
+A clean isometric illustration shown from a consistent angled viewpoint, creating a structured three-dimensional scene without realistic perspective. People, furniture and objects should be simplified into neat geometric forms. Use flat colours with light shading and organised spacing. The result should feel systematic, modern and easy to scan.
+Keywords: isometric, structured, geometric, angled perspective, clean, modern.
+
+STYLE 27 – MIXED MEDIA
+An expressive mixed-media style combining drawing, paint, paper texture, collage fragments and possibly printed or handwritten marks. Different materials should remain visibly distinct instead of blending into one smooth digital surface. Keep the focal subject clear while allowing the background to feel layered, tactile and creatively assembled.
+Keywords: mixed media, collage, texture, drawing, layered, artistic.
+
+STYLE 28 – MINIMALIST VECTOR
+A very clean vector illustration using smooth flat shapes, crisp edges and only a few essential details. Avoid visible texture and complex shading. Use a limited palette, simple proportions and strong spacing. The result should feel modern, scalable and brand-friendly, suitable for websites, presentations and corporate communication.
+Keywords: minimalist vector, flat shapes, crisp edges, limited palette, brand-friendly, clean.
+
+STYLE 29 – RETRO TRAVEL POSTER
+A stylised vintage travel-poster look with large simplified shapes, dramatic but clean composition and a limited nostalgic palette. Use flat or lightly textured colour areas, strong silhouettes and slightly aged print character. The result should feel optimistic, graphic and intentionally retro, like classic destination advertising.
+Keywords: retro travel poster, vintage, graphic, bold silhouettes, limited palette, nostalgic.
+
+STYLE 30 – INK & WATERCOLOUR
+An expressive combination of lively ink drawing and transparent watercolour. Use visible pen marks to define important forms, then add loose washes that sometimes extend beyond the lines. Preserve white paper areas and irregular pigment edges. The result should feel energetic, artistic and hand-made rather than polished digital illustration.
+Keywords: ink and watercolour, expressive, loose washes, pen lines, hand-painted, lively.
+
+STYLE 31 – ELEGANT FLAT ILLUSTRATION
+A refined flat-illustration style with simplified shapes, mature proportions and a carefully balanced composition. Use a restrained, sophisticated palette and only subtle shading where necessary. Avoid cartoon exaggeration. The result should feel polished, contemporary and appropriate for premium business or professional service communication.
+Keywords: elegant flat illustration, refined, balanced, sophisticated, modern, professional.
+
+STYLE 32 – STORYBOOK ILLUSTRATION
+A warm storybook-inspired illustration with hand-painted textures, gentle shapes and charming small details. Characters may be slightly softened or simplified, with a friendly narrative quality. Keep the scene tasteful and adult enough for business communication, avoiding overly childish expressions or exaggerated cartoon features.
+Keywords: storybook, hand-painted, warm, charming, narrative, soft illustration.
+
+STYLE 33 – CHALK & PASTEL
+A textured chalk-and-pastel look, ideally on a dark or muted surface. Use powdery strokes, visible smudging, imperfect edges and layered marks. Colours should feel dry and tactile rather than glossy. The result should resemble artwork made with chalk or soft pastel by hand, with strong visual texture.
+Keywords: chalk, pastel, powdery texture, smudged, tactile, hand-drawn.
+
+STYLE 34 – 3D CLAY
+A more clearly three-dimensional clay aesthetic, with simplified sculpted characters and objects, rounded edges and visible material softness. Use believable depth, gentle studio light and matte surfaces. The scene should resemble a carefully built stop-motion or clay-model set while remaining polished enough for professional use.
+Keywords: 3D clay, sculpted, rounded, matte, stop-motion feel, tactile.
+
+STYLE 35 – CINEMATIC
+A film-still approach focused on atmosphere, lighting and visual storytelling. Use directional light, realistic depth, controlled contrast and deliberate framing. Colour grading may be warm, cool or muted depending on the mood. The image should feel like a frame from a professionally shot film rather than an ordinary snapshot.
+Keywords: cinematic, film still, dramatic light, colour grading, storytelling, atmospheric.
+
+STYLE 36 – AIRBRUSH
+A smooth airbrushed illustration with soft gradients, feathered edges and almost no visible brush texture. Colours blend gently into one another, creating a polished, slightly dreamy surface. Use controlled highlights and soft shadows. The result should feel sleek and luminous, with a classic airbrush softness.
+Keywords: airbrush, smooth gradients, soft edges, luminous, polished, dreamy.
+
+STYLE 37 – RISOGRAPH-INSPIRED
+A graphic print style inspired by risograph printing. Use a small number of strong ink colours, visible grain, imperfect registration and overlapping transparent colour areas. Texture and slight print misalignment are part of the aesthetic. The result should feel bold, tactile and intentionally printed rather than digitally perfect.
+Keywords: risograph, grainy print, limited inks, colour overlap, imperfect registration, graphic.
+
+STYLE 38 – SCANDINAVIAN GRAPHIC
+A clean Nordic graphic style combining flat illustration, strong spacing and a restrained natural palette. Use simple forms, calm proportions and functional composition with plenty of breathing room. Details should be purposeful and understated. The result should feel modern, friendly and professional, with clear Scandinavian design influence.
+Keywords: Scandinavian graphic, Nordic, clean, restrained palette, simple forms, professional.
+
+STYLE 39 – ARCHITECTURAL SKETCH
+A precise but hand-drawn architectural sketch aesthetic using fine lines, perspective construction and selective shading. Keep visible sketch lines and structural marks, as if the scene were explored by a designer or architect. Colour can be absent or used very sparingly. The overall feeling should be analytical, elegant and technical.
+Keywords: architectural sketch, perspective lines, technical drawing, fine linework, hand-drawn, precise.
+
+STYLE 40 – MODERN BRAND ILLUSTRATION
+A contemporary brand-illustration style designed for websites, campaigns and social media. Use clean simplified figures, friendly proportions, controlled brand colours, smooth shapes and a professional composition. Add only enough shading or texture to create depth. The result should feel approachable, current and easy to reuse consistently across a visual identity.
+Keywords: brand illustration, contemporary, friendly, clean shapes, consistent, professional.
