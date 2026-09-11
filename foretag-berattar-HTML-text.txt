@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Här samlas korta videointervjuer med företagare som berättar hur de använder AI i sin egen verksamhet.">
+  <title>Företag berättar · AI i praktiken</title>
+  <link rel="stylesheet" href="assets/css/shared.css">
+  <script defer src="assets/js/shared.js"></script>
+</head>
+<body class="page-theme">
+<a class="skip-link" href="#main">Hoppa till innehållet</a>
+<header class="site-header"></header>
+<section class="theme-hero"><div class="container"><p class="section-back"><a class="btn btn-light" href="index.html">← Till startsidan</a></p><span class="eyebrow">Erfarenheter från vardagen</span><h1>Företag berättar</h1><p>Här samlas korta videointervjuer med företagare som berättar hur de använder AI i sin egen verksamhet.</p></div></section>
+<main id="main" class="theme-main"><div class="container"><div class="theme-note"><strong>Under uppbyggnad</strong> De riktiga intervjuerna och videolänkarna läggs in här efter hand.</div><div class="grid grid-4"><article class="entry-card illustration-card placeholder-card"><img src="assets/images/illustrations/business-story-video-chat.png" alt=""><div class="entry-body"><div class="meta"><span class="chip red">Video</span><span class="chip ">Kommer senare</span></div><h3>Företagarintervju 1</h3><p>Kort video om hur AI används i företagets vardag.</p><div class="card-cta-row"><span class="card-type">Företag berättar</span><span class="card-link">Kommer senare</span></div></div></article><article class="entry-card illustration-card placeholder-card"><img src="assets/images/illustrations/business-idea-lightbulb.png" alt=""><div class="entry-body"><div class="meta"><span class="chip red">Video</span><span class="chip ">Kommer senare</span></div><h3>Företagarintervju 2</h3><p>Ett konkret exempel på en uppgift där AI blivit ett stöd.</p><div class="card-cta-row"><span class="card-type">Företag berättar</span><span class="card-link">Kommer senare</span></div></div></article><article class="entry-card illustration-card placeholder-card"><img src="assets/images/illustrations/teamwork-and-ideas.png" alt=""><div class="entry-body"><div class="meta"><span class="chip red">Video</span><span class="chip ">Kommer senare</span></div><h3>Företagarintervju 3</h3><p>Vad blev enklare – och vad behöver fortfarande mänsklig kontroll?</p><div class="card-cta-row"><span class="card-type">Företag berättar</span><span class="card-link">Kommer senare</span></div></div></article><article class="entry-card illustration-card placeholder-card"><img src="assets/images/illustrations/friendly-ai-checklist.png" alt=""><div class="entry-body"><div class="meta"><span class="chip red">Video</span><span class="chip ">Kommer senare</span></div><h3>Företagarintervju 4</h3><p>Fler röster och exempel fylls på efter hand.</p><div class="card-cta-row"><span class="card-type">Företag berättar</span><span class="card-link">Kommer senare</span></div></div></article></div></div></main></body></html>

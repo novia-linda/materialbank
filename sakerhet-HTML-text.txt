@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Här kommer poddar och korta resurser om säkerhet, data, trovärdighet och mänsklig kontroll.">
+  <title>Säkerhet · AI i praktiken</title>
+  <link rel="stylesheet" href="assets/css/shared.css">
+  <script defer src="assets/js/shared.js"></script>
+</head>
+<body class="page-theme">
+<a class="skip-link" href="#main">Hoppa till innehållet</a>
+<header class="site-header"></header>
+<section class="theme-hero"><div class="container"><p class="section-back"><a class="btn btn-light" href="index.html">← Till startsidan</a></p><span class="eyebrow">Tryggare AI-användning</span><h1>Säkerhet</h1><p>Här kommer poddar och korta resurser om säkerhet, data, trovärdighet och mänsklig kontroll.</p></div></section>
+<main id="main" class="theme-main"><div class="container"><div class="theme-note"><strong>Platshållare just nu.</strong> Poddarna och de riktiga länkarna läggs in när materialet är klart.</div><div class="grid grid-4"><article class="entry-card illustration-card placeholder-card"><img src="assets/images/illustrations/secure-voice-chat-shield.png" alt=""><div class="entry-body"><div class="meta"><span class="chip red">Podcast</span><span class="chip ">Dummy</span></div><h3>AI och informationssäkerhet</h3><p>Vad är bra att tänka på när AI blir en del av vardagsarbetet?</p><div class="card-cta-row"><span class="card-type">Säkerhet</span><span class="card-link">Kommer senare</span></div></div></article><article class="entry-card illustration-card placeholder-card"><img src="assets/images/illustrations/friendly-ai-checklist.png" alt=""><div class="entry-body"><div class="meta"><span class="chip red">Podcast</span><span class="chip ">Dummy</span></div><h3>Vad laddar jag upp?</h3><p>Data, dokument och känslig information – en kort praktisk genomgång.</p><div class="card-cta-row"><span class="card-type">Säkerhet</span><span class="card-link">Kommer senare</span></div></div></article><article class="entry-card illustration-card placeholder-card"><img src="assets/images/illustrations/secure-voice-chat-shield.png" alt=""><div class="entry-body"><div class="meta"><span class="chip red">Podcast</span><span class="chip ">Dummy</span></div><h3>AI, bedrägerier och trovärdighet</h3><p>Hur AI förändrar vad vi behöver kontrollera extra noga.</p><div class="card-cta-row"><span class="card-type">Säkerhet</span><span class="card-link">Kommer senare</span></div></div></article><article class="entry-card illustration-card placeholder-card"><img src="assets/images/illustrations/friendly-ai-automation-checklist.png" alt=""><div class="entry-body"><div class="meta"><span class="chip red">Podcast</span><span class="chip ">Dummy</span></div><h3>Mänsklig kontroll</h3><p>När behöver en människa alltid läsa, kontrollera eller fatta beslut?</p><div class="card-cta-row"><span class="card-type">Säkerhet</span><span class="card-link">Kommer senare</span></div></div></article></div></div></main></body></html>
