@@ -1,0 +1,163 @@
+/* =========================================================
+   MATERIALBANK · SHARED JAVASCRIPT
+   One file for interactions and optional project/funder branding.
+   ========================================================= */
+(function(){
+  'use strict';
+
+  /* Resolve shared assets from the site root even when a page lives in a subfolder. */
+  const SCRIPT_URL = document.currentScript ? new URL(document.currentScript.src, document.baseURI) : null;
+  const SITE_ROOT = SCRIPT_URL ? new URL('../../', SCRIPT_URL) : new URL('./', document.baseURI);
+  const resolveSiteUrl = value => {
+    if(!value) return value;
+    try { return new URL(value, SITE_ROOT).href; } catch(e) { return value; }
+  };
+
+  /* ---------------------------------------------------------
+     FUTURE PROJECT / FUNDER BRANDING
+     Leave disabled for the current Novia-only look.
+
+     When project requirements are known, edit ONLY this block.
+     Example logo item:
+       {
+         src: 'assets/brand/eu-funded.png',
+         alt: 'Funded by the European Union',
+         href: 'https://example.org'
+       }
+     --------------------------------------------------------- */
+  const PROJECT_BRANDING = {
+    strip: {
+      enabled: false,
+      text: ''
+    },
+    footer: {
+      enabled: false,
+      text: '',
+      logos: []
+    }
+  };
+
+  function initAgentCandidateCheck(){
+    const boxes=[...document.querySelectorAll('.agent-check')];
+    const out=document.getElementById('result');
+    if(!boxes.length || !out) return;
+    function update(){
+      const n=boxes.filter(b=>b.checked).length;
+      if(n===0) out.textContent='Kryssa i rutorna ovan. Två eller tre ja betyder ofta att uppgiften är värd att testa som en enkel agent.';
+      else if(n===1) out.textContent='En signal finns. Fundera ännu på om uppgiften verkligen återkommer och om resultatet går att beskriva tydligt.';
+      else out.textContent='Bra kandidat. Nästa steg är att skriva ner agentens uppgift, input, kunskap, regler och output.';
+    }
+    boxes.forEach(b=>b.addEventListener('change',update));
+  }
+
+  function initInstructionBuilder(){
+    const get=id=>document.getElementById(id);
+    const build=get('build');
+    if(!build) return;
+    const task=get('task'), input=get('input'), knowledge=get('knowledge'), rules=get('rules'), output=get('output');
+    const box=get('output-box'), assembled=get('assembled'), status=get('copy-status'), clear=get('clear'), copy=get('copy');
+    if(!task || !input || !knowledge || !rules || !output || !box || !assembled) return;
+    const clean=v=>v.trim()||'[Fyll i här]';
+
+    build.addEventListener('click',()=>{
+      assembled.textContent=`UPPGIFT\n${clean(task.value)}\n\nINPUT FRÅN ANVÄNDAREN\n${clean(input.value)}\n\nKUNSKAP\n${clean(knowledge.value)}\n\nREGLER\n${clean(rules.value)}\n\nOUTPUT\n${clean(output.value)}`;
+      box.classList.add('show');
+      if(status) status.textContent='';
+      box.scrollIntoView({behavior:'smooth',block:'nearest'});
+    });
+
+    if(clear){
+      clear.addEventListener('click',()=>{
+        [task,input,knowledge,rules,output].forEach(x=>x.value='');
+        box.classList.remove('show');
+        if(status) status.textContent='';
+      });
+    }
+
+    if(copy){
+      copy.addEventListener('click',async()=>{
+        try{
+          await navigator.clipboard.writeText(assembled.textContent);
+          if(status) status.textContent='Kopierat.';
+        }catch(e){
+          if(status) status.textContent='Markera texten ovan och kopiera manuellt.';
+        }
+      });
+    }
+  }
+
+  function initLightboxes(){
+    const buttons=[...document.querySelectorAll('.image-button')];
+    if(!buttons.length) return;
+    const dlg=document.getElementById('lightbox') || document.getElementById('dlg') || document.querySelector('dialog');
+    if(!dlg) return;
+    const img=dlg.querySelector('img');
+    const close=dlg.querySelector('.close');
+    if(!img) return;
+
+    buttons.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const src=btn.dataset.image || btn.dataset.img || btn.querySelector('img')?.getAttribute('src');
+        const alt=btn.dataset.alt || btn.querySelector('img')?.getAttribute('alt') || '';
+        if(!src) return;
+        img.src=src;
+        img.alt=alt;
+        if(typeof dlg.showModal==='function') dlg.showModal();
+      });
+    });
+    if(close) close.addEventListener('click',()=>dlg.close());
+    dlg.addEventListener('click',e=>{if(e.target===dlg) dlg.close();});
+  }
+
+  function injectProjectBranding(){
+    if(PROJECT_BRANDING.strip.enabled && PROJECT_BRANDING.strip.text){
+      const strip=document.createElement('div');
+      strip.className='project-strip';
+      strip.innerHTML='<div class="project-strip-inner"><span></span></div>';
+      strip.querySelector('span').textContent=PROJECT_BRANDING.strip.text;
+      document.body.insertBefore(strip,document.body.firstChild);
+    }
+
+    const cfg=PROJECT_BRANDING.footer;
+    if(!cfg.enabled || (!cfg.text && !cfg.logos.length)) return;
+    const footer=document.createElement('footer');
+    footer.className='project-footer';
+    const inner=document.createElement('div');
+    inner.className='project-footer-inner';
+    if(cfg.text){
+      const p=document.createElement('p');
+      p.className='project-footer-copy';
+      p.textContent=cfg.text;
+      inner.appendChild(p);
+    }
+    if(cfg.logos.length){
+      const logos=document.createElement('div');
+      logos.className='project-logos';
+      cfg.logos.forEach(item=>{
+        const img=document.createElement('img');
+        img.src=resolveSiteUrl(item.src);
+        img.alt=item.alt || '';
+        if(item.href){
+          const a=document.createElement('a');
+          a.href=item.href;
+          a.target='_blank';
+          a.rel='noopener';
+          a.appendChild(img);
+          logos.appendChild(a);
+        }else{
+          logos.appendChild(img);
+        }
+      });
+      inner.appendChild(logos);
+    }
+    footer.appendChild(inner);
+    document.body.appendChild(footer);
+  }
+
+  document.addEventListener('DOMContentLoaded',()=>{
+    initAgentCandidateCheck();
+    initInstructionBuilder();
+    initLightboxes();
+    injectProjectBranding();
+  });
+})();

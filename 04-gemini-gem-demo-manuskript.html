@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="sv"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Demo-manus: bygg en Gem i Google Gemini</title><link href="assets/css/shared.css" rel="stylesheet"/><script defer="True" src="assets/js/shared.js"></script></head><body class="page-manuscript">
+<h1>Demo-manus: bygg samma agent som en Gem i Google Gemini</h1>
+<p><strong>Mål:</strong> spela in eller ta skärmbilder till en mycket enkel steg-för-steg-guide för småföretagare. Demonstrationen visar att samma agentidé kan byggas i ett annat verktyg utan att börja om från noll.</p>
+<div class="note"><strong>Pedagogisk poäng:</strong> håll <em>instruktion</em> och <em>kunskap</em> separerade i demon. Instruktionen beskriver hur agenten arbetar. Kunskapsfilen innehåller företagets priser och fakta.</div>
+<h2>Demoexempel</h2>
+<p>Använd den fiktiva <strong>Vasa Business Academy Offertassistent</strong>. Lägg filen <code>vba-demo-kunskap.txt</code> i Google Drive innan du börjar. Då kan du i demon välja den direkt från Drive.</p>
+<h2>Bild-/videomanus</h2>
+<table><thead><tr><th>Steg</th><th>Vad du gör på skärmen</th><th>Vad du säger/förklarar</th><th>Skärmbild att spara</th></tr></thead><tbody>
+<tr><td>1</td><td>Öppna gemini.google.com på datorn. Öppna sidomenyn och välj Gems / Explore Gems.</td><td>“En Gem är Googles version av en anpassad AI-assistent. Vi använder samma arbetsbeskrivning som tidigare.”</td><td>Gems-menyn synlig.</td></tr>
+<tr><td>2</td><td>Välj <strong>New Gem / Ny Gem</strong>.</td><td>“Vi börjar från en tom Gem. Ingen programmering behövs.”</td><td>Knappen New Gem markerad.</td></tr>
+<tr><td>3</td><td>Namnge den <strong>VBA Offertassistent</strong>.</td><td>“Namnet ska gärna berätta vad hjälpredan faktiskt gör.”</td><td>Namnfältet ifyllt.</td></tr>
+<tr><td>4</td><td>Klistra in instruktionen nedan i Instructions.</td><td>“Här beskriver vi uppgift, input, regler och output. Prislistan lägger vi inte in här – den får ligga som separat kunskap.”</td><td>Instruktionsfältet med text.</td></tr>
+<tr><td>5</td><td>Under <strong>Knowledge</strong>, välj <strong>Add files</strong> och sedan Drive. Lägg till <code>vba-demo-kunskap.txt</code>.</td><td>“Nu skiljer vi arbetsbeskrivningen från företagets fakta. Det blir lättare att byta eller uppdatera kunskapen.”</td><td>Knowledge med filen synlig.</td></tr>
+<tr><td>6</td><td>Använd förhandsgranskningen till höger och skriv testmeddelandet.</td><td>“Vi provar först ett normalt fall där kunden ger nästan allt vi behöver.”</td><td>Preview med testprompt.</td></tr>
+<tr><td>7</td><td>Kontrollera svaret mot kunskapsfilen.</td><td>“Det viktiga är inte att svaret låter snyggt. Kontrollera att priset och tjänsten faktiskt kommer från vår källa.”</td><td>Svar där korrekt pris syns.</td></tr>
+<tr><td>8</td><td>Ändra testet så att deltagarantal saknas.</td><td>“Nu ser vi om vår regel fungerar: agenten ska fråga i stället för att gissa.”</td><td>Gem ställer följdfråga.</td></tr>
+<tr><td>9</td><td>Klicka <strong>Save / Spara</strong>.</td><td>“Förhandsgranskning sparar inte automatiskt Gem-en. När vi är nöjda sparar vi.”</td><td>Save markerat.</td></tr>
+<tr><td>10</td><td>Öppna den sparade Gem-en i en vanlig chatt och gör ett sista test.</td><td>“Nu kan vi återanvända samma hjälpreda i nya chattar utan att klistra in hela arbetsbeskrivningen varje gång.”</td><td>Färdig Gem i användning.</td></tr>
+</tbody></table>
+<h2>Instruktion att klistra in i Gem-en</h2>
+<pre>UPPGIFT
+Du är offertassistent för det fiktiva företaget Vasa Business Academy. Hjälp användaren skapa ett första utkast till offert för en företagsutbildning.
+
+INPUT FRÅN ANVÄNDAREN
+För att kunna skapa ett komplett utkast behöver du normalt veta:
+- vilken utbildning kunden är intresserad av
+- antal deltagare
+- önskat datum eller tidsperiod
+- om utbildningen ska vara online eller hos kunden
+- eventuella särskilda önskemål
+- kundens eller företagets namn om det finns
+
+KUNSKAP
+Använd den bifogade kunskapsfilen som källa för utbildningar, priser och genomförandeformer. Om informationen inte finns i kunskapsfilen ska du inte hitta på den.
+
+REGLER
+- Använd endast priser och tjänster som stöds av kunskapsfilen.
+- Hitta inte på rabatt, datum, tillgänglighet eller andra företagsfakta.
+- Om viktig information saknas, fråga efter den innan du skapar ett komplett offertutkast.
+- Beskriv alltid resultatet som ett utkast som en människa ska kontrollera före användning.
+
+OUTPUT
+Skapa ett tydligt och professionellt offertutkast med:
+1. kort rubrik
+2. sammanfattning av kundens behov
+3. vald utbildning och genomförandeform
+4. deltagarantal och pris
+5. önskad tidpunkt
+6. särskilda önskemål
+7. tydlig markering att detta är ett utkast och att slutlig bekräftelse görs av en människa.</pre>
+<h2>Första testet</h2>
+<pre>Vi är 8 personer från Exempel Ab och vill ha utbildningen AI i arbetet online under vecka 42. Vi vill gärna ha praktiska exempel från vanligt kontorsarbete. Skapa ett första offertutkast.</pre>
+<p><strong>Det du kontrollerar:</strong> Gem-en ska använda priset för 1–10 deltagare från kunskapsfilen och inte skapa en rabatt eller ett exakt datum som inte har angetts.</p>
+<h2>Andra testet – information saknas</h2>
+<pre>Vi vill gärna boka AI i arbetet online under vecka 42. Kan du göra ett offertutkast?</pre>
+<p><strong>Det du vill visa:</strong> Gem-en bör fråga efter deltagarantal (och annan viktig information) i stället för att välja ett pris på måfå.</p>
+<h2>Vad som är extra pedagogiskt med Google-demon</h2>
+<p>Visa gärna filen från <strong>Google Drive</strong> i stället för att ladda upp den från datorn. Då blir det tydligt för företagaren att kunskapsmaterial kan leva i ett dokument som är lätt att hitta och uppdatera. Lägg samtidigt till en liten förklaring i den färdiga guiden: möjligheten att använda Drive-filer beror på konto och Workspace-inställningar.</p>
+<p class="small">När du har tagit skärmbilderna kan den slutliga publika guiden byggas i samma Novia-layout som Copilot- och Google Vids-guiderna.</p>
+</body></html>

@@ -1,0 +1,15 @@
+VASA BUSINESS ACADEMY – DEMOKUNSKAP
+Fiktiv information för demonstration av AI-agent/Gem.
+
+UTBILDNINGAR OCH STANDARDPRISER
+- AI i arbetet, 3 timmar: 690 € för 1–10 deltagare; 850 € för 11–20 deltagare.
+- AI i praktiken, 6 timmar: 1 150 € för 1–10 deltagare; 1 390 € för 11–20 deltagare.
+- Power BI Start, 3 timmar: 790 € för 1–10 deltagare; 950 € för 11–20 deltagare.
+
+GENOMFÖRANDE
+- Utbildningar kan ordnas online eller hos kunden.
+- Priserna ovan är standardpriser.
+
+VIKTIGT
+- Om en tjänst, ett pris eller en rabatt inte finns i denna fil ska agenten inte hitta på den.
+- Ett skapat offertförslag är ett utkast och ska kontrolleras av en människa innan det skickas till kund.

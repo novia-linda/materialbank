@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content="Ett anonymiserat företagscase om att återanvända inspelad kunskap med hjälp av AI."/>
+<title>Återanvänd befintligt material · Företagscase</title>
+<link href="../assets/css/shared.css" rel="stylesheet"/>
+<script defer src="../assets/js/shared.js"></script>
+</head>
+<body class="page-case">
+<a class="skip-link" href="#main">Hoppa till innehållet</a>
+<header class="sitebar"><div class="sitebar-inner"><a class="brand" href="../index.html"><span class="brand-mark"></span>Novia · Praktisk AI-guide</a><div class="series">AI Boost · Företagscase</div></div></header>
+
+<section class="hero"><div class="hero-inner"><div class="hero-grid"><div><p class="eyebrow">Företagscase 01 · återanvändning</p><h1>Kunskapen fanns redan – men i fel format</h1><p class="lead">Ett hälsoföretag hade många års utbildningsmaterial inspelat. Utmaningen var inte att skapa mer innehåll, utan att få det gamla materialet användbart igen.</p></div><aside class="quick-card"><strong>Idén att ta med dig</strong><span>Innan du producerar nytt: inventera vad du redan har. Ett gammalt webbinarium, en produktdemo eller en utbildning kan bli flera nya resurser.</span></aside></div></div></section>
+<main id="main">
+<section class="wide intro"><div class="case-summary-grid"><div class="case-summary-box"><strong>Problemet</strong><p>Materialet låg på en föråldrad plattform, ljudet var ojämnt och innehållet fanns bara på svenska.</p></div><div class="case-summary-box"><strong>Lösningen</strong><p>Studerande fick ut videon, konverterade formatet och använde AI för översättning, undertexter och ljudförbättring.</p></div><div class="case-summary-box"><strong>Resultatet</strong><p>Inte bara en ny video, utan en dokumenterad arbetsgång som företaget kunde använda igen.</p></div></div></section>
+<section class="wide section"><div class="case-story"><div><p class="eyebrow">Vad hände?</p><h2>Tre steg var praktiska. Ett var AI.</h2><p>Företaget hade ungefär femton års kunskap inspelad för sina återförsäljare. För att kunna översätta materialet behövde studerande först komma åt det: videon gick inte att ladda ner direkt, så den fick skärminspelas och sedan konverteras till ett format som AI-verktyget kunde läsa.</p><p>Först därefter kom själva AI-steget. Materialet översattes till finska och kompletterades med bland annat undertexter och ljudförbättring. I caset användes HeyGen, men den viktigaste lärdomen var arbetsgången – inte verktygsnamnet.</p></div><aside class="case-takeaway"><strong>Det mest lärorika</strong><p>Flaskhalsen var inte AI. Den var att få fram materialet i ett användbart format. I verkliga AI-projekt ligger mycket av arbetet före själva AI-knappen.</p></aside></div></section>
+<section class="wide section"><div class="section-head"><p class="eyebrow">Så kan du tänka</p><h2>Vad har du redan som kan få ett andra liv?</h2><p>För ett litet företag kan återanvändning vara mer värdefullt än att hela tiden producera nytt.</p></div><div class="idea-list"><div><strong>Produktdemo eller webbinarium</strong><span>Gör en kort sammanfattning, FAQ, checklista eller ny språkversion.</span></div><div><strong>Intern utbildning</strong><span>Gör om inspelningen till en enkel instruktion för nästa anställda.</span></div><div><strong>Kundinformation</strong><span>Återanvänd ett långt material som kortare webbtext, e-post eller stödmaterial.</span></div><div><strong>Flera språk</strong><span>Skapa ett första utkast till översättning och låt en språkvan person granska facktermerna.</span></div></div></section>
+<section class="wide section"><div class="try-box"><p class="eyebrow">Prova i liten skala</p><h2>Börja med en enda inspelning</h2><ol><li>Välj en video eller ljudinspelning som företaget själv äger och känner väl.</li><li>Gör ett transkript och kontrollera att viktiga namn och facktermer blev rätt.</li><li>Be AI skapa en ny version: sammanfattning, instruktion, FAQ eller översättning.</li><li>Granska resultatet innan det används externt. Kontrollera språk, fakta, rättigheter och vilka märkningskrav som gäller för det innehåll du publicerar.</li></ol></div>
+<details class="case-details"><summary>Vill du läsa lite mer om studerandecasets arbetsgång?</summary><div class="details-body"><p>Arbetsgången var: få ut materialet från den gamla plattformen, göra skärminspelning, konvertera filformatet och först därefter använda AI för den finska versionen. Tre av fyra steg handlade alltså om materialhantering.</p><p>Det som gjorde leveransen värdefull var att processen dokumenterades. Företaget fick inte bara ett färdigt resultat utan ett sätt att upprepa arbetet för nästa utbildning och nästa språk.</p></div></details></section>
+<div class="wide backline"><p>Anonymiserat studerandecase · fokus på metoden, inte företagsnamnet</p><div><a class="btn secondary" href="index.html">← Alla företagscase</a></div></div>
+</main>
+</body>
+</html>

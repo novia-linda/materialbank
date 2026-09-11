@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content="Ett anonymiserat företagscase om att använda AI som första kontrollager när flera dokument ska jämföras."/>
+<title>Jämför dokument med AI · Företagscase</title>
+<link href="../assets/css/shared.css" rel="stylesheet"/>
+<script defer src="../assets/js/shared.js"></script>
+</head>
+<body class="page-case">
+<a class="skip-link" href="#main">Hoppa till innehållet</a>
+<header class="sitebar"><div class="sitebar-inner"><a class="brand" href="../index.html"><span class="brand-mark"></span>Novia · Praktisk AI-guide</a><div class="series">AI Boost · Företagscase</div></div></header>
+
+<section class="hero"><div class="hero-inner"><div class="hero-grid"><div><p class="eyebrow">Företagscase 02 · dokumentkontroll</p><h1>Tre dokument. En avvikelse. Vem hittar den?</h1><p class="lead">Ett byggvaruföretag ville minska det manuella arbetet när beställning, orderbekräftelse och faktura skulle jämföras rad för rad.</p></div><aside class="quick-card"><strong>Idén att ta med dig</strong><span>Om du ofta jämför två eller flera dokument kan AI fungera som ett första kontrollager – men människan ska fortfarande avgöra vad som är rätt.</span></aside></div></div></section>
+<main id="main">
+<section class="wide intro"><div class="case-summary-grid"><div class="case-summary-box"><strong>Problemet</strong><p>Många artikelrader med snarlika namn gjorde kontrollen långsam och lätt att missa.</p></div><div class="case-summary-box"><strong>Lösningen</strong><p>En kontrollagent jämförde dokumenten och gav varje rad en tydlig status.</p></div><div class="case-summary-box"><strong>Nyckelregeln</strong><p>Om en rad inte kunde matchas säkert skulle agenten skriva <em>oklar</em> – aldrig gissa.</p></div></div></section>
+<section class="wide section"><div class="case-story"><div><p class="eyebrow">Vad studerande byggde</p><h2>AI sorterade fram det som behövde granskas</h2><p>Beställning, orderbekräftelse och faktura beskriver samma affärshändelse. Om en rad skiljer sig behöver någon upptäcka det innan fakturan godkänns. Studerande byggde en Custom GPT med en detaljerad instruktion för att jämföra dokumenten rad för rad.</p><p>En viktig detalj var att matcha främst på artikelkod i stället för produktnamn. Resultatet skulle alltid komma i samma tabell, så att användaren snabbt kunde se vilka rader som var normala och vilka som krävde kontroll.</p><div class="case-status-row" aria-label="Exempel på status"><span class="case-status">OK</span><span class="case-status">Fel antal</span><span class="case-status">Saknas</span><span class="case-status">Dubblett</span><span class="case-status">Oklar</span></div></div><aside class="case-takeaway"><strong>Den viktigaste statusen: OKLAR</strong><p>En AI-lösning blir tryggare när den får säga ”jag kan inte avgöra detta”. Målet är att sortera arbetet – inte skapa nya fel som du sedan måste leta efter.</p></aside></div></section>
+<section class="wide section"><div class="section-head"><p class="eyebrow">Hos ett litet företag</p><h2>Var jämför du samma information flera gånger?</h2><p>Tänk bredare än just fakturor. Principen passar många vardagliga kontroller.</p></div><div class="idea-list"><div><strong>Offert → beställning</strong><span>Stämmer pris, mängd, produkt och leveransvillkor?</span></div><div><strong>Beställning → leverans → faktura</strong><span>Vilka rader behöver någon kontrollera närmare?</span></div><div><strong>Två avtalsversioner</strong><span>Vad har lagts till, tagits bort eller ändrats?</span></div><div><strong>Prislista → kundmaterial</strong><span>Finns det uppgifter som inte längre stämmer överens?</span></div></div></section>
+<section class="wide section"><div class="try-box"><p class="eyebrow">Prova i liten skala</p><h2>Testa först där du redan vet svaret</h2><ol><li>Välj två eller tre dokument från ett avslutat ärende där du vet exakt vad som stämde och vad som var fel.</li><li>Bestäm vad AI ska matcha på: artikelkod, ordernummer, datum eller något annat tydligt fält.</li><li>Bestäm ett fast svarsformat och en liten lista med tillåtna statusar.</li><li>Skriv regeln: om något inte kan avgöras säkert ska det markeras som <strong>oklart</strong>.</li><li>Jämför AI-resultatet med facit och förbättra instruktionen innan du använder metoden i skarpt arbete.</li></ol></div>
+<details class="case-details"><summary>Varför blev instruktionen bättre efter flera försök?</summary><div class="details-body"><p>Studerande beskrev att lösningen växte fram genom testning och förbättringar. Det är normalt. En bra instruktion skrivs sällan perfekt på första försöket.</p><p>De testade också samma grundidé i Copilot. Det viktiga i caset var därför inte vilken tjänst som användes, utan den tydliga kontrollogiken och förbudet mot att gissa.</p></div></details>
+<div class="case-warning"><strong>Kom ihåg:</strong> Låt inte AI vara den som slutligt godkänner en betalning, ett avtal eller annan viktig affärshändelse. Använd den för att hitta vad en människa bör granska.</div></section>
+<div class="wide backline"><p>Anonymiserat studerandecase · fokus på metoden, inte företagsnamnet</p><a class="btn secondary" href="index.html">← Alla företagscase</a></div>
+</main>
+</body>
+</html>
