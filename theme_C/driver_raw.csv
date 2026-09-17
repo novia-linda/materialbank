@@ -1,0 +1,49 @@
+DriverID,YearsAtNordicFreight,Employee,InformationCompleteness,RouteRealism,ScheduleRealism,ChangeHandling,TrustForComplexJob,DriverComment
+D01,7,Johan Andersson,3,3,3,4,3,"Johan brings in plenty of work, but I sometimes need to call the office because a pickup detail is missing."
+D01,7,Maja Nyman,5,5,4,5,4,"If Maja has planned the job, I know the route and timing have been thought through."
+D01,7,Susan Granholm,4,4,4,5,4,"Susan gives us good customer background, which helps when we arrive."
+D01,7,Elias Smeds,5,4,5,5,5,"Elias bookings are consistent: addresses, contacts and times are where you expect them to be."
+D02,10,Johan Andersson,3,3,3,3,3,"Customers are usually positive at first, but sometimes the schedule we receive is tighter than what is realistic on the road."
+D02,10,Maja Nyman,5,5,4,5,5,"Her instructions are usually complete, including loading details and realistic break times."
+D02,10,Susan Granholm,4,4,5,5,4,Her customers usually know what to expect and are easy to deal with.
+D02,10,Elias Smeds,4,5,5,5,5,Very few surprises. His handovers are short but complete.
+D03,1,Johan Andersson,3,4,3,4,3,"He reacts quickly when we call, although some problems could have been avoided with a more complete handover."
+D03,1,Maja Nyman,5,5,4,4,5,I like taking Maja jobs because difficult parts have normally been anticipated.
+D03,1,Susan Granholm,4,3,4,4,4,"Instructions are normally clear, although she sometimes tries very hard to accommodate a late customer request."
+D03,1,Elias Smeds,4,4,4,5,4,The routes are practical and the basic details are almost always correct.
+D04,1,Johan Andersson,3,3,3,4,4,Good energy and lots of new customers. I would like the final booking notes to be more complete.
+D04,1,Maja Nyman,5,5,5,4,4,"When a customer case is unusual, Maja is the person I trust most to have checked the details."
+D04,1,Susan Granholm,4,4,4,4,4,"Good communication. If something changes, she explains the customer situation well."
+D04,1,Elias Smeds,4,5,5,4,5,"If it is a normal business delivery, Elias makes it easy to get on with the job."
+D05,14,Johan Andersson,3,3,3,3,3,There have been cases where the customer expected something different from what was written in the driver instructions.
+D05,14,Maja Nyman,5,5,5,5,5,She understands what is realistic on the road and does not promise impossible timings.
+D05,14,Susan Granholm,4,4,5,4,4,I can see why customers like her. She gives them a lot of attention.
+D05,14,Elias Smeds,5,5,5,5,5,He is good at using the standard process and keeping information tidy.
+D06,12,Johan Andersson,3,3,3,3,3,"Usually workable, but I check Johan bookings more carefully before leaving."
+D06,12,Maja Nyman,5,5,5,5,5,Even complicated multi-stop work is clearly documented.
+D06,12,Susan Granholm,4,4,4,5,5,"Most jobs are well prepared, but there can be extra follow-up because she keeps checking with the customer."
+D06,12,Elias Smeds,5,4,5,4,5,I rarely need clarification on an Elias booking.
+D07,14,Johan Andersson,3,3,3,3,3,"He is good at getting the job, but details sometimes arrive late."
+D07,14,Maja Nyman,5,5,5,5,5,She often notices a problem before the driver has to deal with it.
+D07,14,Susan Granholm,4,4,4,4,4,A pleasant person to work with and she handles upset customers well.
+D07,14,Elias Smeds,5,4,5,4,3,"Not as many long notes as Maja, but the information you need is there."
+D08,1,Johan Andersson,4,4,3,4,3,A few times I have had to ask whether loading time or waiting time was included in the plan.
+D08,1,Maja Nyman,5,5,5,5,5,The routes make sense and there is usually a backup plan if something changes.
+D08,1,Susan Granholm,4,4,4,5,4,Schedules are usually fine. Occasionally customer wishes make the plan tighter than ideal.
+D08,1,Elias Smeds,4,5,5,4,5,Changes are updated quickly and clearly.
+D09,7,Johan Andersson,3,3,3,4,3,"Fast decisions, but not always enough time built into the route."
+D09,7,Maja Nyman,4,5,5,5,5,"Very thorough. Sometimes there are many notes, but they are useful notes."
+D09,7,Susan Granholm,5,4,4,5,5,Her notes about customer preferences are useful.
+D09,7,Elias Smeds,5,4,5,4,5,He does not overcomplicate straightforward jobs.
+D10,7,Johan Andersson,3,3,3,3,3,When everything is standard it works well. Unusual jobs need more checking.
+D10,7,Maja Nyman,5,4,5,5,5,"When I see Maja on the booking, I rarely need to call the office for clarification."
+D10,7,Susan Granholm,4,4,4,4,4,She is careful about keeping the customer informed when a delivery changes.
+D10,7,Elias Smeds,4,4,4,5,4,Very dependable for the everyday transport flow.
+D11,4,Johan Andersson,4,3,3,4,3,I appreciate that he answers the phone quickly if something goes wrong.
+D11,4,Maja Nyman,5,4,5,5,5,Good at balancing customer wishes with what can actually be done safely and legally.
+D11,4,Susan Granholm,4,4,4,5,4,"Reliable handovers, especially for private customers."
+D11,4,Elias Smeds,5,4,5,4,4,He is good at keeping the schedule realistic.
+D12,7,Johan Andersson,3,3,3,3,3,I would rather have one more detail in the booking than discover it at the customer site.
+D12,7,Maja Nyman,5,5,5,5,5,"Maja seems to think through the whole transport, not only the customer call."
+D12,7,Susan Granholm,4,4,4,4,5,"She sometimes spends a lot of time on small details, but the customer is usually very well informed."
+D12,7,Elias Smeds,5,5,4,4,4,"The paperwork is usually clean, which saves time in the morning."

@@ -1,0 +1,228 @@
+{
+  "sales": [
+    {
+      "Employee": "Johan Andersson",
+      "Opportunities": 82,
+      "WonDeals": 59,
+      "ConversionRate": 0.7195121951219512,
+      "NetRevenueEUR": 191234.97999999998,
+      "DiscountEUR": 23255.02,
+      "CorrectionCostEUR": 8313.66,
+      "CreditOrRefundEUR": 365.6,
+      "ContributionMarginEUR": 60541.13000000001,
+      "ContributionMarginPct": 0.31657979099848793,
+      "NewCustomerShare": 0.7317073170731707
+    },
+    {
+      "Employee": "Maja Nyman",
+      "Opportunities": 50,
+      "WonDeals": 35,
+      "ConversionRate": 0.7,
+      "NetRevenueEUR": 127359.38999999998,
+      "DiscountEUR": 2560.6099999999997,
+      "CorrectionCostEUR": 182.79000000000002,
+      "CreditOrRefundEUR": 21.16,
+      "ContributionMarginEUR": 49624.979999999996,
+      "ContributionMarginPct": 0.389645239349843,
+      "NewCustomerShare": 0.36
+    },
+    {
+      "Employee": "Susan Granholm",
+      "Opportunities": 58,
+      "WonDeals": 34,
+      "ConversionRate": 0.5862068965517241,
+      "NetRevenueEUR": 104942.84,
+      "DiscountEUR": 4047.16,
+      "CorrectionCostEUR": 274.71,
+      "CreditOrRefundEUR": 51.900000000000006,
+      "ContributionMarginEUR": 41939.89,
+      "ContributionMarginPct": 0.39964508298041107,
+      "NewCustomerShare": 0.25862068965517243
+    },
+    {
+      "Employee": "Elias Smeds",
+      "Opportunities": 68,
+      "WonDeals": 44,
+      "ConversionRate": 0.6470588235294118,
+      "NetRevenueEUR": 159818.11,
+      "DiscountEUR": 2771.89,
+      "CorrectionCostEUR": 156.26,
+      "CreditOrRefundEUR": 0.0,
+      "ContributionMarginEUR": 59937.649999999994,
+      "ContributionMarginPct": 0.37503665886175225,
+      "NewCustomerShare": 0.39705882352941174
+    }
+  ],
+  "survey": [
+    {
+      "Employee": "Johan Andersson",
+      "Responses": 55,
+      "Communication": 4.181818181818182,
+      "Clarity": 3.9454545454545453,
+      "Helpfulness": 4.236363636363636,
+      "OverallSatisfaction": 4.090909090909091,
+      "WouldRecommend": 7.527272727272727,
+      "UseAgain": 3.9272727272727272,
+      "Comments": 33
+    },
+    {
+      "Employee": "Maja Nyman",
+      "Responses": 44,
+      "Communication": 4.545454545454546,
+      "Clarity": 4.590909090909091,
+      "Helpfulness": 4.7727272727272725,
+      "OverallSatisfaction": 4.409090909090909,
+      "WouldRecommend": 8.363636363636363,
+      "UseAgain": 4.704545454545454,
+      "Comments": 26
+    },
+    {
+      "Employee": "Susan Granholm",
+      "Responses": 50,
+      "Communication": 4.74,
+      "Clarity": 4.74,
+      "Helpfulness": 4.78,
+      "OverallSatisfaction": 4.84,
+      "WouldRecommend": 8.92,
+      "UseAgain": 4.74,
+      "Comments": 41
+    },
+    {
+      "Employee": "Elias Smeds",
+      "Responses": 52,
+      "Communication": 4.423076923076923,
+      "Clarity": 4.596153846153846,
+      "Helpfulness": 4.403846153846154,
+      "OverallSatisfaction": 4.4423076923076925,
+      "WouldRecommend": 8.153846153846153,
+      "UseAgain": 4.365384615384615,
+      "Comments": 31
+    }
+  ],
+  "driver": [
+    {
+      "Employee": "Johan Andersson",
+      "DriverRatings": 12,
+      "InformationCompleteness": 3.1666666666666665,
+      "RouteRealism": 3.1666666666666665,
+      "ScheduleRealism": 3.0,
+      "ChangeHandling": 3.5,
+      "TrustForComplexJob": 3.0833333333333335
+    },
+    {
+      "Employee": "Maja Nyman",
+      "DriverRatings": 12,
+      "InformationCompleteness": 4.916666666666667,
+      "RouteRealism": 4.833333333333333,
+      "ScheduleRealism": 4.75,
+      "ChangeHandling": 4.833333333333333,
+      "TrustForComplexJob": 4.833333333333333
+    },
+    {
+      "Employee": "Susan Granholm",
+      "DriverRatings": 12,
+      "InformationCompleteness": 4.083333333333333,
+      "RouteRealism": 3.9166666666666665,
+      "ScheduleRealism": 4.166666666666667,
+      "ChangeHandling": 4.5,
+      "TrustForComplexJob": 4.25
+    },
+    {
+      "Employee": "Elias Smeds",
+      "DriverRatings": 12,
+      "InformationCompleteness": 4.583333333333333,
+      "RouteRealism": 4.416666666666667,
+      "ScheduleRealism": 4.75,
+      "ChangeHandling": 4.416666666666667,
+      "TrustForComplexJob": 4.5
+    }
+  ],
+  "crm": [
+    {
+      "Employee": "Johan Andersson",
+      "Cases": 138,
+      "AvgResolutionHours": 3.9362318840579715,
+      "FCR": 0.6811594202898551,
+      "Reopened": 0.15942028985507245,
+      "Corrections": 0.15942028985507245,
+      "FollowUp": 0.2318840579710145,
+      "AdvancedCriticalShare": 0.2753623188405797,
+      "CriticalShare": 0.036231884057971016,
+      "EscalatedShare": 0.007246376811594203,
+      "WithPreviousHandlers": 0.050724637681159424,
+      "AvgPreviousHandlers": 0.057971014492753624
+    },
+    {
+      "Employee": "Maja Nyman",
+      "Cases": 92,
+      "AvgResolutionHours": 19.66304347826087,
+      "FCR": 0.21739130434782608,
+      "Reopened": 0.043478260869565216,
+      "Corrections": 0.021739130434782608,
+      "FollowUp": 0.21739130434782608,
+      "AdvancedCriticalShare": 0.7934782608695652,
+      "CriticalShare": 0.3695652173913043,
+      "EscalatedShare": 0.41304347826086957,
+      "WithPreviousHandlers": 0.5869565217391305,
+      "AvgPreviousHandlers": 0.6847826086956522
+    },
+    {
+      "Employee": "Susan Granholm",
+      "Cases": 104,
+      "AvgResolutionHours": 8.070192307692308,
+      "FCR": 0.7115384615384616,
+      "Reopened": 0.028846153846153848,
+      "Corrections": 0.009615384615384616,
+      "FollowUp": 0.4230769230769231,
+      "AdvancedCriticalShare": 0.38461538461538464,
+      "CriticalShare": 0.07692307692307693,
+      "EscalatedShare": 0.04807692307692308,
+      "WithPreviousHandlers": 0.1346153846153846,
+      "AvgPreviousHandlers": 0.16346153846153846
+    },
+    {
+      "Employee": "Elias Smeds",
+      "Cases": 151,
+      "AvgResolutionHours": 2.8470198675496685,
+      "FCR": 0.9205298013245033,
+      "Reopened": 0.019867549668874173,
+      "Corrections": 0.019867549668874173,
+      "FollowUp": 0.10596026490066225,
+      "AdvancedCriticalShare": 0.2251655629139073,
+      "CriticalShare": 0.013245033112582781,
+      "EscalatedShare": 0.033112582781456956,
+      "WithPreviousHandlers": 0.039735099337748346,
+      "AvgPreviousHandlers": 0.046357615894039736
+    }
+  ],
+  "staff": [
+    {
+      "Employee": "Johan Andersson",
+      "StaffResponses": 6,
+      "Reliability": 4.0,
+      "TeamContribution": 3.1666666666666665,
+      "ProblemSolving": 3.8333333333333335
+    },
+    {
+      "Employee": "Maja Nyman",
+      "StaffResponses": 6,
+      "Reliability": 4.833333333333333,
+      "TeamContribution": 4.5,
+      "ProblemSolving": 4.666666666666667
+    },
+    {
+      "Employee": "Susan Granholm",
+      "StaffResponses": 6,
+      "Reliability": 4.5,
+      "TeamContribution": 4.166666666666667,
+      "ProblemSolving": 4.666666666666667
+    },
+    {
+      "Employee": "Elias Smeds",
+      "StaffResponses": 6,
+      "Reliability": 4.666666666666667,
+      "TeamContribution": 5.0,
+      "ProblemSolving": 4.166666666666667
+    }
+  ]
+}

@@ -1,0 +1,259 @@
+OpportunityID,Date,Employee,CustomerType,CustomerStatus,ServiceType,QuotedValueEUR,Won,DiscountEUR,NetRevenueEUR,DirectTransportCostEUR,CorrectionCostEUR,CreditOrRefundEUR
+NF-S0001,2026-05-25,Johan Andersson,Private,New,Special handling,5810,Yes,770.83,5039.17,3302.41,44.49,0.0
+NF-S0002,2026-04-06,Johan Andersson,Business,New,Local business delivery,2950,Yes,517.13,2432.87,1681.16,0.0,0.0
+NF-S0003,2026-05-25,Johan Andersson,Business,New,Local business delivery,2840,No,0.0,0.0,0.0,0.0,0.0
+NF-S0004,2026-04-01,Johan Andersson,Business,New,Express transport,6470,Yes,817.91,5652.09,3454.36,277.71,0.0
+NF-S0005,2026-06-30,Johan Andersson,Business,New,Multi-stop delivery,4510,Yes,437.96,4072.04,2676.19,319.75,0.0
+NF-S0006,2026-04-11,Johan Andersson,Business,Existing,Van rental with driver,1560,Yes,260.64,1299.36,744.32,555.04,35.01
+NF-S0007,2026-05-03,Johan Andersson,Private,New,Multi-stop delivery,2880,Yes,267.62,2612.38,1675.56,0.0,0.0
+NF-S0008,2026-04-02,Johan Andersson,Private,New,Local business delivery,2360,Yes,404.97,1955.03,1232.61,0.0,0.0
+NF-S0009,2026-06-10,Johan Andersson,Private,Existing,Van rental with driver,2500,Yes,213.3,2286.7,1436.12,0.0,0.0
+NF-S0010,2026-06-01,Johan Andersson,Private,New,Express transport,4720,Yes,451.56,4268.44,2699.92,285.0,0.0
+NF-S0011,2026-06-01,Johan Andersson,Business,New,Multi-stop delivery,5280,Yes,499.89,4780.11,3200.56,83.39,0.0
+NF-S0012,2026-06-10,Johan Andersson,Business,New,Local business delivery,2780,Yes,426.52,2353.48,1576.8,436.35,0.0
+NF-S0013,2026-05-28,Johan Andersson,Business,New,Multi-stop delivery,4350,Yes,270.69,4079.31,2641.04,0.0,0.0
+NF-S0014,2026-05-09,Johan Andersson,Private,New,Local business delivery,4780,No,0.0,0.0,0.0,0.0,0.0
+NF-S0015,2026-04-08,Johan Andersson,Business,New,Express transport,1190,Yes,161.51,1028.49,634.89,159.54,0.0
+NF-S0016,2026-06-18,Johan Andersson,Business,New,Regional distribution,1890,Yes,211.58,1678.42,1015.08,243.93,55.39
+NF-S0017,2026-05-04,Johan Andersson,Private,New,Special handling,5080,Yes,845.01,4234.99,2747.52,0.0,0.0
+NF-S0018,2026-05-26,Johan Andersson,Business,New,Local business delivery,1360,Yes,158.85,1201.15,637.16,435.29,0.0
+NF-S0019,2026-06-09,Johan Andersson,Business,New,Special handling,6620,Yes,541.08,6078.92,3631.88,0.0,136.41
+NF-S0020,2026-05-23,Johan Andersson,Private,New,Express transport,3690,Yes,677.65,3012.35,1940.86,0.0,0.0
+NF-S0021,2026-06-27,Johan Andersson,Business,New,Van rental with driver,2630,Yes,407.33,2222.67,1360.52,134.83,0.0
+NF-S0022,2026-06-15,Johan Andersson,Private,New,Regional distribution,7450,Yes,847.82,6602.18,4393.6,424.32,0.0
+NF-S0023,2026-06-28,Johan Andersson,Business,Existing,Multi-stop delivery,3410,No,0.0,0.0,0.0,0.0,0.0
+NF-S0024,2026-06-15,Johan Andersson,Business,New,Local business delivery,1540,Yes,76.21,1463.79,1041.9,77.89,0.0
+NF-S0025,2026-05-27,Johan Andersson,Private,New,Special handling,3460,Yes,223.06,3236.94,2035.81,229.74,0.0
+NF-S0026,2026-05-24,Johan Andersson,Business,New,Multi-stop delivery,5650,Yes,681.76,4968.24,2934.22,0.0,0.0
+NF-S0027,2026-04-28,Johan Andersson,Private,New,Local business delivery,2040,Yes,234.93,1805.07,1101.75,0.0,0.0
+NF-S0028,2026-06-18,Johan Andersson,Business,Existing,Multi-stop delivery,5300,No,0.0,0.0,0.0,0.0,0.0
+NF-S0029,2026-04-17,Johan Andersson,Private,Existing,Multi-stop delivery,1600,No,0.0,0.0,0.0,0.0,0.0
+NF-S0030,2026-04-13,Johan Andersson,Private,New,Regional distribution,2330,No,0.0,0.0,0.0,0.0,0.0
+NF-S0031,2026-05-26,Johan Andersson,Business,New,Van rental with driver,3200,Yes,298.72,2901.28,1790.79,0.0,0.0
+NF-S0032,2026-04-27,Johan Andersson,Business,New,Local business delivery,3620,No,0.0,0.0,0.0,0.0,0.0
+NF-S0033,2026-06-19,Johan Andersson,Private,New,Van rental with driver,3730,Yes,433.91,3296.09,2153.08,0.0,73.24
+NF-S0034,2026-05-31,Johan Andersson,Business,New,Van rental with driver,1690,No,0.0,0.0,0.0,0.0,0.0
+NF-S0035,2026-04-25,Johan Andersson,Private,New,Regional distribution,6950,No,0.0,0.0,0.0,0.0,0.0
+NF-S0036,2026-05-01,Johan Andersson,Business,New,Special handling,5330,Yes,347.14,4982.86,3050.08,0.0,0.0
+NF-S0037,2026-04-19,Johan Andersson,Business,Existing,Regional distribution,1300,Yes,224.55,1075.45,728.03,0.0,0.0
+NF-S0038,2026-05-27,Johan Andersson,Private,New,Regional distribution,5490,Yes,209.39,5280.61,3328.36,0.0,0.0
+NF-S0039,2026-04-05,Johan Andersson,Business,New,Van rental with driver,2250,No,0.0,0.0,0.0,0.0,0.0
+NF-S0040,2026-04-10,Johan Andersson,Business,New,Local business delivery,930,Yes,44.25,885.75,565.08,0.0,0.0
+NF-S0041,2026-05-01,Johan Andersson,Business,Existing,Special handling,5210,Yes,490.66,4719.34,3209.36,0.0,0.0
+NF-S0042,2026-05-29,Johan Andersson,Private,New,Express transport,2210,Yes,267.2,1942.8,1264.97,383.6,0.0
+NF-S0043,2026-06-16,Johan Andersson,Business,New,Multi-stop delivery,6080,No,0.0,0.0,0.0,0.0,0.0
+NF-S0044,2026-05-30,Johan Andersson,Business,Existing,Regional distribution,7730,No,0.0,0.0,0.0,0.0,0.0
+NF-S0045,2026-06-08,Johan Andersson,Private,New,Local business delivery,2400,Yes,286.69,2113.31,1400.56,325.71,65.55
+NF-S0046,2026-04-13,Johan Andersson,Business,New,Multi-stop delivery,3340,Yes,402.39,2937.61,1762.43,0.0,0.0
+NF-S0047,2026-05-23,Johan Andersson,Business,Existing,Regional distribution,7900,No,0.0,0.0,0.0,0.0,0.0
+NF-S0048,2026-04-30,Johan Andersson,Business,Existing,Local business delivery,6140,No,0.0,0.0,0.0,0.0,0.0
+NF-S0049,2026-04-12,Johan Andersson,Business,Existing,Multi-stop delivery,6350,Yes,175.78,6174.22,4188.22,359.93,0.0
+NF-S0050,2026-06-19,Johan Andersson,Business,Existing,Local business delivery,4990,No,0.0,0.0,0.0,0.0,0.0
+NF-S0051,2026-04-26,Johan Andersson,Business,New,Local business delivery,2470,Yes,395.73,2074.27,1329.33,354.47,0.0
+NF-S0052,2026-06-08,Johan Andersson,Business,New,Local business delivery,5080,Yes,843.07,4236.93,2727.7,0.0,0.0
+NF-S0053,2026-04-07,Johan Andersson,Business,Existing,Local business delivery,3270,Yes,582.49,2687.51,1693.79,0.0,0.0
+NF-S0054,2026-04-12,Johan Andersson,Private,New,Regional distribution,5890,No,0.0,0.0,0.0,0.0,0.0
+NF-S0055,2026-04-13,Johan Andersson,Business,New,Special handling,5240,Yes,851.56,4388.44,2512.14,277.15,0.0
+NF-S0056,2026-06-23,Johan Andersson,Business,Existing,Multi-stop delivery,5360,No,0.0,0.0,0.0,0.0,0.0
+NF-S0057,2026-05-31,Johan Andersson,Business,Existing,Express transport,3910,Yes,235.05,3674.95,2486.61,487.41,0.0
+NF-S0058,2026-05-10,Johan Andersson,Business,Existing,Local business delivery,4570,Yes,495.59,4074.41,2622.38,0.0,0.0
+NF-S0059,2026-05-13,Johan Andersson,Business,New,Van rental with driver,2320,Yes,248.86,2071.14,1233.25,0.0,0.0
+NF-S0060,2026-06-08,Johan Andersson,Business,New,Special handling,2600,Yes,339.12,2260.88,1443.02,249.93,0.0
+NF-S0061,2026-04-17,Johan Andersson,Private,New,Multi-stop delivery,6560,No,0.0,0.0,0.0,0.0,0.0
+NF-S0062,2026-05-14,Johan Andersson,Private,Existing,Express transport,3720,Yes,441.77,3278.23,1961.24,273.05,0.0
+NF-S0063,2026-04-23,Johan Andersson,Business,New,Local business delivery,490,Yes,49.37,440.63,276.05,450.92,0.0
+NF-S0064,2026-05-15,Johan Andersson,Private,New,Regional distribution,2850,Yes,249.77,2600.23,1483.23,0.0,0.0
+NF-S0065,2026-05-01,Johan Andersson,Business,New,Local business delivery,1390,Yes,43.11,1346.89,864.89,150.7,0.0
+NF-S0066,2026-06-26,Johan Andersson,Business,New,Van rental with driver,3820,No,0.0,0.0,0.0,0.0,0.0
+NF-S0067,2026-06-28,Johan Andersson,Private,Existing,Express transport,5040,Yes,708.63,4331.37,2977.24,0.0,0.0
+NF-S0068,2026-06-30,Johan Andersson,Business,New,Van rental with driver,4120,No,0.0,0.0,0.0,0.0,0.0
+NF-S0069,2026-04-18,Johan Andersson,Business,New,Local business delivery,2560,Yes,246.4,2313.6,1388.72,0.0,0.0
+NF-S0070,2026-05-07,Johan Andersson,Business,Existing,Regional distribution,5520,Yes,512.02,5007.98,3205.83,0.0,0.0
+NF-S0071,2026-05-30,Johan Andersson,Business,New,Local business delivery,2800,Yes,381.25,2418.75,1538.79,373.2,0.0
+NF-S0072,2026-06-29,Johan Andersson,Business,New,Multi-stop delivery,2310,No,0.0,0.0,0.0,0.0,0.0
+NF-S0073,2026-04-07,Johan Andersson,Private,New,Local business delivery,2690,Yes,336.87,2353.13,1610.55,426.69,0.0
+NF-S0074,2026-05-11,Johan Andersson,Business,Existing,Express transport,3240,Yes,152.18,3087.82,1846.45,332.04,0.0
+NF-S0075,2026-06-28,Johan Andersson,Business,New,Regional distribution,2670,Yes,227.95,2442.05,1562.47,0.0,0.0
+NF-S0076,2026-04-03,Johan Andersson,Private,New,Local business delivery,3390,No,0.0,0.0,0.0,0.0,0.0
+NF-S0077,2026-04-28,Johan Andersson,Private,New,Local business delivery,4850,Yes,802.51,4047.49,2563.87,0.0,0.0
+NF-S0078,2026-06-15,Johan Andersson,Business,New,Local business delivery,1080,No,0.0,0.0,0.0,0.0,0.0
+NF-S0079,2026-05-26,Johan Andersson,Private,New,Regional distribution,5980,Yes,126.74,5853.26,3863.36,161.59,0.0
+NF-S0080,2026-05-22,Johan Andersson,Business,Existing,Van rental with driver,2620,Yes,236.91,2383.09,1550.29,0.0,0.0
+NF-S0081,2026-04-26,Johan Andersson,Private,Existing,Regional distribution,4880,Yes,431.7,4448.3,2986.07,0.0,0.0
+NF-S0082,2026-05-08,Johan Andersson,Business,New,Regional distribution,5470,Yes,729.88,4740.12,3050.12,0.0,0.0
+NF-S0083,2026-05-22,Maja Nyman,Business,Existing,Local business delivery,1280,No,0.0,0.0,0.0,0.0,0.0
+NF-S0084,2026-04-02,Maja Nyman,Business,New,Local business delivery,490,Yes,17.41,472.59,329.04,34.46,0.0
+NF-S0085,2026-05-08,Maja Nyman,Business,Existing,Local business delivery,4720,Yes,153.21,4566.79,2809.6,25.0,0.0
+NF-S0086,2026-06-23,Maja Nyman,Business,Existing,Local business delivery,2870,Yes,56.0,2814.0,1592.17,0.0,0.0
+NF-S0087,2026-05-24,Maja Nyman,Business,Existing,Express transport,6150,Yes,0.0,6150.0,3896.01,0.0,0.0
+NF-S0088,2026-06-08,Maja Nyman,Business,New,Multi-stop delivery,6060,Yes,264.94,5795.06,3357.17,0.0,0.0
+NF-S0089,2026-06-16,Maja Nyman,Business,New,Express transport,3880,Yes,2.71,3877.29,2537.3,0.0,0.0
+NF-S0090,2026-04-10,Maja Nyman,Business,New,Express transport,2000,Yes,28.06,1971.94,1126.6,0.0,0.0
+NF-S0091,2026-05-27,Maja Nyman,Business,New,Local business delivery,2570,No,0.0,0.0,0.0,0.0,0.0
+NF-S0092,2026-06-11,Maja Nyman,Business,Existing,Express transport,3540,Yes,130.26,3409.74,2024.86,0.0,0.0
+NF-S0093,2026-04-14,Maja Nyman,Business,New,Regional distribution,6240,No,0.0,0.0,0.0,0.0,0.0
+NF-S0094,2026-05-04,Maja Nyman,Business,New,Regional distribution,4280,Yes,84.56,4195.44,2721.3,0.0,0.0
+NF-S0095,2026-05-02,Maja Nyman,Business,New,Special handling,5000,Yes,124.47,4875.53,3318.71,0.0,0.0
+NF-S0096,2026-04-28,Maja Nyman,Business,New,Express transport,2730,Yes,101.99,2628.01,1591.32,0.0,0.0
+NF-S0097,2026-06-09,Maja Nyman,Business,Existing,Express transport,3410,Yes,55.91,3354.09,1924.6,0.0,0.0
+NF-S0098,2026-04-19,Maja Nyman,Business,Existing,Local business delivery,2410,No,0.0,0.0,0.0,0.0,0.0
+NF-S0099,2026-04-22,Maja Nyman,Business,Existing,Regional distribution,2580,No,0.0,0.0,0.0,0.0,0.0
+NF-S0100,2026-04-09,Maja Nyman,Business,Existing,Regional distribution,9370,No,0.0,0.0,0.0,0.0,0.0
+NF-S0101,2026-05-08,Maja Nyman,Business,New,Van rental with driver,1970,Yes,0.0,1970.0,1149.13,0.0,0.0
+NF-S0102,2026-06-06,Maja Nyman,Private,Existing,Express transport,4710,Yes,0.0,4710.0,3173.51,0.0,0.0
+NF-S0103,2026-05-18,Maja Nyman,Business,Existing,Local business delivery,1470,Yes,52.49,1417.51,895.09,0.0,0.0
+NF-S0104,2026-06-28,Maja Nyman,Business,Existing,Van rental with driver,5040,Yes,82.09,4957.91,2915.9,0.0,0.0
+NF-S0105,2026-06-01,Maja Nyman,Business,New,Regional distribution,3310,Yes,36.59,3273.41,2141.13,0.0,0.0
+NF-S0106,2026-06-19,Maja Nyman,Private,Existing,Local business delivery,5010,Yes,96.56,4913.44,2840.38,0.0,0.0
+NF-S0107,2026-04-17,Maja Nyman,Business,Existing,Van rental with driver,510,Yes,7.54,502.46,305.92,0.0,0.0
+NF-S0108,2026-06-19,Maja Nyman,Business,Existing,Van rental with driver,2740,No,0.0,0.0,0.0,0.0,0.0
+NF-S0109,2026-04-30,Maja Nyman,Business,Existing,Local business delivery,5020,No,0.0,0.0,0.0,0.0,0.0
+NF-S0110,2026-05-21,Maja Nyman,Business,Existing,Special handling,7840,Yes,247.24,7592.76,4274.88,0.0,0.0
+NF-S0111,2026-04-29,Maja Nyman,Business,Existing,Local business delivery,2000,Yes,17.53,1982.47,1185.63,0.0,0.0
+NF-S0112,2026-06-26,Maja Nyman,Private,Existing,Regional distribution,8910,Yes,216.74,8693.26,5313.21,0.0,0.0
+NF-S0113,2026-04-30,Maja Nyman,Business,Existing,Local business delivery,3100,No,0.0,0.0,0.0,0.0,0.0
+NF-S0114,2026-06-24,Maja Nyman,Business,New,Local business delivery,4450,No,0.0,0.0,0.0,0.0,0.0
+NF-S0115,2026-05-03,Maja Nyman,Business,New,Local business delivery,3540,Yes,0.0,3540.0,2027.5,0.0,21.16
+NF-S0116,2026-04-29,Maja Nyman,Business,Existing,Regional distribution,4140,No,0.0,0.0,0.0,0.0,0.0
+NF-S0117,2026-04-21,Maja Nyman,Private,Existing,Regional distribution,4870,Yes,69.81,4800.19,2816.83,0.0,0.0
+NF-S0118,2026-06-22,Maja Nyman,Business,Existing,Regional distribution,8940,No,0.0,0.0,0.0,0.0,0.0
+NF-S0119,2026-04-07,Maja Nyman,Business,New,Local business delivery,3540,Yes,127.7,3412.3,1984.31,0.0,0.0
+NF-S0120,2026-04-12,Maja Nyman,Business,Existing,Regional distribution,4360,No,0.0,0.0,0.0,0.0,0.0
+NF-S0121,2026-04-20,Maja Nyman,Business,New,Multi-stop delivery,9780,No,0.0,0.0,0.0,0.0,0.0
+NF-S0122,2026-04-19,Maja Nyman,Business,Existing,Regional distribution,4260,Yes,121.73,4138.27,2634.07,0.0,0.0
+NF-S0123,2026-04-06,Maja Nyman,Business,Existing,Regional distribution,720,Yes,14.28,705.72,457.44,0.0,0.0
+NF-S0124,2026-04-09,Maja Nyman,Business,New,Express transport,4030,No,0.0,0.0,0.0,0.0,0.0
+NF-S0125,2026-04-29,Maja Nyman,Private,New,Van rental with driver,1050,Yes,15.55,1034.45,605.77,0.0,0.0
+NF-S0126,2026-04-01,Maja Nyman,Business,Existing,Express transport,2620,Yes,75.16,2544.84,1445.27,0.0,0.0
+NF-S0127,2026-06-15,Maja Nyman,Business,Existing,Multi-stop delivery,6280,Yes,189.76,6090.24,3458.93,0.0,0.0
+NF-S0128,2026-05-02,Maja Nyman,Business,Existing,Local business delivery,4520,Yes,22.77,4497.23,2892.2,0.0,0.0
+NF-S0129,2026-06-09,Maja Nyman,Business,Existing,Local business delivery,3850,Yes,23.92,3826.08,2242.43,43.63,0.0
+NF-S0130,2026-04-14,Maja Nyman,Business,Existing,Local business delivery,3030,Yes,32.16,2997.84,1775.74,0.0,0.0
+NF-S0131,2026-06-20,Maja Nyman,Private,New,Van rental with driver,3030,Yes,67.52,2962.48,2085.42,79.7,0.0
+NF-S0132,2026-05-23,Maja Nyman,Business,Existing,Van rental with driver,2710,Yes,23.95,2686.05,1681.09,0.0,0.0
+NF-S0133,2026-04-21,Susan Granholm,Business,Existing,Local business delivery,3530,Yes,188.9,3341.1,2034.02,0.0,16.71
+NF-S0134,2026-06-19,Susan Granholm,Business,Existing,Local business delivery,2710,No,0.0,0.0,0.0,0.0,0.0
+NF-S0135,2026-05-17,Susan Granholm,Private,Existing,Local business delivery,910,Yes,25.04,884.96,531.28,0.0,0.0
+NF-S0136,2026-06-24,Susan Granholm,Business,Existing,Special handling,4620,Yes,102.34,4517.66,3033.29,63.32,0.0
+NF-S0137,2026-04-15,Susan Granholm,Private,New,Multi-stop delivery,4400,No,0.0,0.0,0.0,0.0,0.0
+NF-S0138,2026-05-23,Susan Granholm,Business,Existing,Local business delivery,1490,Yes,52.52,1437.48,907.13,0.0,0.0
+NF-S0139,2026-04-05,Susan Granholm,Business,New,Local business delivery,3260,Yes,102.29,3157.71,1963.14,0.0,0.0
+NF-S0140,2026-05-31,Susan Granholm,Private,Existing,Local business delivery,2040,No,0.0,0.0,0.0,0.0,0.0
+NF-S0141,2026-05-29,Susan Granholm,Business,New,Multi-stop delivery,5290,Yes,240.23,5049.77,2826.54,0.0,0.0
+NF-S0142,2026-05-23,Susan Granholm,Private,Existing,Express transport,1980,No,0.0,0.0,0.0,0.0,0.0
+NF-S0143,2026-05-13,Susan Granholm,Private,Existing,Regional distribution,3280,Yes,70.87,3209.13,1978.75,0.0,0.0
+NF-S0144,2026-04-05,Susan Granholm,Private,Existing,Express transport,3100,Yes,64.73,3035.27,1807.52,0.0,19.26
+NF-S0145,2026-04-02,Susan Granholm,Business,Existing,Regional distribution,5490,Yes,175.68,5314.32,2995.84,0.0,0.0
+NF-S0146,2026-04-18,Susan Granholm,Business,New,Local business delivery,2400,Yes,90.45,2309.55,1212.09,0.0,0.0
+NF-S0147,2026-05-23,Susan Granholm,Business,Existing,Van rental with driver,1850,Yes,32.86,1817.14,1027.1,0.0,0.0
+NF-S0148,2026-05-01,Susan Granholm,Business,New,Local business delivery,2930,Yes,59.3,2870.7,1696.02,0.0,0.0
+NF-S0149,2026-05-09,Susan Granholm,Business,Existing,Local business delivery,2900,Yes,196.91,2703.09,1554.49,0.0,0.0
+NF-S0150,2026-06-08,Susan Granholm,Private,Existing,Local business delivery,1370,No,0.0,0.0,0.0,0.0,0.0
+NF-S0151,2026-05-19,Susan Granholm,Private,Existing,Express transport,3060,No,0.0,0.0,0.0,0.0,0.0
+NF-S0152,2026-04-12,Susan Granholm,Private,Existing,Local business delivery,1960,No,0.0,0.0,0.0,0.0,0.0
+NF-S0153,2026-04-11,Susan Granholm,Private,New,Special handling,5110,Yes,164.67,4945.33,2938.26,0.0,0.0
+NF-S0154,2026-04-22,Susan Granholm,Business,New,Van rental with driver,2300,Yes,77.66,2222.34,1318.45,0.0,0.0
+NF-S0155,2026-06-12,Susan Granholm,Private,New,Local business delivery,3320,Yes,154.88,3165.12,1832.37,0.0,0.0
+NF-S0156,2026-04-30,Susan Granholm,Business,Existing,Express transport,1160,No,0.0,0.0,0.0,0.0,0.0
+NF-S0157,2026-04-12,Susan Granholm,Private,New,Special handling,1200,No,0.0,0.0,0.0,0.0,0.0
+NF-S0158,2026-06-01,Susan Granholm,Business,Existing,Regional distribution,6660,Yes,365.32,6294.68,3643.9,0.0,0.0
+NF-S0159,2026-05-04,Susan Granholm,Private,Existing,Multi-stop delivery,6120,No,0.0,0.0,0.0,0.0,0.0
+NF-S0160,2026-04-22,Susan Granholm,Private,Existing,Van rental with driver,730,No,0.0,0.0,0.0,0.0,0.0
+NF-S0161,2026-06-08,Susan Granholm,Business,New,Regional distribution,3660,No,0.0,0.0,0.0,0.0,0.0
+NF-S0162,2026-06-24,Susan Granholm,Private,Existing,Local business delivery,2540,Yes,61.33,2478.67,1488.32,148.97,0.0
+NF-S0163,2026-06-07,Susan Granholm,Business,New,Express transport,1190,Yes,46.8,1143.2,671.96,0.0,0.0
+NF-S0164,2026-06-07,Susan Granholm,Business,Existing,Van rental with driver,1530,Yes,71.19,1458.81,891.27,0.0,0.0
+NF-S0165,2026-04-27,Susan Granholm,Private,New,Special handling,7310,Yes,276.34,7033.66,4029.38,0.0,0.0
+NF-S0166,2026-06-09,Susan Granholm,Business,Existing,Regional distribution,3250,Yes,155.22,3094.78,1921.78,0.0,0.0
+NF-S0167,2026-06-11,Susan Granholm,Business,Existing,Van rental with driver,2660,Yes,70.39,2589.61,1657.38,0.0,0.0
+NF-S0168,2026-06-22,Susan Granholm,Private,Existing,Regional distribution,720,No,0.0,0.0,0.0,0.0,0.0
+NF-S0169,2026-06-21,Susan Granholm,Business,Existing,Regional distribution,3980,Yes,131.21,3848.79,2346.51,0.0,0.0
+NF-S0170,2026-04-29,Susan Granholm,Private,New,Multi-stop delivery,3620,Yes,123.3,3496.7,2394.06,0.0,0.0
+NF-S0171,2026-05-06,Susan Granholm,Business,Existing,Special handling,3200,No,0.0,0.0,0.0,0.0,0.0
+NF-S0172,2026-05-27,Susan Granholm,Private,Existing,Local business delivery,2810,Yes,51.37,2758.63,1557.56,0.0,15.93
+NF-S0173,2026-04-05,Susan Granholm,Business,Existing,Local business delivery,3820,No,0.0,0.0,0.0,0.0,0.0
+NF-S0174,2026-06-15,Susan Granholm,Business,Existing,Express transport,4860,No,0.0,0.0,0.0,0.0,0.0
+NF-S0175,2026-04-12,Susan Granholm,Private,Existing,Local business delivery,1260,No,0.0,0.0,0.0,0.0,0.0
+NF-S0176,2026-04-12,Susan Granholm,Business,Existing,Van rental with driver,3100,No,0.0,0.0,0.0,0.0,0.0
+NF-S0177,2026-04-08,Susan Granholm,Private,Existing,Special handling,3960,No,0.0,0.0,0.0,0.0,0.0
+NF-S0178,2026-06-12,Susan Granholm,Private,Existing,Local business delivery,2490,Yes,71.31,2418.69,1445.63,0.0,0.0
+NF-S0179,2026-06-26,Susan Granholm,Private,Existing,Regional distribution,3110,No,0.0,0.0,0.0,0.0,0.0
+NF-S0180,2026-04-01,Susan Granholm,Business,Existing,Special handling,2780,No,0.0,0.0,0.0,0.0,0.0
+NF-S0181,2026-05-09,Susan Granholm,Private,Existing,Special handling,4420,Yes,272.14,4147.86,2172.58,0.0,0.0
+NF-S0182,2026-05-31,Susan Granholm,Private,New,Regional distribution,2580,Yes,125.3,2454.7,1508.6,0.0,0.0
+NF-S0183,2026-05-14,Susan Granholm,Private,Existing,Local business delivery,1610,Yes,67.82,1542.18,950.78,0.0,0.0
+NF-S0184,2026-04-15,Susan Granholm,Business,Existing,Local business delivery,2900,No,0.0,0.0,0.0,0.0,0.0
+NF-S0185,2026-04-14,Susan Granholm,Private,Existing,Regional distribution,1400,Yes,10.32,1389.68,944.16,0.0,0.0
+NF-S0186,2026-04-15,Susan Granholm,Private,Existing,Local business delivery,750,No,0.0,0.0,0.0,0.0,0.0
+NF-S0187,2026-05-23,Susan Granholm,Private,Existing,Multi-stop delivery,4100,Yes,189.22,3910.78,2555.54,0.0,0.0
+NF-S0188,2026-04-24,Susan Granholm,Business,New,Express transport,3580,Yes,127.56,3452.44,1992.75,0.0,0.0
+NF-S0189,2026-06-09,Susan Granholm,Business,Existing,Express transport,1480,Yes,31.69,1448.31,847.89,62.42,0.0
+NF-S0190,2026-05-03,Susan Granholm,Private,Existing,Local business delivery,680,No,0.0,0.0,0.0,0.0,0.0
+NF-S0191,2026-04-14,Elias Smeds,Business,Existing,Local business delivery,3090,Yes,108.78,2981.22,1827.74,0.0,0.0
+NF-S0192,2026-05-07,Elias Smeds,Business,Existing,Local business delivery,2410,No,0.0,0.0,0.0,0.0,0.0
+NF-S0193,2026-06-17,Elias Smeds,Business,Existing,Multi-stop delivery,4720,No,0.0,0.0,0.0,0.0,0.0
+NF-S0194,2026-06-11,Elias Smeds,Business,Existing,Local business delivery,3020,Yes,76.6,2943.4,1761.73,0.0,0.0
+NF-S0195,2026-06-01,Elias Smeds,Private,Existing,Local business delivery,3230,No,0.0,0.0,0.0,0.0,0.0
+NF-S0196,2026-04-30,Elias Smeds,Private,Existing,Express transport,5370,No,0.0,0.0,0.0,0.0,0.0
+NF-S0197,2026-06-08,Elias Smeds,Business,New,Local business delivery,990,No,0.0,0.0,0.0,0.0,0.0
+NF-S0198,2026-06-27,Elias Smeds,Business,Existing,Regional distribution,2230,Yes,25.71,2204.29,1512.12,0.0,0.0
+NF-S0199,2026-04-22,Elias Smeds,Business,Existing,Multi-stop delivery,4560,Yes,110.36,4449.64,2526.63,0.0,0.0
+NF-S0200,2026-05-06,Elias Smeds,Private,New,Local business delivery,2560,Yes,0.0,2560.0,1607.56,0.0,0.0
+NF-S0201,2026-05-17,Elias Smeds,Business,Existing,Local business delivery,2000,Yes,24.84,1975.16,1228.56,0.0,0.0
+NF-S0202,2026-06-14,Elias Smeds,Private,New,Regional distribution,3710,Yes,46.71,3663.29,2318.08,0.0,0.0
+NF-S0203,2026-05-23,Elias Smeds,Private,New,Express transport,3180,No,0.0,0.0,0.0,0.0,0.0
+NF-S0204,2026-05-27,Elias Smeds,Business,Existing,Regional distribution,3270,Yes,48.73,3221.27,2252.98,0.0,0.0
+NF-S0205,2026-04-28,Elias Smeds,Private,Existing,Local business delivery,2710,Yes,61.47,2648.53,1505.88,0.0,0.0
+NF-S0206,2026-04-28,Elias Smeds,Business,Existing,Express transport,2530,No,0.0,0.0,0.0,0.0,0.0
+NF-S0207,2026-06-27,Elias Smeds,Business,New,Regional distribution,2240,No,0.0,0.0,0.0,0.0,0.0
+NF-S0208,2026-06-01,Elias Smeds,Private,New,Multi-stop delivery,5760,Yes,0.0,5760.0,3666.92,0.0,0.0
+NF-S0209,2026-05-15,Elias Smeds,Business,New,Local business delivery,3200,Yes,80.51,3119.49,1813.9,0.0,0.0
+NF-S0210,2026-04-06,Elias Smeds,Business,New,Local business delivery,2170,No,0.0,0.0,0.0,0.0,0.0
+NF-S0211,2026-05-26,Elias Smeds,Business,New,Local business delivery,1360,Yes,37.7,1322.3,811.64,0.0,0.0
+NF-S0212,2026-06-23,Elias Smeds,Business,Existing,Regional distribution,3310,Yes,75.06,3234.94,1819.33,40.26,0.0
+NF-S0213,2026-05-19,Elias Smeds,Private,Existing,Regional distribution,2890,Yes,56.93,2833.07,1856.81,0.0,0.0
+NF-S0214,2026-04-13,Elias Smeds,Private,Existing,Regional distribution,5370,Yes,95.51,5274.49,3286.14,0.0,0.0
+NF-S0215,2026-06-20,Elias Smeds,Private,New,Express transport,5080,Yes,102.75,4977.25,3174.44,0.0,0.0
+NF-S0216,2026-06-21,Elias Smeds,Business,New,Express transport,3270,Yes,23.78,3246.22,1971.82,0.0,0.0
+NF-S0217,2026-04-04,Elias Smeds,Private,Existing,Multi-stop delivery,3990,Yes,201.7,3788.3,2284.53,25.0,0.0
+NF-S0218,2026-05-13,Elias Smeds,Business,New,Local business delivery,1770,Yes,47.71,1722.29,1064.75,0.0,0.0
+NF-S0219,2026-06-26,Elias Smeds,Business,Existing,Local business delivery,3280,Yes,75.56,3204.44,1997.84,0.0,0.0
+NF-S0220,2026-05-19,Elias Smeds,Business,Existing,Express transport,2240,Yes,43.25,2196.75,1304.37,0.0,0.0
+NF-S0221,2026-04-19,Elias Smeds,Private,Existing,Regional distribution,3740,No,0.0,0.0,0.0,0.0,0.0
+NF-S0222,2026-05-05,Elias Smeds,Business,New,Local business delivery,3410,Yes,35.43,3374.57,2102.12,0.0,0.0
+NF-S0223,2026-04-12,Elias Smeds,Business,New,Local business delivery,3050,Yes,75.14,2974.86,1877.63,61.21,0.0
+NF-S0224,2026-05-18,Elias Smeds,Business,New,Express transport,4900,Yes,103.51,4796.49,3173.58,0.0,0.0
+NF-S0225,2026-04-22,Elias Smeds,Business,Existing,Multi-stop delivery,1300,No,0.0,0.0,0.0,0.0,0.0
+NF-S0226,2026-06-01,Elias Smeds,Business,New,Special handling,5500,Yes,120.64,5379.36,3136.52,0.0,0.0
+NF-S0227,2026-05-17,Elias Smeds,Business,New,Local business delivery,1380,Yes,0.0,1380.0,879.98,0.0,0.0
+NF-S0228,2026-06-18,Elias Smeds,Business,New,Multi-stop delivery,3680,No,0.0,0.0,0.0,0.0,0.0
+NF-S0229,2026-04-16,Elias Smeds,Business,Existing,Local business delivery,2360,Yes,31.02,2328.98,1446.44,29.79,0.0
+NF-S0230,2026-05-20,Elias Smeds,Business,Existing,Local business delivery,1040,No,0.0,0.0,0.0,0.0,0.0
+NF-S0231,2026-04-30,Elias Smeds,Business,Existing,Express transport,3290,No,0.0,0.0,0.0,0.0,0.0
+NF-S0232,2026-05-12,Elias Smeds,Business,Existing,Local business delivery,2950,Yes,2.79,2947.21,1861.83,0.0,0.0
+NF-S0233,2026-04-08,Elias Smeds,Private,Existing,Special handling,4330,Yes,0.0,4330.0,2958.87,0.0,0.0
+NF-S0234,2026-06-15,Elias Smeds,Business,New,Van rental with driver,3330,No,0.0,0.0,0.0,0.0,0.0
+NF-S0235,2026-04-17,Elias Smeds,Business,Existing,Regional distribution,5810,Yes,144.12,5665.88,3372.97,0.0,0.0
+NF-S0236,2026-04-29,Elias Smeds,Business,New,Regional distribution,3870,Yes,108.49,3761.51,2190.87,0.0,0.0
+NF-S0237,2026-04-06,Elias Smeds,Business,New,Express transport,4290,Yes,42.7,4247.3,2705.17,0.0,0.0
+NF-S0238,2026-04-25,Elias Smeds,Business,Existing,Multi-stop delivery,2050,No,0.0,0.0,0.0,0.0,0.0
+NF-S0239,2026-05-10,Elias Smeds,Private,New,Local business delivery,2470,Yes,105.25,2364.75,1616.96,0.0,0.0
+NF-S0240,2026-06-15,Elias Smeds,Private,Existing,Special handling,1690,No,0.0,0.0,0.0,0.0,0.0
+NF-S0241,2026-05-03,Elias Smeds,Private,New,Local business delivery,3160,No,0.0,0.0,0.0,0.0,0.0
+NF-S0242,2026-05-07,Elias Smeds,Private,Existing,Regional distribution,4550,Yes,124.82,4425.18,2676.38,0.0,0.0
+NF-S0243,2026-06-11,Elias Smeds,Business,Existing,Multi-stop delivery,2980,Yes,3.76,2976.24,1765.15,0.0,0.0
+NF-S0244,2026-05-07,Elias Smeds,Business,New,Express transport,3910,No,0.0,0.0,0.0,0.0,0.0
+NF-S0245,2026-06-05,Elias Smeds,Business,Existing,Multi-stop delivery,820,Yes,10.38,809.62,496.63,0.0,0.0
+NF-S0246,2026-06-25,Elias Smeds,Business,New,Express transport,4940,Yes,0.0,4940.0,3518.35,0.0,0.0
+NF-S0247,2026-04-30,Elias Smeds,Business,Existing,Van rental with driver,3770,Yes,32.36,3737.64,2448.21,0.0,0.0
+NF-S0248,2026-04-19,Elias Smeds,Private,Existing,Regional distribution,6610,No,0.0,0.0,0.0,0.0,0.0
+NF-S0249,2026-06-20,Elias Smeds,Business,New,Multi-stop delivery,4090,No,0.0,0.0,0.0,0.0,0.0
+NF-S0250,2026-06-12,Elias Smeds,Business,Existing,Multi-stop delivery,7110,Yes,48.52,7061.48,4368.64,0.0,0.0
+NF-S0251,2026-06-20,Elias Smeds,Business,New,Regional distribution,3770,Yes,66.01,3703.99,2254.24,0.0,0.0
+NF-S0252,2026-06-07,Elias Smeds,Private,Existing,Multi-stop delivery,4400,Yes,126.54,4273.46,2741.57,0.0,0.0
+NF-S0253,2026-04-17,Elias Smeds,Business,Existing,Multi-stop delivery,5010,No,0.0,0.0,0.0,0.0,0.0
+NF-S0254,2026-05-31,Elias Smeds,Business,Existing,Special handling,5280,Yes,246.75,5033.25,3050.76,0.0,0.0
+NF-S0255,2026-04-02,Elias Smeds,Business,Existing,Regional distribution,4870,Yes,0.0,4870.0,3062.84,0.0,0.0
+NF-S0256,2026-05-09,Elias Smeds,Business,Existing,Special handling,6280,No,0.0,0.0,0.0,0.0,0.0
+NF-S0257,2026-06-09,Elias Smeds,Business,Existing,Multi-stop delivery,7110,Yes,0.0,7110.0,4424.72,0.0,0.0
+NF-S0258,2026-04-30,Elias Smeds,Private,Existing,Express transport,2790,No,0.0,0.0,0.0,0.0,0.0

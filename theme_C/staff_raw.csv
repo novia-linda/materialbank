@@ -1,0 +1,25 @@
+RespondentRole,Employee,Reliability,TeamContribution,ProblemSolving,StaffComment
+Operations Manager,Johan Andersson,4,4,4,Johan is excellent at opening doors with new customers. We do spend more time correcting details after some of his fast sales.
+Operations Manager,Maja Nyman,5,5,5,"When a case is difficult or has already gone wrong, people usually ask Maja to look at it."
+Operations Manager,Susan Granholm,5,5,5,Susan is excellent at calming customers down and making them feel heard.
+Operations Manager,Elias Smeds,5,5,4,Elias created the booking checklist we now use for standard business deliveries.
+Dispatcher 1,Johan Andersson,4,3,4,He creates a lot of activity and new business. I would like more complete handover notes before a job reaches dispatch.
+Dispatcher 1,Maja Nyman,5,5,4,Maja catches operational problems early and asks the questions that prevent trouble later.
+Dispatcher 1,Susan Granholm,5,4,5,Customers often ask for Susan again. The challenge is that she can spend a long time on one conversation.
+Dispatcher 1,Elias Smeds,5,5,5,He is extremely consistent. You rarely have to fix his documentation afterwards.
+Dispatcher 2,Johan Andersson,4,3,4,Very commercial and quick. Some unusual jobs need extra checking because the customer expectation can be ambitious.
+Dispatcher 2,Maja Nyman,4,4,5,She is the person I trust with complicated routes or sensitive customer situations.
+Dispatcher 2,Susan Granholm,4,4,5,She gives very thoughtful service and follows up carefully.
+Dispatcher 2,Elias Smeds,5,5,4,Elias is often the person who shows new colleagues how the normal process works.
+Dispatcher 3,Johan Andersson,4,3,3,"Johan has strong sales instincts, but the rest of the process sometimes has to catch up with what was promised."
+Dispatcher 3,Maja Nyman,5,4,5,"Her case count is not the highest, but many of the cases she receives are ones others have already struggled with."
+Dispatcher 3,Susan Granholm,4,4,4,"When a customer is upset, Susan is one of the best people to take the call."
+Dispatcher 3,Elias Smeds,4,5,4,He keeps routine work moving even when the office is busy.
+Finance Administrator,Johan Andersson,4,3,4,His revenue is impressive. Discounts and corrections are worth watching when we look at profitability.
+Finance Administrator,Maja Nyman,5,5,4,Her documentation is very reliable and finance rarely has to ask what happened in a case.
+Finance Administrator,Susan Granholm,5,4,4,"Her customer relationships are strong, although the queue can build when she spends a lot of time on each case."
+Finance Administrator,Elias Smeds,5,5,4,The finance side is usually straightforward when Elias has handled the case because the documentation is complete.
+Office Administrator,Johan Andersson,4,3,4,"He brings energy to the office and is good with new prospects, although paperwork is not his favourite part."
+Office Administrator,Maja Nyman,5,4,5,"Maja is not loud about her contribution, but colleagues rely on her expertise a lot."
+Office Administrator,Susan Granholm,4,4,5,She contributes a lot to customer loyalty and is generous with her time.
+Office Administrator,Elias Smeds,4,5,4,"He may not be the most visible person in the team, but his process discipline saves other people time."

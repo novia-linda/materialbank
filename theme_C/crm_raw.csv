@@ -1,0 +1,486 @@
+CaseID,OpenedDate,Employee,CaseType,Complexity,PreviousHandlersCount,EscalatedToEmployee,ResolutionTimeHours,ResolvedAtFirstContactOverall,ReopenedAfterClosure,CorrectionRequiredAfterClosure,FollowUpNeeded,Outcome
+NF-K0001,2026-06-09,Johan Andersson,Booking change,Standard,0,No,2.0,Yes,No,No,Yes,Resolved
+NF-K0002,2026-06-11,Johan Andersson,New quote,Standard,0,No,2.8,No,No,No,No,Resolved
+NF-K0003,2026-06-14,Johan Andersson,New quote,Standard,0,No,4.0,Yes,No,No,No,Resolved
+NF-K0004,2026-05-05,Johan Andersson,Complex route request,Critical,0,No,5.9,No,No,No,No,Resolved
+NF-K0005,2026-04-14,Johan Andersson,Pricing clarification,Standard,0,No,3.2,No,No,Yes,No,Resolved
+NF-K0006,2026-04-18,Johan Andersson,Complex route request,Standard,0,No,1.8,Yes,No,No,No,Resolved
+NF-K0007,2026-06-28,Johan Andersson,Pricing clarification,Advanced,0,No,14.4,No,No,Yes,No,Resolved
+NF-K0008,2026-05-12,Johan Andersson,Booking change,Advanced,0,No,8.8,No,Yes,No,No,Resolved
+NF-K0009,2026-06-22,Johan Andersson,Complex route request,Standard,1,Yes,2.4,No,No,No,No,Resolved
+NF-K0010,2026-06-29,Johan Andersson,Booking change,Standard,0,No,2.6,Yes,No,No,Yes,Resolved
+NF-K0011,2026-05-26,Johan Andersson,New quote,Standard,0,No,3.0,Yes,No,No,Yes,Resolved
+NF-K0012,2026-06-12,Johan Andersson,Booking change,Advanced,0,No,6.5,Yes,Yes,No,No,Resolved
+NF-K0013,2026-04-21,Johan Andersson,Delivery issue,Advanced,0,No,8.8,Yes,No,No,No,Resolved
+NF-K0014,2026-04-12,Johan Andersson,Pricing clarification,Standard,0,No,3.3,Yes,No,No,No,Resolved
+NF-K0015,2026-04-12,Johan Andersson,New quote,Standard,0,No,2.4,Yes,No,No,No,Resolved
+NF-K0016,2026-04-22,Johan Andersson,Complex route request,Standard,0,No,3.2,Yes,No,No,No,Resolved
+NF-K0017,2026-06-20,Johan Andersson,Complex route request,Advanced,0,No,2.4,Yes,No,Yes,No,Resolved
+NF-K0018,2026-06-10,Johan Andersson,New quote,Standard,0,No,2.4,Yes,No,No,Yes,Resolved
+NF-K0019,2026-04-15,Johan Andersson,Pricing clarification,Standard,0,No,4.6,Yes,No,No,No,Resolved
+NF-K0020,2026-05-15,Johan Andersson,New quote,Standard,0,No,3.2,Yes,No,No,No,Resolved
+NF-K0021,2026-04-01,Johan Andersson,Booking change,Advanced,0,No,3.5,Yes,No,Yes,No,Resolved
+NF-K0022,2026-06-11,Johan Andersson,Delivery issue,Advanced,0,No,5.6,Yes,No,No,Yes,Resolved
+NF-K0023,2026-06-15,Johan Andersson,Booking change,Standard,0,No,4.4,Yes,No,No,No,Resolved
+NF-K0024,2026-06-06,Johan Andersson,Booking change,Advanced,0,No,6.1,Yes,No,Yes,No,Resolved
+NF-K0025,2026-04-12,Johan Andersson,Booking change,Standard,0,No,5.2,Yes,No,Yes,No,Resolved
+NF-K0026,2026-06-04,Johan Andersson,New quote,Advanced,0,No,5.8,No,No,No,Yes,Resolved
+NF-K0027,2026-05-26,Johan Andersson,Pricing clarification,Standard,0,No,3.8,Yes,No,No,No,Resolved
+NF-K0028,2026-04-29,Johan Andersson,New quote,Standard,0,No,2.2,Yes,No,Yes,No,Resolved
+NF-K0029,2026-06-16,Johan Andersson,Pricing clarification,Standard,0,No,4.4,Yes,No,No,No,Resolved
+NF-K0030,2026-06-06,Johan Andersson,Customer complaint,Standard,0,No,2.4,Yes,No,No,No,Resolved
+NF-K0031,2026-06-28,Johan Andersson,New quote,Advanced,0,No,4.6,Yes,Yes,No,No,Resolved
+NF-K0032,2026-06-07,Johan Andersson,New quote,Standard,0,No,4.1,No,No,No,No,Resolved
+NF-K0033,2026-05-09,Johan Andersson,Complex route request,Standard,0,No,2.5,Yes,No,No,Yes,Resolved
+NF-K0034,2026-04-04,Johan Andersson,Booking change,Advanced,0,No,4.6,No,Yes,Yes,No,Resolved
+NF-K0035,2026-06-09,Johan Andersson,Pricing clarification,Standard,0,No,4.0,Yes,Yes,No,No,Resolved
+NF-K0036,2026-05-06,Johan Andersson,Delivery issue,Standard,0,No,2.7,Yes,No,No,No,Resolved
+NF-K0037,2026-05-23,Johan Andersson,New quote,Standard,0,No,1.7,Yes,No,No,No,Resolved
+NF-K0038,2026-06-01,Johan Andersson,New quote,Advanced,0,No,11.8,No,Yes,No,No,Resolved
+NF-K0039,2026-05-31,Johan Andersson,Booking change,Standard,1,No,2.3,No,No,No,No,Resolved
+NF-K0040,2026-05-13,Johan Andersson,New quote,Standard,0,No,3.4,Yes,No,No,No,Resolved
+NF-K0041,2026-05-07,Johan Andersson,Booking change,Standard,0,No,2.7,Yes,No,Yes,No,Resolved
+NF-K0042,2026-06-11,Johan Andersson,New quote,Advanced,0,No,2.9,Yes,No,No,Yes,Resolved
+NF-K0043,2026-05-08,Johan Andersson,Booking change,Standard,0,No,3.4,Yes,No,No,No,Resolved
+NF-K0044,2026-04-03,Johan Andersson,Pricing clarification,Standard,0,No,2.7,Yes,No,No,No,Resolved
+NF-K0045,2026-04-04,Johan Andersson,Complex route request,Standard,0,No,2.9,Yes,No,No,No,Resolved
+NF-K0046,2026-06-15,Johan Andersson,Special handling request,Standard,0,No,2.0,Yes,No,No,Yes,Resolved
+NF-K0047,2026-04-29,Johan Andersson,New quote,Standard,0,No,1.8,Yes,Yes,No,No,Resolved
+NF-K0048,2026-04-02,Johan Andersson,Booking change,Standard,0,No,1.9,Yes,No,Yes,No,Resolved
+NF-K0049,2026-06-16,Johan Andersson,Booking change,Standard,0,No,2.1,No,No,No,Yes,Resolved
+NF-K0050,2026-04-07,Johan Andersson,Delivery issue,Advanced,0,No,2.1,Yes,Yes,Yes,No,Resolved
+NF-K0051,2026-04-21,Johan Andersson,Complex route request,Standard,0,No,4.8,Yes,Yes,Yes,No,Resolved
+NF-K0052,2026-05-06,Johan Andersson,Pricing clarification,Standard,0,No,5.9,Yes,No,No,No,Resolved
+NF-K0053,2026-04-20,Johan Andersson,Pricing clarification,Advanced,0,No,5.5,Yes,No,Yes,No,Resolved
+NF-K0054,2026-04-19,Johan Andersson,Complex route request,Advanced,0,No,3.9,No,No,No,No,Resolved
+NF-K0055,2026-04-01,Johan Andersson,New quote,Standard,0,No,4.7,No,No,No,No,Resolved
+NF-K0056,2026-06-12,Johan Andersson,New quote,Advanced,0,No,7.9,Yes,No,No,No,Resolved
+NF-K0057,2026-04-26,Johan Andersson,Delivery issue,Standard,0,No,2.3,Yes,No,No,No,Resolved
+NF-K0058,2026-04-22,Johan Andersson,Booking change,Standard,0,No,3.4,No,No,No,No,Resolved
+NF-K0059,2026-04-10,Johan Andersson,New quote,Advanced,0,No,6.9,Yes,No,Yes,Yes,Resolved
+NF-K0060,2026-06-20,Johan Andersson,Complex route request,Advanced,0,No,4.5,Yes,No,Yes,No,Resolved
+NF-K0061,2026-05-10,Johan Andersson,New quote,Standard,0,No,2.8,Yes,No,No,No,Resolved
+NF-K0062,2026-05-26,Johan Andersson,Booking change,Critical,0,No,3.8,Yes,Yes,Yes,Yes,Resolved
+NF-K0063,2026-06-16,Johan Andersson,Complex route request,Standard,0,No,1.9,Yes,No,No,No,Resolved
+NF-K0064,2026-05-29,Johan Andersson,Delivery issue,Advanced,0,No,5.2,Yes,No,Yes,Yes,Resolved
+NF-K0065,2026-06-20,Johan Andersson,Delivery issue,Standard,0,No,1.7,No,No,No,No,Resolved
+NF-K0066,2026-06-29,Johan Andersson,Booking change,Standard,0,No,2.4,Yes,No,No,No,Resolved
+NF-K0067,2026-05-09,Johan Andersson,New quote,Standard,0,No,8.1,No,No,No,No,Resolved
+NF-K0068,2026-05-11,Johan Andersson,Booking change,Standard,0,No,1.6,Yes,Yes,Yes,Yes,Resolved
+NF-K0069,2026-05-25,Johan Andersson,New quote,Standard,0,No,4.6,No,No,No,Yes,Resolved
+NF-K0070,2026-06-03,Johan Andersson,New quote,Standard,0,No,3.5,Yes,No,No,No,Resolved
+NF-K0071,2026-06-09,Johan Andersson,Booking change,Standard,0,No,2.3,Yes,No,No,Yes,Resolved
+NF-K0072,2026-06-23,Johan Andersson,New quote,Critical,0,No,7.8,No,No,No,Yes,Resolved
+NF-K0073,2026-06-25,Johan Andersson,Delivery issue,Standard,0,No,1.8,No,No,No,No,Resolved
+NF-K0074,2026-05-22,Johan Andersson,Special handling request,Standard,0,No,2.2,Yes,Yes,No,No,Resolved
+NF-K0075,2026-04-23,Johan Andersson,Delivery issue,Standard,0,No,2.3,Yes,No,No,Yes,Resolved
+NF-K0076,2026-05-01,Johan Andersson,New quote,Standard,2,No,1.4,No,No,No,No,Resolved
+NF-K0077,2026-06-26,Johan Andersson,Delivery issue,Critical,0,No,11.6,Yes,No,No,No,Resolved
+NF-K0078,2026-06-06,Johan Andersson,New quote,Standard,0,No,2.9,Yes,No,No,No,Resolved
+NF-K0079,2026-06-13,Johan Andersson,New quote,Standard,0,No,2.1,Yes,No,No,No,Resolved
+NF-K0080,2026-05-08,Johan Andersson,New quote,Advanced,0,No,4.0,Yes,No,No,No,Resolved
+NF-K0081,2026-04-19,Johan Andersson,New quote,Standard,0,No,2.0,Yes,No,No,No,Resolved
+NF-K0082,2026-04-27,Johan Andersson,Booking change,Standard,1,No,5.9,No,No,No,No,Resolved
+NF-K0083,2026-06-16,Johan Andersson,New quote,Standard,1,No,3.0,No,No,No,No,Resolved
+NF-K0084,2026-05-13,Johan Andersson,Pricing clarification,Standard,0,No,3.7,Yes,No,No,No,Resolved
+NF-K0085,2026-05-30,Johan Andersson,Pricing clarification,Standard,0,No,3.2,No,Yes,No,No,Resolved
+NF-K0086,2026-05-26,Johan Andersson,Customer complaint,Standard,0,No,4.5,Yes,No,No,No,Resolved
+NF-K0087,2026-06-13,Johan Andersson,Booking change,Advanced,0,No,4.9,No,No,No,Yes,Resolved
+NF-K0088,2026-05-03,Johan Andersson,New quote,Standard,0,No,2.1,Yes,No,No,No,Resolved
+NF-K0089,2026-04-08,Johan Andersson,New quote,Standard,0,No,2.3,No,No,No,No,Resolved
+NF-K0090,2026-05-23,Johan Andersson,Pricing clarification,Advanced,0,No,2.7,No,No,No,No,Resolved
+NF-K0091,2026-06-05,Johan Andersson,Special handling request,Standard,0,No,2.6,Yes,No,No,Yes,Pending at quarter end
+NF-K0092,2026-05-05,Johan Andersson,Pricing clarification,Standard,0,No,3.7,Yes,Yes,No,Yes,Resolved
+NF-K0093,2026-06-11,Johan Andersson,Special handling request,Standard,0,No,2.7,Yes,No,No,Yes,Resolved
+NF-K0094,2026-05-29,Johan Andersson,New quote,Standard,0,No,2.3,Yes,No,No,No,Resolved
+NF-K0095,2026-05-12,Johan Andersson,Booking change,Standard,0,No,2.9,No,No,No,No,Resolved
+NF-K0096,2026-05-15,Johan Andersson,New quote,Standard,0,No,3.9,No,No,No,No,Resolved
+NF-K0097,2026-06-03,Johan Andersson,New quote,Advanced,0,No,9.1,Yes,Yes,No,Yes,Resolved
+NF-K0098,2026-06-04,Johan Andersson,Booking change,Standard,0,No,2.1,No,No,No,No,Resolved
+NF-K0099,2026-06-20,Johan Andersson,Booking change,Standard,0,No,3.0,No,No,No,No,Resolved
+NF-K0100,2026-05-12,Johan Andersson,Booking change,Advanced,0,No,4.4,Yes,Yes,No,No,Resolved
+NF-K0101,2026-06-04,Johan Andersson,New quote,Standard,0,No,4.0,No,No,No,Yes,Resolved
+NF-K0102,2026-04-06,Johan Andersson,New quote,Advanced,0,No,5.0,Yes,No,No,Yes,Resolved
+NF-K0103,2026-05-05,Johan Andersson,Booking change,Standard,0,No,2.8,Yes,No,No,No,Resolved
+NF-K0104,2026-06-20,Johan Andersson,New quote,Standard,0,No,2.9,Yes,No,No,Yes,Resolved
+NF-K0105,2026-06-28,Johan Andersson,New quote,Standard,0,No,2.2,Yes,No,No,Yes,Resolved
+NF-K0106,2026-04-08,Johan Andersson,Pricing clarification,Critical,0,No,10.2,No,Yes,Yes,No,Resolved
+NF-K0107,2026-04-13,Johan Andersson,New quote,Advanced,0,No,8.3,Yes,No,No,No,Resolved
+NF-K0108,2026-06-17,Johan Andersson,Booking change,Standard,0,No,2.1,Yes,No,No,No,Resolved
+NF-K0109,2026-06-21,Johan Andersson,New quote,Standard,0,No,3.5,Yes,No,No,No,Resolved
+NF-K0110,2026-06-10,Johan Andersson,New quote,Advanced,0,No,4.2,No,No,No,Yes,Resolved
+NF-K0111,2026-05-26,Johan Andersson,New quote,Standard,0,No,3.5,Yes,No,No,No,Resolved
+NF-K0112,2026-06-29,Johan Andersson,Complex route request,Standard,0,No,3.3,No,No,No,No,Resolved
+NF-K0113,2026-05-08,Johan Andersson,Delivery issue,Standard,0,No,2.3,Yes,No,No,No,Resolved
+NF-K0114,2026-04-14,Johan Andersson,New quote,Standard,0,No,2.4,Yes,No,No,No,Resolved
+NF-K0115,2026-04-05,Johan Andersson,Special handling request,Standard,0,No,4.7,Yes,Yes,No,Yes,Resolved
+NF-K0116,2026-06-26,Johan Andersson,Special handling request,Standard,1,No,5.5,No,Yes,No,No,Resolved
+NF-K0117,2026-04-02,Johan Andersson,Special handling request,Advanced,0,No,7.0,No,No,Yes,Yes,Resolved
+NF-K0118,2026-04-11,Johan Andersson,Customer complaint,Standard,0,No,2.2,Yes,No,No,No,Resolved
+NF-K0119,2026-06-08,Johan Andersson,Delivery issue,Standard,0,No,2.1,No,No,No,No,Resolved
+NF-K0120,2026-04-08,Johan Andersson,New quote,Standard,0,No,3.5,Yes,No,No,No,Resolved
+NF-K0121,2026-06-21,Johan Andersson,Special handling request,Advanced,0,No,7.1,No,Yes,No,No,Resolved
+NF-K0122,2026-06-05,Johan Andersson,Special handling request,Standard,0,No,4.1,Yes,No,No,No,Resolved
+NF-K0123,2026-06-10,Johan Andersson,Delivery issue,Standard,0,No,6.0,Yes,No,No,No,Resolved
+NF-K0124,2026-04-24,Johan Andersson,Pricing clarification,Advanced,0,No,5.7,Yes,No,No,No,Resolved
+NF-K0125,2026-06-24,Johan Andersson,Pricing clarification,Standard,0,No,3.8,Yes,Yes,No,Yes,Resolved
+NF-K0126,2026-04-22,Johan Andersson,Pricing clarification,Advanced,0,No,4.8,Yes,No,No,No,Resolved
+NF-K0127,2026-04-10,Johan Andersson,Pricing clarification,Standard,0,No,4.6,Yes,No,No,No,Resolved
+NF-K0128,2026-06-29,Johan Andersson,Pricing clarification,Standard,0,No,2.2,Yes,No,No,No,Resolved
+NF-K0129,2026-06-22,Johan Andersson,Delivery issue,Standard,0,No,2.7,Yes,No,No,Yes,Resolved
+NF-K0130,2026-05-26,Johan Andersson,Customer complaint,Standard,0,No,3.3,No,No,No,No,Resolved
+NF-K0131,2026-05-02,Johan Andersson,Booking change,Standard,0,No,1.6,Yes,No,No,No,Resolved
+NF-K0132,2026-04-26,Johan Andersson,New quote,Standard,0,No,2.1,No,No,Yes,No,Resolved
+NF-K0133,2026-06-27,Johan Andersson,Pricing clarification,Standard,0,No,3.2,No,No,No,No,Resolved
+NF-K0134,2026-05-28,Johan Andersson,New quote,Standard,1,No,5.1,No,Yes,No,No,Resolved
+NF-K0135,2026-06-25,Johan Andersson,Complex route request,Standard,0,No,3.6,No,No,Yes,No,Resolved
+NF-K0136,2026-05-27,Johan Andersson,New quote,Advanced,0,No,2.4,Yes,No,No,No,Resolved
+NF-K0137,2026-05-09,Johan Andersson,Delivery issue,Standard,0,No,4.6,Yes,No,No,No,Resolved
+NF-K0138,2026-04-07,Johan Andersson,Pricing clarification,Standard,0,No,2.5,Yes,No,No,No,Resolved
+NF-K0139,2026-05-24,Maja Nyman,Booking change,Advanced,0,No,11.5,No,No,No,No,Resolved
+NF-K0140,2026-06-19,Maja Nyman,Booking change,Advanced,0,No,17.1,Yes,No,No,No,Resolved
+NF-K0141,2026-04-27,Maja Nyman,Special handling request,Advanced,1,Yes,17.0,No,No,No,Yes,Resolved
+NF-K0142,2026-04-21,Maja Nyman,Complex route request,Advanced,0,No,22.2,No,No,No,Yes,Resolved
+NF-K0143,2026-06-12,Maja Nyman,Delivery issue,Critical,1,No,14.9,No,No,No,No,Resolved
+NF-K0144,2026-06-16,Maja Nyman,Complex route request,Advanced,0,No,18.7,Yes,No,No,No,Resolved
+NF-K0145,2026-04-01,Maja Nyman,Booking change,Critical,1,Yes,26.2,No,No,No,No,Resolved
+NF-K0146,2026-05-10,Maja Nyman,Delivery issue,Critical,1,Yes,34.1,No,No,No,No,Resolved
+NF-K0147,2026-06-10,Maja Nyman,Delivery issue,Standard,0,No,12.3,Yes,No,No,Yes,Resolved
+NF-K0148,2026-06-13,Maja Nyman,Delivery issue,Standard,0,No,11.2,Yes,No,No,No,Resolved
+NF-K0149,2026-06-16,Maja Nyman,Special handling request,Advanced,0,No,25.6,Yes,No,No,No,Resolved
+NF-K0150,2026-05-31,Maja Nyman,Customer complaint,Critical,1,No,19.8,No,No,No,Yes,Resolved
+NF-K0151,2026-04-25,Maja Nyman,Complex route request,Standard,0,No,12.5,No,No,No,No,Resolved
+NF-K0152,2026-04-06,Maja Nyman,Booking change,Advanced,1,Yes,8.9,No,No,No,No,Resolved
+NF-K0153,2026-06-28,Maja Nyman,Booking change,Critical,0,No,16.5,Yes,Yes,No,No,Resolved
+NF-K0154,2026-05-13,Maja Nyman,Delivery issue,Advanced,2,Yes,22.3,No,No,No,Yes,Resolved
+NF-K0155,2026-05-16,Maja Nyman,Delivery issue,Advanced,1,Yes,24.3,No,No,No,No,Resolved
+NF-K0156,2026-05-26,Maja Nyman,Customer complaint,Advanced,0,No,29.2,Yes,No,No,Yes,Resolved
+NF-K0157,2026-04-07,Maja Nyman,Special handling request,Critical,1,Yes,12.1,No,No,No,Yes,Resolved
+NF-K0158,2026-06-29,Maja Nyman,Customer complaint,Advanced,1,Yes,10.9,No,No,No,No,Resolved
+NF-K0159,2026-06-18,Maja Nyman,Special handling request,Critical,1,Yes,21.1,No,No,No,Yes,Resolved
+NF-K0160,2026-04-21,Maja Nyman,Complex route request,Critical,1,Yes,42.6,No,No,No,No,Resolved
+NF-K0161,2026-04-11,Maja Nyman,Delivery issue,Advanced,1,Yes,16.6,No,No,No,No,Resolved
+NF-K0162,2026-06-11,Maja Nyman,Complex route request,Advanced,0,No,21.0,Yes,No,No,No,Resolved
+NF-K0163,2026-04-05,Maja Nyman,Special handling request,Standard,1,No,9.6,No,No,No,No,Resolved
+NF-K0164,2026-06-16,Maja Nyman,Complex route request,Standard,1,No,9.1,No,No,No,No,Resolved
+NF-K0165,2026-04-26,Maja Nyman,Customer complaint,Advanced,1,Yes,26.4,No,Yes,No,No,Resolved
+NF-K0166,2026-06-02,Maja Nyman,Special handling request,Advanced,1,No,13.3,No,No,No,No,Resolved
+NF-K0167,2026-06-20,Maja Nyman,Delivery issue,Advanced,1,Yes,12.2,No,No,No,No,Resolved
+NF-K0168,2026-05-17,Maja Nyman,Complex route request,Critical,0,No,32.4,No,No,No,No,Resolved
+NF-K0169,2026-06-26,Maja Nyman,Complex route request,Advanced,1,Yes,10.4,No,No,No,No,Resolved
+NF-K0170,2026-04-26,Maja Nyman,Delivery issue,Critical,1,No,26.5,No,No,No,No,Resolved
+NF-K0171,2026-04-23,Maja Nyman,Complex route request,Advanced,1,Yes,17.3,No,No,No,No,Resolved
+NF-K0172,2026-06-21,Maja Nyman,Special handling request,Advanced,1,Yes,12.4,No,No,No,No,Resolved
+NF-K0173,2026-06-09,Maja Nyman,Complex route request,Advanced,3,Yes,13.2,No,No,No,No,Resolved
+NF-K0174,2026-06-17,Maja Nyman,Complex route request,Advanced,1,Yes,20.3,No,No,No,Yes,Resolved
+NF-K0175,2026-06-29,Maja Nyman,Delivery issue,Advanced,1,Yes,11.9,No,No,Yes,No,Resolved
+NF-K0176,2026-05-31,Maja Nyman,Special handling request,Standard,1,Yes,11.5,No,No,No,No,Resolved
+NF-K0177,2026-06-19,Maja Nyman,Complex route request,Standard,0,No,6.9,Yes,No,No,No,Resolved
+NF-K0178,2026-06-07,Maja Nyman,Customer complaint,Standard,1,No,12.3,No,No,No,No,Resolved
+NF-K0179,2026-04-22,Maja Nyman,Complex route request,Advanced,0,No,13.6,Yes,No,No,No,Resolved
+NF-K0180,2026-05-22,Maja Nyman,Special handling request,Critical,1,No,24.7,No,No,No,No,Resolved
+NF-K0181,2026-04-07,Maja Nyman,Delivery issue,Critical,0,No,24.7,Yes,No,No,Yes,Resolved
+NF-K0182,2026-05-29,Maja Nyman,Special handling request,Advanced,1,Yes,19.5,No,No,No,No,Resolved
+NF-K0183,2026-06-22,Maja Nyman,Delivery issue,Advanced,0,No,20.2,No,No,No,No,Resolved
+NF-K0184,2026-06-23,Maja Nyman,Booking change,Advanced,1,Yes,6.1,No,No,No,No,Resolved
+NF-K0185,2026-05-24,Maja Nyman,Delivery issue,Advanced,0,No,44.4,No,No,No,No,Resolved
+NF-K0186,2026-05-28,Maja Nyman,Special handling request,Critical,1,Yes,14.4,No,No,No,Yes,Resolved
+NF-K0187,2026-05-22,Maja Nyman,Delivery issue,Standard,1,Yes,5.8,No,No,No,Yes,Resolved
+NF-K0188,2026-06-07,Maja Nyman,Pricing clarification,Critical,1,Yes,46.9,No,No,No,No,Resolved
+NF-K0189,2026-06-10,Maja Nyman,Customer complaint,Advanced,1,No,30.7,No,No,No,No,Resolved
+NF-K0190,2026-06-03,Maja Nyman,Customer complaint,Standard,0,No,9.1,Yes,No,No,Yes,Resolved
+NF-K0191,2026-06-27,Maja Nyman,Complex route request,Critical,0,No,14.8,No,No,No,No,Resolved
+NF-K0192,2026-04-14,Maja Nyman,Customer complaint,Critical,0,No,16.2,No,No,No,No,Resolved
+NF-K0193,2026-04-01,Maja Nyman,Customer complaint,Standard,2,Yes,7.9,No,No,No,No,Resolved
+NF-K0194,2026-04-24,Maja Nyman,Complex route request,Critical,0,No,27.2,Yes,No,No,No,Resolved
+NF-K0195,2026-05-07,Maja Nyman,Customer complaint,Critical,0,No,23.9,No,No,No,No,Resolved
+NF-K0196,2026-04-13,Maja Nyman,Special handling request,Critical,1,No,29.5,No,No,No,No,Resolved
+NF-K0197,2026-04-21,Maja Nyman,Booking change,Advanced,0,No,27.1,No,No,No,No,Resolved
+NF-K0198,2026-05-26,Maja Nyman,Special handling request,Critical,0,No,70.4,No,No,No,No,Resolved
+NF-K0199,2026-06-09,Maja Nyman,Customer complaint,Advanced,0,No,17.7,No,No,No,Yes,Resolved
+NF-K0200,2026-05-07,Maja Nyman,Customer complaint,Critical,0,No,33.9,Yes,No,No,No,Resolved
+NF-K0201,2026-04-12,Maja Nyman,Customer complaint,Advanced,2,No,32.9,No,No,No,No,Resolved
+NF-K0202,2026-05-14,Maja Nyman,Customer complaint,Standard,1,Yes,8.3,No,No,No,No,Resolved
+NF-K0203,2026-04-06,Maja Nyman,Complex route request,Standard,0,No,7.0,No,No,No,No,Resolved
+NF-K0204,2026-06-12,Maja Nyman,Delivery issue,Advanced,0,No,17.8,Yes,No,No,No,Resolved
+NF-K0205,2026-06-04,Maja Nyman,Delivery issue,Critical,1,Yes,41.1,No,No,No,Yes,Resolved
+NF-K0206,2026-04-11,Maja Nyman,New quote,Standard,1,No,8.8,No,No,No,No,Resolved
+NF-K0207,2026-04-02,Maja Nyman,Booking change,Advanced,3,Yes,19.8,No,No,Yes,No,Resolved
+NF-K0208,2026-04-26,Maja Nyman,Customer complaint,Advanced,2,No,8.9,No,No,No,No,Resolved
+NF-K0209,2026-05-07,Maja Nyman,Customer complaint,Standard,0,No,5.5,Yes,No,No,Yes,Resolved
+NF-K0210,2026-05-19,Maja Nyman,Special handling request,Advanced,1,Yes,9.3,No,No,No,Yes,Resolved
+NF-K0211,2026-04-10,Maja Nyman,Special handling request,Critical,1,Yes,11.9,No,No,No,No,Resolved
+NF-K0212,2026-05-20,Maja Nyman,New quote,Standard,1,No,8.1,No,No,No,No,Resolved
+NF-K0213,2026-06-27,Maja Nyman,Customer complaint,Critical,0,No,11.4,Yes,No,No,No,Resolved
+NF-K0214,2026-06-20,Maja Nyman,Complex route request,Standard,1,Yes,6.8,No,No,No,Yes,Resolved
+NF-K0215,2026-06-15,Maja Nyman,Complex route request,Critical,1,Yes,21.9,No,No,No,No,Resolved
+NF-K0216,2026-05-29,Maja Nyman,Complex route request,Critical,1,Yes,24.4,No,No,No,No,Resolved
+NF-K0217,2026-05-09,Maja Nyman,Complex route request,Critical,0,No,65.6,Yes,No,No,No,Resolved
+NF-K0218,2026-06-20,Maja Nyman,Customer complaint,Critical,0,No,15.4,No,No,No,No,Resolved
+NF-K0219,2026-06-06,Maja Nyman,Customer complaint,Advanced,0,No,27.2,No,No,No,Yes,Resolved
+NF-K0220,2026-05-20,Maja Nyman,Delivery issue,Advanced,0,No,19.2,No,No,No,No,Resolved
+NF-K0221,2026-05-18,Maja Nyman,Delivery issue,Critical,1,Yes,24.4,No,No,No,Yes,Resolved
+NF-K0222,2026-04-11,Maja Nyman,Complex route request,Standard,1,No,5.6,No,No,No,No,Resolved
+NF-K0223,2026-05-25,Maja Nyman,Complex route request,Standard,0,No,7.2,Yes,No,No,No,Resolved
+NF-K0224,2026-05-30,Maja Nyman,Customer complaint,Critical,1,Yes,23.5,No,No,No,No,Resolved
+NF-K0225,2026-04-24,Maja Nyman,Customer complaint,Critical,1,Yes,21.7,No,No,No,No,Resolved
+NF-K0226,2026-06-02,Maja Nyman,Customer complaint,Advanced,2,No,9.0,No,No,No,No,Resolved
+NF-K0227,2026-05-09,Maja Nyman,Delivery issue,Critical,0,No,45.9,No,No,No,No,Resolved
+NF-K0228,2026-04-08,Maja Nyman,Customer complaint,Advanced,1,Yes,13.0,No,Yes,No,No,Resolved
+NF-K0229,2026-04-09,Maja Nyman,Customer complaint,Critical,0,No,14.1,No,No,No,No,Resolved
+NF-K0230,2026-05-02,Maja Nyman,Booking change,Critical,0,No,30.3,Yes,Yes,No,No,Resolved
+NF-K0231,2026-04-24,Susan Granholm,New quote,Standard,0,No,3.1,Yes,No,No,Yes,Resolved
+NF-K0232,2026-06-25,Susan Granholm,Delivery issue,Standard,0,No,8.2,No,No,No,No,Resolved
+NF-K0233,2026-04-19,Susan Granholm,Complex route request,Standard,0,No,4.0,Yes,No,No,Yes,Resolved
+NF-K0234,2026-06-10,Susan Granholm,Pricing clarification,Standard,0,No,2.7,Yes,No,No,Yes,Resolved
+NF-K0235,2026-04-11,Susan Granholm,New quote,Standard,0,No,7.5,Yes,No,No,No,Resolved
+NF-K0236,2026-04-08,Susan Granholm,New quote,Standard,0,No,7.9,Yes,No,No,Yes,Resolved
+NF-K0237,2026-06-05,Susan Granholm,Booking change,Critical,0,No,16.0,Yes,No,No,No,Resolved
+NF-K0238,2026-05-10,Susan Granholm,Special handling request,Standard,0,No,4.9,Yes,No,No,No,Resolved
+NF-K0239,2026-04-14,Susan Granholm,New quote,Standard,0,No,3.5,Yes,No,No,No,Resolved
+NF-K0240,2026-04-13,Susan Granholm,New quote,Standard,0,No,5.4,Yes,No,No,No,Resolved
+NF-K0241,2026-06-04,Susan Granholm,Delivery issue,Critical,0,No,18.3,Yes,No,No,No,Resolved
+NF-K0242,2026-06-13,Susan Granholm,Booking change,Standard,0,No,7.1,Yes,No,No,No,Resolved
+NF-K0243,2026-05-06,Susan Granholm,Booking change,Advanced,0,No,8.2,Yes,No,No,No,Resolved
+NF-K0244,2026-05-20,Susan Granholm,New quote,Advanced,0,No,8.0,Yes,No,No,No,Resolved
+NF-K0245,2026-06-07,Susan Granholm,Complex route request,Standard,0,No,5.6,No,No,No,No,Resolved
+NF-K0246,2026-04-07,Susan Granholm,Pricing clarification,Advanced,0,No,6.5,Yes,No,No,Yes,Resolved
+NF-K0247,2026-05-29,Susan Granholm,Delivery issue,Advanced,0,No,8.8,Yes,No,No,No,Pending at quarter end
+NF-K0248,2026-04-24,Susan Granholm,Booking change,Standard,0,No,4.9,Yes,No,No,No,Resolved
+NF-K0249,2026-04-17,Susan Granholm,New quote,Critical,0,No,9.9,Yes,No,No,No,Resolved
+NF-K0250,2026-04-13,Susan Granholm,New quote,Advanced,0,No,14.5,Yes,No,No,Yes,Resolved
+NF-K0251,2026-06-22,Susan Granholm,New quote,Standard,0,No,7.5,Yes,No,No,Yes,Resolved
+NF-K0252,2026-05-26,Susan Granholm,Booking change,Advanced,1,No,16.2,No,No,No,No,Resolved
+NF-K0253,2026-04-03,Susan Granholm,New quote,Standard,0,No,6.2,Yes,No,No,Yes,Resolved
+NF-K0254,2026-04-11,Susan Granholm,Complex route request,Advanced,0,No,8.1,Yes,No,No,Yes,Resolved
+NF-K0255,2026-04-04,Susan Granholm,New quote,Advanced,0,No,10.2,Yes,No,No,Yes,Resolved
+NF-K0256,2026-06-12,Susan Granholm,Customer complaint,Standard,0,No,10.3,Yes,No,No,Yes,Resolved
+NF-K0257,2026-05-04,Susan Granholm,New quote,Advanced,2,No,9.7,No,No,No,Yes,Resolved
+NF-K0258,2026-06-04,Susan Granholm,Booking change,Standard,0,No,3.1,Yes,No,No,No,Resolved
+NF-K0259,2026-06-10,Susan Granholm,Pricing clarification,Advanced,0,No,14.7,Yes,No,No,Yes,Resolved
+NF-K0260,2026-04-17,Susan Granholm,Pricing clarification,Advanced,1,No,6.6,No,No,No,No,Resolved
+NF-K0261,2026-06-22,Susan Granholm,Booking change,Standard,0,No,6.4,Yes,No,No,Yes,Resolved
+NF-K0262,2026-04-23,Susan Granholm,Customer complaint,Standard,0,No,4.3,Yes,No,No,No,Resolved
+NF-K0263,2026-06-08,Susan Granholm,Delivery issue,Standard,0,No,7.7,Yes,No,No,Yes,Resolved
+NF-K0264,2026-05-28,Susan Granholm,Complex route request,Advanced,0,No,9.0,No,Yes,No,No,Resolved
+NF-K0265,2026-06-20,Susan Granholm,Special handling request,Advanced,0,No,7.6,No,No,No,No,Resolved
+NF-K0266,2026-04-11,Susan Granholm,Booking change,Critical,0,No,19.7,Yes,No,No,No,Resolved
+NF-K0267,2026-05-14,Susan Granholm,Complex route request,Critical,0,No,22.6,Yes,Yes,No,Yes,Resolved
+NF-K0268,2026-04-16,Susan Granholm,New quote,Standard,0,No,10.0,Yes,No,No,No,Resolved
+NF-K0269,2026-04-05,Susan Granholm,Pricing clarification,Advanced,1,Yes,7.2,No,No,No,Yes,Resolved
+NF-K0270,2026-04-12,Susan Granholm,New quote,Standard,0,No,7.5,No,No,No,Yes,Resolved
+NF-K0271,2026-04-12,Susan Granholm,Customer complaint,Standard,0,No,4.1,Yes,No,No,No,Resolved
+NF-K0272,2026-04-07,Susan Granholm,Customer complaint,Advanced,0,No,9.5,Yes,No,No,Yes,Resolved
+NF-K0273,2026-05-26,Susan Granholm,Pricing clarification,Advanced,0,No,11.0,Yes,No,No,No,Resolved
+NF-K0274,2026-06-06,Susan Granholm,New quote,Standard,0,No,3.6,Yes,No,No,No,Resolved
+NF-K0275,2026-04-27,Susan Granholm,Complex route request,Critical,0,No,15.4,Yes,No,No,No,Resolved
+NF-K0276,2026-06-14,Susan Granholm,Booking change,Standard,0,No,4.9,Yes,No,No,No,Resolved
+NF-K0277,2026-05-25,Susan Granholm,New quote,Standard,0,No,6.3,Yes,No,No,Yes,Resolved
+NF-K0278,2026-06-13,Susan Granholm,Customer complaint,Advanced,0,No,14.8,Yes,No,No,No,Resolved
+NF-K0279,2026-04-20,Susan Granholm,Booking change,Standard,0,No,9.6,No,Yes,No,Yes,Resolved
+NF-K0280,2026-04-13,Susan Granholm,Customer complaint,Standard,0,No,10.8,Yes,No,No,No,Resolved
+NF-K0281,2026-06-08,Susan Granholm,Booking change,Standard,0,No,5.2,No,No,No,No,Resolved
+NF-K0282,2026-04-26,Susan Granholm,Pricing clarification,Advanced,1,Yes,14.4,No,No,No,Yes,Resolved
+NF-K0283,2026-05-20,Susan Granholm,New quote,Standard,0,No,4.1,Yes,No,No,Yes,Resolved
+NF-K0284,2026-05-11,Susan Granholm,New quote,Standard,0,No,3.5,Yes,No,No,Yes,Resolved
+NF-K0285,2026-04-03,Susan Granholm,Complex route request,Standard,0,No,9.5,Yes,No,No,No,Resolved
+NF-K0286,2026-05-02,Susan Granholm,New quote,Standard,0,No,7.8,Yes,No,No,Yes,Resolved
+NF-K0287,2026-04-17,Susan Granholm,New quote,Standard,0,No,5.1,No,No,No,Yes,Resolved
+NF-K0288,2026-05-05,Susan Granholm,Delivery issue,Standard,1,Yes,5.8,No,No,No,No,Resolved
+NF-K0289,2026-05-14,Susan Granholm,Booking change,Standard,0,No,6.4,Yes,No,No,No,Resolved
+NF-K0290,2026-05-19,Susan Granholm,Booking change,Advanced,0,No,7.0,Yes,No,No,No,Resolved
+NF-K0291,2026-06-02,Susan Granholm,Customer complaint,Standard,0,No,6.9,Yes,No,No,Yes,Resolved
+NF-K0292,2026-06-27,Susan Granholm,Booking change,Advanced,0,No,13.0,Yes,No,No,No,Resolved
+NF-K0293,2026-04-11,Susan Granholm,Customer complaint,Standard,1,No,6.6,No,No,Yes,No,Resolved
+NF-K0294,2026-05-17,Susan Granholm,Delivery issue,Advanced,0,No,9.0,Yes,No,No,Yes,Resolved
+NF-K0295,2026-06-01,Susan Granholm,Delivery issue,Standard,0,No,7.6,Yes,No,No,No,Resolved
+NF-K0296,2026-04-29,Susan Granholm,Complex route request,Standard,0,No,4.5,Yes,No,No,Yes,Resolved
+NF-K0297,2026-04-09,Susan Granholm,Special handling request,Advanced,0,No,9.5,Yes,No,No,Yes,Resolved
+NF-K0298,2026-06-12,Susan Granholm,Pricing clarification,Advanced,0,No,15.0,Yes,No,No,Yes,Resolved
+NF-K0299,2026-06-16,Susan Granholm,New quote,Advanced,0,No,7.9,Yes,No,No,Yes,Resolved
+NF-K0300,2026-05-26,Susan Granholm,Booking change,Standard,0,No,2.6,Yes,No,No,No,Resolved
+NF-K0301,2026-06-21,Susan Granholm,Booking change,Standard,0,No,6.9,Yes,No,No,No,Resolved
+NF-K0302,2026-06-13,Susan Granholm,Delivery issue,Standard,1,Yes,3.6,No,No,No,Yes,Resolved
+NF-K0303,2026-04-21,Susan Granholm,New quote,Standard,2,No,4.6,No,No,No,Yes,Resolved
+NF-K0304,2026-04-13,Susan Granholm,Special handling request,Critical,0,No,10.6,No,No,No,No,Resolved
+NF-K0305,2026-05-18,Susan Granholm,Pricing clarification,Standard,0,No,6.5,Yes,No,No,No,Resolved
+NF-K0306,2026-04-02,Susan Granholm,Complex route request,Standard,0,No,4.7,Yes,No,No,No,Resolved
+NF-K0307,2026-05-11,Susan Granholm,New quote,Standard,0,No,7.0,Yes,No,No,No,Resolved
+NF-K0308,2026-05-27,Susan Granholm,Delivery issue,Advanced,0,No,12.0,No,No,No,No,Resolved
+NF-K0309,2026-04-15,Susan Granholm,Booking change,Advanced,0,No,10.0,No,No,No,Yes,Resolved
+NF-K0310,2026-05-23,Susan Granholm,New quote,Standard,0,No,3.0,Yes,No,No,Yes,Resolved
+NF-K0311,2026-06-28,Susan Granholm,New quote,Standard,0,No,4.9,No,No,No,Yes,Resolved
+NF-K0312,2026-05-10,Susan Granholm,Delivery issue,Standard,0,No,5.1,Yes,No,No,No,Resolved
+NF-K0313,2026-05-01,Susan Granholm,Customer complaint,Standard,0,No,10.2,No,No,No,Yes,Resolved
+NF-K0314,2026-04-28,Susan Granholm,Booking change,Standard,0,No,8.9,Yes,No,No,Yes,Resolved
+NF-K0315,2026-06-04,Susan Granholm,New quote,Standard,0,No,6.6,No,No,No,No,Resolved
+NF-K0316,2026-04-30,Susan Granholm,Pricing clarification,Standard,1,No,4.1,No,No,No,No,Resolved
+NF-K0317,2026-05-04,Susan Granholm,Booking change,Standard,0,No,9.1,Yes,No,No,No,Resolved
+NF-K0318,2026-04-23,Susan Granholm,Special handling request,Standard,0,No,3.2,Yes,No,No,No,Resolved
+NF-K0319,2026-05-09,Susan Granholm,Pricing clarification,Standard,0,No,8.5,Yes,No,No,Yes,Resolved
+NF-K0320,2026-06-09,Susan Granholm,Customer complaint,Standard,0,No,5.7,Yes,No,No,No,Resolved
+NF-K0321,2026-05-02,Susan Granholm,Delivery issue,Advanced,0,No,7.4,Yes,No,No,No,Resolved
+NF-K0322,2026-06-10,Susan Granholm,Special handling request,Advanced,0,No,12.7,Yes,No,No,Yes,Resolved
+NF-K0323,2026-06-10,Susan Granholm,New quote,Advanced,0,No,5.5,Yes,No,No,No,Resolved
+NF-K0324,2026-05-10,Susan Granholm,Delivery issue,Advanced,0,No,7.7,Yes,No,No,Yes,Resolved
+NF-K0325,2026-06-08,Susan Granholm,Delivery issue,Standard,0,No,4.5,Yes,No,No,Yes,Resolved
+NF-K0326,2026-05-08,Susan Granholm,Pricing clarification,Critical,0,No,12.7,No,No,No,No,Resolved
+NF-K0327,2026-05-07,Susan Granholm,Customer complaint,Standard,1,No,3.8,No,No,No,No,Resolved
+NF-K0328,2026-05-22,Susan Granholm,Special handling request,Standard,1,Yes,5.4,No,No,No,No,Resolved
+NF-K0329,2026-05-23,Susan Granholm,Booking change,Standard,0,No,6.5,Yes,No,No,No,Resolved
+NF-K0330,2026-06-11,Susan Granholm,New quote,Advanced,0,No,12.8,Yes,No,No,Yes,Resolved
+NF-K0331,2026-05-09,Susan Granholm,Pricing clarification,Standard,0,No,8.0,No,No,No,No,Resolved
+NF-K0332,2026-06-01,Susan Granholm,Complex route request,Advanced,1,No,12.0,No,No,No,No,Resolved
+NF-K0333,2026-05-19,Susan Granholm,New quote,Standard,0,No,6.1,Yes,No,No,No,Resolved
+NF-K0334,2026-04-20,Susan Granholm,Customer complaint,Standard,2,No,8.0,No,No,No,No,Resolved
+NF-K0335,2026-06-18,Elias Smeds,Pricing clarification,Advanced,0,No,3.7,Yes,No,No,Yes,Resolved
+NF-K0336,2026-06-11,Elias Smeds,Booking change,Standard,0,No,2.5,Yes,No,No,No,Resolved
+NF-K0337,2026-06-16,Elias Smeds,New quote,Standard,0,No,1.5,Yes,No,No,No,Resolved
+NF-K0338,2026-06-11,Elias Smeds,Booking change,Standard,0,No,2.2,Yes,No,No,No,Resolved
+NF-K0339,2026-06-12,Elias Smeds,Booking change,Standard,0,No,1.5,Yes,No,No,No,Resolved
+NF-K0340,2026-05-08,Elias Smeds,Booking change,Standard,0,No,4.1,Yes,No,No,No,Resolved
+NF-K0341,2026-05-30,Elias Smeds,Pricing clarification,Standard,0,No,1.5,Yes,No,No,No,Resolved
+NF-K0342,2026-04-01,Elias Smeds,Complex route request,Standard,0,No,1.4,Yes,No,No,Yes,Resolved
+NF-K0343,2026-06-10,Elias Smeds,New quote,Advanced,0,No,5.4,Yes,No,No,No,Resolved
+NF-K0344,2026-04-25,Elias Smeds,Booking change,Advanced,0,No,3.3,Yes,No,No,No,Resolved
+NF-K0345,2026-04-17,Elias Smeds,Pricing clarification,Standard,0,No,1.7,Yes,No,No,No,Resolved
+NF-K0346,2026-05-04,Elias Smeds,Delivery issue,Standard,0,No,2.3,Yes,No,No,No,Resolved
+NF-K0347,2026-05-06,Elias Smeds,Booking change,Standard,0,No,1.9,Yes,No,Yes,No,Pending at quarter end
+NF-K0348,2026-05-18,Elias Smeds,Booking change,Standard,0,No,2.1,Yes,No,No,No,Resolved
+NF-K0349,2026-06-22,Elias Smeds,Delivery issue,Standard,0,No,3.0,Yes,No,No,No,Resolved
+NF-K0350,2026-06-07,Elias Smeds,New quote,Standard,0,No,3.3,Yes,No,No,No,Resolved
+NF-K0351,2026-04-22,Elias Smeds,Customer complaint,Standard,0,No,2.4,Yes,No,No,No,Resolved
+NF-K0352,2026-04-10,Elias Smeds,Booking change,Advanced,0,No,3.4,Yes,No,No,No,Resolved
+NF-K0353,2026-04-17,Elias Smeds,Booking change,Advanced,0,No,4.4,Yes,No,No,No,Resolved
+NF-K0354,2026-06-29,Elias Smeds,Delivery issue,Advanced,0,No,3.7,No,No,No,No,Resolved
+NF-K0355,2026-06-12,Elias Smeds,Delivery issue,Standard,0,No,2.4,Yes,No,No,No,Resolved
+NF-K0356,2026-04-25,Elias Smeds,Pricing clarification,Standard,0,No,3.0,Yes,No,No,No,Resolved
+NF-K0357,2026-06-15,Elias Smeds,Booking change,Advanced,0,No,6.2,Yes,No,No,No,Resolved
+NF-K0358,2026-04-11,Elias Smeds,Booking change,Advanced,0,No,3.9,Yes,No,No,No,Resolved
+NF-K0359,2026-05-22,Elias Smeds,Booking change,Standard,0,No,2.7,Yes,No,No,No,Resolved
+NF-K0360,2026-05-01,Elias Smeds,New quote,Standard,0,No,1.7,Yes,No,No,No,Resolved
+NF-K0361,2026-06-28,Elias Smeds,Pricing clarification,Standard,0,No,2.7,Yes,No,No,Yes,Resolved
+NF-K0362,2026-06-21,Elias Smeds,Customer complaint,Standard,0,No,2.4,Yes,Yes,No,No,Resolved
+NF-K0363,2026-06-16,Elias Smeds,Booking change,Standard,0,No,2.6,Yes,No,No,No,Resolved
+NF-K0364,2026-06-07,Elias Smeds,Pricing clarification,Standard,0,No,2.4,Yes,No,No,No,Resolved
+NF-K0365,2026-05-31,Elias Smeds,Booking change,Standard,0,No,1.5,Yes,No,No,Yes,Resolved
+NF-K0366,2026-04-04,Elias Smeds,Special handling request,Standard,0,No,1.8,Yes,No,No,Yes,Pending at quarter end
+NF-K0367,2026-04-10,Elias Smeds,Pricing clarification,Advanced,0,No,5.6,Yes,No,No,No,Resolved
+NF-K0368,2026-04-21,Elias Smeds,New quote,Standard,0,No,1.5,Yes,No,No,No,Resolved
+NF-K0369,2026-05-19,Elias Smeds,Booking change,Standard,0,No,2.3,Yes,No,No,No,Resolved
+NF-K0370,2026-05-06,Elias Smeds,New quote,Advanced,0,No,3.5,Yes,No,No,No,Resolved
+NF-K0371,2026-04-28,Elias Smeds,Delivery issue,Advanced,0,No,6.3,Yes,No,No,No,Resolved
+NF-K0372,2026-06-25,Elias Smeds,Booking change,Standard,0,No,1.8,Yes,No,No,No,Resolved
+NF-K0373,2026-06-15,Elias Smeds,Pricing clarification,Standard,0,No,2.6,Yes,No,No,No,Resolved
+NF-K0374,2026-06-05,Elias Smeds,Booking change,Standard,0,No,1.4,Yes,No,Yes,No,Resolved
+NF-K0375,2026-06-03,Elias Smeds,New quote,Advanced,0,No,3.0,Yes,No,No,No,Resolved
+NF-K0376,2026-06-15,Elias Smeds,Complex route request,Standard,0,No,1.0,Yes,No,No,No,Resolved
+NF-K0377,2026-06-22,Elias Smeds,New quote,Standard,0,No,4.0,Yes,No,No,No,Resolved
+NF-K0378,2026-05-03,Elias Smeds,New quote,Standard,0,No,1.9,Yes,No,No,No,Resolved
+NF-K0379,2026-04-24,Elias Smeds,Delivery issue,Standard,0,No,3.3,Yes,No,No,No,Resolved
+NF-K0380,2026-06-08,Elias Smeds,New quote,Standard,0,No,2.7,Yes,No,No,No,Resolved
+NF-K0381,2026-06-28,Elias Smeds,Booking change,Standard,0,No,3.3,Yes,No,No,No,Resolved
+NF-K0382,2026-06-06,Elias Smeds,Delivery issue,Standard,0,No,3.0,Yes,No,No,No,Resolved
+NF-K0383,2026-04-19,Elias Smeds,Delivery issue,Standard,0,No,2.1,Yes,Yes,No,No,Resolved
+NF-K0384,2026-05-03,Elias Smeds,Booking change,Standard,0,No,2.6,Yes,No,No,No,Resolved
+NF-K0385,2026-05-19,Elias Smeds,New quote,Standard,0,No,4.3,Yes,No,No,Yes,Resolved
+NF-K0386,2026-06-28,Elias Smeds,Booking change,Standard,0,No,2.4,Yes,No,No,No,Resolved
+NF-K0387,2026-04-13,Elias Smeds,Pricing clarification,Standard,0,No,2.7,Yes,No,No,No,Resolved
+NF-K0388,2026-05-14,Elias Smeds,New quote,Standard,0,No,3.6,Yes,No,No,No,Resolved
+NF-K0389,2026-06-24,Elias Smeds,Complex route request,Standard,0,No,3.3,Yes,No,No,No,Resolved
+NF-K0390,2026-06-15,Elias Smeds,Delivery issue,Standard,0,No,2.8,Yes,No,No,No,Resolved
+NF-K0391,2026-06-27,Elias Smeds,Booking change,Standard,0,No,1.7,Yes,No,No,No,Pending at quarter end
+NF-K0392,2026-05-19,Elias Smeds,Complex route request,Standard,0,No,1.4,Yes,No,No,No,Resolved
+NF-K0393,2026-06-10,Elias Smeds,New quote,Critical,0,No,5.6,Yes,No,No,No,Resolved
+NF-K0394,2026-05-22,Elias Smeds,Pricing clarification,Advanced,0,No,3.3,Yes,No,No,No,Resolved
+NF-K0395,2026-06-13,Elias Smeds,Booking change,Advanced,0,No,6.1,Yes,No,No,Yes,Resolved
+NF-K0396,2026-04-02,Elias Smeds,Complex route request,Standard,0,No,2.2,Yes,No,No,No,Resolved
+NF-K0397,2026-06-27,Elias Smeds,New quote,Standard,0,No,2.9,Yes,No,No,No,Resolved
+NF-K0398,2026-06-24,Elias Smeds,Special handling request,Standard,0,No,1.7,Yes,No,No,No,Resolved
+NF-K0399,2026-04-20,Elias Smeds,Booking change,Standard,0,No,2.4,Yes,No,No,No,Resolved
+NF-K0400,2026-05-27,Elias Smeds,Booking change,Standard,0,No,1.0,Yes,No,No,No,Resolved
+NF-K0401,2026-05-20,Elias Smeds,Booking change,Standard,0,No,3.3,Yes,No,No,No,Resolved
+NF-K0402,2026-05-09,Elias Smeds,Booking change,Standard,0,No,3.2,Yes,No,No,No,Resolved
+NF-K0403,2026-06-15,Elias Smeds,Pricing clarification,Standard,0,No,1.5,Yes,No,No,No,Resolved
+NF-K0404,2026-06-03,Elias Smeds,Booking change,Standard,1,Yes,1.3,No,No,No,No,Resolved
+NF-K0405,2026-05-02,Elias Smeds,Complex route request,Standard,0,No,3.0,Yes,No,No,No,Resolved
+NF-K0406,2026-06-30,Elias Smeds,Booking change,Standard,0,No,3.7,Yes,No,No,No,Resolved
+NF-K0407,2026-04-11,Elias Smeds,Booking change,Standard,0,No,2.7,Yes,No,No,No,Resolved
+NF-K0408,2026-06-23,Elias Smeds,Booking change,Standard,0,No,1.8,Yes,No,No,No,Resolved
+NF-K0409,2026-04-24,Elias Smeds,Booking change,Standard,0,No,1.2,Yes,No,No,No,Resolved
+NF-K0410,2026-04-14,Elias Smeds,Pricing clarification,Standard,0,No,2.4,Yes,No,No,No,Resolved
+NF-K0411,2026-05-24,Elias Smeds,New quote,Advanced,0,No,3.5,Yes,No,No,No,Resolved
+NF-K0412,2026-04-20,Elias Smeds,New quote,Standard,0,No,1.9,Yes,No,No,No,Resolved
+NF-K0413,2026-05-27,Elias Smeds,New quote,Advanced,0,No,3.5,Yes,No,No,No,Resolved
+NF-K0414,2026-06-25,Elias Smeds,Booking change,Standard,0,No,2.9,Yes,No,No,No,Resolved
+NF-K0415,2026-04-24,Elias Smeds,New quote,Standard,0,No,2.1,Yes,No,No,No,Resolved
+NF-K0416,2026-05-19,Elias Smeds,Booking change,Standard,0,No,2.1,Yes,No,No,No,Resolved
+NF-K0417,2026-04-18,Elias Smeds,Delivery issue,Standard,0,No,2.0,Yes,No,No,No,Resolved
+NF-K0418,2026-05-24,Elias Smeds,Booking change,Standard,0,No,1.3,Yes,No,Yes,Yes,Resolved
+NF-K0419,2026-05-30,Elias Smeds,Delivery issue,Standard,0,No,2.0,Yes,No,No,Yes,Resolved
+NF-K0420,2026-04-24,Elias Smeds,New quote,Advanced,0,No,6.5,Yes,No,No,No,Resolved
+NF-K0421,2026-06-12,Elias Smeds,Delivery issue,Standard,0,No,2.3,No,No,No,No,Resolved
+NF-K0422,2026-04-17,Elias Smeds,New quote,Advanced,0,No,3.0,Yes,No,No,No,Resolved
+NF-K0423,2026-06-13,Elias Smeds,Booking change,Standard,0,No,2.4,Yes,No,No,No,Resolved
+NF-K0424,2026-04-20,Elias Smeds,Complex route request,Advanced,0,No,5.5,Yes,No,No,No,Resolved
+NF-K0425,2026-05-13,Elias Smeds,New quote,Standard,0,No,1.3,Yes,No,No,No,Resolved
+NF-K0426,2026-05-21,Elias Smeds,Pricing clarification,Standard,0,No,4.0,No,No,No,Yes,Resolved
+NF-K0427,2026-06-29,Elias Smeds,New quote,Standard,0,No,2.6,Yes,No,No,No,Resolved
+NF-K0428,2026-04-05,Elias Smeds,Pricing clarification,Standard,0,No,2.1,Yes,No,No,No,Resolved
+NF-K0429,2026-05-17,Elias Smeds,New quote,Standard,0,No,2.8,Yes,No,No,No,Resolved
+NF-K0430,2026-05-03,Elias Smeds,New quote,Standard,0,No,1.7,Yes,No,No,No,Resolved
+NF-K0431,2026-04-23,Elias Smeds,Special handling request,Standard,0,No,2.8,Yes,No,No,No,Resolved
+NF-K0432,2026-06-12,Elias Smeds,New quote,Advanced,0,No,3.0,Yes,No,No,No,Resolved
+NF-K0433,2026-06-09,Elias Smeds,Delivery issue,Advanced,1,Yes,8.9,No,No,No,No,Resolved
+NF-K0434,2026-06-16,Elias Smeds,Complex route request,Standard,0,No,1.8,Yes,No,No,No,Resolved
+NF-K0435,2026-06-15,Elias Smeds,New quote,Standard,0,No,2.1,Yes,No,No,No,Resolved
+NF-K0436,2026-05-28,Elias Smeds,Booking change,Advanced,1,No,4.3,No,No,No,No,Resolved
+NF-K0437,2026-06-22,Elias Smeds,Booking change,Standard,0,No,1.3,Yes,No,No,No,Resolved
+NF-K0438,2026-05-22,Elias Smeds,Delivery issue,Standard,0,No,2.4,Yes,No,No,No,Resolved
+NF-K0439,2026-05-24,Elias Smeds,New quote,Standard,0,No,1.7,Yes,No,No,No,Resolved
+NF-K0440,2026-04-09,Elias Smeds,Booking change,Advanced,0,No,5.2,Yes,No,No,No,Resolved
+NF-K0441,2026-05-20,Elias Smeds,Booking change,Standard,0,No,3.8,Yes,No,No,Yes,Resolved
+NF-K0442,2026-04-08,Elias Smeds,Pricing clarification,Standard,0,No,1.7,Yes,No,No,No,Resolved
+NF-K0443,2026-06-05,Elias Smeds,New quote,Advanced,0,No,4.8,Yes,No,No,No,Resolved
+NF-K0444,2026-04-16,Elias Smeds,Pricing clarification,Standard,0,No,1.7,Yes,No,No,No,Resolved
+NF-K0445,2026-05-31,Elias Smeds,Complex route request,Standard,0,No,2.4,Yes,No,No,No,Resolved
+NF-K0446,2026-05-30,Elias Smeds,New quote,Standard,0,No,1.7,Yes,No,No,No,Resolved
+NF-K0447,2026-05-05,Elias Smeds,Complex route request,Standard,0,No,2.3,Yes,No,No,No,Resolved
+NF-K0448,2026-06-12,Elias Smeds,New quote,Standard,0,No,1.6,Yes,No,No,No,Resolved
+NF-K0449,2026-06-04,Elias Smeds,New quote,Advanced,0,No,5.0,No,No,No,No,Resolved
+NF-K0450,2026-05-01,Elias Smeds,Pricing clarification,Standard,0,No,2.2,Yes,No,No,No,Resolved
+NF-K0451,2026-04-30,Elias Smeds,Pricing clarification,Standard,0,No,2.1,Yes,No,No,No,Resolved
+NF-K0452,2026-06-18,Elias Smeds,Pricing clarification,Standard,0,No,2.8,Yes,No,No,No,Resolved
+NF-K0453,2026-04-04,Elias Smeds,Booking change,Standard,0,No,5.3,Yes,No,No,No,Resolved
+NF-K0454,2026-05-25,Elias Smeds,New quote,Advanced,0,No,5.1,Yes,No,No,No,Resolved
+NF-K0455,2026-04-17,Elias Smeds,New quote,Standard,0,No,1.7,Yes,No,No,No,Resolved
+NF-K0456,2026-05-08,Elias Smeds,Pricing clarification,Advanced,0,No,2.2,Yes,No,No,No,Resolved
+NF-K0457,2026-05-04,Elias Smeds,Pricing clarification,Critical,0,No,5.7,Yes,No,No,Yes,Resolved
+NF-K0458,2026-05-20,Elias Smeds,Pricing clarification,Advanced,0,No,3.9,Yes,No,No,No,Resolved
+NF-K0459,2026-06-05,Elias Smeds,Booking change,Standard,0,No,2.9,No,No,No,No,Resolved
+NF-K0460,2026-05-01,Elias Smeds,Booking change,Standard,0,No,1.5,Yes,No,No,No,Resolved
+NF-K0461,2026-05-16,Elias Smeds,Customer complaint,Standard,0,No,1.4,Yes,No,No,Yes,Resolved
+NF-K0462,2026-04-24,Elias Smeds,Complex route request,Advanced,0,No,5.2,Yes,No,No,No,Resolved
+NF-K0463,2026-04-09,Elias Smeds,Booking change,Standard,0,No,3.7,Yes,No,No,No,Resolved
+NF-K0464,2026-05-03,Elias Smeds,Delivery issue,Standard,0,No,1.9,Yes,No,No,Yes,Resolved
+NF-K0465,2026-04-07,Elias Smeds,Pricing clarification,Standard,2,Yes,2.5,No,No,No,No,Resolved
+NF-K0466,2026-04-24,Elias Smeds,New quote,Standard,0,No,1.3,Yes,No,No,No,Resolved
+NF-K0467,2026-05-09,Elias Smeds,Booking change,Standard,0,No,1.8,Yes,No,No,No,Resolved
+NF-K0468,2026-04-25,Elias Smeds,Complex route request,Advanced,0,No,5.6,Yes,No,No,No,Resolved
+NF-K0469,2026-04-22,Elias Smeds,Pricing clarification,Standard,0,No,3.7,No,No,No,No,Resolved
+NF-K0470,2026-04-26,Elias Smeds,New quote,Standard,0,No,2.4,Yes,No,No,No,Resolved
+NF-K0471,2026-06-15,Elias Smeds,Pricing clarification,Standard,0,No,6.8,Yes,No,No,No,Resolved
+NF-K0472,2026-04-12,Elias Smeds,Pricing clarification,Standard,0,No,2.0,Yes,No,No,No,Resolved
+NF-K0473,2026-04-10,Elias Smeds,Booking change,Advanced,0,No,2.3,Yes,No,No,No,Resolved
+NF-K0474,2026-05-17,Elias Smeds,New quote,Standard,0,No,1.7,Yes,No,No,Yes,Resolved
+NF-K0475,2026-05-01,Elias Smeds,New quote,Standard,0,No,1.3,Yes,No,No,No,Resolved
+NF-K0476,2026-06-21,Elias Smeds,Special handling request,Standard,0,No,1.8,Yes,No,No,No,Resolved
+NF-K0477,2026-06-06,Elias Smeds,Pricing clarification,Standard,0,No,2.1,Yes,No,No,No,Resolved
+NF-K0478,2026-04-28,Elias Smeds,Booking change,Standard,0,No,3.6,Yes,No,No,No,Resolved
+NF-K0479,2026-04-28,Elias Smeds,New quote,Standard,0,No,2.5,Yes,Yes,No,No,Resolved
+NF-K0480,2026-04-15,Elias Smeds,Booking change,Standard,0,No,1.8,Yes,No,No,Yes,Resolved
+NF-K0481,2026-06-08,Elias Smeds,Customer complaint,Advanced,0,No,6.1,Yes,No,No,No,Resolved
+NF-K0482,2026-04-08,Elias Smeds,New quote,Standard,1,Yes,1.2,No,No,No,No,Resolved
+NF-K0483,2026-04-16,Elias Smeds,Pricing clarification,Standard,0,No,2.3,Yes,No,No,No,Resolved
+NF-K0484,2026-05-26,Elias Smeds,New quote,Standard,0,No,2.2,Yes,No,No,No,Resolved
+NF-K0485,2026-05-18,Elias Smeds,Complex route request,Standard,1,Yes,1.3,No,No,No,No,Pending at quarter end

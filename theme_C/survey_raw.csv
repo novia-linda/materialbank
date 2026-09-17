@@ -1,0 +1,202 @@
+ResponseID,Date,Employee,CustomerType,CommunicationRating,InformationClarityRating,HelpfulnessRating,OverallSatisfaction,WouldRecommend_0_10,LikelihoodToUseAgain,CustomerComment
+NF-C0001,2026-05-21,Johan Andersson,Business,4,4,4,4,10,4,"Everything moved fast, which I appreciated, even if a few details were adjusted afterwards."
+NF-C0002,2026-04-16,Johan Andersson,Business,5,4,5,3,7,4,Friendly and energetic. I would have liked the final instructions to match the first promise more closely.
+NF-C0003,2026-04-03,Johan Andersson,Business,4,5,5,4,10,4,"Clear enough, although the final schedule was not exactly what I first understood."
+NF-C0004,2026-04-19,Johan Andersson,Private,4,4,4,4,6,4,"The sales conversation was easy, but operations later called to clarify information I thought I had already given."
+NF-C0005,2026-06-22,Johan Andersson,Business,4,4,3,5,6,3,We got a good price and booked quickly.
+NF-C0006,2026-06-05,Johan Andersson,Business,4,5,4,4,6,3,
+NF-C0007,2026-05-04,Johan Andersson,Private,4,4,5,4,10,4,"The sales conversation was easy, but operations later called to clarify information I thought I had already given."
+NF-C0008,2026-06-20,Johan Andersson,Business,5,3,4,4,7,3,Good at finding a solution quickly. Some details needed correcting later.
+NF-C0009,2026-05-24,Johan Andersson,Private,4,4,5,4,7,4,Professional and fast. The handover to the transport team could have been smoother.
+NF-C0010,2026-06-09,Johan Andersson,Business,4,4,4,4,5,4,"The sales conversation was easy, but operations later called to clarify information I thought I had already given."
+NF-C0011,2026-05-12,Johan Andersson,Private,4,4,4,3,8,4,
+NF-C0012,2026-06-16,Johan Andersson,Business,4,4,4,5,8,4,"Very quick to get the quote out, but a few delivery details changed afterwards."
+NF-C0013,2026-04-30,Johan Andersson,Business,4,4,3,4,9,3,"Everything moved fast, which I appreciated, even if a few details were adjusted afterwards."
+NF-C0014,2026-04-20,Johan Andersson,Business,5,3,4,4,8,4,
+NF-C0015,2026-04-28,Johan Andersson,Business,4,5,5,4,5,3,"Everything moved fast, which I appreciated, even if a few details were adjusted afterwards."
+NF-C0016,2026-05-26,Johan Andersson,Business,5,4,5,4,10,4,"Clear enough, although the final schedule was not exactly what I first understood."
+NF-C0017,2026-06-30,Johan Andersson,Private,4,3,4,4,6,3,
+NF-C0018,2026-04-23,Johan Andersson,Private,4,4,5,4,8,4,
+NF-C0019,2026-05-13,Johan Andersson,Private,4,4,5,4,7,4,"Clear enough, although the final schedule was not exactly what I first understood."
+NF-C0020,2026-06-05,Johan Andersson,Business,5,4,4,4,7,4,
+NF-C0021,2026-06-18,Johan Andersson,Business,4,3,5,4,8,4,"The sales conversation was easy, but operations later called to clarify information I thought I had already given."
+NF-C0022,2026-05-08,Johan Andersson,Business,4,4,4,5,8,4,We got a good price and booked quickly.
+NF-C0023,2026-04-18,Johan Andersson,Private,4,4,5,5,6,4,"The sales conversation was easy, but operations later called to clarify information I thought I had already given."
+NF-C0024,2026-04-30,Johan Andersson,Business,5,3,4,4,7,4,Professional and fast. The handover to the transport team could have been smoother.
+NF-C0025,2026-05-01,Johan Andersson,Business,4,4,5,4,8,4,
+NF-C0026,2026-05-29,Johan Andersson,Business,5,4,4,3,7,4,Professional and fast. The handover to the transport team could have been smoother.
+NF-C0027,2026-05-20,Johan Andersson,Private,4,4,5,4,5,4,Fast response and a competitive offer.
+NF-C0028,2026-05-05,Johan Andersson,Business,3,5,4,5,5,3,Friendly and energetic. I would have liked the final instructions to match the first promise more closely.
+NF-C0029,2026-06-27,Johan Andersson,Business,4,4,4,4,6,4,
+NF-C0030,2026-05-25,Johan Andersson,Business,5,3,4,5,7,4,Friendly and energetic. I would have liked the final instructions to match the first promise more closely.
+NF-C0031,2026-04-28,Johan Andersson,Business,5,4,5,5,10,5,Fast response and a competitive offer.
+NF-C0032,2026-04-20,Johan Andersson,Business,4,4,4,4,10,4,"The sales conversation was easy, but operations later called to clarify information I thought I had already given."
+NF-C0033,2026-05-05,Johan Andersson,Business,4,4,4,3,7,4,We got a good price and booked quickly.
+NF-C0034,2026-06-11,Johan Andersson,Business,3,4,4,4,8,4,
+NF-C0035,2026-06-16,Johan Andersson,Private,5,3,4,5,7,4,"Everything moved fast, which I appreciated, even if a few details were adjusted afterwards."
+NF-C0036,2026-06-21,Johan Andersson,Private,4,5,4,4,6,4,
+NF-C0037,2026-06-29,Johan Andersson,Private,4,4,4,4,8,4,
+NF-C0038,2026-05-03,Johan Andersson,Business,4,3,5,5,7,4,"Everything moved fast, which I appreciated, even if a few details were adjusted afterwards."
+NF-C0039,2026-04-08,Johan Andersson,Business,4,4,4,4,8,3,Fast response and a competitive offer.
+NF-C0040,2026-06-06,Johan Andersson,Business,4,4,4,4,10,5,Fast response and a competitive offer.
+NF-C0041,2026-06-20,Johan Andersson,Private,4,4,3,4,8,4,
+NF-C0042,2026-06-11,Johan Andersson,Private,5,4,4,3,10,4,
+NF-C0043,2026-05-28,Johan Andersson,Business,4,5,5,4,8,4,
+NF-C0044,2026-05-08,Johan Andersson,Business,4,4,4,4,6,4,
+NF-C0045,2026-04-18,Johan Andersson,Private,4,4,4,3,10,4,
+NF-C0046,2026-04-21,Johan Andersson,Private,5,4,5,4,9,4,Good at finding a solution quickly. Some details needed correcting later.
+NF-C0047,2026-05-08,Johan Andersson,Private,4,4,4,4,5,4,
+NF-C0048,2026-06-12,Johan Andersson,Private,4,4,5,4,9,4,"Clear enough, although the final schedule was not exactly what I first understood."
+NF-C0049,2026-06-23,Johan Andersson,Private,4,4,4,4,9,4,
+NF-C0050,2026-05-30,Johan Andersson,Private,4,4,3,4,8,5,
+NF-C0051,2026-04-14,Johan Andersson,Private,4,4,4,5,6,4,
+NF-C0052,2026-05-30,Johan Andersson,Business,5,4,4,4,6,5,
+NF-C0053,2026-04-10,Johan Andersson,Private,4,4,4,5,8,4,
+NF-C0054,2026-06-25,Johan Andersson,Business,4,3,4,4,6,4,"The sales conversation was easy, but operations later called to clarify information I thought I had already given."
+NF-C0055,2026-05-08,Johan Andersson,Business,3,4,4,4,8,4,Professional and fast. The handover to the transport team could have been smoother.
+NF-C0056,2026-05-28,Maja Nyman,Private,5,5,5,4,8,5,"She asked detailed questions, but afterwards everything worked exactly as agreed."
+NF-C0057,2026-06-24,Maja Nyman,Business,4,4,5,5,8,5,I had spoken with other people before. Maja understood the whole situation and fixed it.
+NF-C0058,2026-06-30,Maja Nyman,Business,5,4,5,5,9,5,"Not the fastest case, but I always knew what was happening."
+NF-C0059,2026-05-30,Maja Nyman,Business,4,5,5,5,7,5,Very thorough and clear with a difficult delivery.
+NF-C0060,2026-06-12,Maja Nyman,Business,5,5,5,4,8,5,Very thorough and clear with a difficult delivery.
+NF-C0061,2026-04-12,Maja Nyman,Business,4,5,5,5,8,5,"She asked detailed questions, but afterwards everything worked exactly as agreed."
+NF-C0062,2026-05-03,Maja Nyman,Business,5,4,5,4,10,4,
+NF-C0063,2026-05-15,Maja Nyman,Business,5,5,5,4,10,5,Excellent problem solving on a complicated multi-stop delivery.
+NF-C0064,2026-04-12,Maja Nyman,Private,5,4,5,5,10,5,"Not the fastest case, but I always knew what was happening."
+NF-C0065,2026-04-04,Maja Nyman,Business,4,5,4,5,7,5,"The case was complicated, but Maja finally got everything sorted out."
+NF-C0066,2026-06-18,Maja Nyman,Business,5,5,5,4,7,5,
+NF-C0067,2026-04-25,Maja Nyman,Business,4,5,4,4,10,5,"She asked detailed questions, but afterwards everything worked exactly as agreed."
+NF-C0068,2026-05-06,Maja Nyman,Business,5,4,4,4,8,5,
+NF-C0069,2026-05-12,Maja Nyman,Private,4,4,5,5,9,4,The issue had been going on for a while. She took ownership and solved it.
+NF-C0070,2026-06-21,Maja Nyman,Business,4,4,4,4,10,5,"Not the fastest case, but I always knew what was happening."
+NF-C0071,2026-04-14,Maja Nyman,Private,4,4,5,5,6,5,Very thorough and clear with a difficult delivery.
+NF-C0072,2026-04-10,Maja Nyman,Business,4,5,5,4,9,5,
+NF-C0073,2026-05-01,Maja Nyman,Private,5,5,4,5,10,4,
+NF-C0074,2026-04-21,Maja Nyman,Business,4,5,5,4,7,4,Excellent problem solving on a complicated multi-stop delivery.
+NF-C0075,2026-05-17,Maja Nyman,Private,4,5,5,5,7,5,A difficult situation handled calmly and professionally.
+NF-C0076,2026-06-17,Maja Nyman,Business,5,4,5,4,9,4,
+NF-C0077,2026-06-04,Maja Nyman,Private,5,4,5,5,9,4,The issue had been going on for a while. She took ownership and solved it.
+NF-C0078,2026-04-05,Maja Nyman,Business,5,4,5,5,7,5,
+NF-C0079,2026-05-12,Maja Nyman,Business,4,5,4,4,7,5,"She asked detailed questions, but afterwards everything worked exactly as agreed."
+NF-C0080,2026-05-30,Maja Nyman,Private,5,5,5,5,6,5,
+NF-C0081,2026-06-06,Maja Nyman,Private,5,4,5,5,10,4,
+NF-C0082,2026-04-23,Maja Nyman,Business,5,4,5,4,10,4,I had spoken with other people before. Maja understood the whole situation and fixed it.
+NF-C0083,2026-06-24,Maja Nyman,Business,5,5,4,4,10,5,
+NF-C0084,2026-04-11,Maja Nyman,Private,4,5,4,5,10,5,
+NF-C0085,2026-06-26,Maja Nyman,Business,5,5,4,4,10,4,
+NF-C0086,2026-04-21,Maja Nyman,Business,4,4,5,4,10,4,Maja noticed a problem with the route before it became our problem.
+NF-C0087,2026-05-09,Maja Nyman,Business,5,4,5,4,6,5,
+NF-C0088,2026-05-25,Maja Nyman,Business,5,5,5,4,8,5,
+NF-C0089,2026-05-21,Maja Nyman,Business,4,5,5,4,8,5,"Not the fastest case, but I always knew what was happening."
+NF-C0090,2026-05-10,Maja Nyman,Private,4,5,4,5,8,4,Excellent problem solving on a complicated multi-stop delivery.
+NF-C0091,2026-06-11,Maja Nyman,Business,5,5,5,4,7,5,Maja noticed a problem with the route before it became our problem.
+NF-C0092,2026-04-21,Maja Nyman,Private,4,5,5,4,7,5,Very thorough and clear with a difficult delivery.
+NF-C0093,2026-05-11,Maja Nyman,Business,4,4,5,4,7,5,"The case was complicated, but Maja finally got everything sorted out."
+NF-C0094,2026-04-13,Maja Nyman,Business,4,4,5,4,9,5,
+NF-C0095,2026-04-12,Maja Nyman,Business,4,4,5,5,9,4,The issue had been going on for a while. She took ownership and solved it.
+NF-C0096,2026-06-22,Maja Nyman,Private,5,5,5,3,6,5,
+NF-C0097,2026-06-24,Maja Nyman,Business,5,5,5,5,10,5,Excellent problem solving on a complicated multi-stop delivery.
+NF-C0098,2026-06-12,Maja Nyman,Private,5,5,5,4,9,5,
+NF-C0099,2026-04-07,Maja Nyman,Private,5,5,5,5,8,4,
+NF-C0100,2026-05-31,Susan Granholm,Business,5,4,5,5,10,5,
+NF-C0101,2026-06-22,Susan Granholm,Business,5,5,5,5,10,5,She explained everything clearly and checked that I understood.
+NF-C0102,2026-06-03,Susan Granholm,Private,5,5,5,5,8,4,Fantastic service from start to finish.
+NF-C0103,2026-06-29,Susan Granholm,Private,5,5,5,5,9,5,
+NF-C0104,2026-05-11,Susan Granholm,Business,5,4,5,5,10,5,Wonderful service. I never felt rushed.
+NF-C0105,2026-05-20,Susan Granholm,Private,5,5,4,5,9,4,
+NF-C0106,2026-06-18,Susan Granholm,Business,4,5,4,5,8,5,
+NF-C0107,2026-04-24,Susan Granholm,Business,4,5,5,4,9,5,
+NF-C0108,2026-04-09,Susan Granholm,Private,5,5,5,5,8,4,"Very helpful. The conversation was longer than I expected, but useful."
+NF-C0109,2026-04-22,Susan Granholm,Business,5,5,5,5,8,5,I would happily contact Nordic Freight again because of the service I received.
+NF-C0110,2026-05-12,Susan Granholm,Business,5,4,4,4,10,4,Wonderful service. I never felt rushed.
+NF-C0111,2026-06-04,Susan Granholm,Business,5,5,5,5,9,5,
+NF-C0112,2026-04-24,Susan Granholm,Business,5,5,4,5,8,5,
+NF-C0113,2026-05-02,Susan Granholm,Private,4,4,5,5,9,5,
+NF-C0114,2026-06-17,Susan Granholm,Business,4,5,5,5,9,5,I would happily contact Nordic Freight again because of the service I received.
+NF-C0115,2026-05-19,Susan Granholm,Business,5,5,5,5,8,5,Susan took time to understand what we actually needed.
+NF-C0116,2026-04-15,Susan Granholm,Business,4,5,5,5,10,4,"She followed up afterwards, which I really appreciated."
+NF-C0117,2026-05-18,Susan Granholm,Private,5,4,5,5,10,5,"She followed up afterwards, which I really appreciated."
+NF-C0118,2026-06-20,Susan Granholm,Business,5,5,5,5,8,5,She explained everything clearly and checked that I understood.
+NF-C0119,2026-04-01,Susan Granholm,Private,5,5,5,5,10,4,Fantastic service from start to finish.
+NF-C0120,2026-05-02,Susan Granholm,Business,5,4,5,5,10,4,"She followed up afterwards, which I really appreciated."
+NF-C0121,2026-06-20,Susan Granholm,Private,5,5,5,5,8,5,"The quote took a little longer than expected, but the communication was excellent."
+NF-C0122,2026-04-15,Susan Granholm,Private,5,5,4,5,9,5,Susan took time to understand what we actually needed.
+NF-C0123,2026-05-07,Susan Granholm,Private,5,5,5,4,10,5,Wonderful service. I never felt rushed.
+NF-C0124,2026-04-18,Susan Granholm,Private,5,5,5,4,10,5,Wonderful service. I never felt rushed.
+NF-C0125,2026-06-25,Susan Granholm,Business,5,5,5,5,10,5,Susan really listened and made the whole process feel easy.
+NF-C0126,2026-05-19,Susan Granholm,Business,4,4,5,5,9,5,"She followed up afterwards, which I really appreciated."
+NF-C0127,2026-06-13,Susan Granholm,Business,5,5,4,4,7,5,Fantastic service from start to finish.
+NF-C0128,2026-04-17,Susan Granholm,Business,4,4,5,5,9,5,She explained everything clearly and checked that I understood.
+NF-C0129,2026-06-20,Susan Granholm,Business,4,5,4,5,8,4,"The quote took a little longer than expected, but the communication was excellent."
+NF-C0130,2026-06-12,Susan Granholm,Private,5,5,5,5,9,5,Wonderful service. I never felt rushed.
+NF-C0131,2026-06-28,Susan Granholm,Private,5,5,5,5,8,5,"The quote took a little longer than expected, but the communication was excellent."
+NF-C0132,2026-05-07,Susan Granholm,Business,5,5,5,5,8,5,"She followed up afterwards, which I really appreciated."
+NF-C0133,2026-04-02,Susan Granholm,Private,5,5,5,5,9,4,"She followed up afterwards, which I really appreciated."
+NF-C0134,2026-05-25,Susan Granholm,Business,4,4,4,5,10,5,"Very helpful. The conversation was longer than I expected, but useful."
+NF-C0135,2026-06-17,Susan Granholm,Business,5,5,5,5,7,5,I would happily contact Nordic Freight again because of the service I received.
+NF-C0136,2026-05-14,Susan Granholm,Business,5,4,5,5,10,5,I would happily contact Nordic Freight again because of the service I received.
+NF-C0137,2026-06-25,Susan Granholm,Private,4,5,5,5,8,5,Very warm and patient customer service.
+NF-C0138,2026-05-10,Susan Granholm,Private,5,5,5,5,10,4,"The quote took a little longer than expected, but the communication was excellent."
+NF-C0139,2026-04-25,Susan Granholm,Private,5,5,5,5,8,5,I would happily contact Nordic Freight again because of the service I received.
+NF-C0140,2026-04-15,Susan Granholm,Business,5,5,4,4,6,5,She explained everything clearly and checked that I understood.
+NF-C0141,2026-04-11,Susan Granholm,Business,5,5,5,5,10,5,Fantastic service from start to finish.
+NF-C0142,2026-06-23,Susan Granholm,Private,5,5,5,5,10,5,Very warm and patient customer service.
+NF-C0143,2026-05-09,Susan Granholm,Private,4,5,5,5,8,5,Fantastic service from start to finish.
+NF-C0144,2026-05-23,Susan Granholm,Private,4,4,4,5,9,5,
+NF-C0145,2026-06-30,Susan Granholm,Business,5,4,4,4,10,5,I would happily contact Nordic Freight again because of the service I received.
+NF-C0146,2026-04-17,Susan Granholm,Private,4,5,5,5,7,4,Wonderful service. I never felt rushed.
+NF-C0147,2026-06-15,Susan Granholm,Private,5,4,5,5,9,5,Fantastic service from start to finish.
+NF-C0148,2026-05-03,Susan Granholm,Private,5,5,5,5,10,4,"Very helpful. The conversation was longer than I expected, but useful."
+NF-C0149,2026-05-10,Susan Granholm,Business,5,5,5,4,10,4,Wonderful service. I never felt rushed.
+NF-C0150,2026-05-11,Elias Smeds,Business,4,4,5,5,10,4,The booking was handled efficiently and the details were correct.
+NF-C0151,2026-06-22,Elias Smeds,Business,5,4,5,4,10,5,The booking was handled efficiently and the details were correct.
+NF-C0152,2026-05-05,Elias Smeds,Private,4,4,4,5,7,5,
+NF-C0153,2026-06-27,Elias Smeds,Business,5,5,5,4,9,4,Professional and reliable.
+NF-C0154,2026-04-12,Elias Smeds,Business,5,4,5,5,9,5,
+NF-C0155,2026-06-02,Elias Smeds,Private,4,5,5,5,9,4,Professional and reliable.
+NF-C0156,2026-06-21,Elias Smeds,Business,4,4,4,5,9,5,Fast and competent service.
+NF-C0157,2026-05-10,Elias Smeds,Business,4,5,5,4,7,4,The booking was handled efficiently and the details were correct.
+NF-C0158,2026-06-24,Elias Smeds,Business,5,5,4,5,6,4,"Not especially personal, but very efficient and correct."
+NF-C0159,2026-04-01,Elias Smeds,Business,4,5,5,4,7,4,Good service without unnecessary back and forth.
+NF-C0160,2026-05-05,Elias Smeds,Private,5,5,4,4,10,5,
+NF-C0161,2026-04-29,Elias Smeds,Business,5,4,5,5,9,5,
+NF-C0162,2026-05-17,Elias Smeds,Business,4,4,4,5,8,4,
+NF-C0163,2026-05-19,Elias Smeds,Private,4,4,4,5,9,5,The process was smooth and I received the information I needed quickly.
+NF-C0164,2026-06-03,Elias Smeds,Business,4,5,4,5,8,5,"Not especially personal, but very efficient and correct."
+NF-C0165,2026-06-11,Elias Smeds,Business,5,4,4,5,9,4,
+NF-C0166,2026-06-09,Elias Smeds,Private,5,5,4,4,8,4,No problems. Everything happened as agreed.
+NF-C0167,2026-04-24,Elias Smeds,Business,4,5,5,4,10,4,
+NF-C0168,2026-06-11,Elias Smeds,Business,5,4,4,4,8,5,The process was smooth and I received the information I needed quickly.
+NF-C0169,2026-05-14,Elias Smeds,Private,4,5,5,4,10,4,
+NF-C0170,2026-04-29,Elias Smeds,Business,5,4,4,4,7,4,The process was smooth and I received the information I needed quickly.
+NF-C0171,2026-04-26,Elias Smeds,Business,4,4,5,4,10,4,
+NF-C0172,2026-05-03,Elias Smeds,Business,5,5,5,5,5,4,"Not especially personal, but very efficient and correct."
+NF-C0173,2026-06-18,Elias Smeds,Private,4,5,4,4,9,5,Everything was correct and easy to understand.
+NF-C0174,2026-05-16,Elias Smeds,Business,5,5,4,4,10,4,
+NF-C0175,2026-06-16,Elias Smeds,Business,4,5,4,5,7,4,
+NF-C0176,2026-05-07,Elias Smeds,Business,5,5,4,4,8,4,Everything was correct and easy to understand.
+NF-C0177,2026-04-30,Elias Smeds,Private,4,4,5,4,9,4,"Not especially personal, but very efficient and correct."
+NF-C0178,2026-05-19,Elias Smeds,Private,4,5,4,4,7,3,"Clear, efficient and straightforward."
+NF-C0179,2026-05-14,Elias Smeds,Business,4,4,4,4,7,3,"Not especially personal, but very efficient and correct."
+NF-C0180,2026-05-19,Elias Smeds,Private,4,5,4,4,8,4,
+NF-C0181,2026-06-11,Elias Smeds,Private,5,5,5,4,8,4,
+NF-C0182,2026-04-21,Elias Smeds,Business,4,4,4,5,8,4,
+NF-C0183,2026-06-22,Elias Smeds,Business,4,5,5,5,9,5,No problems. Everything happened as agreed.
+NF-C0184,2026-06-22,Elias Smeds,Business,4,4,5,4,8,4,The process was smooth and I received the information I needed quickly.
+NF-C0185,2026-06-09,Elias Smeds,Private,4,5,4,4,5,5,Fast and competent service.
+NF-C0186,2026-06-21,Elias Smeds,Business,5,5,4,4,9,5,Everything was correct and easy to understand.
+NF-C0187,2026-04-23,Elias Smeds,Business,4,5,4,5,7,4,
+NF-C0188,2026-06-16,Elias Smeds,Business,4,4,4,4,6,5,
+NF-C0189,2026-06-14,Elias Smeds,Private,5,5,4,4,7,5,
+NF-C0190,2026-06-19,Elias Smeds,Private,5,5,4,5,6,5,Professional and reliable.
+NF-C0191,2026-05-06,Elias Smeds,Private,4,5,4,5,9,4,"Not especially personal, but very efficient and correct."
+NF-C0192,2026-06-25,Elias Smeds,Private,5,4,5,4,10,4,Professional and reliable.
+NF-C0193,2026-06-13,Elias Smeds,Private,5,5,4,4,5,5,Professional and reliable.
+NF-C0194,2026-05-20,Elias Smeds,Business,5,5,5,5,6,4,The booking was handled efficiently and the details were correct.
+NF-C0195,2026-04-03,Elias Smeds,Business,4,4,3,5,7,5,
+NF-C0196,2026-05-11,Elias Smeds,Business,5,5,5,5,10,5,
+NF-C0197,2026-04-09,Elias Smeds,Business,4,4,5,5,8,4,A very clear process from quote to booking.
+NF-C0198,2026-04-05,Elias Smeds,Business,5,5,5,5,10,5,A very clear process from quote to booking.
+NF-C0199,2026-04-25,Elias Smeds,Business,4,5,5,4,9,4,
+NF-C0200,2026-04-07,Elias Smeds,Private,3,5,4,4,10,5,
+NF-C0201,2026-05-15,Elias Smeds,Private,5,4,4,4,8,4,"Not especially personal, but very efficient and correct."
