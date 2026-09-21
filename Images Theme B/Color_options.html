@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colour Direction Library – 20 options</title>
+<style>
+  :root {
+    --ink:#2E3438;
+    --muted:#667176;
+    --line:#D9DEDF;
+    --panel:#F7F9F9;
+    --accent:#FF1325;
+  }
+  * { box-sizing:border-box; }
+  body {
+    margin:0;
+    font-family:"Be Vietnam Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    color:var(--ink);
+    background:#fff;
+    line-height:1.5;
+  }
+  .wrap { max-width:1280px; margin:0 auto; padding:28px 18px 48px; }
+  .hero {
+    border:1px solid var(--line);
+    border-left:10px solid var(--accent);
+    padding:24px 26px;
+    margin-bottom:24px;
+    background:#fff;
+  }
+  .eyebrow {
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    font-weight:700;
+    color:var(--accent);
+    margin-bottom:7px;
+  }
+  h1 { font-size:clamp(28px,4vw,44px); line-height:1.08; margin:0 0 12px; }
+  .hero p { max-width:850px; margin:0; color:var(--muted); }
+  .grid {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+  }
+  .card {
+    border:1px solid var(--line);
+    background:#fff;
+    padding:18px;
+  }
+  .num {
+    display:inline-block;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    padding:5px 8px;
+    border:1px solid var(--line);
+    margin-bottom:10px;
+  }
+  h2 { font-size:22px; margin:0 0 5px; }
+  .desc { color:var(--muted); margin:0 0 14px; font-size:14px; }
+  .swatches {
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:6px;
+    margin:12px 0 14px;
+  }
+  .swatch {
+    height:84px;
+    border:1px solid rgba(0,0,0,.08);
+    display:flex;
+    align-items:flex-end;
+    padding:7px;
+    font-size:11px;
+    font-weight:700;
+  }
+  .promptbox {
+    background:var(--panel);
+    border:1px solid var(--line);
+    padding:12px;
+    font-size:13px;
+    position:relative;
+  }
+  .promptbox code {
+    white-space:pre-wrap;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    display:block;
+    padding-right:84px;
+  }
+  button {
+    position:absolute;
+    right:9px;
+    top:9px;
+    border:1px solid #BFC7C9;
+    background:#fff;
+    padding:7px 10px;
+    font:inherit;
+    font-size:12px;
+    font-weight:700;
+    cursor:pointer;
+  }
+  button:hover, button:focus {
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+  }
+  .tip {
+    margin-top:24px;
+    border:1px solid var(--line);
+    background:#F7F9F9;
+    padding:18px;
+  }
+  .tip strong { color:var(--accent); }
+  @media(max-width:760px) {
+    .grid { grid-template-columns:1fr; }
+    .swatch { height:70px; font-size:10px; }
+    .hero { padding:20px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow">AI for Business · Theme B</div>
+    <h1>Colour Direction Library – 20 options</h1>
+    <p>Choose one colour world that fits your company, audience and message. You can either pick one ready-made palette or use the copy prompt as a model when asking AI to generate a new palette for your own project.</p>
+  </section>
+
+  <main class="grid">
+    
+    <article class="card">
+      <div class="num">Palette 01</div>
+      <h2>Calm Nordic</h2>
+      <p class="desc">Professional, trustworthy and quiet. Good for consulting, education and B2B services.</p>
+      <div class="swatches"><div class="swatch" style="background:#263238;color:#FFFFFF">#263238</div><div class="swatch" style="background:#607D8B;color:#FFFFFF">#607D8B</div><div class="swatch" style="background:#B0BEC5;color:#222222">#B0BEC5</div><div class="swatch" style="background:#ECEFF1;color:#222222">#ECEFF1</div><div class="swatch" style="background:#D95C59;color:#FFFFFF">#D95C59</div></div>
+      <div class="promptbox">
+        <button onclick="copyBox(this)">Copy</button>
+        <code>Use a calm Nordic colour palette: charcoal #263238, slate blue-grey #607D8B, soft grey #B0BEC5, pale grey #ECEFF1, and muted coral red #D95C59. Keep the overall feeling professional, trustworthy and understated.</code>
+      </div>
+    </article>
+    <article class="card">
+      <div class="num">Palette 02</div>
+      <h2>Warm Professional</h2>
+      <p class="desc">Welcoming and credible, with a warmer human feel. Good for training, wellbeing and service businesses.</p>
+      <div class="swatches"><div class="swatch" style="background:#3A3A37;color:#FFFFFF">#3A3A37</div><div class="swatch" style="background:#8B7355;color:#FFFFFF">#8B7355</div><div class="swatch" style="background:#C7B7A3;color:#222222">#C7B7A3</div><div class="swatch" style="background:#F3EEE8;color:#222222">#F3EEE8</div><div class="swatch" style="background:#B64A3A;color:#FFFFFF">#B64A3A</div></div>
+      <div class="promptbox">
+        <button onclick="copyBox(this)">Copy</button>
+        <code>Use a warm professional colour palette: deep charcoal #3A3A37, warm brown #8B7355, soft beige #C7B7A3, creamy off-white #F3EEE8, and brick red #B64A3A. The visual mood should feel welcoming, credible and human.</code>
+      </div>
+    </article>
+    <article class="card">
+      <div class="num">Palette 03</div>
+      <h2>Fresh & Modern</h2>
+      <p class="desc">Clear, energetic and contemporary without feeling childish.</p>
+      <div class="swatches"><div class="swatch" style="background:#19323C;color:#FFFFFF">#19323C</div><div class="swatch" style="background:#4F8A8B;color:#FFFFFF">#4F8A8B</div><div class="swatch" style="background:#A7C4BC;color:#222222">#A7C4BC</div><div class="swatch" style="background:#F5F7F4;color:#222222">#F5F7F4</div><div class="swatch" style="background:#F2A65A;color:#222222">#F2A65A</div></div>
+      <div class="promptbox">
+        <button onclick="copyBox(this)">Copy</button>
+        <code>Use a fresh modern colour palette: deep blue-green #19323C, teal #4F8A8B, soft sage #A7C4BC, clean off-white #F5F7F4, and warm orange #F2A65A. Keep the feeling contemporary, clear and energetic.</code>
+      </div>
+    </article>
+    <article class="card">
+      <div class="num">Palette 04</div>
+      <h2>Premium Minimal</h2>
+      <p class="desc">Elegant, restrained and high-end. Works well when the brand should feel refined.</p>
+      <div class="swatches"><div class="swatch" style="background:#171717;color:#FFFFFF">#171717</div><div class="swatch" style="background:#5C5550;color:#FFFFFF">#5C5550</div><div class="swatch" style="background:#B8ADA3;color:#222222">#B8ADA3</div><div class="swatch" style="background:#F6F2ED;color:#222222">#F6F2ED</div><div class="swatch" style="background:#C29A5B;color:#222222">#C29A5B</div></div>
+      <div class="promptbox">
+        <button onclick="copyBox(this)">Copy</button>
+        <code>Use a premium minimal colour palette: near-black #171717, warm taupe #5C5550, soft stone #B8ADA3, ivory #F6F2ED, and muted gold #C29A5B. Keep the visual language elegant, restrained and refined.</code>
+      </div>
+    </article>
+    <article class="card">
+      <div class="num">Palette 05</div>
+      <h2>Soft & Friendly</h2>
+      <p class="desc">Approachable and gentle. Useful for customer-facing services, cafés, care and lifestyle brands.</p>
+      <div class="swatches"><div class="swatch" style="background:#4A4A49;color:#FFFFFF">#4A4A49</div><div class="swatch" style="background:#7B9E87;color:#FFFFFF">#7B9E87</div><div class="swatch" style="background:#D9C8B4;color:#222222">#D9C8B4</div><div class="swatch" style="background:#FAF6F0;color:#222222">#FAF6F0</div><div class="swatch" style="background:#D98C8C;color:#222222">#D98C8C</div></div>
+      <div class="promptbox">
+        <button onclick="copyBox(this)">Copy</button>
+        <code>Use a soft friendly colour palette: charcoal #4A4A49, muted green #7B9E87, warm sand #D9C8B4, creamy white #FAF6F0, and dusty rose #D98C8C. Keep the mood approachable, gentle and modern.</code>
+      </div>
+    </article>
+    <article class="card">
+      <div class="num">Palette 06</div>
+      <h2>Bold Business</h2>
+      <p class="desc">Strong, confident and high-contrast. Good for technology, growth and action-oriented brands.</p>
+      <div class="swatches"><div class="swatch" style="background:#111827;color:#FFFFFF">#111827</div><div class="swatch" style="background:#374151;color:#FFFFFF">#374151</div><div class="swatch" style="background:#D1D5DB;color:#222222">#D1D5DB</div><div class="swatch" style="background:#F9FAFB;color:#222222">#F9FAFB</div><div class="swatch" style="background:#E63946;color:#FFFFFF">#E63946</div></div>
+      <div class="promptbox">
+        <button onclick="copyBox(this)">Copy</button>
+        <code>Use a bold business colour palette: deep navy-charcoal #111827, graphite #374151, cool grey #D1D5DB, near-white #F9FAFB, and strong red #E63946. The visual style should feel confident, modern and action-oriented.</code>
+      </div>
+    </article>
+    <article class="card">
+      <div class="num">Palette 07</div>
+      <h2>Natural & Grounded</h2>
+      <p class="desc">Earthy, calm and authentic. Suitable for food, local products, agriculture and sustainability.</p>
+      <div class="swatches"><div class="swatch" style="background:#2F3E34;color:#FFFFFF">#2F3E34</div><div class="swatch" style="background:#6B7D5C;color:#FFFFFF">#6B7D5C</div><div class="swatch" style="background:#C9B79C;color:#222222">#C9B79C</div><div class="swatch" style="background:#F1EBDD;color:#222222">#F1EBDD</div><div class="swatch" style="background:#B66A3C;color:#FFFFFF">#B66A3C</div></div>
+      <div class="promptbox">
+        <button onclick="copyBox(this)">Copy</button>
+        <code>Use a natural grounded colour palette: forest green #2F3E34, olive #6B7D5C, sand #C9B79C, warm cream #F1EBDD, and terracotta #B66A3C. Keep the feeling earthy, trustworthy and authentic.</code>
+      </div>
+    </article>
+    <article class="card">
+      <div class="num">Palette 08</div>
+      <h2>Bright & Optimistic</h2>
+      <p class="desc">Positive and energetic while still professional. Good for events, campaigns and learning.</p>
+      <div class="swatches"><div class="swatch" style="background:#243447;color:#FFFFFF">#243447</div><div class="swatch" style="background:#4C8C9B;color:#FFFFFF">#4C8C9B</div><div class="swatch" style="background:#F2C14E;color:#222222">#F2C14E</div><div class="swatch" style="background:#F7F4EE;color:#222222">#F7F4EE</div><div class="swatch" style="background:#E76F51;color:#FFFFFF">#E76F51</div></div>
+      <div class="promptbox">
+        <button onclick="copyBox(this)">Copy</button>
+        <code>Use a bright optimistic colour palette: deep blue-grey #243447, turquoise #4C8C9B, warm yellow #F2C14E, soft cream #F7F4EE, and coral #E76F51. Keep the mood positive, energetic and professional.</code>
+      </div>
+    </article>
+    <article class="card">
+      <div class="num">Palette 09</div>
+      <h2>Cool Tech</h2>
+      <p class="desc">Clean, digital and forward-looking. Suitable for AI, software and modern business services.</p>
+      <div class="swatches"><div class="swatch" style="background:#18212B;color:#FFFFFF">#18212B</div><div class="swatch" style="background:#3D5A73;color:#FFFFFF">#3D5A73</div><div class="swatch" style="background:#88A9C3;color:#222222">#88A9C3</div><div class="swatch" style="background:#EEF3F6;color:#222222">#EEF3F6</div><div class="swatch" style="background:#7A5AF8;color:#FFFFFF">#7A5AF8</div></div>
+      <div class="promptbox">
+        <button onclick="copyBox(this)">Copy</button>
+        <code>Use a cool technology colour palette: deep blue-charcoal #18212B, steel blue #3D5A73, soft blue #88A9C3, icy off-white #EEF3F6, and violet accent #7A5AF8. Keep the feeling clean, digital and forward-looking.</code>
+      </div>
+    </article>
+    <article class="card">
+      <div class="num">Palette 10</div>
+      <h2>Creative Editorial</h2>
+      <p class="desc">Distinctive and expressive, but still structured enough for professional communication.</p>
+      <div class="swatches"><div class="swatch" style="background:#29272B;color:#FFFFFF">#29272B</div><div class="swatch" style="background:#6C5B7B;color:#FFFFFF">#6C5B7B</div><div class="swatch" style="background:#C06C84;color:#FFFFFF">#C06C84</div><div class="swatch" style="background:#F5E8E4;color:#222222">#F5E8E4</div><div class="swatch" style="background:#F0B45D;color:#222222">#F0B45D</div></div>
+      <div class="promptbox">
+        <button onclick="copyBox(this)">Copy</button>
+        <code>Use a creative editorial colour palette: dark charcoal #29272B, muted violet #6C5B7B, dusty berry #C06C84, pale blush #F5E8E4, and warm ochre #F0B45D. Keep the result distinctive, expressive and professionally composed.</code>
+      </div>
+    </article>
+    <article class="card">
+      <div class="num">Palette 11</div>
+      <h2>Quiet Luxury</h2>
+      <p class="desc">Calm, tasteful and expensive-looking without being flashy.</p>
+      <div class="swatches"><div class="swatch" style="background:#1F1F1F;color:#FFFFFF">#1F1F1F</div><div class="swatch" style="background:#6E675F;color:#FFFFFF">#6E675F</div><div class="swatch" style="background:#BDAE9E;color:#222222">#BDAE9E</div><div class="swatch" style="background:#F5F0E8;color:#222222">#F5F0E8</div><div class="swatch" style="background:#9E7C52;color:#FFFFFF">#9E7C52</div></div>
+      <div class="promptbox">
+        <button onclick="copyBox(this)">Copy</button>
+        <code>Use a quiet luxury colour palette: soft black #1F1F1F, mushroom taupe #6E675F, warm beige #BDAE9E, light ivory #F5F0E8, and refined bronze #9E7C52. Keep the tone elegant, soft and premium.</code>
+      </div>
+    </article>
+    <article class="card">
+      <div class="num">Palette 12</div>
+      <h2>Scandinavian Light</h2>
+      <p class="desc">Airy, clean and light. Suitable for education, interiors and modern lifestyle brands.</p>
+      <div class="swatches"><div class="swatch" style="background:#35424A;color:#FFFFFF">#35424A</div><div class="swatch" style="background:#7A8F99;color:#FFFFFF">#7A8F99</div><div class="swatch" style="background:#C8D3D8;color:#222222">#C8D3D8</div><div class="swatch" style="background:#F8FAFA;color:#222222">#F8FAFA</div><div class="swatch" style="background:#E27D60;color:#222222">#E27D60</div></div>
+      <div class="promptbox">
+        <button onclick="copyBox(this)">Copy</button>
+        <code>Use a Scandinavian light colour palette: muted dark slate #35424A, blue-grey #7A8F99, light mist grey #C8D3D8, crisp near-white #F8FAFA, and soft terracotta #E27D60. Keep the style airy, clean and modern.</code>
+      </div>
+    </article>
+    <article class="card">
+      <div class="num">Palette 13</div>
+      <h2>Earth & Craft</h2>
+      <p class="desc">Handmade, warm and practical. Good for artisan brands and small local businesses.</p>
+      <div class="swatches"><div class="swatch" style="background:#40352C;color:#FFFFFF">#40352C</div><div class="swatch" style="background:#8A6A4A;color:#FFFFFF">#8A6A4A</div><div class="swatch" style="background:#C7A57A;color:#222222">#C7A57A</div><div class="swatch" style="background:#F4E8D8;color:#222222">#F4E8D8</div><div class="swatch" style="background:#A6523F;color:#FFFFFF">#A6523F</div></div>
+      <div class="promptbox">
+        <button onclick="copyBox(this)">Copy</button>
+        <code>Use an earth and craft colour palette: dark cocoa #40352C, medium brown #8A6A4A, wheat #C7A57A, warm cream #F4E8D8, and clay red #A6523F. Keep the feeling handmade, warm and grounded.</code>
+      </div>
+    </article>
+    <article class="card">
+      <div class="num">Palette 14</div>
+      <h2>Confident Red Accent</h2>
+      <p class="desc">Mostly neutral with a sharper red detail. Suitable for corporate communication.</p>
+      <div class="swatches"><div class="swatch" style="background:#222222;color:#FFFFFF">#222222</div><div class="swatch" style="background:#55585C;color:#FFFFFF">#55585C</div><div class="swatch" style="background:#BFC4C7;color:#222222">#BFC4C7</div><div class="swatch" style="background:#F5F6F7;color:#222222">#F5F6F7</div><div class="swatch" style="background:#D62839;color:#FFFFFF">#D62839</div></div>
+      <div class="promptbox">
+        <button onclick="copyBox(this)">Copy</button>
+        <code>Use a confident neutral colour palette with a red accent: black-grey #222222, medium grey #55585C, light grey #BFC4C7, off-white #F5F6F7, and statement red #D62839. Keep most of the design neutral and use red only as an accent.</code>
+      </div>
+    </article>
+    <article class="card">
+      <div class="num">Palette 15</div>
+      <h2>Soft Academic</h2>
+      <p class="desc">Gentle, intelligent and readable. Good for schools, training and educational services.</p>
+      <div class="swatches"><div class="swatch" style="background:#314355;color:#FFFFFF">#314355</div><div class="swatch" style="background:#6D7F8F;color:#FFFFFF">#6D7F8F</div><div class="swatch" style="background:#B7C4CE;color:#222222">#B7C4CE</div><div class="swatch" style="background:#F6F8F9;color:#222222">#F6F8F9</div><div class="swatch" style="background:#C97C5D;color:#FFFFFF">#C97C5D</div></div>
+      <div class="promptbox">
+        <button onclick="copyBox(this)">Copy</button>
+        <code>Use a soft academic colour palette: muted navy #314355, calm steel blue #6D7F8F, pale blue-grey #B7C4CE, paper white #F6F8F9, and soft cinnamon #C97C5D. Keep the visual language thoughtful, clear and calm.</code>
+      </div>
+    </article>
+    <article class="card">
+      <div class="num">Palette 16</div>
+      <h2>Green Trust</h2>
+      <p class="desc">Stable and reassuring. Good for health, environment and community projects.</p>
+      <div class="swatches"><div class="swatch" style="background:#213A2F;color:#FFFFFF">#213A2F</div><div class="swatch" style="background:#4E6F5D;color:#FFFFFF">#4E6F5D</div><div class="swatch" style="background:#9CB7A3;color:#222222">#9CB7A3</div><div class="swatch" style="background:#F1F6F1;color:#222222">#F1F6F1</div><div class="swatch" style="background:#C96B4B;color:#FFFFFF">#C96B4B</div></div>
+      <div class="promptbox">
+        <button onclick="copyBox(this)">Copy</button>
+        <code>Use a green trust colour palette: dark forest #213A2F, muted green #4E6F5D, soft sage #9CB7A3, light mint-white #F1F6F1, and muted orange-coral #C96B4B. Keep the feeling steady, reassuring and human.</code>
+      </div>
+    </article>
+    <article class="card">
+      <div class="num">Palette 17</div>
+      <h2>Playful Professional</h2>
+      <p class="desc">Livelier than most business palettes, but still suitable for polished communication.</p>
+      <div class="swatches"><div class="swatch" style="background:#283044;color:#FFFFFF">#283044</div><div class="swatch" style="background:#5C6B8A;color:#FFFFFF">#5C6B8A</div><div class="swatch" style="background:#A7B3C9;color:#222222">#A7B3C9</div><div class="swatch" style="background:#F8F7F4;color:#222222">#F8F7F4</div><div class="swatch" style="background:#F4A261;color:#222222">#F4A261</div></div>
+      <div class="promptbox">
+        <button onclick="copyBox(this)">Copy</button>
+        <code>Use a playful professional colour palette: dark blue #283044, softened indigo #5C6B8A, misty periwinkle #A7B3C9, warm near-white #F8F7F4, and apricot orange #F4A261. Keep the mood upbeat, modern and professional.</code>
+      </div>
+    </article>
+    <article class="card">
+      <div class="num">Palette 18</div>
+      <h2>Muted Luxury Rose</h2>
+      <p class="desc">Soft, elegant and feminine without becoming overly decorative.</p>
+      <div class="swatches"><div class="swatch" style="background:#2F2A2B;color:#FFFFFF">#2F2A2B</div><div class="swatch" style="background:#7E6B73;color:#FFFFFF">#7E6B73</div><div class="swatch" style="background:#C9B7BC;color:#222222">#C9B7BC</div><div class="swatch" style="background:#F8F2F3;color:#222222">#F8F2F3</div><div class="swatch" style="background:#B76E79;color:#FFFFFF">#B76E79</div></div>
+      <div class="promptbox">
+        <button onclick="copyBox(this)">Copy</button>
+        <code>Use a muted luxury rose palette: deep espresso-charcoal #2F2A2B, mauve taupe #7E6B73, dusty blush #C9B7BC, blush-white #F8F2F3, and rosewood accent #B76E79. Keep the style elegant, soft and refined.</code>
+      </div>
+    </article>
+    <article class="card">
+      <div class="num">Palette 19</div>
+      <h2>Deep Ocean</h2>
+      <p class="desc">Serious and modern with depth. Good for innovation, policy and expert services.</p>
+      <div class="swatches"><div class="swatch" style="background:#102A43;color:#FFFFFF">#102A43</div><div class="swatch" style="background:#3E5C76;color:#FFFFFF">#3E5C76</div><div class="swatch" style="background:#9FB3C8;color:#222222">#9FB3C8</div><div class="swatch" style="background:#F0F4F8;color:#222222">#F0F4F8</div><div class="swatch" style="background:#D97757;color:#FFFFFF">#D97757</div></div>
+      <div class="promptbox">
+        <button onclick="copyBox(this)">Copy</button>
+        <code>Use a deep ocean colour palette: deep navy #102A43, ocean blue #3E5C76, pale steel blue #9FB3C8, crisp mist white #F0F4F8, and warm coral-brown #D97757. Keep the visual mood expert, clear and modern.</code>
+      </div>
+    </article>
+    <article class="card">
+      <div class="num">Palette 20</div>
+      <h2>Nordic Contrast</h2>
+      <p class="desc">Minimal, crisp and slightly more graphic. Good when you want strong readability.</p>
+      <div class="swatches"><div class="swatch" style="background:#141414;color:#FFFFFF">#141414</div><div class="swatch" style="background:#616161;color:#FFFFFF">#616161</div><div class="swatch" style="background:#D0D0D0;color:#222222">#D0D0D0</div><div class="swatch" style="background:#FAFAFA;color:#222222">#FAFAFA</div><div class="swatch" style="background:#EF4444;color:#FFFFFF">#EF4444</div></div>
+      <div class="promptbox">
+        <button onclick="copyBox(this)">Copy</button>
+        <code>Use a Nordic contrast colour palette: almost black #141414, neutral grey #616161, pale grey #D0D0D0, clean white #FAFAFA, and vivid red #EF4444. Keep the layout minimal, crisp and highly readable.</code>
+      </div>
+    </article>
+  </main>
+
+  <section class="tip">
+    <strong>Tip:</strong> You do not need to use all five colours equally. A good rule is to choose 1–2 main colours, 1–2 neutrals, and 1 accent colour for highlights, buttons or key details.
+  </section>
+</div>
+
+<script>
+function copyBox(button){
+  const text = button.parentElement.querySelector('code').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const old = button.innerText;
+    button.innerText = 'Copied!';
+    setTimeout(() => button.innerText = old, 1200);
+  });
+}
+</script>
+</body>
+</html>
