@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nordic Freight Knowledge Assistant Test Lab">
+  <title>Nordic Freight · Knowledge Assistant Test Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <noscript>
+    <div class="noscript">This test lab requires JavaScript.</div>
+  </noscript>
+
+  <header class="site-header">
+    <div class="brand-row">
+      <a class="brand" href="#" id="brandHome">AI for Business · Theme D</a>
+      <span class="prototype-badge">Prototype</span>
+    </div>
+    <div class="header-actions" id="headerActions" hidden>
+      <button class="btn btn-ghost" type="button" id="saveBackupBtn">Save backup</button>
+      <label class="btn btn-ghost file-label" for="restoreBackupInput">Restore backup</label>
+      <input class="visually-hidden" type="file" id="restoreBackupInput" accept="application/json,.json">
+      <button class="btn btn-ghost" type="button" id="teacherModeBtn">Teacher mode</button>
+      <button class="btn btn-dark" type="button" id="reportBtn">Report</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="screen screen-start" id="startScreen">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Nordic Freight · Knowledge Assistant Test Lab</p>
+          <h1>Test the answer. Then verify the source.</h1>
+          <p class="lead">Your group has brought several knowledge sources together in one Gemini Gem. Use this lab to test 20 customer questions, verify every answer against the original material and improve anything that does not work.</p>
+        </div>
+        <aside class="principle-card" aria-label="Key principle">
+          <span class="principle-kicker">Key principle</span>
+          <strong>AI answer ≠ verified answer.</strong>
+          <p>A question is complete only when your group has checked the answer against at least one original source.</p>
+        </aside>
+      </div>
+
+      <div class="setup-card">
+        <div class="step-number">1</div>
+        <div>
+          <h2>Start your group session</h2>
+          <p>Choose the group size. The app will load the correct 20-question test bank.</p>
+        </div>
+        <div class="field-grid">
+          <label class="field">
+            <span>Group name <small>(optional)</small></span>
+            <input type="text" id="groupNameInput" maxlength="80" placeholder="e.g. Group 4">
+          </label>
+          <div class="field">
+            <span>How many people are in your group?</span>
+            <div class="choice-row" role="group" aria-label="Choose group size">
+              <button class="choice-btn" type="button" data-group-size="4"><strong>4</strong><span>people</span></button>
+              <button class="choice-btn" type="button" data-group-size="5"><strong>5</strong><span>people</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="saved-session" id="savedSessionNotice" hidden>
+          <div>
+            <strong>Saved session found on this device.</strong>
+            <p id="savedSessionText"></p>
+          </div>
+          <button class="btn btn-outline" type="button" id="continueSavedBtn">Continue saved session</button>
+        </div>
+      </div>
+
+      <div class="how-grid">
+        <article>
+          <span class="mini-index">01</span>
+          <h3>Ask</h3>
+          <p>Copy the question into your Gem and read the answer carefully.</p>
+        </article>
+        <article>
+          <span class="mini-index">02</span>
+          <h3>Verify</h3>
+          <p>Find the supporting information in one or more original sources.</p>
+        </article>
+        <article>
+          <span class="mini-index">03</span>
+          <h3>Improve</h3>
+          <p>If the Gem struggles, diagnose the problem, improve the knowledge or instructions and retest.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="screen screen-lab" id="labScreen" hidden>
+      <div class="lab-topline">
+        <div>
+          <p class="eyebrow" id="sessionEyebrow">Group test</p>
+          <h1>Knowledge Assistant Test</h1>
+        </div>
+        <div class="progress-summary" aria-live="polite">
+          <strong id="verifiedCount">0 / 20</strong>
+          <span>questions verified</span>
+        </div>
+      </div>
+
+      <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
+
+      <div class="lab-layout">
+        <aside class="question-nav" aria-label="Question navigation">
+          <div class="nav-heading">
+            <strong>Questions</strong>
+            <span id="questionBankVersion"></span>
+          </div>
+          <div class="question-grid" id="questionGrid"></div>
+          <div class="nav-legend">
+            <span><i class="dot dot-open"></i>Not verified</span>
+            <span><i class="dot dot-done"></i>Verified</span>
+            <span><i class="dot dot-attention"></i>Needs attention</span>
+          </div>
+        </aside>
+
+        <section class="question-workspace" id="questionWorkspace" aria-live="polite"></section>
+      </div>
+    </section>
+
+    <section class="screen screen-report" id="reportScreen" hidden>
+      <div class="report-toolbar no-print">
+        <button class="btn btn-outline" type="button" id="backToLabBtn">← Back to test</button>
+        <div class="toolbar-actions">
+          <button class="btn btn-outline" type="button" id="downloadHtmlReportBtn">Download HTML report</button>
+          <button class="btn btn-dark" type="button" id="printReportBtn">Print / Save as PDF</button>
+        </div>
+      </div>
+      <div class="report-sheet" id="reportSheet"></div>
+    </section>
+  </main>
+
+  <dialog class="modal" id="teacherDialog">
+    <form method="dialog" class="modal-shell">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">Teacher mode</p>
+          <h2>Load a private answer key</h2>
+        </div>
+        <button class="icon-btn" value="close" aria-label="Close teacher mode">×</button>
+      </div>
+      <div class="modal-body">
+        <p>The answer key stays on this device. It is read locally by the browser and is not uploaded to GitHub.</p>
+        <label class="teacher-drop" for="teacherKeyInput">
+          <strong>Choose teacher answer key (.json)</strong>
+          <span id="teacherKeyStatus">No answer key loaded</span>
+        </label>
+        <input class="visually-hidden" type="file" id="teacherKeyInput" accept="application/json,.json">
+        <div class="teacher-panel" id="teacherPanel" hidden>
+          <div class="teacher-tools">
+            <button class="btn btn-outline" type="button" id="randomTeacherQuestionBtn">Choose random question</button>
+            <span id="teacherQuestionCount"></span>
+          </div>
+          <div id="teacherAnswerView"></div>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="resetDialog">
+    <form method="dialog" class="modal-shell modal-small">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">Start over</p>
+          <h2>Reset this session?</h2>
+        </div>
+        <button class="icon-btn" value="close" aria-label="Close">×</button>
+      </div>
+      <div class="modal-body">
+        <p>This removes the saved progress for this browser. Download a backup first if you may need it later.</p>
+        <div class="modal-actions">
+          <button class="btn btn-outline" value="close">Cancel</button>
+          <button class="btn btn-danger" type="button" id="confirmResetBtn">Reset session</button>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <footer class="site-footer no-print">
+    <span>Fictional learning case · Nordic Freight</span>
+    <button class="link-btn" type="button" id="resetBtn" hidden>Reset session</button>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

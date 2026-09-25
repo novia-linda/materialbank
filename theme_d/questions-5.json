@@ -1,0 +1,137 @@
+{
+  "title": "Nordic Freight Knowledge Assistant Test",
+  "version": "0.1-draft",
+  "groupSize": 5,
+  "prototype": true,
+  "sourceOptions": [
+    {
+      "id": "policy",
+      "label": "Company policy"
+    },
+    {
+      "id": "shipment",
+      "label": "Shipment data / Google Sheet"
+    },
+    {
+      "id": "email",
+      "label": "Email / FAQ"
+    },
+    {
+      "id": "phone",
+      "label": "Phone-call knowledge"
+    },
+    {
+      "id": "service",
+      "label": "Service & terminal guide"
+    }
+  ],
+  "issueOptions": [
+    {
+      "id": "not-retrieved",
+      "label": "Information existed but was not retrieved"
+    },
+    {
+      "id": "hard-to-find",
+      "label": "Information was difficult to find in the source"
+    },
+    {
+      "id": "combine",
+      "label": "Two or more sources needed to be combined"
+    },
+    {
+      "id": "knowledge",
+      "label": "Knowledge document needed improvement"
+    },
+    {
+      "id": "instructions",
+      "label": "Gem instructions needed improvement"
+    },
+    {
+      "id": "other",
+      "label": "Other"
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q01",
+      "question": "A customer asks whether a shipment can be collected on Saturday. What should the trainee tell them?"
+    },
+    {
+      "id": "Q02",
+      "question": "Where is shipment NF-1048 currently?"
+    },
+    {
+      "id": "Q03",
+      "question": "A customer says a shipment arrived damaged yesterday. What should they do next?"
+    },
+    {
+      "id": "Q04",
+      "question": "What information should the trainee ask for before investigating a delayed shipment?"
+    },
+    {
+      "id": "Q05",
+      "question": "A customer asks whether Nordic Freight offers an express shipment service. What should the trainee explain?"
+    },
+    {
+      "id": "Q06",
+      "question": "Can a customer change the delivery address after the shipment has already been dispatched?"
+    },
+    {
+      "id": "Q07",
+      "question": "A customer works during the week and asks whether weekend collection is possible. What can the trainee say?"
+    },
+    {
+      "id": "Q08",
+      "question": "Which destination is shipment NF-2031 travelling to?"
+    },
+    {
+      "id": "Q09",
+      "question": "A customer asks whether a large item is too heavy for the standard service. What should the trainee check before answering?"
+    },
+    {
+      "id": "Q10",
+      "question": "A customer says the tracking status has not changed since yesterday. What should the trainee do before promising anything?"
+    },
+    {
+      "id": "Q11",
+      "question": "What should the trainee tell a customer who asks when the Vaasa terminal closes?"
+    },
+    {
+      "id": "Q12",
+      "question": "A customer wants to collect a shipment at the terminal. What identification or collection requirements should the trainee explain?"
+    },
+    {
+      "id": "Q13",
+      "question": "A customer asks: “My package is late. Can you guarantee it will arrive today?” How should the trainee respond?"
+    },
+    {
+      "id": "Q14",
+      "question": "What should happen if a customer reports visible damage but has already thrown away the packaging?"
+    },
+    {
+      "id": "Q15",
+      "question": "Find shipment NF-1176 and tell the customer its current status and destination."
+    },
+    {
+      "id": "Q16",
+      "question": "A customer uses the words “weekend pickup” although the documentation uses “Saturday collection”. Can the assistant still find the correct rule?"
+    },
+    {
+      "id": "Q17",
+      "question": "A caller reports a damaged shipment and asks what they should prepare before Nordic Freight can investigate. Give a complete answer."
+    },
+    {
+      "id": "Q18",
+      "question": "A customer asks about a practical service detail that appears in the Service & Terminal Guide but not in the email FAQ. Can the Gem retrieve it correctly?"
+    },
+    {
+      "id": "Q19",
+      "question": "A customer asks what Nordic Freight can do if a shipment is delayed but the exact delivery time is still unknown. What should the trainee say?"
+    },
+    {
+      "id": "Q20",
+      "question": "After updating the shipment data, can the Gem use the changed information?",
+      "instruction": "Open the shipment Google Sheet. Change the status of one fictional shipment or add one new fictional shipment. Save the change, wait about one minute, then ask the Gem about that shipment. This is an experiment: record what happened even if the updated information is not available immediately."
+    }
+  ]
+}
