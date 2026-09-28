@@ -1,7 +1,27 @@
+# Update 1.2 - simple Start here
+
+Replace index.html, styles.css, app.js, report.js and data/pilot.json together.
+Keep any of your own images under examples/. Do not delete or replace your own
+PNG files when uploading this update. Level 1-4 questions, evidence rules, source
+example filenames, report layout and draft/backup versions are unchanged.
+
+Start here is now only a 2-3 minute tool check: name, TWO arbitrary images, two
+short demo-text boxes, one checkbox, download/open DEMO-Do-Not-Submit.pdf.
+No assistant name, no Gem, no external service, no source question, no source
+verification and no substantive reflection. Nothing from this practice is submitted.
+A new primer-only draft key prevents the old practice question from reappearing.
+Older Level 1-4 backups remain compatible. An older primer backup keeps its name
+and images, but asks for new demo words and a fresh checkbox click.
+
+The matching single-file HTML includes the same code and data. Its examples/
+folder can sit next to that HTML file when testing optional example images locally.
+
+---
+
 # Theme D Individual Evidence Lab - Pilot B
 
 This is a teacher-testing pilot, not the final student assignment.
-The visible app and report labels are in English. Content version: `pilot-b-1.0`.
+The visible app and report labels are in English. Content version: `pilot-b-1.0`. App update: `pilot-b-1.1-optional-examples`.
 
 ## What to upload
 
@@ -27,7 +47,8 @@ Files:
 - `TESTING.md`: a short teacher acceptance test and tested / untested scope
 
 No account, API key, build step, database server, external font or CDN is required.
-The hosted version fetches its JSON once at startup. All levels are then available
+The hosted version fetches its JSON once at startup and checks for optional public
+teacher example images when their screenshot fields are displayed. All levels are then available
 in the open tab. PDF creation is performed on the device, without a remote service.
 
 ## Quick teacher test
@@ -133,3 +154,23 @@ The existing group-work app has not been modified.
 The final policy change introduced at Level 4 must not affect the questions in
 Levels 1-3. The pilot question metadata follows that rule and is validated at load.
 This metadata check is a safeguard, not a substitute for reviewing actual wording.
+
+## Optional screenshot examples (update 1.1)
+
+See `TEACHER-SCREENSHOTS.md` and `examples/README.md` for exact filenames and content.
+You can upload only some images. No dummy guidance images are supplied.
+The new **See an example** button appears only after the relevant image loads.
+The dialog never imports a teacher image into student evidence or a PDF.
+
+Existing question IDs, contentVersion, local draft keys and backup format were
+preserved in this update. The existing B / evidence-first PDF layout is unchanged.
+Replace the app files in your individual pilot folder; preserve any images you
+have already added to examples/. The group-work app is not modified.
+
+## Individual case identity
+
+Vasa Business Academy is the teacher's separate lecture demonstration company.
+It is not the company in the individual C-D assignment. The final individual case
+will provide only the operational context needed (customer service, orders,
+policies and information); no unnecessary sector-specific backstory is assumed.
+This release still contains pilot content, not the final case materials.

@@ -1,3 +1,11 @@
+## Start here in UI v1.2
+
+The primer has an empty questions array and no sourceIds. It is only a technical
+check: name, two images, two demo text fields and one checkbox. Both images are
+required for the completion indicator; incomplete PDFs are still exportable.
+Level 1-4 questions and contentVersion are unchanged. The primer uses a separate
+local draft suffix to avoid restoring the removed opening-time question.
+
 # Editing the pilot content
 
 `pilot.json` is the editable content file. HTML/CSS/JavaScript are the engine.
@@ -42,3 +50,17 @@ five report rows, two screenshots and short conclusions per level.
 The source options do not reveal which option is correct. Students choose original
 sources and type exact locations. Their status and verification acknowledgement
 are self-reported. Neither the public JSON nor the PDF renderer auto-marks answers.
+
+## Optional teacher screenshot guidance
+
+Each screenshot slot now has `exampleFile` and `exampleDescription`.
+The default files are `examples/level-1-screen-1.png` through
+`examples/level-4-screen-2.png`, plus `examples/primer-screen-1.png` and
+`examples/primer-screen-2.png`. You normally only upload images; no JSON edit is
+needed. Set `exampleFile` to false to disable a particular slot explicitly.
+Only relative image basenames are accepted; directory traversal and remote URLs
+are not accepted. The app loads the file from its own examples/ folder.
+
+`appRevision` identifies this optional UI update. `contentVersion` remains unchanged
+so this update does not invalidate existing local drafts or backups. Example images
+are help material, not expected answers and not student report evidence.

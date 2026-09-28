@@ -41,55 +41,37 @@
     }
   ],
   "primerChecklist": [
-    "I understand that I must verify answers against original sources, not just the Gem response.",
-    "I know where to add a screenshot and how to check its size in the report.",
-    "I understand that local drafts are not stored in Moodle, Google Drive or OneDrive.",
-    "I know how to download a backup if I need to stop before finishing.",
-    "I will complete one level, download and open its PDF, then submit that level in Moodle."
+    "I am trying a checkbox."
   ],
   "levels": [
     {
       "id": "primer",
-      "title": "Technical practice",
-      "shortTitle": "Start here",
-      "description": "A short rehearsal of the reporting tool. No Gem is needed. Try one question, add an image and download a practice PDF. This is not assessed and must not be submitted.",
-      "sourceIds": [
-        "practice"
-      ],
+      "title": "Try the tool in a few minutes",
+      "shortTitle": "Quick practice",
+      "description": "Type your name, add two images and write a few words. Then download a demo PDF. There are no questions to solve and no other websites to open.",
+      "sourceIds": [],
       "screenshots": [
         {
-          "title": "Your practice screenshot",
-          "help": "Take a screenshot of the practice source below, or use the dummy image button. Do not include private information.",
-          "required": true
+          "title": "Any image you choose",
+          "help": "Choose any non-private image from your device, or use the demo image button. There is no specific content to show.",
+          "required": true,
+          "exampleFile": "primer-screen-1.png",
+          "exampleDescription": "An example of an image in this practice field. Any non-private image is fine; you are only trying the upload tool."
         },
         {
-          "title": "Optional second screenshot",
-          "help": "You may try the second image slot too. It is optional in the primer.",
-          "required": false
+          "title": "Any image you choose",
+          "help": "Choose any non-private image from your device, or use the demo image button. There is no specific content to show.",
+          "required": true,
+          "exampleFile": "primer-screen-2.png",
+          "exampleDescription": "An example of an image in this practice field. Any non-private image is fine; you are only trying the upload tool."
         }
       ],
-      "questions": [
-        {
-          "id": "TRY-01",
-          "label": "Practice opening time",
-          "question": "At what time does the practice help desk open on weekdays?",
-          "topic": "practice",
-          "example": {
-            "answer": "It opens at 09:00 on weekdays.",
-            "evidence": {
-              "practice": "PRACTICE-01, opening time"
-            },
-            "first": "correct",
-            "latest": "",
-            "fix": ""
-          }
-        }
-      ],
-      "improvementPrompt": "What did you try in this practice?",
-      "reflectionPrompt": "What will you check before submitting a real report?",
-      "exampleImprovement": "I checked the short practice source and added a screenshot.",
-      "exampleReflection": "I can add evidence, download a PDF and check that the text and image are readable.",
-      "practiceSource": "PRACTICE-01: The practice help desk opens at 09:00 on weekdays. This invented sentence is only for testing the reporting tool."
+      "questions": [],
+      "improvementPrompt": "Demo text 1",
+      "reflectionPrompt": "Demo text 2",
+      "exampleImprovement": "Just testing",
+      "exampleReflection": "Hello",
+      "primerFormat": "simple-tech-v1"
     },
     {
       "id": "1",
@@ -103,12 +85,16 @@
         {
           "title": "Your Gem instructions",
           "help": "Show the source rules and what the assistant should do when information is missing. Use a wide, readable crop.",
-          "required": true
+          "required": true,
+          "exampleFile": "level-1-screen-1.png",
+          "exampleDescription": "Show the saved instructions, especially approved sources and how to handle missing information. Example answer text may be hidden."
         },
         {
           "title": "Your knowledge and a test",
           "help": "Show the attached policy or a relevant test answer. The final screenshot brief will be set with the real materials.",
-          "required": true
+          "required": true,
+          "exampleFile": "level-1-screen-2.png",
+          "exampleDescription": "Show the policy added as a knowledge source, or the relevant test-response area. It is not necessary to fit two different screens into one image."
         }
       ],
       "questions": [
@@ -207,12 +193,16 @@
         {
           "title": "Your FAQ with original references",
           "help": "Show one or two FAQ entries and the original email or call IDs behind them.",
-          "required": true
+          "required": true,
+          "exampleFile": "level-2-screen-1.png",
+          "exampleDescription": "Show a short part of the FAQ with original email or call references. Preserve the structure; the example answers may be hidden."
         },
         {
           "title": "A response using the new knowledge",
           "help": "Show a relevant Gem answer after adding your FAQ.",
-          "required": true
+          "required": true,
+          "exampleFile": "level-2-screen-2.png",
+          "exampleDescription": "Show a relevant question and the Gem response after adding the FAQ. Some answer text may be hidden in this example."
         }
       ],
       "questions": [
@@ -311,12 +301,16 @@
         {
           "title": "The updated source record",
           "help": "Show the added or changed record with its ID and the changed field. The fixed test records should stay unchanged.",
-          "required": true
+          "required": true,
+          "exampleFile": "level-3-screen-1.png",
+          "exampleDescription": "Show the test record ID, the changed field and its new value. Keep unrelated rows and account details out of the crop."
         },
         {
           "title": "The response to your update test",
           "help": "Show what the Gem actually returned, including an outdated answer or a no-information response.",
-          "required": true
+          "required": true,
+          "exampleFile": "level-3-screen-2.png",
+          "exampleDescription": "Show the question about the changed record and what the Gem actually returned. A failed update test is valid evidence too."
         }
       ],
       "questions": [
@@ -420,12 +414,16 @@
         {
           "title": "The source changes you made",
           "help": "Show a clear change to the FAQ, policy or register. Use a caption to identify the evidence.",
-          "required": true
+          "required": true,
+          "exampleFile": "level-4-screen-1.png",
+          "exampleDescription": "Show a clearly identifiable change to the FAQ, the policy or the added register column. The report text records the other changes."
         },
         {
           "title": "Your retest result",
           "help": "Show a response after the change. An unsuccessful source-update experiment is valid evidence too.",
-          "required": true
+          "required": true,
+          "exampleFile": "level-4-screen-2.png",
+          "exampleDescription": "Show an actual retest after a change. It is acceptable for the source-update experiment to remain unsuccessful."
         }
       ],
       "questions": [
@@ -512,5 +510,7 @@
       "exampleReflection": "I need to keep the FAQ, policy and register consistent. The source-update test is an observation, not a guaranteed live connection.",
       "experiment": true
     }
-  ]
+  ],
+  "appRevision": "pilot-b-1.1-optional-examples",
+  "uiVersion": "1.2"
 }

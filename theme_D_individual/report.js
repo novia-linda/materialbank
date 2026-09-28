@@ -40,7 +40,54 @@ function summary(model){
  });
  return {documented,checked,good,total:level.questions.length,images:state.images.filter(Boolean).length};
 }
+function createPrimerScene(model){
+ const {level,state}=model,sc={width:W,height:H,ops:[],issues:[],model};
+ const rect=(x,y,w,h,fill,stroke)=>sc.ops.push({t:'rect',x,y,w,h,fill,stroke});
+ const text=(s,x,y,size=10,font='regular',color=C.ink)=>sc.ops.push({t:'text',s:clean(s),x,y,size,font,color});
+ const line=(x1,y1,x2,y2)=>sc.ops.push({t:'line',x1,y1,x2,y2,color:C.line,th:.6});
+ function para(s,x,y,w,size=10,maxLines=10,label='Text'){
+  const lines=wrap(s,w,size);if(lines.length>maxLines)sc.issues.push(label+' is too long. A few words are enough for this practice.');
+  lines.forEach((v,i)=>text(v,x,y+i*(size+3),size));return lines.length*(size+3);
+ }
+ [C.strong,C.accent,'#C8D6D8',C.warm].forEach((co,i)=>rect(M+i*CW/4,16,CW/4,4,co));
+ text('AI FOR BUSINESS / TECHNICAL PRACTICE',M,31,7.3,'bold',C.strong);
+ text('B / IMAGES FIRST',W-M-width('B / IMAGES FIRST',7.3,'bold'),31,7.3,'bold',C.strong);
+ text('Your demo PDF',M,51,24);
+ text('DO NOT SUBMIT',M,85,11,'bold',C.bad);
+ text('Only a tool check. No assessment and no Moodle submission.',M,104,9,'regular',C.body);
+ para('Name: '+(state.student||'[not entered]'),M,130,330,9,2,'Name');
+ text(new Date().toLocaleDateString('en-GB',{year:'numeric',month:'short',day:'numeric'}),W-M-80,130,9,'regular',C.body);
+ text('01  Your two practice images',M,165,10.2,'bold',C.strong);
+ for(let i=0;i<2;i++){
+  const y=i===0?184:291,by=y+13,bh=80;
+  text('Image '+(i+1)+' / Any image is fine for this practice',M,y,8.4,'bold');
+  rect(M,by,CW,bh,'#F6F8F8',C.line);const img=state.images[i];
+  if(img){const scale=Math.min((CW-4)/img.w,(bh-4)/img.h),w=img.w*scale,h=img.h*scale;sc.ops.push({t:'image',data:img.data,x:M+(CW-w)/2,y:by+(bh-h)/2,w,h});}
+  else text('No image added yet',M+12,by+32,10,'regular',C.body);
+ }
+ text('02  The words you typed',M,402,10.2,'bold',C.strong);
+ let y=424;
+ for(const [label,value] of [['Demo text 1',state.improvement],['Demo text 2',state.reflection]]){
+  const height=Math.max(42,wrap(value||'[not entered]',CW-132,10).length*13+16);
+  rect(M,y,112,height,C.soft,C.line);rect(M+112,y,CW-112,height,C.white,C.line);
+  text(label,M+10,y+12,9,'bold',C.strong);para(value||'[not entered]',M+122,y+12,CW-132,10,6,label);y+=height;
+ }
+ y+=24;text('03  Your checkbox test',M,y,10.2,'bold',C.strong);y+=22;
+ rect(M,y,11,11,state.checklist?.[0]?C.strong:C.white,C.strong);
+ if(state.checklist?.[0])sc.ops.push({t:'poly',pts:[[M+2,y+5],[M+4.5,y+8],[M+9,y+2.5]],color:C.white,th:1.3});
+ text(state.checklist?.[0]?'I am trying a checkbox.':'Checkbox not ticked yet.',M+19,y,10);y+=33;
+ text('Can you see your name, both images and your words?',M,y,11,'bold',C.strong);y+=21;
+ text('That is the whole test. You can now use the tool for Level 1.',M,y,9.5);
+ if(y>787)sc.issues.push('Please shorten the demo text. Just a few words are enough.');
+ line(M,805,W-M,805);
+ text('TECHNICAL PRACTICE / DO NOT SUBMIT / Not assessed',M,812,7,'bold',C.bad);
+ text('DEMO / 1 of 1',W-M-55,812,7,'regular',C.body);
+ text(model.complete?'Name, images, demo text and checkbox recorded.':'Some practice fields are empty. You can still use this PDF to test the download.',M,826,6.8,'regular',C.body);
+ return sc;
+}
+
 function createScene(model){
+ if(model.level.id==='primer')return createPrimerScene(model);
  const {config,level,state}=model,sc={width:W,height:H,ops:[],issues:[],model};
  const rect=(x,y,w,h,fill,stroke)=>sc.ops.push({t:'rect',x,y,w,h,fill,stroke});
  const line=(x1,y1,x2,y2,color=C.line,th=.6)=>sc.ops.push({t:'line',x1,y1,x2,y2,color,th});
