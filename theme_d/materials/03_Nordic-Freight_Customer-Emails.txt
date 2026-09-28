@@ -1,0 +1,51 @@
+NORDIC FREIGHT - CUSTOMER EMAIL ARCHIVE
+Approved training source | Reviewed 12 June 2026 | NF-D-1.0
+
+E01 | 2026-06-01 | Aino Ranta | Collection after work
+Customer: Hello, I finish work at 16:30 and cannot get to your Vaasa terminal in the morning. My notice says the parcel is ready. What time can I collect it? I might be able to leave work a little early on Friday.
+Nordic Freight / Maja: Hello Aino. Collection at the Vaasa terminal is available Monday to Friday, 08:00-17:00. On Saturday the collection desk is open 09:00-12:00. It is closed on Sunday. These collection hours apply only after the parcel is Ready for collection and a collection notice has been sent. Please bring the shipment reference and photo identification.
+
+E02 | 2026-06-02 | Joel Niemi | Crushed corner on delivery
+Customer: Hello, one corner of the box is crushed and I think the item inside may also be damaged. I received it this morning. Should I wait until I have checked everything before I contact you?
+Nordic Freight / Susan: Please contact Customer Service promptly, preferably by the next working day after you discover the damage. This is our internal reporting request, not a statement that your legal rights expire then. Give us the shipment reference and explain what was damaged. Keep the item and all packaging while Claims Team reviews the case. Our phone team can explain which photographs are useful. A report is not an automatic compensation decision.
+
+E03 | 2026-06-02 | Emil West | Different delivery address
+Customer: My plans have changed. Could my parcel go to my office instead of my home? The tracking page still says In transit. I can send the office address now.
+Nordic Freight / Johan: We can submit an address-change request, but Transport Operations must approve it. Send the shipment reference, the original address, the requested new address and a contact telephone number. Do not assume the delivery date stays the same. If the status has already changed to Out for delivery, Customer Service must check with Transport Operations before promising any change; we cannot guarantee redirection that day.
+
+E04 | 2026-06-03 | Sara Holm | Away for a few days
+Customer: I have just received a collection notice, but I will be away until next week. How long do you hold parcels? Do Saturday and Sunday count as days?
+Nordic Freight / Maja: We hold a collection parcel for five working days, counted from the working day after the collection notice is sent. For this rule, working days mean Monday to Friday, excluding Finnish public holidays. Saturday does not count even though the collection desk is open then, and Sunday does not count. Contact Customer Service before the holding period ends if you need more time. An extension needs approval; it is not automatic.
+
+E05 | 2026-06-04 | Noora Salmi | Several boxes with our company name
+Customer: Good afternoon. We sent two orders and both labels show our company name. Can you check by the name alone? I have a photograph of one of the labels but not the other.
+Nordic Freight / Elias: A company name alone may match more than one shipment. Please send the ShipmentID from the label or booking confirmation for each shipment. Keep the references separate when you ask about two orders. The reference helps us avoid mixing up status, destination and recipient information. If you cannot find it, telephone Customer Service; they can collect the details needed to look for the correct record.
+
+E06 | 2026-06-05 | Kasper Lund | Weekend pickup
+Customer: Can I come during the weekend? I work out of town during the week. Saturday morning would be easiest, but Sunday is also possible.
+Nordic Freight / Maja: For Vaasa terminal collection, the weekend option is Saturday from 09:00 to 12:00. There is no Sunday collection. Please wait for a collection notice and check that the parcel is Ready for collection. Being at the terminal is not enough on its own. Bring your shipment reference and photo identification. An earlier email giving weekday hours referred to 08:00-17:00, not the telephone service closing time.
+
+E07 | 2026-06-08 | Mira Aalto | Someone else collecting
+Customer: My brother can pass the terminal tomorrow and save me a long trip. May he collect the parcel for me? He does not have my identity card and I do not want to give it to him.
+Nordic Freight / Susan: Another person can collect an eligible parcel with your written authorisation, the shipment reference and their own photo identification. They should not bring your identity card instead of their own. The parcel must still be Ready for collection and the collection notice must have been sent. The collection desk checks the authorisation. Please arrange it before the person visits; we cannot replace this with an unverified statement at the desk.
+
+E08 | 2026-06-08 | Olli Heinonen | Damage found when unpacking
+Customer: The outside looked reasonable, but I noticed a crack while unpacking. Should I report it now or wait until the sender tells me what they think? I still have the box.
+Nordic Freight / Elias: Please tell Customer Service promptly, preferably by the next working day after discovering the damage. Send the shipment reference and a description. Keep the damaged item and the packaging. That timing is our service request, not a legal cut-off. Claims Team will review the circumstances and decide the next steps. We do not promise a refund merely because a damage message has been received.
+
+E09 | 2026-06-09 | Ella Gran | Can the driver go elsewhere?
+Customer: It now says Out for delivery. Could the driver leave the parcel at my workplace instead? It is only on the other side of town, so I thought it should be simple.
+Nordic Freight / Johan: Please give Customer Service the shipment reference, original address, requested new address and a contact number. They will ask Transport Operations whether a change is still possible. Even a nearby address can affect the planned route. We cannot confirm a same-day redirection for a parcel already Out for delivery. Please do not treat sending the request as confirmation that the address has been changed.
+
+E10 | 2026-06-10 | Linnea Berg | Saturday visit
+Customer: My husband and I are coming into Vaasa on Saturday. Can we collect at 11:30? I see At terminal in the tracking information but have not received a message yet.
+Nordic Freight / Maja: The collection desk is open on Saturday from 09:00 to 12:00, so 11:30 is within its hours. However, please wait until the status is Ready for collection and the notice has been sent. At terminal means processing may still be under way. Do not make a special journey based only on that status. On a normal weekday the collection hours are 08:00-17:00; Sunday collection is not offered.
+
+E11 | 2026-06-11 | Anton Back | Do weekend days use up the holding period?
+Customer: My collection message arrived today. The weekend is nearly here. Will those two days use up my time, and can I simply leave the parcel there for an extra week?
+Nordic Freight / Elias: The five-working-day holding period starts on the working day after the collection notice. Monday to Friday count, except Finnish public holidays. Neither Saturday nor Sunday counts. The Saturday collection opening does not change that calculation. Please contact Customer Service before the period ends to request an extension; you need approval rather than assuming that an extra week is available.
+
+E12 | 2026-06-11 | Nina Lehto | Written confirmation for our office
+Customer: Our office needs something in writing after a delivery. Could you send proof that the shipment has been handed over? I do not need a new booking, only confirmation for our records.
+Nordic Freight / Susan: Customer Service can arrange a written delivery confirmation after checking the shipment reference and the available delivery record. Ask for it using the ShipmentID. The assistant can explain this process but cannot send the confirmation itself. If the customer disputes the Delivered status, the record must first be investigated rather than being treated as proof that the customer personally received or located the parcel.
+

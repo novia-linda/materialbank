@@ -1,0 +1,21 @@
+﻿ShipmentID,CustomerName,RecipientName,DestinationCity,DestinationPostcode,CurrentStatus,LastKnownLocation,EstimatedDeliveryDate,LastUpdate,CollectionNotice,ReceivedBy,ServiceNote
+NF-1041,Nordic Blossom,Liisa Korpi,Helsinki,00100,Delivered,Helsinki - recipient premises,2026-06-11,2026-06-11 13:40,Not applicable,Liisa Korpi,Handover recorded at reception.
+NF-1042,West Coast Design,Mika Lehto,Turku,20100,Delivered,Turku - recipient premises,2026-06-12,2026-06-12 10:15,Not applicable,Mika Lehto,Signed handover recorded.
+NF-1043,Harbour Books,Aino Ranta,Vaasa,65100,At terminal,Vaasa terminal,2026-06-12,2026-06-12 09:10,Not sent,,Terminal processing not complete.
+NF-1044,Birch Studio,Leo Niemi,Tampere,33100,Out for delivery,Tampere - delivery route,2026-06-12,2026-06-12 08:05,Not applicable,,No exact delivery time recorded.
+NF-1045,Lake Office,Ella Koski,Kuopio,70100,In transit,Tampere sorting terminal,2026-06-15,2026-06-12 06:45,Not applicable,,Moving to destination region.
+NF-1046,Sundom Crafts,Kasper Lund,Vaasa,65100,Ready for collection,Vaasa terminal,2026-06-12,2026-06-12 10:30,Sent,,Collection notice sent on 12 June 2026.
+NF-1047,Pine Market,Sofia Laine,Oulu,90100,Booked,Sender premises,2026-06-16,2026-06-12 11:00,Not applicable,,Collection by carrier not recorded.
+NF-1048,Coastline Supplies,Emil West,Turku,20100,In transit,Tampere sorting terminal,2026-06-15,2026-06-12 11:20,Not applicable,,Next recorded destination: Turku.
+NF-1049,Cedar Workshop,Noora Salmi,Jyvaskyla,40100,Delivered,Jyvaskyla - recipient premises,2026-06-11,2026-06-11 15:25,Not applicable,Noora Salmi,Handover recorded.
+NF-1050,Nordic Blossom,Janne Kivi,Lahti,15100,In transit,Tampere sorting terminal,2026-06-15,2026-06-12 07:50,Not applicable,,Separate shipment from NF-1041.
+NF-1051,Archipelago Textiles,Mira Aalto,Vaasa,65100,Ready for collection,Vaasa terminal,2026-06-11,2026-06-11 14:10,Sent,,Collection notice sent on 11 June 2026.
+NF-1052,Meadow Components,Anton Back,Seinajoki,60100,Out for delivery,Seinajoki - delivery route,2026-06-12,2026-06-12 08:30,Not applicable,,No delivery appointment recorded.
+NF-1053,Silver Birch Retail,Nina Lehto,Helsinki,00100,In transit,Tampere sorting terminal,2026-06-11,2026-06-11 08:45,Not applicable,,No further update in this snapshot.
+NF-1054,North Harbour Print,Joel Niemi,Pori,28100,Delivery attempt made,Pori terminal,2026-06-12,2026-06-12 11:45,Not sent,,Building entrance locked; recipient not reached. Contact Customer Service.
+NF-1055,Green Table,Sara Holm,Vaasa,65100,At terminal,Vaasa terminal,2026-06-15,2026-06-12 12:00,Not sent,,Awaiting processing.
+NF-1056,Lighthouse Interiors,Linnea Berg,Espoo,02100,Out for delivery,Espoo - delivery route,2026-06-12,2026-06-12 08:20,Not applicable,,No address change approved in this record.
+NF-1057,Willow Home,Olli Heinonen,Helsinki,00200,Delivered,Helsinki - recipient premises,2026-06-12,2026-06-12 12:10,Not applicable,Office reception,Reception accepted the parcel.
+NF-1058,Bay Equipment,Erik Holm,Vaasa,65100,Booked,Sender premises,2026-06-16,2026-06-12 13:05,Not applicable,,Pickup planning not confirmed.
+NF-1059,Rowan Retail,Emma Saar,Rovaniemi,96100,In transit,Oulu sorting terminal,2026-06-16,2026-06-12 10:50,Not applicable,,Continuing north.
+NF-1060,Copper Leaf,Lukas Strand,Vaasa,65100,Ready for collection,Vaasa terminal,2026-06-12,2026-06-12 13:30,Sent,,Collection notice sent on 12 June 2026.

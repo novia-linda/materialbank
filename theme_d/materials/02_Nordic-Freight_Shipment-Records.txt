@@ -1,0 +1,265 @@
+NORDIC FREIGHT | SHIPMENT REGISTER | NF-D-1.0
+Fictional exercise snapshot: 2026-06-12 14:00 (Finland local time)
+This text is a static alternative to the spreadsheet, not a live connection.
+For current case rules, use Company Policy P03-P04. Empty fields mean not recorded, not a fact to invent.
+
+ShipmentID: NF-1041
+CustomerName: Nordic Blossom
+RecipientName: Liisa Korpi
+DestinationCity: Helsinki
+DestinationPostcode: 00100
+CurrentStatus: Delivered
+LastKnownLocation: Helsinki - recipient premises
+EstimatedDeliveryDate: 2026-06-11
+LastUpdate: 2026-06-11 13:40
+CollectionNotice: Not applicable
+ReceivedBy: Liisa Korpi
+ServiceNote: Handover recorded at reception.
+
+ShipmentID: NF-1042
+CustomerName: West Coast Design
+RecipientName: Mika Lehto
+DestinationCity: Turku
+DestinationPostcode: 20100
+CurrentStatus: Delivered
+LastKnownLocation: Turku - recipient premises
+EstimatedDeliveryDate: 2026-06-12
+LastUpdate: 2026-06-12 10:15
+CollectionNotice: Not applicable
+ReceivedBy: Mika Lehto
+ServiceNote: Signed handover recorded.
+
+ShipmentID: NF-1043
+CustomerName: Harbour Books
+RecipientName: Aino Ranta
+DestinationCity: Vaasa
+DestinationPostcode: 65100
+CurrentStatus: At terminal
+LastKnownLocation: Vaasa terminal
+EstimatedDeliveryDate: 2026-06-12
+LastUpdate: 2026-06-12 09:10
+CollectionNotice: Not sent
+ReceivedBy: Not recorded
+ServiceNote: Terminal processing not complete.
+
+ShipmentID: NF-1044
+CustomerName: Birch Studio
+RecipientName: Leo Niemi
+DestinationCity: Tampere
+DestinationPostcode: 33100
+CurrentStatus: Out for delivery
+LastKnownLocation: Tampere - delivery route
+EstimatedDeliveryDate: 2026-06-12
+LastUpdate: 2026-06-12 08:05
+CollectionNotice: Not applicable
+ReceivedBy: Not recorded
+ServiceNote: No exact delivery time recorded.
+
+ShipmentID: NF-1045
+CustomerName: Lake Office
+RecipientName: Ella Koski
+DestinationCity: Kuopio
+DestinationPostcode: 70100
+CurrentStatus: In transit
+LastKnownLocation: Tampere sorting terminal
+EstimatedDeliveryDate: 2026-06-15
+LastUpdate: 2026-06-12 06:45
+CollectionNotice: Not applicable
+ReceivedBy: Not recorded
+ServiceNote: Moving to destination region.
+
+ShipmentID: NF-1046
+CustomerName: Sundom Crafts
+RecipientName: Kasper Lund
+DestinationCity: Vaasa
+DestinationPostcode: 65100
+CurrentStatus: Ready for collection
+LastKnownLocation: Vaasa terminal
+EstimatedDeliveryDate: 2026-06-12
+LastUpdate: 2026-06-12 10:30
+CollectionNotice: Sent
+ReceivedBy: Not recorded
+ServiceNote: Collection notice sent on 12 June 2026.
+
+ShipmentID: NF-1047
+CustomerName: Pine Market
+RecipientName: Sofia Laine
+DestinationCity: Oulu
+DestinationPostcode: 90100
+CurrentStatus: Booked
+LastKnownLocation: Sender premises
+EstimatedDeliveryDate: 2026-06-16
+LastUpdate: 2026-06-12 11:00
+CollectionNotice: Not applicable
+ReceivedBy: Not recorded
+ServiceNote: Collection by carrier not recorded.
+
+ShipmentID: NF-1048
+CustomerName: Coastline Supplies
+RecipientName: Emil West
+DestinationCity: Turku
+DestinationPostcode: 20100
+CurrentStatus: In transit
+LastKnownLocation: Tampere sorting terminal
+EstimatedDeliveryDate: 2026-06-15
+LastUpdate: 2026-06-12 11:20
+CollectionNotice: Not applicable
+ReceivedBy: Not recorded
+ServiceNote: Next recorded destination: Turku.
+
+ShipmentID: NF-1049
+CustomerName: Cedar Workshop
+RecipientName: Noora Salmi
+DestinationCity: Jyvaskyla
+DestinationPostcode: 40100
+CurrentStatus: Delivered
+LastKnownLocation: Jyvaskyla - recipient premises
+EstimatedDeliveryDate: 2026-06-11
+LastUpdate: 2026-06-11 15:25
+CollectionNotice: Not applicable
+ReceivedBy: Noora Salmi
+ServiceNote: Handover recorded.
+
+ShipmentID: NF-1050
+CustomerName: Nordic Blossom
+RecipientName: Janne Kivi
+DestinationCity: Lahti
+DestinationPostcode: 15100
+CurrentStatus: In transit
+LastKnownLocation: Tampere sorting terminal
+EstimatedDeliveryDate: 2026-06-15
+LastUpdate: 2026-06-12 07:50
+CollectionNotice: Not applicable
+ReceivedBy: Not recorded
+ServiceNote: Separate shipment from NF-1041.
+
+ShipmentID: NF-1051
+CustomerName: Archipelago Textiles
+RecipientName: Mira Aalto
+DestinationCity: Vaasa
+DestinationPostcode: 65100
+CurrentStatus: Ready for collection
+LastKnownLocation: Vaasa terminal
+EstimatedDeliveryDate: 2026-06-11
+LastUpdate: 2026-06-11 14:10
+CollectionNotice: Sent
+ReceivedBy: Not recorded
+ServiceNote: Collection notice sent on 11 June 2026.
+
+ShipmentID: NF-1052
+CustomerName: Meadow Components
+RecipientName: Anton Back
+DestinationCity: Seinajoki
+DestinationPostcode: 60100
+CurrentStatus: Out for delivery
+LastKnownLocation: Seinajoki - delivery route
+EstimatedDeliveryDate: 2026-06-12
+LastUpdate: 2026-06-12 08:30
+CollectionNotice: Not applicable
+ReceivedBy: Not recorded
+ServiceNote: No delivery appointment recorded.
+
+ShipmentID: NF-1053
+CustomerName: Silver Birch Retail
+RecipientName: Nina Lehto
+DestinationCity: Helsinki
+DestinationPostcode: 00100
+CurrentStatus: In transit
+LastKnownLocation: Tampere sorting terminal
+EstimatedDeliveryDate: 2026-06-11
+LastUpdate: 2026-06-11 08:45
+CollectionNotice: Not applicable
+ReceivedBy: Not recorded
+ServiceNote: No further update in this snapshot.
+
+ShipmentID: NF-1054
+CustomerName: North Harbour Print
+RecipientName: Joel Niemi
+DestinationCity: Pori
+DestinationPostcode: 28100
+CurrentStatus: Delivery attempt made
+LastKnownLocation: Pori terminal
+EstimatedDeliveryDate: 2026-06-12
+LastUpdate: 2026-06-12 11:45
+CollectionNotice: Not sent
+ReceivedBy: Not recorded
+ServiceNote: Building entrance locked; recipient not reached. Contact Customer Service.
+
+ShipmentID: NF-1055
+CustomerName: Green Table
+RecipientName: Sara Holm
+DestinationCity: Vaasa
+DestinationPostcode: 65100
+CurrentStatus: At terminal
+LastKnownLocation: Vaasa terminal
+EstimatedDeliveryDate: 2026-06-15
+LastUpdate: 2026-06-12 12:00
+CollectionNotice: Not sent
+ReceivedBy: Not recorded
+ServiceNote: Awaiting processing.
+
+ShipmentID: NF-1056
+CustomerName: Lighthouse Interiors
+RecipientName: Linnea Berg
+DestinationCity: Espoo
+DestinationPostcode: 02100
+CurrentStatus: Out for delivery
+LastKnownLocation: Espoo - delivery route
+EstimatedDeliveryDate: 2026-06-12
+LastUpdate: 2026-06-12 08:20
+CollectionNotice: Not applicable
+ReceivedBy: Not recorded
+ServiceNote: No address change approved in this record.
+
+ShipmentID: NF-1057
+CustomerName: Willow Home
+RecipientName: Olli Heinonen
+DestinationCity: Helsinki
+DestinationPostcode: 00200
+CurrentStatus: Delivered
+LastKnownLocation: Helsinki - recipient premises
+EstimatedDeliveryDate: 2026-06-12
+LastUpdate: 2026-06-12 12:10
+CollectionNotice: Not applicable
+ReceivedBy: Office reception
+ServiceNote: Reception accepted the parcel.
+
+ShipmentID: NF-1058
+CustomerName: Bay Equipment
+RecipientName: Erik Holm
+DestinationCity: Vaasa
+DestinationPostcode: 65100
+CurrentStatus: Booked
+LastKnownLocation: Sender premises
+EstimatedDeliveryDate: 2026-06-16
+LastUpdate: 2026-06-12 13:05
+CollectionNotice: Not applicable
+ReceivedBy: Not recorded
+ServiceNote: Pickup planning not confirmed.
+
+ShipmentID: NF-1059
+CustomerName: Rowan Retail
+RecipientName: Emma Saar
+DestinationCity: Rovaniemi
+DestinationPostcode: 96100
+CurrentStatus: In transit
+LastKnownLocation: Oulu sorting terminal
+EstimatedDeliveryDate: 2026-06-16
+LastUpdate: 2026-06-12 10:50
+CollectionNotice: Not applicable
+ReceivedBy: Not recorded
+ServiceNote: Continuing north.
+
+ShipmentID: NF-1060
+CustomerName: Copper Leaf
+RecipientName: Lukas Strand
+DestinationCity: Vaasa
+DestinationPostcode: 65100
+CurrentStatus: Ready for collection
+LastKnownLocation: Vaasa terminal
+EstimatedDeliveryDate: 2026-06-12
+LastUpdate: 2026-06-12 13:30
+CollectionNotice: Sent
+ReceivedBy: Not recorded
+ServiceNote: Collection notice sent on 12 June 2026.
+

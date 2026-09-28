@@ -1,133 +1,162 @@
 {
-  "title": "Nordic Freight Knowledge Assistant Test",
-  "version": "0.1-draft",
+  "schemaVersion": 2,
+  "caseId": "nordic-freight-theme-d",
+  "version": "NF-D-1.0",
   "groupSize": 4,
-  "prototype": true,
+  "title": "Nordic Freight - Knowledge Assistant Test",
+  "snapshot": "2026-06-12 14:00 (Finland local time)",
   "sourceOptions": [
     {
       "id": "policy",
-      "label": "Company policy"
+      "label": "Company policy (P01-P07)",
+      "role": 1
     },
     {
-      "id": "shipment",
-      "label": "Shipment data / Google Sheet"
+      "id": "shipments",
+      "label": "Original shipment register",
+      "role": 2
     },
     {
-      "id": "email",
-      "label": "Email / FAQ"
+      "id": "emails",
+      "label": "Original customer emails (E01-E12)",
+      "role": 3
     },
     {
-      "id": "phone",
-      "label": "Phone-call knowledge"
+      "id": "calls",
+      "label": "Original phone transcripts (C01-C10)",
+      "role": 4
     }
   ],
   "issueOptions": [
     {
-      "id": "not-retrieved",
-      "label": "Information existed but was not retrieved"
+      "id": "missing-summary",
+      "label": "The detail was left out of our first knowledge document"
     },
     {
-      "id": "hard-to-find",
-      "label": "Information was difficult to find in the source"
+      "id": "not-connected",
+      "label": "The correct source was not attached or readable"
+    },
+    {
+      "id": "wording",
+      "label": "Wording, heading or conditions needed clarification"
     },
     {
       "id": "combine",
-      "label": "Two or more sources needed to be combined"
-    },
-    {
-      "id": "knowledge",
-      "label": "Knowledge document needed improvement"
+      "label": "The answer needed more than one source"
     },
     {
       "id": "instructions",
-      "label": "Gem instructions needed improvement"
+      "label": "The behaviour instructions needed improvement"
+    },
+    {
+      "id": "wrong-record",
+      "label": "The wrong record or date was used"
     },
     {
       "id": "other",
-      "label": "Other"
+      "label": "Other / cause not established"
     }
   ],
   "questions": [
     {
-      "id": "Q01",
-      "question": "A customer asks whether a shipment can be collected on Saturday. What should the trainee tell them?"
+      "id": "D01",
+      "revision": 1,
+      "question": "Where is shipment NF-1048 going, what is its recorded status and when was it last updated?"
     },
     {
-      "id": "Q02",
-      "question": "Where is shipment NF-1048 currently?"
+      "id": "D02",
+      "revision": 1,
+      "question": "I work all week. Can I collect my ready parcel from the Vaasa terminal on Saturday morning? I have received the collection notice."
     },
     {
-      "id": "Q03",
-      "question": "A customer says a shipment arrived damaged yesterday. What should they do next?"
+      "id": "D03",
+      "revision": 1,
+      "question": "A caller wants a guaranteed full refund because a parcel is late. May the trainee promise it?"
     },
     {
-      "id": "Q04",
-      "question": "What information should the trainee ask for before investigating a delayed shipment?"
+      "id": "D05",
+      "revision": 1,
+      "question": "My parcel was damaged when it arrived. When should I report it, and which photographs and other information should I prepare?"
     },
     {
-      "id": "Q05",
-      "question": "A customer asks what the status “At destination terminal” means. How should the trainee explain it?"
+      "id": "D06",
+      "revision": 1,
+      "question": "The customer wants to collect NF-1043 now. Is the parcel ready for collection?"
     },
     {
-      "id": "Q06",
-      "question": "Can a customer change the delivery address after the shipment has already been dispatched?"
+      "id": "D07",
+      "revision": 1,
+      "question": "The caller has lost the shipment reference. Which details should the trainee collect to help find the right record?"
     },
     {
-      "id": "Q07",
-      "question": "A customer works during the week and asks whether weekend collection is possible. What can the trainee say?"
+      "id": "D09",
+      "revision": 1,
+      "question": "Do Saturday and Sunday count towards the five-day collection holding period?"
     },
     {
-      "id": "Q08",
-      "question": "Which destination is shipment NF-2031 travelling to?"
+      "id": "D12",
+      "revision": 1,
+      "question": "Who is recorded as receiving NF-1042, and at what time was the handover recorded?"
     },
     {
-      "id": "Q09",
-      "question": "A customer cannot find their shipment number. What other information should the trainee ask for?"
+      "id": "D11",
+      "revision": 1,
+      "question": "For NF-1056, can we promise the customer that a new delivery address will be used today? What information is needed for the request?"
     },
     {
-      "id": "Q10",
-      "question": "A customer says the tracking status has not changed since yesterday. What should the trainee do before promising anything?"
+      "id": "D14",
+      "revision": 1,
+      "question": "When does telephone Customer Service close on Friday? Is that necessarily the same as the Vaasa collection desk?"
     },
     {
-      "id": "Q11",
-      "question": "What should the trainee tell a customer who asks when the Vaasa terminal closes?"
+      "id": "D08",
+      "revision": 1,
+      "question": "Does the standard parcel service in this exercise include sending goods to Sweden?"
     },
     {
-      "id": "Q12",
-      "question": "A customer asks whether someone else can collect a shipment on their behalf. What should the trainee check?"
+      "id": "D13",
+      "revision": 1,
+      "question": "Can my brother collect my ready parcel for me without taking my identity card?"
     },
     {
-      "id": "Q13",
-      "question": "A customer asks: “My package is late. Can you guarantee it will arrive today?” How should the trainee respond?"
+      "id": "D15",
+      "revision": 1,
+      "question": "Using the exercise snapshot, what should the trainee do about NF-1053? Its estimated delivery date has passed."
     },
     {
-      "id": "Q14",
-      "question": "What should happen if a customer reports visible damage but has already thrown away the packaging?"
+      "id": "D16",
+      "revision": 1,
+      "question": "Does the status Booked mean that Nordic Freight already has the parcel?"
     },
     {
-      "id": "Q15",
-      "question": "Find shipment NF-1176 and tell the customer its current status and destination."
+      "id": "D18",
+      "revision": 1,
+      "question": "The customer has photographed a damaged item. Can they throw away the box and inner packaging now?"
     },
     {
-      "id": "Q16",
-      "question": "A customer uses the words “weekend pickup” although the documentation uses “Saturday collection”. Can the assistant still find the correct rule?"
+      "id": "D21",
+      "revision": 1,
+      "question": "Nordic Blossom has more than one shipment. Give each ShipmentID, destination and recorded status."
     },
     {
-      "id": "Q17",
-      "question": "A caller reports a damaged shipment and asks what they should prepare before Nordic Freight can investigate. Give a complete answer."
+      "id": "D19",
+      "revision": 1,
+      "question": "For NF-1054, what is recorded, and should the trainee promise another delivery attempt tonight?"
     },
     {
-      "id": "Q18",
-      "question": "A customer asks a question that is answered both in the company policy and in a previous customer conversation. Does the Gem give an answer that matches both sources?"
+      "id": "D23",
+      "revision": 1,
+      "question": "A customer calls again about an enquiry already opened this morning. Should we create a second case?"
     },
     {
-      "id": "Q19",
-      "question": "A customer asks what Nordic Freight can do if a shipment is delayed but the exact delivery time is still unknown. What should the trainee say?"
+      "id": "D20",
+      "revision": 1,
+      "question": "The customer wants written proof of delivery for their office. Can the Gem send it?"
     },
     {
-      "id": "Q20",
-      "question": "After updating the shipment data, can the Gem use the changed information?",
-      "instruction": "Open the shipment Google Sheet. Change the status of one fictional shipment or add one new fictional shipment. Save the change, wait about one minute, then ask the Gem about that shipment. This is an experiment: record what happened even if the updated information is not available immediately."
+      "id": "D24",
+      "revision": 1,
+      "question": "A caller reads NF-104B, but the closest register entry looks like NF-1048. Should the assistant silently use the similar reference?"
     }
   ]
 }

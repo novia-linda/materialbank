@@ -226,3 +226,22 @@ textarea { min-height: 92px; resize: vertical; }
   .report-sheet { max-width: none; margin: 0; padding: 0; border: 0; box-shadow: none; }
   .report-question { break-inside: avoid; }
 }
+
+/* Course styling and v2 working forms. Fonts use system fallbacks; no font files included. */
+:root{--ink:#29313a;--muted:#4f5962;--page:#fbfaf7;--line:#c8d6d8;--soft:#eef4f5;--accent:#3f5962;--shadow:none}
+body{font-family:"Be Vietnam Pro","Segoe UI",Arial,sans-serif}.site-header{background:#fff;backdrop-filter:none;border-top:7px solid #8daeb6}
+button,.btn,input,select{min-height:44px}select{font:inherit;background:white;color:var(--ink);border:1px solid #777;padding:.75rem;max-width:100%}
+fieldset{border:0;padding:0;margin:1.3rem 0 0}legend{font-weight:600;margin-bottom:.65rem}
+.question-workspace{scroll-margin-top:140px;min-width:0}.question-card-header h2{font-size:clamp(1.55rem,2.4vw,2.1rem);line-height:1.25}
+.question-card-header .btn{margin:.5rem 0}.evidence-field{margin-top:1rem}.field textarea{font-weight:400;font-size:1rem}
+.app-message{max-width:1240px;margin:1rem auto;padding:1rem;background:#eef4f5;border-left:5px solid #8daeb6}.warning{background:#fff3d6;padding:.8rem;border-left:4px solid #8b5a00}
+.start-tools{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}.privacy-note{font-size:.88rem;max-width:960px;color:#4f5962}
+.snapshot-note{padding:.7rem 1rem;background:#eef4f5;font-weight:600}.team-details{margin:1rem 0;border:1px solid var(--line);padding:1rem}.team-details summary{cursor:pointer;font-weight:600}
+.member-grid,.experiment-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.3rem 0}.experiment-grid .field{min-width:0}.experiment-steps li{margin:.6rem 0}.nav-guide{display:block;margin:1rem 0;color:var(--accent)}
+.question-nav>.btn{width:100%;margin:.7rem 0}.question-grid{margin-bottom:1rem}.report-question dd{white-space:normal;overflow-wrap:anywhere}.report-meta dd{min-width:0}.report-stats div span,.report-stats div strong{display:block}.report-stats div strong{font-size:1.7rem}
+.teacher-answer{margin-top:1.5rem}.teacher-answer dd{overflow-wrap:anywhere}#teacherSelect{width:100%}.site-footer{flex-wrap:wrap;gap:1rem}
+@media(max-width:700px){.member-grid,.experiment-grid{grid-template-columns:1fr}.site-header{position:static}.question-workspace{scroll-margin-top:15px}.header-actions{width:100%}.header-actions .btn{font-size:.85rem}.report-meta{grid-template-columns:1fr!important}.report-meta dt{margin-top:.6rem}.report-stats{flex-wrap:wrap}.modal{width:calc(100% - 1rem);max-width:100%}h1{font-size:2.25rem}.site-header{flex-wrap:wrap}.field-grid{grid-template-columns:1fr}.question-actions{flex-direction:column;align-items:stretch}}
+@media print{.site-header,.site-footer,.no-print,#experimentScreen,#labScreen,#startScreen,dialog,.report-toolbar{display:none!important}#reportScreen{display:block!important;padding:0!important}main{width:100%!important}.report-sheet{border:0!important;box-shadow:none!important;padding:0!important}.report-question{break-inside:avoid}.report-meta{grid-template-columns:135px 1fr!important}h1{font-size:24pt!important}h2{font-size:17pt!important}h3{font-size:12pt!important}body{background:white;font-size:10pt} @page{size:A4;margin:16mm}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+#materialsLinks a{display:block;font-size:.85rem;margin:.7rem 0;color:var(--accent)}.materials-nav{padding:.6rem 0;border-top:1px solid var(--line)}.materials-nav summary{cursor:pointer;font-size:.88rem;font-weight:600}

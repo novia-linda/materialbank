@@ -1,0 +1,83 @@
+NORDIC FREIGHT - CUSTOMER CALL TRANSCRIPTS
+Approved training source | Reviewed 12 June 2026 | NF-D-1.0
+
+C01 | 2026-06-02 09:10 | A missing reference
+Caller: I need to ask about a parcel, but I cannot find the number. I know the sender was a small furniture shop.
+Staff / Elias: First check the booking confirmation or parcel label for the ShipmentID. A shop name can match several records.
+Caller: I have neither with me. Can you still start looking?
+Staff / Elias: We can collect the sender name, recipient name, destination postcode and approximate dispatch date. Those details help us search for the correct record; they do not guarantee a unique match.
+Caller: So you cannot just choose whichever looks closest?
+Staff / Elias: Correct. We need to identify the right shipment before giving a status answer. If it remains unclear, Customer Service passes the search to Transport Operations.
+
+C02 | 2026-06-03 11:40 | Expected yesterday
+Caller: The estimated delivery date was yesterday. It still says In transit and the update is from yesterday morning. What now?
+Staff / Maja: Let us check the exact reference, estimate, status and latest update. If the estimate has passed and there is no update from today, Customer Service sends the case to Transport Operations for investigation.
+Caller: Does that mean the parcel is lost?
+Staff / Maja: No. A late or old status does not establish loss. We can explain what is recorded and what needs checking, but not invent a cause.
+Caller: Can you promise it will come before lunch?
+Staff / Maja: Not from that information. The date is an estimate, not an appointment. We will request an update without making a new delivery promise.
+
+C03 | 2026-06-04 14:20 | Photographs of damage
+Caller: I am making a damage report. Which pictures should I take? I have already opened the box.
+Staff / Susan: Take clear photographs of the outer packaging with the shipping label visible, the inner packaging, and the damaged item. These show different parts of what happened.
+Caller: Can I throw the box away once I have the photos?
+Staff / Susan: No. Keep the item and all packaging until Claims Team tells you they can be discarded. Photographs do not replace keeping the material for review.
+Caller: Should I tell you whether the damage was visible on delivery or found later?
+Staff / Susan: Yes. Include the shipment reference, a short description and when you noticed the damage. Customer Service forwards the report to Claims Team; they decide the next steps.
+
+C04 | 2026-06-05 10:05 | Changing a destination
+Caller: I emailed about changing the delivery address. Can you now tell me it is done?
+Staff / Johan: I first need to check whether Transport Operations has approved and recorded the change. Receiving the email is not approval.
+Caller: I sent the new address but nothing else.
+Staff / Johan: We also need the shipment reference, the original address and a contact telephone number. Please include the full new address, not only a building name.
+Caller: It is already Out for delivery. Will it arrive at the new address today?
+Staff / Johan: That needs a route check. We cannot guarantee a same-day redirection. Until an approved change appears in the record, do not treat the new address as confirmed.
+
+C05 | 2026-06-08 08:35 | A delivery was attempted
+Caller: I missed a call while I was working and the parcel says Delivery attempt made. Will the driver automatically return tonight?
+Staff / Maja: Please give me the shipment reference. I will read the ServiceNote. An attempted delivery is not a completed delivery, and we should not promise another attempt tonight.
+Caller: The message mentions an access problem at the building.
+Staff / Maja: Customer Service needs a reachable contact number and the correct access or delivery details. They will check the note and arrange the next step with Transport Operations.
+Caller: Should I call the driver privately?
+Staff / Maja: Please use Customer Service. We do not give out a driver's private number. We need the agreed arrangement recorded so the next person can see it.
+
+C06 | 2026-06-08 15:10 | Calling again about an open enquiry
+Caller: I rang this morning about a delay and I have not heard back. Should I ask you to open another enquiry?
+Staff / Elias: Do you have the enquiry reference from the first call, or the ShipmentID? I can use that to find the existing enquiry.
+Caller: I have reference CS-0612. I can repeat everything.
+Staff / Elias: Let us keep one enquiry. I will add this call and any new information to it, rather than creating a duplicate case.
+Caller: Can you guarantee that someone will ring within an hour?
+Staff / Elias: I cannot promise a response time that is not confirmed. I can record your contact number, explain the current position and pass the follow-up to the responsible team.
+
+C07 | 2026-06-09 13:25 | Delivered, but not found
+Caller: The system says Delivered, but I cannot find the parcel at our office. Has it gone missing?
+Staff / Susan: We should check the ShipmentID, recorded recipient and latest update first. Please check whether reception or a colleague accepted it.
+Caller: And if nobody there has it?
+Staff / Susan: Customer Service will send the discrepancy to Transport Operations to investigate. Do not change the status yourself or assume the customer is mistaken.
+Caller: Does Delivered prove that I received it personally?
+Staff / Susan: No. It records a handover. We still need to resolve the difference between that record and what you report. A written confirmation may be requested after the record has been checked.
+
+C08 | 2026-06-10 12:40 | An almost matching reference
+Caller: I think my code is NF-104B. Can you look at NF-1048 instead? They look almost the same on my screen.
+Staff / Johan: Please check the exact code on the original label or confirmation. I should not silently replace a letter with a digit and assume it is your shipment.
+Caller: What if I still cannot read it?
+Staff / Johan: We can collect sender name, recipient name, destination postcode and approximate dispatch date to identify it. If we cannot establish a unique match, Transport Operations needs to investigate.
+Caller: So you cannot give me the other parcel's status as a guess?
+Staff / Johan: Correct. A plausible status for the wrong reference is still the wrong answer. We will make the uncertainty clear.
+
+C09 | 2026-06-11 09:50 | Collection is not delivery
+Caller: The tracking note says my parcel reached a terminal. Does that mean I can just turn up this afternoon?
+Staff / Maja: Check the status and the collection notice. At terminal does not mean Ready for collection. The parcel needs to be ready and the collection notice must be Sent.
+Caller: The terminal has it, though. Is that not enough?
+Staff / Maja: It may still need processing or be planned for a delivery route. We do not want you to travel there before collection is authorised.
+Caller: Once the notice comes, where do I check the hours?
+Staff / Maja: Use the approved collection information in our customer emails. Telephone hours and collection-desk hours are different.
+
+C10 | 2026-06-11 15:30 | A second request for damage advice
+Caller: A colleague told me to take a photograph of the broken item. Is that enough for your team?
+Staff / Susan: Please also photograph the outer packaging with the shipping label and the inner packaging. Keep all of it while the case is reviewed.
+Caller: Who decides whether we get compensation?
+Staff / Susan: Claims Team, not the assistant or the trainee. Customer Service collects the shipment reference, description, timing of discovery and photographs.
+Caller: Should I wait several days to see if it gets worse?
+Staff / Susan: Report it promptly. Our email guidance explains the preferred reporting time. We can help prepare a complete report now without promising the outcome.
+

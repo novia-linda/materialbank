@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Nordic Freight Knowledge Assistant Test Lab">
   <title>Nordic Freight · Knowledge Assistant Test Lab</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2.0">
 </head>
 <body>
   <noscript>
@@ -15,7 +15,7 @@
   <header class="site-header">
     <div class="brand-row">
       <a class="brand" href="#" id="brandHome">AI for Business · Theme D</a>
-      <span class="prototype-badge">Prototype</span>
+      <span class="prototype-badge">Case NF-D-1.0</span>
     </div>
     <div class="header-actions" id="headerActions" hidden>
       <button class="btn btn-ghost" type="button" id="saveBackupBtn">Save backup</button>
@@ -26,13 +26,13 @@
     </div>
   </header>
 
-  <main>
+  <div id="appMessage" class="app-message no-print" role="status" hidden></div><main>
     <section class="screen screen-start" id="startScreen">
       <div class="hero-grid">
         <div>
           <p class="eyebrow">Nordic Freight · Knowledge Assistant Test Lab</p>
           <h1>Test the answer. Then verify the source.</h1>
-          <p class="lead">Your group has brought several knowledge sources together in one Gemini Gem. Use this lab to test 20 customer questions, verify every answer against the original material and improve anything that does not work.</p>
+          <p class="lead">Your group has brought several knowledge sources together in one Gemini Gem. Use this lab to test the customer questions, verify every answer against the original material and improve anything that does not work.</p>
         </div>
         <aside class="principle-card" aria-label="Key principle">
           <span class="principle-kicker">Key principle</span>
@@ -45,7 +45,7 @@
         <div class="step-number">1</div>
         <div>
           <h2>Start your group session</h2>
-          <p>Choose the group size. The app will load the correct 20-question test bank.</p>
+          <p>Choose the group size. The app will load the correct question bank for your group.</p>
         </div>
         <div class="field-grid">
           <label class="field">
@@ -69,6 +69,8 @@
         </div>
       </div>
 
+      <div class="start-tools"><a class="btn btn-outline" href="guides/group-instructions.html" target="_blank" rel="noopener">Task instructions &amp; materials</a><label class="btn btn-outline" for="restoreStartInput">Restore a progress backup</label><input type="file" id="restoreStartInput" accept=".json" class="visually-hidden"><button class="btn btn-ghost" type="button" id="teacherStartBtn">Teacher mode</button></div>
+      <p class="privacy-note">One group uses one test-lab browser session. Progress is saved only on that browser, not to Moodle or to other group members. Use a group code or initials, and save a JSON backup. On a shared computer, reset the session after exporting. Do not enter real customer data.</p>
       <div class="how-grid">
         <article>
           <span class="mini-index">01</span>
@@ -100,7 +102,7 @@
         </div>
       </div>
 
-      <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
+      <p id="snapshotText" class="snapshot-note"></p><p id="readinessText" class="step-help"></p><details class="team-details"><summary>Record your knowledge experts (optional)</summary><div id="memberFields" class="member-grid"></div></details><div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
 
       <div class="lab-layout">
         <aside class="question-nav" aria-label="Question navigation">
@@ -109,7 +111,7 @@
             <span id="questionBankVersion"></span>
           </div>
           <div class="question-grid" id="questionGrid"></div>
-          <div class="nav-legend">
+          <button class="btn btn-outline" id="experimentBtn" type="button">Update experiment</button><a class="nav-guide" href="guides/group-instructions.html" target="_blank" rel="noopener">Instructions &amp; source files</a><details class="materials-nav"><summary>Original source files</summary><div id="materialsLinks"></div></details><div class="nav-legend">
             <span><i class="dot dot-open"></i>Not verified</span>
             <span><i class="dot dot-done"></i>Verified</span>
             <span><i class="dot dot-attention"></i>Needs attention</span>
@@ -120,6 +122,7 @@
       </div>
     </section>
 
+    <section class="screen" id="experimentScreen" hidden><p class="eyebrow">Separate experiment / not part of the core questions</p><h1>Does an updated source reach the Gem?</h1><p class="lead">Observe what happens. An unsuccessful update does not make your verified core questions incomplete.</p><ol class="experiment-steps"><li>Keep the original 20 rows unchanged. Add a new, fully fictional shipment with a unique ID, for example NF-1099, to the agreed working source.</li><li>Record what you added and when it was saved. Try waiting about a minute; this is an observation interval, not a promised synchronisation time.</li><li>Open a fresh Gem conversation and ask for the new shipment's status. Do not put the new status in the prompt.</li><li>Record the answer. Note whether you manually replaced or reattached any file. A successful manual refresh is not automatic updating.</li></ol><div id="experimentForm" class="experiment-grid"></div><div class="toolbar-actions"><button type="button" class="btn btn-outline" id="experimentBackBtn">Back to questions</button><button type="button" class="btn btn-dark" id="experimentReportBtn">Open report</button></div></section>
     <section class="screen screen-report" id="reportScreen" hidden>
       <div class="report-toolbar no-print">
         <button class="btn btn-outline" type="button" id="backToLabBtn">← Back to test</button>
@@ -151,9 +154,9 @@
         <div class="teacher-panel" id="teacherPanel" hidden>
           <div class="teacher-tools">
             <button class="btn btn-outline" type="button" id="randomTeacherQuestionBtn">Choose random question</button>
-            <span id="teacherQuestionCount"></span>
+            <span id="teacherQuestionCount"></span><button type="button" class="btn btn-ghost" id="clearTeacherBtn">Clear private key</button>
           </div>
-          <div id="teacherAnswerView"></div>
+          <label class="field"><span>Choose a question</span><select id="teacherSelect"></select></label><div id="teacherAnswerView"></div>
         </div>
       </div>
     </form>
@@ -179,10 +182,10 @@
   </dialog>
 
   <footer class="site-footer no-print">
-    <span>Fictional learning case · Nordic Freight</span>
+    <span id="saveStatus" role="status">Progress is local to this browser</span><span>Fictional learning case · Nordic Freight</span>
     <button class="link-btn" type="button" id="resetBtn" hidden>Reset session</button>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=2.0"></script>
 </body>
 </html>

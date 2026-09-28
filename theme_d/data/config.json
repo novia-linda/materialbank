@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "caseId": "nordic-freight-theme-d",
+  "version": "NF-D-1.0",
+  "materials": [
+    {
+      "id": "policy",
+      "label": "Company policy",
+      "url": "materials/01_Nordic-Freight_Company-Policy.pdf"
+    },
+    {
+      "id": "shipments",
+      "label": "Shipment register",
+      "url": "materials/02_Nordic-Freight_Shipment-Register.xlsx"
+    },
+    {
+      "id": "emails",
+      "label": "Customer email archive",
+      "url": "materials/03_Nordic-Freight_Customer-Emails.pdf"
+    },
+    {
+      "id": "calls",
+      "label": "Customer call transcripts",
+      "url": "materials/04_Nordic-Freight_Phone-Transcripts.pdf"
+    },
+    {
+      "id": "guide",
+      "label": "Packing desk guide (5-person groups)",
+      "url": "materials/05_Nordic-Freight_Packing-Desk-Guide.pdf"
+    }
+  ],
+  "instructionsUrl": "guides/group-instructions.html"
+}

@@ -1,0 +1,12 @@
+KNOWLEDGE ENTRY TEMPLATE
+Copy for each entry. Complete five initially; improve after testing.
+
+Entry ID:
+Topic / common question:
+Alternative customer wordings:
+Approved answer:
+Conditions / exceptions:
+Required caller information:
+Handover:
+Original evidence ID(s):
+Owner / reviewed:

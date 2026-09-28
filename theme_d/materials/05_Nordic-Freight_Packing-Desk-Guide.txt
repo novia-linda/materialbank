@@ -1,0 +1,17 @@
+NORDIC FREIGHT - PACKING DESK GUIDE
+Approved training source | Reviewed 12 June 2026 | NF-D-1.0
+
+G01 | Reusing a box
+Use a strong, clean and undamaged outer box. Remove or fully cover old address labels and old barcodes. A reused box is acceptable only when it still protects the contents and shows no damage that weakens it. Never leave two visible delivery addresses or two competing tracking labels.
+
+G02 | Several parcels in one shipment
+Give each physical parcel its own approved parcel label. All parcel labels for the shipment show the shared ShipmentID and a distinct parcel position, for example 1 of 2 and 2 of 2. Do not use one loose label for two separate boxes. Customer Service supplies the correct label set when needed.
+
+G03 | Fragile contents
+Wrap fragile items separately, cushion them on all sides and fill empty spaces so items cannot move inside the box. A Fragile sticker alone is not sufficient packing. It does not create a special handling guarantee or replace protective packaging.
+
+G04 | Standard parcel acceptance
+For this fictional standard parcel service, each packed parcel may weigh at most 20 kg, and its longest side may be at most 100 cm. Both limits must be met. Weigh and measure the packed parcel, not the empty box. An item outside either limit needs Service Coordinator approval for a different arrangement; do not invent an extra fee or confirm acceptance.
+
+G05 | When the desk must stop and ask
+Liquids, loose batteries and goods described as dangerous are not accepted through the ordinary standard-parcel procedure in this training case. Refer the enquiry to the Service Coordinator before accepting it. This guide is not a dangerous-goods manual. Do not give packing instructions for dangerous goods or assume that a warning label makes them acceptable.
