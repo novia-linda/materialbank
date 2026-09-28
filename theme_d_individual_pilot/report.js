@@ -86,9 +86,18 @@ function createPrimerScene(model){
  return sc;
 }
 
+/* Automatic fit: if the report does not fit at normal size, the variable text
+   (test rows and closing notes) is reduced in small steps down to TEXT_SCALE_MIN.
+   Only if it still does not fit is the student asked to shorten the text. */
+const TEXT_SCALE_MIN=0.88,TEXT_SCALE_STEP=0.02;
 function createScene(model){
  if(model.level.id==='primer')return createPrimerScene(model);
- const {config,level,state}=model,sc={width:W,height:H,ops:[],issues:[],model};
+ let sc;
+ for(let k=1;k>=TEXT_SCALE_MIN-1e-9;k=Math.round((k-TEXT_SCALE_STEP)*100)/100){sc=buildScene(model,k);if(!sc.issues.length)break;}
+ return sc;
+}
+function buildScene(model,k){
+ const {config,level,state}=model,sc={width:W,height:H,ops:[],issues:[],model,textScale:k};
  const rect=(x,y,w,h,fill,stroke)=>sc.ops.push({t:'rect',x,y,w,h,fill,stroke});
  const line=(x1,y1,x2,y2,color=C.line,th=.6)=>sc.ops.push({t:'line',x1,y1,x2,y2,color,th});
  const text=(s,x,y,size=9,font='regular',color=C.ink)=>sc.ops.push({t:'text',s:clean(s),x,y,size,font,color});
@@ -146,14 +155,14 @@ function createScene(model){
  let y=419,headH=22;rect(M,y,CW,headH,C.soft);
  ['Test / short question','Assistant answer - summary','Original evidence','1st','Last'].forEach((h,i)=>text(h,xs[i]+(i>2?7:7),y+7,7.1,'bold',C.strong));y+=headH;
  for(const q of level.questions){
-  const t=state.tests[q.id]||{},labelLines=wrap(q.label,widths[0]-14,8.4),aLines=wrap(t.answer||'[not recorded]',widths[1]-14,8.8);
+  const t=state.tests[q.id]||{},labelLines=wrap(q.label,widths[0]-14,8.4*k),aLines=wrap(t.answer||'[not recorded]',widths[1]-14,8.8*k);
   const sourceDefs=Object.fromEntries(config.sources.map(v=>[v.id,v]));
   const evid=(t.sources||[]).map(k=>sourceDefs[k]?.short+': '+(t.refs[k]||'[location missing]')).join('\n');
-  const eLines=wrap(evid||'[not recorded]',widths[2]-14,8.1);
-  const rh=Math.max(33,12+Math.max(11+labelLines.length*10,aLines.length*10.5,eLines.length*9.8));
+  const eLines=wrap(evid||'[not recorded]',widths[2]-14,8.1*k);
+  const rh=Math.max(33*k,12+Math.max(11*k+labelLines.length*10*k,aLines.length*10.5*k,eLines.length*9.8*k));
   if(t.first&&t.first!=='correct')rect(M,y,CW,rh,'#F5EFEC');
-  text(q.id,xs[0]+7,y+6,8.1,'bold');labelLines.forEach((v,i)=>text(v,xs[0]+7,y+17+i*10,8.4));
-  aLines.forEach((v,i)=>text(v,xs[1]+7,y+6+i*10.5,8.8));eLines.forEach((v,i)=>text(v,xs[2]+7,y+6+i*9.8,8.1));
+  text(q.id,xs[0]+7,y+6,8.1*k,'bold');labelLines.forEach((v,i)=>text(v,xs[0]+7,y+6+11*k+i*10*k,8.4*k));
+  aLines.forEach((v,i)=>text(v,xs[1]+7,y+6+i*10.5*k,8.8*k));eLines.forEach((v,i)=>text(v,xs[2]+7,y+6+i*9.8*k,8.1*k));
   icon(t.first,xs[3]+9,y+(rh-9)/2);icon(t.retested?t.latest:t.first,xs[4]+9,y+(rh-9)/2);
   if(t.sources?.length&&!t.readOriginal)text('Not yet checked',xs[2]+7,y+rh-8,6.6,'regular',C.bad);
   y+=rh;line(M,y,W-M,y);
@@ -170,8 +179,8 @@ function createScene(model){
   const labels={auto:'New information found without re-upload',notyet:'New information not found',manual:'Found after manual re-upload only',unclear:'Result unclear',untested:'Not tested'};
   const exp=state.experiment||{};left+='\nUpdate: '+(labels[exp.outcome]||'Not recorded')+(exp.wait?' (about '+exp.wait+' min).':'.')+(exp.note?' '+exp.note:'');
  }
- let lh=para(left,M,y,colW,9,'regular',11.5,9,'Changes / experiment note');
- let rh=para(state.reflection||'[not recorded]',mid,y,colW,9,'regular',11.5,9,'Reflection');
+ let lh=para(left,M,y,colW,9*k,'regular',11.5*k,9,'Changes / experiment note');
+ let rh=para(state.reflection||'[not recorded]',mid,y,colW,9*k,'regular',11.5*k,9,'Reflection');
  let bottom=y+Math.max(lh,rh);
  if(isPrimer){
   let cc=Object.values(state.checklist||{}).filter(Boolean).length;
