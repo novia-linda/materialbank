@@ -1,4 +1,4 @@
-/* One-page evidence report renderer. No network, third-party runtime or font files.
+/* One-page (or, if needed, two-page) evidence report renderer. No network, third-party runtime or font files.
    PDF 1.4: standard Helvetica text, vector marks, JPEG screenshots. UTF-8 content
    not available in WinAnsi is rendered as a small high-resolution text image.
    All report text is checked for fit; nothing is silently clipped. */
@@ -86,23 +86,32 @@ function createPrimerScene(model){
  return sc;
 }
 
-/* Automatic fit: if the report does not fit at normal size, the variable text
-   (test rows and closing notes) is reduced in small steps down to TEXT_SCALE_MIN.
-   Only if it still does not fit is the student asked to shorten the text. */
-const TEXT_SCALE_MIN=0.88,TEXT_SCALE_STEP=0.02;
+/* Automatic fit, in this order:
+   1. Reduce the variable text (test rows and closing notes) in small steps down to TEXT_SCALE_MIN.
+   2. Reduce the left and right page margins down to MARGIN_MIN.
+   3. If it still does not fit, continue on a second page at normal size. This is allowed and
+      is shown to the student as information, not as an error.
+   Only if the text does not fit even on two pages is the student asked to shorten it. */
+const TEXT_SCALE_MIN=0.88,TEXT_SCALE_STEP=0.02,MARGIN_NORMAL=28,MARGIN_MIN=20,MARGIN_STEP=4,BOTTOM=789;
+const TWO_PAGE_NOTICE='Your report has a lot of text, so the PDF has two pages. This is OK.';
 function createScene(model){
  if(model.level.id==='primer')return createPrimerScene(model);
  let sc;
- for(let k=1;k>=TEXT_SCALE_MIN-1e-9;k=Math.round((k-TEXT_SCALE_STEP)*100)/100){sc=buildScene(model,k);if(!sc.issues.length)break;}
+ for(let k=1;k>=TEXT_SCALE_MIN-1e-9;k=Math.round((k-TEXT_SCALE_STEP)*100)/100){sc=buildScene(model,k,MARGIN_NORMAL,false);if(!sc.issues.length)return sc;}
+ for(let m=MARGIN_NORMAL-MARGIN_STEP;m>=MARGIN_MIN;m-=MARGIN_STEP){sc=buildScene(model,TEXT_SCALE_MIN,m,false);if(!sc.issues.length)return sc;}
+ sc=buildScene(model,1,MARGIN_NORMAL,true);
+ if(!sc.issues.length&&sc.pages>1)sc.notices.push(TWO_PAGE_NOTICE);
  return sc;
 }
-function buildScene(model,k){
- const {config,level,state}=model,sc={width:W,height:H,ops:[],issues:[],model,textScale:k};
- const rect=(x,y,w,h,fill,stroke)=>sc.ops.push({t:'rect',x,y,w,h,fill,stroke});
- const line=(x1,y1,x2,y2,color=C.line,th=.6)=>sc.ops.push({t:'line',x1,y1,x2,y2,color,th});
- const text=(s,x,y,size=9,font='regular',color=C.ink)=>sc.ops.push({t:'text',s:clean(s),x,y,size,font,color});
+function buildScene(model,k,m,twoPage){
+ const M=m,CW=W-2*m;
+ const {config,level,state}=model,sc={width:W,height:H,ops:[],issues:[],notices:[],model,textScale:k,margin:m,pages:1};
+ let pg=0;
+ const rect=(x,y,w,h,fill,stroke)=>sc.ops.push({t:'rect',x,y,w,h,fill,stroke,p:pg});
+ const line=(x1,y1,x2,y2,color=C.line,th=.6)=>sc.ops.push({t:'line',x1,y1,x2,y2,color,th,p:pg});
+ const text=(s,x,y,size=9,font='regular',color=C.ink)=>sc.ops.push({t:'text',s:clean(s),x,y,size,font,color,p:pg});
  function para(s,x,y,w,size=9,font='regular',leading=11.5,maxLines=99,label='Text'){
-  let ls=wrap(s,w,size,font);if(ls.length>maxLines)sc.issues.push(label+' is too long for the one-page report. Shorten it (currently '+ls.length+' lines; space for '+maxLines+').');
+  let ls=wrap(s,w,size,font);if(ls.length>maxLines)sc.issues.push(label+' is too long for the report. Shorten it (currently '+ls.length+' lines; space for '+maxLines+').');
   ls.forEach((s,i)=>text(s,x,y+i*leading,size,font));return ls.length*leading;
  }
  const section=(num,title,y)=>{text(num,M,y,7.5,'bold',C.strong);text(title,M+24,y,10.2,'bold',C.strong);};
@@ -145,58 +154,81 @@ function buildScene(model,k){
   let img=state.images[i];
   if(img){
    let scale=Math.min((CW-4)/img.w,(boxH-4)/img.h),iw=img.w*scale,ih=img.h*scale;
-   sc.ops.push({t:'image',data:img.data,x:M+(CW-iw)/2,y:boxY+(boxH-ih)/2,w:iw,h:ih});
+   sc.ops.push({t:'image',data:img.data,x:M+(CW-iw)/2,y:boxY+(boxH-ih)/2,w:iw,h:ih,p:pg});
   }else{
    text(isPrimer&&i===1?'Optional practice image - not added':'No screenshot attached',M+12,boxY+31,10,'regular',C.body);
   }
  }
  section('02','Test results and original evidence',402);
- const widths=[94,234,155.28,28,28];let xs=[M];widths.forEach(w=>xs.push(xs[xs.length-1]+w));
- let y=419,headH=22;rect(M,y,CW,headH,C.soft);
- ['Test / short question','Assistant answer - summary','Original evidence','1st','Last'].forEach((h,i)=>text(h,xs[i]+(i>2?7:7),y+7,7.1,'bold',C.strong));y+=headH;
+ const wf=(CW-56)/483.28,widths=[94*wf,234*wf,155.28*wf,28,28];let xs=[M];widths.forEach(w=>xs.push(xs[xs.length-1]+w));
+ const aMax=twoPage?8:5,eMax=twoPage?10:6,noteMax=twoPage?14:9;
+ let y=419,headH=22;
+ const tableHead=()=>{rect(M,y,CW,headH,C.soft);['Test / short question','Assistant answer - summary','Original evidence','1st','Last'].forEach((h,i)=>text(h,xs[i]+7,y+7,7.1,'bold',C.strong));y+=headH;};
+ const newPage=()=>{
+  pg=1;sc.pages=2;
+  [C.strong,C.accent,'#C8D6D8',C.warm].forEach((co,i)=>rect(M+i*CW/4,16,CW/4,4,co));
+  text('AI FOR BUSINESS / INDIVIDUAL REPORT',M,31,7.3,'bold',C.strong);
+  text(title+' (continued)',M,48,13,'regular');
+  text('Student: '+(state.student||'[not entered]'),M,68,8.6,'regular',C.body);
+  y=92;
+ };
+ tableHead();
  for(const q of level.questions){
   const t=state.tests[q.id]||{},labelLines=wrap(q.label,widths[0]-14,8.4*k),aLines=wrap(t.answer||'[not recorded]',widths[1]-14,8.8*k);
   const sourceDefs=Object.fromEntries(config.sources.map(v=>[v.id,v]));
   const evid=(t.sources||[]).map(k=>sourceDefs[k]?.short+': '+(t.refs[k]||'[location missing]')).join('\n');
   const eLines=wrap(evid||'[not recorded]',widths[2]-14,8.1*k);
   const rh=Math.max(33*k,12+Math.max(11*k+labelLines.length*10*k,aLines.length*10.5*k,eLines.length*9.8*k));
+  if(twoPage&&pg===0&&y+rh>BOTTOM){newPage();tableHead();}
   if(t.first&&t.first!=='correct')rect(M,y,CW,rh,'#F5EFEC');
   text(q.id,xs[0]+7,y+6,8.1*k,'bold');labelLines.forEach((v,i)=>text(v,xs[0]+7,y+6+11*k+i*10*k,8.4*k));
   aLines.forEach((v,i)=>text(v,xs[1]+7,y+6+i*10.5*k,8.8*k));eLines.forEach((v,i)=>text(v,xs[2]+7,y+6+i*9.8*k,8.1*k));
   icon(t.first,xs[3]+9,y+(rh-9)/2);icon(t.retested?t.latest:t.first,xs[4]+9,y+(rh-9)/2);
   if(t.sources?.length&&!t.readOriginal)text('Not yet checked',xs[2]+7,y+rh-8,6.6,'regular',C.bad);
   y+=rh;line(M,y,W-M,y);
-  if(aLines.length>5)sc.issues.push(q.id+': shorten the answer summary.');
-  if(eLines.length>6)sc.issues.push(q.id+': use short source IDs and exact sections, not full quotations.');
+  if(aLines.length>aMax)sc.issues.push(q.id+': shorten the answer summary.');
+  if(eLines.length>eMax)sc.issues.push(q.id+': use short source IDs and exact sections, not full quotations.');
  }
+ if(twoPage&&pg===0&&y+20>BOTTOM)newPage();
  y+=10;icon('correct',M,y,8);text('Correct',M+12,y,7.2);icon('partial',M+66,y,8);text('Partly correct',M+78,y,7.2);icon('incorrect',M+154,y,8);text('Incorrect / no answer',M+166,y,7.2);text('1st / Last = student-reported results',M+334,y,7.0,'regular',C.body);
  y+=24;
  const mid=M+(CW+18)/2,colW=(CW-18)/2;
- text('03  '+(level.experiment?'Changes & update experiment':'What I checked or improved'),M,y,9.4,'bold',C.strong);
- text('04  Reflection & handover',mid,y,9.4,'bold',C.strong);y+=18;
  let left=state.improvement||'[not recorded]';
  if(level.experiment){
   const labels={auto:'New information found without re-upload',notyet:'New information not found',manual:'Found after manual re-upload only',unclear:'Result unclear',untested:'Not tested'};
   const exp=state.experiment||{};left+='\nUpdate: '+(labels[exp.outcome]||'Not recorded')+(exp.wait?' (about '+exp.wait+' min).':'.')+(exp.note?' '+exp.note:'');
  }
- let lh=para(left,M,y,colW,9*k,'regular',11.5*k,9,'Changes / experiment note');
- let rh=para(state.reflection||'[not recorded]',mid,y,colW,9*k,'regular',11.5*k,9,'Reflection');
+ const notesH=18+Math.max(wrap(left,colW,9*k).length,wrap(state.reflection||'[not recorded]',colW,9*k).length)*11.5*k;
+ if(twoPage&&pg===0&&y+notesH>BOTTOM)newPage();
+ text('03  '+(level.experiment?'Changes & update experiment':'What I checked or improved'),M,y,9.4,'bold',C.strong);
+ text('04  Reflection & handover',mid,y,9.4,'bold',C.strong);y+=18;
+ let lh=para(left,M,y,colW,9*k,'regular',11.5*k,noteMax,'Changes / experiment note');
+ let rh=para(state.reflection||'[not recorded]',mid,y,colW,9*k,'regular',11.5*k,noteMax,'Reflection');
  let bottom=y+Math.max(lh,rh);
  if(isPrimer){
   let cc=Object.values(state.checklist||{}).filter(Boolean).length;
   text('Practice checklist: '+cc+'/'+config.primerChecklist.length+' confirmed. Demo PDF only - no Moodle submission.',M,bottom+18,8.0,'regular',C.strong);
   bottom+=33;
  }
- if(bottom>789)sc.issues.push('This report needs '+Math.ceil(bottom-789)+' points more space. Shorten the longest answer, source reference or closing note. Text will not be cut off.');
- line(M,805,W-M,805);
- text(config.pilot?'PILOT ONLY / Dummy questions - not an assessed student submission.':'AI for Business / Theme D',M,812,6.9,'regular',C.body);
- text((isPrimer?'DEMO':('D'+level.id))+' / 1 of 1',W-M-45,812,7,'regular',C.body);
- text('Original sources checked by the student. Uploaded screenshots are supporting evidence, not automatic proof.',M,826,6.4,'regular',C.body);
+ if(bottom>BOTTOM)sc.issues.push('This report needs '+Math.ceil(bottom-BOTTOM)+' points more space'+(twoPage?', even on two pages':'')+'. Shorten the longest answer, source reference or closing note. Text will not be cut off.');
+ for(let p=0;p<sc.pages;p++){
+  pg=p;
+  line(M,805,W-M,805);
+  text(config.pilot?'PILOT ONLY / Dummy questions - not an assessed student submission.':'AI for Business / Theme D',M,812,6.9,'regular',C.body);
+  text((isPrimer?'DEMO':('D'+level.id))+' / '+(p+1)+' of '+sc.pages,W-M-45,812,7,'regular',C.body);
+  text('Original sources checked by the student. Uploaded screenshots are supporting evidence, not automatic proof.',M,826,6.4,'regular',C.body);
+ }
  return sc;
 }
 function svg(sc){
+ const out=[];
+ for(let p=0;p<(sc.pages||1);p++){if(p)out.push('<div class="page-gap" style="height:14px;background:#e6e9e9"></div>');out.push(svgPage(sc,p));}
+ return out.join('');
+}
+function svgPage(sc,page){
  let out=['<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Theme D evidence report"><rect width="100%" height="100%" fill="white"/>'];
  for(const o of sc.ops){
+  if((o.p||0)!==page)continue;
   if(o.t==='rect')out.push('<rect x="'+o.x+'" y="'+o.y+'" width="'+o.w+'" height="'+o.h+'" fill="'+(o.fill||'none')+'" stroke="'+(o.stroke||'none')+'" stroke-width=".6"/>');
   if(o.t==='line')out.push('<line x1="'+o.x1+'" y1="'+o.y1+'" x2="'+o.x2+'" y2="'+o.y2+'" stroke="'+o.color+'" stroke-width="'+o.th+'"/>');
   if(o.t==='poly')out.push('<'+(o.close?'polygon':'polyline')+' points="'+o.pts.map(v=>v.join(',')).join(' ')+'" fill="'+(o.fill||'none')+'" stroke="'+o.color+'" stroke-width="'+o.th+'"/>');
@@ -207,7 +239,7 @@ function svg(sc){
 }
 function html(sc){
  const title='Theme D - '+(sc.model.level.id==='primer'?'Practice report':'Level '+sc.model.level.id);
- return '<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>'+esc(title)+'</title><style>body{margin:0;background:#e6e9e9;font-family:Arial,sans-serif;color:#29313a}nav{padding:16px;text-align:center}button{padding:12px 20px;cursor:pointer}main{width:210mm;max-width:100%;margin:auto;background:white}svg{display:block;width:100%;height:auto}@page{size:A4;margin:0}@media print{body{background:white}nav{display:none}main{width:210mm;height:297mm;max-width:none;page-break-after:avoid}svg{width:210mm;height:297mm}}</style><nav><button onclick="window.print()">Print / Save as PDF</button><p>Fallback report. Check that all text and images are readable. Use the course submission instructions. The technical-practice PDF must not be submitted.</p></nav><main>'+svg(sc)+'</main></html>';
+ return '<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>'+esc(title)+'</title><style>body{margin:0;background:#e6e9e9;font-family:Arial,sans-serif;color:#29313a}nav{padding:16px;text-align:center}button{padding:12px 20px;cursor:pointer}main{width:210mm;max-width:100%;margin:auto;background:white}svg{display:block;width:100%;height:auto}@page{size:A4;margin:0}@media print{body{background:white}nav{display:none}main{width:210mm;max-width:none}.page-gap{display:none}svg{width:210mm;height:297mm;break-after:page}svg:last-of-type{break-after:auto}}</style><nav><button onclick="window.print()">Print / Save as PDF</button><p>Fallback report. Check that all text and images are readable. Use the course submission instructions. The technical-practice PDF must not be submitted.</p></nav><main>'+svg(sc)+'</main></html>';
 }
 const special=[0x20ac,0,0x201a,0x0192,0x201e,0x2026,0x2020,0x2021,0x02c6,0x2030,0x0160,0x2039,0x0152,0,0x017d,0,0,0x2018,0x2019,0x201c,0x201d,0x2022,0x2013,0x2014,0x02dc,0x2122,0x0161,0x203a,0x0153,0,0x017e,0x0178];
 function byte(ch){let cp=ch.codePointAt(0);if(cp>=32&&cp<=126||cp>=160&&cp<=255)return cp;let idx=special.indexOf(cp);return idx<0?null:idx+128;}
@@ -224,13 +256,16 @@ async function pdf(sc){
  let objs=[null,null],fonts={regular:3,bold:4};
  objs.push(ascii('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>'));
  objs.push(ascii('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>'));
- const add=o=>{objs.push(o);return objs.length;};let images=[],cmds=[];const cache=new Map();
+ const add=o=>{objs.push(o);return objs.length;};let images=[],cmds=[];const cache=new Map(),contentIds=[];
  async function putImage(data,x,y,w,h){
   let rec=cache.get(data);
   if(!rec){let j=await jpeg(data);let id=add(concat([ascii('<< /Type /XObject /Subtype /Image /Width '+j.w+' /Height '+j.h+' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length '+j.bytes.length+' >>\nstream\n'),j.bytes,ascii('\nendstream')]));rec={name:'I'+images.length,id};images.push(rec);cache.set(data,rec);}
   cmds.push('q '+[w,0,0,h,x,H-y-h].map(n).join(' ')+' cm /'+rec.name+' Do Q');
  }
+ for(let p=0;p<(sc.pages||1);p++){
+ cmds=[];
  for(const o of sc.ops){
+  if((o.p||0)!==p)continue;
   if(o.t==='rect'){cmds.push('q '+(o.fill?rgb(o.fill)+' rg ':'')+(o.stroke?rgb(o.stroke)+' RG .6 w ':'')+[o.x,H-o.y-o.h,o.w,o.h].map(n).join(' ')+' re '+(o.fill&&o.stroke?'B':o.fill?'f':'S')+' Q');}
   if(o.t==='line')cmds.push('q '+rgb(o.color)+' RG '+o.th+' w '+n(o.x1)+' '+n(H-o.y1)+' m '+n(o.x2)+' '+n(H-o.y2)+' l S Q');
   if(o.t==='poly')cmds.push('q '+rgb(o.color)+' RG '+(o.fill?rgb(o.fill)+' rg ':'')+o.th+' w '+o.pts.map((v,i)=>n(v[0])+' '+n(H-v[1])+(i?' l':' m')).join(' ')+(o.close?' h':'')+' '+(o.fill?'B':'S')+' Q');
@@ -242,9 +277,10 @@ async function pdf(sc){
   }
   if(o.t==='image')await putImage(o.data,o.x,o.y,o.w,o.h);
  }
- const content=ascii(cmds.join('\n'));const contents=add(concat([ascii('<< /Length '+content.length+' >>\nstream\n'),content,ascii('\nendstream')]));
- const page=add(ascii('<< /Type /Page /Parent 2 0 R /MediaBox [0 0 '+W+' '+H+'] /Resources << /Font << /FR 3 0 R /FB 4 0 R >> /XObject << '+images.map(v=>'/'+v.name+' '+v.id+' 0 R').join(' ')+' >> >> /Contents '+contents+' 0 R >>'));
- objs[0]=ascii('<< /Type /Catalog /Pages 2 0 R >>');objs[1]=ascii('<< /Type /Pages /Kids ['+page+' 0 R] /Count 1 >>');
+ const content=ascii(cmds.join('\n'));contentIds.push(add(concat([ascii('<< /Length '+content.length+' >>\nstream\n'),content,ascii('\nendstream')])));
+ }
+ const pageIds=contentIds.map(c=>add(ascii('<< /Type /Page /Parent 2 0 R /MediaBox [0 0 '+W+' '+H+'] /Resources << /Font << /FR 3 0 R /FB 4 0 R >> /XObject << '+images.map(v=>'/'+v.name+' '+v.id+' 0 R').join(' ')+' >> >> /Contents '+c+' 0 R >>')));
+ objs[0]=ascii('<< /Type /Catalog /Pages 2 0 R >>');objs[1]=ascii('<< /Type /Pages /Kids ['+pageIds.map(v=>v+' 0 R').join(' ')+'] /Count '+pageIds.length+' >>');
  const info=add(ascii('<< /Title '+hexMeta(sc.model.level.id==='primer'?'Technical practice - DO NOT SUBMIT':'Theme D Level '+sc.model.level.id+' - Pilot report')+' /Author '+hexMeta(sc.model.state.student||'Student')+' /Creator (AI for Business Evidence Lab) >>'));
  let parts=[ascii('%PDF-1.4\n% Evidence Lab\n')],offset=parts[0].length,offsets=[0];
  objs.forEach((o,i)=>{offsets.push(offset);let data=concat([ascii((i+1)+' 0 obj\n'),o,ascii('\nendobj\n')]);parts.push(data);offset+=data.length;});
