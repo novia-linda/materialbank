@@ -1,0 +1,317 @@
+{
+  "schemaVersion": 1,
+  "appId": "aiib-individual-d-complete",
+  "contentVersion": "CS-D-1.0",
+  "pilot": false,
+  "caseLabel": "CS-D-1.0 / Fictional company",
+  "title": "Theme D | Individual Evidence Lab",
+  "protectedChangeTopics": [
+    "update-channel",
+    "new-field"
+  ],
+  "sources": [
+    {
+      "id": "policy",
+      "label": "Company policy",
+      "short": "Policy"
+    },
+    {
+      "id": "emails",
+      "label": "Original customer emails",
+      "short": "Email"
+    },
+    {
+      "id": "calls",
+      "label": "Original phone transcripts",
+      "short": "Call"
+    },
+    {
+      "id": "orders",
+      "label": "Order register",
+      "short": "Orders"
+    },
+    {
+      "id": "decision",
+      "label": "Original management update",
+      "short": "Mgt"
+    }
+  ],
+  "primerChecklist": [
+    "I am trying a checkbox."
+  ],
+  "levels": [
+    {
+      "id": "primer",
+      "title": "Try the tool in a few minutes",
+      "shortTitle": "Quick practice",
+      "description": "Type your name, add two images and write a few words. Then download a demo PDF. There are no questions to solve and no other websites to open.",
+      "sourceIds": [],
+      "screenshots": [
+        {
+          "title": "Any image you choose",
+          "help": "Choose any non-private image from your device, or use the demo image button. There is no specific content to show.",
+          "required": true,
+          "exampleFile": "primer-screen-1.png",
+          "exampleDescription": "An example of an image in this practice field. Any non-private image is fine; you are only trying the upload tool."
+        },
+        {
+          "title": "Any image you choose",
+          "help": "Choose any non-private image from your device, or use the demo image button. There is no specific content to show.",
+          "required": true,
+          "exampleFile": "primer-screen-2.png",
+          "exampleDescription": "An example of an image in this practice field. Any non-private image is fine; you are only trying the upload tool."
+        }
+      ],
+      "questions": [],
+      "improvementPrompt": "Demo text 1",
+      "reflectionPrompt": "Demo text 2",
+      "exampleImprovement": "Just testing",
+      "exampleReflection": "Hello",
+      "primerFormat": "simple-tech-v1",
+      "instructions": "instructions/00-Start-here.html"
+    },
+    {
+      "id": "1",
+      "title": "Build your assistant",
+      "shortTitle": "Build",
+      "description": "Build your own internal customer-service Gem. Add the company policy, test five questions and verify each answer in the original policy.",
+      "sourceIds": [
+        "policy"
+      ],
+      "screenshots": [
+        {
+          "title": "Your Gem instructions",
+          "help": "Show the part of your saved instructions about sources, missing information and human limits. Use a readable crop, not an entire desktop.",
+          "required": true
+        },
+        {
+          "title": "Your policy source",
+          "help": "Show the Knowledge area with your company-policy file visible. Do not show a personal account menu.",
+          "required": true
+        }
+      ],
+      "questions": [
+        {
+          "id": "D1-Q01",
+          "label": "Service area",
+          "question": "Can the company send an order to Sweden, or is the service limited to mainland Finland?",
+          "topic": "scope"
+        },
+        {
+          "id": "D1-Q02",
+          "label": "No order reference",
+          "question": "A caller has no OrderID. What information should I collect, and who should find the correct order?",
+          "topic": "identity"
+        },
+        {
+          "id": "D1-Q03",
+          "label": "Estimated date",
+          "question": "The register gives an expected date but no time. May I promise arrival at 10:00 on that date?",
+          "topic": "estimate"
+        },
+        {
+          "id": "D1-Q04",
+          "label": "Refund request",
+          "question": "A customer demands compensation. Can this assistant approve a refund, and which human team handles refund decisions?",
+          "topic": "authority"
+        },
+        {
+          "id": "D1-Q05",
+          "label": "Missing information",
+          "question": "An order-specific fact is missing from the sources. What should the assistant do instead of guessing?",
+          "topic": "gap"
+        }
+      ],
+      "improvementPrompt": "What did you check or improve?",
+      "reflectionPrompt": "What should the assistant not do?",
+      "filename": "D1-Knowledge-Assistant.pdf",
+      "instructions": "instructions/01-Level-1.html",
+      "experiment": false
+    },
+    {
+      "id": "2",
+      "title": "Build your FAQ",
+      "shortTitle": "FAQ",
+      "description": "Build five FAQ entries from the original emails and phone transcripts. Add your own FAQ to the same Gem, then test and verify five new questions.",
+      "sourceIds": [
+        "policy",
+        "emails",
+        "calls"
+      ],
+      "screenshots": [
+        {
+          "title": "An FAQ entry and its original IDs",
+          "help": "Show one entry from your FAQ document (Word or Google Docs), not the whole document: the answer, at least one important condition and the record IDs.",
+          "required": true
+        },
+        {
+          "title": "A tested FAQ answer",
+          "help": "Show your Gem question and answer for one of D2-Q01 to D2-Q05. Choose a crop that leaves the key condition readable.",
+          "required": true
+        }
+      ],
+      "questions": [
+        {
+          "id": "D2-Q01",
+          "label": "Address after dispatch",
+          "question": "My order is already In transit. Can you confirm a new delivery address just because it is in the same city?",
+          "topic": "address"
+        },
+        {
+          "id": "D2-Q02",
+          "label": "Invoice copy",
+          "question": "I lost the invoice. What details are needed for a duplicate, where is it sent, and does it create a new charge?",
+          "topic": "invoice"
+        },
+        {
+          "id": "D2-Q03",
+          "label": "Damaged delivery",
+          "question": "The box and item arrived damaged. What must I provide, by when, and should I return or throw away anything now?",
+          "topic": "damage"
+        },
+        {
+          "id": "D2-Q04",
+          "label": "Missed delivery",
+          "question": "I missed delivery and the attempt-notice link does not work. Can the service desk promise a free redelivery on Friday?",
+          "topic": "missed-delivery"
+        },
+        {
+          "id": "D2-Q05",
+          "label": "In transit",
+          "question": "Tracking says In transit with an estimated arrival tomorrow. Is it already on the local delivery route, and is before lunch guaranteed?",
+          "topic": "transit"
+        }
+      ],
+      "improvementPrompt": "How did you combine the conversations?",
+      "reflectionPrompt": "What condition needed careful checking?",
+      "filename": "D2-Conversation-Knowledge.pdf",
+      "instructions": "instructions/02-Level-2.html",
+      "experiment": false
+    },
+    {
+      "id": "3",
+      "title": "Add changing information",
+      "shortTitle": "Records",
+      "description": "Add your order register and test five questions against the fixed original records. Then add ORD-TEST-01 and observe whether the updated source is used.",
+      "sourceIds": [
+        "policy",
+        "emails",
+        "calls",
+        "orders"
+      ],
+      "screenshots": [
+        {
+          "title": "Your added test-order row",
+          "help": "Show ORD-TEST-01 in your own register with its status, date and note. Preserve all 30 original rows.",
+          "required": true
+        },
+        {
+          "title": "The actual update-test response",
+          "help": "Show your question about ORD-TEST-01 and what the Gem actually answered, including an unsuccessful result if that happened.",
+          "required": true
+        }
+      ],
+      "questions": [
+        {
+          "id": "D3-Q01",
+          "label": "Helsinki order",
+          "question": "For ORD-1042, give destination, status, expected date and latest update. Is the arrival date guaranteed?",
+          "topic": "record"
+        },
+        {
+          "id": "D3-Q02",
+          "label": "Recorded delivery",
+          "question": "Has ORD-1047 been recorded as delivered? Give the destination, last update and recorded delivery note.",
+          "topic": "record"
+        },
+        {
+          "id": "D3-Q03",
+          "label": "Order on hold",
+          "question": "Why is ORD-1053 on hold, and which team should deal with the issue?",
+          "topic": "record"
+        },
+        {
+          "id": "D3-Q04",
+          "label": "No arrival estimate",
+          "question": "What estimated arrival date is recorded for ORD-1058? Can you work one out from the order date?",
+          "topic": "record-gap"
+        },
+        {
+          "id": "D3-Q05",
+          "label": "Compare two statuses",
+          "question": "Compare ORD-1042 and ORD-1065. Which is on the local delivery route, and is either recorded as Delivered?",
+          "topic": "record-compare"
+        }
+      ],
+      "improvementPrompt": "What did you add and test?",
+      "reflectionPrompt": "What does your update test show - and not show?",
+      "filename": "D3-Changing-Information.pdf",
+      "instructions": "instructions/03-Level-3.html",
+      "experiment": true
+    },
+    {
+      "id": "4",
+      "title": "Update and improve",
+      "shortTitle": "Improve",
+      "description": "Find less-common knowledge, apply the approved management change and add the specified register field. Test the updates and one unchanged rule.",
+      "sourceIds": [
+        "policy",
+        "emails",
+        "calls",
+        "orders",
+        "decision"
+      ],
+      "screenshots": [
+        {
+          "title": "Your new register field",
+          "help": "Show PreferredUpdateChannel and its five specified OrderIDs. Hide unrelated columns to make a wide, readable screenshot; do not change original order data.",
+          "required": true
+        },
+        {
+          "title": "Your actual retest response",
+          "help": "Show D4-Q04 and the Gem response after your update. The reply may still be wrong if the new source was not read; report that honestly.",
+          "required": true
+        }
+      ],
+      "questions": [
+        {
+          "id": "D4-Q01",
+          "label": "One box missing",
+          "question": "An order contains two parcels but only one arrived. What references and details should I collect before reporting the missing part?",
+          "topic": "rare-parcel"
+        },
+        {
+          "id": "D4-Q02",
+          "label": "Reception delivery",
+          "question": "The status is Delivered but the named customer has not received the parcel personally. What should they check, and what happens if it is still missing?",
+          "topic": "rare-reception"
+        },
+        {
+          "id": "D4-Q03",
+          "label": "New follow-up rule",
+          "question": "Under the new management decision, can a routine order-progress follow-up be by phone, and how should a recorded Phone preference be handled?",
+          "topic": "update-channel"
+        },
+        {
+          "id": "D4-Q04",
+          "label": "New field in use",
+          "question": "After the register update, what is PreferredUpdateChannel for ORD-1053, and what should staff arrange under M01?",
+          "topic": "new-field"
+        },
+        {
+          "id": "D4-Q05",
+          "label": "Still mainland only",
+          "question": "After the updates, can the company now deliver an order to Sweden, or is the mainland-Finland service boundary unchanged?",
+          "topic": "scope"
+        }
+      ],
+      "improvementPrompt": "Which three source updates did you make?",
+      "reflectionPrompt": "Who should maintain these sources, and what remains uncertain?",
+      "filename": "D4-Update-and-Improve.pdf",
+      "instructions": "instructions/04-Level-4.html",
+      "experiment": true
+    }
+  ],
+  "appRevision": "pilot-b-1.1-optional-examples",
+  "uiVersion": "2.0"
+}
