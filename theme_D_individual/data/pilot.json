@@ -1,0 +1,516 @@
+{
+  "schemaVersion": 1,
+  "appId": "aiib-individual-d",
+  "contentVersion": "pilot-b-1.0",
+  "pilot": true,
+  "caseLabel": "PILOT-D / Dummy material",
+  "title": "Theme D | Evidence Lab",
+  "protectedChangeTopics": [
+    "return-window"
+  ],
+  "sources": [
+    {
+      "id": "policy",
+      "label": "Company policy",
+      "short": "Policy"
+    },
+    {
+      "id": "emails",
+      "label": "Original customer emails",
+      "short": "Email"
+    },
+    {
+      "id": "calls",
+      "label": "Original phone transcripts",
+      "short": "Call"
+    },
+    {
+      "id": "orders",
+      "label": "Order register",
+      "short": "Orders"
+    },
+    {
+      "id": "decision",
+      "label": "Management decision",
+      "short": "Decision"
+    },
+    {
+      "id": "practice",
+      "label": "Practice source on this page",
+      "short": "Practice"
+    }
+  ],
+  "primerChecklist": [
+    "I understand that I must verify answers against original sources, not just the Gem response.",
+    "I know where to add a screenshot and how to check its size in the report.",
+    "I understand that local drafts are not stored in Moodle, Google Drive or OneDrive.",
+    "I know how to download a backup if I need to stop before finishing.",
+    "I will complete one level, download and open its PDF, then submit that level in Moodle."
+  ],
+  "levels": [
+    {
+      "id": "primer",
+      "title": "Technical practice",
+      "shortTitle": "Start here",
+      "description": "A short rehearsal of the reporting tool. No Gem is needed. Try one question, add an image and download a practice PDF. This is not assessed and must not be submitted.",
+      "sourceIds": [
+        "practice"
+      ],
+      "screenshots": [
+        {
+          "title": "Your practice screenshot",
+          "help": "Take a screenshot of the practice source below, or use the dummy image button. Do not include private information.",
+          "required": true
+        },
+        {
+          "title": "Optional second screenshot",
+          "help": "You may try the second image slot too. It is optional in the primer.",
+          "required": false
+        }
+      ],
+      "questions": [
+        {
+          "id": "TRY-01",
+          "label": "Practice opening time",
+          "question": "At what time does the practice help desk open on weekdays?",
+          "topic": "practice",
+          "example": {
+            "answer": "It opens at 09:00 on weekdays.",
+            "evidence": {
+              "practice": "PRACTICE-01, opening time"
+            },
+            "first": "correct",
+            "latest": "",
+            "fix": ""
+          }
+        }
+      ],
+      "improvementPrompt": "What did you try in this practice?",
+      "reflectionPrompt": "What will you check before submitting a real report?",
+      "exampleImprovement": "I checked the short practice source and added a screenshot.",
+      "exampleReflection": "I can add evidence, download a PDF and check that the text and image are readable.",
+      "practiceSource": "PRACTICE-01: The practice help desk opens at 09:00 on weekdays. This invented sentence is only for testing the reporting tool."
+    },
+    {
+      "id": "1",
+      "title": "Build your assistant",
+      "shortTitle": "Build",
+      "description": "Pilot only: test the form for a policy-based Gem. The questions below are examples, not the final assessed assignment.",
+      "sourceIds": [
+        "policy"
+      ],
+      "screenshots": [
+        {
+          "title": "Your Gem instructions",
+          "help": "Show the source rules and what the assistant should do when information is missing. Use a wide, readable crop.",
+          "required": true
+        },
+        {
+          "title": "Your knowledge and a test",
+          "help": "Show the attached policy or a relevant test answer. The final screenshot brief will be set with the real materials.",
+          "required": true
+        }
+      ],
+      "questions": [
+        {
+          "id": "D1-Q01",
+          "label": "Service area",
+          "question": "Which area does the sample service cover?",
+          "topic": "service-area",
+          "example": {
+            "answer": "The sample service covers mainland Finland.",
+            "evidence": {
+              "policy": "P01, service scope"
+            },
+            "first": "correct",
+            "latest": "",
+            "fix": ""
+          }
+        },
+        {
+          "id": "D1-Q02",
+          "label": "Reference number",
+          "question": "What reference should the employee ask for first?",
+          "topic": "reference",
+          "example": {
+            "answer": "Ask for the order ID before checking a specific order.",
+            "evidence": {
+              "policy": "P02, identifying an order"
+            },
+            "first": "correct",
+            "latest": "",
+            "fix": ""
+          }
+        },
+        {
+          "id": "D1-Q03",
+          "label": "Estimated date",
+          "question": "Is an estimated delivery date a guaranteed promise?",
+          "topic": "estimates",
+          "example": {
+            "answer": "No. It is an estimate, not a guaranteed appointment.",
+            "evidence": {
+              "policy": "P03, delivery estimates"
+            },
+            "first": "partial",
+            "latest": "correct",
+            "fix": "Clarified estimate versus promise."
+          }
+        },
+        {
+          "id": "D1-Q04",
+          "label": "Approval boundary",
+          "question": "Can the assistant approve a special exception?",
+          "topic": "approval",
+          "example": {
+            "answer": "No. A responsible employee must approve an exception.",
+            "evidence": {
+              "policy": "P04, human approval"
+            },
+            "first": "correct",
+            "latest": "",
+            "fix": ""
+          }
+        },
+        {
+          "id": "D1-Q05",
+          "label": "Missing information",
+          "question": "What should the assistant do when its sources do not support an answer?",
+          "topic": "uncertainty",
+          "example": {
+            "answer": "State the gap and ask for clarification or human review.",
+            "evidence": {
+              "policy": "P05, unsupported answers"
+            },
+            "first": "correct",
+            "latest": "",
+            "fix": ""
+          }
+        }
+      ],
+      "improvementPrompt": "What did you check or improve?",
+      "reflectionPrompt": "What did you learn, and what still needs human judgement?",
+      "exampleImprovement": "Q03 missed the difference between an estimate and a promise. I clarified the instruction and repeated the test.",
+      "exampleReflection": "A clear answer is not enough. I still need to read the original policy and check the conditions."
+    },
+    {
+      "id": "2",
+      "title": "Build your FAQ",
+      "shortTitle": "FAQ",
+      "description": "Pilot only: practise reporting an FAQ created from emails and calls. Verify against the original conversations, not just your rewritten FAQ.",
+      "sourceIds": [
+        "policy",
+        "emails",
+        "calls"
+      ],
+      "screenshots": [
+        {
+          "title": "Your FAQ with original references",
+          "help": "Show one or two FAQ entries and the original email or call IDs behind them.",
+          "required": true
+        },
+        {
+          "title": "A response using the new knowledge",
+          "help": "Show a relevant Gem answer after adding your FAQ.",
+          "required": true
+        }
+      ],
+      "questions": [
+        {
+          "id": "D2-Q01",
+          "label": "Address change",
+          "question": "What information is needed to request an address change after dispatch?",
+          "topic": "address-change",
+          "example": {
+            "answer": "Collect the order ID and new address; Operations must approve.",
+            "evidence": {
+              "emails": "E04, address request",
+              "calls": "C03, approval step"
+            },
+            "first": "partial",
+            "latest": "correct",
+            "fix": "Added the approval condition to the FAQ."
+          }
+        },
+        {
+          "id": "D2-Q02",
+          "label": "Damaged item",
+          "question": "What evidence should a customer prepare for a damaged item?",
+          "topic": "damage",
+          "example": {
+            "answer": "Order ID, description and photos of the item and packaging.",
+            "evidence": {
+              "emails": "E07, damage evidence"
+            },
+            "first": "correct",
+            "latest": "",
+            "fix": ""
+          }
+        },
+        {
+          "id": "D2-Q03",
+          "label": "Missed delivery",
+          "question": "What is the first check after a missed delivery?",
+          "topic": "missed-delivery",
+          "example": {
+            "answer": "Read the delivery notification and check the recorded status.",
+            "evidence": {
+              "calls": "C02, missed delivery"
+            },
+            "first": "correct",
+            "latest": "",
+            "fix": ""
+          }
+        },
+        {
+          "id": "D2-Q04",
+          "label": "Another collector",
+          "question": "What must be checked when another person collects an order?",
+          "topic": "collector-id",
+          "example": {
+            "answer": "Check the order reference and the recorded collection authority.",
+            "evidence": {
+              "emails": "E06, nominated collector"
+            },
+            "first": "correct",
+            "latest": "",
+            "fix": ""
+          }
+        },
+        {
+          "id": "D2-Q05",
+          "label": "No reference",
+          "question": "What should staff do when the caller cannot find the order ID?",
+          "topic": "missing-reference",
+          "example": {
+            "answer": "Collect the approved lookup details and ask Customer Service.",
+            "evidence": {
+              "calls": "C05, missing reference"
+            },
+            "first": "correct",
+            "latest": "",
+            "fix": ""
+          }
+        }
+      ],
+      "improvementPrompt": "What did you check or improve?",
+      "reflectionPrompt": "What did you learn, and what still needs human judgement?",
+      "exampleImprovement": "I grouped repeated questions and kept the original source IDs. Q01 needed an extra approval condition from a call.",
+      "exampleReflection": "The FAQ is a useful access point, but its summary must not remove exceptions or replace original evidence."
+    },
+    {
+      "id": "3",
+      "title": "Add changing information",
+      "shortTitle": "Register",
+      "description": "Pilot only: record five checks of existing orders. Try an update separately. A failed automatic refresh does not block the report.",
+      "sourceIds": [
+        "policy",
+        "orders"
+      ],
+      "screenshots": [
+        {
+          "title": "The updated source record",
+          "help": "Show the added or changed record with its ID and the changed field. The fixed test records should stay unchanged.",
+          "required": true
+        },
+        {
+          "title": "The response to your update test",
+          "help": "Show what the Gem actually returned, including an outdated answer or a no-information response.",
+          "required": true
+        }
+      ],
+      "questions": [
+        {
+          "id": "D3-Q01",
+          "label": "Order destination",
+          "question": "Where is sample order ORD-1042 going?",
+          "topic": "destination",
+          "example": {
+            "answer": "The destination is Tampere.",
+            "evidence": {
+              "orders": "ORD-1042, Destination"
+            },
+            "first": "correct",
+            "latest": "",
+            "fix": ""
+          }
+        },
+        {
+          "id": "D3-Q02",
+          "label": "Current status",
+          "question": "What is the recorded status of ORD-1045?",
+          "topic": "status",
+          "example": {
+            "answer": "The recorded status is In transit.",
+            "evidence": {
+              "orders": "ORD-1045, Status"
+            },
+            "first": "correct",
+            "latest": "",
+            "fix": ""
+          }
+        },
+        {
+          "id": "D3-Q03",
+          "label": "Delivery estimate",
+          "question": "What is the expected date for ORD-1048, and is it guaranteed?",
+          "topic": "estimates",
+          "example": {
+            "answer": "30 September 2026; the date is an estimate, not a promise.",
+            "evidence": {
+              "orders": "ORD-1048, ExpectedDate",
+              "policy": "P03, delivery estimates"
+            },
+            "first": "correct",
+            "latest": "",
+            "fix": ""
+          }
+        },
+        {
+          "id": "D3-Q04",
+          "label": "Last update",
+          "question": "When was ORD-1050 last updated?",
+          "topic": "record-time",
+          "example": {
+            "answer": "28 September 2026 at 08:30.",
+            "evidence": {
+              "orders": "ORD-1050, UpdatedAt"
+            },
+            "first": "correct",
+            "latest": "",
+            "fix": ""
+          }
+        },
+        {
+          "id": "D3-Q05",
+          "label": "Awaiting collection",
+          "question": "What does the status of ORD-1052 mean?",
+          "topic": "status-meaning",
+          "example": {
+            "answer": "It is ready for collection; follow the collection notification.",
+            "evidence": {
+              "orders": "ORD-1052, Status",
+              "policy": "P06, status meanings"
+            },
+            "first": "correct",
+            "latest": "",
+            "fix": ""
+          }
+        }
+      ],
+      "improvementPrompt": "What did you check or improve?",
+      "reflectionPrompt": "What did you learn, and what still needs human judgement?",
+      "exampleImprovement": "I added ORD-9001 and changed its status to Ready for collection. I kept the original test records unchanged.",
+      "exampleReflection": "The source changed, but the Gem did not find it in my test. I documented this instead of claiming automatic refresh.",
+      "experiment": true
+    },
+    {
+      "id": "4",
+      "title": "Update and improve",
+      "shortTitle": "Improve",
+      "description": "Pilot only: return to less-common evidence, apply a management decision and add a register field. Earlier test topics do not depend on the changed rule.",
+      "sourceIds": [
+        "policy",
+        "emails",
+        "calls",
+        "orders",
+        "decision"
+      ],
+      "screenshots": [
+        {
+          "title": "The source changes you made",
+          "help": "Show a clear change to the FAQ, policy or register. Use a caption to identify the evidence.",
+          "required": true
+        },
+        {
+          "title": "Your retest result",
+          "help": "Show a response after the change. An unsuccessful source-update experiment is valid evidence too.",
+          "required": true
+        }
+      ],
+      "questions": [
+        {
+          "id": "D4-Q01",
+          "label": "Less-common situation",
+          "question": "What should staff do when only one box of a two-box order arrives?",
+          "topic": "split-boxes",
+          "example": {
+            "answer": "Check both package references before reporting the missing box.",
+            "evidence": {
+              "emails": "E11, two-box order",
+              "calls": "C08, package references"
+            },
+            "first": "partial",
+            "latest": "correct",
+            "fix": "Added the two-box exception to the FAQ."
+          }
+        },
+        {
+          "id": "D4-Q02",
+          "label": "Several references",
+          "question": "How should staff handle a caller with two different references?",
+          "topic": "multiple-references",
+          "example": {
+            "answer": "Identify which reference belongs to each order before replying.",
+            "evidence": {
+              "calls": "C09, multiple references"
+            },
+            "first": "correct",
+            "latest": "",
+            "fix": ""
+          }
+        },
+        {
+          "id": "D4-Q03",
+          "label": "New return window",
+          "question": "Which return-request window now applies under the new management decision?",
+          "topic": "return-window",
+          "example": {
+            "answer": "The sample decision changes the request window to 21 days.",
+            "evidence": {
+              "decision": "M01, new return window"
+            },
+            "first": "correct",
+            "latest": "",
+            "fix": ""
+          }
+        },
+        {
+          "id": "D4-Q04",
+          "label": "New register field",
+          "question": "Who is recorded as the collection contact for ORD-1060?",
+          "topic": "collection-contact",
+          "example": {
+            "answer": "The Gem did not find the new collection contact in this attempt.",
+            "evidence": {
+              "orders": "ORD-1060, CollectionContact"
+            },
+            "first": "incorrect",
+            "latest": "",
+            "fix": "Checked the source edit and recorded the refresh limitation."
+          }
+        },
+        {
+          "id": "D4-Q05",
+          "label": "Unchanged rule",
+          "question": "After the changes, which area does the service still cover?",
+          "topic": "service-area",
+          "example": {
+            "answer": "The service still covers mainland Finland.",
+            "evidence": {
+              "policy": "P01, unchanged service scope"
+            },
+            "first": "correct",
+            "latest": "",
+            "fix": ""
+          }
+        }
+      ],
+      "improvementPrompt": "What did you check or improve?",
+      "reflectionPrompt": "What did you learn, and what still needs human judgement?",
+      "exampleImprovement": "I added a less-common FAQ entry, applied M01 and created CollectionContact for the specified orders. I retested the unchanged service scope.",
+      "exampleReflection": "I need to keep the FAQ, policy and register consistent. The source-update test is an observation, not a guaranteed live connection.",
+      "experiment": true
+    }
+  ]
+}
