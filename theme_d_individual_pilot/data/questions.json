@@ -215,7 +215,7 @@
         {
           "id": "D3-Q01",
           "label": "Helsinki order",
-          "question": "For ORD-1042, give destination, status, expected date and latest update. Is the arrival date guaranteed?",
+          "question": "For ORD-1042, what does the register record for destination, status, expected date and latest update? Is the expected date a promise?",
           "topic": "record"
         },
         {
@@ -238,9 +238,9 @@
         },
         {
           "id": "D3-Q05",
-          "label": "Compare two statuses",
-          "question": "Compare ORD-1042 and ORD-1065. Which is on the local delivery route, and is either recorded as Delivered?",
-          "topic": "record-compare"
+          "label": "Find orders by city",
+          "question": "Which orders to Helsinki are on their way but not yet delivered? Which of them is on the local delivery route?",
+          "topic": "record-search"
         }
       ],
       "improvementPrompt": "What did you add and test?",
