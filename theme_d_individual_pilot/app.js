@@ -64,7 +64,7 @@ function updateProgress(){
  $('completion-list').innerHTML=v.parts.map(p=>'<div class="completion-entry">'+(p.n>=p.d?'\u2713':'\u25cb')+' '+esc(p.label)+' <em>'+p.n+'/'+p.d+'</em></div>').join('')+v.issues.map(t=>'<p class="unverified-note">'+esc(t)+'</p>').join('');
  $('improvement-count').textContent=level.id==='primer'?'A few words are enough.':state.improvement.length+'/240 characters';$('reflection-count').textContent=level.id==='primer'?'Any words are fine.':state.reflection.length+'/260 characters';$('primer-finished').hidden=!(level.id==='primer'&&state.pdfChecked&&v.complete);
  level.questions.forEach(q=>{let t=state.tests[q.id],node=document.querySelector('[data-badge="'+q.id+'"]');if(node){const s=t.retested?t.latest:t.first;node.textContent=STATUS[s]?.icon||'\u2014';node.title=STATUS[s]?.label||'Not tested';}
- let cnt=document.querySelector('[data-counter="'+q.id+'"]');if(cnt)cnt.textContent=t.answer.length+'/160 characters. Summarise the answer; do not paste a whole chat.';
+ let cnt=document.querySelector('[data-counter="'+q.id+'"]');if(cnt)cnt.textContent=t.answer.length+'/250 characters. Summarise the answer; do not paste a whole chat.';
  });
 }
 function resultInputs(q,which,value){return '<fieldset class="result-group"><legend>'+(which==='first'?'First attempt':'Latest retest')+'</legend><div class="result-options">'+Object.entries(STATUS).map(([id,s])=>'<label class="result-option"><input type="radio" name="'+q.id+'-'+which+'" data-q="'+q.id+'" data-status="'+which+'" value="'+id+'" '+(value===id?'checked':'')+'><span><b class="status-symbol" aria-hidden="true">'+s.icon+'</b> '+s.label+'</span></label>').join('')+'</div></fieldset>';}
