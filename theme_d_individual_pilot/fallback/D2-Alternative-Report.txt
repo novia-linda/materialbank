@@ -1,0 +1,23 @@
+Level 2 | Alternative report
+
+Use only if the reporting app or export does not work. Same evidence, same assessment.
+
+Name: _______________________   Assistant: _______________________
+
+Brief technical issue: __________________________________________________
+
+Screenshot 1: An FAQ entry and its original IDs
+
+[Insert your own cropped screenshot here]
+
+Screenshot 2: A tested FAQ answer
+
+[Insert your own cropped screenshot here]
+
+Use Correct / Partly correct / Incorrect or no answer. Check the original sources yourself. Never change a failed result to a success just to finish the report.
+
+What I checked or changed: [short note]
+
+Reflection / remaining limitation: [short note]
+
+Save as D2-Conversation-Knowledge.pdf. Aim for one readable page, but a second page is allowed in this fallback if needed for readable screenshots. Upload in the same Theme D Moodle submission; keep earlier level PDFs.

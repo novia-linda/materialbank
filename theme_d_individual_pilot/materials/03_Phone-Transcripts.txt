@@ -1,0 +1,213 @@
+Customer phone transcripts
+
+14 calls | Records C01-C14 | Owner: Customer Information | Reviewed 21 September 2026
+
+Fictional training transcripts, edited only for readability. Staff procedures have been checked and are approved for this case. Compare recurring questions with the email file; do not treat every individual example as a new company rule.
+
+C01 | Address correction before dispatch
+
+Customer: I entered the wrong postcode. Can your trainee change it while we are on the phone?
+
+Staff: First, what is your OrderID and the name on the order? We need the full corrected address, including postcode and city.
+
+Customer: The confirmation says Processing. Is that enough to know it can be changed?
+
+Staff: It means we can send a before-dispatch correction request to Orders & Delivery. They still have to check the order and confirm the change. I cannot promise it is changed simply because we have spoken.
+
+Customer: So I should wait for confirmation and not create a new order?
+
+Staff: Yes. Keep the original reference and wait for the team's confirmation. If it has already been dispatched by then, they review it as an after-dispatch request.
+
+C02 | Duplicate invoice
+
+Customer: I need the invoice again. I do not know whether I should pay if another PDF is sent.
+
+Staff: A duplicate is just a copy of the existing invoice, not a new charge. What is the OrderID and the original billing name?
+
+Customer: Can you send it to my friend who helps with the accounts?
+
+Staff: The normal copy goes to the billing email already recorded. Billing & Payments must review a different destination separately. We will not change that because a caller gives us a new email address.
+
+Customer: You do not need my payment-card number?
+
+Staff: No. Please do not provide card details. The order reference and billing name are the starting information for the team.
+
+C03 | Damage evidence
+
+Customer: My box arrived broken. I want to send it back right now.
+
+Staff: Please keep the box and item for now. Could you give the OrderID and tell me what is damaged?
+
+Customer: I took a photo of the broken part. Is that enough?
+
+Staff: We need photos of the outer packaging, the label and the damaged item. Add a short description and the OrderID. The report should reach Orders & Delivery within five working days after delivery in this case.
+
+Customer: Will that automatically get me a refund?
+
+Staff: No remedy is automatic. The team reviews the evidence and gives instructions. Do not return or discard anything before their advice. The assistant can explain this process, not approve the refund.
+
+
+
+C04 | Missed delivery
+
+Customer: I missed the delivery. Could you book another attempt for tomorrow?
+
+Staff: What is your OrderID, and do you have the delivery-attempt notice?
+
+Customer: Yes, but I have not followed its instructions yet.
+
+Staff: Start with the notice. If the option does not work, Orders & Delivery will review what can be arranged. The service desk cannot turn your preferred day into a confirmed booking.
+
+Customer: Can I leave a message here that the driver should put it outside?
+
+Staff: That is a request which needs a confirmed arrangement. We cannot claim it has been sent to or accepted by the driver, or promise an unrecorded price for another attempt.
+
+C05 | A precise time from an estimated date
+
+Customer: The estimate says tomorrow. Could you narrow it down to the morning?
+
+Staff: What is the OrderID? I will check the status, LastUpdate and any note, rather than assume a date means an appointment.
+
+Customer: It says In transit. Is the driver near my office now?
+
+Staff: That status cannot tell us a driver's location. It means movement through the network, not a confirmed delivery. We cannot provide a precise time from an estimated date.
+
+Customer: So I should not tell my team that it is guaranteed before lunch?
+
+Staff: Correct. We can explain the current record and refer an unexplained overdue order to Orders & Delivery, but we should not make a new promise.
+
+C06 | An address request is not an address change
+
+Customer: I sent a correction by email this morning. Has your assistant already fixed the order?
+
+Staff: The assistant cannot edit orders. Let us identify the order and look for a confirmed record rather than assume the request was applied.
+
+Customer: I can see In transit now. My new address is only around the corner.
+
+Staff: Orders & Delivery must review changes after dispatch. Provide the exact reference and full new address. Distance alone does not establish whether it is possible.
+
+Customer: Then I need confirmation from that team, not just a friendly reply?
+
+Staff: Exactly. We can prepare a clear request and explain the uncertainty. We do not claim the change is complete until it is confirmed.
+
+
+
+C07 | Duplicate versus correction
+
+Customer: I lost the invoice. I also want another company name on it.
+
+Staff: Those are two different requests. A duplicate repeats the existing invoice; changing the billing name needs a review by Billing & Payments.
+
+Customer: What do I give you for the simple copy?
+
+Staff: The OrderID and original billing name. The normal duplicate is sent to the recorded billing email. It does not add a charge.
+
+Customer: Can you silently fix the name at the same time?
+
+Staff: No. We should clearly record the correction request and let the team decide. We must not make the copy look like a newly approved invoice.
+
+C08 | The damage report clock
+
+Customer: We unpacked the box two days after it arrived. Does the reporting period start when we open it?
+
+Staff: For the training case, the five-working-day period starts after delivery. Please send the report promptly with the order reference.
+
+Customer: We have a label photo but I threw away a small piece of packing material.
+
+Staff: Keep the remaining goods and packaging. Photograph the outer packaging, label and damaged item, and explain what happened honestly. Do not invent missing evidence.
+
+Customer: Is the trainee allowed to promise a replacement?
+
+Staff: No. Orders & Delivery first reviews the case and provides the next instructions. A clear explanation is helpful; an unapproved promise is not.
+
+C09 | The notice link is broken
+
+Customer: The link on my delivery notice gives an error. I do not know what to do next.
+
+Staff: Please keep the notice, give the OrderID and describe the error. Orders & Delivery can then review the options.
+
+Customer: Can you put me down for Friday and tell me the price?
+
+Staff: We can record your preference for the team to consider. Neither the day nor a fee is confirmed in the information we have.
+
+Customer: I thought the chatbot would make the booking.
+
+Staff: This internal assistant only helps us find information and draft a reply. It has no connected delivery-booking tool. A human team confirms the arrangement.
+
+
+
+C10 | Blank arrival date
+
+Customer: The expected-date field is empty. Can you calculate it from when I ordered?
+
+Staff: Not reliably from the supplied record. An empty field means that an estimate has not been recorded, not that the delivery is today or that it has failed.
+
+Customer: Another order took two days. Could you use that as a promise?
+
+Staff: No. A previous order does not give an approved estimate for this one. We can provide the status and last recorded update and ask Orders & Delivery to investigate.
+
+Customer: Should I tell you the exact order reference?
+
+Staff: Yes, and the name on the order. We should not choose a similarly named record or make up the missing date.
+
+C11 | Two parcels, one received
+
+Customer: One of two boxes arrived. I am not sure whether the number on the label is the order number or a parcel number.
+
+Staff: Keep the label and packaging. We need the OrderID plus the parcel reference printed on the box that arrived. They identify different things.
+
+Customer: Does ParcelCount 2 prove that the driver delivered both?
+
+Staff: No. It is the expected total. Separate parcels may travel on different runs. Tell us which items or box are missing and what actually arrived.
+
+Customer: What does the team compare?
+
+Staff: Orders & Delivery compares the expected parcel count with the available parcel-level records. Do not mark the whole order lost or promise a replacement simply because one box came first.
+
+Customer: Should I photograph the arrived label?
+
+Staff: That can help identify the parcel reference. Keep the evidence and provide the missing-item description with the order reference.
+
+C12 | Reception received it
+
+Customer: The order says Delivered, but I did not receive it personally. Can you tell me the signature name?
+
+Staff: First check shared reception or goods receiving and authorised colleagues. What is the OrderID, and what does DeliveryNote actually record?
+
+Customer: It only says Reception desk. Could the assistant guess which colleague was on duty?
+
+Staff: No. We must not invent a signature or a person. Delivered can mean that an authorised reception point accepted it, not that it is on your desk.
+
+Customer: What happens if reception still cannot find it?
+
+Staff: Orders & Delivery investigates and obtains the recorded proof of delivery. Prepare the OrderID, the recorded delivery event and what reception or colleagues have checked. This is an investigation, not an automatic second dispatch.
+
+
+
+C13 | Several orders on one invoice
+
+Customer: I have two order references and would prefer a single invoice. Is that the duplicate service?
+
+Staff: No. A duplicate is an unchanged copy. Consolidating two orders is a separate billing request.
+
+Customer: Can the assistant add the amounts and create a merged PDF?
+
+Staff: It must not issue an invoice or decide that merging is allowed. Provide both OrderIDs and original billing details to Billing & Payments.
+
+Customer: So the useful response is a clear request for review?
+
+Staff: Yes. The team decides what is possible. This does not alter the approved duplicate-invoice process for ordinary copies.
+
+C14 | Which number is the right number?
+
+Customer: I have a survey code beginning R and an order confirmation. Which one should I quote about delivery?
+
+Staff: Use the OrderID from the order confirmation. The survey code identifies feedback, not a delivery record.
+
+Customer: There are two orders under my name. Can you pick the most recent?
+
+Staff: Not without confirming which one you mean. Give the exact order reference and the name on that order.
+
+Customer: And if I cannot find the confirmation?
+
+Staff: Provide the name and order date so Orders & Delivery can find the correct record. We do not invent or guess an ID.

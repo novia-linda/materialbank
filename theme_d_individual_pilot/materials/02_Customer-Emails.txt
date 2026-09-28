@@ -1,0 +1,159 @@
+Customer email correspondence
+
+18 complete exchanges | Records E01-E18 | Owner: Customer Information | Reviewed 21 September 2026
+
+These fictional messages have been checked for this teaching case. Staff replies describe approved procedures; customer requests do not create new rules. The records remain available as original evidence after you write an FAQ. The sequence is chronological, not grouped by topic.
+
+E01 | An address number is wrong
+
+Record: 1 September 2026 | Aino Laine -> Customer Information
+
+Customer: Hello, I entered 16 instead of 18 in the street address. My confirmation still says Processing. Can you correct it before it leaves? I am worried that it will go to the wrong building.
+
+Customer Information: Please send the OrderID and the complete corrected address. While the order is Recorded or Processing, Customer Information can forward an address-correction request to Orders & Delivery. Only that team confirms the change after checking the order. This reply is not confirmation that the address has been changed. If dispatch has already happened, Orders & Delivery must first review whether a change is still possible.
+
+E02 | Please resend my invoice
+
+Record: 2 September 2026 | Jonas Berg -> Billing & Payments
+
+Customer: I paid for an order last week, but cannot find the invoice attachment. Could you send a new copy? I do not want to create a second invoice or accidentally pay twice.
+
+Billing & Payments: For a duplicate invoice, provide the OrderID and the billing name used on the original invoice. Billing & Payments sends the duplicate to the billing email already held on the order. A duplicate is a copy of the same invoice and does not create a new charge. A request to use a different billing email must be reviewed separately before anything is sent.
+
+E03 | Damaged corner and damaged item
+
+Record: 3 September 2026 | Sara Holm -> Orders & Delivery
+
+Customer: The box arrived this morning with a crushed corner and an item inside is damaged. I have not thrown anything away. Should I send it back immediately? Can you replace it today?
+
+Orders & Delivery: Please report the damage to Orders & Delivery within five working days after delivery in this training case. Include the OrderID, a short description and photographs showing the outer packaging, the label and the damaged item. Keep the item and packaging while the case is reviewed. Do not send the goods back until you receive return instructions. Staff cannot promise a replacement or a refund before the team has reviewed the evidence.
+
+
+
+E04 | I missed the delivery
+
+Record: 4 September 2026 | Oskar Lind -> Orders & Delivery
+
+Customer: I was not at home when the delivery was attempted. Can you just leave the parcel outside tomorrow? I have an attempt notice but no new time.
+
+Orders & Delivery: First use the instructions on the delivery-attempt notice and have your OrderID ready. If the notice does not provide a working next step, ask Orders & Delivery to review the case and arrange the available option. The service desk must not promise a new delivery day, a free redelivery or permission to leave a parcel outside without confirmation. A note from the customer alone is not an approved delivery arrangement.
+
+E05 | Does tomorrow mean before lunch?
+
+Record: 5 September 2026 | Mia Nyman -> Customer Information
+
+Customer: My order says In transit and has an estimated date for tomorrow. Can I tell my colleague to wait for it at ten in the morning? The project depends on it.
+
+Customer Information: In transit means that the order is moving through the delivery network, not that it is already on the local delivery route. The expected date is an estimate. We cannot confirm a ten o'clock delivery from that information. We can explain the latest recorded event and its time. If the estimate has passed and the register gives no useful explanation, Orders & Delivery should check the case.
+
+E06 | Moving office before the parcel arrives
+
+Record: 6 September 2026 | Ella Ranta -> Customer Information
+
+Customer: We have moved offices and want our order sent to the new premises. I can give you the new address by reply. Does the fact that the order is only Recorded help?
+
+Customer Information: Yes, Recorded and Processing orders can be submitted for an address-correction check before dispatch. Please provide the exact OrderID and the full new address, not just the street name. Orders & Delivery must check and confirm the change. Do not assume that replying to this email edits the order. If the status changes to In transit before review, the request must be handled as an after-dispatch change.
+
+
+
+E07 | Invoice copy for our accountant
+
+Record: 7 September 2026 | Robin Salmi -> Billing & Payments
+
+Customer: Our accountant needs the invoice again. Is a duplicate a new payment request? Could you send it to the personal email I used to contact you today?
+
+Billing & Payments: A duplicate does not mean that you owe a second payment. To locate the correct invoice, Billing & Payments needs the OrderID and original billing name. The normal destination is the billing email already recorded on the order. We cannot change that destination simply because a message comes from a different address; the team must review a destination change separately. Please do not email payment-card details.
+
+E08 | Keep the damaged packaging?
+
+Record: 8 September 2026 | Emil Wester -> Orders & Delivery
+
+Customer: There is a split in the outer carton, and the product is broken. I took one photograph of the product. The carton is taking up space; can I put it in recycling now?
+
+Orders & Delivery: Please keep both the goods and their packaging until the damage review is complete. Photograph the outer packaging, label and damaged item, then submit them with the OrderID and a short description within five working days after delivery. One close-up of the item may not show the packaging or identify the shipment. Wait for instructions before returning anything. A refund is not automatic when a damage report is received.
+
+E09 | A second attempt without a notice link
+
+Record: 9 September 2026 | Linnea Aalto -> Orders & Delivery
+
+Customer: The attempt notice mentions a link, but it does not open. Could the driver try again on Friday? I will be there all day and would prefer not to collect the parcel.
+
+Orders & Delivery: Keep the notice and provide the OrderID when you contact Orders & Delivery. Explain that the notice link does not work and that you prefer redelivery. The team will check the available options and confirm the arrangement. Until that happens, Friday is a request, not a booked appointment. The service desk must not invent a fee or promise that redelivery is free.
+
+
+
+E10 | Tracking has not moved
+
+Record: 10 September 2026 | Nora Lund -> Customer Information
+
+Customer: The tracking information still shows the event from yesterday. Does that mean the parcel has stopped moving? I also see an expected arrival date, but no exact time.
+
+Customer Information: The record shows the latest event available to us; a lack of a new recorded event does not prove that the parcel has stopped. Use both the status and the LastUpdate time when explaining what is known. The expected date remains an estimate. We cannot infer the driver's location or give an exact arrival time. If the expected date has passed, refer the unexplained delay to Orders & Delivery.
+
+E11 | Change requested after dispatch
+
+Record: 11 September 2026 | Vera Ek -> Orders & Delivery
+
+Customer: I wrote earlier about an address correction, but the order is now In transit. Can you promise that it will still be redirected? The new street is in the same city.
+
+Orders & Delivery: An after-dispatch address change must be reviewed by Orders & Delivery. Send the OrderID and the full requested address. Being in the same city does not guarantee that redirection is possible. Please keep the original delivery information until the team has confirmed a change. The assistant may draft the request, but it cannot approve or apply the correction.
+
+E12 | Two emails, one invoice
+
+Record: 12 September 2026 | Felix Nyberg -> Billing & Payments
+
+Customer: I have found the original confirmation but still need the invoice. My colleague and I both contacted you, so please make sure this will not result in two charges. What should we quote?
+
+Billing & Payments: Use the exact OrderID and billing name from the original transaction. Billing & Payments can issue a duplicate copy of the existing invoice to the recorded billing email. Two requests for a copy do not create two new charges. If the invoice itself needs a changed company name or amount, that is a correction request rather than a simple duplicate and must be reviewed.
+
+
+
+E13 | Damage reported by a colleague
+
+Record: 13 September 2026 | Timo Salo -> Orders & Delivery
+
+Customer: Our colleague received the parcel on Monday and noticed the damage when unpacking on Tuesday. We have the label. What should I collect before contacting your team?
+
+Orders & Delivery: Collect the OrderID, a short description of the damage and photographs of the outer packaging, the label and the damaged item. Keep the item and packaging. The training-case reporting window is five working days after delivery, not five days after opening the box. Send the report to Orders & Delivery and wait for their instructions before arranging a return or assuming a remedy.
+
+E14 | Can you ask the driver to leave it by the door?
+
+Record: 14 September 2026 | Ida Fors -> Orders & Delivery
+
+Customer: I missed the first attempt and will not be home tomorrow either. Can you tell the driver that leaving it beside my door is fine? That would solve the problem for me.
+
+Orders & Delivery: Please follow the attempt-notice instructions and quote your OrderID. If an arrangement is needed, Orders & Delivery must check the delivery options and confirm it. We cannot treat this email as permission that has already been passed to a driver. We also cannot promise that the next attempt will happen tomorrow. Do not assume the assistant can contact the driver or edit delivery instructions.
+
+E15 | On the route or already delivered?
+
+Record: 15 September 2026 | Leo Strand -> Customer Information
+
+Customer: The wording is now Out for delivery. Is that the same as Delivered? I need to decide whether someone should look in the reception area.
+
+Customer Information: Out for delivery means the order is on the local delivery route. It is not yet a recorded delivery and does not provide a guaranteed arrival time. Delivered is a separate status. Check the actual OrderID, LastUpdate and DeliveryNote before advising the customer. The service-desk opening hours are not the driver's arrival window.
+
+
+
+E16 | One box arrived from a two-box order
+
+Record: 16 September 2026 | Alva Koski -> Orders & Delivery
+
+Customer: The order confirmation says two parcels but only one box is here. I thought the whole order had been delivered. Should I report the whole order missing or ask for an immediate replacement?
+
+Orders & Delivery: Parcels in one order can have separate references and can arrive on different runs. Please keep the packaging and tell us the OrderID, the parcel reference that arrived and which item or box is missing. Do not report the whole order as lost if part has arrived. Orders & Delivery will compare the expected parcel count and available parcel records before deciding the next step. A replacement is not confirmed merely because one parcel has arrived first.
+
+E17 | Delivery marked complete, but not in my hands
+
+Record: 17 September 2026 | Axel Gran -> Orders & Delivery
+
+Customer: Our order is marked Delivered. I was not in the office and a colleague says nothing is on my desk. Can your system tell us who received it?
+
+Orders & Delivery: Please check your shared reception or goods-receiving area and ask authorised colleagues who may accept deliveries. Delivered can mean receipt by an authorised reception point rather than by the named contact personally. Use DeliveryNote for any recorded location. If it is still not located, Orders & Delivery can investigate and obtain the recorded proof of delivery. Do not invent a recipient name or publish another person's details from guesswork.
+
+E18 | One invoice for several orders
+
+Record: 18 September 2026 | Signe Dahl -> Billing & Payments
+
+Customer: I would like one combined invoice for two separate orders. I see the earlier answer explaining duplicate invoices; can I just request a copy and ask you to merge the amounts?
+
+Billing & Payments: Combining invoices is not the same as sending a duplicate. Give Billing & Payments both OrderIDs and the original billing details. They must review whether consolidation is possible. Do not combine amounts or create a replacement invoice on your own. This does not change the normal duplicate-invoice process or establish that all invoice combinations are allowed.

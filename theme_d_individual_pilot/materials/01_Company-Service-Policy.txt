@@ -1,0 +1,71 @@
+Company Service Policy
+
+Version 1.0 | Approved by Customer Service Management | Reviewed 21 September 2026
+
+Use this document as approved knowledge for your internal assistant. These are invented course procedures, not real legal or commercial terms. The policy is deliberately broader than the five Level 1 questions.
+
+P01 | What the company does
+
+The company handles customer orders for ordinary, non-specialist goods and supports customers before and after delivery. This teaching case does not specify a product sector. Orders are delivered within mainland Finland only. International deliveries and deliveries to the Aland Islands are outside this service.
+
+The internal support assistant helps a member of staff find and explain approved information. It is not a public customer chatbot. Customer Information, Orders & Delivery, Billing & Payments and Technical Support are the four service teams in this case.
+
+P02 | Identify the right order
+
+Ask for the exact OrderID and the name on the order. An OrderID such as ORD-1042 identifies one order. A customer can have more than one order. Do not choose an order from a similar name or a similar ID.
+
+If the caller has no OrderID, collect the name used for the order and the order date, then ask Orders & Delivery to find the correct record. Do not invent an ID. A survey ResponseID from Theme C identifies feedback, not an order.
+
+Never ask for passwords, full payment-card details or authentication codes. All names and records used in the exercise are fictional.
+
+P03 | Dates are estimates, not guarantees
+
+ExpectedDate is the current estimated arrival date, not a guaranteed appointment. Staff must not turn an estimate into a promise, invent an arrival time, or claim to have located a driver. A blank date means that no estimate has been recorded.
+
+An answer based on the register must say which order it concerns and use the recorded status and LastUpdate. The register is a snapshot. It is not a live tracking system, GPS feed or proof that nothing has changed since the last recorded event.
+
+P04 | Read a status correctly
+
+Recorded: an order record has been created; processing or dispatch is not confirmed. Processing: staff are preparing the order. In transit: the order is moving through the delivery network; it is not confirmed as delivered. Out for delivery: the order is on the local delivery route, without a guaranteed arrival time.
+
+Delivered: the delivery has been recorded; check DeliveryNote for any recorded detail. Ready for collection: the order is available at the collection point named in DeliveryNote. On hold: action or clarification is needed; read DeliveryNote before explaining the reason.
+
+ParcelCount is the total number of parcels expected for the order, not the number confirmed as received. Do not interpret a blank DeliveryNote as confirmation that there were no problems.
+
+P05 | What an assistant may and may not do
+
+The assistant may explain documented rules, locate order information and draft a reply for a staff member to review. It must not confirm a booking, change an address, book a delivery, issue a refund or record a callback. It has no permission or connected tool to perform those actions in this exercise.
+
+Do not invent discounts, costs, guarantees or exceptions. A customer asking for compensation should receive the documented next step, not an invented award. Any refund or compensation decision belongs to the responsible human team.
+
+P06 | Where a person takes over
+
+Orders & Delivery handles unresolved delivery status, missing order records, address changes after dispatch and disputed deliveries. Billing & Payments handles invoice corrections and refund decisions. Technical Support handles access or website problems. Customer Information handles general service questions.
+
+A useful handover contains the OrderID if known, a short description of the question, what was checked, the remaining uncertainty and the team that needs to act. Saying "contact support" without any context is not enough. Never claim that the handover has already been sent.
+
+P07 | When information is missing
+
+If the question needs an order-specific fact that is not recorded, ask a necessary follow-up question or say what cannot be confirmed and refer the case to the appropriate team. General model knowledge is not an approved source for this company.
+
+Use only relevant information. More text is not always a better answer. If a source does not support a claim, leave the claim out. If two sources disagree and no clear current decision resolves the disagreement, show the conflict rather than choosing silently.
+
+P08 | Approved sources and ownership
+
+The policy is owned by Customer Service Management. The order register is owned by Orders & Delivery. The supplied email and telephone records have been checked by the training coordinator: their general procedures are approved for this exercise. Customer requests themselves are not company rules.
+
+When converting conversations into an FAQ, preserve the conditions and original evidence IDs. An answer given for one order is not a general rule about every order. Keep the FAQ owner, version and review date visible.
+
+After a change, test again. Replace superseded knowledge rather than leaving incompatible versions active. A current, explicit management decision takes priority only for the exact rule it replaces.
+
+P09 | Working days and service desk
+
+For this exercise, working days are Monday to Friday. Treat the weekdays mentioned in the case as ordinary working days; no public-holiday calculation is required. Customer service is open on working days from 08:30 to 16:00, Finnish local time.
+
+These hours describe when the service desk is open. They do not guarantee a delivery time and must not be used as driver arrival hours.
+
+P10 | Standard non-urgent progress updates - version 1
+
+Under this version, routine non-urgent order-progress follow-ups are sent by email only. Staff do not offer scheduled phone callbacks for this purpose. This rule does not cover emergency matters or change the allocation of delivery and billing decisions.
+
+Owner: Customer Service Management. Current version for the initial case: 1.0, reviewed 21 September 2026. A later approved change must explicitly identify this section before it can replace the rule.

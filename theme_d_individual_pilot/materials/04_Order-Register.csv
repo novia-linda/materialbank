@@ -1,0 +1,31 @@
+﻿OrderID,CustomerName,CustomerType,DestinationCity,ServiceType,OrderDate,ExpectedDate,Status,LastUpdate,ParcelCount,DeliveryNote
+ORD-1041,Aino Laine,Private,Helsinki,Standard,2026-09-14,2026-09-22,Recorded,2026-09-21 08:00,2,
+ORD-1042,Jonas Berg,Business,Helsinki,Standard,2026-09-15,2026-09-23,In transit,2026-09-21 11:20,2,Departed regional hub.
+ORD-1043,Sara Holm,Business,Turku,Standard,2026-09-16,2026-09-24,In transit,2026-09-21 10:14,1,
+ORD-1044,Oskar Lind,Private,Vaasa,Standard,2026-09-17,2026-09-21,Out for delivery,2026-09-21 11:21,1,
+ORD-1045,Mia Nyman,Business,Oulu,Standard,2026-09-18,2026-09-21,Delivered,2026-09-21 12:28,1,Received by named contact.
+ORD-1046,Ella Ranta,Business,Jyvaskyla,Standard,2026-09-19,2026-09-21,Ready for collection,2026-09-21 13:35,2,Jyvaskyla collection desk.
+ORD-1047,Robin Salmi,Private,Tampere,Standard,2026-09-14,2026-09-21,Delivered,2026-09-21 09:10,1,Reception desk.
+ORD-1048,Emil Wester,Business,Tampere,Standard,2026-09-15,2026-09-25,Recorded,2026-09-21 08:49,1,
+ORD-1049,Linnea Aalto,Business,Turku,Standard,2026-09-16,2026-09-22,Processing,2026-09-21 09:56,1,
+ORD-1050,Nora Lund,Private,Vaasa,Standard,2026-09-17,2026-09-23,In transit,2026-09-21 10:03,1,
+ORD-1051,Vera Ek,Business,Oulu,Standard,2026-09-18,2026-09-21,Out for delivery,2026-09-21 11:10,2,
+ORD-1052,Felix Nyberg,Business,Jyvaskyla,Standard,2026-09-19,2026-09-21,Delivered,2026-09-21 12:17,1,Received by named contact.
+ORD-1053,Timo Salo,Private,Turku,Standard,2026-09-14,,On hold,2026-09-21 13:40,1,Building number missing from delivery address.
+ORD-1054,Ida Fors,Business,Tampere,Standard,2026-09-15,2026-09-23,On hold,2026-09-21 14:31,1,Address clarification needed.
+ORD-1055,Leo Strand,Business,Turku,Standard,2026-09-16,2026-09-24,Recorded,2026-09-21 08:38,1,
+ORD-1056,Alva Koski,Private,Vaasa,Standard,2026-09-17,2026-09-25,Processing,2026-09-21 09:45,2,
+ORD-1057,Axel Gran,Business,Oulu,Standard,2026-09-18,2026-09-22,In transit,2026-09-21 10:52,1,
+ORD-1058,Signe Dahl,Business,Oulu,Standard,2026-09-19,,Processing,2026-09-21 14:05,1,Estimate not yet recorded.
+ORD-1059,Otto Holm,Private,Helsinki,Standard,2026-09-14,2026-09-21,Delivered,2026-09-21 12:06,1,Received by named contact.
+ORD-1060,Lina Back,Business,Tampere,Standard,2026-09-15,2026-09-21,Ready for collection,2026-09-21 13:13,1,Tampere collection desk.
+ORD-1061,Elin Nyberg,Business,Turku,Standard,2026-09-16,2026-09-22,On hold,2026-09-21 14:20,2,Address clarification needed.
+ORD-1062,Aron Lind,Private,Vaasa,Standard,2026-09-17,2026-09-23,Recorded,2026-09-21 08:27,1,
+ORD-1063,Ada Strand,Business,Oulu,Standard,2026-09-18,2026-09-24,Processing,2026-09-21 09:34,1,
+ORD-1064,Milo Salo,Business,Jyvaskyla,Standard,2026-09-19,2026-09-25,In transit,2026-09-21 10:41,1,
+ORD-1065,Elli Ranta,Private,Helsinki,Standard,2026-09-14,2026-09-21,Out for delivery,2026-09-21 08:15,1,Local route started; no appointment time recorded.
+ORD-1066,Lukas Ek,Business,Tampere,Standard,2026-09-15,2026-09-21,Delivered,2026-09-21 12:55,2,Received by named contact.
+ORD-1067,Iris Berg,Business,Turku,Standard,2026-09-16,2026-09-21,Ready for collection,2026-09-21 13:02,1,Turku collection desk.
+ORD-1068,Hugo Fors,Private,Vaasa,Standard,2026-09-17,2026-09-25,On hold,2026-09-21 14:09,1,Address clarification needed.
+ORD-1069,Elsa Gran,Business,Oulu,Standard,2026-09-18,2026-09-22,Recorded,2026-09-21 08:16,1,
+ORD-1070,Nils Aalto,Business,Jyvaskyla,Standard,2026-09-19,2026-09-23,Processing,2026-09-21 09:23,1,

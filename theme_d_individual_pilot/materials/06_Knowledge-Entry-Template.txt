@@ -1,0 +1,27 @@
+Knowledge entry template
+
+Create your own FAQ | Duplicate the entry block as needed
+
+Start with five recurring questions from the email and call records. You may add entries at Level 4. You do not need to use every heading if it is irrelevant, but preserve conditions and original evidence.
+
+FAQ owner: Your name / Customer Information for the case
+
+FAQ version and review date: [Enter version and date]
+
+Entry ID and topic: FAQ-01 | [Clear question or topic]
+
+Other ways a customer might ask: [Two short wording variants]
+
+Answer supported by the source: [Write the verified rule in your own clear wording]
+
+Important conditions or exceptions: [Keep what changes the answer; do not invent conditions]
+
+Information needed from the customer: [Only the details necessary for this situation]
+
+When a person takes over: [Who, why and what to pass on]
+
+Original evidence: [Exact email/call/policy IDs, for example E04 and C09]
+
+Checked against the originals: [Name or initials and date]
+
+Final check: Before adding an entry to your Gem, check each factual statement against the original conversation or policy. An AI-generated summary is a draft, not a new source of company authority.

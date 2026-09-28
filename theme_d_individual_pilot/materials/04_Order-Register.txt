@@ -1,0 +1,405 @@
+ORDER REGISTER | CS-D-1.0
+Snapshot: 21 September 2026, 15:00 Finnish local time. All records are fictional.
+30 original orders. Blank ExpectedDate = Not recorded. A static copy, not a live system.
+DATA DICTIONARY
+OrderID | Unique identifier for one order; never a survey ResponseID. | ORD-1042 | Required. Do not guess or change an existing ID.
+CustomerName | Fictional name on the order. | Jonas Berg | Does not identify an order uniquely by itself.
+CustomerType | Private or Business. | Business | A category, not permission to reveal more information.
+DestinationCity | Destination city in mainland Finland. | Helsinki | Not a street address or current GPS location.
+ServiceType | Service recorded for this order. | Standard | Do not infer a price or guarantee.
+OrderDate | Date the order record was made. | 2026-09-15 | Not the dispatch or delivery date.
+ExpectedDate | Estimated arrival date, when recorded. | 2026-09-23 | Blank = Not recorded. An estimate is not a promise.
+Status | Latest recorded order status; see policy P04. | In transit | One of the defined statuses; not a live feed.
+LastUpdate | Timestamp of the latest event in this snapshot. | 2026-09-21 11:20 | Finnish local time; no live GPS is implied.
+ParcelCount | Number of parcels expected for this order. | 2 | Not the number confirmed as received.
+DeliveryNote | Recorded operational detail, if available. | Reception desk. | Blank = No note recorded, not proof of no issue.
+
+ORDER ORD-1041
+OrderID: ORD-1041
+CustomerName: Aino Laine
+CustomerType: Private
+DestinationCity: Helsinki
+ServiceType: Standard
+OrderDate: 2026-09-14
+ExpectedDate: 2026-09-22
+Status: Recorded
+LastUpdate: 2026-09-21 08:00
+ParcelCount: 2
+DeliveryNote: Not recorded
+
+ORDER ORD-1042
+OrderID: ORD-1042
+CustomerName: Jonas Berg
+CustomerType: Business
+DestinationCity: Helsinki
+ServiceType: Standard
+OrderDate: 2026-09-15
+ExpectedDate: 2026-09-23
+Status: In transit
+LastUpdate: 2026-09-21 11:20
+ParcelCount: 2
+DeliveryNote: Departed regional hub.
+
+ORDER ORD-1043
+OrderID: ORD-1043
+CustomerName: Sara Holm
+CustomerType: Business
+DestinationCity: Turku
+ServiceType: Standard
+OrderDate: 2026-09-16
+ExpectedDate: 2026-09-24
+Status: In transit
+LastUpdate: 2026-09-21 10:14
+ParcelCount: 1
+DeliveryNote: Not recorded
+
+ORDER ORD-1044
+OrderID: ORD-1044
+CustomerName: Oskar Lind
+CustomerType: Private
+DestinationCity: Vaasa
+ServiceType: Standard
+OrderDate: 2026-09-17
+ExpectedDate: 2026-09-21
+Status: Out for delivery
+LastUpdate: 2026-09-21 11:21
+ParcelCount: 1
+DeliveryNote: Not recorded
+
+ORDER ORD-1045
+OrderID: ORD-1045
+CustomerName: Mia Nyman
+CustomerType: Business
+DestinationCity: Oulu
+ServiceType: Standard
+OrderDate: 2026-09-18
+ExpectedDate: 2026-09-21
+Status: Delivered
+LastUpdate: 2026-09-21 12:28
+ParcelCount: 1
+DeliveryNote: Received by named contact.
+
+ORDER ORD-1046
+OrderID: ORD-1046
+CustomerName: Ella Ranta
+CustomerType: Business
+DestinationCity: Jyvaskyla
+ServiceType: Standard
+OrderDate: 2026-09-19
+ExpectedDate: 2026-09-21
+Status: Ready for collection
+LastUpdate: 2026-09-21 13:35
+ParcelCount: 2
+DeliveryNote: Jyvaskyla collection desk.
+
+ORDER ORD-1047
+OrderID: ORD-1047
+CustomerName: Robin Salmi
+CustomerType: Private
+DestinationCity: Tampere
+ServiceType: Standard
+OrderDate: 2026-09-14
+ExpectedDate: 2026-09-21
+Status: Delivered
+LastUpdate: 2026-09-21 09:10
+ParcelCount: 1
+DeliveryNote: Reception desk.
+
+ORDER ORD-1048
+OrderID: ORD-1048
+CustomerName: Emil Wester
+CustomerType: Business
+DestinationCity: Tampere
+ServiceType: Standard
+OrderDate: 2026-09-15
+ExpectedDate: 2026-09-25
+Status: Recorded
+LastUpdate: 2026-09-21 08:49
+ParcelCount: 1
+DeliveryNote: Not recorded
+
+ORDER ORD-1049
+OrderID: ORD-1049
+CustomerName: Linnea Aalto
+CustomerType: Business
+DestinationCity: Turku
+ServiceType: Standard
+OrderDate: 2026-09-16
+ExpectedDate: 2026-09-22
+Status: Processing
+LastUpdate: 2026-09-21 09:56
+ParcelCount: 1
+DeliveryNote: Not recorded
+
+ORDER ORD-1050
+OrderID: ORD-1050
+CustomerName: Nora Lund
+CustomerType: Private
+DestinationCity: Vaasa
+ServiceType: Standard
+OrderDate: 2026-09-17
+ExpectedDate: 2026-09-23
+Status: In transit
+LastUpdate: 2026-09-21 10:03
+ParcelCount: 1
+DeliveryNote: Not recorded
+
+ORDER ORD-1051
+OrderID: ORD-1051
+CustomerName: Vera Ek
+CustomerType: Business
+DestinationCity: Oulu
+ServiceType: Standard
+OrderDate: 2026-09-18
+ExpectedDate: 2026-09-21
+Status: Out for delivery
+LastUpdate: 2026-09-21 11:10
+ParcelCount: 2
+DeliveryNote: Not recorded
+
+ORDER ORD-1052
+OrderID: ORD-1052
+CustomerName: Felix Nyberg
+CustomerType: Business
+DestinationCity: Jyvaskyla
+ServiceType: Standard
+OrderDate: 2026-09-19
+ExpectedDate: 2026-09-21
+Status: Delivered
+LastUpdate: 2026-09-21 12:17
+ParcelCount: 1
+DeliveryNote: Received by named contact.
+
+ORDER ORD-1053
+OrderID: ORD-1053
+CustomerName: Timo Salo
+CustomerType: Private
+DestinationCity: Turku
+ServiceType: Standard
+OrderDate: 2026-09-14
+ExpectedDate: Not recorded
+Status: On hold
+LastUpdate: 2026-09-21 13:40
+ParcelCount: 1
+DeliveryNote: Building number missing from delivery address.
+
+ORDER ORD-1054
+OrderID: ORD-1054
+CustomerName: Ida Fors
+CustomerType: Business
+DestinationCity: Tampere
+ServiceType: Standard
+OrderDate: 2026-09-15
+ExpectedDate: 2026-09-23
+Status: On hold
+LastUpdate: 2026-09-21 14:31
+ParcelCount: 1
+DeliveryNote: Address clarification needed.
+
+ORDER ORD-1055
+OrderID: ORD-1055
+CustomerName: Leo Strand
+CustomerType: Business
+DestinationCity: Turku
+ServiceType: Standard
+OrderDate: 2026-09-16
+ExpectedDate: 2026-09-24
+Status: Recorded
+LastUpdate: 2026-09-21 08:38
+ParcelCount: 1
+DeliveryNote: Not recorded
+
+ORDER ORD-1056
+OrderID: ORD-1056
+CustomerName: Alva Koski
+CustomerType: Private
+DestinationCity: Vaasa
+ServiceType: Standard
+OrderDate: 2026-09-17
+ExpectedDate: 2026-09-25
+Status: Processing
+LastUpdate: 2026-09-21 09:45
+ParcelCount: 2
+DeliveryNote: Not recorded
+
+ORDER ORD-1057
+OrderID: ORD-1057
+CustomerName: Axel Gran
+CustomerType: Business
+DestinationCity: Oulu
+ServiceType: Standard
+OrderDate: 2026-09-18
+ExpectedDate: 2026-09-22
+Status: In transit
+LastUpdate: 2026-09-21 10:52
+ParcelCount: 1
+DeliveryNote: Not recorded
+
+ORDER ORD-1058
+OrderID: ORD-1058
+CustomerName: Signe Dahl
+CustomerType: Business
+DestinationCity: Oulu
+ServiceType: Standard
+OrderDate: 2026-09-19
+ExpectedDate: Not recorded
+Status: Processing
+LastUpdate: 2026-09-21 14:05
+ParcelCount: 1
+DeliveryNote: Estimate not yet recorded.
+
+ORDER ORD-1059
+OrderID: ORD-1059
+CustomerName: Otto Holm
+CustomerType: Private
+DestinationCity: Helsinki
+ServiceType: Standard
+OrderDate: 2026-09-14
+ExpectedDate: 2026-09-21
+Status: Delivered
+LastUpdate: 2026-09-21 12:06
+ParcelCount: 1
+DeliveryNote: Received by named contact.
+
+ORDER ORD-1060
+OrderID: ORD-1060
+CustomerName: Lina Back
+CustomerType: Business
+DestinationCity: Tampere
+ServiceType: Standard
+OrderDate: 2026-09-15
+ExpectedDate: 2026-09-21
+Status: Ready for collection
+LastUpdate: 2026-09-21 13:13
+ParcelCount: 1
+DeliveryNote: Tampere collection desk.
+
+ORDER ORD-1061
+OrderID: ORD-1061
+CustomerName: Elin Nyberg
+CustomerType: Business
+DestinationCity: Turku
+ServiceType: Standard
+OrderDate: 2026-09-16
+ExpectedDate: 2026-09-22
+Status: On hold
+LastUpdate: 2026-09-21 14:20
+ParcelCount: 2
+DeliveryNote: Address clarification needed.
+
+ORDER ORD-1062
+OrderID: ORD-1062
+CustomerName: Aron Lind
+CustomerType: Private
+DestinationCity: Vaasa
+ServiceType: Standard
+OrderDate: 2026-09-17
+ExpectedDate: 2026-09-23
+Status: Recorded
+LastUpdate: 2026-09-21 08:27
+ParcelCount: 1
+DeliveryNote: Not recorded
+
+ORDER ORD-1063
+OrderID: ORD-1063
+CustomerName: Ada Strand
+CustomerType: Business
+DestinationCity: Oulu
+ServiceType: Standard
+OrderDate: 2026-09-18
+ExpectedDate: 2026-09-24
+Status: Processing
+LastUpdate: 2026-09-21 09:34
+ParcelCount: 1
+DeliveryNote: Not recorded
+
+ORDER ORD-1064
+OrderID: ORD-1064
+CustomerName: Milo Salo
+CustomerType: Business
+DestinationCity: Jyvaskyla
+ServiceType: Standard
+OrderDate: 2026-09-19
+ExpectedDate: 2026-09-25
+Status: In transit
+LastUpdate: 2026-09-21 10:41
+ParcelCount: 1
+DeliveryNote: Not recorded
+
+ORDER ORD-1065
+OrderID: ORD-1065
+CustomerName: Elli Ranta
+CustomerType: Private
+DestinationCity: Helsinki
+ServiceType: Standard
+OrderDate: 2026-09-14
+ExpectedDate: 2026-09-21
+Status: Out for delivery
+LastUpdate: 2026-09-21 08:15
+ParcelCount: 1
+DeliveryNote: Local route started; no appointment time recorded.
+
+ORDER ORD-1066
+OrderID: ORD-1066
+CustomerName: Lukas Ek
+CustomerType: Business
+DestinationCity: Tampere
+ServiceType: Standard
+OrderDate: 2026-09-15
+ExpectedDate: 2026-09-21
+Status: Delivered
+LastUpdate: 2026-09-21 12:55
+ParcelCount: 2
+DeliveryNote: Received by named contact.
+
+ORDER ORD-1067
+OrderID: ORD-1067
+CustomerName: Iris Berg
+CustomerType: Business
+DestinationCity: Turku
+ServiceType: Standard
+OrderDate: 2026-09-16
+ExpectedDate: 2026-09-21
+Status: Ready for collection
+LastUpdate: 2026-09-21 13:02
+ParcelCount: 1
+DeliveryNote: Turku collection desk.
+
+ORDER ORD-1068
+OrderID: ORD-1068
+CustomerName: Hugo Fors
+CustomerType: Private
+DestinationCity: Vaasa
+ServiceType: Standard
+OrderDate: 2026-09-17
+ExpectedDate: 2026-09-25
+Status: On hold
+LastUpdate: 2026-09-21 14:09
+ParcelCount: 1
+DeliveryNote: Address clarification needed.
+
+ORDER ORD-1069
+OrderID: ORD-1069
+CustomerName: Elsa Gran
+CustomerType: Business
+DestinationCity: Oulu
+ServiceType: Standard
+OrderDate: 2026-09-18
+ExpectedDate: 2026-09-22
+Status: Recorded
+LastUpdate: 2026-09-21 08:16
+ParcelCount: 1
+DeliveryNote: Not recorded
+
+ORDER ORD-1070
+OrderID: ORD-1070
+CustomerName: Nils Aalto
+CustomerType: Business
+DestinationCity: Jyvaskyla
+ServiceType: Standard
+OrderDate: 2026-09-19
+ExpectedDate: 2026-09-23
+Status: Processing
+LastUpdate: 2026-09-21 09:23
+ParcelCount: 1
+DeliveryNote: Not recorded
