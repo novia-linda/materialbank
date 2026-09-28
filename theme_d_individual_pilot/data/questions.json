@@ -81,7 +81,7 @@
       "screenshots": [
         {
           "title": "Your Gem instructions",
-          "help": "Show the part of your saved instructions about sources, missing information and human limits. Use a readable crop, not an entire desktop.",
+          "help": "Show your Gem name and description. Then scroll down to the part of the instructions that starts with \"Sources\". It is OK if only a few lines of the instruction are visible - the instruction box in Gemini is small. You do not need to show the full instruction. Use a readable crop, not an entire desktop.",
           "required": true
         },
         {
