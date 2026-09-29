@@ -123,6 +123,11 @@ function buildScene(model,k,m,twoPage){
   }else if(status==='partial'){
    line(x+size/2,y+.4,x+size/2,y+size*.64,C.strong,1.35);
    rect(x+size/2-.65,y+size*.86,1.3,1.3,C.strong);
+  }else if(status==='missing'){
+   // Question mark: said that information is missing (did not guess).
+   const q=[[.24,.30],[.30,.13],[.50,.04],[.70,.13],[.76,.30],[.66,.46],[.50,.56],[.50,.66]];
+   for(let i=1;i<q.length;i++)line(x+size*q[i-1][0],y+size*q[i-1][1],x+size*q[i][0],y+size*q[i][1],C.strong,1.35);
+   rect(x+size/2-.65,y+size*.86,1.3,1.3,C.strong);
   }else if(status==='incorrect'){
    line(x+1,y+1,x+size-1,y+size-1,C.strong,1.35);
    line(x+size-1,y+1,x+1,y+size-1,C.strong,1.35);
@@ -190,7 +195,7 @@ function buildScene(model,k,m,twoPage){
   if(eLines.length>eMax)sc.issues.push(q.id+': use short source IDs and exact sections, not full quotations.');
  }
  if(twoPage&&pg===0&&y+20>BOTTOM)newPage();
- y+=10;icon('correct',M,y,8);text('Correct',M+12,y,7.2);icon('partial',M+66,y,8);text('Partly correct',M+78,y,7.2);icon('incorrect',M+154,y,8);text('Incorrect / no answer',M+166,y,7.2);text('1st / Last = student-reported results',M+334,y,7.0,'regular',C.body);
+ y+=10;icon('correct',M,y,8);text('Correct',M+12,y,7.2);icon('partial',M+66,y,8);text('Partly correct',M+78,y,7.2);icon('missing',M+134,y,8);text('Said information is missing',M+146,y,7.2);icon('incorrect',M+246,y,8);text('Incorrect / no answer',M+258,y,7.2);text('1st / Last = student-reported results',M+CW-width('1st / Last = student-reported results',7.0),y,7.0,'regular',C.body);
  y+=24;
  const mid=M+(CW+18)/2,colW=(CW-18)/2;
  let left=state.improvement||'[not recorded]';
