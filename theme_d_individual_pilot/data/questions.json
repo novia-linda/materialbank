@@ -253,7 +253,7 @@
       "id": "4",
       "title": "Update and improve",
       "shortTitle": "Improve",
-      "description": "Find less-common knowledge, apply the approved management change and add the specified register field. Test the updates and one unchanged rule.",
+      "description": "Add new information from a colleague to your FAQ, apply the approved management change and add the specified register field. Test the updates and one unchanged rule.",
       "sourceIds": [
         "policy",
         "emails",
@@ -276,15 +276,15 @@
       "questions": [
         {
           "id": "D4-Q01",
-          "label": "One box missing",
-          "question": "An order contains two parcels but only one arrived. What references and details should I collect before reporting the missing part?",
-          "topic": "rare-parcel"
+          "label": "Collection time",
+          "question": "An order is Ready for collection. How long is it kept at the collection desk, when does that time start, and what must the customer bring?",
+          "topic": "collection-time"
         },
         {
           "id": "D4-Q02",
-          "label": "Reception delivery",
-          "question": "The status is Delivered but the named customer has not received the parcel personally. What should they check, and what happens if it is still missing?",
-          "topic": "rare-reception"
+          "label": "Someone else collects",
+          "question": "The customer cannot collect the parcel in time. What does a colleague need to collect it for them, can the service desk extend the time, and what happens if nobody collects it?",
+          "topic": "collection-proxy"
         },
         {
           "id": "D4-Q03",
