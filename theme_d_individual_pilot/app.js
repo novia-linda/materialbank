@@ -6,7 +6,7 @@
 'use strict';
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const STATUS={correct:{icon:'\u2713',label:'Correct'},partial:{icon:'!',label:'Partly correct'},incorrect:{icon:'\u00d7',label:'Incorrect / no answer'}};
+const STATUS={correct:{icon:'\u2713',label:'Correct'},partial:{icon:'!',label:'Partly correct'},missing:{icon:'?',label:'Said information is missing'},incorrect:{icon:'\u00d7',label:'Incorrect / no answer'}};
 let config,level,state,db=null,current='primer',timer=null,queue=Promise.resolve(),revision=0,savedRevision=-1,exportedRevision=-1,previewScene=null,toastTimer,crop=null,booted=false;
 const memory={};const clientId=Math.random().toString(36).slice(2);let channel;
 const teacherExampleCache=new Map(),examplePageStamp=Date.now().toString(36);
