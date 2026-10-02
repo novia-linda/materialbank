@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nordic Freight – 50 fontalternativ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Archivo:wght@400;700&family=Archivo+Narrow:wght@400;700&family=Assistant:wght@400;700&family=Atkinson+Hyperlegible:wght@400;700&family=Barlow:wght@400;700&family=Barlow+Condensed:wght@400;700&family=Bebas+Neue&family=Cabin:wght@400;700&family=Chakra+Petch:wght@400;700&family=DM+Sans:wght@400;700&family=Exo+2:wght@400;700&family=Figtree:wght@400;700&family=Fjalla+One&family=IBM+Plex+Sans+Condensed:wght@400;700&family=Inter:wght@400;700&family=Kanit:wght@400;700&family=Lato:wght@400;700&family=Lexend:wght@400;700&family=Liter&family=Manrope:wght@400;700&family=Martel+Sans:wght@400;700&family=Maven+Pro:wght@400;700&family=Montserrat:wght@400;700&family=Mulish:wght@400;700&family=Noto+Sans:wght@400;700&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Oswald:wght@400;700&family=Outfit:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&family=Poppins:wght@400;700&family=Public+Sans:wght@400;700&family=Questrial&family=Rajdhani:wght@400;700&family=Raleway:wght@400;700&family=Red+Hat+Display:wght@400;700&family=Roboto+Condensed:wght@400;700&family=Rubik:wght@400;700&family=Saira+Condensed:wght@400;700&family=Sora:wght@400;700&family=Source+Sans+3:wght@400;700&family=Space+Grotesk:wght@400;700&family=Teko:wght@400;700&family=Titillium+Web:wght@400;700&family=Ubuntu:wght@400;700&family=Urbanist:wght@400;700&family=Varela+Round&family=Work+Sans:wght@400;700&family=Yanone+Kaffeesatz:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#173B5B;
+  --blue:#3F6F91;
+  --mist:#E7EEF3;
+  --ice:#F4F7F9;
+  --kraft:#B7895A;
+  --ink:#173042;
+  --text:#4C5D69;
+  --muted:#74828C;
+  --line:#D5DEE4;
+  --paper:#FBFAF7;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Arial,sans-serif;line-height:1.5}
+.topbar{height:9px;display:grid;grid-template-columns:2fr 1.25fr 1fr .8fr}
+.topbar span:nth-child(1){background:var(--navy)}
+.topbar span:nth-child(2){background:var(--blue)}
+.topbar span:nth-child(3){background:var(--mist)}
+.topbar span:nth-child(4){background:var(--kraft)}
+.wrap{max-width:1180px;margin:0 auto;padding:36px 22px 70px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+h1{font-family:Atkinson Hyperlegible,Arial,sans-serif;font-size:clamp(34px,5vw,62px);line-height:1.02;margin:0 0 12px;font-weight:700;color:var(--navy)}
+.intro{max-width:780px;color:var(--text);font-size:16px;margin:0 0 24px}
+.controls{display:grid;grid-template-columns:1fr 180px;gap:12px;padding:16px;background:var(--white);border:1px solid var(--line);border-left:5px solid var(--blue);margin:0 0 28px}
+.controls label{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:var(--muted);display:block;margin-bottom:5px}
+.controls input,.controls select{width:100%;padding:11px 12px;border:1px solid var(--line);background:#fff;color:var(--ink);font:inherit;border-radius:0}
+.legend{font-size:13px;color:var(--muted);margin:0 0 18px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.card{background:var(--white);border:1px solid var(--line);border-top:7px solid var(--blue);padding:22px 22px 20px;min-width:0}
+.meta{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:16px}
+.num{font-weight:700;color:var(--blue);letter-spacing:.08em;font-size:13px}
+.tag{background:var(--mist);color:var(--navy);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:5px 8px}
+.sample{font-size:44px;line-height:1.02;margin:0 0 6px;color:var(--navy);overflow-wrap:anywhere}
+.subsample{font-size:24px;line-height:1.15;margin:0 0 18px;color:var(--ink)}
+.fontline{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.badge{border:1px solid var(--line);padding:5px 8px;color:var(--muted);font-size:12px;background:#fff}
+.note{font-size:13px;color:var(--text);margin-top:12px}
+.section-title{margin:42px 0 14px;padding-top:16px;border-top:1px solid var(--line);font-size:22px;color:var(--navy)}
+.footer{margin-top:42px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+@media(max-width:760px){
+  .grid{grid-template-columns:1fr}
+  .controls{grid-template-columns:1fr}
+  .sample{font-size:38px}
+  .subsample{font-size:22px}
+  .wrap{padding:28px 14px 52px}
+}
+</style>
+</head>
+<body>
+<div class="topbar"><span></span><span></span><span></span><span></span></div>
+<main class="wrap">
+  <div class="eyebrow">Nordic Freight · Visual identity study</div>
+  <h1>50 rubrikfonter att jämföra</h1>
+  <p class="intro">Alla alternativ visas med samma Nordic Freight-exempel. Sidan laddar fonterna direkt från Google Fonts, så GitHub Pages är den bästa platsen att bedöma dem på.</p>
+
+  <div class="controls">
+    <div>
+      <label for="sampleText">Testa egen rubrik</label>
+      <input id="sampleText" value="Nordic Freight" aria-label="Testa egen rubrik">
+    </div>
+    <div>
+      <label for="weightSelect">Vikt</label>
+      <select id="weightSelect" aria-label="Välj fontvikt">
+        <option value="700" selected>700 / Bold</option>
+        <option value="400">400 / Regular</option>
+      </select>
+    </div>
+  </div>
+  <p class="legend">Tips: använd 700 för att bedöma logotyp-/huvudrubrikskänslan. Några familjer har bara en vikt och visas därför i sin naturliga vikt.</p>
+
+  <div class="grid" id="fontGrid"></div>
+
+  <div class="footer">Nordic Freight · Font comparison page · Google Fonts loaded live</div>
+</main>
+<script>
+const fonts = [
+  {n:'Atkinson Hyperlegible', css:'Atkinson Hyperlegible', tag:'Tydlig / mänsklig', note:'Mycket lättläst och egen utan att bli märklig.'},
+  {n:'Martel Sans', css:'Martel Sans', tag:'Robust / seriös', note:'Stadig och lite mer institutionell.'},
+  {n:'Liter', css:'Liter', tag:'Modern / vänlig', note:'Mjukare identitet med tydlig egen karaktär.', single:true},
+  {n:'Lato', css:'Lato', tag:'Säker / professionell', note:'Väldigt användbar i både rubriker och UI.'},
+  {n:'Varela Round', css:'Varela Round', tag:'Mjuk / kundnära', note:'Rundare och vänligare uttryck.', single:true},
+  {n:'Barlow Condensed', css:'Barlow Condensed', tag:'Transport / stark', note:'Kompakt och tydlig logistik-/terminalkänsla.'},
+  {n:'Oswald', css:'Oswald', tag:'Industri / skylt', note:'Smalt och robust, med tydlig signage-känsla.'},
+  {n:'Roboto Condensed', css:'Roboto Condensed', tag:'Neutral / kompakt', note:'Praktisk och lättläst i täta gränssnitt.'},
+  {n:'IBM Plex Sans Condensed', css:'IBM Plex Sans Condensed', tag:'Teknisk / saklig', note:'Mycket bra business-tech-känsla.'},
+  {n:'Archivo Narrow', css:'Archivo Narrow', tag:'Stram / kompakt', note:'Klassisk smal rubrikfont med bra läsbarhet.'},
+  {n:'Antonio', css:'Antonio', tag:'Stark / vertikal', note:'Tydlig displaykänsla, bra för stora rubriker.'},
+  {n:'Teko', css:'Teko', tag:'Terminal / display', note:'Mycket kompakt och industriell; bäst i större storlek.'},
+  {n:'Rajdhani', css:'Rajdhani', tag:'Teknisk / futuristisk', note:'Har en tydlig digital/logistisk identitet.'},
+  {n:'Saira Condensed', css:'Saira Condensed', tag:'Tech / kompakt', note:'Modern och maskinell utan att bli hård.'},
+  {n:'Titillium Web', css:'Titillium Web', tag:'Europeisk / teknisk', note:'Teknisk men ändå mjuk och lätt att använda.'},
+  {n:'Exo 2', css:'Exo 2', tag:'Digital / modern', note:'Tydlig tech-känsla med mer personlighet.'},
+  {n:'Space Grotesk', css:'Space Grotesk', tag:'Modern / premium', note:'Samtida och självsäker digital identitet.'},
+  {n:'Manrope', css:'Manrope', tag:'Ren / modern', note:'Lugn och mycket användbar i appar.'},
+  {n:'DM Sans', css:'DM Sans', tag:'Digital / ren', note:'Neutral men lite varmare än Inter.'},
+  {n:'Work Sans', css:'Work Sans', tag:'Praktisk / business', note:'Bra arbetsverktygskänsla, tydlig i UI.'},
+  {n:'Public Sans', css:'Public Sans', tag:'Saklig / offentlig', note:'Mycket tydlig och funktionell.'},
+  {n:'Source Sans 3', css:'Source Sans 3', tag:'Neutral / läsbar', note:'Säker, modern och mycket lättläst.'},
+  {n:'Noto Sans', css:'Noto Sans', tag:'Global / neutral', note:'Pålitlig och språkstark, mindre unik.'},
+  {n:'Montserrat', css:'Montserrat', tag:'Geometrisk / stark', note:'Tydlig företagskänsla, ganska välbekant.'},
+  {n:'Poppins', css:'Poppins', tag:'Geometrisk / vänlig', note:'Mjukare och mer varumärkesorienterad.'},
+  {n:'Urbanist', css:'Urbanist', tag:'Modern / mjuk', note:'Samtida digital känsla med lite mer personlighet.'},
+  {n:'Plus Jakarta Sans', css:'Plus Jakarta Sans', tag:'Modern / elegant', note:'Polerad och lätt, fungerar fint i appar.'},
+  {n:'Outfit', css:'Outfit', tag:'Digital / tydlig', note:'Samtida, ren och bra som identitetsfont.'},
+  {n:'Figtree', css:'Figtree', tag:'UI / varm', note:'Mycket bra gränssnittsfont med vänlig ton.'},
+  {n:'Lexend', css:'Lexend', tag:'Läsbar / distinkt', note:'Har tydliga bokstavsformer och bra tillgänglighet.'},
+  {n:'Nunito Sans', css:'Nunito Sans', tag:'Mjuk / tillgänglig', note:'Vänlig men fortfarande professionell.'},
+  {n:'Mulish', css:'Mulish', tag:'Ren / lätt', note:'Luftig och diskret i digitala tjänster.'},
+  {n:'Cabin', css:'Cabin', tag:'Humanistisk / robust', note:'Lite varmare, fortfarande seriös.'},
+  {n:'Kanit', css:'Kanit', tag:'Teknisk / karakteristisk', note:'Distinkt och modern, syns tydligt som varumärkesfont.'},
+  {n:'Rubik', css:'Rubik', tag:'Robust / vänlig', note:'Tydliga former med lätt rundning.'},
+  {n:'Ubuntu', css:'Ubuntu', tag:'Digital / humanistisk', note:'Mjuk tech-känsla och hög igenkänning.'},
+  {n:'Inter', css:'Inter', tag:'UI / neutral', note:'Extremt säker i gränssnitt, men mindre unik.'},
+  {n:'Open Sans', css:'Open Sans', tag:'Neutral / säker', note:'Mycket lättläst, klassisk webbkänsla.'},
+  {n:'Archivo', css:'Archivo', tag:'Stram / industriell', note:'Kompakt businesskänsla utan att vara smal.'},
+  {n:'Assistant', css:'Assistant', tag:'Lätt / tydlig', note:'Ren och diskret, bra för servicegränssnitt.'},
+  {n:'Red Hat Display', css:'Red Hat Display', tag:'Tech / företag', note:'Modern företagsfont med tydlig digital karaktär.'},
+  {n:'Maven Pro', css:'Maven Pro', tag:'Modern / teknisk', note:'Lite futuristisk men fortfarande lättläst.'},
+  {n:'Questrial', css:'Questrial', tag:'Minimal / ren', note:'Lätt och elegant, bäst för luftig design.', single:true},
+  {n:'Raleway', css:'Raleway', tag:'Elegant / varumärke', note:'Mer designorienterad och mindre industriell.'},
+  {n:'Sora', css:'Sora', tag:'Digital / distinkt', note:'Modern och tydligt teknikpräglad.'},
+  {n:'Chakra Petch', css:'Chakra Petch', tag:'Tech / industri', note:'Karaktärsfull och nästan instrumentpanel-lik.'},
+  {n:'Barlow', css:'Barlow', tag:'Transport / balanserad', note:'Mindre kompakt än Barlow Condensed men samma familjekänsla.'},
+  {n:'Fjalla One', css:'Fjalla One', tag:'Skylt / stark', note:'Kraftfull displayfont för korta rubriker.', single:true},
+  {n:'Bebas Neue', css:'Bebas Neue', tag:'Display / transport', note:'Mycket stark i stora versala rubriker.', single:true},
+  {n:'Yanone Kaffeesatz', css:'Yanone Kaffeesatz', tag:'Smal / karaktär', note:'Personlig och kompakt, mindre corporate.'}
+];
+const grid = document.getElementById('fontGrid');
+const input = document.getElementById('sampleText');
+const weight = document.getElementById('weightSelect');
+function render(){
+  grid.innerHTML='';
+  fonts.forEach((f,i)=>{
+    const card=document.createElement('article');
+    card.className='card';
+    const w=f.single?400:Number(weight.value);
+    card.innerHTML=`
+      <div class="meta"><span class="num">${String(i+1).padStart(2,'0')}</span><span class="tag">${f.tag}</span></div>
+      <div class="sample" style="font-family:'${f.css}',sans-serif;font-weight:${w}">${escapeHtml(input.value||'Nordic Freight')}</div>
+      <div class="subsample" style="font-family:'${f.css}',sans-serif;font-weight:${w}">Shipment tracking</div>
+      <div class="fontline"><span class="badge">${f.n}</span><span class="badge">${f.single?'natural weight':w}</span></div>
+      <div class="note">${f.note}</div>`;
+    grid.appendChild(card);
+  });
+}
+function escapeHtml(s){return s.replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+input.addEventListener('input',render);
+weight.addEventListener('change',render);
+render();
+</script>
+</body>
+</html>
