@@ -1,0 +1,31 @@
+﻿ShipmentID,Sender,Recipient,FromCity,ToCity,Status,DeliveryPreference,DeliveryNote,Driver,StartedAt,DeliveredAt,LastUpdated
+ID1001,Maja Nyman,Antti Korhonen,Vaasa,Tampere,Delivered,Deliver to door,Ring the doorbell,Eva Niemi,2026-09-28 08:10,2026-09-28 14:25,2026-09-28 14:25
+ID1002,Johan Andersson,Sofia Laakso,Jakobstad,Turku,Booked,Call on arrival,,Mikael Sjöberg,,,2026-10-01 08:40
+ID1003,Susan Granholm,Emilia Virtanen,Kokkola,Helsinki,In transit,Deliver to reception,Reception closes at 16:00,Eva Niemi,2026-10-01 07:55,,2026-10-01 07:55
+ID1004,Elias Smeds,Oskari Lehto,Vaasa,Seinäjoki,Delivered,Leave outside the door,Under the roof,Mikael Sjöberg,2026-09-29 09:20,2026-09-29 12:05,2026-09-29 12:05
+ID1005,Maria Berg,Noora Salmi,Nykarleby,Helsinki,Booked,Deliver to door,,Eva Niemi,,,2026-10-01 09:05
+ID1006,Leo Holm,Daniel Koski,Vaasa,Pori,In transit,Call on arrival,Call five minutes before arrival,Mikael Sjöberg,2026-10-01 10:15,,2026-10-01 10:15
+ID1007,Anna Nyman,Sara Virtanen,Kokkola,Oulu,Delivered,Deliver to reception,,Eva Niemi,2026-09-30 06:45,2026-09-30 14:40,2026-09-30 14:40
+ID1008,Erik Lind,Aino Ranta,Vaasa,Helsinki,Booked,,,Eva Niemi,,,2026-10-01 09:35
+ID1009,Linnea Fors,Matti Nieminen,Jakobstad,Tampere,In transit,Leave outside the door,Beside the garage door,Mikael Sjöberg,2026-10-01 11:00,,2026-10-01 11:00
+ID1010,Oscar Wik,Ella Kallio,Vaasa,Turku,Delivered,Call on arrival,,Eva Niemi,2026-09-29 07:30,2026-09-29 16:10,2026-09-29 16:10
+ID1011,Maja Nyman,Ville Mäkinen,Kokkola,Helsinki,Booked,Deliver to door,,Mikael Sjöberg,,,2026-10-01 10:10
+ID1012,Johan Andersson,Ida Holm,Vaasa,Seinäjoki,In transit,Deliver to reception,Ask for Ida at reception,Eva Niemi,2026-10-01 12:05,,2026-10-01 12:05
+ID1013,Susan Granholm,Joel Sandberg,Närpes,Tampere,Delivered,Leave outside the door,Covered terrace,Mikael Sjöberg,2026-09-30 08:30,2026-09-30 15:35,2026-09-30 15:35
+ID1014,Elias Smeds,Laura Lehtinen,Vaasa,Helsinki,Booked,Call on arrival,,Eva Niemi,,,2026-10-01 10:45
+ID1015,Erik Lind,Emma Granholm,Jakobstad,Turku,Delivered,Deliver to door,,Mikael Sjöberg,2026-09-30 09:10,2026-09-30 16:20,2026-09-30 16:20
+ID1016,Elsa Karlsson,Johan Lind,Vaasa,Helsinki,In transit,Call on arrival,"Entrance B, third floor",Eva Niemi,2026-10-01 13:20,,2026-10-01 13:20
+ID1017,Maria Berg,Oskar Laine,Jakobstad,Tampere,Booked,Deliver to door,,Eva Niemi,,,2026-10-01 09:15
+ID1018,Anna Nyman,Johan Lind,Vaasa,Helsinki,Booked,,,Eva Niemi,,,2026-10-01 10:05
+ID1019,Leo Holm,Sara Virtanen,Kokkola,Turku,Delivered,Leave outside the door,Under the roof beside the front door,Eva Niemi,2026-09-30 08:45,2026-09-30 15:10,2026-09-30 15:10
+ID1020,Elsa Karlsson,Johan Lind,Vaasa,Helsinki,In transit,,,Eva Niemi,2026-10-02 08:05,,2026-10-02 08:05
+ID1021,Mikael Dahl,Linnea Koivu,Vaasa,Tampere,Booked,Deliver to door,,Mikael Sjöberg,,,2026-10-02 08:20
+ID1022,Sofia Nyman,Oskar Lindholm,Jakobstad,Turku,In transit,,,Mikael Sjöberg,2026-10-02 08:30,,2026-10-02 08:30
+ID1023,Antti Berg,Emilia Smeds,Kokkola,Helsinki,Delivered,Call on arrival,,Eva Niemi,2026-10-01 13:40,2026-10-01 18:05,2026-10-01 18:05
+ID1024,Karin Fors,Johan Lind,Närpes,Vaasa,In transit,,,Eva Niemi,2026-10-02 08:45,,2026-10-02 08:45
+ID1025,Johan Andersson,Aino Granholm,Vaasa,Seinäjoki,Booked,Call on arrival,,Mikael Sjöberg,,,2026-10-02 09:00
+ID1026,Maja Nyman,Daniel Ranta,Nykarleby,Helsinki,In transit,,,Eva Niemi,2026-10-02 09:10,,2026-10-02 09:10
+ID1027,Leo Holm,Sara Laine,Kokkola,Oulu,Delivered,Leave outside the door,Carport,Mikael Sjöberg,2026-10-01 09:35,2026-10-01 16:25,2026-10-01 16:25
+ID1028,Elsa Karlsson,Matti Lehto,Vaasa,Turku,In transit,,,Eva Niemi,2026-10-02 09:25,,2026-10-02 09:25
+ID1029,Anna Nyman,Ella Nieminen,Jakobstad,Tampere,Booked,Deliver to reception,,Mikael Sjöberg,,,2026-10-02 09:40
+ID1030,Elias Smeds,Noora Virtanen,Vaasa,Helsinki,Delivered,Deliver to door,,Eva Niemi,2026-10-01 11:10,2026-10-01 17:20,2026-10-01 17:20
