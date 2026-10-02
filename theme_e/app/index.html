@@ -185,7 +185,7 @@ h1{font-size:clamp(42px,6vw,72px);line-height:.98;font-weight:700;letter-spacing
     {id:'driver',title:'Driver view',person:'Eva Niemi · Driver',desc:'Start transport for booked shipments and confirm completed deliveries.',tone:''},
     {id:'tracking',title:'Track a shipment',person:'Elsa Karlsson · Customer',desc:'Search for a ShipmentID and follow the current delivery status.',tone:'warm'}
   ];
-  const testRole={id:'testlab',title:'Sheets test app',person:'Data & connector expert',desc:'Demonstrate reading, editing and creating shipment data in Google Sheets.',tone:'technical'};
+  const adminRole={id:'admin',title:'Admin overview',person:'Nordic Freight · Admin',desc:'Search, filter, sort and inspect the shipment list.',tone:'technical'};
 
   const setupPanel=document.getElementById('setupPanel');
   const portalPanel=document.getElementById('portalPanel');
@@ -203,7 +203,7 @@ h1{font-size:clamp(42px,6vw,72px);line-height:.98;font-weight:700;letter-spacing
   const storyFlow=document.getElementById('storyFlow');
 
   function selectedSize(){return Number(document.querySelector('input[name="groupSize"]:checked').value)}
-  function rolesFor(size){return size===5?[testRole,...roles4]:roles4}
+  function rolesFor(size){return size===5?[...roles4,adminRole]:roles4}
   function safeUrl(raw){
     const v=(raw||'').trim();
     if(!v) return '';
