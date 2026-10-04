@@ -1,0 +1,458 @@
+REPLIT – DAY 3 – VASA BUSINESS ACADEMY
+Level 4: Demo login + Staff/Admin workflow
+
+Use this only after Day 2 Core works: the existing bilingual customer app should already save course bookings to the Google Sheet VBA_orders.
+
+GOAL FOR DAY 3
+Add a simple Staff/Admin side to the EXISTING application without rebuilding the customer app.
+
+The existing customer-facing site, bilingual SV/EN system, design, cart, checkout and Google Sheets order saving must continue to work.
+
+============================================================
+DAY 3 CORE MASTER PROMPT
+============================================================
+
+Continue the existing Vasa Business Academy project from Day 2.
+
+IMPORTANT:
+Preserve the existing application, design, routes, bilingual SV/EN system, customer journey, cart, checkout and working Google Sheets integration.
+
+Do NOT rebuild the site from scratch.
+Do NOT replace the existing Google Sheets integration.
+Do NOT create a new database.
+Do NOT add Supabase.
+Do NOT add real authentication.
+Do NOT add real user accounts.
+Do NOT add payment functionality.
+
+This is Day 3 of an educational prototype.
+Today, add a simple DEMO login and a Staff/Admin workflow using the SAME Google Sheet that already stores orders.
+
+Google Sheet:
+https://docs.google.com/spreadsheets/d/1qbOICA56FK37pjVVnUWGIsCy97BZU50O_30zFK4KvEo/edit?usp=sharing
+
+Sheet/file name:
+VBA_orders
+
+Use the existing order structure. The relevant columns are:
+OrderID
+CreatedAt
+CustomerName
+Email
+CompanyName
+StreetAddress
+PostalCode
+City
+ProductID
+ProductName
+CourseDate
+Quantity
+UnitPriceEUR
+TotalEUR
+OrderNote
+Status
+LastUpdated
+
+One course booking/seat is stored as one row.
+Do not change this structure unless absolutely necessary for the existing integration to work.
+
+------------------------------------------------------------
+1. DEMO LOGIN
+------------------------------------------------------------
+
+Add a simple demo login entry point to the application.
+
+Use exactly these demo credentials:
+
+Customer:
+username: customer
+password: 1234
+
+Admin:
+username: admin
+password: 5678
+
+This is NOT real authentication.
+It is deliberately simplified for an educational prototype.
+
+Show a clear notice on the login page:
+
+Swedish:
+"Demoinloggning – detta är inte säker autentisering och ska inte användas i en riktig produktionslösning."
+
+English:
+"Demo login – this is not secure authentication and must not be used in a real production solution."
+
+Behaviour:
+- customer / 1234 -> enter or return to the normal customer-facing application
+- admin / 5678 -> open the Staff/Admin view
+- invalid credentials -> show a clear bilingual error message
+
+Do not build registration, password reset, OAuth, secure sessions or user management.
+Keep this demo login simple.
+
+------------------------------------------------------------
+2. STAFF / ADMIN VIEW
+------------------------------------------------------------
+
+Create a Staff/Admin view that reads the existing rows from VBA_orders.
+
+The Staff view must use the SAME Google Sheet and the existing connection created on Day 2.
+
+Show a useful table/list with at least:
+- OrderID
+- CreatedAt
+- CustomerName
+- CompanyName
+- ProductName
+- CourseDate
+- City
+- TotalEUR
+- Status
+
+Keep the layout clean and usable on desktop.
+A simpler stacked/card layout is acceptable on small screens.
+
+Do not expose unnecessary technical information.
+
+------------------------------------------------------------
+3. SEARCH
+------------------------------------------------------------
+
+Add one search field that can search at least:
+- OrderID
+- CustomerName
+- CompanyName
+
+Search should update the visible order list.
+
+------------------------------------------------------------
+4. FILTER
+------------------------------------------------------------
+
+Add filters for:
+
+Status:
+- All
+- New
+- Reviewing
+- Confirmed
+
+Course:
+- All courses
+- P001 / AI from Zero – Getting Started
+- P002 / AI for Small Business
+- P003 / Work Smarter with AI
+
+If easy to implement, also allow City as a filter, but City is not required for Core.
+
+------------------------------------------------------------
+5. SORT
+------------------------------------------------------------
+
+Allow simple sorting by at least:
+- CreatedAt
+- CustomerName
+- TotalEUR
+
+Do not overcomplicate the sorting system.
+
+------------------------------------------------------------
+6. ORDER DETAIL
+------------------------------------------------------------
+
+Allow staff to open one order and see the full row information, including:
+- OrderID
+- CreatedAt
+- CustomerName
+- Email
+- CompanyName
+- StreetAddress
+- PostalCode
+- City
+- ProductID
+- ProductName
+- CourseDate
+- Quantity
+- UnitPriceEUR
+- TotalEUR
+- OrderNote
+- Status
+- LastUpdated
+
+Keep the detail view read-only except for Status.
+
+Do NOT add delete functionality.
+Do NOT allow staff to edit customer identity, price or course information in Day 3 Core.
+
+------------------------------------------------------------
+7. STATUS UPDATE
+------------------------------------------------------------
+
+This is the most important Day 3 function.
+
+Staff must be able to change the status of an order.
+
+Canonical values stored in Google Sheets must remain exactly:
+- New
+- Reviewing
+- Confirmed
+
+When the app is in Swedish, display them as:
+- New -> Ny
+- Reviewing -> Behandlas
+- Confirmed -> Bekräftad
+
+When the app is in English, display:
+- New
+- Reviewing
+- Confirmed
+
+IMPORTANT:
+Always save the canonical ENGLISH value to Google Sheets, even when the user interface is Swedish.
+
+When staff changes Status:
+1. identify the correct row using OrderID
+2. update only the correct order row
+3. save the new canonical Status value to VBA_orders
+4. update LastUpdated to the current timestamp
+5. show a clear success message
+6. refresh the visible order data so the new status is immediately visible
+
+If the update fails:
+- do not pretend it succeeded
+- keep the previous status visible
+- show a clear bilingual error message
+
+------------------------------------------------------------
+8. LANGUAGE
+------------------------------------------------------------
+
+The Staff/Admin interface must follow the existing SV / EN language switch.
+
+Translate user-visible:
+- headings
+- search label
+- filters
+- sort labels
+- status labels
+- buttons
+- success messages
+- error messages
+- empty states
+
+Do not translate technical ProductIDs or canonical values stored in the Sheet.
+
+------------------------------------------------------------
+9. PRESERVE DAY 1 + DAY 2
+------------------------------------------------------------
+
+After adding Day 3 functionality, verify that the existing customer app still works:
+- Home
+- company-training pages
+- evening-course pages
+- SV / EN
+- cart
+- checkout
+- Google Sheets order creation
+- confirmation
+
+Do not redesign these working parts.
+
+------------------------------------------------------------
+10. DO NOT BUILD YET
+------------------------------------------------------------
+
+Do NOT add:
+- real authentication
+- registration
+- password recovery
+- payment
+- another database
+- Supabase
+- order deletion
+- complex permissions
+- email sending
+- advanced analytics
+- complex charts
+
+Keep Day 3 Core focused on:
+
+DEMO LOGIN -> STAFF VIEW -> FIND ORDER -> UPDATE STATUS -> SAVE TO SAME GOOGLE SHEET
+
+Day 3 Core is complete when an admin can log in, find an order, change its status, and confirm that the same row in VBA_orders was updated correctly.
+
+============================================================
+TEST DAY 3 CORE BEFORE USING ANY NICE-TO-HAVE PROMPTS
+============================================================
+
+1. Confirm the normal customer-facing application still works.
+2. Switch SV -> EN -> SV.
+3. Open the demo login.
+4. Try an incorrect username/password and verify a clear error appears.
+5. Log in with customer / 1234 and verify you reach the normal customer experience.
+6. Log in with admin / 5678 and verify Staff/Admin opens.
+7. Verify existing rows from VBA_orders are visible.
+8. Search for a known OrderID.
+9. Search for a customer name.
+10. Filter by Status = New.
+11. Filter by one course, for example P001.
+12. Sort the list.
+13. Open one order and verify the full order information.
+14. Change one New order to Reviewing.
+15. Open Google Sheets and verify the correct row now says Reviewing.
+16. Verify LastUpdated changed on that same row.
+17. Change another order to Confirmed.
+18. Verify the correct row in Google Sheets.
+19. Test the same Staff workflow while the interface is Swedish.
+20. Verify the Sheet still stores New / Reviewing / Confirmed in English.
+
+Recommended: make 3–5 status updates in total so you know the write-back flow is reliable.
+
+STOP HERE if Core does not work correctly.
+Use remaining Replit capacity to repair Core before adding anything below.
+
+============================================================
+CORRECTION PROMPT – IF CORE HAS PROBLEMS
+============================================================
+
+Preserve the existing Vasa Business Academy application and all working Day 1 and Day 2 functionality.
+
+Do not redesign the application and do not add new features.
+
+Fix only these Day 3 issues:
+
+1. [ISSUE]
+2. [ISSUE]
+3. [ISSUE]
+
+After fixing them, verify that:
+- the existing customer-facing application still works
+- SV / EN still works
+- new customer orders can still be saved to VBA_orders
+- admin / 5678 opens the Staff view
+- existing orders are read from the same Google Sheet
+- search and filters still work
+- changing Status updates the correct row using OrderID
+- LastUpdated is updated
+- Google Sheets stores canonical English status values: New, Reviewing, Confirmed
+
+Do not add another database, Supabase, real authentication, payment or order deletion.
+
+============================================================
+NICE TO HAVE 1 – STAFF UX POLISH (LOW RISK)
+============================================================
+
+Use this only if Day 3 Core works correctly.
+
+Preserve all current functionality and architecture.
+
+Improve only the Staff/Admin user experience:
+
+- add small summary cards for:
+  - All orders
+  - New
+  - Reviewing
+  - Confirmed
+- show clear status badges
+- add a Clear filters / Rensa filter button
+- show active filters clearly
+- improve empty search/filter states
+- make the order-detail view easy to scan
+- improve responsive behaviour of the Staff view
+
+Use the existing VBA visual style.
+
+Do not add new backend infrastructure, authentication, databases, payments or delete functionality.
+
+============================================================
+NICE TO HAVE 2 – COURSE CAPACITY OVERVIEW (MEDIUM RISK)
+============================================================
+
+Use this only if Core and Nice to have 1 are stable.
+
+Preserve the existing application and Google Sheets workflow.
+
+Add a simple course-capacity overview to the Staff/Admin view.
+
+Each row in VBA_orders represents one booked course seat.
+Each course has a nominal capacity of 20 seats.
+
+For:
+- P001
+- P002
+- P003
+
+calculate and show:
+- booked seats
+- remaining seats out of 20
+
+Example:
+P001: 14 booked / 6 remaining
+
+Use the current data from VBA_orders.
+Do not create a second data store.
+
+If Day 2 already added live seat counts to the customer-facing site, reuse the same logic rather than creating a separate competing implementation.
+
+If Day 2 did NOT add live seat counts, this Staff overview may still be added independently.
+
+============================================================
+NICE TO HAVE 3 – SIMPLE STAFF DASHBOARD (HIGHER RISK)
+============================================================
+
+Use this only if the previous levels work and there is still free usage available.
+
+Preserve all existing functionality.
+
+Add a small Staff dashboard using ONLY data already available from VBA_orders.
+
+Show simple business-useful information such as:
+- total order rows
+- New orders
+- Reviewing orders
+- Confirmed orders
+- bookings for P001
+- bookings for P002
+- bookings for P003
+- 5 most recent orders
+
+Keep this visually simple.
+Cards and compact lists are enough.
+Do not spend effort on complex chart libraries.
+
+Do not create another database or analytics backend.
+
+============================================================
+NICE TO HAVE 4 – FINAL POLISH / EXPERIMENT LEVEL
+============================================================
+
+Only use this if everything above works and there is still free usage available.
+
+Preserve the working architecture.
+
+Add small Staff/Admin polish only where useful:
+- clearer mobile Staff layout
+- better loading states when orders are read or updated
+- disable the status control while an update is being saved
+- clear save success feedback
+- graceful Google Sheets read/write error states
+- small restrained transitions
+
+Do not add real authentication, payments, email, delete functionality or additional infrastructure.
+
+============================================================
+STOP RULE
+============================================================
+
+The priority order is:
+
+1. Day 3 Core works reliably.
+2. Nice to have 1 if capacity remains.
+3. Nice to have 2 if capacity remains.
+4. Nice to have 3 only if the app is still stable.
+5. Nice to have 4 only as an experiment.
+
+Do not risk a working Day 3 Core in order to add optional features.
+
+A simple working prototype with Google Sheets read/write and a functioning Staff status workflow is the goal.

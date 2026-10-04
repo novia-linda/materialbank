@@ -1,0 +1,443 @@
+REPLIT – DAY 2 – VASA BUSINESS ACADEMY
+Level 3: Save orders to Google Sheets
+
+PURPOSE
+Continue the existing Day 1 Vasa Business Academy app. Do not rebuild or redesign it.
+
+Day 2 adds one important thing: the checkout must save real order rows to the existing Google Sheet VBA_orders.
+
+Google Sheet:
+https://docs.google.com/spreadsheets/d/1qbOICA56FK37pjVVnUWGIsCy97BZU50O_30zFK4KvEo/edit?usp=sharing
+
+The existing Day 1 app already contains the bilingual SV/EN customer experience, company training pages, evening courses, cart, checkout and frontend confirmation. Preserve all of that.
+
+============================================================
+DAY 2 CORE MASTER PROMPT
+============================================================
+
+Continue the existing Vasa Business Academy application from Day 1.
+
+IMPORTANT:
+Do not rebuild the site.
+Do not redesign working pages.
+Do not replace the current language system, routes, course data, images, cart or checkout unless a change is required for the Google Sheets integration.
+
+Today, add persistent order saving to the existing Google Sheet only.
+
+## SOURCE OF TRUTH
+
+Use this Google Sheet as the single persistent order store:
+
+https://docs.google.com/spreadsheets/d/1qbOICA56FK37pjVVnUWGIsCy97BZU50O_30zFK4KvEo/edit?usp=sharing
+
+The file is named:
+VBA_orders
+
+Use the worksheet/tab that contains these existing columns:
+
+OrderID
+CreatedAt
+CustomerName
+Email
+CompanyName
+StreetAddress
+PostalCode
+City
+ProductID
+ProductName
+CourseDate
+Quantity
+UnitPriceEUR
+TotalEUR
+OrderNote
+Status
+LastUpdated
+
+If an "index" column is also present from the imported CSV, do not use it as the order identifier. OrderID is the stable identifier. Leave index blank or handle it only if the existing sheet structure requires it.
+
+Do not rename or remove existing columns.
+
+## TECHNICAL BOUNDARY
+
+Use Google Sheets as the ONLY persistent order data source.
+
+Do NOT create:
+- Replit Database
+- PostgreSQL
+- Supabase
+- Firebase
+- SQLite
+- another database
+- localStorage order persistence
+- another order file or data store
+
+Use the simplest secure Google Sheets connection supported in the existing Replit project.
+
+Keep Google credentials, tokens or keys server-side and in Replit Secrets / environment variables when needed. Never expose secrets in frontend code.
+
+If Google authorization is required, ask me to authorize the connection rather than replacing Google Sheets with another storage solution.
+
+## ORDER MODEL – IMPORTANT
+
+Keep the data model intentionally simple for this teaching prototype:
+
+ONE COURSE SEAT = ONE ROW IN GOOGLE SHEETS.
+
+Each saved row must contain only one ProductID and one ProductName.
+
+Do not store multiple courses in one cell using separators such as | or commas.
+
+Examples:
+
+If a customer buys:
+P001 x 1
+P003 x 1
+
+create TWO rows.
+
+If a customer buys:
+P001 x 2
+
+create TWO P001 rows.
+
+Customer information may therefore appear on several consecutive rows. This is intentional.
+
+Each row must have its own unique OrderID.
+
+## VALUES TO SAVE
+
+For every course seat create one row with:
+
+OrderID
+- generate a unique order ID
+- keep it human-readable if practical, for example ORD followed by numbers or a short unique value
+- never reuse an existing OrderID
+
+CreatedAt
+- date and time when the order is saved
+- use a consistent format compatible with the existing sheet
+
+CustomerName
+- from checkout Name
+
+Email
+- from checkout Email
+
+CompanyName
+- from checkout Company
+- may be blank
+
+StreetAddress
+- from checkout Street address
+
+PostalCode
+- from checkout Postal code
+
+City
+- from checkout City
+
+ProductID
+- P001, P002 or P003
+
+ProductName
+Use the canonical English product name in the Sheet regardless of the current UI language:
+
+P001 = AI from Zero – Getting Started
+P002 = AI for Small Business
+P003 = Work Smarter with AI
+
+CourseDate
+Use the canonical course date/time:
+
+P001 = 2026-11-03 18:00-20:00
+P002 = 2026-11-10 18:00-20:00
+P003 = 2026-11-17 18:00-20:00
+
+Quantity
+- always save 1 because one course seat equals one row
+
+UnitPriceEUR
+- save the actual unit price used by the cart for that seat
+- currently the course price is 89.00 EUR
+
+TotalEUR
+- because Quantity is 1, save the row total for that seat
+- currently 89.00 EUR unless the existing cart logic produces another valid per-seat price
+
+OrderNote
+- from checkout Order note
+- may be blank
+
+Status
+- always save the new order with canonical value:
+New
+
+LastUpdated
+- initially set to the same time as CreatedAt
+
+## CHECKOUT FLOW
+
+Keep the existing Day 1 checkout UI and validation.
+
+When the user clicks Send order / Skicka beställning:
+
+1. validate the existing checkout fields
+2. convert the cart into one Google Sheets row per course seat
+3. generate a unique OrderID for every row
+4. write all rows to VBA_orders
+5. wait for Google Sheets to confirm the write
+6. only after a successful write, show the confirmation page
+
+Prefer writing all rows for one checkout in one batch operation if the chosen Google Sheets method supports it.
+
+Do not show a success confirmation before the Sheet write succeeds.
+
+## CONFIRMATION
+
+Replace the Day 1 "not saved permanently" message with a real saved-order confirmation.
+
+In the currently selected language, clearly say that the booking was received.
+
+Show:
+- customer name
+- selected course(s)
+- quantity / seats
+- unit price
+- total
+- the real saved OrderID or OrderIDs
+
+If the checkout created several Google Sheets rows, show all relevant OrderIDs.
+
+After a successful order, clear the cart so the same order is not accidentally submitted twice.
+
+## ERROR HANDLING
+
+If the Google Sheets write fails:
+
+- do NOT show the success confirmation
+- keep the user's cart and checkout information where practical
+- show a clear bilingual error message
+- allow the user to try again
+- do not silently switch to another storage method
+
+Prevent accidental duplicate submissions while the order is being saved.
+
+## LANGUAGE
+
+Preserve the existing SV / EN system.
+
+All new user-visible loading, success and error messages must exist in both Swedish and English.
+
+Technical values stored in the Sheet remain canonical English values where specified above.
+
+## PRESERVE DAY 1
+
+After the integration, verify that the existing Day 1 functionality still works:
+
+- Swedish / English switch
+- Home
+- company-training pages
+- evening-course pages
+- P001 / P002 / P003
+- cart
+- quantity changes
+- remove from cart
+- checkout validation
+- responsive layout
+
+Do not add login or Staff/Admin views yet. Those belong to Day 3.
+
+## DO NOT BUILD YET
+
+Do NOT add:
+- login
+- user accounts
+- authentication
+- Staff/Admin dashboard
+- order editing interface
+- status editing UI
+- payment processing
+- another database
+
+Day 2 Core is complete when a real checkout creates correct new rows in VBA_orders and the confirmation displays the saved OrderID(s).
+
+============================================================
+TEST DAY 2 CORE BEFORE USING ANY NICE-TO-HAVE PROMPT
+============================================================
+
+Test with fictional data only.
+
+TEST 1 – ONE COURSE
+Add P001 x 1.
+Complete checkout.
+Expected:
+- 1 new Sheet row
+- ProductID P001
+- Quantity 1
+- UnitPriceEUR 89
+- Status New
+- unique OrderID
+- confirmation shows that OrderID
+
+TEST 2 – ANOTHER COURSE
+Add P002 x 1.
+Expected:
+- 1 new row
+- ProductID P002
+- correct date and product name
+
+TEST 3 – TWO DIFFERENT COURSES
+Add P001 x 1 and P003 x 1.
+Expected:
+- 2 new rows
+- same customer information may appear twice
+- one P001 row
+- one P003 row
+- separate OrderIDs
+
+TEST 4 – QUANTITY TWO
+Add P001 x 2.
+Expected:
+- 2 new P001 rows
+- Quantity = 1 on each row
+- separate OrderIDs
+
+TEST 5 – LANGUAGE
+Place one order while UI is Swedish and one while UI is English.
+Expected:
+- both save successfully
+- ProductName and Status in the Sheet use canonical English values
+
+TEST 6 – FAILURE / DOUBLE CLICK
+Make sure the Send order button cannot accidentally create duplicate orders while saving.
+
+If all six work, Day 2 Core is complete.
+
+============================================================
+CORRECTION PROMPT – USE ONLY IF CORE HAS PROBLEMS
+============================================================
+
+Preserve the existing Vasa Business Academy application and the current Google Sheets integration.
+
+Do not redesign the site and do not add new features.
+
+Fix only these Day 2 issues:
+
+1. [ISSUE]
+2. [ISSUE]
+3. [ISSUE]
+
+After the fixes, verify that:
+- existing Day 1 functionality still works
+- orders are saved only to VBA_orders
+- one course seat creates one row
+- every row has a unique OrderID
+- new rows use Status = New
+- confirmation appears only after a successful Sheet write
+- the cart is not duplicated or submitted twice
+
+Do not add login, Staff/Admin, payment or another database.
+
+============================================================
+NICE TO HAVE 1 – SAFE UX IMPROVEMENTS
+============================================================
+
+Use this only after Day 2 Core works.
+
+Preserve all working functionality and the current design.
+
+Improve only the order-saving user experience:
+
+- show a clear bilingual "Saving order… / Sparar beställning…" state
+- disable the Send order button while saving
+- prevent duplicate submission
+- show a clear bilingual error if saving fails
+- keep cart/checkout data available after a failed save where practical
+- make the saved OrderID(s) easy to see on the confirmation page
+- if several rows were created, show the OrderIDs together in a clean order summary
+
+Do not add new business features.
+Do not add login, admin, another database or payment.
+
+============================================================
+NICE TO HAVE 2 – READ BOOKED SEATS FROM GOOGLE SHEETS
+============================================================
+
+Use this only if Core and Nice to Have 1 work reliably.
+
+Preserve the existing customer journey and Google Sheets write functionality.
+
+Add read-only seat availability based on the existing VBA_orders Google Sheet.
+
+Each evening course has a capacity of 20 seats.
+
+Calculate booked seats by counting rows for each ProductID:
+- P001
+- P002
+- P003
+
+Count valid existing booking rows for the course. Each row represents one booked seat.
+
+Show on the evening-course cards and detail views:
+
+Swedish example:
+"14 platser kvar av 20"
+
+English example:
+"14 places left of 20"
+
+Keep the calculation simple.
+
+Do not create another database or cache as the source of truth.
+Google Sheets remains the single source for booking data.
+
+Do not build admin functionality yet.
+
+============================================================
+NICE TO HAVE 3 – FULL COURSE HANDLING
+============================================================
+
+Use this only if the live seat count works correctly.
+
+Preserve all existing functionality.
+
+If a course has 20 or more saved booking rows in VBA_orders:
+
+- show "Fullbokad / Fully booked"
+- disable Add to cart for that course
+- do not allow checkout to create bookings above the 20-seat capacity
+
+Before final save, re-check availability so two users cannot knowingly book beyond the displayed capacity.
+
+Keep the implementation simple and continue using VBA_orders as the only source of booking data.
+
+Do not add waiting lists, payment, login or admin tools.
+
+============================================================
+NICE TO HAVE 4 – SMALL POLISH ONLY
+============================================================
+
+Use only if there is still free Replit usage available.
+
+Preserve architecture and functionality.
+
+Make only small improvements such as:
+- clearer seat-availability badges
+- cleaner saved-order confirmation layout
+- good empty/loading/error states
+- responsive polish on mobile
+
+Do not add new infrastructure or major features.
+
+============================================================
+STOP RULE
+============================================================
+
+Stop Day 2 as soon as Core works reliably if free usage is becoming limited.
+
+Nice to Have 1–4 are optional.
+
+Day 3 must be possible even if NONE of the Nice-to-Have features were built.
+
+The important Day 2 learning outcome is:
+FRONTEND CHECKOUT -> GOOGLE SHEETS -> SAVED ROWS -> REAL CONFIRMATION
