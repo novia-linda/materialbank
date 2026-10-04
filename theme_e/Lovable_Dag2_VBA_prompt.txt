@@ -1,0 +1,432 @@
+LOVABLE – DAG 2
+Vasa Business Academy
+Level 3: Save orders to Google Sheets
+
+============================================================
+HUR DU ANVÄNDER DETTA DOKUMENT
+============================================================
+
+1. Fortsätt i den avancerade Lovable-app som redan fungerar och som har:
+   - Home
+   - For companies / För företag
+   - Evening courses / Kvällskurser
+   - About / Om oss
+   - Contact / Kontakt
+   - Cart / Varukorg
+   - Checkout
+   - Confirmation
+   - SV / EN
+
+2. Klistra först in endast CORE-prompten nedan.
+
+3. Testa resultatet innan du använder fler gratisbyggen.
+
+4. Om något i kärnfunktionen är fel, använd CORRECTION-prompten och samla alla fel i samma meddelande.
+
+5. Nice to have 1, 2 och 3 är helt frivilliga. Dag 3 får påbörjas även om inget av dem har byggts.
+
+Google Sheet:
+VBA_orders
+https://docs.google.com/spreadsheets/d/1qbOICA56FK37pjVVnUWGIsCy97BZU50O_30zFK4KvEo/edit?usp=sharing
+
+Viktig princip:
+Google Sheets ska vara den enda persistenta datakällan för beställningar. Skapa inte Supabase, Lovable database eller någon annan parallell databas.
+
+
+============================================================
+CORE MASTER PROMPT – KLISTRA IN DENNA FÖRST
+============================================================
+
+Continue working on the EXISTING Vasa Business Academy app.
+
+Do NOT rebuild or redesign the existing application.
+Preserve the current:
+- visual design
+- routes/pages
+- Swedish / English language switch
+- navigation
+- company training pages
+- evening course cards
+- course images
+- shopping cart
+- checkout
+- confirmation page
+
+Today we are adding ONLY the Day 2 functionality: persistent order saving with Google Sheets.
+
+The current app is already working as a frontend prototype. The Google Sheets connection has previously been tested successfully on this Google account and can read, create and edit spreadsheet rows.
+
+------------------------------------------------------------
+GOOGLE SHEET
+------------------------------------------------------------
+
+Use this existing Google Sheet as the SINGLE persistent order data source:
+
+Spreadsheet name: VBA_orders
+
+Spreadsheet URL:
+https://docs.google.com/spreadsheets/d/1qbOICA56FK37pjVVnUWGIsCy97BZU50O_30zFK4KvEo/edit?usp=sharing
+
+Use the existing column headers in VBA_orders as the source of truth.
+Do not rename existing columns and do not create another database.
+
+Do NOT use:
+- Supabase
+- Lovable database
+- another Google Sheet
+- localStorage as persistent order storage
+- any other persistent order database
+
+Google Sheets should be the only persistent order store.
+
+------------------------------------------------------------
+ORDER MODEL – VERY IMPORTANT
+------------------------------------------------------------
+
+Use a deliberately simple flat-table model:
+
+ONE booked course place = ONE row in VBA_orders.
+
+Never store several courses in one cell using separators such as | or commas.
+Never store arrays or multiple ProductIDs in one spreadsheet row.
+
+Examples:
+
+If a customer buys:
+P001 x 1
+and
+P003 x 1
+
+create TWO spreadsheet rows.
+
+If a customer buys:
+P001 x 2
+
+create TWO P001 rows, each with Quantity = 1.
+
+It is completely acceptable that the same customer name, email and address appear on consecutive rows.
+This is intentional for this educational prototype.
+
+Each new row must have its own unique OrderID.
+
+------------------------------------------------------------
+SAVE THESE VALUES
+------------------------------------------------------------
+
+For every booked course place, create one new spreadsheet row using the matching existing VBA_orders columns.
+
+Save the relevant values, including:
+- unique OrderID
+- CreatedAt timestamp
+- customer name
+- email
+- company, if supplied
+- street address
+- postal code
+- city
+- ProductID
+- ProductName
+- CourseDate
+- Quantity = 1
+- UnitPriceEUR = 89
+- TotalEUR = 89
+- OrderNote, if supplied
+- Status = New
+- LastUpdated timestamp
+
+Use the existing spreadsheet column names exactly where they already exist.
+
+Do not save Swedish and English versions of the same technical value in separate columns.
+ProductIDs remain P001, P002 and P003.
+
+For Status, save the canonical English value:
+New
+
+------------------------------------------------------------
+CHECKOUT BEHAVIOUR
+------------------------------------------------------------
+
+Keep the existing cart and checkout UI.
+
+When the user submits a valid checkout:
+
+1. validate the existing required fields
+2. create the required spreadsheet row or rows
+3. wait until all rows have been saved successfully
+4. only then show the order confirmation
+
+If one checkout contains several booked course places, create all required rows.
+
+Do not show a success confirmation before the Google Sheets save has completed successfully.
+
+Prevent accidental duplicate submission while the order is being saved.
+
+------------------------------------------------------------
+CONFIRMATION
+------------------------------------------------------------
+
+Update the existing confirmation page so it now reflects a real saved prototype order.
+
+Show:
+- customer name
+- selected course(s)
+- quantity / booked places
+- total price
+- the real OrderID or OrderIDs created in VBA_orders
+
+If the checkout created several spreadsheet rows, show all created OrderIDs clearly.
+
+Remove or replace the old message that said the order had not been saved permanently.
+
+Use suitable bilingual confirmation text, for example:
+
+Swedish:
+"Tack! Din beställning har sparats i kursens demosystem."
+
+English:
+"Thank you! Your order has been saved in the course demo system."
+
+This is still a fictional educational prototype, so keep the existing prototype/fictitious-company disclaimer where appropriate.
+
+------------------------------------------------------------
+ERROR HANDLING
+------------------------------------------------------------
+
+If the Google Sheets write fails:
+- do NOT show the normal success confirmation
+- keep the user on the checkout/order flow
+- show a clear bilingual error message
+- allow the user to try again
+
+Swedish example:
+"Beställningen kunde inte sparas. Försök igen."
+
+English example:
+"The order could not be saved. Please try again."
+
+------------------------------------------------------------
+PRESERVE EXISTING FUNCTIONALITY
+------------------------------------------------------------
+
+After making the Google Sheets integration, verify that the following still work:
+- SV / EN switch
+- Home
+- For companies
+- Evening courses
+- About
+- Contact
+- cart
+- quantity changes
+- removing cart items
+- correct cart totals
+- checkout validation
+- responsive layout
+
+Do not redesign working pages.
+Do not change the course images or course content unless technically necessary.
+
+------------------------------------------------------------
+DO NOT BUILD YET
+------------------------------------------------------------
+
+Do NOT add these Day 3 features yet:
+- login
+- customer account
+- admin login
+- staff/admin dashboard
+- order search
+- order filtering
+- status editing interface
+- authentication
+
+Also do NOT add:
+- payment processing
+- a second database
+- a second order system
+
+Day 2 CORE is complete when a customer can place an order in the existing app and each booked course place appears as its own correct row in VBA_orders.
+
+
+============================================================
+TESTLISTA EFTER CORE
+============================================================
+
+TEST 1 – svenska, en kurs
+- SV aktivt
+- lägg P001 i varukorgen
+- slutför checkout med fiktiva uppgifter
+- kontrollera confirmation
+- kontrollera att exakt 1 ny rad finns i VBA_orders
+- kontrollera ProductID, pris, Status = New och OrderID
+
+TEST 2 – engelska, en kurs
+- byt till EN
+- beställ P002
+- kontrollera att exakt 1 ny rad skapas
+- kontrollera att tekniska värden i Sheet fortfarande är konsekventa
+
+TEST 3 – två olika kurser
+- lägg P001 + P003 i samma checkout
+- total i appen ska vara 178 EUR
+- efter checkout ska TVÅ nya rader skapas
+- en rad för P001
+- en rad för P003
+- samma kund får finnas på båda raderna
+- båda raderna ska ha varsitt unikt OrderID
+
+TEST 4 – quantity 2
+- lägg två platser av samma kurs i varukorgen
+- appens total ska bli 178 EUR
+- checkout ska skapa TVÅ separata rader för samma ProductID
+- Quantity ska vara 1 på vardera raden
+
+TEST 5 – felhantering
+- om möjligt, kontrollera att Send-knappen inte kan skapa dubbla orders genom upprepade klick
+- kontrollera att confirmation inte visas innan sparandet är klart
+
+Om TEST 1–4 fungerar är Level 3 CORE klar.
+Gå vidare till Dag 3 även om ingen Nice to have byggs.
+
+
+============================================================
+CORRECTION PROMPT – OM NÅGOT I CORE ÄR FEL
+============================================================
+
+Do not redesign the application and do not add new features.
+Preserve everything that currently works.
+
+Fix only these Day 2 Google Sheets issues:
+
+1. [WRITE ISSUE 1 HERE]
+2. [WRITE ISSUE 2 HERE]
+3. [WRITE ISSUE 3 HERE]
+
+Important requirements that must remain true:
+- VBA_orders is the only persistent order data source
+- one booked course place = one spreadsheet row
+- each row has its own unique OrderID
+- Quantity = 1 per row
+- Status is saved as New
+- multiple courses in one checkout create multiple rows
+- quantity 2 creates two rows, not one row with Quantity = 2
+- confirmation appears only after all rows were saved successfully
+- existing SV / EN, design, cart and checkout remain working
+
+Do not add login, admin, authentication, payment or another database.
+
+
+============================================================
+NICE TO HAVE 1 – LÅG RISK
+ANVÄND ENDAST OM CORE FUNGERAR BRA
+============================================================
+
+Preserve the working Day 2 Google Sheets integration exactly as it is.
+Do not redesign the application.
+
+Improve only the order-saving user experience:
+
+- show a clear loading state while the order is being saved
+- disable the final Send order / Skicka beställning button during saving
+- prevent duplicate submissions from double-clicking
+- show the real OrderID or OrderIDs clearly on the confirmation page
+- improve the bilingual save-error message if Google Sheets fails
+- add a small "Saving order... / Sparar beställning..." message while waiting
+
+Do not change the spreadsheet structure.
+Do not add login, admin, authentication, payment or another database.
+
+
+============================================================
+NICE TO HAVE 2 – MEDELRISK
+LIVE ANTAL LEDIGA PLATSER
+============================================================
+
+Preserve all existing Day 1 and Day 2 functionality.
+Do not redesign the site and do not change the order-writing logic.
+
+Add simple live course availability by READING VBA_orders.
+
+Each evening course has a maximum capacity of 20 booked places.
+
+Count the number of saved rows in VBA_orders for each ProductID:
+- P001
+- P002
+- P003
+
+Because one booked course place equals one spreadsheet row, the number of rows for a ProductID equals the number of booked places.
+
+Calculate:
+remaining places = 20 - number of existing rows for that ProductID
+
+Show the result on the evening-course cards and course views.
+
+Swedish examples:
+"14 platser kvar"
+"1 plats kvar"
+
+English examples:
+"14 places left"
+"1 place left"
+
+Keep the calculation simple.
+Do not modify existing spreadsheet rows for this feature.
+Do not create another database or cache.
+Do not add login or admin functionality yet.
+
+If live availability introduces instability, preserve the working order-saving functionality as the priority.
+
+
+============================================================
+NICE TO HAVE 3 – HÖGRE RISK
+FULLBOKAD KURS
+============================================================
+
+Only do this if the existing Google Sheets order saving and live availability are already working reliably.
+
+Preserve all current functionality.
+
+When the calculated remaining places for a course reaches 0:
+
+- show "Fullbokad" in Swedish
+- show "Fully booked" in English
+- disable Add to cart / Lägg i varukorg for that course
+- clearly indicate that no places are available
+
+Do not delete or modify existing orders.
+Do not create waiting lists.
+Do not add payment, login, admin or another database.
+
+Keep this change small and isolated.
+
+
+============================================================
+NICE TO HAVE 4 – ENDAST OM DU VERKLIGEN HAR GRATISUTRYMME KVAR
+============================================================
+
+Preserve all existing functionality and architecture.
+
+Make only small visual/usability improvements around the saved-order experience, such as:
+- clearer order summary on confirmation
+- better spacing on mobile
+- clear visual distinction between successful save and error state
+- subtle status/progress feedback during checkout
+
+Do not add new business logic.
+Do not add login, admin, payment or another database.
+
+
+============================================================
+STOPPREGEL FÖR DAG 2
+============================================================
+
+Så fort CORE fungerar är Dag 2 godkänd.
+
+Nice to have 1–4 är bonus.
+Ingen av dem behövs för att påbörja Dag 3.
+
+Om Lovable visar "Paused":
+- skicka inte om samma prompt direkt
+- öppna/uppdatera projektet
+- testa vad som faktiskt hann byggas
+- använd bara en correction prompt om något i CORE verkligen saknas eller är fel
+

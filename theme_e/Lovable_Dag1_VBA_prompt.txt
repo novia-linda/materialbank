@@ -1,0 +1,467 @@
+LOVABLE – DAG 1 – VASA BUSINESS ACADEMY
+=========================================
+
+Syfte
+-----
+Dag 1 bygger kundupplevelsen: företagssida + öppna kvällskurser + varukorg + checkout + frontend-bekräftelse.
+
+Arbetsprincip:
+1. Klistra först in CORE-prompten nedan.
+2. Testa resultatet innan du använder fler gratisbyggen.
+3. Om något är trasigt: använd Correction prompt och samla flera fel i samma prompt.
+4. Använd Nice to have endast om CORE redan fungerar.
+5. Dag 2 får börja även om inga Nice to have-funktioner hann byggas.
+
+
+============================================================
+CORE MASTER PROMPT – DAY 1
+============================================================
+
+Build a responsive bilingual web app for the fictional training company **Vasa Business Academy**.
+
+This is Day 1 of a multi-day course prototype. Today, build ONLY the customer-facing frontend. Do not build any backend, database, Google Sheets connection, authentication or payment integration yet.
+
+## COMPANY
+
+**Vasa Business Academy** is a small fictional training company that offers short, practical courses and workshops to companies, organisations and individuals.
+
+Typical customers are small and medium-sized companies that want to develop practical skills among their staff.
+
+Training can be organised online or at the customer’s premises.
+
+Swedish company introduction:
+“Vasa Business Academy erbjuder korta och praktiska utbildningar för företag och organisationer. Utbildningarna kan ordnas online eller på plats hos kunden. Målet är att göra nya kunskaper enkla att förstå och använda i arbetet.”
+
+English company introduction:
+“Vasa Business Academy offers short and practical training for companies and organisations. Training can be delivered online or at the customer’s premises. The goal is to make new knowledge easy to understand and apply at work.”
+
+## LANGUAGE
+
+The complete user interface must support **Swedish and English**.
+
+Add a clear language switcher: **SV | EN**.
+
+The switch must change all user-visible:
+- navigation
+- headings
+- descriptions
+- buttons
+- form labels
+- validation messages
+- cart text
+- checkout text
+- confirmation text
+
+Do not duplicate the entire application into two separate sites. Use one application with structured translations.
+
+Product IDs such as P001 must remain unchanged in both languages.
+
+## VISUAL STYLE
+
+Create a warm, professional, Nordic training-company look.
+
+Use the supplied Vasa Business Academy images as the main visual identity. Do not generate replacement AI images.
+
+Use these images:
+
+Hero/general training image:
+https://raw.githubusercontent.com/novia-linda/materialbank/main/theme_e/bildmaterial_vba/BG05.png
+
+About/company image:
+https://raw.githubusercontent.com/novia-linda/materialbank/main/theme_e/bildmaterial_vba/BG01.png
+
+P001 course image:
+https://raw.githubusercontent.com/novia-linda/materialbank/main/theme_e/bildmaterial_vba/bild07.png
+
+P002 course image:
+https://raw.githubusercontent.com/novia-linda/materialbank/main/theme_e/bildmaterial_vba/bild01.png
+
+P003 course image:
+https://raw.githubusercontent.com/novia-linda/materialbank/main/theme_e/bildmaterial_vba/bild03.png
+
+The visual feeling should be:
+- professional but approachable
+- practical business education
+- Scandinavian and light
+- warm neutral colours
+- dark charcoal text
+- muted brick-red/burgundy accents inspired by the images
+- clean cards and clear spacing
+- no flashy gradients or excessive animations
+
+## NAVIGATION
+
+Build these main sections/pages:
+
+- Home / Hem
+- For companies / För företag
+- Evening courses / Kvällskurser
+- About us / Om oss
+- Contact / Kontakt
+- Cart / Varukorg
+
+Make navigation work well on both desktop and mobile.
+
+## HOME
+
+Create a clear hero section using BG05.png.
+
+Swedish headline:
+**Praktiska utbildningar för arbetslivet**
+
+Swedish short text:
+“Korta kurser och workshops som gör nya kunskaper enkla att förstå och använda.”
+
+English headline:
+**Practical training for working life**
+
+English short text:
+“Short courses and workshops that make new knowledge easy to understand and use.”
+
+Add two clear calls to action:
+
+- View evening courses / Se kvällskurser
+- Training for companies / Utbildning för företag
+
+## FOR COMPANIES
+
+Show these three existing company training services.
+
+### AI at Work / AI i arbetet
+Duration: 3 hours
+Price: 690 EUR for 1–10 participants
+Price: 850 EUR for 11–20 participants
+
+### AI in Practice / AI i praktiken
+Duration: 6 hours
+Price: 1,150 EUR for 1–10 participants
+Price: 1,390 EUR for 11–20 participants
+
+### Power BI Start
+Duration: 3 hours
+Price: 790 EUR for 1–10 participants
+Price: 950 EUR for 11–20 participants
+
+State clearly that company training can be delivered online or at the customer’s premises.
+
+Each company course must have a **Request a quote / Begär offert** button.
+
+For Day 1, the quote button may open a simple frontend-only quote request form with:
+- Company name
+- Contact person
+- Email
+- Training
+- Number of participants
+- Preferred date/period
+- Online or at customer site
+- Special requests
+
+The quote form must NOT save data anywhere. After submit, only show a local demo confirmation such as:
+“Thank you. Your request has been received in this prototype.”
+
+Make it clear in small text that this is a fictional course prototype.
+
+## OPEN EVENING COURSES
+
+These are the products that can be added to the cart.
+
+### P001
+Swedish name:
+**AI från noll – kom igång praktiskt**
+
+English name:
+**AI from Zero – Getting Started**
+
+Date: 3 November 2026
+Time: 18:00–20:00
+Price: 89 EUR
+Capacity information: 20 places
+
+Swedish description:
+“En praktisk introduktion för dig som är nyfiken på AI men inte riktigt vet var du ska börja. Under kvällen provar vi hur AI kan användas för text, idéer, sammanfattningar och vardagliga frågor. Inga tidigare AI-kunskaper krävs.”
+
+English description:
+“A practical introduction for anyone curious about AI but unsure where to start. During the evening, we explore how AI can support text, ideas, summaries and everyday tasks. No previous AI experience is required.”
+
+Image: bild07.png
+
+### P002
+Swedish name:
+**AI för småföretagare**
+
+English name:
+**AI for Small Business**
+
+Date: 10 November 2026
+Time: 18:00–20:00
+Price: 89 EUR
+Capacity information: 20 places
+
+Swedish description:
+“En praktisk kväll för småföretagare som vill upptäcka var AI faktiskt kan spara tid. Vi arbetar med exempel inom kundkommunikation, marknadsföring, idéarbete och administrativa uppgifter.”
+
+English description:
+“A practical evening for small business owners who want to discover where AI can genuinely save time. We work with examples from customer communication, marketing, idea generation and administrative tasks.”
+
+Image: bild01.png
+
+### P003
+Swedish name:
+**Smartare arbetsdag med AI**
+
+English name:
+**Work Smarter with AI**
+
+Date: 17 November 2026
+Time: 18:00–20:00
+Price: 89 EUR
+Capacity information: 20 places
+
+Swedish description:
+“Lär dig använda AI mer systematiskt i det dagliga arbetet. Vi arbetar med bättre instruktioner, återanvändbara arbetssätt och hur du granskar AI:s svar innan du använder dem.”
+
+English description:
+“Learn to use AI more systematically in everyday work. We practise better instructions, reusable workflows and how to review AI-generated results before using them.”
+
+Image: bild03.png
+
+Every evening course card must clearly show:
+- Product ID
+- course name
+- image
+- date
+- time
+- price
+- 20 places
+- short description
+- View details / Läs mer
+- Add to cart / Lägg i varukorg
+
+Add a clear detail view for every course.
+
+## CART
+
+Build a frontend-only shopping cart for the three evening courses.
+
+The customer must be able to:
+- add courses
+- see Product ID
+- see course name
+- see unit price
+- change quantity
+- remove an item
+- see total price update immediately
+
+Important Day 1 rule:
+
+**The cart must exist only in the current frontend/browser session.**
+
+Do NOT use localStorage, database storage or another persistent storage method.
+
+After a full page reload, the cart must be empty.
+
+## CHECKOUT
+
+Add a checkout form with:
+
+- Name – required
+- Email – required
+- Company – optional
+- Street address – required
+- Postal code – required
+- City – required
+- Order note – optional
+
+Add simple validation:
+- required fields must not be empty
+- email must look like a valid email address
+
+Show clear validation messages in the currently selected language.
+
+Button:
+**Send order / Skicka beställning**
+
+## CONFIRMATION
+
+After a valid frontend-only checkout, show a confirmation view.
+
+Show:
+- a temporary fictional order number
+- customer name
+- selected course(s)
+- quantity
+- unit price
+- total
+
+Make it clear that this is only the current prototype session and the order has not yet been saved.
+
+Swedish:
+“Det här är ännu en frontend-prototyp. Beställningen har inte sparats permanent.”
+
+English:
+“This is still a frontend prototype. The order has not been saved permanently.”
+
+## ABOUT
+
+Use BG01.png.
+
+Present Vasa Business Academy as a small training company with a few people who plan and deliver practical training.
+
+## CONTACT
+
+Use fictional contact information only.
+
+Example:
+info@vasabusinessacademy.example
+Vaasa, Finland
+
+Clearly label the site in the footer:
+
+Swedish:
+“Kursprototyp – fiktivt företag”
+
+English:
+“Course prototype – fictional company”
+
+## RESPONSIVE AND ACCESSIBLE
+
+Make the app work well on:
+- desktop
+- tablet
+- mobile
+
+Keep text readable and buttons easy to use.
+
+## VERY IMPORTANT – DO NOT BUILD THESE YET
+
+Do NOT:
+- connect Google Sheets
+- create Supabase
+- create another database
+- create persistent storage
+- use localStorage for the cart
+- add login
+- add user accounts
+- add admin/staff view
+- add real authentication
+- add payment processing
+- calculate live remaining course seats
+- redesign or generate new course images
+
+Day 1 is complete when the bilingual customer-facing experience works from browsing courses through cart, checkout and frontend-only confirmation.
+
+
+============================================================
+TESTLISTA EFTER CORE
+============================================================
+
+Testa innan du skickar någon ny byggprompt:
+
+1. Växla SV → EN → SV.
+2. Kontrollera Home, Companies, Courses och About.
+3. Öppna alla tre kvällskurser.
+4. Lägg P001 och P002 i varukorgen.
+5. Kontrollera att summan blir 178 EUR.
+6. Ändra quantity och kontrollera totalen.
+7. Ta bort en kurs.
+8. Öppna checkout.
+9. Lämna ett obligatoriskt fält tomt och kontrollera valideringen.
+10. Slutför med fiktiva uppgifter.
+11. Kontrollera confirmation.
+12. Lägg något i cart igen och gör full reload.
+13. Cart ska vara tom efter reload.
+14. Kontrollera mobilvy.
+
+VIKTIGT:
+Om Lovable visar “Paused”, kontrollera först vad som faktiskt hunnit byggas innan du skickar prompten på nytt. Ett pausat bygge kan ändå ha skapat en stor del av appen.
+
+
+============================================================
+CORRECTION PROMPT – OM CORE HAR FEL
+============================================================
+
+Do not redesign the application and do not add new features.
+
+First preserve everything that already works.
+
+Fix only these Day 1 issues:
+
+1. [ISSUE]
+2. [ISSUE]
+3. [ISSUE]
+
+After fixing them, verify that:
+- Swedish and English still work
+- all three evening courses still work
+- cart totals are correct
+- checkout validation still works
+- no persistent storage has been added
+- a full reload still clears the cart
+
+Do not add Google Sheets, database, login, authentication, payment or admin functionality.
+
+
+============================================================
+NICE TO HAVE 1 – LÅG RISK
+============================================================
+
+Keep all existing functionality unchanged.
+
+Improve only the usability and polish of the current Day 1 app:
+
+- improve the mobile navigation
+- make the SV / EN language switch easy to find
+- improve the empty-cart view
+- improve checkout validation messages
+- make the course-detail views visually clear
+- make image cropping and card heights consistent
+- use BG05 strongly in the Home hero and BG01 naturally in About
+
+Do not add any new backend, persistence, login, payment or Google Sheets functionality.
+
+
+============================================================
+NICE TO HAVE 2 – MEDELRISK
+============================================================
+
+Preserve the working Day 1 customer journey.
+
+Improve the company-training quote experience only:
+
+- make “Request a quote / Begär offert” open a clear frontend-only form
+- preselect the training course from the card the user clicked
+- include company, contact person, email, participants, preferred date/period, delivery mode and special requests
+- after submit, show a bilingual demo confirmation
+
+Do not save the quote anywhere.
+Do not add Google Sheets, database or persistent storage.
+
+
+============================================================
+NICE TO HAVE 3 – REN BONUS
+============================================================
+
+Preserve all current functionality.
+
+Add only small frontend polish where useful:
+
+- subtle hover/focus states
+- smooth but restrained transitions
+- clearer cart icon/count
+- “Continue shopping / Fortsätt handla”
+- a short FAQ about evening courses
+
+Do not change architecture and do not add persistence, backend, login, payment or Google Sheets.
+
+
+============================================================
+STOPPREGEL
+============================================================
+
+När CORE fungerar är Dag 1 godkänd.
+
+Nice to have är bonus och får lämnas bort helt.
+
+Gå vidare till Dag 2 även om ingen Nice to have-funktion hann byggas.
+
+En fungerande enkel prototyp är viktigare än en snygg men halvfungerande prototyp.
