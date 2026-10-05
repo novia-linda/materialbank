@@ -45,7 +45,7 @@
      --------------------------------------------------------- */
   function initGlobalSiteHeader(){
     const items=[
-      ['Företag berättar','foretag-berattar.html'],
+      ['Röster om AI','foretag-berattar.html'],
       ['Så här gör du','sa-har-gor-du.html'],
       ['Studerande + Företag','foretagscase/index.html'],
       ['Säkerhet','sakerhet.html'],
