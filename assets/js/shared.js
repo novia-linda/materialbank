@@ -57,7 +57,7 @@
     const links=items.map(([label,target])=>`<a href="${resolveSiteUrl(target)}">${label}</a>`).join('');
     header.innerHTML=`
       <div class="container header-inner">
-        <a class="brand" href="${resolveSiteUrl('index.html')}"><span class="brand-mark"></span><span>AI i praktiken<small>AI Boost · materialbank</small></span></a>
+        <a class="brand" href="${resolveSiteUrl('index.html')}"><span class="brand-mark"></span><span>AI Boost Jakobstadsregionen<small>MATERIALBANK</small></span></a>
         <nav class="main-nav" aria-label="Huvudnavigation">
           ${links}
           <a class="nav-cta" href="${resolveSiteUrl('hitta.html')}">Hitta rätt material</a>
