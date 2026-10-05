@@ -47,7 +47,7 @@
     const items=[
       ['Röster om AI','foretag-berattar.html'],
       ['Praktiska guider','sa-har-gor-du.html'],
-      ['Studerande + Företag','foretagscase/index.html'],
+      ['Företagscase','foretagscase/index.html'],
       ['Säkerhet','sakerhet.html'],
       ['Kunskapsverkstäder','kunskapsverkstader.html']
     ];
