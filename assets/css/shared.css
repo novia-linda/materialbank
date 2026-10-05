@@ -733,6 +733,17 @@ main{padding-bottom:70px}
   box-shadow:0 1px 0 rgba(0,0,0,.025);
 }
 
+/* Keep företagscase takeaways dark and readable.
+   The generic pilot card rule above gives these cards a white background,
+   while their text is intentionally light. Restore the intended contrast. */
+.page-case .case-takeaway{
+  background:var(--ink);
+  color:#fff;
+  border-left:7px solid var(--red)!important;
+}
+.page-case .case-takeaway strong{color:#fff}
+.page-case .case-takeaway p{color:#e6e9e9}
+
 .page-index .resource-list{gap:16px}
 .page-index .resource-item{padding:22px 24px;transition:.18s ease}
 .page-index .resource-item:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
