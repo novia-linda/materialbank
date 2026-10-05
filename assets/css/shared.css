@@ -884,3 +884,227 @@ main{padding-bottom:70px}
   .global-site-header .main-nav{display:none}
   .global-site-header .mobile-menu{display:block}
 }
+
+
+/* =========================================================
+   UNIFIED MATERIALBANK SHELL · October 2026
+   Startsidan is the visual reference for every Materialbank page:
+   black navigation, yellow AI mark, white hero, red guide line,
+   subtle shadow and a light-grey content field below.
+   Scoped to pages that run shared.js so unrelated course material
+   elsewhere in this repository is not restyled.
+   ========================================================= */
+
+/* Global header: use the same yellow AI mark as the landing page. */
+.materialbank-shell .global-site-header{
+  background:#101214;
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.09);
+}
+.materialbank-shell .global-site-header .brand-mark{
+  flex:0 0 46px;
+  width:46px;
+  height:46px;
+  margin:0;
+  border-radius:50%;
+  background:#ffff00;
+  color:#111314;
+  display:grid;
+  place-items:center;
+  font-size:17px;
+  font-weight:700;
+}
+.materialbank-shell .global-site-header .brand-mark::after{content:"AI"}
+
+/* Overview-page heroes: match the white landing-page hero. */
+.materialbank-shell .theme-hero{
+  background:#fff;
+  color:#17191a;
+  padding:52px 0 56px;
+  overflow:visible;
+  box-shadow:0 14px 18px -14px rgba(17,19,20,.18);
+  position:relative;
+  z-index:2;
+}
+.materialbank-shell .theme-hero::after{display:none}
+.materialbank-shell .theme-hero .container{
+  width:min(1280px,calc(100% - 32px));
+  border-left:7px solid #ff1325;
+  padding:6px 0 6px clamp(18px,5vw,64px);
+}
+.materialbank-shell .theme-hero h1{
+  max-width:900px;
+  margin:8px 0 14px;
+  color:#17191a;
+  font-size:clamp(32px,5vw,52px);
+  font-weight:600;
+  line-height:1.08;
+  letter-spacing:-.03em;
+}
+.materialbank-shell .theme-hero p{
+  max-width:780px;
+  color:#525a5c;
+  font-size:clamp(16px,2vw,19px);
+  line-height:1.5;
+}
+.materialbank-shell .theme-hero .eyebrow{
+  display:block;
+  width:max-content;
+  margin:0 0 12px;
+  padding:0;
+  border-radius:0;
+  color:#a31532;
+  background:transparent;
+}
+
+/* Individual guide/case heroes use the same white visual language.
+   Existing grids are retained so useful quick-info cards are not lost. */
+.materialbank-shell:not(.page-index) > .hero,
+.materialbank-shell.page-agent-intro > .hero,
+.materialbank-shell.page-agent-instructions > .hero,
+.materialbank-shell.page-copilot > .hero,
+.materialbank-shell.page-vids > .hero,
+.materialbank-shell.page-cases > .hero,
+.materialbank-shell.page-case > .hero,
+.materialbank-shell.page-video-series > .hero,
+.materialbank-shell.page-video-guide > .hero,
+.materialbank-shell.page-manuscript > .hero{
+  background:#fff;
+  color:#17191a;
+  border-bottom:0;
+  overflow:visible;
+  box-shadow:0 14px 18px -14px rgba(17,19,20,.18);
+  position:relative;
+  z-index:2;
+}
+.materialbank-shell:not(.page-index) > .hero::after{display:none}
+.materialbank-shell:not(.page-index) > .hero .hero-inner{
+  width:min(1280px,calc(100% - 32px));
+  max-width:none;
+  margin:auto;
+  padding:52px 0 56px clamp(18px,5vw,64px);
+  border-left:7px solid #ff1325;
+}
+.materialbank-shell:not(.page-index) > .hero h1{
+  max-width:900px;
+  margin-top:0;
+  color:#17191a;
+  font-size:clamp(32px,5vw,52px);
+  font-weight:600;
+  line-height:1.08;
+  letter-spacing:-.03em;
+}
+.materialbank-shell:not(.page-index) > .hero .lead{
+  color:#525a5c;
+  font-size:clamp(16px,2vw,19px);
+  line-height:1.5;
+}
+.materialbank-shell:not(.page-index) > .hero .eyebrow{
+  display:block;
+  width:max-content;
+  margin:0 0 12px;
+  padding:0;
+  border-radius:0;
+  color:#a31532;
+  background:transparent;
+}
+.materialbank-shell:not(.page-index) > .hero .hero-card,
+.materialbank-shell:not(.page-index) > .hero .goal-box,
+.materialbank-shell:not(.page-index) > .hero .quick-card{
+  background:#f5f5f2!important;
+  color:#17191a!important;
+  border:1px solid #dedbd3!important;
+  padding:22px!important;
+  box-shadow:none!important;
+}
+.materialbank-shell:not(.page-index) > .hero .hero-card strong,
+.materialbank-shell:not(.page-index) > .hero .goal-box strong,
+.materialbank-shell:not(.page-index) > .hero .quick-card strong{
+  color:#17191a!important;
+}
+.materialbank-shell:not(.page-index) > .hero .hero-card span,
+.materialbank-shell:not(.page-index) > .hero .goal-box span,
+.materialbank-shell:not(.page-index) > .hero .quick-card span{
+  color:#525a5c!important;
+}
+
+/* The filter/search page has its own hero class, but follows the same shell. */
+.materialbank-shell .engine-hero{
+  background:#fff;
+  color:#17191a;
+  padding:52px 0 56px;
+  overflow:visible;
+  box-shadow:0 14px 18px -14px rgba(17,19,20,.18);
+  position:relative;
+  z-index:2;
+}
+.materialbank-shell .engine-hero::after{display:none}
+.materialbank-shell .engine-hero .container{
+  width:min(1280px,calc(100% - 32px));
+  border-left:7px solid #ff1325;
+  padding:6px 0 6px clamp(18px,5vw,64px);
+}
+.materialbank-shell .engine-hero h1{
+  max-width:900px;
+  margin:0 0 14px;
+  color:#17191a;
+  font-size:clamp(32px,5vw,52px);
+  font-weight:600;
+  line-height:1.08;
+  letter-spacing:-.03em;
+}
+.materialbank-shell .engine-hero p{
+  max-width:780px;
+  color:#525a5c;
+  font-size:clamp(16px,2vw,19px);
+  line-height:1.5;
+}
+.materialbank-shell .engine-hero .pilot-badge{
+  display:block;
+  width:max-content;
+  margin:0 0 12px;
+  padding:0;
+  border-radius:0;
+  background:transparent;
+  color:#a31532;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:12px;
+}
+
+/* Everything after the white hero sits on the same soft grey as the
+   first content section on the landing page. */
+.materialbank-shell:not(.page-index) main,
+.materialbank-shell:not(.page-index) .theme-main{
+  background:#f5f5f2;
+}
+
+/* Keep the back button readable on the new white hero. */
+.materialbank-shell .theme-hero .section-back .btn.btn-light{
+  background:#fff;
+  color:#17191a;
+  border:1px solid #dedbd3;
+}
+.materialbank-shell .theme-hero .section-back .btn.btn-light:hover,
+.materialbank-shell .theme-hero .section-back .btn.btn-light:focus{
+  background:#fff;
+  color:var(--red);
+  border-color:var(--red);
+}
+
+@media(max-width:680px){
+  .materialbank-shell .theme-hero .container,
+  .materialbank-shell:not(.page-index) > .hero .hero-inner,
+  .materialbank-shell .engine-hero .container{
+    width:min(100% - 26px,1280px);
+    padding-left:18px;
+  }
+  .materialbank-shell .theme-hero,
+  .materialbank-shell .engine-hero{
+    padding:38px 0 42px;
+  }
+  .materialbank-shell:not(.page-index) > .hero .hero-inner{
+    padding-top:38px;
+    padding-bottom:42px;
+  }
+}
