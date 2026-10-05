@@ -44,6 +44,7 @@
      Edit the labels/targets here once to update the whole site.
      --------------------------------------------------------- */
   function initGlobalSiteHeader(){
+    document.body.classList.add('materialbank-shell');
     const items=[
       ['Röster om AI','foretag-berattar.html'],
       ['Praktiska guider','sa-har-gor-du.html'],
