@@ -46,7 +46,7 @@
   function initGlobalSiteHeader(){
     const items=[
       ['Röster om AI','foretag-berattar.html'],
-      ['Så här gör du','sa-har-gor-du.html'],
+      ['Praktiska guider','sa-har-gor-du.html'],
       ['Studerande + Företag','foretagscase/index.html'],
       ['Säkerhet','sakerhet.html'],
       ['Kunskapsverkstäder','kunskapsverkstader.html']
