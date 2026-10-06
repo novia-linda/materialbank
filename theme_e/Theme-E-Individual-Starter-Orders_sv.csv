@@ -1,0 +1,11 @@
+﻿OrderID,CreatedAt,CustomerName,Email,StreetAddress,PostalCode,City,ProductIDs,ProductNames,Quantities,UnitPricesEUR,TotalEUR,OrderNote,Status,LastUpdated
+ORD1001,2026-09-20 10:15,Elin Söderholm,elin.soderholm@example.com,Exempelgatan 1,65100,Vasa,P001,Demoprodukt 1,1,20.00,20.00,,Ny,2026-09-20 10:15
+ORD1002,2026-09-21 11:40,Mika Kallio,mika.kallio@example.com,Testvägen 4,65610,Korsholm,P002,Demoprodukt 2,1,50.00,50.00,Ring före leverans,Behandlas,2026-09-21 12:10
+ORD1003,2026-09-22 09:05,Sofia Nyman,sofia.nyman@example.com,Exempelvägen 8,68600,Jakobstad,P003,Demoprodukt 3,1,100.00,100.00,,Klar,2026-09-23 14:20
+ORD1004,2026-09-23 14:30,Johan Lind,johan.lind@example.com,Demogatan 12,67100,Karleby,P001 | P002,Demoprodukt 1 | Demoprodukt 2,2 | 1,20.00 | 50.00,90.00,Lämna vid receptionen,Ny,2026-09-23 14:30
+ORD1005,2026-09-24 08:50,Aino Granholm,aino.granholm@example.com,Testgatan 5,60100,Seinäjoki,P002 | P003,Demoprodukt 2 | Demoprodukt 3,1 | 1,50.00 | 100.00,150.00,,Behandlas,2026-09-24 10:15
+ORD1006,2026-09-25 16:10,Emil Fors,emil.fors@example.com,Exempelgränden 3,64200,Närpes,P001 | P003,Demoprodukt 1 | Demoprodukt 3,1 | 1,20.00 | 100.00,120.00,Presentbeställning,Klar,2026-09-26 09:00
+ORD1007,2026-09-26 12:25,Laura Niemi,laura.niemi@example.com,Demogatan 20,00100,Helsingfors,P001,Demoprodukt 1,3,20.00,60.00,,Ny,2026-09-26 12:25
+ORD1008,2026-09-27 13:45,Oskar Berg,oskar.berg@example.com,Testvägen 9,33100,Tammerfors,P002,Demoprodukt 2,2,50.00,100.00,Kontakta före leverans,Behandlas,2026-09-27 15:05
+ORD1009,2026-09-28 09:35,Emma Laine,emma.laine@example.com,Exempelgatan 2,20100,Åbo,P003,Demoprodukt 3,1,100.00,100.00,,Ny,2026-09-28 09:35
+ORD1010,2026-09-29 15:20,Leo Sandberg,leo.sandberg@example.com,Demovägen 7,90100,Uleåborg,P001 | P002 | P003,Demoprodukt 1 | Demoprodukt 2 | Demoprodukt 3,1 | 1 | 1,20.00 | 50.00 | 100.00,170.00,,Klar,2026-09-30 11:10
