@@ -1,0 +1,43 @@
+# Install this file at repository root: .github/workflows/lasrum-refresh.yml
+name: Läsrum – hämta källor
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '37 13 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: lasrum-refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: lasrum
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: lasrum/tools/package-lock.json
+      - name: Kontrollera om Firebase är anslutet
+        id: config
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          if [ -n "$FIREBASE_SERVICE_ACCOUNT" ]; then
+            echo 'ready=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'Firebase är inte anslutet. Lägg in repository secret enligt STARTA-HAR.md.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Installera hämtningsverktyg
+        if: steps.config.outputs.ready == 'true'
+        run: npm --prefix tools ci --ignore-scripts --no-audit --no-fund
+      - name: Hämta nytt innehåll
+        if: steps.config.outputs.ready == 'true'
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: node tools/refresh.mjs

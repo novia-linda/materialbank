@@ -1,0 +1,32 @@
+rules_version = '2';
+service cloud.firestore {
+ match /databases/{database}/documents {
+  function owner() { return request.auth != null && exists(/databases/$(database)/documents/access/$(request.auth.uid)); }
+  match /access/{uid} { allow read: if owner() && request.auth.uid == uid; allow write: if false; }
+  match /feed/{id} { allow read: if owner(); allow write: if false; }
+  match /meta/{id} { allow read: if owner(); allow write: if false; }
+  match /users/{uid}/settings/{id} {
+   allow read: if owner() && request.auth.uid == uid;
+   allow create, update: if owner() && request.auth.uid == uid && id == 'main'
+     && request.resource.data.keys().hasOnly(['version','theme','tags','sources','categories','seedIds'])
+     && request.resource.data.version == 1
+     && request.resource.data.theme in ['dark','light','system']
+     && request.resource.data.tags is list && request.resource.data.tags.size() <= 500
+     && request.resource.data.sources is list && request.resource.data.sources.size() <= 100
+     && request.resource.data.categories is list && request.resource.data.categories.size() <= 100;
+   allow delete: if owner() && request.auth.uid == uid;
+  }
+  match /users/{uid}/marks/{id} {
+   allow read, delete: if owner() && request.auth.uid == uid;
+   allow create, update: if owner() && request.auth.uid == uid
+     && request.resource.data.keys().hasOnly(['itemId','mark','archive'])
+     && request.resource.data.itemId is string && request.resource.data.itemId.size() <= 4000
+     && request.resource.data.mark.keys().hasOnly(['read','favorite','note','tags'])
+     && request.resource.data.mark.read is bool && request.resource.data.mark.favorite is bool
+     && request.resource.data.mark.note is string && request.resource.data.mark.note.size() <= 20000
+     && request.resource.data.mark.tags is list && request.resource.data.mark.tags.size() <= 100
+     && request.resource.data.archive is map;
+  }
+  match /{document=**} { allow read, write: if false; }
+ }
+}
