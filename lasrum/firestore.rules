@@ -1,24 +1,59 @@
 rules_version = '2';
 service cloud.firestore {
  match /databases/{database}/documents {
-  function owner() { return request.auth != null && exists(/databases/$(database)/documents/access/$(request.auth.uid)); }
-  match /access/{uid} { allow read: if owner() && request.auth.uid == uid; allow write: if false; }
-  match /feed/{id} { allow read: if owner(); allow write: if false; }
-  match /meta/{id} { allow read: if owner(); allow write: if false; }
+  function signedIn() { return request.auth != null; }
+  function accessPath(uid) { return /databases/$(database)/documents/access/$(uid); }
+  function approved(uid) {
+   return signedIn() && existsAfter(accessPath(uid))
+     && getAfter(accessPath(uid)).data.status == 'approved';
+  }
+  function admin() {
+   return approved(request.auth.uid)
+     && getAfter(accessPath(request.auth.uid)).data.role == 'admin';
+  }
+  match /access/{uid} {
+   allow read: if signedIn() && (request.auth.uid == uid || admin());
+   allow create: if signedIn() && request.auth.uid == uid
+     && request.resource.data.keys().hasOnly(['email','displayName','status','requestedAt'])
+     && request.resource.data.email == request.auth.token.email
+     && request.auth.token.email_verified == true
+     && request.resource.data.displayName is string
+     && request.resource.data.status == 'pending';
+   allow update: if admin() && uid != request.auth.uid
+     && request.resource.data.keys().hasOnly(['email','displayName','status','role','requestedAt','approvedAt'])
+     && request.resource.data.email == resource.data.email
+     && request.resource.data.displayName == resource.data.displayName
+     && request.resource.data.role in ['reader','admin']
+     && request.resource.data.status in ['approved','denied']
+     && request.resource.data.requestedAt == resource.data.requestedAt
+     && request.resource.data.approvedAt is string;
+   allow delete: if admin() && uid != request.auth.uid;
+  }
+  match /meta/{id} { allow read: if signedIn() && approved(request.auth.uid); allow write: if false; }
+  match /users/{uid}/feed/{id} {
+   allow read: if approved(uid) && request.auth.uid == uid;
+   allow create, update: if admin() && request.resource.data.keys().hasOnly(['id','sourceId','title','description','url','publishedAt','fetchedAt','kind','thumbnail','audio','videoId','playlistId']);
+   allow delete: if admin();
+  }
+  match /users/{uid}/sourceStatus/{id} {
+   allow read: if approved(uid) && request.auth.uid == uid;
+   allow write: if admin();
+  }
   match /users/{uid}/settings/{id} {
-   allow read: if owner() && request.auth.uid == uid;
-   allow create, update: if owner() && request.auth.uid == uid && id == 'main'
+   allow read: if (approved(uid) && request.auth.uid == uid) || admin();
+   allow create, update: if ((approved(uid) && request.auth.uid == uid) || admin())
+     && id == 'main'
      && request.resource.data.keys().hasOnly(['version','theme','tags','sources','categories','seedIds'])
      && request.resource.data.version == 1
      && request.resource.data.theme in ['dark','light','system']
      && request.resource.data.tags is list && request.resource.data.tags.size() <= 500
      && request.resource.data.sources is list && request.resource.data.sources.size() <= 100
      && request.resource.data.categories is list && request.resource.data.categories.size() <= 100;
-   allow delete: if owner() && request.auth.uid == uid;
+   allow delete: if admin() && request.auth.uid != uid;
   }
   match /users/{uid}/marks/{id} {
-   allow read, delete: if owner() && request.auth.uid == uid;
-   allow create, update: if owner() && request.auth.uid == uid
+   allow read, delete: if approved(uid) && request.auth.uid == uid;
+   allow create, update: if approved(uid) && request.auth.uid == uid
      && request.resource.data.keys().hasOnly(['itemId','mark','archive'])
      && request.resource.data.itemId is string && request.resource.data.itemId.size() <= 4000
      && request.resource.data.mark.keys().hasOnly(['read','favorite','note','tags'])
