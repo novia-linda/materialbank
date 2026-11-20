@@ -1,19 +1,19 @@
 # Senaste bilduppladdningen
 
-Skapad: 2026-11-20 11:33:21
+Skapad: 2026-11-20 11:38:42
 Repo: novia-linda/materialbank
 Projekt: kursmaterial/skarmbilder
-Batch: notion-bilder/kursmaterial/skarmbilder/2026-11-20T09-33-19-dbdd
+Batch: notion-bilder/kursmaterial/skarmbilder/2026-11-20T09-38-39-6de4
 
 ## Bilder
 
-### skarmklipp-2026-11-20t09-32-31-73ab
-- Fil: `notion-bilder/kursmaterial/skarmbilder/2026-11-20T09-33-19-dbdd/01-skarmklipp-2026-11-20t09-32-31-73ab.png`
-- Storlek: 1164 x 886 px
-- Beskrivning: skarmklipp-2026-11-20t09-32-31-73ab
-- Bildlänk: https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-20T09-33-19-dbdd/01-skarmklipp-2026-11-20t09-32-31-73ab.png
-- Markdown: `![skarmklipp-2026-11-20t09-32-31-73ab](https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-20T09-33-19-dbdd/01-skarmklipp-2026-11-20t09-32-31-73ab.png)`
-- HTML: `<img src="https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-20T09-33-19-dbdd/01-skarmklipp-2026-11-20t09-32-31-73ab.png" alt="skarmklipp-2026-11-20t09-32-31-73ab">`
+### notion-sida-kurser
+- Fil: `notion-bilder/kursmaterial/skarmbilder/2026-11-20T09-38-39-6de4/01-notion-sida-kurser.png`
+- Storlek: 2690 x 874 px
+- Beskrivning: notion-sida-kurser
+- Bildlänk: https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-20T09-38-39-6de4/01-notion-sida-kurser.png
+- Markdown: `![notion-sida-kurser](https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-20T09-38-39-6de4/01-notion-sida-kurser.png)`
+- HTML: `<img src="https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-20T09-38-39-6de4/01-notion-sida-kurser.png" alt="notion-sida-kurser">`
 
 ## Prompt till ChatGPT
 

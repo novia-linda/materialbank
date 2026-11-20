@@ -1,0 +1,18 @@
+{
+  "schema": "github-bildbibliotek-03",
+  "created": "2026-11-20T09:38:42.243Z",
+  "repository": "novia-linda/materialbank",
+  "branch": "main",
+  "batch": "notion-bilder/kursmaterial/skarmbilder/2026-11-20T09-38-39-6de4",
+  "images": [
+    {
+      "name": "notion-sida-kurser",
+      "description": "",
+      "filename": "01-notion-sida-kurser.png",
+      "path": "notion-bilder/kursmaterial/skarmbilder/2026-11-20T09-38-39-6de4/01-notion-sida-kurser.png",
+      "url": "https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-20T09-38-39-6de4/01-notion-sida-kurser.png",
+      "width": 2690,
+      "height": 874
+    }
+  ]
+}
