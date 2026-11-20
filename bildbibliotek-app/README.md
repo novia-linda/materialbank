@@ -1,27 +1,30 @@
-# GitHub Bildbibliotek – webbapp v0.4
+# GitHub Bildbibliotek · v0.5
 
-Denna version publiceras på GitHub Pages från en mapp i `novia-linda/materialbank`. Bilderna redigeras lokalt i Chrome/Edge och publiceras först när du väljer **Publicera bilder + logg**.
+En install­erbar webbapp (PWA) för pedagogiska skärmbilder, med GitHub-publicering och en bildlogg som kan användas för Notion → Moodle.
 
-## Kort installation
+## Nytt i v0.5
 
-1. Om Pages inte är aktiverat: GitHub → `novia-linda/materialbank` → **Settings → Pages** → **Deploy from a branch**, `main` och `/(root)` → **Save**.
-2. Öppna: **https://novia-linda.github.io/materialbank/bildbibliotek-app/**.
-3. Välj **Installera app** (eller Chrome-menyn → Spara och dela → Installera sidan som app) och fäst den i aktivitetsfältet.
-4. Skapa en **fine-grained personal access token** på GitHub med **Only select repositories → materialbank** och **Contents: Read and write**.
-5. Öppna appen och välj **Anslut till GitHub**. Chrome kan erbjuda att spara åtkomstnyckeln i lösenordshanteraren; om inte, lägg in uppgiften manuellt i Google Password Manager för appens HTTPS-adress.
-6. Skärmbild med **Win + Shift + S** → **Ctrl + V** i appen → markera, beskär → godkänn offentlig uppladdning → **Publicera bilder + logg**.
+- **Riktig 2×-förstoring:** visat utsnitt förstoras proportionellt (inte utsträckt till en cirkel). Välj **Zoom 2×**, dra runt det som ska visas, och växla till **Flytta** för att dra den runda förstoringslinsen dit du vill.
+- **Objekt & lager:** öppna eller stäng panelen till höger. Markera en pil, ruta, ring, textetikett, siffermarkering, zoom eller fokus. Ändra färg och linjebredd via verktygsfältet, dra den på bilden eller använd piltangenterna (Shift = 10 pixlar). Flytta objektet framåt/bakåt i lagren, dölj/visa, ta bort eller redigera textetiketter. Bakgrundsbilden visas låst längst ned.
+- **Färgpaletter:** klicka **+ Färgpaletter**. 9 palettrader med 5 färger i varje, hämtade från Notion → Design (DES-01 till DES-06, PROF-02 Affärssystem, PROF-03 IT-verktyg, PROF-04 MBA AI). Varje designrad länkar till sin källa i Notion. HEX-värdena är exakta; färgrollerna ska beaktas vid officiellt kursmaterial.
+- Export, bildstorlekar, beskärning, maskering, numrerade steg, sparbara `.bildprojekt.json` samt GitHub-uppladdning med manifest/logg fungerar som förut. Tidigare projektfiler från v0.3–0.4 kan fortfarande öppnas.
 
-> GitHub Pages-inställningen kan behöva göras manuellt. Kodfilerna är uppladdade, men en faktisk publicerad HTTPS-adress ska inte betraktas som verifierad innan den går att öppna.
+## Öppna webbappen
 
-## Säkerhet
+https://novia-linda.github.io/materialbank/bildbibliotek-app/
 
-- Appen laddar inga skärmbilder till en server förrän du klickar **Publicera**.
-- Inget GitHub-token lagras av appen i localStorage, cookies, repo, loggfiler eller service worker. Det finns i minnet/formuläret under sessionen. Chrome kan spara det separat i sin lösenordshanterare om du väljer detta.
-- Den offentliga webbappen har ingen serversession och ingen extra PIN. Lås Windows med Win + L när du lämnar datorn.
-- Offline-cache innehåller bara statiska HTML/CSS/JS- och ikonfiler, aldrig bilder, GitHub-API-svar eller tokens.
-- Bilder och loggar laddas upp i det offentliga repot. Maskera personuppgifter på bilderna före publicering. Redigerbara projektfiler kan innehålla originalet och bör förbli lokala.
-- GitHub Pages-inställningar, Chrome-autofyllning och GitHub API-anslutning påverkas av organisationens IT-policy.
+Vid uppdatering av en installerad PWA: **stäng appfönstret och öppna det igen**, eller tryck Ctrl + Shift + R om den fortfarande visar v0.4. Cache-namnet har ändrats till `bildbibliotek-pwa-v05`.
 
-## Projektet
+## Arbeta
 
-Filerna består av `index.html`, `style.css`, `app.js`, `manifest.webmanifest`, `sw.js`, ikoner och `.nojekyll`. Ingen byggkedja, Python eller administratörsinstallation behövs.
+1. Klistra in ett skärmklipp med `Ctrl + V` eller välj bilder.
+2. Använd t.ex. **Steg**, **Pil**, **Ruta**, **Fokus** eller **Zoom 2×**.
+3. Öppna **Objekt & lager** för att välja, dölja, ordna, flytta och ändra enskilda objekt.
+4. Öppna **+ Färgpaletter** för att tillämpa färger från dina Notion-profiler. Du kan också välja valfri färg i den vanliga färgväljaren.
+5. Spara bilden på datorn, eller anslut GitHub med en fine-grained token för `novia-linda/materialbank` (Contents: Read/Write) och publicera bilder + logg.
+
+Bilder bearbetas lokalt. Accessnycklar lagras inte av appen. Skicka aldrig en token via chatt. Publicera inte känslig eller verklig studentdata i ett publikt repo.
+
+## Testnotering
+
+I Chromium testades följande mot ett syntetiskt skärmklipp: 9 paletter/45 färger, steg/pil/ruta/zoom, lager-val, enskild färg- och linjebreddsändring, flytta i staplingsordning, visa/dölj, flytta förstoringslins, export 1600 × 900, spara projekt och ångra. GitHub-publiceringen har inte testats med en riktig token i denna version (befintligt uppladdningsflöde är oförändrat).

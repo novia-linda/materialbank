@@ -2,3 +2,30 @@
 
 /* PWA v0.4: GitHub connection panel */
 .login-title{display:flex;align-items:center;justify-content:space-between;font-weight:700;font-size:13px;margin:4px 0 10px;color:#334e48}.login-badge{font-size:10px;color:#506d62;background:#e2ede8;border-radius:100px;padding:4px 9px;font-weight:600}.login-actions{display:flex;flex-wrap:wrap;gap:7px;margin:9px 0}.login-actions .button{flex:1}.github-card form{border:1px solid #e2eae6;border-radius:11px;background:#f9fbf9;padding:12px;margin:8px 0 12px}.github-card form .field-label{margin-bottom:7px}.github-card form input{width:100%}button[hidden]{display:none!important}@media(max-width:600px){.login-actions{flex-direction:column}.shell{padding:12px 11px}}
+
+/* v0.5 · Palette banks from Notion and Photoshop-like layer panel */
+.palette-panel[hidden],#layersPanel[hidden]{display:none!important}
+.palette-panel{margin-top:11px;padding-top:11px;border-top:1px solid #e3e9e5}
+.palette-intro{color:#5c6f68;font-size:12px;margin:0 0 9px}
+.palette-intro a,.palette-row a{color:#486f76;text-decoration:underline;text-underline-offset:2px}
+.palette-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:5px 18px}
+.palette-row{display:flex;justify-content:space-between;align-items:center;gap:9px;padding:5px 0;border-bottom:1px solid #edf0ed}
+.palette-row a{font-size:11px;font-weight:600;white-space:nowrap;min-width:125px}
+.palette-swatches{display:flex;align-items:center;gap:5px}
+.palette-swatch{height:27px;width:27px;flex:none;border:1px solid #8b9995;border-radius:6px;box-shadow:inset 0 0 0 1px #ffffff50;padding:0;transition:transform .1s}
+.palette-swatch:hover{transform:scale(1.1);outline:2px solid #466c62;outline-offset:2px}
+.palette-swatch:focus-visible{outline:3px solid #3f80b1;outline-offset:2px}
+.layer-card{border-color:#cfdfd8}.layer-toggle{width:100%;margin-bottom:8px;text-align:left}
+.layer-list{display:flex;flex-direction:column;gap:5px;max-height:265px;overflow:auto;padding:2px}
+.layer-row{display:flex;gap:4px;min-height:38px;align-items:stretch;border:1px solid #e0e8e3;border-radius:8px;background:#fff}
+.layer-row.selected{border-color:#6c9f8f;background:#e9f3ee;box-shadow:inset 3px 0 0 #559d85}
+.layer-choose{font:inherit;display:flex;gap:8px;align-items:center;flex:1;min-width:0;padding:5px 8px;text-align:left;background:transparent;border:0;color:#344d46;font-size:12px;cursor:pointer}
+.layer-chip{font-weight:800;font-size:20px;min-width:24px;text-align:center;text-shadow:0 1px 1px #fff8}
+.layer-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.layer-visibility{font-size:17px;background:transparent;border:0;border-left:1px solid #e1ebe6;color:#57726b;min-width:34px;cursor:pointer}
+.layer-visibility:hover{background:#eaf2ec}
+.layer-background{font-size:11px;color:#71837d;border:1px dashed #d8e0da;border-radius:7px;background:#f7f9f8;padding:8px 10px;display:flex;align-items:center;gap:10px}
+.layer-background span:first-child{font-size:20px;color:#819b90}
+.layer-actions{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:9px}
+.layer-actions .button{white-space:normal}
+@media(min-width:1250px){.palette-rows{grid-template-columns:repeat(2,minmax(320px,1fr))}}

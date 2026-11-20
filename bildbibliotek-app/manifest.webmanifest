@@ -2,7 +2,7 @@
   "id": "./",
   "name": "GitHub Bildbibliotek – pedagogisk bildeditor",
   "short_name": "Bildbibliotek",
-  "description": "Skärmbilder, pilar, markeringar, beskärning, GitHub-uppladdning och kurslogg",
+  "description": "Skärmbilder, lager, färgpaletter, förstoring, beskärning, GitHub-uppladdning och kurslogg",
   "lang": "sv",
   "start_url": "./",
   "scope": "./",
