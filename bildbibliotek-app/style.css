@@ -29,3 +29,50 @@
 .layer-actions{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:9px}
 .layer-actions .button{white-space:normal}
 @media(min-width:1250px){.palette-rows{grid-template-columns:repeat(2,minmax(320px,1fr))}}
+
+/* v0.6 — editor design modes; existing canvas objects remain unchanged */
+:root{font-family:'Be Vietnam Pro','Segoe UI',Arial,sans-serif}
+.theme-switcher{display:flex;align-items:center;gap:2px;background:#ecf2ee;border:1px solid #ccd8d0;border-radius:10px;padding:4px;white-space:nowrap}
+.theme-switcher-title{font-size:11px;font-weight:700;color:#49635a;padding:0 8px}
+.theme-switcher button{border:0;border-radius:7px;padding:7px 10px;font-size:12px;font-weight:600;background:transparent;color:#466157;min-height:34px}
+.theme-switcher button.active{background:#456f67;color:#fff}
+.theme-switcher button:focus-visible{outline:3px solid #3f80b1;outline-offset:2px}
+.zoom-panel[hidden]{display:none!important}
+.zoom-panel{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;padding:12px 2px 1px;margin-top:10px;border-top:1px solid #d8e1da}
+.zoom-panel-copy{display:flex;flex:1 1 300px;flex-direction:column;gap:3px}
+.zoom-panel strong{font-size:12px;color:#304d45}
+.zoom-panel-copy span{font-size:11px;color:#5b6e68}
+.zoom-panel label{display:flex;align-items:center;gap:6px;white-space:nowrap;font-size:11px;color:#405b52}
+.zoom-panel label input{accent-color:#456f67}
+:root[data-theme="novia"]{color:#000;background:#fafafa}
+:root[data-theme="novia"] .mark{padding-left:12px;border-left:5px solid #ff1325}
+:root[data-theme="novia"] .mark-icon{background:#000;color:#fff;border-radius:0}
+:root[data-theme="novia"] .eyebrow,:root[data-theme="novia"] .toolbar-title{color:#4c4c4c}
+:root[data-theme="novia"] .site-head h1 span{color:#000;border-color:#b3b3b3;border-radius:0}
+:root[data-theme="novia"] .topline,:root[data-theme="novia"] .section-head p,:root[data-theme="novia"] .canvas-status{color:#4c4c4c}
+:root[data-theme="novia"] .workspace,:root[data-theme="novia"] .sidebar-card{box-shadow:none;border-radius:0;border-color:#ccc}
+:root[data-theme="novia"] .toolarea,:root[data-theme="novia"] .zoom-panel{border-color:#ccc;border-radius:0;background:#f5f5f5}
+:root[data-theme="novia"] .button,:root[data-theme="novia"] .tool{border-radius:0;background:#fff;color:#000;border-color:#aaa}
+:root[data-theme="novia"] .button.filled{background:#000;border-color:#000;color:#fff}
+:root[data-theme="novia"] .button.filled:hover{background:#3d3d3d}
+:root[data-theme="novia"] .button:hover,:root[data-theme="novia"] .tool:hover{background:#eaeaea}
+:root[data-theme="novia"] .tool.active{background:#fff;border-color:#ff1325;box-shadow:inset 0 -3px 0 #ff1325;color:#000}
+:root[data-theme="novia"] .button:focus-visible,:root[data-theme="novia"] .tool:focus-visible{outline-color:#ff1325}
+:root[data-theme="novia"] .status-chip,:root[data-theme="novia"] .login-badge{background:#eaeaea;border-radius:0;color:#000}
+:root[data-theme="novia"] .canvas-host{border-radius:0;border-color:#ccc;background:repeating-conic-gradient(#f6f6f6 0% 25%,#ececec 0% 50%) 50% / 18px 18px}
+:root[data-theme="novia"] input,:root[data-theme="novia"] select,:root[data-theme="novia"] textarea{border-radius:0;border-color:#aaa;color:#000}
+:root[data-theme="novia"] input[type=range],:root[data-theme="novia"] input[type=checkbox]{accent-color:#ff1325}
+:root[data-theme="novia"] .layer-row,:root[data-theme="novia"] .layer-background,:root[data-theme="novia"] .image-item,:root[data-theme="novia"] .palette-swatch{border-radius:0}
+:root[data-theme="novia"] .layer-row.selected,:root[data-theme="novia"] .image-item.active{background:#eaeaea;border-color:#000;box-shadow:inset 3px 0 0 #ff1325}
+:root[data-theme="novia"] .layer-choose,:root[data-theme="novia"] .layer-visibility,:root[data-theme="novia"] .zoom-panel strong,:root[data-theme="novia"] .zoom-panel label{color:#000}
+:root[data-theme="novia"] .palette-intro a,:root[data-theme="novia"] .palette-row a{color:#000;text-decoration-color:#ff1325}
+:root[data-theme="novia"] .theme-switcher{border-radius:0;background:#eaeaea;border-color:#ccc}
+:root[data-theme="novia"] .theme-switcher-title,:root[data-theme="novia"] .theme-switcher button{color:#000}
+:root[data-theme="novia"] .theme-switcher button{border-radius:0}
+:root[data-theme="novia"] .theme-switcher button.active{background:#000;color:#fff;box-shadow:inset 0 -3px 0 #ff1325}
+:root[data-theme="novia"] .theme-switcher button:focus-visible{outline-color:#ff1325}
+:root[data-theme="novia"] .github-card form,:root[data-theme="novia"] .privacy,:root[data-theme="novia"] .log-preview{border-radius:0;background:#f5f5f5;border-color:#ccc;color:#333}
+:root[data-theme="novia"] .side-title span,:root[data-theme="novia"] .field-label,:root[data-theme="novia"] .help-text{color:#4c4c4c}
+:root[data-theme="novia"] dialog{border-radius:0}
+@media(max-width:1400px){.site-head{flex-wrap:wrap}.head-actions{flex-wrap:wrap}}
+@media(max-width:700px){.head-actions{width:100%}.theme-switcher{width:100%;justify-content:center}.theme-switcher-title{padding-left:4px}.zoom-panel label{white-space:normal}}

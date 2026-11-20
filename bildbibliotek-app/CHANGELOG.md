@@ -1,9 +1,13 @@
 # Ändringslogg
 
+## v0.6 · 2026-11-20
+
+- Två designlägen: **Novia Design** och **Kursmaterial**, med sparat val och separata standardfärger för nya objekt.
+- Zoom: separat flyttbar lins och redigerbart källområde. Grå redigeringsram med åtta handtag, utan hjälpram och automatisk kopplingslinje vid export.
+- Proportioner i källutsnittet bevaras. Klick skapar standardzoom 2×, drag kan välja anpassat utsnitt.
+- Knapp för Visa/dölj zoomområde och Återställ 2×.
+- PWA-cache uppdaterad till v0.6. Tidigare lager och markeringar bevaras.
+
 ## v0.5 · 2026-11-20
 
-- Bytt ut proportionellt felaktig magnifiering (skalade rektanglar till cirkel) mot genuin 2×-förstoring med likformig skalning och en flyttbar förstoringslins.
-- Lagt till panelen **Objekt & lager**: markera, ordna, flytta, visa/dölj, färgändra och radera bildobjekt. Redigera textetiketter; tangentbordsflytt med piltangenterna.
-- Lagt till 9 valbara palettrader med totalt 45 exakta färgvärden hämtade från Notion Design och kursprofilerna.
-- Bevarat befintlig redigering, export, projektformat, GitHub-koppling och uppladdningslogg.
-- Uppdaterat service-worker-cachen till v0.5 för PWA-uppdatering.
+- Förstoringslins, objektlager och färgpaletter från Notion.

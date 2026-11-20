@@ -17,8 +17,8 @@
 <body>
 <div class="shell">
  <header class="site-head">
-  <div class="mark"><span class="mark-icon">&#9783;</span><div><div class="eyebrow">KURSMATERIAL / BILDER</div><h1>GitHub Bildbibliotek <span>v0.5 · WEBBAPP</span></h1></div></div>
-  <div class="head-actions"><span id="netStatus" class="status-chip">Arbetar lokalt</span><button id="installApp" class="button filled" hidden>Installera app</button><button id="openHelp" class="button ghost">Hj&#228;lp</button></div>
+  <div class="mark"><span class="mark-icon">&#9783;</span><div><div class="eyebrow">KURSMATERIAL / BILDER</div><h1>GitHub Bildbibliotek <span>v0.6 · WEBBAPP</span></h1></div></div>
+  <div class="head-actions"><div class="theme-switcher" role="group" aria-label="Designläge"><span class="theme-switcher-title">Designläge</span><button type="button" data-theme-choice="novia" aria-pressed="false">Novia Design</button><button type="button" data-theme-choice="course" aria-pressed="true">Kursmaterial</button></div><span id="netStatus" class="status-chip">Arbetar lokalt</span><button id="installApp" class="button filled" hidden>Installera app</button><button id="openHelp" class="button ghost">Hj&#228;lp</button></div>
  </header>
  <div class="topline">Klistra in med <kbd>Ctrl+V</kbd> eller v&#228;lj bilder &rarr; redigera &rarr; exportera eller publicera p&#229; GitHub. Fungerar i Chrome och Edge, utan adminrättigheter.</div>
  <div class="layout">
@@ -35,7 +35,7 @@
       <button data-tool="text" class="tool" title="Textetikett (T)">T Text</button>
       <button data-tool="highlight" class="tool" title="Markera en yta (H)">Markera</button>
       <button data-tool="spotlight" class="tool" title="M&#246;rka omgivningen (S)">Fokus</button>
-      <button data-tool="zoom" class="tool" title="F&#246;rstora ett utsnitt (Z)">Zoom 2×</button>
+      <button data-tool="zoom" class="tool" title="Välj källområde och förstora med en flyttbar lins (Z)">Zoom</button>
       <button data-tool="mask" class="tool" title="T&#228;ck k&#228;nslig information (M)">Maskera</button>
       <button data-tool="crop" class="tool" title="Besk&#228;r (C)">Besk&#228;r</button>
     </div>
@@ -51,6 +51,7 @@
        <div class="palette-intro">Färgvärden från <a href="https://app.notion.com/p/415814b52e6281f6ab76ecc7cbcc1a55" target="_blank" rel="noopener noreferrer">Design i Notion</a>. Välj en färg för ny markering eller för ett markerat objekt.</div>
        <div id="paletteRows" class="palette-rows" aria-label="Färgpaletter från Notion"></div>
     </div>
+    <div id="zoomPanel" class="zoom-panel" hidden><div class="zoom-panel-copy"><strong>Zoom · källområde &amp; lins</strong><span>Dra den grå källrutan för att välja innehåll, dra i handtagen för att ändra storlek eller proportioner, och flytta den runda linsen separat. Hjälprutan syns aldrig vid export.</span></div><label><input id="showZoomSource" type="checkbox" checked> Visa källområde vid redigering</label><button id="resetZoom" class="button mini" type="button">Återställ 2×</button></div>
    </div>
    <div id="canvasHost" class="canvas-host">
     <div id="empty" class="empty-state"><div class="empty-illustration">&#9634; <span>&#8599;</span></div><strong>Din sk&#228;rmbild b&#246;rjar h&#228;r</strong><p>Ta ett sk&#228;rmklipp (Win+Shift+S) och tryck Ctrl+V i den h&#228;r appen.</p><button id="emptyPick" class="button">V&#228;lj en bild</button></div>
@@ -104,9 +105,9 @@
    </section>
  </aside>
  </div>
- <footer><span>Pedagogisk bildeditor &middot; Bilder behandlas lokalt tills du publicerar</span><span>v0.5 PWA</span></footer>
+ <footer><span>Pedagogisk bildeditor &middot; Bilder behandlas lokalt tills du publicerar</span><span>v0.6 PWA</span></footer>
 </div>
-<dialog id="helpDialog"><div class="dialog-inner"><div class="side-title"><h2>Snabbhj&#228;lp</h2><button id="closeHelp" class="button">St&#228;ng</button></div><p><strong>1.</strong> Klistra in sk&#228;rmbilder med Ctrl+V. Du kan ha flera bilder samtidigt.</p><p><strong>2.</strong> Anv&#228;nd <strong>Steg</strong> f&#246;r numrerade klick, <strong>Fokus</strong> f&#246;r att tona ned bakgrunden, <strong>Zoom 2×</strong> f&#246;r sm&#229; menyer och <strong>Maskera</strong> f&#246;r att t&#228;cka k&#228;nslig data.</p><p><strong>3.</strong> V&#228;lj format och f&#228;rdig pixelstorlek. Med <em>Hela bilden + marginal</em> f&#246;rsvinner ingen information.</p><p><strong>4.</strong> Öppna <strong>Objekt &amp; lager</strong> för att välja, dölja, ändra färg, flytta fram/bak och radera enskilda markeringar. Välj <strong>+ Färgpaletter</strong> för fasta HEX-värden från Notion.<br><strong>5.</strong> <strong>Spara redigerbart projekt</strong> (.json) om du vill kunna flytta dina pilar eller &#228;ndra texten senare.</p><p><strong>6.</strong> Välj Anslut till GitHub med en begränsad nyckel. Chrome kan erbjuda att spara den som lösenord. Nyckeln används bara i webbläsarens minne och lagras inte av appen.</p><p><strong>7.</strong> Installera appen från Chrome-menyn eller knappen Installera app. Det kräver normalt inga administratörsrättigheter.</p><p><strong>Genv&#228;gar:</strong> A pil, R ruta, N nummer, T text, H markering, S fokus, Z zoom, M maskera, C besk&#228;r, V flytta, Ctrl+Z &#229;ngra, piltangenter flyttar valt objekt 1 px (Shift = 10 px).</p><p><strong>Viktigt:</strong> Anv&#228;nd en helt t&#228;ckande maskering f&#246;r verkligt k&#228;nslig data. F&#246;rhandsgranska varje bild innan du laddar upp till ett offentligt repo.</p></div></dialog>
+<dialog id="helpDialog"><div class="dialog-inner"><div class="side-title"><h2>Snabbhj&#228;lp</h2><button id="closeHelp" class="button">St&#228;ng</button></div><p><strong>1.</strong> Klistra in sk&#228;rmbilder med Ctrl+V. Du kan ha flera bilder samtidigt.</p><p><strong>2.</strong> Anv&#228;nd <strong>Steg</strong> f&#246;r numrerade klick, <strong>Fokus</strong> f&#246;r att tona ned bakgrunden, <strong>Zoom</strong> f&#246;r sm&#229; menyer och <strong>Maskera</strong> f&#246;r att t&#228;cka k&#228;nslig data.</p><p><strong>3.</strong> V&#228;lj format och f&#228;rdig pixelstorlek. Med <em>Hela bilden + marginal</em> f&#246;rsvinner ingen information.</p><p><strong>4.</strong> Öppna <strong>Objekt &amp; lager</strong> för att välja, dölja, ändra färg, flytta fram/bak och radera enskilda markeringar. Välj <strong>+ Färgpaletter</strong> för fasta HEX-värden från Notion.<br><strong>5.</strong> <strong>Spara redigerbart projekt</strong> (.json) om du vill kunna flytta dina pilar eller &#228;ndra texten senare.</p><p><strong>6.</strong> Välj Anslut till GitHub med en begränsad nyckel. Chrome kan erbjuda att spara den som lösenord. Nyckeln används bara i webbläsarens minne och lagras inte av appen.</p><p><strong>7.</strong> Installera appen från Chrome-menyn eller knappen Installera app. Det kräver normalt inga administratörsrättigheter.</p><p><strong>Genv&#228;gar:</strong> A pil, R ruta, N nummer, T text, H markering, S fokus, Z zoom, M maskera, C besk&#228;r, V flytta, Ctrl+Z &#229;ngra, piltangenter flyttar valt objekt 1 px (Shift = 10 px).</p><p><strong>Viktigt:</strong> Anv&#228;nd en helt t&#228;ckande maskering f&#246;r verkligt k&#228;nslig data. F&#246;rhandsgranska varje bild innan du laddar upp till ett offentligt repo.</p></div></dialog>
 <script src="./app.js" defer></script>
 </body>
 </html>

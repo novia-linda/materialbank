@@ -28,3 +28,10 @@ Bilder bearbetas lokalt. Accessnycklar lagras inte av appen. Skicka aldrig en to
 ## Testnotering
 
 I Chromium testades följande mot ett syntetiskt skärmklipp: 9 paletter/45 färger, steg/pil/ruta/zoom, lager-val, enskild färg- och linjebreddsändring, flytta i staplingsordning, visa/dölj, flytta förstoringslins, export 1600 × 900, spara projekt och ångra. GitHub-publiceringen har inte testats med en riktig token i denna version (befintligt uppladdningsflöde är oförändrat).
+
+
+## Nytt i v0.6
+
+Välj **Novia Design** (svart, vitt, grått och Novia-rött) eller **Kursmaterial** (mjukare palett) överst i appen. Läget sparas lokalt. Endast nya objekt får ny standardfärg; befintliga objekt ändras inte.
+
+**Zoom:** Klicka för att lägga in 2×-standardlins eller dra ett anpassat källområde. Markera zoomobjektet och dra den grå källrutan, dess hörn-/sidhandtag eller den runda linsen var för sig. Källrutans redigeringshjälp kommer aldrig med i exporten. För rutor och pilar, använd vanliga verktyg.
