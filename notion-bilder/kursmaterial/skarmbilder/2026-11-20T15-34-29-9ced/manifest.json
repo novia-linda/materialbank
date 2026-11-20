@@ -1,0 +1,18 @@
+{
+  "schema": "github-bildbibliotek-03",
+  "created": "2026-11-20T15:34:48.193Z",
+  "repository": "novia-linda/materialbank",
+  "branch": "main",
+  "batch": "notion-bilder/kursmaterial/skarmbilder/2026-11-20T15-34-29-9ced",
+  "images": [
+    {
+      "name": "emilias-parkeringsplats",
+      "description": "",
+      "filename": "01-emilias-parkeringsplats.png",
+      "path": "notion-bilder/kursmaterial/skarmbilder/2026-11-20T15-34-29-9ced/01-emilias-parkeringsplats.png",
+      "url": "https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-20T15-34-29-9ced/01-emilias-parkeringsplats.png",
+      "width": 1134,
+      "height": 783
+    }
+  ]
+}
