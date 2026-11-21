@@ -30,6 +30,22 @@
 .phone-review{position:absolute;inset:0;z-index:6;background:#f5eee3;padding:calc(env(safe-area-inset-top) + 16px) 17px calc(env(safe-area-inset-bottom) + 16px);display:flex;flex-direction:column;gap:13px;overflow:auto}.phone-review h2{font-family:Georgia,serif;font-size:24px;margin:0}.phone-review p{font-size:13px;line-height:1.5}.phone-review video{background:#332e28;border-radius:8px;width:100%;max-height:42dvh}.phone-review-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.phone-review-actions button{font-size:12px;min-width:0;padding:9px 6px}.phone-review .btn.wide{min-height:43px}.modal-backdrop{z-index:200}
 @media(min-width:721px){.phone-studio{width:min(100%,470px);left:50%;transform:translateX(-50%);box-shadow:0 0 0 100vw #27221fd9,0 0 75px #0004}}@media(max-height:640px){.phone-cues{padding-top:calc(env(safe-area-inset-top) + 5px);gap:2px}.phone-cue-heading{font-size:16px}.phone-cues p{font-size:12px}.phone-camera-controls button{min-height:26px;font-size:10px}}
 
+
+/* v2.1: teleprompter and picture form one guided sequence; camera below image. */
+.phone-studio{grid-template-rows:30fr 40fr 20fr 10fr}
+.phone-cues{background:#faf4e8;gap:min(7px,1dvh);padding:calc(env(safe-area-inset-top) + 11px) 18px 10px}
+.phone-cue-bar{color:#856e5c;letter-spacing:.7px}
+.phone-cue-dots{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:9px;min-height:19px;padding:5px 0 4px}
+.phone-cue-dots span{display:block;width:9px;height:9px;flex:0 0 9px;border-radius:50%;background:#dfd2bb;border:1px solid #c9b8a0;box-shadow:inset 0 1px 2px #87755c26;transition:background .18s ease,box-shadow .18s ease,transform .18s ease}
+.phone-cue-dots span.past{background:#baa385;border-color:#b49c7c}
+.phone-cue-dots span.active{background:#fffef9;border:2px solid #bf5548;box-shadow:0 0 0 3px #ebc7ac,0 0 10px 2px #fffbe9;transform:scale(1.15)}
+.phone-cue-heading{font-size:clamp(16px,2.65dvh,25px)}
+.phone-cues p{font-size:clamp(14px,2.25dvh,20px);line-height:1.42;font-weight:600}
+.phone-cue-swipe{touch-action:pan-y}
+.phone-cue-swipe strong{font-size:clamp(11px,1.9dvh,15px)}
+.phone-paper-caption{justify-content:space-between;align-items:center}
+.phone-paper-caption span:last-child{background:#fffaf2cf;padding:4px 7px;border-radius:6px;font-weight:700;font-size:9px;text-shadow:none}
+@media(max-height:660px){.phone-cue-dots{gap:7px;padding:2px 0;min-height:12px}.phone-cue-dots span{width:7px;height:7px;flex-basis:7px}.phone-cues p{font-size:clamp(12px,2.2dvh,16px)}}
 </style>
 </head>
 <body>
@@ -71,7 +87,10 @@
         <div class="field"><label for="sceneMode">Scenens bildkälla</label><select id="sceneMode"><option value="paper">Pappersillustration / bild</option><option value="camera">Jag framför kameran</option></select><small>Du kan växla mellan pappersbilder och videoklipp i tidslinjen.</small></div>
         <div class="field"><label for="sceneTitle">Rubrik</label><textarea id="sceneTitle" rows="2" maxlength="105"></textarea></div>
         <div class="field"><label for="sceneBody">Förklarande text på bilden</label><textarea id="sceneBody" rows="3" maxlength="270"></textarea></div>
-        <div class="field"><label for="sceneScript">Stödmanus – vad du vill säga</label><textarea id="sceneScript" rows="4" maxlength="2400" placeholder="Berätta med egna ord... Du behöver inte läsa innantill."></textarea><small>Visas inte i filmen. ChatGPT kan fylla i detta i storyboarden.</small></div>
+        <div class="field"><label for="sceneScript">Stödmanus – vad du vill säga</label><textarea id="sceneScript" rows="4" maxlength="2400" placeholder="Berätta med egna ord... Du behöver inte läsa innantill."></textarea><small>Övergripande manus till den här pappersbilden. Visas inte i filmen.</small></div>
+        <div class="field"><label for="sceneCues">Stödpunkter för den här bilden</label><textarea id="sceneCues" rows="5" maxlength="3500" placeholder="En tanke per rad.
+Varje rad blir en prick.
+Sista raden, sedan nästa bild."></textarea><small>En stödtext per rad. Varje rad blir en ljus prick i iPhone-läget. När du sveper vidare från sista punkten byts bilden automatiskt.</small></div>
         <div class="field optional" id="compareFields"><div class="grid2"><div><label for="leftTitle">Vänster rubrik</label><input id="leftTitle" maxlength="48"></div><div><label for="rightTitle">Höger rubrik</label><input id="rightTitle" maxlength="48"></div></div><div class="grid2"><div><label for="leftText">Vänster text</label><textarea id="leftText" rows="3" maxlength="140"></textarea></div><div><label for="rightText">Höger text</label><textarea id="rightText" rows="3" maxlength="140"></textarea></div></div></div>
         <div class="field optional" id="stepsFields"><label>Tre nyckelsteg</label><input id="step1" maxlength="70" placeholder="Steg 1"><input id="step2" maxlength="70" placeholder="Steg 2"><input id="step3" maxlength="70" placeholder="Steg 3"></div>
         <div class="field optional" id="chartFields"><label>Etiketter i diagrammet</label><input id="bar1" maxlength="48" placeholder="Första stapeln"><input id="bar2" maxlength="48" placeholder="Andra stapeln"><input id="bar3" maxlength="48" placeholder="Tredje stapeln"></div>
@@ -101,11 +120,16 @@
   <footer class="statusbar"><span id="statusMessage">Börja gärna med en storyboard i ChatGPT.</span><span>Stil: Papper & tusch · v2.0</span></footer>
 </div>
 <div class="phone-studio" id="phoneStudio" role="dialog" aria-modal="true" aria-label="Inspelningsläge för iPhone" hidden>
-  <section class="phone-cues" aria-label="Stödmanus">
-    <div class="phone-cue-bar"><strong>STÖDMANUS <span id="phoneCueNum">1 / 10</span></strong><div class="phone-cue-tools"><button type="button" id="phoneConnect" aria-label="Anslut GitHub">⌁ GitHub</button><button type="button" id="phoneExit" aria-label="Lämna inspelningsläget">✕</button></div></div>
+  <section class="phone-cues" aria-label="Stödmanus för aktuell pappersbild">
+    <div class="phone-cue-bar"><strong id="phoneCueNum">BILD 1 / 5 · PUNKT 1 / 2</strong><div class="phone-cue-tools"><button type="button" id="phoneConnect" aria-label="Anslut GitHub">⌁ GitHub</button><button type="button" id="phoneExit" aria-label="Lämna inspelningsläget">✕</button></div></div>
+    <div class="phone-cue-dots" id="phoneCueDots" role="group" aria-label="Stödpunkter för den här bilden"></div>
     <div class="phone-cue-heading" id="phoneCueTitle">Från svar till handling</div>
-    <p id="phoneCueBody">Berätta med egna ord. Detta är bara ett stöd.</p>
-    <div class="phone-zone-tip">Stödtext – visas inte i filmen</div>
+    <p id="phoneCueBody" aria-live="polite">Berätta med egna ord. Detta är bara ett stöd.</p>
+    <div class="phone-zone-tip" id="phoneCueTip">Varje prick är en stödpunkt för samma pappersbild</div>
+  </section>
+  <section class="phone-paper" id="phonePaperZone" aria-label="Aktuell pappersbild, byts automatiskt med stödtexten">
+    <canvas id="phonePaperCanvas" width="720" height="1280" aria-label="Pappersbild som ska synas"></canvas>
+    <div class="phone-paper-caption"><span id="phoneVisualLabel">BILD 1 / 5</span><span>Följer stödtexten automatiskt</span></div>
   </section>
   <section class="phone-camera" aria-label="Kameraförhandsvisning">
     <video id="phoneCam" muted playsinline autoplay></video>
@@ -118,15 +142,10 @@
       <button id="phoneCameraOnScreen" type="button" class="phone-quiet" aria-label="Välj kamerabilden till den färdiga filmen">Visa mig</button>
     </div>
   </section>
-  <section class="phone-paper" id="phonePaperZone" aria-label="Svep här för att byta pappersbild">
-    <canvas id="phonePaperCanvas" width="720" height="1280" aria-label="Pappersbild som ska synas"></canvas>
-    <div class="phone-paper-caption"><span id="phoneVisualLabel">BILD 1 / 5</span><span>← Byt bild →</span></div>
-    <div class="phone-paper-buttons"><button id="phonePaperPrev" type="button" aria-label="Föregående pappersbild">‹</button><button id="phonePaperNext" type="button" aria-label="Nästa pappersbild">›</button></div>
-  </section>
-  <section class="phone-cue-swipe" id="phoneCueSwipe" aria-label="Svep här för att byta stödtext">
-    <button id="phoneCuePrev" type="button" aria-label="Föregående stödtext">‹</button>
-    <div><strong>← Svep för nästa stödtext</strong><small id="phoneSwipeStatus">Text och bilder kan bytas oberoende av varandra</small></div>
-    <button id="phoneCueNext" type="button" aria-label="Nästa stödtext">›</button>
+  <section class="phone-cue-swipe" id="phoneCueSwipe" aria-label="Svep med tummen för att byta stödpunkt och därefter bild">
+    <button id="phoneCuePrev" type="button" aria-label="Föregående stödpunkt">‹</button>
+    <div><strong>← Svep för nästa stödpunkt</strong><small id="phoneSwipeStatus">Bilden byts efter sista punkten</small></div>
+    <button id="phoneCueNext" type="button" aria-label="Nästa stödpunkt">›</button>
   </section>
   <div class="phone-review" id="phoneReview" hidden>
     <h2>Inspelningen är färdig</h2><p id="phoneReviewInfo">Video och händelser finns nu i projektet.</p>
@@ -153,9 +172,9 @@
     {layout:'cover',title:'Människan styr fortfarande',body:'Viktiga beslut och känsliga handlingar ska kunna granskas av en människa.',motif:'shield',duration:4,motion:'reveal'},
     {layout:'closing',title:'Det handlar om ansvar',body:'Börja enkelt. Automatisera klokt. Behåll kontrollen.',motif:'check',duration:4,motion:'zoom'}
   ];
-  const blankScene=()=>({layout:'cover',title:'En ny idé',body:'Skriv vad tittaren ska förstå av den här scenen.',motif:'spark',duration:4,motion:'zoom',notes:'',leftTitle:'FÖRE',leftText:'',rightTitle:'EFTER',rightText:'',steps:['Första steget','Andra steget','Tredje steget'],bars:['Steg 1','Steg 2','Steg 3'],image:'',script:'',visualMode:'paper',clip:null});
+  const blankScene=()=>({layout:'cover',title:'En ny idé',body:'Skriv vad tittaren ska förstå av den här scenen.',motif:'spark',duration:4,motion:'zoom',notes:'',leftTitle:'FÖRE',leftText:'',rightTitle:'EFTER',rightText:'',steps:['Första steget','Andra steget','Tredje steget'],bars:['Steg 1','Steg 2','Steg 3'],image:'',script:'',cues:[],visualMode:'paper',clip:null});
   const cleanText=(x,n=500)=>typeof x==='string'?x.slice(0,n):'';
-  function normalizeScene(s){const b=blankScene();if(!s||typeof s!=='object')return b;return {...b,...s,script:cleanText(s.script||s.narration,2400),visualMode:s.visualMode==='camera'?'camera':'paper',clip:s.clip&&typeof s.clip.path==='string'&&/^media\/[A-Za-z0-9._-]+$/.test(s.clip.path)?{path:s.clip.path,mime:cleanText(s.clip.mime,90),length:Number(s.clip.length)||0}:null,layout:layouts[s.layout]?s.layout:b.layout,title:cleanText(s.title,105),body:cleanText(s.body,270),leftTitle:cleanText(s.leftTitle,48),leftText:cleanText(s.leftText,140),rightTitle:cleanText(s.rightTitle,48),rightText:cleanText(s.rightText,140),notes:cleanText(s.notes,1000),steps:Array.isArray(s.steps)?[0,1,2].map(i=>cleanText(s.steps[i],70)):b.steps,bars:Array.isArray(s.bars)?[0,1,2].map(i=>cleanText(s.bars[i],48)):b.bars,image:typeof s.image==='string'&&s.image.startsWith('data:image/')?s.image:'',imageUrl:typeof s.imageUrl==='string'&&/^https:\/\//.test(s.imageUrl)&&s.imageUrl.length<2048?s.imageUrl:'',motif:['spark','robot','bubble','workflow','check','shield','pen','chart'].includes(s.motif)?s.motif:'spark',motion:['zoom','up','down','still','reveal'].includes(s.motion)?s.motion:'zoom',duration:Math.max(1,Math.min(120,Number(s.duration)||4))};}
+  function normalizeScene(s){const b=blankScene();if(!s||typeof s!=='object')return b;return {...b,...s,script:cleanText(s.script||s.narration,2400),cues:Array.isArray(s.cues)?s.cues.slice(0,32).map(x=>cleanText(x,650).trim()).filter(Boolean):[],visualMode:s.visualMode==='camera'?'camera':'paper',clip:s.clip&&typeof s.clip.path==='string'&&/^media\/[A-Za-z0-9._-]+$/.test(s.clip.path)?{path:s.clip.path,mime:cleanText(s.clip.mime,90),length:Number(s.clip.length)||0}:null,layout:layouts[s.layout]?s.layout:b.layout,title:cleanText(s.title,105),body:cleanText(s.body,270),leftTitle:cleanText(s.leftTitle,48),leftText:cleanText(s.leftText,140),rightTitle:cleanText(s.rightTitle,48),rightText:cleanText(s.rightText,140),notes:cleanText(s.notes,1000),steps:Array.isArray(s.steps)?[0,1,2].map(i=>cleanText(s.steps[i],70)):b.steps,bars:Array.isArray(s.bars)?[0,1,2].map(i=>cleanText(s.bars[i],48)):b.bars,image:typeof s.image==='string'&&s.image.startsWith('data:image/')?s.image:'',imageUrl:typeof s.imageUrl==='string'&&/^https:\/\//.test(s.imageUrl)&&s.imageUrl.length<2048?s.imageUrl:'',motif:['spark','robot','bubble','workflow','check','shield','pen','chart'].includes(s.motif)?s.motif:'spark',motion:['zoom','up','down','still','reveal'].includes(s.motion)?s.motion:'zoom',duration:Math.max(1,Math.min(120,Number(s.duration)||4))};}
   const initialProject=()=>({version:2,id:'PROJ-DEMO',words:[],voice:null,title:'Från svar till handling',style:{id:'paper-ink-v1',name:'Papper & tusch',locked:true},scenes:demoScenes.map(normalizeScene)});
   let project=initialProject(),selected=0,time=0,playing=false,playStart=0,raf=0,exporting=false,audioUrl='',audioEl=null,audioCtx=null,audioSource=null,audioOut=null,activeTab='preview';
   const canvas=$('previewCanvas'),ctx=canvas.getContext('2d');
@@ -212,7 +231,7 @@
   function esc(str){return String(str==null?'':str).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
   function listScenes(){const box=$('sceneList');box.innerHTML=project.scenes.map((s,i)=>`<div class="scene-item ${i===selected?'active':''}" data-select="${i}" role="button" tabindex="0" aria-label="Välj scen ${i+1}"><canvas class="scene-thumb" data-thumb="${i}" width="80" height="142" aria-hidden="true"></canvas><div class="scene-info"><span class="scene-topline">SCEN ${String(i+1).padStart(2,'0')}</span><span class="scene-name">${esc(s.title)||'Utan rubrik'}</span><span class="scene-meta">${s.visualMode==='camera'?'📹 Kamera':esc(layouts[s.layout])} · ${s.duration} sek</span><span class="mini-actions"><button type="button" data-move="${i}" data-dir="-1" title="Flytta upp" aria-label="Flytta scen upp">↑</button><button type="button" data-move="${i}" data-dir="1" title="Flytta ned" aria-label="Flytta scen ned">↓</button></span></div></div>`).join('');box.querySelectorAll('canvas[data-thumb]').forEach(c=>thumb(project.scenes[Number(c.dataset.thumb)],Number(c.dataset.thumb),c));$('sceneCount').textContent=project.scenes.length;}
   function listTimeline(){const box=$('timeline');box.innerHTML=project.scenes.map((s,i)=>`<button type="button" class="timeline-item ${selected===i?'active':''}" data-time-scene="${i}" style="width:${Math.min(170,Math.max(98,62+s.duration*13))}px"><strong>${String(i+1).padStart(2,'0')} ${esc(s.title)||'Scen'}</strong><small>${s.visualMode==='camera'?'📹 Kamera':esc(layouts[s.layout])} · ${s.duration}s</small></button>`).join('');}
-  function fillInspector(){let s=project.scenes[selected];$('sceneNumberBadge').textContent=String(selected+1).padStart(2,'0');$('projectName').value=project.title;$('projectTitleDisplay').textContent=project.title;$('sceneLayout').value=s.layout;$('sceneTitle').value=s.title;$('sceneBody').value=s.body;$('sceneMotif').value=s.motif;$('sceneDuration').value=s.duration;$('sceneMotion').value=s.motion;$('sceneNotes').value=s.notes||'';$('sceneScript').value=s.script||'';$('sceneMode').value=s.visualMode||'paper';$('projectIdInput').value=project.id||'PROJ-DEMO';$('projectIdDisplay').textContent=project.id||'PROJ-DEMO';$('leftTitle').value=s.leftTitle||'';$('rightTitle').value=s.rightTitle||'';$('leftText').value=s.leftText||'';$('rightText').value=s.rightText||'';for(let i=0;i<3;i++){$(`step${i+1}`).value=(s.steps||[])[i]||'';$(`bar${i+1}`).value=(s.bars||[])[i]||'';}['compare','steps','chart','image'].forEach(type=>$(type+'Fields').classList.toggle('visible',s.layout===type));$('motifField').style.display=s.layout==='image'?'none':'';$('removeImage').disabled=!s.image;$('deleteScene').disabled=project.scenes.length<=1;}
+  function fillInspector(){let s=project.scenes[selected];$('sceneNumberBadge').textContent=String(selected+1).padStart(2,'0');$('projectName').value=project.title;$('projectTitleDisplay').textContent=project.title;$('sceneLayout').value=s.layout;$('sceneTitle').value=s.title;$('sceneBody').value=s.body;$('sceneMotif').value=s.motif;$('sceneDuration').value=s.duration;$('sceneMotion').value=s.motion;$('sceneNotes').value=s.notes||'';$('sceneScript').value=s.script||'';$('sceneCues').value=(s.cues||[]).join('\n');$('sceneMode').value=s.visualMode||'paper';$('projectIdInput').value=project.id||'PROJ-DEMO';$('projectIdDisplay').textContent=project.id||'PROJ-DEMO';$('leftTitle').value=s.leftTitle||'';$('rightTitle').value=s.rightTitle||'';$('leftText').value=s.leftText||'';$('rightText').value=s.rightText||'';for(let i=0;i<3;i++){$(`step${i+1}`).value=(s.steps||[])[i]||'';$(`bar${i+1}`).value=(s.bars||[])[i]||'';}['compare','steps','chart','image'].forEach(type=>$(type+'Fields').classList.toggle('visible',s.layout===type));$('motifField').style.display=s.layout==='image'?'none':'';$('removeImage').disabled=!s.image;$('deleteScene').disabled=project.scenes.length<=1;}
   function updateAll(){time=Math.min(time,totalDuration());listScenes();listTimeline();fillInspector();listWords();renderAt(time);}
   function chooseScene(i,seek=true){if(i<0||i>=project.scenes.length)return;pause();selected=i;if(seek)time=sceneStart(i)+.05;updateAll();displaySceneClip();}
   function moveScene(i,dir){let next=i+dir;if(next<0||next>=project.scenes.length)return;pause();const [item]=project.scenes.splice(i,1);project.scenes.splice(next,0,item);selected=next;time=sceneStart(next)+.05;updateAll();status('Scenen har flyttats.');}
@@ -231,10 +250,10 @@
   function stripFences(v){return String(v).trim().replace(/^```(?:json)?\s*/i,'').replace(/\s*```$/,'').trim();}
   function copyText(s){if(navigator.clipboard?.writeText)return navigator.clipboard.writeText(s).catch(()=>fallbackCopy(s));return Promise.resolve(fallbackCopy(s));}
   function fallbackCopy(s){const a=document.createElement('textarea');a.value=s;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();const ok=document.execCommand('copy');a.remove();if(!ok)throw new Error('Kopiering fungerar inte här.');}
-  function chatPrompt(){const exportClean=JSON.parse(JSON.stringify(project));exportClean.scenes.forEach(s=>{if(s.image)s.image='';});return `Du är manusförfattare och visuellt pedagogiskt stöd till min lokala app Paper Story Studio. Hjälp mig vidareutveckla storyboarden nedan. Bevara ALLTID den fasta stilen "Papper & tusch": varm beige linnebakgrund, rivna krämfärgade papperskort, handritade svarta tuschikoner, små handritade röda markeringar, lugna kamerarörelser, EN pedagogisk idé per scen. Skriv på svenska.\n\nDitt svar när vi vill importera tillbaka ska vara ENDAST ett giltigt JSON-objekt, utan Markdown-kodstaket. Använd exakt denna övergripande struktur: {"version":1,"title":"...","style":{"id":"paper-ink-v1","name":"Papper & tusch","locked":true},"scenes":[...]}. För varje scen ska du använda layout (cover,compare,steps,chart,image,closing), title, body, motif (spark,robot,bubble,workflow,check,shield,pen,chart), duration (1-20 sekunder), motion (still,zoom,up,down,reveal), notes. För compare används leftTitle,leftText,rightTitle,rightText; för steps används steps som array med tre strängar; för chart bars som array med tre strängar. Behåll befintliga fält och berättelsens röda tråd. Ingen text får vara för lång (title högst 105 tecken, body högst 270). Generera aldrig hemligheter eller personuppgifter. Be mig gärna först säga vad jag vill ändra.\n\nAKTUELLT PROJEKT:\n${JSON.stringify(exportClean,null,2)}`;}
+  function chatPrompt(){const exportClean=JSON.parse(JSON.stringify(project));exportClean.scenes.forEach(s=>{if(s.image)s.image='';});return `Du är manusförfattare och visuellt pedagogiskt stöd till min lokala app Paper Story Studio. Hjälp mig vidareutveckla storyboarden nedan. Bevara ALLTID den fasta stilen "Papper & tusch": varm beige linnebakgrund, rivna krämfärgade papperskort, handritade svarta tuschikoner, små handritade röda markeringar, lugna kamerarörelser, EN pedagogisk idé per scen. Skriv på svenska.\n\nDitt svar när vi vill importera tillbaka ska vara ENDAST ett giltigt JSON-objekt, utan Markdown-kodstaket. Använd exakt denna övergripande struktur: {"version":1,"title":"...","style":{"id":"paper-ink-v1","name":"Papper & tusch","locked":true},"scenes":[...]}. För varje scen ska du även ange cues som en array med 1–6 korta stödtexter som hör till bildens scen, där varje stödtext blir en prick och varje svep går till nästa. Bilden byts automatiskt efter scenens sista stödtext. För varje scen ska du använda layout (cover,compare,steps,chart,image,closing), title, body, motif (spark,robot,bubble,workflow,check,shield,pen,chart), duration (1-20 sekunder), motion (still,zoom,up,down,reveal), notes. För compare används leftTitle,leftText,rightTitle,rightText; för steps används steps som array med tre strängar; för chart bars som array med tre strängar. Behåll befintliga fält och berättelsens röda tråd. Ingen text får vara för lång (title högst 105 tecken, body högst 270). Generera aldrig hemligheter eller personuppgifter. Be mig gärna först säga vad jag vill ändra.\n\nAKTUELLT PROJEKT:\n${JSON.stringify(exportClean,null,2)}`;}
   function showModal(title,html,buttons=[]){$('modalTitle').textContent=title;$('modalContent').innerHTML=html;$('modalFooter').innerHTML='';buttons.forEach(o=>{const b=document.createElement('button');b.type='button';b.className='btn '+(o.primary?'primary':'subtle');b.textContent=o.label;b.addEventListener('click',o.click);$('modalFooter').appendChild(b);});$('modalBackdrop').hidden=false;}
   function hideModal(){$('modalBackdrop').hidden=true;}
-  function guide(){showModal('Från ChatGPT till färdig film',`<p>Paper Story Studio är en <b>produktionsstudio</b> — berättelsen börjar i ChatGPT.</p><ol><li><b>ChatGPT:</b> vi planerar ämne, pedagogisk dramaturgi, stödmanus och storyboard. Projektet sparas med PROJ-ID och scener.</li><li><b>Öppna:</b> ange GitHub-PAT under GitHub, skriv projekt-ID och hämta projektet. Bilder och scener ligger redan i rätt ordning.</li><li><b>Spela in:</b> prata fritt med iPhones mikrofon. För scener där du ska synas, välj <i>Jag framför kameran</i> och spela in eller importera ett klipp.</li><li><b>Spara:</b> spara ljud, klipp, projekt och ord till GitHub. I den publika materialbanken är filerna offentliga.</li><li><b>ChatGPT efter inspelning:</b> transkribering med tidsstämplar behövs för ordsynk. ChatGPT kan därefter skriva <code>words.json</code>, som appen läser och låter dig flytta runt.</li><li><b>Exportera:</b> spela upp filmen, justera tider och exportera. Export med kamera och ljud måste testas i just din iPhone-webbläsare.</li></ol>`,[{label:'Klart',primary:true,click:hideModal}]);}
+  function guide(){showModal('Från ChatGPT till färdig film',`<p>Paper Story Studio är en <b>produktionsstudio</b> — berättelsen börjar i ChatGPT.</p><ol><li><b>ChatGPT:</b> vi planerar ämne, pedagogisk dramaturgi, stödmanus och storyboard. Projektet sparas med PROJ-ID och scener.</li><li><b>Öppna:</b> ange GitHub-PAT under GitHub, skriv projekt-ID och hämta projektet. Bilder och scener ligger redan i rätt ordning.</li><li><b>Spela in:</b> välj iPhone-läge. Överst visas stödtexterna med en prick per punkt till samma pappersbild; pappersbilden visas i mitten, kameran under den och längst ner sveper du mellan punkterna. När du går vidare från sista punkten byts bilden automatiskt. Du kan välja <i>Visa mig</i> för kamerabilden i slutvideon.</li><li><b>Spara:</b> spara ljud, klipp, projekt och ord till GitHub. I den publika materialbanken är filerna offentliga.</li><li><b>ChatGPT efter inspelning:</b> transkribering med tidsstämplar behövs för ordsynk. ChatGPT kan därefter skriva <code>words.json</code>, som appen läser och låter dig flytta runt.</li><li><b>Exportera:</b> spela upp filmen, justera tider och exportera. Export med kamera och ljud måste testas i just din iPhone-webbläsare.</li></ol>`,[{label:'Klart',primary:true,click:hideModal}]);}
   function pasteModal(){showModal('Importera scener från ChatGPT',`<p>Be ChatGPT om en scenplan i JSON-format och klistra in hela JSON-objektet nedan. Det befintliga projektet ersätts, så spara gärna det först.</p><textarea id="jsonPasteField" spellcheck="false" placeholder='{"version":1,"title":"Min film","scenes":[{"layout":"cover","title":"Min första scen","body":"...","duration":4,"motion":"zoom","motif":"spark"}]}'></textarea><p class="hint" id="jsonError" style="color:#a84a40"></p>`,[{label:'Avbryt',click:hideModal},{label:'Importera projekt',primary:true,click:()=>{try{const obj=JSON.parse(stripFences($('jsonPasteField').value));importProject(obj);hideModal();}catch(err){$('jsonError').textContent='Kunde inte importera: '+err.message;}}}]);}
   function savePNG(){pause();const s=project.scenes[selected];const t=sceneStart(selected)+s.duration*.6;renderAt(t);canvas.toBlob(blob=>{if(blob){downloadBlob(blob,filename(project.title)+'-scen-'+(selected+1)+'.png');status('Aktuell scen sparades som PNG-bild.');}},'image/png');}
   function audioSetup(){if(!window.AudioContext||(!audioEl?.src&&!project.scenes.some(x=>x.visualMode==='camera'&&x.clip?.path)))return null;try{if(!audioCtx){audioCtx=new AudioContext();audioOut=audioCtx.createMediaStreamDestination();}if(audioEl&&audioEl.src&&!audioSource){audioSource=audioCtx.createMediaElementSource(audioEl);audioSource.connect(audioOut);audioSource.connect(audioCtx.destination);}if(project.scenes.some(x=>x.visualMode==='camera'&&x.clip?.path)&&!cameraSource){cameraSource=audioCtx.createMediaElementSource(cameraEl);cameraSource.connect(audioOut);cameraSource.connect(audioCtx.destination);}return audioOut?.stream.getAudioTracks()[0]||null;}catch(e){console.warn('Audio stream unavailable',e);return null;}}
@@ -322,8 +341,9 @@
   }
   function stopRecorder(kind){if(recording?.kind!==kind)return;try{recording.rec.stop();}catch(e){status('Kunde inte avsluta inspelningen: '+e.message);}}
   function newProjectID(){const d=new Date(),digits=[String(d.getFullYear()).slice(2),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0'),String(d.getHours()).padStart(2,'0'),String(d.getMinutes()).padStart(2,'0')].join('');setProjectID('PROJ-'+digits);githubStatus(`Nytt projekt-ID: ${project.id}. Börja med storyboard från ChatGPT.`);}
-  // iPhone direction mode: independent cue and paper-image timelines.
-  // Swipe changes are time-stamped and remain in project.takes for post-processing.
+  // iPhone recording: one sequence of grouped speaker cues, each tied to a paper image.
+  // A swipe past the final cue of a scene advances the corresponding image automatically.
+  // Both cue and image transitions are time-stamped for post-production.
   let phoneStream=null,phoneNoteIndex=0,phoneImageIndex=0,phoneNotes=[],phoneSource='paper';
   let phoneMainRecorder=null,phoneAudioRecorder=null,phoneActiveTake=null,phoneStarted=0,phoneClockTimer=null;
   let phoneVideoBlob=null,phoneAudioBlob=null,phoneVideoUrl='',phoneLastTake=null,phoneRecordingFailed=false;
@@ -333,13 +353,24 @@
   function phoneStamp(){return Math.round(phoneElapsed()*100)/100;}
   function phoneBuildNotes(){const notes=[];for(let i=0;i<project.scenes.length;i++){
       const s=project.scenes[i];let bits=Array.isArray(s.cues)?s.cues.map(x=>String(x||'').trim()).filter(Boolean):[];
-      if(!bits.length){const src=(s.script||s.body||s.notes||'').trim();bits=[s.title||`Bild ${i+1}`];if(src){const paragraphs=src.split(/\n\s*\n|\n/g).map(x=>x.trim()).filter(Boolean);for(const item of paragraphs){if(item.length>180){const split=item.split(/(?<=[.!?])\s+/g);bits.push(...(split.length>1?split:[item]));}else bits.push(item);}}}
+      if(!bits.length){const src=String(s.script||s.body||s.notes||s.title||'Berätta om den här bilden.').trim();bits=src.split(/(?<=[.!?])\s+|\n+/g).map(x=>x.trim()).filter(Boolean);}
+      if(!bits.length)bits=[s.title||`Bild ${i+1}`];
       for(const b of bits)notes.push({scene:i,text:b.slice(0,650),title:s.title||`Bild ${i+1}`});
     }return notes.length?notes:[{scene:0,text:'Berätta fritt om ämnet.',title:project.title}];}
+  function phoneGroup(){const current=phoneNotes[phoneNoteIndex]||phoneNotes[0];if(!current)return {start:0,total:1,position:0};let start=phoneNoteIndex;while(start>0&&phoneNotes[start-1].scene===current.scene)start--;let end=phoneNoteIndex+1;while(end<phoneNotes.length&&phoneNotes[end].scene===current.scene)end++;return {start,total:end-start,position:phoneNoteIndex-start};}
   function phoneUpdate(){const n=phoneNotes[phoneNoteIndex]||phoneNotes[0];if(!n)return;
-    $('phoneCueNum').textContent=`${phoneNoteIndex+1} / ${phoneNotes.length}`;
+    // There must never be an independent picture index: the cue owns the picture.
+    phoneImageIndex=n.scene;
+    const group=phoneGroup();
+    $('phoneCueNum').textContent=`BILD ${phoneImageIndex+1} / ${project.scenes.length} · PUNKT ${group.position+1} / ${group.total}`;
+    $('phoneCueDots').innerHTML=Array.from({length:group.total},(_,i)=>`<span class="${i===group.position?'active':i<group.position?'past':''}" aria-label="Punkt ${i+1}${i===group.position?', aktuell':''}"></span>`).join('');
+    $('phoneCueDots').setAttribute('aria-label',`${group.total} stödpunkt${group.total===1?'':'er'} för bild ${phoneImageIndex+1}, punkt ${group.position+1} visas`);
     $('phoneCueTitle').textContent=n.title;
     $('phoneCueBody').textContent=n.text;
+    const last=group.position===group.total-1;
+    const wholeLast=phoneNoteIndex===phoneNotes.length-1;
+    $('phoneCueTip').textContent=wholeLast?'Sista punkten i berättelsen':last?'Sista punkten till den här bilden – nästa svep byter bild':`Punkt ${group.position+1} av ${group.total} till samma bild`;
+    if(!phoneMainRecorder)$('phoneSwipeStatus').textContent=wholeLast?'Berättelsen är färdig':last?'Nästa svep byter bild':'Nästa punkt på samma bild';
     $('phoneVisualLabel').textContent=`BILD ${phoneImageIndex+1} / ${project.scenes.length}`;
     $('phoneCameraOnScreen').textContent=phoneSource==='camera'?'✓ Jag visas':'Visa mig';
     $('phoneCameraOnScreen').setAttribute('aria-pressed',String(phoneSource==='camera'));
@@ -347,24 +378,26 @@
     phoneCtx.setTransform(1,0,0,1,0,0);phoneCtx.clearRect(0,0,720,1280);
     try{drawScene(phoneCtx,{...s,visualMode:'paper'},phoneImageIndex,.48);}catch(e){console.warn('Paper preview',e);phoneCtx.fillStyle='#efe4d0';phoneCtx.fillRect(0,0,720,1280);phoneCtx.fillStyle='#37291f';phoneCtx.font='bold 39px Georgia';phoneCtx.textAlign='center';phoneCtx.fillText(s.title||`Bild ${phoneImageIndex+1}`,360,510,630);}
   }
-  function phoneCueShift(delta){const next=Math.max(0,Math.min(phoneNotes.length-1,phoneNoteIndex+delta));if(next===phoneNoteIndex)return;phoneNoteIndex=next;
-    if(phoneActiveTake)phoneActiveTake.events.push({at:phoneStamp(),type:'cue',index:next,text:phoneNotes[next].text});phoneUpdate();}
-  function phoneImageShift(delta){const next=Math.max(0,Math.min(project.scenes.length-1,phoneImageIndex+delta));if(next===phoneImageIndex)return;phoneImageIndex=next;
-    if(phoneActiveTake)phoneActiveTake.events.push({at:phoneStamp(),type:'image',index:next,sceneTitle:project.scenes[next].title});phoneUpdate();}
+  function phoneCueShift(delta){const next=Math.max(0,Math.min(phoneNotes.length-1,phoneNoteIndex+delta));if(next===phoneNoteIndex)return;
+    const prevScene=phoneImageIndex;phoneNoteIndex=next;phoneImageIndex=phoneNotes[next].scene;
+    if(phoneActiveTake){const at=phoneStamp();phoneActiveTake.events.push({at,type:'cue',index:next,scene:phoneImageIndex,text:phoneNotes[next].text});if(prevScene!==phoneImageIndex)phoneActiveTake.events.push({at,type:'image',index:phoneImageIndex,sceneTitle:project.scenes[phoneImageIndex].title});}
+    phoneUpdate();
+  }
   function phoneChangeSource(){phoneSource=phoneSource==='camera'?'paper':'camera';if(phoneActiveTake)phoneActiveTake.events.push({at:phoneStamp(),type:'source',value:phoneSource});phoneUpdate();}
-  function phoneInstallSwipe(id,callback){const node=$(id);let x=0,y=0,down=false;
-    node.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;down=true;x=e.clientX;y=e.clientY;});
-    node.addEventListener('pointerup',e=>{if(!down)return;down=false;const dx=e.clientX-x,dy=e.clientY-y;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.15){callback(dx<0?1:-1);e.preventDefault();}});
+  function phoneInstallSwipe(id,callback){const node=$(id);let startX=0,startY=0,down=false,lastSwipeAt=-1000;
+    const accept=(dx,dy)=>{if(Math.abs(dx)<=42||Math.abs(dx)<=Math.abs(dy)*1.15)return;const now=performance.now();if(now-lastSwipeAt<320)return;lastSwipeAt=now;callback(dx<0?1:-1);};
+    node.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'||e.target.closest('button'))return;down=true;startX=e.clientX;startY=e.clientY;});
+    node.addEventListener('pointerup',e=>{if(e.pointerType==='touch'||!down)return;down=false;accept(e.clientX-startX,e.clientY-startY);});
     node.addEventListener('pointercancel',()=>{down=false;});
-    // iOS Safari fallback when Pointer Events are canceled by browser gesture.
-    node.addEventListener('touchstart',e=>{if(e.target.closest('button'))return;const t=e.changedTouches?.[0];if(t){x=t.clientX;y=t.clientY;down=true;}},{passive:true});
-    node.addEventListener('touchend',e=>{if(!down)return;down=false;const t=e.changedTouches?.[0];if(!t)return;const dx=t.clientX-x,dy=t.clientY-y;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.15){callback(dx<0?1:-1);e.preventDefault();}},{passive:false});
+    let touchX=0,touchY=0;
+    node.addEventListener('touchstart',e=>{if(e.target.closest('button'))return;const t=e.changedTouches?.[0];if(t){touchX=t.clientX;touchY=t.clientY;down=true;}},{passive:true});
+    node.addEventListener('touchend',e=>{if(!down)return;down=false;const t=e.changedTouches?.[0];if(!t)return;const dx=t.clientX-touchX,dy=t.clientY-touchY;if(Math.abs(dx)>42&&Math.abs(dx)>Math.abs(dy)*1.15)e.preventDefault();accept(dx,dy);},{passive:false});
   }
   function phoneScreen(open){$('phoneStudio').hidden=!open;document.body.style.overflow=open?'hidden':'';}
   async function phoneOpen(){if(recording||exporting){status('Avsluta nuvarande inspelning eller export först.');return;}pause();phoneNotes=phoneBuildNotes();phoneImageIndex=selected;
     phoneNoteIndex=Math.max(0,phoneNotes.findIndex(n=>n.scene===selected));phoneSource='paper';$('phoneReview').hidden=true;
     phoneScreen(true);phoneUpdate();$('phoneRecordSignal').textContent='KAMERA AV';$('phoneClock').textContent='00:00';
-    $('phoneSwipeStatus').textContent='Text och bild kan bytas oberoende';
+    $('phoneSwipeStatus').textContent='Nästa stödpunkt · bilden följer automatiskt';
     await phoneEnableCamera();}
   async function phoneEnableCamera(){if(phoneStream?.active)return true;
     if(!navigator.mediaDevices?.getUserMedia){$('phoneRecordSignal').textContent='INGEN KAMERA';$('phoneSwipeStatus').textContent='Kamera kräver säker HTTPS-anslutning';return false;}
@@ -410,7 +443,7 @@
       audioRec.start(300);
     }}catch(e){phoneAudioRecorder=null;console.warn('Separate audio not available; video contains sound',e);}}
     try{main.start(300);}catch(e){if(phoneAudioRecorder?.state==='recording')phoneAudioRecorder.stop();phoneMainRecorder=null;recording=null;phoneActiveTake=null;phoneStarted=0;$('phoneSwipeStatus').textContent='Kunde inte starta inspelningen: '+e.message;return;}
-    $('phoneRecord').hidden=true;$('phoneStop').hidden=false;$('phoneRecordSignal').classList.add('is-recording');$('phoneRecordSignal').textContent='● REC';$('phoneClock').textContent='00:00';$('phoneSwipeStatus').textContent='Svep för nästa stödtext';
+    $('phoneRecord').hidden=true;$('phoneStop').hidden=false;$('phoneRecordSignal').classList.add('is-recording');$('phoneRecordSignal').textContent='● REC';$('phoneClock').textContent='00:00';$('phoneSwipeStatus').textContent='Svep för nästa punkt – bilden följer';
     phoneClockTimer=setInterval(phoneSetClock,230);
   }
   function phoneRecordStop(){if(phoneMainRecorder&&phoneMainRecorder.state==='recording'){
@@ -428,10 +461,10 @@
     try{await saveGithubProject();$('phoneReviewStatus').textContent='Spara kontrollerat: kontrollera GitHub-statusen och att projektet finns upplagt.';}catch(e){$('phoneReviewStatus').textContent='Kunde inte spara: '+e.message;}finally{$('phoneSaveGithub').disabled=false;}}
   function phoneModeEvents(){
     $('phoneModeBtn').addEventListener('click',phoneOpen);$('phoneExit').addEventListener('click',phoneExit);$('phoneEnableCam').addEventListener('click',phoneEnableCamera);$('phoneRecord').addEventListener('click',phoneRecordStart);$('phoneStop').addEventListener('click',phoneRecordStop);
-    $('phoneCuePrev').addEventListener('click',()=>phoneCueShift(-1));$('phoneCueNext').addEventListener('click',()=>phoneCueShift(1));$('phonePaperPrev').addEventListener('click',()=>phoneImageShift(-1));$('phonePaperNext').addEventListener('click',()=>phoneImageShift(1));
+    $('phoneCuePrev').addEventListener('click',()=>phoneCueShift(-1));$('phoneCueNext').addEventListener('click',()=>phoneCueShift(1));
     $('phoneCameraOnScreen').addEventListener('click',phoneChangeSource);$('phoneReviewClose').addEventListener('click',phoneExit);$('phoneConnect').addEventListener('click',connectGithubModal);
     $('phoneDownloadVideo').addEventListener('click',()=>phoneDownloadWhat('video'));$('phoneDownloadAudio').addEventListener('click',()=>phoneDownloadWhat('audio'));$('phoneDownloadEvents').addEventListener('click',()=>phoneDownloadWhat('events'));$('phoneSaveGithub').addEventListener('click',phoneSaveGithub);
-    phoneInstallSwipe('phonePaperZone',phoneImageShift);phoneInstallSwipe('phoneCueSwipe',phoneCueShift);
+    phoneInstallSwipe('phoneCueSwipe',phoneCueShift);
     window.addEventListener('pagehide',()=>{if(phoneClockTimer)clearInterval(phoneClockTimer);if(phoneStream)phoneCloseStream();});
     document.addEventListener('visibilitychange',()=>{if(document.hidden&&phoneMainRecorder){$('phoneSwipeStatus').textContent='Håll Paper Studio öppen för att spela in.';}});
   }
@@ -441,7 +474,7 @@
     $('githubButton').addEventListener('click',connectGithubModal);$('openGitHubProjectBtn').addEventListener('click',openGithubProject);$('saveGitHubProjectBtn').addEventListener('click',saveGithubProject);$('loadWordsGitHubBtn').addEventListener('click',fetchWordsGithub);$('newProjectIdBtn').addEventListener('click',newProjectID);
     $('projectIdInput').addEventListener('change',e=>{try{setProjectID(e.target.value);}catch(err){status(err.message);}});
     $('sceneMode').addEventListener('change',e=>{project.scenes[selected].visualMode=e.target.value;listScenes();listTimeline();renderAt(time);});
-    $('sceneScript').addEventListener('input',e=>{project.scenes[selected].script=e.target.value;});
+    $('sceneScript').addEventListener('input',e=>{project.scenes[selected].script=e.target.value;});$('sceneCues').addEventListener('input',e=>{project.scenes[selected].cues=e.target.value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean).slice(0,32);});
     $('recordVoiceBtn').addEventListener('click',()=>startRecorder('voice'));$('stopVoiceBtn').addEventListener('click',()=>stopRecorder('voice'));
     $('recordCameraBtn').addEventListener('click',()=>startRecorder('camera'));$('stopCameraBtn').addEventListener('click',()=>stopRecorder('camera'));
     $('fitScenesToVoiceBtn').addEventListener('click',()=>{const d=audioEl?.duration;if(!Number.isFinite(d)||d<=0){status('Läs in eller spela in berättarröst först.');return;}const previous=totalDuration(),scale=d/previous;project.scenes.forEach(scene=>{scene.duration=Math.max(1,Math.min(120,Number((scene.duration*scale).toFixed(2))));});updateAll();status(`Scenerna anpassades från ${previous.toFixed(1)} till ${totalDuration().toFixed(1)} sekunder för att matcha rösten.`);});
