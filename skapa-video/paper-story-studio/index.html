@@ -104,6 +104,13 @@
   .phone-studio .phone-record-bar button{min-height:34px;font-size:12px}
   .phone-studio .phone-cue-swipe{min-height:50px}
 }
+
+/* v2.3: fit the entire front camera feed into the narrow split panel, without cropping. */
+.phone-studio .phone-camera{background:#302d2b}
+.phone-studio .phone-camera video{
+  width:100%;height:100%;object-fit:contain;object-position:center center;
+  transform:scaleX(-1);
+}
 </style>
 </head>
 <body>
@@ -460,7 +467,7 @@ Sista raden, sedan nästa bild."></textarea><small>En stödtext per rad. Varje r
     await phoneEnableCamera();}
   async function phoneEnableCamera(){if(phoneStream?.active)return true;
     if(!navigator.mediaDevices?.getUserMedia){$('phoneRecordSignal').textContent='INGEN KAMERA';$('phoneSwipeStatus').textContent='Kamera kräver säker HTTPS-anslutning';return false;}
-    try{phoneStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:{ideal:720},height:{ideal:1280},frameRate:{ideal:24}},audio:{echoCancellation:true,noiseSuppression:true}});
+    try{phoneStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:{ideal:960},height:{ideal:1280},aspectRatio:{ideal:3/4},frameRate:{ideal:24}},audio:{echoCancellation:true,noiseSuppression:true}});
       $('phoneCam').srcObject=phoneStream;$('phoneCam').muted=true;await $('phoneCam').play().catch(()=>{});
       $('phoneCamFallback').hidden=true;$('phoneRecordSignal').textContent='KAMERA REDO';$('phoneEnableCam').hidden=true;return true;
     }catch(e){$('phoneRecordSignal').textContent='KAMERA EJ TILLGÄNGLIG';$('phoneSwipeStatus').textContent='Kontrollera kameratillstånd i Safari';console.warn('Camera permission',e);return false;}}
