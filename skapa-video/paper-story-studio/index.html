@@ -46,6 +46,64 @@
 .phone-paper-caption{justify-content:space-between;align-items:center}
 .phone-paper-caption span:last-child{background:#fffaf2cf;padding:4px 7px;border-radius:6px;font-weight:700;font-size:9px;text-shadow:none}
 @media(max-height:660px){.phone-cue-dots{gap:7px;padding:2px 0;min-height:12px}.phone-cue-dots span{width:7px;height:7px;flex-basis:7px}.phone-cues p{font-size:clamp(12px,2.2dvh,16px)}}
+
+/* v2.2 — compact spoken cue, equally sized paper and camera, independent recording bar. */
+.phone-studio{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  grid-template-rows:max-content minmax(0,1fr) max-content max-content;
+}
+.phone-studio .phone-cues{
+  grid-column:1 / -1;grid-row:1;min-height:0;max-height:27dvh;
+  padding:calc(env(safe-area-inset-top) + 9px) 14px 9px;gap:4px;overflow:hidden;
+}
+.phone-studio .phone-cue-bar{order:0;font-size:10px;letter-spacing:.3px}
+.phone-studio .phone-cue-tools button{font-size:10px;min-height:30px;padding:4px 9px}
+.phone-studio .phone-cue-dots{order:1;min-height:14px;padding:1px 0 2px;gap:8px}
+.phone-studio .phone-cue-dots span{width:8px;height:8px;flex-basis:8px}
+.phone-studio .phone-cues p{
+  order:2;margin:0;flex-shrink:1;max-height:4.1em;overflow-y:auto;
+  color:#2e2722;font-size:clamp(16px,2.35dvh,20px);font-weight:700;line-height:1.36;
+}
+.phone-studio .phone-cue-heading{
+  order:3;font-family:inherit;font-size:11px;font-weight:500;line-height:1.2;
+  color:#998675;letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.phone-studio .phone-zone-tip{display:none}
+.phone-studio .phone-paper{
+  grid-column:1;grid-row:2;min-width:0;min-height:0;
+  border-right:2px solid #f5eee3;
+}
+.phone-studio .phone-camera{grid-column:2;grid-row:2;min-width:0;min-height:0}
+.phone-studio .phone-paper canvas{
+  display:block;width:100%;height:100%;max-width:100%;object-fit:contain;
+}
+.phone-studio .phone-paper-caption{bottom:7px;left:7px;right:7px;font-size:9px}
+.phone-studio .phone-paper-caption span:last-child{display:none}
+.phone-studio .phone-camera-top{top:9px;left:8px;right:8px;font-size:11px}
+.phone-studio .phone-camera-top span:last-child{font-size:9px}
+.phone-studio .phone-record-bar{
+  grid-column:1 / -1;grid-row:3;position:relative;top:auto;left:auto;right:auto;bottom:auto;
+  display:flex;flex-wrap:nowrap;align-items:center;justify-content:center;
+  gap:9px;min-height:54px;padding:7px 12px;
+  background:#efe5d8;border-top:1px solid #d7c6b4;z-index:3;
+}
+.phone-studio .phone-record-bar button{
+  flex:1;min-width:0;min-height:39px;padding:8px 8px;
+  font-size:clamp(12px,1.8dvh,15px);font-weight:750;
+}
+.phone-studio .phone-cue-swipe{
+  grid-column:1 / -1;grid-row:4;min-height:62px;
+  padding:5px calc(12px + env(safe-area-inset-right))
+          calc(5px + env(safe-area-inset-bottom))
+          calc(12px + env(safe-area-inset-left));
+}
+@media(max-height:660px){
+  .phone-studio .phone-cues{max-height:29dvh;padding-top:calc(env(safe-area-inset-top) + 5px)}
+  .phone-studio .phone-cues p{font-size:15px;max-height:2.8em}
+  .phone-studio .phone-record-bar{min-height:44px;padding:4px 8px}
+  .phone-studio .phone-record-bar button{min-height:34px;font-size:12px}
+  .phone-studio .phone-cue-swipe{min-height:50px}
+}
 </style>
 </head>
 <body>
@@ -135,13 +193,14 @@ Sista raden, sedan nästa bild."></textarea><small>En stödtext per rad. Varje r
     <video id="phoneCam" muted playsinline autoplay></video>
     <div class="phone-camera-fallback" id="phoneCamFallback">Kameraförhandsvisning</div>
     <div class="phone-camera-top"><span id="phoneClock">00:00</span><span id="phoneRecordSignal">KAMERA AV</span></div>
-    <div class="phone-camera-controls">
+
+  </section>
+    <div class="phone-camera-controls phone-record-bar">
       <button id="phoneEnableCam" type="button" class="phone-quiet">Kamera</button>
       <button id="phoneRecord" type="button" class="phone-start">● Spela in</button>
       <button id="phoneStop" type="button" class="phone-stop" hidden>■ Stoppa</button>
       <button id="phoneCameraOnScreen" type="button" class="phone-quiet" aria-label="Välj kamerabilden till den färdiga filmen">Visa mig</button>
     </div>
-  </section>
   <section class="phone-cue-swipe" id="phoneCueSwipe" aria-label="Svep med tummen för att byta stödpunkt och därefter bild">
     <button id="phoneCuePrev" type="button" aria-label="Föregående stödpunkt">‹</button>
     <div><strong>← Svep för nästa stödpunkt</strong><small id="phoneSwipeStatus">Bilden byts efter sista punkten</small></div>
