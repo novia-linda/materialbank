@@ -111,6 +111,50 @@
   width:100%;height:100%;object-fit:contain;object-position:center center;
   transform:scaleX(-1);
 }
+
+/* v2.4 — arm's-length-readable teleprompter, with adjustable cue text */
+.phone-studio{
+  --phone-cue-font:34px;
+  grid-template-rows:minmax(0,42dvh) minmax(0,1fr) max-content max-content;
+}
+.phone-studio .phone-cues{
+  height:100%;max-height:none;min-height:0;
+  padding:calc(env(safe-area-inset-top) + 10px) 16px 11px;gap:6px;
+}
+.phone-studio .phone-cue-options{
+  order:1;display:flex;align-items:center;justify-content:space-between;
+  flex:0 0 auto;gap:12px;min-height:36px;
+}
+.phone-studio .phone-cue-options .phone-cue-dots{
+  order:0;display:flex;flex:1 1 auto;flex-wrap:nowrap;
+  gap:9px;min-width:0;overflow-x:auto;min-height:15px;
+}
+.phone-studio .phone-type-tools{display:flex;gap:6px;flex:0 0 auto}
+.phone-studio .phone-type-tools button{
+  width:38px;min-width:38px;min-height:35px;height:35px;padding:0;
+  border:1px solid #cdbda8;border-radius:8px;
+  background:#fffaf2;color:#514134;font-size:15px;font-weight:800;
+  box-shadow:0 1px 2px #59452e14;
+}
+.phone-studio .phone-type-tools button:disabled{opacity:.4}
+.phone-studio .phone-cues p{
+  order:2;flex:1 1 auto;min-height:0;max-height:none;
+  width:100%;margin:0;overflow-x:hidden;overflow-y:auto;
+  font-size:var(--phone-cue-font,34px);line-height:1.17;
+  font-weight:780;letter-spacing:-.025em;color:#211e1a;
+  scrollbar-width:thin;-webkit-overflow-scrolling:touch;
+}
+.phone-studio .phone-cue-heading{
+  order:3;flex:0 0 auto;font-size:11px;line-height:1.2;
+  color:#9b8877;max-width:100%;
+}
+@media(max-height:660px){
+  .phone-studio{grid-template-rows:minmax(0,43dvh) minmax(0,1fr) max-content max-content}
+  .phone-studio .phone-cues{height:100%;max-height:none;padding-top:calc(env(safe-area-inset-top) + 5px)}
+  .phone-studio .phone-cues p{font-size:var(--phone-cue-font,34px);max-height:none;line-height:1.13}
+  .phone-studio .phone-cue-options{min-height:33px}
+  .phone-studio .phone-type-tools button{height:32px;min-height:32px}
+}
 </style>
 </head>
 <body>
@@ -187,7 +231,13 @@ Sista raden, sedan nästa bild."></textarea><small>En stödtext per rad. Varje r
 <div class="phone-studio" id="phoneStudio" role="dialog" aria-modal="true" aria-label="Inspelningsläge för iPhone" hidden>
   <section class="phone-cues" aria-label="Stödmanus för aktuell pappersbild">
     <div class="phone-cue-bar"><strong id="phoneCueNum">BILD 1 / 5 · PUNKT 1 / 2</strong><div class="phone-cue-tools"><button type="button" id="phoneConnect" aria-label="Anslut GitHub">⌁ GitHub</button><button type="button" id="phoneExit" aria-label="Lämna inspelningsläget">✕</button></div></div>
-    <div class="phone-cue-dots" id="phoneCueDots" role="group" aria-label="Stödpunkter för den här bilden"></div>
+    <div class="phone-cue-options">
+      <div class="phone-cue-dots" id="phoneCueDots" role="group" aria-label="Stödpunkter för den här bilden"></div>
+      <div class="phone-type-tools" role="group" aria-label="Ändra storlek på stödtexten">
+        <button type="button" id="phoneTextSmaller" aria-label="Minska texten" title="Minska stödtextens storlek">A−</button>
+        <button type="button" id="phoneTextLarger" aria-label="Förstora texten" title="Förstora stödtextens storlek">A+</button>
+      </div>
+    </div>
     <div class="phone-cue-heading" id="phoneCueTitle">Från svar till handling</div>
     <p id="phoneCueBody" aria-live="polite">Berätta med egna ord. Detta är bara ett stöd.</p>
     <div class="phone-zone-tip" id="phoneCueTip">Varje prick är en stödpunkt för samma pappersbild</div>
@@ -424,6 +474,20 @@ Sista raden, sedan nästa bild."></textarea><small>En stödtext per rad. Varje r
       for(const b of bits)notes.push({scene:i,text:b.slice(0,650),title:s.title||`Bild ${i+1}`});
     }return notes.length?notes:[{scene:0,text:'Berätta fritt om ämnet.',title:project.title}];}
   function phoneGroup(){const current=phoneNotes[phoneNoteIndex]||phoneNotes[0];if(!current)return {start:0,total:1,position:0};let start=phoneNoteIndex;while(start>0&&phoneNotes[start-1].scene===current.scene)start--;let end=phoneNoteIndex+1;while(end<phoneNotes.length&&phoneNotes[end].scene===current.scene)end++;return {start,total:end-start,position:phoneNoteIndex-start};}
+
+  // Larger default for reading at arm's length. Remember the adjustment on this device.
+  let phoneCueFontSize=34;
+  try{
+    const savedSize=Number(localStorage.getItem('paper-story-cue-font-size'));
+    if(Number.isFinite(savedSize)&&savedSize>=26&&savedSize<=50)phoneCueFontSize=savedSize;
+  }catch(e){}
+  function phoneSetCueFontSize(next){
+    phoneCueFontSize=Math.max(26,Math.min(50,Math.round(next/2)*2));
+    $('phoneStudio').style.setProperty('--phone-cue-font',phoneCueFontSize+'px');
+    $('phoneTextSmaller').disabled=phoneCueFontSize<=26;
+    $('phoneTextLarger').disabled=phoneCueFontSize>=50;
+    try{localStorage.setItem('paper-story-cue-font-size',String(phoneCueFontSize));}catch(e){}
+  }
   function phoneUpdate(){const n=phoneNotes[phoneNoteIndex]||phoneNotes[0];if(!n)return;
     // There must never be an independent picture index: the cue owns the picture.
     phoneImageIndex=n.scene;
@@ -433,6 +497,7 @@ Sista raden, sedan nästa bild."></textarea><small>En stödtext per rad. Varje r
     $('phoneCueDots').setAttribute('aria-label',`${group.total} stödpunkt${group.total===1?'':'er'} för bild ${phoneImageIndex+1}, punkt ${group.position+1} visas`);
     $('phoneCueTitle').textContent=n.title;
     $('phoneCueBody').textContent=n.text;
+    $('phoneCueBody').scrollTop=0;
     const last=group.position===group.total-1;
     const wholeLast=phoneNoteIndex===phoneNotes.length-1;
     $('phoneCueTip').textContent=wholeLast?'Sista punkten i berättelsen':last?'Sista punkten till den här bilden – nästa svep byter bild':`Punkt ${group.position+1} av ${group.total} till samma bild`;
@@ -462,7 +527,7 @@ Sista raden, sedan nästa bild."></textarea><small>En stödtext per rad. Varje r
   function phoneScreen(open){$('phoneStudio').hidden=!open;document.body.style.overflow=open?'hidden':'';}
   async function phoneOpen(){if(recording||exporting){status('Avsluta nuvarande inspelning eller export först.');return;}pause();phoneNotes=phoneBuildNotes();phoneImageIndex=selected;
     phoneNoteIndex=Math.max(0,phoneNotes.findIndex(n=>n.scene===selected));phoneSource='paper';$('phoneReview').hidden=true;
-    phoneScreen(true);phoneUpdate();$('phoneRecordSignal').textContent='KAMERA AV';$('phoneClock').textContent='00:00';
+    phoneScreen(true);phoneSetCueFontSize(phoneCueFontSize);phoneUpdate();$('phoneRecordSignal').textContent='KAMERA AV';$('phoneClock').textContent='00:00';
     $('phoneSwipeStatus').textContent='Nästa stödpunkt · bilden följer automatiskt';
     await phoneEnableCamera();}
   async function phoneEnableCamera(){if(phoneStream?.active)return true;
@@ -528,6 +593,8 @@ Sista raden, sedan nästa bild."></textarea><small>En stödtext per rad. Varje r
   function phoneModeEvents(){
     $('phoneModeBtn').addEventListener('click',phoneOpen);$('phoneExit').addEventListener('click',phoneExit);$('phoneEnableCam').addEventListener('click',phoneEnableCamera);$('phoneRecord').addEventListener('click',phoneRecordStart);$('phoneStop').addEventListener('click',phoneRecordStop);
     $('phoneCuePrev').addEventListener('click',()=>phoneCueShift(-1));$('phoneCueNext').addEventListener('click',()=>phoneCueShift(1));
+    $('phoneTextSmaller').addEventListener('click',()=>phoneSetCueFontSize(phoneCueFontSize-2));
+    $('phoneTextLarger').addEventListener('click',()=>phoneSetCueFontSize(phoneCueFontSize+2));
     $('phoneCameraOnScreen').addEventListener('click',phoneChangeSource);$('phoneReviewClose').addEventListener('click',phoneExit);$('phoneConnect').addEventListener('click',connectGithubModal);
     $('phoneDownloadVideo').addEventListener('click',()=>phoneDownloadWhat('video'));$('phoneDownloadAudio').addEventListener('click',()=>phoneDownloadWhat('audio'));$('phoneDownloadEvents').addEventListener('click',()=>phoneDownloadWhat('events'));$('phoneSaveGithub').addEventListener('click',phoneSaveGithub);
     phoneInstallSwipe('phoneCueSwipe',phoneCueShift);
