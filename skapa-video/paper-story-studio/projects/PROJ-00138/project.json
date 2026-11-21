@@ -1,0 +1,101 @@
+{
+  "version": 2,
+  "id": "PROJ-00138",
+  "title": "AI-assistent eller AI-agent? — 27 sekunder",
+  "language": "sv",
+  "status": "utkast",
+  "style": {
+    "id": "paper-ink-v1",
+    "name": "Papper & tusch",
+    "locked": true
+  },
+  "scenes": [
+    {
+      "layout": "image",
+      "title": "Assistent eller agent?",
+      "body": "Två sätt att använda AI",
+      "duration": 4,
+      "motion": "still",
+      "visualMode": "paper",
+      "imageUrl": "https://raw.githubusercontent.com/novia-linda/materialbank/main/skapa-video/paper-story-studio/projects/PROJ-00138/media/01_svarar_agerar.webp",
+      "imageFit": "contain",
+      "fullBleed": true,
+      "script": "Vad är skillnaden mellan en AI-assistent och en AI-agent?",
+      "cues": [
+        "Vad är skillnaden mellan en AI-assistent och en AI-agent?"
+      ],
+      "notes": "Öppna med frågan. Svep till assistentbilden när du börjar förklara."
+    },
+    {
+      "layout": "image",
+      "title": "AI-assistenten svarar",
+      "body": "DU FRÅGAR → DEN SVARAR",
+      "duration": 5,
+      "motion": "still",
+      "visualMode": "paper",
+      "imageUrl": "https://raw.githubusercontent.com/novia-linda/materialbank/main/skapa-video/paper-story-studio/projects/PROJ-00138/media/02_ai_assistent.webp",
+      "imageFit": "contain",
+      "fullBleed": true,
+      "script": "Assistenten svarar på frågor och hjälper dig att skriva och tänka.",
+      "cues": [
+        "Assistenten svarar på frågor",
+        "Hjälper dig att skriva och tänka"
+      ],
+      "notes": "Dra ner tempot något vid exempel. Pappersbilden behöver inte bytas när stödtexten växlar."
+    },
+    {
+      "layout": "image",
+      "title": "AI-agenten agerar",
+      "body": "FRÅN SVAR TILL HANDLING",
+      "duration": 6,
+      "motion": "still",
+      "visualMode": "paper",
+      "imageUrl": "https://raw.githubusercontent.com/novia-linda/materialbank/main/skapa-video/paper-story-studio/projects/PROJ-00138/media/03_ai_agent.webp",
+      "imageFit": "contain",
+      "fullBleed": true,
+      "script": "Agenten går längre. Den kan också utföra uppgifter åt dig.",
+      "cues": [
+        "Agenten går ett steg längre",
+        "Den kan utföra uppgifter åt dig"
+      ],
+      "notes": "Betona ordet utföra. Här blir kontrasten till assistenten tydlig."
+    },
+    {
+      "layout": "image",
+      "title": "Ett mål – flera steg",
+      "body": "MÅL → PLAN → HANDLING",
+      "duration": 6,
+      "motion": "still",
+      "visualMode": "paper",
+      "imageUrl": "https://raw.githubusercontent.com/novia-linda/materialbank/main/skapa-video/paper-story-studio/projects/PROJ-00138/media/04_mal_planerar_utfor.webp",
+      "imageFit": "contain",
+      "fullBleed": true,
+      "script": "Du ger den ett mål. Den planerar, använder verktyg och arbetar i flera steg.",
+      "cues": [
+        "Du ger agenten ett mål",
+        "Den planerar, använder verktyg och utför flera steg"
+      ],
+      "notes": "Låt bilden visa processen. Visa gärna med fingret när du säger planerar och använder verktyg."
+    },
+    {
+      "layout": "image",
+      "title": "Tänka eller göra?",
+      "body": "ASSISTENTEN HJÄLPER DIG TÄNKA / AGENTEN HJÄLPER DIG GÖRA",
+      "duration": 6,
+      "motion": "still",
+      "visualMode": "paper",
+      "imageUrl": "https://raw.githubusercontent.com/novia-linda/materialbank/main/skapa-video/paper-story-studio/projects/PROJ-00138/media/05_sammanfattning.webp",
+      "imageFit": "contain",
+      "fullBleed": true,
+      "script": "Kort sagt: assistenten hjälper dig att tänka. Agenten hjälper dig att göra.",
+      "cues": [
+        "Assistenten hjälper dig att tänka",
+        "Agenten hjälper dig att göra"
+      ],
+      "notes": "Avsluta med en liten paus mellan tänka och göra. Skillnaden är en förenkling; du styr fortfarande."
+    }
+  ],
+  "voice": null,
+  "words": [],
+  "takes": []
+}
