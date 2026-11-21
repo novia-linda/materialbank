@@ -1,0 +1,120 @@
+{
+  "version": 2,
+  "id": "PROJ-00140",
+  "title": "AI-assistent eller AI-agent? – från svar till handling",
+  "language": "sv",
+  "status": "utkast",
+  "style": {
+    "id": "paper-ink-v1",
+    "name": "Papper & tusch",
+    "locked": true
+  },
+  "scenes": [
+    {
+      "layout": "image",
+      "title": "Skillnaden på 10 sekunder",
+      "body": "",
+      "duration": 10,
+      "motion": "still",
+      "visualMode": "paper",
+      "imageUrl": "https://raw.githubusercontent.com/novia-linda/materialbank/main/skapa-video/paper-story-studio/projects/PROJ-00140/media/01_fragan.webp",
+      "imageFit": "contain",
+      "fullBleed": true,
+      "script": "En AI-assistent och en AI-agent låter nästan som samma sak. Men det finns en viktig skillnad: den ena hjälper dig att tänka, den andra kan också agera.",
+      "cues": [
+        "En AI-assistent och en AI-agent låter nästan som samma sak.",
+        "Men det finns en viktig skillnad: den ena hjälper dig att tänka, den andra kan också agera."
+      ],
+      "notes": "Inledning. Enkla symboler, inga fasta texter. Efter talanalys kan TÄNKA och AGERA dyka upp som dynamiska ord."
+    },
+    {
+      "layout": "image",
+      "title": "Vad gör en assistent?",
+      "body": "",
+      "duration": 11,
+      "motion": "still",
+      "visualMode": "paper",
+      "imageUrl": "https://raw.githubusercontent.com/novia-linda/materialbank/main/skapa-video/paper-story-studio/projects/PROJ-00140/media/02_ai_assistent.webp",
+      "imageFit": "contain",
+      "fullBleed": true,
+      "script": "En assistent väntar på din fråga och hjälper dig att formulera ett svar. Du kan till exempel be om en sammanfattning eller ett trevligt kundmejl.",
+      "cues": [
+        "En assistent väntar på din fråga och hjälper dig att formulera ett svar.",
+        "Du kan till exempel be om en sammanfattning eller ett trevligt kundmejl."
+      ],
+      "notes": "Berätta lugnt och naturligt. Förslag till senare ordanimationer: FRÅGA, SVAR."
+    },
+    {
+      "layout": "image",
+      "title": "Vad gör en agent?",
+      "body": "",
+      "duration": 12,
+      "motion": "still",
+      "visualMode": "paper",
+      "imageUrl": "https://raw.githubusercontent.com/novia-linda/materialbank/main/skapa-video/paper-story-studio/projects/PROJ-00140/media/03_ai_agent.webp",
+      "imageFit": "contain",
+      "fullBleed": true,
+      "script": "En agent får i stället ett mål. Den kan planera nästa steg, använda tillåtna verktyg och genomföra flera delar av uppgiften.",
+      "cues": [
+        "En agent får i stället ett mål.",
+        "Den kan planera nästa steg, använda tillåtna verktyg och genomföra flera delar av uppgiften."
+      ],
+      "notes": "Betona att agenten arbetar i flera steg, men alltid inom beviljade rättigheter. Ordanimationer: MÅL, PLAN, GÖRA."
+    },
+    {
+      "layout": "image",
+      "title": "Exempel: kundens offertförfrågan",
+      "body": "",
+      "duration": 12,
+      "motion": "still",
+      "visualMode": "paper",
+      "imageUrl": "https://raw.githubusercontent.com/novia-linda/materialbank/main/skapa-video/paper-story-studio/projects/PROJ-00140/media/04_exempel_mejl.webp",
+      "imageFit": "contain",
+      "fullBleed": true,
+      "script": "Tänk dig att en kund mejlar och ber om en offert. Med en assistent får du hjälp att skriva svaret, men du behöver själv leta fram priser och uppgifter.",
+      "cues": [
+        "Tänk dig att en kund mejlar och ber om en offert.",
+        "Med en assistent får du hjälp att skriva svaret, men du behöver själv leta fram priser och uppgifter."
+      ],
+      "notes": "Konkret exempel. Pappersbilden visar en kund och ett hjälpsamt svar; ingen text är inbakad."
+    },
+    {
+      "layout": "image",
+      "title": "Exempel: agenten gör flera steg",
+      "body": "",
+      "duration": 13,
+      "motion": "still",
+      "visualMode": "paper",
+      "imageUrl": "https://raw.githubusercontent.com/novia-linda/materialbank/main/skapa-video/paper-story-studio/projects/PROJ-00140/media/05_exempel_agent.webp",
+      "imageFit": "contain",
+      "fullBleed": true,
+      "script": "En agent kan i stället leta fram produktinformationen och skapa ett offertutkast i affärssystemet. Sedan lägger den utkastet för ditt godkännande. Du väljer fortfarande vad som faktiskt skickas.",
+      "cues": [
+        "En agent kan i stället leta fram produktinformationen och skapa ett offertutkast i affärssystemet.",
+        "Sedan lägger den utkastet för ditt godkännande.",
+        "Du väljer fortfarande vad som faktiskt skickas."
+      ],
+      "notes": "Låt gärna agentens arbetsflöde ligga kvar när du berättar tre delar. Ordanimationer: HÄMTA, SKAPA UTKAST, GODKÄNN."
+    },
+    {
+      "layout": "image",
+      "title": "Tänka och göra – avslutning",
+      "body": "",
+      "duration": 12,
+      "motion": "still",
+      "visualMode": "paper",
+      "imageUrl": "https://raw.githubusercontent.com/novia-linda/materialbank/main/skapa-video/paper-story-studio/projects/PROJ-00140/media/06_sammanfattning.webp",
+      "imageFit": "contain",
+      "fullBleed": true,
+      "script": "Så: en assistent hjälper dig att komma fram till hur jobbet ska göras. En agent kan hjälpa dig att faktiskt få det gjort, men du behåller kontrollen.",
+      "cues": [
+        "Så: en assistent hjälper dig att komma fram till hur jobbet ska göras.",
+        "En agent kan hjälpa dig att faktiskt få det gjort, men du behåller kontrollen."
+      ],
+      "notes": "Knyt ihop berättelsen. Ordanimationer: TÄNKA och GÖRA i olika positioner i bilden."
+    }
+  ],
+  "voice": null,
+  "words": [],
+  "takes": []
+}
