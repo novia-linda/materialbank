@@ -1,0 +1,159 @@
+/* Renderer 2.0 – Zen. A new prototype; independent of the existing Moodle renderer. */
+(function () {
+  'use strict';
+  var ROOT_ID = 'zen-renderer-v20';
+  var SOURCE_SELECTOR = '#ZENRENDERSOURCE20';
+  var STYLE_SELECTOR = '#ZENRENDERSTYLE20';
+  var root = document.getElementById(ROOT_ID);
+  if (!root || root.dataset.zenReady === 'true') return;
+  root.dataset.zenReady = 'true';
+  var sourceUrl = root.getAttribute('data-source-url') || '';
+  var styleUrl = root.getAttribute('data-style-url') || '';
+  var palette = {strong:'#344D49',accent:'#729389',soft:'#F3F6F3',second:'#DCE6DF',highlight:'#D5C5BA'};
+  var steps = [], checked = {}, active = -1, nodeBodies = [];
+  var storageKey = 'zen-20:' + ROOT_ID + ':' + sourceUrl;
+  try { checked = JSON.parse(localStorage.getItem(storageKey) || '{}') || {}; } catch (_) { checked = {}; }
+  var FONT = "'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Arial,sans-serif";
+  function st(el, css) {el.style.cssText = css; return el;}
+  function make(tag,css,txt) {var n=document.createElement(tag);if(css)st(n,css);if(txt!==undefined)n.textContent=txt;return n;}
+  function color(k){return palette[k];}
+  function save() {try{localStorage.setItem(storageKey,JSON.stringify(checked));}catch(_){}}
+  function validURL(href) {try {var u=new URL(String(href||''),location.href); return (u.protocol==='https:'||(u.protocol==='http:'&&u.origin===location.origin)||(root.hasAttribute('data-zen-inline')&&location.protocol==='file:'&&u.protocol==='file:'&&/^\.\/[a-zA-Z0-9_.-]+$/.test(String(href))))?u.href:'';}catch(_){return '';}}
+  function cloneSafe(node){
+    if(node.nodeType===3)return document.createTextNode(node.textContent);
+    if(node.nodeType!==1)return document.createTextNode('');
+    var allow=['P','STRONG','B','EM','I','U','SMALL','UL','OL','LI','A','IMG','TABLE','THEAD','TBODY','TFOOT','TR','TH','TD','BLOCKQUOTE','PRE','CODE','BR','H5','H6','SPAN','DIV'];
+    if(!allow.includes(node.tagName)){var frag=document.createDocumentFragment();Array.from(node.childNodes).forEach(function(child){frag.appendChild(cloneSafe(child));});return frag;}
+    var el=document.createElement(node.tagName.toLowerCase());
+    if(node.tagName==='A'){var href=validURL(node.getAttribute('href'));if(href){el.href=href;el.target='_blank';el.rel='noopener noreferrer';}}
+    if(node.tagName==='IMG'){var src=validURL(node.getAttribute('src'));if(src){el.src=src;el.alt=node.getAttribute('alt')||'';el.loading='lazy';st(el,'max-width:100%;height:auto;display:block;border-radius:5px;margin:10px 0;');}else return document.createTextNode('');}
+    if(node.tagName==='TABLE')st(el,'border-collapse:collapse;width:100%;min-width:400px;');
+    if(['TH','TD'].includes(node.tagName))st(el,'padding:9px 12px;text-align:left;border-bottom:1px solid #DCE6DF;');
+    if(node.tagName==='H5')st(el,'font-size:16px;margin:17px 0 8px;');
+    if(node.tagName==='H6')st(el,'font-size:14px;margin:15px 0 6px;');
+    if(node.tagName==='BLOCKQUOTE')st(el,'margin:16px 0;padding:12px 16px;border-left:3px solid '+color('accent')+';background:'+color('soft')+';');
+    if(node.tagName==='PRE')st(el,'white-space:pre-wrap;overflow:auto;background:'+color('soft')+';padding:14px;border-radius:7px;');
+    if(['P','UL','OL'].includes(node.tagName))st(el,'margin:0 0 13px;');
+    Array.from(node.childNodes).forEach(function(child){el.appendChild(cloneSafe(child));});
+    return el;
+  }
+  function labelValue(node){if(node.nodeType!==1||node.tagName!=='P')return null;var s=(node.textContent||'').replace(/[\u200B-\u200D\uFEFF]/g,'').trim();var m=/^([^:]{1,35}):\s*(.*)$/s.exec(s);return m?[m[1].trim().toLocaleLowerCase('sv'),m[2].trim()]:null;}
+  function endHelp(node){if(node.nodeType!==1||node.tagName!=='P')return false;return (node.textContent||'').replace(/[\u200B-\u200D\uFEFF\u00A0\s]/g,'').toUpperCase()==='[[ENDH4]]';}
+  function parseStyle(doc){var n=doc.querySelector(STYLE_SELECTOR);if(!n)return;var text=n.textContent||'';['strong','accent','soft','second','highlight'].forEach(function(name){var m=new RegExp('(?:^|\\n)\\s*'+name+'\\s*:\\s*(#[a-fA-F0-9]{6})','i').exec(text);if(m)palette[name]=m[1];});}
+  function parseSource(doc){
+    var container=doc.querySelector(SOURCE_SELECTOR);if(!container)throw Error('Kunde inte hitta SOURCE: '+SOURCE_SELECTOR+'. Kontrollera Moodle Page och dess wrapper.');
+    var meta={title:'',intro:[],eyebrow:'UNDERVISNINGSLEKTION',goal:'',time:'',demo:''};var step=null,help=null,pendingCheck=null;
+    var metas={'eyebrow':'eyebrow','mål':'goal','time budget':'time','tidsåtgång':'time','demo':'demo'};
+    var stepFields={'kort':'subtitle','tid':'time','video':'videoTitle','videourl':'videoUrl','videoembed':'videoEmbed','videoinfo':'videoInfo','videobeskrivning':'videoDescription','övning':'exerciseTitle','övningsurl':'exerciseUrl','fråga':'question','facit':'answer','tolerans':'tolerance','enhet':'unit','ledtråd':'hint','rätt feedback':'okFeedback','fel feedback':'badFeedback'};
+    Array.from(container.children).forEach(function(n){
+      var tag=n.tagName;
+      if(tag==='H2'&&!step){meta.title=n.textContent.trim();return;}
+      if(tag==='H3'){step={title:n.textContent.trim(),subtitle:'',time:'',pieces:[],videoTitle:'',videoUrl:'',videoEmbed:'',videoInfo:'',videoDescription:'',exerciseTitle:'',exerciseUrl:'',question:'',answer:'',tolerance:'0.01',unit:'',hint:'',okFeedback:'',badFeedback:''};steps.push(step);help=null;pendingCheck=null;return;}
+      if(!step){var m=labelValue(n);if(m&&metas[m[0]])meta[metas[m[0]]]=m[1];else if(m&&['pedagogisk modell','material-id'].includes(m[0])){/* teacher-only */}else meta.intro.push(n);return;}
+      if(pendingCheck && (tag==='UL'||tag==='OL')){pendingCheck.items=Array.from(n.children).filter(function(li){return li.tagName==='LI';}).map(function(li){return li.textContent.trim();});pendingCheck=null;return;}
+      pendingCheck=null;
+      if(endHelp(n)){help=null;return;}
+      if(tag==='H4'){help={kind:'help',title:n.textContent.trim(),nodes:[]};step.pieces.push(help);return;}
+      var f=labelValue(n);
+      if(f && stepFields[f[0]]){step[stepFields[f[0]]]=f[1];return;}
+      if(f && f[0]==='pedagogisk modell')return;
+      if(f && ['tips','viktigt'].includes(f[0])){var p={kind:'callout',title:f[0],text:f[1]};if(help)help.nodes.push(p);else step.pieces.push(p);return;}
+      if(f && f[0]==='checklista'){var c={kind:'checklist',title:f[1],items:[]};if(help)help.nodes.push(c);else step.pieces.push(c);pendingCheck=c;return;}
+      if(help)help.nodes.push(n);else step.pieces.push(n);
+    });
+    if(!steps.length)throw Error('SOURCE innehåller inga H3-rubriker. Lägg till minst ett moment.');
+    return meta;
+  }
+  function sharedText(){return 'color:'+color('strong')+';font-family:'+FONT+';font-weight:400;line-height:1.62;';}
+  function safeTarget(link,txt,opts){var url=validURL(link);if(!url)return null;var a=make('a','display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 15px;border:1px solid '+color('accent')+';border-radius:7px;text-decoration:none;font-size:13px;font-weight:600;color:'+color('strong')+';background:white;'+(opts||''),txt);a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a;}
+  function addRenderable(target,piece,stepNumber){
+    if(piece.kind==='help'){var details=make('details','margin:10px 0;border-top:1px solid #E3EAE5;border-bottom:1px solid #E3EAE5;padding:10px 0;');var sum=make('summary','cursor:pointer;font-weight:600;font-size:13px;color:'+color('strong')+';padding:5px 0;',piece.title||'Läs mer');details.appendChild(sum);var body=make('div','padding:14px 0 3px;font-size:14px;');piece.nodes.forEach(function(n){addRenderable(body,n,stepNumber);});details.appendChild(body);target.appendChild(details);return;}
+    if(piece.kind==='callout'){var t=make('div','margin:12px 0;padding:13px 15px;background:'+color('soft')+';border-left:3px solid '+color('accent')+';font-size:13px;line-height:1.6;');var b=make('strong','margin-right:8px;',piece.title==='tips'?'Tips':'Viktigt');t.append(b,document.createTextNode(piece.text));target.appendChild(t);return;}
+    if(piece.kind==='checklist'){var wrap=make('div','background:'+color('soft')+';padding:15px;margin:12px 0;');wrap.appendChild(make('strong','display:block;margin-bottom:8px;',piece.title));piece.items.forEach(function(s,i){var label=make('label','display:flex;align-items:center;gap:8px;margin:9px 0;cursor:pointer;');var cb=make('input','accent-color:'+color('accent')+';min-width:18px;min-height:18px;');cb.type='checkbox';var id='check-'+stepNumber+'-'+i;cb.checked=!!checked[id];cb.addEventListener('change',function(){checked[id]=cb.checked;save();});label.append(cb,make('span','',s));wrap.appendChild(label);});target.appendChild(wrap);return;}
+    if(piece.tagName==='TABLE'){var div=make('div','overflow-x:auto;margin:10px 0 15px;');div.appendChild(cloneSafe(piece));target.appendChild(div);return;}
+    var el=cloneSafe(piece);target.appendChild(el);
+    if(piece.tagName==='PRE'||piece.tagName==='BLOCKQUOTE'){var b=make('button','background:none;border:0;border-bottom:1px solid '+color('accent')+';padding:3px 0;font-size:12px;cursor:pointer;color:'+color('strong')+';margin:0 0 12px;','Kopiera text');b.type='button';b.addEventListener('click',function(){copyText(piece.textContent||'',b);});target.appendChild(b);}
+  }
+  function copyText(s,b){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(s).then(function(){b.textContent='Kopierad';}).catch(function(){fallbackCopy(s,b);});}else fallbackCopy(s,b);}
+  function fallbackCopy(s,b){var ta=make('textarea','position:fixed;left:-9999px;top:0;');ta.value=s;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');b.textContent='Kopierad';}catch(_){b.textContent='Markera och kopiera texten';}ta.remove();}
+  function numeric(s){var a=String(s||'').trim().replace(/\s|\u00a0|€/g,'');if(!a)return NaN;if(a.includes(',')&&a.includes('.')){if(a.lastIndexOf(',')>a.lastIndexOf('.'))a=a.replace(/\./g,'').replace(',','.');else a=a.replace(/,/g,'');}else if(a.includes(','))a=a.replace(',','.');return /^[-+]?\d+(?:\.\d+)?$/.test(a)?Number(a):NaN;}
+  function makeQuestion(s,i){
+    if(!s.question)return null;
+    var card=make('section','margin-top:19px;padding:19px 0 8px;border-top:1px solid #E2E9E4;');card.appendChild(make('div','font-size:11px;font-weight:600;letter-spacing:.075em;color:'+color('accent')+';margin-bottom:8px;','KONTROLLFRÅGA'));
+    card.appendChild(make('h4','font-size:16px;line-height:1.4;font-weight:600;margin:0 0 15px;',s.question));
+    if(!s.answer){card.appendChild(make('p','color:#6F7872;font-size:13px;','Facit har ännu inte lagts till i SOURCE.'));return card;}
+    var row=make('div','display:flex;align-items:center;flex-wrap:wrap;gap:10px;');
+    var inp=make('input','box-sizing:border-box;flex:1 1 160px;min-width:120px;max-width:300px;border:1px solid #CEDAD1;border-radius:6px;background:white;padding:12px;font-size:16px;');inp.type='text';inp.inputMode='decimal';inp.placeholder='Ditt svar'+(s.unit?' ('+s.unit+')':'');inp.setAttribute('aria-label','Svara på frågan');
+    var btn=make('button','border:1px solid '+color('accent')+';background:'+color('strong')+';color:white;border-radius:6px;padding:11px 17px;min-height:45px;cursor:pointer;font-size:13px;font-weight:600;','Kontrollera');btn.type='button';var reply=make('div','font-size:13px;line-height:1.6;margin-top:10px;');reply.setAttribute('role','status');reply.setAttribute('aria-live','polite');
+    btn.addEventListener('click',function(){var actual=numeric(inp.value),expected=numeric(s.answer),tolerance=numeric(s.tolerance);if(!Number.isFinite(actual)){reply.textContent='Skriv ett giltigt tal, till exempel 2500 eller 2500,50.';return;}if(!Number.isFinite(expected)){reply.textContent='Läraren behöver kontrollera facit i SOURCE.';return;}if(Math.abs(actual-expected)<= (Number.isFinite(tolerance)?Math.abs(tolerance):.01)){reply.textContent=s.okFeedback||'Rätt! Du har fått fram ett korrekt resultat.';reply.style.color='#28694B';}else{reply.textContent=s.badFeedback||'Inte riktigt. Kontrollera din pivottabell och försök igen.';reply.style.color='#985847';}});
+    inp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();btn.click();}});
+    row.append(inp,btn);card.append(row,reply);
+    if(s.hint){var details=make('details','margin-top:13px;font-size:13px;');details.appendChild(make('summary','cursor:pointer;color:'+color('strong')+';font-weight:600;','Visa en ledtråd'));details.appendChild(make('p','margin:10px 0;color:#586D63;',s.hint));card.appendChild(details);}
+    return card;
+  }
+  function youtubeEmbed(url){var u;try{u=new URL(url);}catch(_){return '';}var id='';if(u.hostname==='youtu.be')id=u.pathname.replace('/','');else if(['youtube.com','www.youtube.com','m.youtube.com'].includes(u.hostname)){id=u.searchParams.get('v')||'';if(!id&&u.pathname.startsWith('/embed/'))id=u.pathname.split('/')[2]||'';}else if(u.hostname==='www.youtube-nocookie.com')id=u.pathname.split('/').pop();return /^[\w-]{11}$/.test(id)?'https://www.youtube-nocookie.com/embed/'+id:'';}
+  function approvedEmbed(href){var u;try{u=new URL(href);}catch(_){return '';}if(u.protocol!=='https:')return '';var host=u.hostname.toLowerCase();if(host.endsWith('.sharepoint.com')||host==='web.microsoftstream.com'||host==='www.youtube-nocookie.com')return u.href;return '';}
+  function makeVideo(s){
+    if(!s.videoTitle&&!s.videoUrl&&!s.videoDescription)return null;
+    var panel=make('section','margin:14px 0 17px;');panel.appendChild(make('strong','font-size:14px;display:block;margin-bottom:10px;',s.videoTitle||'Instruktionsvideo'));
+    var href=validURL(s.videoUrl),embed=approvedEmbed(s.videoEmbed||'')||youtubeEmbed(href);
+    if(embed){var frame=make('iframe','width:100%;aspect-ratio:16/9;border:0;background:#2F3834;border-radius:6px;');frame.src=embed;frame.title=s.videoTitle||'Undervisningsvideo';frame.loading='lazy';frame.setAttribute('allow','accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;fullscreen');frame.setAttribute('allowfullscreen','');panel.appendChild(frame);}
+    else if(href && /\.(mp4|webm|ogg)(?:$|\?)/i.test(href)){var vid=make('video','width:100%;aspect-ratio:16/9;background:#2F3834;border-radius:6px;');vid.src=href;vid.controls=true;vid.preload='metadata';panel.appendChild(vid);}
+    else{panel.appendChild(make('div','display:flex;align-items:center;justify-content:center;min-height:130px;background:'+color('soft')+';border-radius:6px;color:#61746A;font-size:13px;text-align:center;padding:15px;','Video placeras här när videolänken har lagts till.'));}
+    if(s.videoDescription)panel.appendChild(make('p','font-size:12px;color:#65766E;margin:8px 0;',s.videoDescription));
+    if(s.videoInfo)panel.appendChild(make('p','font-size:11px;color:#77857D;margin:6px 0;',s.videoInfo));
+    if(href){var link=safeTarget(href,'Öppna videon i ny flik ↗','margin-top:5px;');if(link)panel.appendChild(link);}
+    return panel;
+  }
+  function build(meta){
+    root.replaceChildren();st(root,'--zen-strong:'+color('strong')+';--zen-accent:'+color('accent')+';font-family:'+FONT+';max-width:950px;margin:12px auto 24px;padding:clamp(20px,3.5vw,39px);background:#FEFFFD;color:'+color('strong')+';box-sizing:border-box;border:1px solid #E9EDE9;border-radius:12px;line-height:1.62;');
+    var header=make('header','padding:5px 0 26px;');header.appendChild(make('div','font-size:11px;font-weight:700;letter-spacing:.11em;color:'+color('accent')+';margin-bottom:9px;',meta.eyebrow||'LÄRANDE'));
+    header.appendChild(make('h2','margin:0 0 9px;font-size:clamp(24px,3vw,35px);line-height:1.2;letter-spacing:-.025em;font-weight:600;',meta.title||'Lärande i din egen takt'));
+    if(meta.goal)header.appendChild(make('p','font-size:14px;color:#576B62;max-width:710px;margin:0 0 11px;',meta.goal));
+    meta.intro.forEach(function(n){var r=cloneSafe(n);header.appendChild(r);});
+    var metadata=make('div','display:flex;flex-wrap:wrap;align-items:center;gap:14px;font-size:12px;color:#76847B;margin-top:16px;');metadata.appendChild(make('span','',steps.length+' moment'));if(meta.time)metadata.appendChild(make('span','',meta.time));header.appendChild(metadata);
+    if(meta.demo)header.appendChild(make('p','margin:10px 0 0;font-size:12px;color:#818A81;',meta.demo));
+    root.appendChild(header);
+    var prog=make('div','display:flex;align-items:center;gap:14px;padding:0 0 22px;');var bar=make('div','height:3px;background:#EDF1EC;flex:1;overflow:hidden;border-radius:10px;');var fill=make('div','height:100%;width:0;background:'+color('accent')+';transition:width .25s;');bar.appendChild(fill);var msg=make('span','font-size:11px;white-space:nowrap;color:#7A8980;');prog.append(bar,msg);root.appendChild(prog);
+    var list=make('div','border-top:1px solid #E4EAE4;');root.appendChild(list);
+    var controls=[];
+    function update(){var count=steps.filter(function(s,i){return checked['step-'+i];}).length;fill.style.width=(count/steps.length*100)+'%';msg.textContent=count+' av '+steps.length+' klara';controls.forEach(function(x,i){x.body.hidden=i!==active;x.btn.setAttribute('aria-expanded',String(i===active));x.chev.textContent=active===i?'⌃':'⌄';x.done.textContent=checked['step-'+i]?'✓':'';x.done.style.color=checked['step-'+i]?'#42795F':'#B7C0B9';});}
+    steps.forEach(function(s,i){
+      var section=make('section','border-bottom:1px solid #E4EAE4;');var btn=make('button','display:flex;align-items:center;gap:14px;width:100%;padding:19px 1px;border:0;background:transparent;text-align:left;cursor:pointer;color:'+color('strong')+';font-family:inherit;');btn.type='button';btn.id=ROOT_ID+'-step-btn-'+i;btn.setAttribute('aria-controls',ROOT_ID+'-step-body-'+i);
+      btn.appendChild(make('span','flex:0 0 27px;font-size:13px;font-weight:500;color:#8B9C91;',String(i+1).padStart(2,'0')));
+      var bl=make('span','display:flex;flex-direction:column;flex:1;min-width:0;');bl.appendChild(make('span','font-size:16px;font-weight:600;line-height:1.4;',s.title));if(s.subtitle)bl.appendChild(make('span','color:#77877D;font-size:12px;font-weight:400;margin-top:2px;',s.subtitle));btn.appendChild(bl);
+      if(s.time)btn.appendChild(make('span','font-size:11px;color:#93A097;white-space:nowrap;',s.time));
+      var done=make('span','font-size:16px;min-width:16px;','');btn.appendChild(done);var chev=make('span','font-size:19px;color:#84958B;padding:0 4px;','⌄');btn.appendChild(chev);
+      var body=make('div','padding:0 3px 23px 41px;font-size:14px;max-width:800px;line-height:1.7;');body.id=ROOT_ID+'-step-body-'+i;body.hidden=true;body.setAttribute('role','region');body.setAttribute('aria-labelledby',btn.id);
+      s.pieces.forEach(function(piece){addRenderable(body,piece,i);});
+      var v=makeVideo(s);if(v)body.appendChild(v);
+      if(s.exerciseUrl){var ex=make('div','margin:15px 0;');var a=safeTarget(s.exerciseUrl,s.exerciseTitle||'Öppna övningen','');if(a)ex.appendChild(a);body.appendChild(ex);}
+      var q=makeQuestion(s,i);if(q)body.appendChild(q);
+      var footer=make('div','display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:25px;');var next=make('button','border:1px solid '+color('strong')+';background:'+color('strong')+';color:white;border-radius:7px;padding:10px 16px;min-height:44px;cursor:pointer;font-size:12px;font-weight:600;',i===steps.length-1?'Markera som klart':'Klart, fortsätt →');next.type='button';next.addEventListener('click',function(){checked['step-'+i]=true;save();active=i<steps.length-1?i+1:-1;update();if(active!==-1)controls[active].btn.focus();});footer.appendChild(next);body.appendChild(footer);
+      btn.addEventListener('click',function(){active=(active===i?-1:i);update();});section.append(btn,body);list.appendChild(section);controls.push({btn:btn,body:body,chev:chev,done:done});
+    });
+    var tail=make('footer','display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:19px;color:#97A49B;font-size:11px;');tail.appendChild(make('span','font-size:11px;','Lär dig i din egen takt'));
+    var reset=make('button','background:transparent;border:0;border-bottom:1px solid #C6D3C9;padding:4px 0;cursor:pointer;color:#84958B;font-size:11px;','Återställ min progression');reset.type='button';reset.addEventListener('click',function(){if(!confirm('Vill du nollställa alla klarmarkeringar för den här lektionen?'))return;checked={};save();active=-1;update();});tail.appendChild(reset);root.appendChild(tail);update();
+  }
+  function error(message){root.replaceChildren(make('div','padding:18px;border:1px solid #D9DDD7;background:#F8FAF7;font-family:'+FONT+';font-size:14px;color:#485E50;line-height:1.6;','Renderer 2.0: '+message));}
+  async function init(){
+    if(!root.hasAttribute('data-zen-inline') && (!sourceUrl||sourceUrl.includes('000000'))){error('Ange det riktiga Moodle Page-ID:t i data-source-url. Det här är fortfarande en prototyp.');return;}
+    try{
+      var sources=root.hasAttribute('data-zen-inline') ? [document.getElementById('ZEN-INLINE-SOURCE').textContent,document.getElementById('ZEN-INLINE-STYLE').textContent] : await Promise.all([
+        fetch(sourceUrl,{credentials:'same-origin',cache:'no-store'}).then(function(r){if(!r.ok)throw Error('SOURCE-källan kunde inte hämtas (HTTP '+r.status+').');return r.text();}),
+        (styleUrl&&!styleUrl.includes('000000')?fetch(styleUrl,{credentials:'same-origin',cache:'no-store'}).then(function(r){if(!r.ok)throw Error('STYLE saknas');return r.text();}).catch(function(){return '';}):Promise.resolve(''))
+      ]);
+      var dom=new DOMParser();if(sources[1])parseStyle(dom.parseFromString(sources[1],'text/html'));var meta=parseSource(dom.parseFromString(sources[0],'text/html'));build(meta);
+    }catch(e){error(e&&e.message?e.message:String(e));}
+  }
+  try{
+    if(typeof FontFace!=='undefined'&&document.fonts){
+      var base='https://novia-linda.github.io/demo-tanja/';
+      [[300,'be-vietnam-pro-v12-latin-300.woff2'],[400,'be-vietnam-pro-v12-latin-regular.woff2'],[500,'be-vietnam-pro-v12-latin-500.woff2'],[600,'be-vietnam-pro-v12-latin-600.woff2']].forEach(function(item){
+        var face=new FontFace('Be Vietnam Pro','url('+base+item[1]+')',{weight:String(item[0])});
+        face.load().then(function(f){document.fonts.add(f);}).catch(function(){});
+      });
+    }
+  }catch(_){}
+  init();
+})();
