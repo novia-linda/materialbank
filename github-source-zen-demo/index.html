@@ -1,0 +1,71 @@
+<!doctype html><html lang="sv"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Renderer 2.0 · Zen – prototyp</title><style>*{box-sizing:border-box}body{font-family:system-ui,'Segoe UI',Arial,sans-serif;margin:0;color:#344D49;background:#F4F7F3;line-height:1.5}.shell{max-width:1080px;margin:auto;padding:24px}.preview-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:12px}.badge{font-size:11px;color:#657F72;letter-spacing:.1em;font-weight:700}.preview-head h1{font-size:19px;font-weight:600;margin:4px 0}.preview-head p{font-size:12px;color:#64786D;margin:0}.preview-head a{display:inline-flex;text-decoration:none;color:#344D49;border-bottom:1px solid #9BB8A5;padding:8px 3px;font-size:12px}.bottom{max-width:900px;margin:13px auto;text-align:center;color:#91A197;font-size:12px}footer{margin-top:16px}
+/* Progressive, iOS-readable fallback. Core script replaces this with the interactive Zen renderer when enabled. */
+.zen-native{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;max-width:950px;margin:12px auto 24px;padding:clamp(20px,3.5vw,39px);background:#FEFFFD;color:#344D49;border:1px solid #E9EDE9;border-radius:12px;line-height:1.62}.zn-head{padding:5px 0 26px}.zn-eyebrow{font-size:11px;font-weight:700;letter-spacing:.11em;color:#729389;margin-bottom:9px}.zn-head h2{font-size:clamp(24px,3vw,35px);font-weight:600;margin:0 0 9px;line-height:1.2}.zn-head p{font-size:14px;color:#576B62;max-width:710px;margin:0 0 11px}.zn-metadata{font-size:12px;color:#76847B;margin-top:16px}.zn-steps{border-top:1px solid #E4EAE4}.zn-step{border-bottom:1px solid #E4EAE4}.zn-step>summary{display:flex;gap:14px;align-items:center;padding:19px 1px;cursor:pointer;list-style:none;min-height:70px}.zn-step>summary::-webkit-details-marker{display:none}.zn-number{font-size:13px;color:#8B9C91;flex:0 0 27px}.zn-titles{display:flex;flex:1;min-width:0;flex-direction:column}.zn-titles strong{font-size:16px;font-weight:600;line-height:1.4}.zn-titles small{font-size:12px;color:#77877D;margin-top:2px}.zn-duration{font-size:11px;white-space:nowrap;color:#93A097}.zn-chevron{font-size:19px;color:#84958B;padding:0 4px}.zn-step[open] .zn-chevron{transform:rotate(180deg)}.zn-body{padding:0 3px 23px 41px;font-size:14px;line-height:1.7;max-width:800px}.zn-body p{margin:0 0 13px}.zn-help{border-top:1px solid #E9EEEA;padding:12px 0;margin:14px 0}.zn-help>summary{cursor:pointer;color:#547467;font-size:13px;font-weight:600}.zn-help[open]>summary{margin-bottom:9px}.zn-tip{background:#F3F6F3;border-left:3px solid #729389;padding:12px 14px}.zn-link{color:#344D49;text-decoration:none;border-bottom:1px solid #9BB8A5;padding:3px 0;font-weight:600}.zn-question{border-top:1px solid #E4EAE4;margin-top:14px;padding:15px 0}.zn-question p{color:#708279;font-size:12px}.zn-static-note{font-size:12px;color:#637A6E;margin:17px 0 0}.zn-static-note a{color:#344D49}.zen-native details:focus-visible,.zen-native summary:focus-visible{outline:3px solid #628C80;outline-offset:3px}@media(max-width:480px){.shell{padding:16px}.preview-head h1{font-size:19px}.preview-head a{min-height:44px}.zen-native{padding:20px 16px}.zn-step>summary{gap:9px}.zn-number{flex-basis:25px}.zn-duration{font-size:10px}.zn-body{padding-left:32px}}
+</style></head><body><div class="shell"><header class="preview-head"><div><div class="badge">DESIGNA LÄRANDE · LIVE SOURCE · GITHUB</div><h1>Zen-renderaren med GitHub-källa</h1><p>Samma SOURCE-fil på GitHub kan användas i både Notion och Moodle. Klicka på ett moment.</p></div><a href="./README.md" target="_blank" rel="noopener">Teknisk dokumentation ↗</a></header><div id="zen-renderer-v20" data-source-url="./source.html" data-style-url="./style.html" aria-label="Interaktiv undervisningslektion"><div class="zen-native" aria-label="Undervisningslektion (fungerar utan skript)">
+<header class="zn-head"><div class="zn-eyebrow">Excel · Analysera data</div>
+<h2>Pivottabeller: från demonstration till eget svar</h2>
+<p>Skapa en pivottabell, undersöka försäljning per ort och månad och använda resultatet för att besvara en affärsfråga.</p>
+<div class="zn-metadata">5 moment · Cirka 17 minuter</div></header>
+<div class="zn-steps">
+<details class="zn-step"><summary><span class="zn-number">01</span>
+<span class="zn-titles"><strong>Läs</strong><small>Förstå vad en pivottabell kan hjälpa dig att se</small></span>
+<span class="zn-duration">2 min</span>
+<span aria-hidden="true" class="zn-chevron">⌄</span></summary>
+<div class="zn-body">
+<p>En pivottabell sammanfattar många dataposter till en begriplig översikt. Du kan till exempel jämföra vilka orter som sålt mest och hur försäljningen förändrats mellan månader.</p>
+<p>Du behöver inte memorera varje knapp. Försök i stället förstå hur fälten <strong>ort</strong>, <strong>månad</strong> och <strong>försäljningsbelopp</strong> samverkar.</p>
+<details class="zn-help"><summary>Vad betyder rader, kolumner och värden?</summary>
+<p>Rader grupperar exempelvis per ort, kolumner kan visa månader och värden visar hur mycket som sålts. Summa är ofta rätt sammanfattning när det handlar om euro.</p>
+</details>
+<ul><li>Jag kan förklara vad en pivottabell gör.</li><li>Jag vet vad värdefältet ska sammanfatta.</li></ul>
+</div></details>
+<details class="zn-step"><summary><span class="zn-number">02</span>
+<span class="zn-titles"><strong>Se</strong><small>Följ en lugn demonstration i Excel</small></span>
+<span class="zn-duration">3 min</span>
+<span aria-hidden="true" class="zn-chevron">⌄</span></summary>
+<div class="zn-body">
+<p>Titta efter vilka fält som dras till rader, kolumner och värden. Pausa gärna och prova samma steg i Excel.</p>
+<details class="zn-help"><summary>Undertexter och skrivet alternativ</summary>
+<p>Här kan du lägga en länk till videons transkription eller en kort skriftlig steglista.</p>
+</details>
+<p class="zn-tip">Instruktionsvideon läggs till när den är färdig.</p>
+</div></details>
+<details class="zn-step"><summary><span class="zn-number">03</span>
+<span class="zn-titles"><strong>Gör</strong><small>Skapa en egen pivottabell med övningsdata</small></span>
+<span class="zn-duration">5 min</span>
+<span aria-hidden="true" class="zn-chevron">⌄</span></summary>
+<div class="zn-body">
+<p>Du är analytiker i ett fiktivt företag. Öppna övningsdata och kopiera tabellen till Excel. Skapa sedan en pivottabell där du kan filtrera försäljningen per ort och månad.</p>
+<p>Tips: Kontrollera att beloppen är numeriska och att månaderna inte blandas ihop.</p>
+<details class="zn-help"><summary>Jag behöver hjälp att komma igång</summary>
+<ol>
+<li>Markera datatabellen inklusive rubriker.</li>
+<li>Välj Infoga → Pivottabell.</li>
+<li>Lägg Ort i rader och Försäljning i värden.</li>
+<li>Lägg Månad i filter eller kolumner.</li>
+</ol>
+</details>
+<p><a class="zn-link" href="https://novia-linda.github.io/materialbank/renderer2-zen/ovningsdata.html">Öppna övningsdata ↗</a></p>
+</div></details>
+<details class="zn-step"><summary><span class="zn-number">04</span>
+<span class="zn-titles"><strong>Kontrollera</strong><small>Använd resultatet från din egen pivottabell</small></span>
+<span class="zn-duration">2 min</span>
+<span aria-hidden="true" class="zn-chevron">⌄</span></summary>
+<div class="zn-body">
+<details class="zn-help"><summary>Varför finns facit i källan?</summary>
+<p>Det här är en formativ självkontroll, inte en säker tentamen. Facit kan läsas av den som granskar webbsidans kod. Betygsgrundande frågor ska ligga i Moodles Quiz.</p>
+</details>
+<div class="zn-question"><strong>Hur många euro (exklusive moms) sålde företaget för i Vasa under september 2026?</strong><p>Svarskontrollen fungerar i den interaktiva webbdemon.</p></div>
+</div></details>
+<details class="zn-step"><summary><span class="zn-number">05</span>
+<span class="zn-titles"><strong>Fördjupa</strong><small>Prova en ny fråga med mindre stöd</small></span>
+<span class="zn-duration">5 min</span>
+<span aria-hidden="true" class="zn-chevron">⌄</span></summary>
+<div class="zn-body">
+<p>Vilken ort hade den största försäljningen i september? Ändra pivottabellen så att du kan jämföra orterna.</p>
+<p>Varför skulle en chef ha nytta av just den jämförelsen?</p>
+<details class="zn-help"><summary>En möjlig väg vidare</summary>
+<p>Visa orterna som rader och filtrera månaden till september. När du väljer metod själv börjar du röra dig från handledd träning mot självständig tillämpning.</p>
+</details>
+</div></details>
+</div><p class="zn-static-note">Enkel förhandsvisning. <a href="https://novia-linda.github.io/materialbank/github-source-zen-demo/">Öppna interaktiv version i Safari ↗</a> för självtest och sparad progression.</p></div></div><footer class="bottom">GitHub SOURCE · fiktiva data · inte en tentamen · progression sparas enbart i din webbläsare</footer><p style="text-align:center;margin:0 auto 10px;font-size:12px;"><a style="color:#547467;" href="./source.html" target="_blank" rel="noopener">Visa GitHub-källtexten</a> &nbsp;·&nbsp; <a style="color:#547467;" href="./style.html" target="_blank" rel="noopener">Visa STYLE</a></p></div><script src="../renderer2-zen/renderer-core.js" defer></script></body></html>
