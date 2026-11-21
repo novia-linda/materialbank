@@ -45,8 +45,7 @@
 .phone-cue-swipe strong{font-size:clamp(11px,1.9dvh,15px)}
 .phone-paper-caption{justify-content:space-between;align-items:center}
 .phone-paper-caption span:last-child{background:#fffaf2cf;padding:4px 7px;border-radius:6px;font-weight:700;font-size:9px;text-shadow:none}
-@media(max-height:660px){.phone-cue-dots{gap:7px;padding:2px 0;min-height:12px}.phone-cue-dots span{width:7px;height:7px;flex-basis:7px}.phone-cues p{font-size:clamp(12px,2.2dvh,16px)}}
-
+@media(max-height:660px){.phone-cue-dots{gap:7px;padding:2px 0;min-height:12px}.phone-cue-dots span{width:7px;height:7px;flex-basis:7px}}
 /* v2.2 — compact spoken cue, equally sized paper and camera, independent recording bar. */
 .phone-studio{
   grid-template-columns:minmax(0,1fr) minmax(0,1fr);
@@ -155,6 +154,43 @@
   .phone-studio .phone-cue-options{min-height:33px}
   .phone-studio .phone-type-tools button{height:32px;min-height:32px}
 }
+/* v2.2: quiet title, readable full-sentence teleprompter. */
+.phone-cue-bar{align-items:flex-start;gap:8px;letter-spacing:normal}
+.phone-cue-info{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+.phone-cue-heading{font-family:inherit;font-size:clamp(9px,1.25dvh,11px);font-weight:600;line-height:1.25;color:#89745f;letter-spacing:.25px;max-width:100%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.phone-cue-bar strong{font-size:9px;color:#9c8978;letter-spacing:.6px;font-weight:600}
+.phone-cue-dots{flex-shrink:0;margin-top:2px}
+.phone-cues p{font-size:clamp(19px,2.9dvh,27px);line-height:1.35;font-weight:560;letter-spacing:-.25px;overflow:auto;min-height:0;max-height:none;flex:1;align-content:center;padding:0 0 5px;overscroll-behavior:contain;text-wrap:pretty}
+.phone-zone-tip{font-size:9px;flex-shrink:0}
+@media(max-height:700px){.phone-cues p{font-size:clamp(17px,2.7dvh,21px)}.phone-zone-tip{display:none}.phone-cues{gap:4px}}
+.export-review{position:fixed;inset:0;z-index:240;background:#292321d9;display:grid;place-items:center;padding:16px;overflow:auto}
+.export-review[hidden]{display:none!important}
+.export-review-card{background:#fffaf2;display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:13px;width:min(92vw,530px);max-height:95dvh;overflow:auto}
+.export-review-card h2{font-size:20px;font-family:Georgia,serif;margin:0}.export-review-card p{font-size:13px;line-height:1.4;margin:0}
+.export-review-card video{background:#1f1d1b;max-height:48dvh;width:100%;border-radius:7px}
+.export-review-actions{display:flex;flex-wrap:wrap;gap:8px}.export-review-actions button{flex:1;min-width:145px}
+.export-review-card small{font-size:11px;line-height:1.5;color:#6e6053}
+
+/* v2.3. Non-destructive post-recording source switches & take selection. */
+.v23-panel{border:1px solid #e8ded0;background:#fffaf2;border-radius:12px;margin:10px 0 6px;padding:14px 15px;text-align:left;display:grid;gap:9px}
+.v23-panel-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.v23-panel-top strong{font-size:14px;color:#352d25}
+.v23-panel-top p{font-size:11px;line-height:1.4;color:#786b5c;margin:4px 0 0;max-width:560px}
+.v23-switch-actions{display:flex;gap:8px;flex-wrap:wrap}
+.v23-pill{border:1px solid #d9c7b4;background:#fff;border-radius:9px;padding:10px 13px;min-height:44px;font-weight:650;color:#473a2f}
+.v23-pill.active{background:#bf4339;border-color:#bf4339;color:white}
+.v23-pill:disabled{opacity:.55}
+.v23-timestamp{display:flex;justify-content:space-between;gap:12px;font-size:11px;color:#6c5d4c}
+.v23-changes{display:grid;gap:6px}.v23-change{display:flex;align-items:center;gap:6px;flex-wrap:wrap;border-radius:8px;background:#f6ede1;padding:7px 10px}
+.v23-change label{font-size:11px;color:#685b4e;display:flex;align-items:center;gap:6px}.v23-change input{width:73px;min-width:0;padding:7px;border:1px solid #d5c5b2;border-radius:6px}
+.v23-change button{min-height:34px;padding:5px 10px;border:1px solid #d7c9b6;border-radius:6px;background:white;color:#64483b}
+.v23-change small{flex:1;color:#75695b;min-width:100px;font-size:10px}
+.v22-take{padding:10px;border:1px solid #e8dccc;border-radius:8px;display:grid;gap:8px;margin-top:8px}
+.v22-take-title{display:flex;justify-content:space-between;gap:9px}.v22-take-title strong{font-size:12px}.v22-take-title small{color:#786a5a}
+.v22-take label{font-size:12px}.v22-take-range{display:flex;gap:12px}.v22-take-range label{flex:1;display:grid;gap:3px}.v22-take-range input{padding:7px;width:100%;border:1px solid #dacbb9;border-radius:6px}
+.v22-take-actions{display:flex;gap:7px;flex-wrap:wrap}.v22-take-actions button{min-height:34px;background:white;border:1px solid #decfbc;border-radius:6px;padding:5px 12px;font-size:12px}
+.v22-mini{font-size:11px;color:#75675a}
+@media(max-width:600px){.v23-panel{margin:10px 7px;padding:12px}.v23-panel-top{flex-direction:column}.v23-switch-actions{flex-wrap:nowrap}.v23-pill{flex:1;font-size:11px;padding:9px 7px}}
 </style>
 </head>
 <body>
@@ -186,6 +222,14 @@
         <input id="scrubber" type="range" min="0" max="19" value="0" step="0.01" aria-label="Tid i filmen">
         <div class="timeline-head"><b>Tidslinje</b><span>Välj en scen för att redigera</span></div>
         <div class="timeline" id="timeline"></div>
+        <section class="v23-panel" id="v23VideoChoices" aria-label="Efterredigera vilken bild som visas">
+          <div class="v23-panel-top"><div><strong>Vem ska synas?</strong><p>Välj tidpunkt med tidsreglaget ovan och tryck på kameran eller pappersbilden. Rösten påverkas inte.</p></div><button id="v22QuickSave" type="button" class="btn primary compact">↑ Spara GitHub</button></div>
+          <div class="v23-switch-actions"><button type="button" id="v23Camera" class="v23-pill">◉ Visa mig från nu</button><button type="button" id="v23Paper" class="v23-pill">✎ Visa bilden från nu</button></div>
+          <div class="v23-timestamp"><span id="v23NowTime">00:00</span><span id="v23CurrentMode">Ladda eller spela in en video först</span></div>
+          <div id="v23Changes" class="v23-changes" aria-live="polite"></div>
+          <button type="button" id="v23Reset" class="btn subtle compact">↺ Använd inspelningens originalval</button>
+        </section>
+        <section class="v23-panel v23-takes"><div class="v23-panel-top"><div><strong>Klipp och omtagningar</strong><p>Välj vilka delar som ska användas. Originalen behålls i projektet.</p></div><small id="v22Duration"></small></div><div id="v22Edits"></div></section>
       </div>
     </section>
     <aside class="sidebar inspector-pane" aria-label="Redigera scen">
@@ -197,9 +241,9 @@
         <div class="field"><label for="sceneTitle">Rubrik</label><textarea id="sceneTitle" rows="2" maxlength="105"></textarea></div>
         <div class="field"><label for="sceneBody">Förklarande text på bilden</label><textarea id="sceneBody" rows="3" maxlength="270"></textarea></div>
         <div class="field"><label for="sceneScript">Stödmanus – vad du vill säga</label><textarea id="sceneScript" rows="4" maxlength="2400" placeholder="Berätta med egna ord... Du behöver inte läsa innantill."></textarea><small>Övergripande manus till den här pappersbilden. Visas inte i filmen.</small></div>
-        <div class="field"><label for="sceneCues">Stödpunkter för den här bilden</label><textarea id="sceneCues" rows="5" maxlength="3500" placeholder="En tanke per rad.
+        <div class="field"><label for="sceneCues">Berättartext – en komplett mening per rad</label><textarea id="sceneCues" rows="5" maxlength="3500" placeholder="En tanke per rad.
 Varje rad blir en prick.
-Sista raden, sedan nästa bild."></textarea><small>En stödtext per rad. Varje rad blir en ljus prick i iPhone-läget. När du sveper vidare från sista punkten byts bilden automatiskt.</small></div>
+Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga meningar som du kan läsa rakt av. Varje rad blir en prick i inspelningsläget, och efter sista raden byts pappersbilden automatiskt.</small></div>
         <div class="field optional" id="compareFields"><div class="grid2"><div><label for="leftTitle">Vänster rubrik</label><input id="leftTitle" maxlength="48"></div><div><label for="rightTitle">Höger rubrik</label><input id="rightTitle" maxlength="48"></div></div><div class="grid2"><div><label for="leftText">Vänster text</label><textarea id="leftText" rows="3" maxlength="140"></textarea></div><div><label for="rightText">Höger text</label><textarea id="rightText" rows="3" maxlength="140"></textarea></div></div></div>
         <div class="field optional" id="stepsFields"><label>Tre nyckelsteg</label><input id="step1" maxlength="70" placeholder="Steg 1"><input id="step2" maxlength="70" placeholder="Steg 2"><input id="step3" maxlength="70" placeholder="Steg 3"></div>
         <div class="field optional" id="chartFields"><label>Etiketter i diagrammet</label><input id="bar1" maxlength="48" placeholder="Första stapeln"><input id="bar2" maxlength="48" placeholder="Andra stapeln"><input id="bar3" maxlength="48" placeholder="Tredje stapeln"></div>
@@ -226,11 +270,11 @@ Sista raden, sedan nästa bild."></textarea><small>En stödtext per rad. Varje r
       </div>
     </aside>
   </main>
-  <footer class="statusbar"><span id="statusMessage">Börja gärna med en storyboard i ChatGPT.</span><span>Stil: Papper & tusch · v2.0</span></footer>
+  <footer class="statusbar"><span id="statusMessage">Börja gärna med en storyboard i ChatGPT.</span><span>Stil: Papper & tusch · v2.3</span></footer>
 </div>
 <div class="phone-studio" id="phoneStudio" role="dialog" aria-modal="true" aria-label="Inspelningsläge för iPhone" hidden>
   <section class="phone-cues" aria-label="Stödmanus för aktuell pappersbild">
-    <div class="phone-cue-bar"><strong id="phoneCueNum">BILD 1 / 5 · PUNKT 1 / 2</strong><div class="phone-cue-tools"><button type="button" id="phoneConnect" aria-label="Anslut GitHub">⌁ GitHub</button><button type="button" id="phoneExit" aria-label="Lämna inspelningsläget">✕</button></div></div>
+    <div class="phone-cue-bar"><div class="phone-cue-info"><div class="phone-cue-heading" id="phoneCueTitle">Från svar till handling</div><strong id="phoneCueNum">BILD 1 / 5 · DEL 1 / 2</strong></div><div class="phone-cue-tools"><button type="button" id="phoneConnect" aria-label="Anslut GitHub">⌁ GitHub</button><button type="button" id="phoneExit" aria-label="Lämna inspelningsläget">✕</button></div></div>
     <div class="phone-cue-options">
       <div class="phone-cue-dots" id="phoneCueDots" role="group" aria-label="Stödpunkter för den här bilden"></div>
       <div class="phone-type-tools" role="group" aria-label="Ändra storlek på stödtexten">
@@ -238,9 +282,8 @@ Sista raden, sedan nästa bild."></textarea><small>En stödtext per rad. Varje r
         <button type="button" id="phoneTextLarger" aria-label="Förstora texten" title="Förstora stödtextens storlek">A+</button>
       </div>
     </div>
-    <div class="phone-cue-heading" id="phoneCueTitle">Från svar till handling</div>
-    <p id="phoneCueBody" aria-live="polite">Berätta med egna ord. Detta är bara ett stöd.</p>
-    <div class="phone-zone-tip" id="phoneCueTip">Varje prick är en stödpunkt för samma pappersbild</div>
+    <p id="phoneCueBody" aria-live="polite">Här visas meningen du kan läsa högt eller berätta fritt utifrån.</p>
+    <div class="phone-zone-tip" id="phoneCueTip">Prickarna visar hur många meningar som hör till den här bilden.</div>
   </section>
   <section class="phone-paper" id="phonePaperZone" aria-label="Aktuell pappersbild, byts automatiskt med stödtexten">
     <canvas id="phonePaperCanvas" width="720" height="1280" aria-label="Pappersbild som ska synas"></canvas>
@@ -250,8 +293,7 @@ Sista raden, sedan nästa bild."></textarea><small>En stödtext per rad. Varje r
     <video id="phoneCam" muted playsinline autoplay></video>
     <div class="phone-camera-fallback" id="phoneCamFallback">Kameraförhandsvisning</div>
     <div class="phone-camera-top"><span id="phoneClock">00:00</span><span id="phoneRecordSignal">KAMERA AV</span></div>
-
-  </section>
+    </section>
     <div class="phone-camera-controls phone-record-bar">
       <button id="phoneEnableCam" type="button" class="phone-quiet">Kamera</button>
       <button id="phoneRecord" type="button" class="phone-start">● Spela in</button>
@@ -260,18 +302,25 @@ Sista raden, sedan nästa bild."></textarea><small>En stödtext per rad. Varje r
     </div>
   <section class="phone-cue-swipe" id="phoneCueSwipe" aria-label="Svep med tummen för att byta stödpunkt och därefter bild">
     <button id="phoneCuePrev" type="button" aria-label="Föregående stödpunkt">‹</button>
-    <div><strong>← Svep för nästa stödpunkt</strong><small id="phoneSwipeStatus">Bilden byts efter sista punkten</small></div>
+    <div><strong>← Svep för nästa mening</strong><small id="phoneSwipeStatus">Bilden byts efter sista meningen</small></div>
     <button id="phoneCueNext" type="button" aria-label="Nästa stödpunkt">›</button>
   </section>
   <div class="phone-review" id="phoneReview" hidden>
-    <h2>Inspelningen är färdig</h2><p id="phoneReviewInfo">Video och händelser finns nu i projektet.</p>
+    <h2>Inspelningen är färdig</h2><button type="button" id="v22ReviewSave" class="btn primary wide">↑ Uppdatera GitHub nu</button><p id="phoneReviewInfo">Video och händelser finns nu i projektet.</p>
     <video id="phoneReviewVideo" playsinline controls></video>
     <div class="phone-review-actions"><button type="button" id="phoneDownloadVideo" class="btn pale">↓ Video</button><button type="button" id="phoneDownloadAudio" class="btn subtle">↓ Ljud</button><button type="button" id="phoneDownloadEvents" class="btn subtle">↓ Tidsmarkörer</button></div>
     <button type="button" id="phoneSaveGithub" class="btn primary wide">↑ Spara projekt och inspelning på GitHub</button>
-    <button type="button" id="phoneReviewClose" class="btn subtle wide">Tillbaka till editorn</button>
+    <button type="button" id="v22Retake" class="btn pale wide">↺ Spela in en ny del / omtagning</button><button type="button" id="phoneReviewClose" class="btn subtle wide">Efterredigera tidslinjen</button>
     <p id="phoneReviewStatus" role="status"></p>
   </div>
 </div>
+<section id="exportReview" class="export-review" role="dialog" aria-modal="true" aria-label="Kontrollera exporterad video" hidden>
+  <div class="export-review-card"><h2>Kontrollera den färdiga filmen</h2><p id="exportReviewInfo">Lyssna på rösten och kontrollera att bildväxlingarna stämmer innan du sparar.</p>
+    <video id="exportReviewVideo" controls playsinline preload="metadata"></video>
+    <div class="export-review-actions"><button type="button" id="downloadFinalVideo" class="btn primary">↓ Spara film med ljud</button><button type="button" id="downloadOriginalTake" class="btn subtle">↓ Original med ljud</button><button type="button" id="exportReviewClose" class="btn subtle">Stäng</button></div>
+    <small id="exportReviewNote">Originalinspelningen behålls separat, även om videoexporten behöver göras om.</small>
+  </div>
+</section>
 <input type="file" id="projectFile" accept=".json,application/json" hidden>
 <div class="modal-backdrop" id="modalBackdrop" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><header><h2 id="modalTitle">Arbeta med ChatGPT</h2><button class="icon-btn" id="closeModal" type="button" aria-label="Stäng">✕</button></header><div class="modal-body" id="modalContent"></div><div class="modal-footer" id="modalFooter"></div></section></div>
 <script id="demo-script">
@@ -474,7 +523,6 @@ Sista raden, sedan nästa bild."></textarea><small>En stödtext per rad. Varje r
       for(const b of bits)notes.push({scene:i,text:b.slice(0,650),title:s.title||`Bild ${i+1}`});
     }return notes.length?notes:[{scene:0,text:'Berätta fritt om ämnet.',title:project.title}];}
   function phoneGroup(){const current=phoneNotes[phoneNoteIndex]||phoneNotes[0];if(!current)return {start:0,total:1,position:0};let start=phoneNoteIndex;while(start>0&&phoneNotes[start-1].scene===current.scene)start--;let end=phoneNoteIndex+1;while(end<phoneNotes.length&&phoneNotes[end].scene===current.scene)end++;return {start,total:end-start,position:phoneNoteIndex-start};}
-
   // Larger default for reading at arm's length. Remember the adjustment on this device.
   let phoneCueFontSize=34;
   try{
@@ -492,7 +540,7 @@ Sista raden, sedan nästa bild."></textarea><small>En stödtext per rad. Varje r
     // There must never be an independent picture index: the cue owns the picture.
     phoneImageIndex=n.scene;
     const group=phoneGroup();
-    $('phoneCueNum').textContent=`BILD ${phoneImageIndex+1} / ${project.scenes.length} · PUNKT ${group.position+1} / ${group.total}`;
+    $('phoneCueNum').textContent=`BILD ${phoneImageIndex+1} / ${project.scenes.length} · MENING ${group.position+1} / ${group.total}`;
     $('phoneCueDots').innerHTML=Array.from({length:group.total},(_,i)=>`<span class="${i===group.position?'active':i<group.position?'past':''}" aria-label="Punkt ${i+1}${i===group.position?', aktuell':''}"></span>`).join('');
     $('phoneCueDots').setAttribute('aria-label',`${group.total} stödpunkt${group.total===1?'':'er'} för bild ${phoneImageIndex+1}, punkt ${group.position+1} visas`);
     $('phoneCueTitle').textContent=n.title;
@@ -647,7 +695,227 @@ Sista raden, sedan nästa bild."></textarea><small>En stödtext per rad. Varje r
     document.querySelectorAll('[data-tab]').forEach(el=>el.addEventListener('click',()=>{activeTab=el.dataset.tab;document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===activeTab));$('workspace')?.setAttribute('data-tab',activeTab);document.querySelector('.workspace').dataset.tab=activeTab;}));
     window.addEventListener('beforeunload',e=>{if(project.scenes.some(s=>s.image)||project.scenes.length!==demoScenes.length){e.preventDefault();e.returnValue='';}});
   }
-  function init(){clothTex=createCloth();document.querySelector('.workspace').dataset.tab=activeTab;events();studioV2Events();updateAll();status('Börja med story och storyboard i ChatGPT. Anslut GitHub och öppna projekt via ID.');}
+  // v2.2 - Non-destructive take editing, recorded timings, voice-safe preview/export.
+  // Each saved take remains intact. The edit decision list only references ranges.
+  const v22Videos=new Map();
+  let v22RenderedBlob=null,v22RenderedURL='',v22AudioSeen=false,v22AudioGraph=null,v22AudioNodes=new Map();
+  function v22Take(id){return (project.takes||[]).find(t=>t.id===id)||null;}
+  function v22Edits(){
+    if(Array.isArray(project.edits)){return project.edits.filter(e=>v22Take(e.takeId)&&Number(e.out)>Number(e.in));}
+    const takes=(project.takes||[]).filter(t=>t.video?.path&&Number(t.duration)>0);
+    const last=takes[takes.length-1];return last?[{takeId:last.id,in:0,out:Number(last.duration)}]:[];
+  }
+  function v22Timeline(){
+    const edits=v22Edits();if(!edits.length)return null;
+    const pieces=[];let cursor=0;
+    for(const entry of edits){
+      const take=v22Take(entry.takeId);if(!take||!take.video?.path)continue;
+      const srcIn=Math.max(0,Math.min(Number(take.duration),Number(entry.in)||0));
+      const srcOut=Math.min(Number(take.duration),Number(entry.out));
+      if(!(srcOut>srcIn+.03))continue;
+      const overrides=(Array.isArray(project.visualCues)?project.visualCues:[]).filter(e=>e.takeId===take.id&&['camera','paper'].includes(e.source));
+      const events=(take.events||[]).filter(e=>(e.type==='image'||e.type==='source')&&Number.isFinite(Number(e.at)))
+        .concat(overrides.map(e=>({type:'source',value:e.source,at:Number(e.at)})))
+        .sort((a,b)=>Number(a.at)-Number(b.at));
+      let scene=0,source=take.sourceDefault==='camera'?'camera':'paper';
+      for(const ev of events){if(Number(ev.at)>srcIn+.0001)break;if(ev.type==='image')scene=Math.max(0,Math.min(project.scenes.length-1,Number(ev.index)||0));if(ev.type==='source')source=ev.value==='camera'?'camera':'paper';}
+      let from=srcIn;
+      function push(until){if(until>from+.0001){pieces.push({start:cursor,end:cursor+until-from,idx:scene,source,takeId:take.id,mediaIn:from,mediaOut:until});cursor+=until-from;}from=until;}
+      for(const ev of events){const at=Number(ev.at);if(at<=srcIn+.0001||at>=srcOut)continue;const newScene=ev.type==='image'?Math.max(0,Math.min(project.scenes.length-1,Number(ev.index)||0)):scene;
+        const newSource=ev.type==='source'?(ev.value==='camera'?'camera':'paper'):source;
+        if(newScene!==scene||newSource!==source){push(at);scene=newScene;source=newSource;}
+      }
+      push(srcOut);
+    }
+    return pieces.length?pieces:null;
+  }
+  const v22OriginalSceneAt=sceneAt,v22OriginalTotalDuration=totalDuration,v22OriginalSceneStart=sceneStart;
+  sceneAt=function(t){const parts=v22Timeline();if(!parts)return v22OriginalSceneAt(t);const total=parts[parts.length-1].end;const val=Math.max(0,Math.min(total-.00001,Number(t)||0));const part=parts.find(p=>val<p.end)||parts[parts.length-1];return {...part,progress:Math.min(1,Math.max(0,(val-part.start)/Math.max(.001,part.end-part.start)))};};
+  totalDuration=function(){const parts=v22Timeline();return parts?parts[parts.length-1].end:v22OriginalTotalDuration();};
+  sceneStart=function(index){const parts=v22Timeline();if(parts){const first=parts.find(p=>p.idx===index);if(first)return first.start;}return v22OriginalSceneStart(index);};
+  function v22Media(takeId){const take=v22Take(takeId);if(!take?.video?.path)return null;
+    if(!v22Videos.has(takeId)){const el=document.createElement('video');el.playsInline=true;el.setAttribute('playsinline','');el.preload='auto';el.muted=false;el.autoplay=false;el.dataset.takeId=takeId;
+      v22Videos.set(takeId,el);el.style.cssText='position:fixed;left:-2px;top:-2px;width:1px;height:1px;opacity:.01;pointer-events:none';document.body.appendChild(el);el.addEventListener('loadeddata',()=>{if(!exporting)renderAt(time);});}
+    const video=v22Videos.get(takeId),url=getMediaURL(take.video.path);
+    if(url&&video.src!==url){video.pause();video.src=url;video.load();}
+    return video;
+  }
+  async function v22PrepareMedia(){const edits=v22Edits();const missing=[];for(const e of edits){const take=v22Take(e.takeId);if(take?.video?.path&&!mediaBlobs.has(take.video.path)){const blob=await ensureMedia(take.video.path);if(!blob)missing.push(take.video.path);}v22Media(e.takeId);}if(missing.length)throw Error('Kunde inte läsa en inspelning: '+missing.join(', '));}
+  let v22ActiveId='';
+  function v22SyncMedia(t,shouldPlay){const parts=v22Timeline();if(!parts)return null;const part=sceneAt(t);const el=v22Media(part.takeId);if(!el)return null;
+    for(const [id,other] of v22Videos){if(id!==part.takeId&&!other.paused)other.pause();}
+    const sourceTime=part.mediaIn+(Math.max(part.start,Math.min(t,part.end))-part.start);
+    if(el.readyState>=1&&Number.isFinite(sourceTime)&&Math.abs((el.currentTime||0)-sourceTime)>.35){try{el.currentTime=sourceTime;}catch(e){}}
+    if(shouldPlay&&el.paused){el.play().catch(err=>{if(exporting){status('Ljudet kunde inte starta: '+err.message);} });}
+    else if(!shouldPlay&&!el.paused)el.pause();v22ActiveId=part.takeId;return el;
+  }
+  const v22OriginalRenderAt=renderAt;
+  renderAt=function(t){const segments=v22Timeline();if(!segments){v22OriginalRenderAt(t);return;}
+    const pos=sceneAt(t),scene=project.scenes[pos.idx],video=v22SyncMedia(t,playing||exporting);
+    ctx.clearRect(0,0,W,H);
+    if(pos.source==='camera'){
+      ctx.drawImage(clothTex,0,0,W,H);drawPaper(ctx,36,198,648,908,pos.idx+11);ctx.save();paperPath(ctx,66,223,588,855,pos.idx+10);ctx.clip();ctx.fillStyle='#d8cdbf';ctx.fillRect(66,223,588,855);
+      if(video?.videoWidth&&video.readyState>=2){const scale=Math.max(588/video.videoWidth,855/video.videoHeight),w=video.videoWidth*scale,h=video.videoHeight*scale;ctx.drawImage(video,66+(588-w)/2,223+(855-h)/2,w,h);}ctx.restore();
+      text(ctx,'DU I BILD',70,140,22,700,ink);text(ctx,scene.title||'',360,1168,25,700,ink,'center');
+    }else drawScene(ctx,scene,pos.idx,pos.progress);
+    drawWords(ctx,t);
+    $('timecode').textContent=fmt(t)+' / '+fmt(totalDuration());$('stageTag').textContent=`INSPELNING · BILD ${pos.idx+1} / ${project.scenes.length}`;
+    $('scrubber').max=totalDuration();$('scrubber').value=Math.max(0,Math.min(Number(t)||0,totalDuration()));
+  };
+  const v22OriginalListTimeline=listTimeline;
+  listTimeline=function(){const parts=v22Timeline();if(!parts){v22OriginalListTimeline();return;}$('timeline').innerHTML=parts.map(p=>`<button type="button" class="timeline-item ${selected===p.idx?'active':''}" data-time-offset="${p.start.toFixed(3)}" style="width:${Math.min(200,Math.max(92,62+(p.end-p.start)*15))}px"><strong>${String(p.idx+1).padStart(2,'0')} ${esc(project.scenes[p.idx]?.title||'Bild')}</strong><small>${p.source==='camera'?'Kamera':'Papper'} · ${p.start.toFixed(1)}–${p.end.toFixed(1)} s</small></button>`).join('');};
+  const v22OriginalPause=pause,v22OriginalPlay=play,v22OriginalAudioClock=setAudioClock,v22OriginalStopAudio=stopAudio,v22OriginalResumeAudio=resumeAudio;
+  pause=function(){v22OriginalPause();for(const v of v22Videos.values())if(!v.paused)v.pause();};
+  play=function(){if(!v22Timeline()){v22OriginalPlay();return;}if(exporting)return;if(playing){pause();return;}
+    if(time>=totalDuration()-.01)time=0;playing=true;v22SyncMedia(time,true);playStart=performance.now()-time*1000;
+    $('playBtn').textContent='Ⅱ';$('playBtn').setAttribute('aria-label','Pausa');tick();};
+  setAudioClock=function(t){if(v22Timeline()){v22SyncMedia(t,false);return;}v22OriginalAudioClock(t);};
+  stopAudio=function(){v22OriginalStopAudio();for(const v of v22Videos.values())if(!v.paused)v.pause();};
+  resumeAudio=function(){if(v22Timeline()){v22SyncMedia(time,true);return Promise.resolve();}return v22OriginalResumeAudio();};
+  const v22OriginalImport=importProject;
+  importProject=function(obj){v22OriginalImport(obj);project.edits=Array.isArray(obj.edits)?obj.edits.filter(x=>x&&typeof x.takeId==='string'&&Number(x.out)>Number(x.in)).map(e=>({takeId:e.takeId,in:Number(e.in),out:Number(e.out)})):undefined;project.visualCues=Array.isArray(obj.visualCues)?obj.visualCues.filter(x=>x&&typeof x.takeId==='string'&&['camera','paper'].includes(x.source)&&Number.isFinite(Number(x.at))).map(x=>({takeId:x.takeId,at:Number(x.at),source:x.source})):[];v22Videos.forEach(v=>{v.pause();v.removeAttribute('src');v.load();v.remove();});v22Videos.clear();v22AudioNodes.clear();if(v22AudioGraph){v22AudioGraph.context.close().catch(()=>{});v22AudioGraph=null;}updateAll();v22ShowEdits();v23DisplayChoices();};
+  const v22OriginalOpen=openGithubProject;
+  openGithubProject=async function(){await v22OriginalOpen();try{await v22PrepareMedia();updateAll();v22ShowEdits();}catch(e){status('Inspelningen kunde inte laddas: '+e.message);}};
+  // Store one new take as a separate raw video. The edited film is a playlist of original ranges.
+  const v22OriginalRecord=phoneRecordStart;
+  phoneRecordStart=async function(){await v22OriginalRecord();const current=phoneMainRecorder;if(current){current.addEventListener('stop',()=>{setTimeout(()=>{const take=phoneLastTake;if(!take?.video?.path)return;
+    if(!Array.isArray(project.edits))project.edits=[];
+    if(!project.edits.some(e=>e.takeId===take.id))project.edits.push({takeId:take.id,in:0,out:Math.max(.1,Number(take.duration)||.1)});
+    project.activeTakeId=take.id;v22Media(take.id);v22ShowEdits();updateAll();v23DisplayChoices();},80);});}};
+  function v22ShowEdits(){const box=$('v22Edits');if(!box)return;
+    const takes=Array.isArray(project.takes)?project.takes:[],edits=v22Edits();
+    if(!takes.length){box.innerHTML='<p>Ingen inspelning ännu. Spela in i iPhone-läget.</p>';return;}
+    box.innerHTML=`<p class="v22-mini">Originalen sparas alltid. Du kan behålla en bra del och spela in fortsättningen i ett nytt klipp.</p>`+takes.map(t=>{
+      const e=edits.find(x=>x.takeId===t.id),start=e?e.in:0,end=e?e.out:Number(t.duration)||0;
+      return `<div class="v22-take"><div class="v22-take-title"><strong>${esc(t.id)}</strong><small>${(Number(t.duration)||0).toFixed(1)} s</small></div><label><input type="checkbox" data-take-use="${esc(t.id)}" ${e?'checked':''}> Använd i slutfilmen</label><div class="v22-take-range"><label>Från (sek)<input type="number" data-take-in="${esc(t.id)}" min="0" step="0.1" max="${Math.max(0,Number(t.duration)-.1)}" value="${Number(start).toFixed(1)}"></label><label>Till (sek)<input type="number" data-take-out="${esc(t.id)}" min="0.1" step="0.1" max="${Number(t.duration)}" value="${Number(end).toFixed(1)}"></label></div><div class="v22-take-actions"><button type="button" data-take-up="${esc(t.id)}">↑ Tidigare</button><button type="button" data-take-down="${esc(t.id)}">↓ Senare</button><button type="button" data-take-preview="${esc(t.id)}">▶ Original</button></div></div>`;
+    }).join('');
+    const tot=totalDuration();const output=$('v22Duration');if(output)output.textContent=`Slutfilm: ${tot.toFixed(1)} sekunder`;
+  }
+  function v22SetEditsFromUI(){const box=$('v22Edits');if(!box)return;const old=Array.isArray(project.edits)?project.edits.map(x=>x.takeId):[];const list=[];
+    for(const id of old.concat((project.takes||[]).map(t=>t.id)).filter((x,i,a)=>a.indexOf(x)===i)){
+      const ch=[...box.querySelectorAll('[data-take-use]')].find(e=>e.dataset.takeUse===id);if(!ch?.checked)continue;
+      const take=v22Take(id),max=Number(take?.duration)||0;
+      const fr=box.querySelectorAll('[data-take-in]'),to=box.querySelectorAll('[data-take-out]');
+      const from=[...fr].find(e=>e.dataset.takeIn===id),until=[...to].find(e=>e.dataset.takeOut===id);
+      const a=Math.max(0,Math.min(max-.1,Number(from?.value)||0)),b=Math.min(max,Math.max(a+.1,Number(until?.value)||max));if(b>a)list.push({takeId:id,in:a,out:b});
+    }
+    project.edits=list;time=0;updateAll();v22ShowEdits();
+  }
+  const v22OldSave=saveGithubProject;
+  saveGithubProject=async function(){await v22OldSave();return $('githubProjectInfo').textContent.startsWith('✓ ');};
+  phoneSaveGithub=async function(){if(!githubToken){$('phoneReviewStatus').textContent='Anslut GitHub med PAT först.';connectGithubModal();return;}
+    if(recording){$('phoneSwipeStatus').textContent='Stoppa inspelningen innan du sparar.';return;}
+    const btn=$('phoneSaveGithub');btn.disabled=true;$('phoneReviewStatus').textContent='Laddar upp klipp och sparar tidslinjen…';
+    try{const success=await saveGithubProject();$('phoneReviewStatus').textContent=success?'✓ Sparat på GitHub. Du kan fortsätta spela in senare.':'Sparandet avbröts eller misslyckades. Se meddelandet i editorn.';}catch(e){$('phoneReviewStatus').textContent='Kunde inte spara: '+e.message;}finally{btn.disabled=false;}
+  };
+  function v22QuickSave(){if(recording){$('phoneSwipeStatus').textContent='Stoppa inspelningen innan du sparar.';return;}
+    if(!githubToken){connectGithubModal();return;}const btn=$('v22QuickSave');btn.disabled=true;btn.textContent='Sparar…';
+    saveGithubProject().then(ok=>{btn.textContent=ok?'✓ Sparat':'↑ GitHub';setTimeout(()=>btn.textContent='↑ GitHub',3500);}).finally(()=>{btn.disabled=false;});
+  }
+  // Export uses recorded media audio, not the placeholder storyboard audio track.
+  async function v22EnsureAudio(){const edits=v22Edits();if(!edits.length)return null;
+    if(!window.AudioContext)return null;
+    if(!v22AudioGraph){const context=new AudioContext(),destination=context.createMediaStreamDestination();v22AudioGraph={context,destination,analyser:context.createAnalyser()};}
+    const {context,destination}=v22AudioGraph;
+    for(const e of edits){const v=v22Media(e.takeId);if(!v||v22AudioNodes.has(e.takeId))continue;
+      const source=context.createMediaElementSource(v);const gain=context.createGain();gain.gain.value=1;
+      source.connect(gain);gain.connect(destination);gain.connect(context.destination);
+      v22AudioNodes.set(e.takeId,{source,gain});
+    }
+    await context.resume();return destination.stream.getAudioTracks()[0]||null;
+  }
+  async function v22Export(){if(exporting)return;pause();if(Array.isArray(project.edits)&&project.edits.length===0&&(project.takes||[]).length){status('Du har valt bort alla inspelade klipp. Välj minst ett klipp före export.');return;}const hasTake=!!v22Timeline();if(!hasTake){return v22OriginalExport();}
+    try{await v22PrepareMedia();}catch(e){status(e.message);return;}
+    if(typeof canvas.captureStream!=='function'||typeof MediaRecorder==='undefined'){
+      $('exportReview').hidden=false;$('exportReviewVideo').removeAttribute('src');$('downloadFinalVideo').disabled=true;$('exportReviewInfo').textContent='Sammansatt video med ljud kan inte exporteras i den här webbläsaren. Ditt original med ljud kan sparas nedan. Prova datorns webbläsare för slutexport.';return;
+    }
+    const audioTrack=await v22EnsureAudio();if(!audioTrack||audioTrack.readyState!=='live'){status('Ljudspår saknas. Slutfilmen exporteras inte; originalinspelningen finns kvar.');$('exportReview').hidden=false;$('downloadFinalVideo').disabled=true;$('exportReviewInfo').textContent='Ljudspåret kunde inte förberedas i den här webbläsaren. Spara originalet med ljud och prova slutexporten på datorn.';return;}
+    const stream=canvas.captureStream(30);if(stream.getVideoTracks().length!==1){status('Ingen videoström finns.');return;}stream.addTrack(audioTrack);
+    const supported=m=>MediaRecorder.isTypeSupported?.(m);
+    const formats=['video/mp4;codecs=avc1.42E01E,mp4a.40.2','video/mp4','video/webm;codecs=vp8,opus','video/webm'];
+    const mime=formats.find(supported);if(!mime){status('Video + ljud saknar stödd kodek på denna enhet.');$('exportReview').hidden=false;return;}
+    let recorder;
+    try{recorder=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:2800000,audioBitsPerSecond:128000});}
+    catch(e){status('Kunde inte starta export med ljud: '+e.message);$('exportReview').hidden=false;return;}
+    let pieces=[],frame=0;const dur=totalDuration();exporting=true;
+    const btn=$('exportVideoBtn');btn.disabled=true;btn.textContent='● Exporterar med ljud…';
+    const cleanup=()=>{cancelAnimationFrame(frame);exporting=false;btn.disabled=false;btn.innerHTML='▶ <span>Exportera video</span>';for(const v of v22Videos.values())v.pause();stream.getVideoTracks().forEach(t=>t.stop());};
+    recorder.ondataavailable=e=>{if(e.data?.size)pieces.push(e.data);};
+    recorder.onerror=e=>{cleanup();status('Exportfel: '+(e.error?.message||'okänt fel'));};
+    recorder.onstop=()=>{cleanup();if(!pieces.length){status('Exporten innehöll inga data. Originalen är kvar.');return;}
+      v22RenderedBlob=new Blob(pieces,{type:recorder.mimeType||mime});if(v22RenderedURL)URL.revokeObjectURL(v22RenderedURL);v22RenderedURL=URL.createObjectURL(v22RenderedBlob);
+      $('exportReviewVideo').src=v22RenderedURL;$('exportReview').hidden=false;
+      $('exportReviewInfo').textContent=`Slutfilm: ${dur.toFixed(1)} sekunder. Spela upp och LYSSNA på exporten innan du sparar. Originalklippet har också ljud.`;
+      $('downloadFinalVideo').disabled=false;status('Exporten klar för ljudkontroll.');};
+    try{recorder.start(300);}catch(e){cleanup();status('Inspelning av filmen kunde inte starta: '+e.message);return;}
+    time=0;renderAt(0);const initial=v22SyncMedia(0,true);
+    if(initial){try{await initial.play();}catch(e){status('Uppspelning av inspelat ljud blockerades av webbläsaren: '+e.message);if(recorder.state==='recording')recorder.stop();return;}}
+    const started=performance.now();function tickExport(){const passed=(performance.now()-started)/1000;time=Math.min(dur,passed);renderAt(time);btn.textContent=`● Exporterar… ${Math.min(100,Math.round(100*passed/dur))}%`;
+      if(passed>=dur){if(recorder.state==='recording')recorder.stop();return;}frame=requestAnimationFrame(tickExport);}
+    frame=requestAnimationFrame(tickExport);
+  }
+  const v22OriginalExport=exportVideo;exportVideo=v22Export;
+  // Install handlers after original init, without changing the locked paper visual style.
+  function v22Init(){
+    const review=$('phoneReview');
+    $('phoneSaveGithub').textContent='↑ Uppdatera GitHub';
+    $('v22QuickSave').addEventListener('click',v22QuickSave);
+    $('v22ReviewSave').addEventListener('click',phoneSaveGithub);
+    $('v22Retake').addEventListener('click',()=>{$('phoneReview').hidden=true;$('phoneReviewStatus').textContent='';phoneUpdate();});
+    $('v22Edits').addEventListener('change',v22SetEditsFromUI);
+    $('v22Edits').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const id=b.dataset.takeUp||b.dataset.takeDown||b.dataset.takePreview;
+      if(b.dataset.takePreview){const t=v22Take(id);const url=t?.video?.path?getMediaURL(t.video.path):'';if(url){$('phoneReviewVideo').src=url;$('phoneReview').hidden=false;$('phoneReviewInfo').textContent='Original: '+id;}
+        else if(t)ensureMedia(t.video.path).then(()=>{$('phoneReviewVideo').src=getMediaURL(t.video.path);$('phoneReview').hidden=false;});return;}
+      let arr=Array.isArray(project.edits)?project.edits:[];const i=arr.findIndex(a=>a.takeId===id),next=i+(b.dataset.takeUp?-1:1);if(i>=0&&next>=0&&next<arr.length){[arr[i],arr[next]]=[arr[next],arr[i]];updateAll();v22ShowEdits();}
+    });
+    $('timeline').addEventListener('click',e=>{const el=e.target.closest('[data-time-offset]');if(el){pause();time=Number(el.dataset.timeOffset)+.02;selected=sceneAt(time).idx;updateAll();}},true);
+    $('downloadFinalVideo').addEventListener('click',()=>{if(!v22RenderedBlob){status('Ingen färdig film tillgänglig.');return;}downloadBlob(v22RenderedBlob,`${project.id}-slutfilm.${mimeExt(v22RenderedBlob.type,'video')}`);});
+    $('downloadOriginalTake').addEventListener('click',()=>{const take=v22Take(v22Edits()[0]?.takeId),blob=take?.video?.path&&mediaBlobs.get(take.video.path);if(blob)downloadBlob(blob,`${project.id}-original.${mimeExt(blob.type,'video')}`);else status('Originalfilen måste öppnas från GitHub först.');});
+    $('exportReviewClose').addEventListener('click',()=>{$('exportReview').hidden=true;$('exportReviewVideo').pause();});
+    // Main export is v2.2, not the original storyboard-only exporter.
+    $('exportVideoBtn').removeEventListener('click',v22OriginalExport);
+    $('exportVideoBtn').addEventListener('click',v22Export);
+    v22ShowEdits();
+  }
+  // Optional post-production camera/paper choices: edits do not alter the raw take or voice.
+  function v23DisplayChoices(){
+    const box=$('v23Changes'),clips=v22Edits(),ready=!!v22Timeline();
+    $('v23Camera').disabled=!ready;$('v23Paper').disabled=!ready;$('v23Reset').disabled=!ready;
+    $('v23NowTime').textContent=fmt(time);
+    $('v23CurrentMode').textContent=ready?(sceneAt(time).source==='camera'?'Just nu syns kameran':'Just nu syns pappersbilden'):'Spela in eller las in klipp forst';
+    $('v23Camera').classList.toggle('active',ready&&sceneAt(time).source==='camera');
+    $('v23Paper').classList.toggle('active',ready&&sceneAt(time).source!=='camera');
+    const cues=(project.visualCues||[]).filter(c=>clips.some(e=>e.takeId===c.takeId)).slice().sort((a,b)=>String(a.takeId).localeCompare(String(b.takeId))||a.at-b.at);
+    box.innerHTML=ready?(cues.length?cues.map((cue,i)=>`<div class="v23-change"><label><input type="number" step="0.1" min="0" max="${Number(v22Take(cue.takeId)?.duration)||0}" data-cue-time="${i}" value="${Number(cue.at).toFixed(1)}"> s i klippet</label><small>${esc(cue.takeId)}: ${cue.source==='camera'?'Visa mig':'Visa bilden'}</small><button type="button" data-cue-remove="${i}" aria-label="Ta bort bildval">Ta bort</button></div>`).join(''):'<span class="v22-mini">Inga efterhandsval annu. Appen foljer bildmarkorerna fran din inspelning.</span>'):'<span class="v22-mini">Originaltiderna visas nar det finns en inspelning.</span>';
+    // The display list is sorted; preserve association across edits.
+    box._visualSortedCues=cues;
+  }
+  function v23UpdateChoice(source){const pos=sceneAt(time);if(!pos.takeId)return;
+    const local=Math.max(0,Math.min(Number(v22Take(pos.takeId)?.duration)||0,pos.mediaIn+(Math.max(pos.start,Math.min(time,pos.end))-pos.start)));
+    if(!Array.isArray(project.visualCues))project.visualCues=[];
+    project.visualCues=project.visualCues.filter(c=>!(c.takeId===pos.takeId&&Math.abs(c.at-local)<.13));
+    project.visualCues.push({takeId:pos.takeId,at:Math.round(local*10)/10,source});
+    project.visualCues.sort((a,b)=>String(a.takeId).localeCompare(String(b.takeId))||a.at-b.at);
+    updateAll();v23DisplayChoices();status('Valet ar sparat i projektets tidslinje. Tryck Spara GitHub for att dela det med ChatGPT.');
+  }
+  function v23Init(){
+    $('v23Camera').addEventListener('click',()=>v23UpdateChoice('camera'));
+    $('v23Paper').addEventListener('click',()=>v23UpdateChoice('paper'));
+    $('v23Reset').addEventListener('click',()=>{if(!v22Timeline())return;project.visualCues=[];updateAll();v23DisplayChoices();status('Visningen foljer nu inspelningens ursprungliga val.');});
+    $('v23Changes').addEventListener('click',e=>{const btn=e.target.closest('[data-cue-remove]');if(!btn)return;const cue=$('v23Changes')._visualSortedCues[Number(btn.dataset.cueRemove)];if(!cue)return;project.visualCues=(project.visualCues||[]).filter(c=>c!==cue);updateAll();v23DisplayChoices();});
+    $('v23Changes').addEventListener('change',e=>{if(!e.target.matches('[data-cue-time]'))return;const cue=$('v23Changes')._visualSortedCues[Number(e.target.dataset.cueTime)];if(!cue)return;const t=Number(v22Take(cue.takeId)?.duration)||0;cue.at=Math.max(0,Math.min(t,Number(e.target.value)||0));updateAll();v23DisplayChoices();});
+    $('v22ReviewSave').addEventListener('click',()=>phoneSaveGithub());
+    // Preserve smooth playback while reflecting the visual currently selected.
+    $('scrubber').addEventListener('input',()=>v23DisplayChoices());
+    $('timeline').addEventListener('click',()=>setTimeout(v23DisplayChoices,0));
+    $('playBtn').addEventListener('click',()=>setTimeout(v23DisplayChoices,30));
+    v23DisplayChoices();
+  }
+
+  // Exiting a take should reveal the post-production controls on small screens.
+  const v23OriginalPhoneExit=phoneExit;
+  phoneExit=function(){const active=!!phoneMainRecorder;v23OriginalPhoneExit();if(active||!$('phoneStudio').hidden)return;activeTab='preview';document.querySelector('.workspace').dataset.tab='preview';document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab==='preview'));v23DisplayChoices();};
+  function init(){clothTex=createCloth();document.querySelector('.workspace').dataset.tab=activeTab;events();studioV2Events();updateAll();v22Init();v23Init();status('Börja med story och storyboard i ChatGPT. Anslut GitHub och öppna projekt via ID.');}
   init();
 })();
 
