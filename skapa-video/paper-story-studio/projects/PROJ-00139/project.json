@@ -1,0 +1,102 @@
+{
+  "version": 2,
+  "id": "PROJ-00139",
+  "title": "Golden retriever – en hjärncell, noll oro",
+  "language": "sv",
+  "status": "utkast",
+  "style": {
+    "id": "paper-ink-v1",
+    "name": "Papper & tusch",
+    "locked": true
+  },
+  "scenes": [
+    {
+      "layout": "image",
+      "title": "En enda hjärncell",
+      "body": "En golden med en enda hjärncell – och ett stort hjärta.",
+      "duration": 5,
+      "motion": "still",
+      "visualMode": "paper",
+      "imageUrl": "https://raw.githubusercontent.com/novia-linda/materialbank/main/skapa-video/paper-story-studio/projects/PROJ-00139/media/01_enda_hjarncellen.svg",
+      "imageFit": "contain",
+      "fullBleed": true,
+      "script": "Det sägs att en golden retriever har en enda hjärncell. Den verkar vara mycket nöjd med det.",
+      "cues": [
+        "Det sägs att en golden har en enda hjärncell",
+        "Och den verkar mycket nöjd med det!"
+      ],
+      "notes": "Börja med ett leende. Det är ett kärleksfullt skämt, inte ett faktapåstående."
+    },
+    {
+      "layout": "image",
+      "title": "Hjärncellens prioriteringar",
+      "body": "Boll, mat och kärlek.",
+      "duration": 6,
+      "motion": "still",
+      "visualMode": "paper",
+      "imageUrl": "https://raw.githubusercontent.com/novia-linda/materialbank/main/skapa-video/paper-story-studio/projects/PROJ-00139/media/02_dagens_prioriteringar.svg",
+      "imageFit": "contain",
+      "fullBleed": true,
+      "script": "Den cellen har tre viktiga uppdrag: hitta bollen, hitta maten och älska precis alla.",
+      "cues": [
+        "Tre uppdrag: hitta bollen och maten",
+        "Och älska precis alla!"
+      ],
+      "notes": "Räkna gärna upp tre saker på fingrarna."
+    },
+    {
+      "layout": "image",
+      "title": "Oro? Vilken oro?",
+      "body": "Alla bekymmer försvinner när en boll dyker upp.",
+      "duration": 6,
+      "motion": "still",
+      "visualMode": "paper",
+      "imageUrl": "https://raw.githubusercontent.com/novia-linda/materialbank/main/skapa-video/paper-story-studio/projects/PROJ-00139/media/03_oro_vilken_oro.svg",
+      "imageFit": "contain",
+      "fullBleed": true,
+      "script": "Stress? Bekymmer? Nä, vänta nu ... är det där en BOLL? Vilken fantastisk dag!",
+      "cues": [
+        "Stress? Bekymmer? Inte idag!",
+        "Vänta – är det där en BOLL?"
+      ],
+      "notes": "Låt en kort paus komma före BOLL, som om du själv blir distraherad."
+    },
+    {
+      "layout": "image",
+      "title": "Ingen femårsplan",
+      "body": "Vifta, leka, bli klappad.",
+      "duration": 7,
+      "motion": "still",
+      "visualMode": "paper",
+      "imageUrl": "https://raw.githubusercontent.com/novia-linda/materialbank/main/skapa-video/paper-story-studio/projects/PROJ-00139/media/04_ingen_femarsplan.svg",
+      "imageFit": "contain",
+      "fullBleed": true,
+      "script": "Ingen femårsplan. Inga katastroftankar. Bara: ska vi leka? Kan jag få en klapp? Och kanske ett kex?",
+      "cues": [
+        "Ingen femårsplan. Inga katastroftankar.",
+        "Ska vi leka, klappa och äta kex?"
+      ],
+      "notes": "Ha varm ton, lite skämtsam betoning på femårsplan."
+    },
+    {
+      "layout": "image",
+      "title": "Noll oro, all kärlek",
+      "body": "Kanske har den enda hjärncellen rätt ändå.",
+      "duration": 6,
+      "motion": "still",
+      "visualMode": "paper",
+      "imageUrl": "https://raw.githubusercontent.com/novia-linda/materialbank/main/skapa-video/paper-story-studio/projects/PROJ-00139/media/05_noll_oro.svg",
+      "imageFit": "contain",
+      "fullBleed": true,
+      "script": "Tänk att vara så lycklig. En hjärncell. Noll oro. Och ett hjärta i XXL.",
+      "cues": [
+        "En hjärncell. Noll oro.",
+        "Och ett hjärta i XXL."
+      ],
+      "notes": "Avsluta långsamt, mjukt och med ett leende."
+    }
+  ],
+  "voice": null,
+  "words": [],
+  "takes": []
+}

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1280" viewBox="0 0 720 1280" role="img" aria-label="ENKEL LIVSSTRATEGI – Inga katastroftankar här">
+
+<defs>
+  <filter id="softShadow" x="-25%" y="-25%" width="150%" height="150%">
+   <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#604b36" flood-opacity=".20"/>
+  </filter>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".18" numOctaves="3" seed="7" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".07"/></feComponentTransfer></filter>
+  <g id="golden">
+    <path d="M-104 60 C-177 40 -194 111 -152 161 C-114 185 -83 149 -78 104" fill="#c88748" stroke="#614935" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M107 55 C174 29 192 110 153 160 C119 181 83 151 79 106" fill="#c88748" stroke="#614935" stroke-width="7"/>
+    <path d="M-126 12 C-130 -74 -59 -147 4 -145 C79 -146 129 -89 126 12 C126 99 79 157 1 163 C-82 159 -129 98 -126 12Z" fill="#e7b778" stroke="#624b35" stroke-width="8"/>
+    <path d="M-96 -59 Q-40 -133 33 -128 Q-12 -99 -55 -101Z" fill="#f4cf91" opacity=".8"/>
+    <path d="M-91 -39 Q-70 -81 -40 -73 M39 -84 Q74 -83 89 -41" fill="none" stroke="#c58c4d" stroke-width="8" stroke-linecap="round"/>
+    <path d="M-65 3 Q-48 -7 -31 5 M31 5 Q49 -7 64 3" stroke="#4e3a2c" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <path d="M-94 64 C-75 21 -33 24 0 47 C34 25 74 26 96 68 Q93 138 3 139 C-71 140 -99 110 -94 64Z" fill="#f5d9af" stroke="#6b4f36" stroke-width="5"/>
+    <path d="M-34 52 Q0 30 33 53 Q25 74 0 79 Q-25 73 -34 52" fill="#4e392d"/>
+    <path d="M0 77 Q-3 112 -35 103 M0 77 Q3 113 38 103" fill="none" stroke="#4e392d" stroke-width="6" stroke-linecap="round"/>
+    <path d="M-4 105 Q0 130 24 119" fill="none" stroke="#a8554b" stroke-width="5" stroke-linecap="round"/>
+    <path d="M-70 39 l-27 -7 M-76 51 l-29 1 M73 40 l28 -6 M77 53 l29 2" stroke="#a76f41" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+    <path d="M-88 -91 l-20 -21 M90 -88 l22 -26" stroke="#eabf7b" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <g id="brain">
+    <path d="M-72 27 C-93 17 -100 -7 -86 -23 C-95 -55 -66 -77 -39 -70 C-18 -95 7 -89 19 -74 C48 -87 76 -68 75 -43 C99 -27 92 0 73 12 C79 42 55 60 31 54 C6 76 -16 60 -27 53 C-53 65 -76 49 -72 27Z" fill="#e9a49f" stroke="#704739" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M-41 -55 Q-59 -35 -42 -19 M3 -64 Q-10 -44 9 -28 M38 -52 Q63 -35 40 -12 M-56 12 Q-38 -3 -24 22 M15 18 Q36 6 47 28" fill="none" stroke="#c77f79" stroke-width="5" stroke-linecap="round"/>
+    <path d="M-29 -3 q9 -9 16 0 M16 -3 q9 -9 16 0" stroke="#563d34" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <path d="M-11 14 Q2 30 20 13" stroke="#563d34" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <circle cx="-40" cy="18" r="7" fill="#e47e76" opacity=".7"/><circle cx="39" cy="17" r="7" fill="#e47e76" opacity=".7"/>
+    <path d="M-39 54 l-16 22 M32 52 l16 23 M-71 18 l-28 12 M80 16 l29 12" stroke="#704739" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <g id="heart"><path d="M0 18 C-48 -10 -38 -49 -8 -38 C5 -34 11 -19 12 -15 C32 -51 62 -40 59 -16 C57 9 28 31 12 45Z" fill="none" stroke="#b9674c" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g id="ball"><circle r="52" fill="#cfc76e" stroke="#665b39" stroke-width="7"/><path d="M-30 -43 C8 -18 7 15 30 41 M30 -43 C-10 -18 -9 15 -30 42" stroke="#f8f0db" stroke-width="9" fill="none" stroke-linecap="round"/></g>
+  <g id="leaf"><path d="M0 0 C-48 -4 -45 -61 9 -70 C38 -42 38 -11 0 0Z" fill="#95a17a" stroke="#60735c" stroke-width="4"/><path d="M0 0 L8 -55" stroke="#60735c" stroke-width="3"/></g>
+</defs>
+<rect width="720" height="1280" fill="#d7c7ae"/>
+<path d="M0 0 H720 V1280 H0Z" fill="#eee2d1" opacity=".45"/>
+<path d="M63 74 L127 67 L202 73 L273 64 L345 69 L425 63 L512 72 L583 67 L661 79 L650 164 L657 265 L653 355 L660 448 L652 566 L660 671 L650 766 L659 875 L646 996 L656 1127 L633 1207 L558 1197 L471 1204 L399 1194 L322 1205 L246 1196 L176 1205 L94 1198 L59 1149 L69 1053 L62 944 L70 849 L63 754 L69 646 L61 538 L68 430 L61 324 L72 215Z" fill="#fbf2e2" stroke="#e6d7c1" stroke-width="4" filter="url(#softShadow)"/>
+<rect x="60" y="73" width="600" height="1130" fill="#9d8153" filter="url(#grain)" opacity=".42" pointer-events="none"/>
+<g opacity=".68"><rect x="98" y="48" width="116" height="29" rx="3" transform="rotate(-8 98 48)" fill="#e2c8ad"/><rect x="521" y="64" width="113" height="25" rx="3" transform="rotate(9 521 64)" fill="#e2c8ad"/></g>
+<text x="109" y="153" fill="#857463" font-family="Arial,sans-serif" font-weight="700" font-size="18" letter-spacing="3">PAPER STORIES / 04</text>
+<path d="M108 169 H300" stroke="#b96550" stroke-width="5" stroke-linecap="round"/>
+<text x="108" y="252" font-size="57" fill="#332c27" font-weight="700" font-family="Georgia,serif">ENKEL</text><text x="108" y="317" font-size="57" fill="#332c27" font-weight="700" font-family="Georgia,serif">LIVSSTRATEGI</text>
+<text x="110" y="385" font-family="Arial,sans-serif" fill="#806c5e" font-size="25">Inga katastroftankar här</text>
+<g transform="translate(0 50)">
+<ellipse cx="344" cy="888" rx="226" ry="109" fill="#a3ae85" opacity=".65"/>
+<path d="M178 757 C95 681 112 566 192 601 M182 766 C123 750 90 764 77 790" fill="none" stroke="#d49b62" stroke-width="38" stroke-linecap="round"/>
+<path d="M171 755 C219 678 381 650 450 746 C477 790 439 877 356 899 L220 872Z" fill="#dfac6a" stroke="#664c36" stroke-width="8"/>
+<path d="M236 837 l-34 104 M390 843 l36 98" stroke="#d49b62" stroke-width="39" stroke-linecap="round"/>
+<use href="#golden" transform="translate(448 671) scale(.77) rotate(-14)"/>
+<use href="#ball" transform="translate(562 953) scale(.60)"/>
+<path d="M172 622 l-38 -24 M168 649 l-47 -8 M530 559 l36 -23 M547 592 l49 -7" stroke="#ad7151" stroke-width="7" stroke-linecap="round"/>
+<g transform="translate(150 1005) rotate(-18)"><ellipse cx="0" cy="0" rx="19" ry="26" fill="#c08b61"/><circle cx="-24" cy="-27" r="9" fill="#c08b61"/><circle cx="-8" cy="-36" r="9" fill="#c08b61"/><circle cx="13" cy="-37" r="9" fill="#c08b61"/><circle cx="27" cy="-23" r="9" fill="#c08b61"/></g>
+<use href="#heart" transform="translate(536 451) scale(.50)"/>
+<use href="#leaf" transform="translate(127 553) scale(.63) rotate(-30)"/><use href="#leaf" transform="translate(595 771) scale(.48)"/>
+</g>
+<path d="M111 1101 H605" stroke="#e0cbb0" stroke-width="2"/>
+<text x="111" y="1149" font-family="Arial,sans-serif" font-size="24" font-style="italic" fill="#7a6b5e">Vifta. Leka. Älska. Upprepa.</text>
+<text x="580" y="1177" font-family="Georgia,serif" font-size="18" fill="#ad8e76">♡</text>
+</svg>
