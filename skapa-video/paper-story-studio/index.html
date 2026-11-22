@@ -924,6 +924,8 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
         }
         project.takes=Array.isArray(project.takes)?project.takes:[];
         project.takes.push(phoneActiveTake);
+        if(!Array.isArray(project.edits))project.edits=[];
+        if(!project.edits.some(e=>e.takeId===phoneActiveTake.id))project.edits.push({takeId:phoneActiveTake.id,in:0,out:duration});
         phoneLastTake=phoneActiveTake;
       }
       phoneMainRecorder=null;recording=null;phoneActiveTake=null;phoneStarted=0;
@@ -1050,14 +1052,14 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
   function v22Take(id){return (project.takes||[]).find(t=>t.id===id)||null;}
   function v22Edits(){
     if(Array.isArray(project.edits)){return project.edits.filter(e=>v22Take(e.takeId)&&Number(e.out)>Number(e.in));}
-    const takes=(project.takes||[]).filter(t=>t.video?.path&&Number(t.duration)>0);
+    const takes=(project.takes||[]).filter(t=>(t.video?.path||t.audio?.path)&&Number(t.duration)>0);
     const last=takes[takes.length-1];return last?[{takeId:last.id,in:0,out:Number(last.duration)}]:[];
   }
   function v22Timeline(){
     const edits=v22Edits();if(!edits.length)return null;
     const pieces=[];let cursor=0;
     for(const entry of edits){
-      const take=v22Take(entry.takeId);if(!take||!take.video?.path)continue;
+      const take=v22Take(entry.takeId);if(!take||!(take.video?.path||take.audio?.path))continue;
       const srcIn=Math.max(0,Math.min(Number(take.duration),Number(entry.in)||0));
       const srcOut=Math.min(Number(take.duration),Number(entry.out));
       if(!(srcOut>srcIn+.03))continue;
@@ -1088,7 +1090,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     if(url&&video.src!==url){video.pause();video.src=url;video.load();}
     return video;
   }
-  async function v22PrepareMedia(){const edits=v22Edits();const missing=[];for(const e of edits){const take=v22Take(e.takeId);if(take?.video?.path&&!mediaBlobs.has(take.video.path)){const blob=await ensureMedia(take.video.path);if(!blob)missing.push(take.video.path);}v22Media(e.takeId);}if(missing.length)throw Error('Kunde inte läsa en inspelning: '+missing.join(', '));}
+  async function v22PrepareMedia(){const edits=v22Edits();const missing=[];for(const e of edits){const take=v22Take(e.takeId);for(const path of [take?.video?.path,take?.audio?.path].filter(Boolean)){if(!mediaBlobs.has(path)){const blob=await ensureMedia(path);if(!blob)missing.push(path);}}if(take?.video?.path)v22Media(e.takeId);}if(missing.length)throw Error('Kunde inte läsa en inspelning: '+missing.join(', '));}
   let v22ActiveId='';
   function v22SyncMedia(t,shouldPlay){const parts=v22Timeline();if(!parts)return null;const part=sceneAt(t);const el=v22Media(part.takeId);if(!el)return null;
     for(const [id,other] of v22Videos){if(id!==part.takeId&&!other.paused)other.pause();}
@@ -1149,16 +1151,10 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     }
     project.edits=list;time=0;updateAll();v22ShowEdits();
   }
-  const v22OldSave=saveGithubProject;
-  saveGithubProject=async function(){await v22OldSave();return $('githubProjectInfo').textContent.startsWith('✓ ');};
-  phoneSaveGithub=async function(){if(!githubToken){$('phoneReviewStatus').textContent='Anslut GitHub med PAT först.';connectGithubModal();return;}
-    if(recording){$('phoneSwipeStatus').textContent='Stoppa inspelningen innan du sparar.';return;}
-    const btn=$('phoneSaveGithub');btn.disabled=true;$('phoneReviewStatus').textContent='Laddar upp klipp och sparar tidslinjen…';
-    try{const success=await saveGithubProject();$('phoneReviewStatus').textContent=success?'✓ Sparat på GitHub. Du kan fortsätta spela in senare.':'Sparandet avbröts eller misslyckades. Se meddelandet i editorn.';}catch(e){$('phoneReviewStatus').textContent='Kunde inte spara: '+e.message;}finally{btn.disabled=false;}
-  };
+  // Preserve saveGithubProject's detailed {complete, metadataSaved, errors} result and modern phone saver.
   function v22QuickSave(){if(recording){$('phoneSwipeStatus').textContent='Stoppa inspelningen innan du sparar.';return;}
     if(!githubToken){connectGithubModal();return;}const btn=$('v22QuickSave');btn.disabled=true;btn.textContent='Sparar…';
-    saveGithubProject().then(ok=>{btn.textContent=ok?'✓ Sparat':'↑ GitHub';setTimeout(()=>btn.textContent='↑ GitHub',3500);}).finally(()=>{btn.disabled=false;});
+    saveGithubProject().then(result=>{btn.textContent=result?.complete?'✓ Sparat':result?.metadataSaved?'⚠ Delvis sparat':'↑ GitHub';setTimeout(()=>btn.textContent='↑ GitHub',3500);}).finally(()=>{btn.disabled=false;});
   }
   // Export uses recorded media audio, not the placeholder storyboard audio track.
   async function v22EnsureAudio(){const edits=v22Edits();if(!edits.length)return null;
@@ -1172,7 +1168,13 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     }
     await context.resume();return destination.stream.getAudioTracks()[0]||null;
   }
-  async function v22Export(){if(exporting)return;pause();if(Array.isArray(project.edits)&&project.edits.length===0&&(project.takes||[]).length){status('Du har valt bort alla inspelade klipp. Välj minst ett klipp före export.');return;}const hasTake=!!v22Timeline();if(!hasTake){return v22OriginalExport();}
+  async function v22Export(){if(exporting)return;pause();
+    if(!(project.takes||[]).some(t=>t?.video?.path)&&(project.voice?.path||(project.takes||[]).some(t=>t?.audio?.path))){
+      status('Ljudläget är aktivt. Lyssna och redigera nu; videoexporten gör vi senare.');
+      showModal('Vi börjar med ljudet','<p>Din berättarröst, bildbyten och ordtider sparas först till GitHub. Videoexporten aktiverar vi i nästa steg när ljudflödet fungerar helt.</p>',[{label:'Fortsätt med ljudet',primary:true,click:hideModal}]);
+      return;
+    }
+    if(Array.isArray(project.edits)&&project.edits.length===0&&(project.takes||[]).length){status('Du har valt bort alla inspelade klipp. Välj minst ett klipp före export.');return;}const hasTake=!!v22Timeline();if(!hasTake){return v22OriginalExport();}
     try{await v22PrepareMedia();}catch(e){status(e.message);return;}
     if(typeof canvas.captureStream!=='function'||typeof MediaRecorder==='undefined'){
       $('exportReview').hidden=false;$('exportReviewVideo').removeAttribute('src');$('downloadFinalVideo').disabled=true;$('exportReviewInfo').textContent='Sammansatt video med ljud kan inte exporteras i den här webbläsaren. Ditt original med ljud kan sparas nedan. Prova datorns webbläsare för slutexport.';return;
@@ -1212,7 +1214,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     $('v22Retake').addEventListener('click',()=>{$('phoneReview').hidden=true;$('phoneReviewStatus').textContent='';phoneUpdate();});
     $('v22Edits').addEventListener('change',v22SetEditsFromUI);
     $('v22Edits').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const id=b.dataset.takeUp||b.dataset.takeDown||b.dataset.takePreview;
-      if(b.dataset.takePreview){const t=v22Take(id);const url=t?.video?.path?getMediaURL(t.video.path):'';if(url){$('phoneReviewVideo').src=url;$('phoneReview').hidden=false;$('phoneReviewInfo').textContent='Original: '+id;}
+      if(b.dataset.takePreview){const t=v22Take(id);if(t?.audio?.path&&!t.video?.path){ensureMedia(t.audio.path).then(blob=>{if(!blob)return;const el=$('phoneReviewAudio');el.src=getMediaURL(t.audio.path);el.hidden=false;$('phoneReviewVideo').hidden=true;$('phoneReview').hidden=false;$('phoneReviewInfo').textContent='Ljudoriginal: '+id;});return;}const url=t?.video?.path?getMediaURL(t.video.path):'';if(url){$('phoneReviewVideo').src=url;$('phoneReview').hidden=false;$('phoneReviewInfo').textContent='Original: '+id;}
         else if(t)ensureMedia(t.video.path).then(()=>{$('phoneReviewVideo').src=getMediaURL(t.video.path);$('phoneReview').hidden=false;});return;}
       let arr=Array.isArray(project.edits)?project.edits:[];const i=arr.findIndex(a=>a.takeId===id),next=i+(b.dataset.takeUp?-1:1);if(i>=0&&next>=0&&next<arr.length){[arr[i],arr[next]]=[arr[next],arr[i]];updateAll();v22ShowEdits();}
     });
@@ -1227,10 +1229,10 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
   }
   // Optional post-production camera/paper choices: edits do not alter the raw take or voice.
   function v23DisplayChoices(){
-    const box=$('v23Changes'),clips=v22Edits(),ready=!!v22Timeline();
+    const box=$('v23Changes'),clips=v22Edits(),ready=!!v22Timeline()&&clips.some(e=>!!v22Take(e.takeId)?.video?.path),audioOnly=!!v22Timeline()&&!ready;
     $('v23Camera').disabled=!ready;$('v23Paper').disabled=!ready;$('v23Reset').disabled=!ready;
     $('v23NowTime').textContent=fmt(time);
-    $('v23CurrentMode').textContent=ready?(sceneAt(time).source==='camera'?'Just nu syns kameran':'Just nu syns pappersbilden'):'Spela in eller las in klipp forst';
+    $('v23CurrentMode').textContent=ready?(sceneAt(time).source==='camera'?'Just nu syns kameran':'Just nu syns pappersbilden'):audioOnly?'Bara ljud: pappersbilderna följer dina sveptider':'Spela in eller läs in ett klipp först';
     $('v23Camera').classList.toggle('active',ready&&sceneAt(time).source==='camera');
     $('v23Paper').classList.toggle('active',ready&&sceneAt(time).source!=='camera');
     const cues=(project.visualCues||[]).filter(c=>clips.some(e=>e.takeId===c.takeId)).slice().sort((a,b)=>String(a.takeId).localeCompare(String(b.takeId))||a.at-b.at);
