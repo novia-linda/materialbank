@@ -588,7 +588,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
       if(current&&(!projectSha||openProjectPath!==path||current.sha!==projectSha)){
         // Only merge non-conflicting recordings. Never silently overwrite a changed storyboard.
         const remote=JSON.parse(current.text);
-        const sameStoryboard=remote.id===id&&JSON.stringify(remote.scenes||[])===JSON.stringify(project.scenes||[]);
+        const sameStoryboard=remote.id===id&&JSON.stringify((remote.scenes||[]).map(normalizeScene))===JSON.stringify((project.scenes||[]).map(normalizeScene));
         if(!sameStoryboard){
           throw Error('Storyboarden har ändrats på GitHub. Dina inspelningar är kvar i den lokala säkerhetskopian. Exportera det lokala projektet till Filer innan du öppnar den nya GitHub-versionen.');
         }
