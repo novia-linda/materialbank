@@ -359,10 +359,10 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     <button id="phoneCueNext" type="button" aria-label="Nästa stödpunkt">›</button>
   </section>
   <div class="phone-review" id="phoneReview" hidden>
-    <h2>Inspelningen är färdig</h2><button type="button" id="v22ReviewSave" class="btn primary wide">↑ Uppdatera GitHub nu</button><p id="phoneReviewInfo">Video och händelser finns nu i projektet.</p>
+    <h2>Inspelningen är färdig</h2><button type="button" id="v22ReviewSave" class="btn primary wide">↑ Spara inspelningen för talanalys</button><p id="phoneReviewInfo">Video och händelser finns nu i projektet.</p>
     <video id="phoneReviewVideo" playsinline controls></video>
     <div class="phone-review-actions"><button type="button" id="phoneDownloadVideo" class="btn pale">↓ Video</button><button type="button" id="phoneDownloadAudio" class="btn subtle">↓ Ljud</button><button type="button" id="phoneDownloadEvents" class="btn subtle">↓ Tidsmarkörer</button></div>
-    <button type="button" id="phoneSaveGithub" class="btn primary wide">↑ Spara projekt och inspelning på GitHub</button>
+    <button type="button" id="phoneSaveGithub" class="btn primary wide">↑ Spara inspelning och starta talanalys</button>
     <button type="button" id="v22Retake" class="btn pale wide">↺ Spela in en ny del / omtagning</button><button type="button" id="phoneReviewClose" class="btn subtle wide">Efterredigera tidslinjen</button>
     <p id="phoneReviewStatus" role="status"></p>
   </div>
@@ -556,7 +556,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
       const wordBody={projectId:id,version:1,words:normaliseWords(project.words||[])};wordsSha=await ghWrite(wordPath,new Blob([JSON.stringify(wordBody,null,2)],{type:'application/json'}),currentWords?.sha||null);
       const projectFile=JSON.parse(JSON.stringify(project));projectFile.id=id;projectFile.version=2;projectFile.wordsFile='words.json';delete projectFile.words;
       projectSha=await ghWrite(path,new Blob([JSON.stringify(projectFile,null,2)],{type:'application/json'}),current?.sha||null);openProjectPath=path;
-      githubStatus(`✓ ${id} sparat på GitHub med scener, ord och inspelningar.`);
+      githubStatus(`✓ ${id} sparat på GitHub med scener, ord och inspelningar.`);return true;
     }catch(e){githubStatus(`Sparandet avbröts: ${e.message}`);}finally{busyGithub=false;}}
   async function fetchWordsGithub(){if(!githubToken){connectGithubModal();return;}try{const id=setProjectID($('projectIdInput').value);const r=await ghReadText(ghPath('words.json'));if(!r)throw Error(`Inga ord finns ännu för ${id}.`);const obj=JSON.parse(r.text);project.words=normaliseWords(Array.isArray(obj)?obj:obj.words);wordsSha=r.sha;selectedWordId='';listWords();renderAt(time);status(`Hämtade ${project.words.length} tidsstämplade ord från GitHub.`);}catch(e){status(`Kunde inte hämta orden: ${e.message}`);}}
   async function ensureMedia(path){if(!path)return null;if(mediaBlobs.has(path))return mediaBlobs.get(path);if(!githubToken)return null;try{const blob=await ghReadMedia(ghPath(path));keepMedia(path,blob,false);return blob;}catch(e){status(`Kunde inte läsa ${path}: ${e.message}`);return null;}}
@@ -720,8 +720,22 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     if(!blob?.size){$('phoneReviewStatus').textContent='Den filen är inte tillgänglig i webbläsaren.';return;}
     downloadBlob(blob,`${project.id}-${phoneLastTake.id}.${kind==='events'?'json':mimeExt(blob.type,kind==='video'?'video':'audio')}`);}
   async function phoneSaveGithub(){if(!phoneLastTake)return;if(!githubToken){$('phoneReviewStatus').textContent='Anslut först GitHub med din PAT. Ingen fil har laddats upp.';connectGithubModal();return;}
-    $('phoneSaveGithub').disabled=true;$('phoneReviewStatus').textContent='Sparar video, ljud och projekt med tidsmarkörer…';
-    try{await saveGithubProject();$('phoneReviewStatus').textContent='Spara kontrollerat: kontrollera GitHub-statusen och att projektet finns upplagt.';}catch(e){$('phoneReviewStatus').textContent='Kunde inte spara: '+e.message;}finally{$('phoneSaveGithub').disabled=false;}}
+    const a=$('phoneSaveGithub'),b=$('v22ReviewSave');a.disabled=true;b.disabled=true;$('phoneReviewStatus').textContent='Väntar på ljudfilen och laddar sedan upp video, tal och tidsmarkörer…';
+    try{
+      // Safari may finalize the separate audio track after the camera recorder has stopped.
+      // Do not save project.json until the audio callback has had the chance to attach the file.
+      if(phoneAudioRecorder&&!phoneAudioBlob){
+        await new Promise(resolve=>{
+          let finished=false;
+          const done=()=>{if(finished)return;finished=true;resolve();};
+          phoneAudioRecorder.addEventListener('stop',()=>setTimeout(done,0),{once:true});
+          setTimeout(done,1800);
+        });
+      }
+      const ok=await saveGithubProject();
+      $('phoneReviewStatus').textContent=ok?'✓ Inspelningen är sparad på GitHub. Talanalysen startar i GitHub Actions om arbetsflödet är aktivt. Öppna sedan Förhandsvisa → Text på filmen och tryck Hämta talanalys.':'Inspelningen är fortfarande kvar i appen. Kontrollera GitHub-statusen och försök spara igen.';
+    }catch(e){$('phoneReviewStatus').textContent='Kunde inte spara: '+e.message;}
+    finally{a.disabled=false;b.disabled=false;}}
   function phoneModeEvents(){
     $('phoneModeBtn').addEventListener('click',phoneOpen);$('phoneExit').addEventListener('click',phoneExit);$('phoneEnableCam').addEventListener('click',phoneEnableCamera);$('phoneRecord').addEventListener('click',phoneRecordStart);$('phoneStop').addEventListener('click',phoneRecordStop);
     $('phoneCuePrev').addEventListener('click',()=>phoneCueShift(-1));$('phoneCueNext').addEventListener('click',()=>phoneCueShift(1));
@@ -736,7 +750,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
 
   function studioV2Events(){
     phoneModeEvents();
-    $('githubButton').addEventListener('click',connectGithubModal);$('openGitHubProjectBtn').addEventListener('click',openGithubProject);$('saveGitHubProjectBtn').addEventListener('click',saveGithubProject);$('loadWordsGitHubBtn').addEventListener('click',fetchWordsGithub);$('newProjectIdBtn').addEventListener('click',newProjectID);
+    $('githubButton').addEventListener('click',connectGithubModal);$('openGitHubProjectBtn').addEventListener('click',()=>openGithubProject());$('saveGitHubProjectBtn').addEventListener('click',saveGithubProject);$('loadWordsGitHubBtn').addEventListener('click',fetchWordsGithub);$('newProjectIdBtn').addEventListener('click',newProjectID);
     $('projectIdInput').addEventListener('change',e=>{try{setProjectID(e.target.value);}catch(err){status(err.message);}});
     $('sceneMode').addEventListener('change',e=>{project.scenes[selected].visualMode=e.target.value;listScenes();listTimeline();renderAt(time);});
     $('sceneScript').addEventListener('input',e=>{project.scenes[selected].script=e.target.value;});$('sceneCues').addEventListener('input',e=>{project.scenes[selected].cues=e.target.value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean).slice(0,32);});
@@ -988,7 +1002,6 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     $('v23Reset').addEventListener('click',()=>{if(!v22Timeline())return;project.visualCues=[];updateAll();v23DisplayChoices();status('Visningen foljer nu inspelningens ursprungliga val.');});
     $('v23Changes').addEventListener('click',e=>{const btn=e.target.closest('[data-cue-remove]');if(!btn)return;const cue=$('v23Changes')._visualSortedCues[Number(btn.dataset.cueRemove)];if(!cue)return;project.visualCues=(project.visualCues||[]).filter(c=>c!==cue);updateAll();v23DisplayChoices();});
     $('v23Changes').addEventListener('change',e=>{if(!e.target.matches('[data-cue-time]'))return;const cue=$('v23Changes')._visualSortedCues[Number(e.target.dataset.cueTime)];if(!cue)return;const t=Number(v22Take(cue.takeId)?.duration)||0;cue.at=Math.max(0,Math.min(t,Number(e.target.value)||0));updateAll();v23DisplayChoices();});
-    $('v22ReviewSave').addEventListener('click',()=>phoneSaveGithub());
     // Preserve smooth playback while reflecting the visual currently selected.
     $('scrubber').addEventListener('input',()=>v23DisplayChoices());
     $('timeline').addEventListener('click',()=>setTimeout(v23DisplayChoices,0));
