@@ -558,15 +558,71 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     }
     if(!r)throw Error(`${id} kunde inte hämtas från ${path}. Kontrollera GitHub-anslutningens projektmapp och PAT-behörighet.`);
     const ob=JSON.parse(r.text);if(ob.id&&projectIdentifier(ob.id)!==id)throw Error('Projekt-ID i filen stämmer inte med sökvägen.');importProject(ob);project.id=id;projectSha=r.sha;openProjectPath=path;wordsSha=null;mediaBlobs.clear();pendingUploads.clear();for(const url of mediaUrls.values())URL.revokeObjectURL(url);mediaUrls.clear();cameraPath='';cameraEl.pause();cameraEl.removeAttribute('src');cameraEl.load();const wr=await ghReadText(ghPath('words.json'));if(wr){const wo=JSON.parse(wr.text);project.words=normaliseWords(Array.isArray(wo)?wo:wo.words);wordsSha=wr.sha;}listWords();updateAll();if(project.voice?.path)await loadVoiceMedia();await displaySceneClip();githubStatus(`✓ Öppnat ${id} från GitHub (${project.scenes.length} scener).${correctedRoot?' Projektmappen återställdes till standardmappen.':r.publicRead?' Läst via publik åtkomst; skrivning kräver rätt PAT-behörighet.':''}`);}catch(e){githubStatus(`Kunde inte öppna: ${e.message}`);}finally{busyGithub=false;}}
-  async function saveGithubProject(){if(!githubToken){connectGithubModal();return;}if(busyGithub||recording)return;try{busyGithub=true;const id=setProjectID($('projectIdInput').value);const path=ghPath('project.json');const current=await ghReadText(path);if(current&&(!projectSha||openProjectPath!==path||current.sha!==projectSha))throw Error(`Projektet ${id} har en version på GitHub som inte är inläst här. Öppna projektet innan du sparar, så att du inte skriver över någon annans ändringar.`);if(!current&&projectSha)throw Error('Projektfilen på GitHub saknas nu. Avbryter för att undvika konflikter.');if(!window.confirm(`Spara ${id} och eventuella nya inspelningar i ${githubRepo}? ${githubRepo==='novia-linda/materialbank'?'OBS: Inspelningar blir offentliga!':''}`))return;
-      for(const pathPart of [...pendingUploads]){const blob=mediaBlobs.get(pathPart);if(!blob)continue;githubStatus(`Laddar upp ${pathPart.split('/').pop()} (${(blob.size/1048576).toFixed(1)} MB)…`);await ghWrite(ghPath(pathPart),blob);pendingUploads.delete(pathPart);}
-      const wordPath=ghPath('words.json');const currentWords=await ghReadText(wordPath);if(currentWords&&(!wordsSha||currentWords.sha!==wordsSha))throw Error('words.json har ändrats på GitHub. Hämta den senaste ordlistan först.');
-      const wordBody={projectId:id,version:1,words:normaliseWords(project.words||[])};wordsSha=await ghWrite(wordPath,new Blob([JSON.stringify(wordBody,null,2)],{type:'application/json'}),currentWords?.sha||null);
-      const projectFile=JSON.parse(JSON.stringify(project));projectFile.id=id;projectFile.version=2;projectFile.wordsFile='words.json';delete projectFile.words;
-      projectSha=await ghWrite(path,new Blob([JSON.stringify(projectFile,null,2)],{type:'application/json'}),current?.sha||null);openProjectPath=path;
-      githubStatus(`✓ ${id} sparat på GitHub med scener, ord och inspelningar.`);return true;
-    }catch(e){githubStatus(`Sparandet avbröts: ${e.message}`);}finally{busyGithub=false;}}
-  async function fetchWordsGithub(){if(!githubToken){connectGithubModal();return;}try{const id=setProjectID($('projectIdInput').value);const r=await ghReadText(ghPath('words.json'));if(!r)throw Error(`Inga ord finns ännu för ${id}.`);const obj=JSON.parse(r.text);project.words=normaliseWords(Array.isArray(obj)?obj:obj.words);wordsSha=r.sha;selectedWordId='';listWords();renderAt(time);status(`Hämtade ${project.words.length} tidsstämplade ord från GitHub.`);}catch(e){status(`Kunde inte hämta orden: ${e.message}`);}}
+  async function saveGithubProject(){
+    if(!githubToken){connectGithubModal();return {complete:false,error:'GitHub-PAT saknas'};}
+    if(busyGithub||recording){githubStatus('Vänta tills inspelningen eller GitHub-sparandet är klart.');return {complete:false,error:'Upptagen'};}
+    let projectSaved=false;
+    const problems=[],uploaded=[];
+    try{
+      busyGithub=true;
+      const id=setProjectID($('projectIdInput').value),path=ghPath('project.json');
+      const current=await ghReadText(path);
+      // Check the project version BEFORE uploading megabytes of media.
+      if(current&&(!projectSha||openProjectPath!==path||current.sha!==projectSha)){
+        throw Error('Projektet har ändrats på GitHub eller öppnades inte därifrån. Din lokala säkerhetskopia finns kvar. Öppna först projektets senaste GitHub-version innan du försöker skriva över den.');
+      }
+      if(!current&&projectSha)throw Error('Projektfilen på GitHub saknas nu. Ingen inspelning raderas.');
+      if(!window.confirm('Spara '+id+' och inspelningarna på GitHub? '+(githubRepo==='novia-linda/materialbank'?'Materialet blir offentligt.':'')))return {complete:false,cancelled:true};
+      paperPipeline('uploading','Laddar upp inspelningar…');
+      const mediaToSend=[...pendingUploads];
+      for(let i=0;i<mediaToSend.length;i++){
+        const rel=mediaToSend[i],blob=mediaBlobs.get(rel);
+        if(!blob?.size){problems.push('Saknar lokal fil: '+rel);continue;}
+        try{
+          githubStatus('Laddar upp '+(i+1)+'/'+mediaToSend.length+': '+rel.split('/').pop()+' ('+(blob.size/1048576).toFixed(1)+' MB)…');
+          const sha=await ghWrite(ghPath(rel),blob);
+          if(!sha)throw Error('GitHub bekräftade inte filen');
+          uploaded.push(rel);
+          pendingUploads.delete(rel);
+        }catch(error){problems.push(rel+': '+error.message);}
+      }
+      // Save original take events and clip decisions before optional word overlays.
+      const projectFile=JSON.parse(JSON.stringify(project));
+      projectFile.id=id;projectFile.version=2;projectFile.wordsFile='words.json';
+      projectFile.uploadIncomplete=[...pendingUploads];
+      delete projectFile.words;
+      githubStatus('Sparar projektfilen och tidsmarkörerna…');
+      projectSha=await ghWrite(path,new Blob([JSON.stringify(projectFile,null,2)],{type:'application/json'}),current?.sha||null);
+      if(!projectSha)throw Error('GitHub bekräftade inte sparad project.json');
+      projectSaved=true;openProjectPath=path;
+      paperPipeline('waiting','Inspelning sparad. Väntar på talanalys.');
+      // A stale words.json should never prevent project.json, audio and event stamps from being saved.
+      try{
+        const wordPath=ghPath('words.json'),currentWords=await ghReadText(wordPath);
+        if(currentWords&&(!wordsSha||currentWords.sha!==wordsSha)){
+          problems.push('words.json har en nyare version på GitHub. Befintlig text har inte skrivits över; hämta senaste ordlistan.');
+        }else{
+          const wordBody={projectId:id,version:1,words:normaliseWords(project.words||[])};
+          wordsSha=await ghWrite(wordPath,new Blob([JSON.stringify(wordBody,null,2)],{type:'application/json'}),currentWords?.sha||null);
+          if(!wordsSha)problems.push('GitHub bekräftade inte words.json');
+        }
+      }catch(e){problems.push('Textöverlägg: '+e.message);}
+      if(problems.length){
+        githubStatus('✓ Projekt och tidsmarkörer sparade. OBS: '+problems.join('; '));
+        paperPipeline('partial','Projekt sparat, men '+problems.length+' del(ar) behöver åtgärdas.');
+        return {complete:false,metadataSaved:true,uploaded:uploaded.length,errors:problems};
+      }
+      githubStatus('✓ '+id+': projekt, inspelningar och tidsmarkörer sparade på GitHub. Talanalysen startar automatiskt om GitHub Actions är aktiverat.');
+      paperPipeline('waiting','Inspelning uppladdad – väntar på tidsstämplade ord.');
+      paperCheckTranscriptionSoon();
+      return {complete:true,metadataSaved:true,uploaded:uploaded.length};
+    }catch(e){
+      githubStatus('Sparandet avbröts: '+e.message);
+      paperPipeline('error',projectSaved?'Projekt sparat, men delar saknas.':'Sparandet misslyckades. Originalen finns kvar lokalt.');
+      return {complete:false,metadataSaved:projectSaved,error:e.message,errors:problems};
+    }finally{busyGithub=false;}
+  }
+    async function fetchWordsGithub(){if(!githubToken){connectGithubModal();return;}try{const id=setProjectID($('projectIdInput').value);const r=await ghReadText(ghPath('words.json'));if(!r)throw Error(`Inga ord finns ännu för ${id}.`);const obj=JSON.parse(r.text);project.words=normaliseWords(Array.isArray(obj)?obj:obj.words);wordsSha=r.sha;selectedWordId='';listWords();renderAt(time);status(`Hämtade ${project.words.length} tidsstämplade ord från GitHub.`);}catch(e){status(`Kunde inte hämta orden: ${e.message}`);}}
   async function ensureMedia(path){if(!path)return null;if(mediaBlobs.has(path))return mediaBlobs.get(path);if(!githubToken)return null;try{const blob=await ghReadMedia(ghPath(path));keepMedia(path,blob,false);return blob;}catch(e){status(`Kunde inte läsa ${path}: ${e.message}`);return null;}}
   async function loadVoiceMedia(){if(!project.voice?.path)return;const voicePath=project.voice.path;if(!(await ensureMedia(voicePath)))return;setVoicePlayback(voicePath);}
   function setVoicePlayback(path){const url=getMediaURL(path);if(!url)return;if(!audioEl){audioEl=new Audio();audioEl.preload='auto';}audioEl.pause();audioEl.src=url;audioEl.preload='auto';audioEl.onloadedmetadata=()=>{if(Number.isFinite(audioEl.duration)&&audioEl.duration>0)status('Röstfil inläst ('+fmt(audioEl.duration)+').');};audioEl.onerror=()=>status('Röstfilen kunde inte spelas upp.');audioUrl=url;$('voiceResult').src=url;$('voiceResult').hidden=false;$('downloadVoiceBtn').disabled=false;$('audioInfo').textContent='Berättarröst: '+path.split('/').pop();}
@@ -727,24 +783,32 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
   function phoneDownloadWhat(kind){if(!phoneLastTake)return;const blob=kind==='video'?phoneVideoBlob:kind==='audio'?phoneAudioBlob:new Blob([JSON.stringify({projectId:project.id,take:phoneLastTake},null,2)],{type:'application/json'});
     if(!blob?.size){$('phoneReviewStatus').textContent='Den filen är inte tillgänglig i webbläsaren.';return;}
     downloadBlob(blob,`${project.id}-${phoneLastTake.id}.${kind==='events'?'json':mimeExt(blob.type,kind==='video'?'video':'audio')}`);}
-  async function phoneSaveGithub(){if(!phoneLastTake)return;if(!githubToken){$('phoneReviewStatus').textContent='Anslut först GitHub med din PAT. Ingen fil har laddats upp.';connectGithubModal();return;}
-    const a=$('phoneSaveGithub'),b=$('v22ReviewSave');a.disabled=true;b.disabled=true;$('phoneReviewStatus').textContent='Väntar på ljudfilen och laddar sedan upp video, tal och tidsmarkörer…';
+  async function phoneSaveGithub(){
+    if(!phoneLastTake){$('phoneReviewStatus').textContent='Ingen färdig inspelning att spara.';return;}
+    if(!githubToken){$('phoneReviewStatus').textContent='Anslut först GitHub med din PAT.';connectGithubModal();return;}
+    const a=$('phoneSaveGithub'),b=$('v22ReviewSave');a.disabled=true;b.disabled=true;
+    $('phoneReviewStatus').textContent='Sparar video, ljud och sveptider på GitHub…';
     try{
-      // Safari may finalize the separate audio track after the camera recorder has stopped.
-      // Do not save project.json until the audio callback has had the chance to attach the file.
       if(phoneAudioRecorder&&!phoneAudioBlob){
         await new Promise(resolve=>{
-          let finished=false;
-          const done=()=>{if(finished)return;finished=true;resolve();};
+          let finished=false;const done=()=>{if(finished)return;finished=true;resolve();};
           phoneAudioRecorder.addEventListener('stop',()=>setTimeout(done,0),{once:true});
           setTimeout(done,1800);
         });
       }
-      const ok=await saveGithubProject();
-      $('phoneReviewStatus').textContent=ok?'✓ Inspelningen är sparad på GitHub. Talanalysen startar i GitHub Actions om arbetsflödet är aktivt. Öppna sedan Förhandsvisa → Text på filmen och tryck Hämta talanalys.':'Inspelningen är fortfarande kvar i appen. Kontrollera GitHub-statusen och försök spara igen.';
-    }catch(e){$('phoneReviewStatus').textContent='Kunde inte spara: '+e.message;}
-    finally{a.disabled=false;b.disabled=false;}}
-  function phoneModeEvents(){
+      const saved=await saveGithubProject();
+      if(saved?.complete){
+        $('phoneReviewStatus').textContent='✓ Video, ljud och tidsmarkörer är sparade på GitHub. Talanalysen kan nu starta.';
+      }else if(saved?.metadataSaved){
+        $('phoneReviewStatus').textContent='⚠ Projektets tidsmarkörer är sparade, men några filer eller textöverlägg saknas. Kontrollera GitHub-statusen och försök igen.';
+      }else if(saved?.cancelled){
+        $('phoneReviewStatus').textContent='Sparandet avbrutet. Inspelningen finns kvar lokalt.';
+      }else{
+        $('phoneReviewStatus').textContent='⚠ Inte färdigsparat: '+(saved?.error||'Se GitHub-statusen nedan')+'. Din lokala inspelning är kvar.';
+      }
+    }finally{a.disabled=false;b.disabled=false;}
+  }
+    function phoneModeEvents(){
     $('phoneModeBtn').addEventListener('click',phoneOpen);$('phoneExit').addEventListener('click',phoneExit);$('phoneEnableCam').addEventListener('click',phoneEnableCamera);$('phoneRecord').addEventListener('click',phoneRecordStart);$('phoneStop').addEventListener('click',phoneRecordStop);
     $('phoneCuePrev').addEventListener('click',()=>phoneCueShift(-1));$('phoneCueNext').addEventListener('click',()=>phoneCueShift(1));
     $('phoneTextSmaller').addEventListener('click',()=>phoneSetCueFontSize(phoneCueFontSize-2));
