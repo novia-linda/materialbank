@@ -44,8 +44,13 @@ def run(directory,load_model=None):
         take_id=str(take["id"])
         audio=take.get("audio") or {}
         video=take.get("video") or {}
-        candidate=audio.get("path") or video.get("path")
-        path=media_file(directory,candidate)
+        candidate=None
+        path=None
+        for possible in (audio.get("path"),video.get("path")):
+            candidate=possible
+            path=media_file(directory,possible)
+            if path is not None:
+                break
         if path is None:
             print("Skip missing or unsupported recording",take_id,flush=True)
             continue
