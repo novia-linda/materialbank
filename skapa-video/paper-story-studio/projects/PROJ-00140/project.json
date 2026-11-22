@@ -114,7 +114,20 @@
       "notes": "Knyt ihop berättelsen. Ordanimationer: TÄNKA och GÖRA i olika positioner i bilden."
     }
   ],
-  "voice": null,
+  "voice": {
+    "path": "media/take-voice-mwri92ie-vq9cx.m4a",
+    "mime": "audio/mp4",
+    "name": "Räddad iPhone-inspelning 22 november 2026"
+  },
   "words": [],
-  "takes": []
+  "takes": [],
+  "recoveredAudio": {
+    "latest": "media/take-voice-mwri92ie-vq9cx.m4a",
+    "older": [
+      "media/take-voice-mwr032pz-ie3lx.m4a"
+    ],
+    "status": "Audio uploaded separately; original camera video and swipe markers were not present in GitHub",
+    "source": "GitHub media directory",
+    "textTiming": "from recording, manual scene synchronization may be needed"
+  }
 }
