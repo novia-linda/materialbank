@@ -1205,13 +1205,15 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
       tx.onabort=()=>reject(tx.error||Error('Det lokala sparandet avbröts.'));
     });
   }
-  function paperBackupProjectId(){return /^PROJ-[A-Z0-9_-]{1,36}$/.test(String(project?.id||''))&&project.id!=='PROJ-DEMO'?project.id:null;}
+  function paperBackupProjectId(){return /^PROJ-[A-Z0-9_-]{1,36}$/.test(String(project?.id||''))?project.id:null;}
   function paperBackupMedia(path,blob,pending=false){
     const id=paperBackupProjectId();
     if(!id||!blob?.size)return;
     const key=id+'::'+path;
+    paperBackupStatus('Säkerhetskopierar inspelningen lokalt…');
     paperBackupQueue=paperBackupQueue.catch(()=>{}).then(async()=>{
       await paperBackupRequest('media','readwrite',store=>store.put({key,projectId:id,path,blob,pending,updatedAt:Date.now()}));
+      paperBackupProblem='';paperBackupStatus('✓ Inspelningsfilen är sparad lokalt');
     }).catch(e=>{paperBackupProblem=e.message;paperBackupStatus('⚠ Kunde inte säkerhetskopiera ljud/video lokalt. Spara till GitHub eller Filer.');});
     paperBackupSchedule(600);
   }
@@ -1222,7 +1224,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
       activeTab,githubRepo,projectRoot,projectSha,wordsSha,openProjectPath,pendingUploads:[...pendingUploads]};
     await paperBackupRequest('drafts','readwrite',store=>store.put(data));
     paperBackupWritten=id;
-    paperBackupStatus('✓ Lokalt sparat '+new Date(data.updatedAt).toLocaleTimeString('sv-FI',{hour:'2-digit',minute:'2-digit'}));
+    paperBackupStatus(paperBackupProblem?'⚠ En mediefil kunde inte sparas lokalt. Ladda ned originalet.':'✓ Lokalt sparat '+new Date(data.updatedAt).toLocaleTimeString('sv-FI',{hour:'2-digit',minute:'2-digit'}));
   }
   function paperBackupSchedule(ms=900){
     if(!paperBackupActive||paperBackupRestoring||!paperBackupProjectId())return;
@@ -1284,16 +1286,16 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     try{
       const drafts=(await paperBackupList()).filter(d=>d.project?.scenes?.length).sort((a,b)=>b.updatedAt-a.updatedAt);
       if(!drafts.length){showModal('Lokala utkast','<p>Inga lokalt sparade utkast finns på denna enhet ännu. GitHub-projekt påverkas inte.</p>',[{label:'Stäng',click:hideModal}]);return;}
-      const html='<p>Välj vilket utkast du vill återställa. Originalen på GitHub ändras inte.</p>'+
+      const html='<p>Välj vilket utkast du vill återställa. Originalen på GitHub ändras inte.</p><div id="paperRecoveryChoices">'+
         drafts.map(d=>'<button type="button" class="btn subtle wide" data-paper-recover="'+esc(d.id)+'" style="margin-top:8px;justify-content:flex-start;text-align:left">↶ '+esc(d.id)+' · '+esc(d.project.title||'Utan titel')+' · '+new Date(d.updatedAt).toLocaleString('sv-FI')+'</button>').join('')+
-        '<p class="hint">Lagringen finns endast i den här webbläsaren. Rensa inte webbplatsdata om du vill behålla utkasten.</p>';
+        '</div><p class="hint">Lagringen finns endast i den här webbläsaren. Rensa inte webbplatsdata om du vill behålla utkasten.</p>';
       showModal('Återställ lokalt utkast',html,[{label:'Stäng',click:hideModal}]);
-      $('modalContent').addEventListener('click',async e=>{
+      $('paperRecoveryChoices').addEventListener('click',async e=>{
         const btn=e.target.closest('[data-paper-recover]');if(!btn)return;
         btn.disabled=true;
         try{await paperBackupRestore(btn.dataset.paperRecover);hideModal();paperBackupSchedule(250);}
         catch(err){paperBackupStatus('⚠ Återställning misslyckades: '+err.message);btn.disabled=false;}
-      },{once:true});
+      });
     }catch(e){paperBackupStatus('⚠ Lokal återställning är inte tillgänglig: '+e.message);}
   }
   async function paperBackupInit(){
@@ -1310,8 +1312,8 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
       document.addEventListener('change',()=>paperBackupSchedule(400),true);
       document.addEventListener('click',()=>paperBackupSchedule(1200),true);
       document.addEventListener('pointerup',()=>paperBackupSchedule(600),true);
-      document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')paperBackupSchedule(0);});
-      window.addEventListener('pagehide',()=>paperBackupSchedule(0));
+      document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'){if(paperBackupTimer)clearTimeout(paperBackupTimer);paperBackupQueue=paperBackupQueue.catch(()=>{}).then(()=>paperBackupDraft()).catch(()=>{});}});
+      window.addEventListener('pagehide',()=>{if(paperBackupTimer)clearTimeout(paperBackupTimer);paperBackupQueue=paperBackupQueue.catch(()=>{}).then(()=>paperBackupDraft()).catch(()=>{});});
       window.addEventListener('beforeunload',e=>{if(phoneMainRecorder||recording){e.preventDefault();e.returnValue='';}});
     }catch(e){paperBackupStatus('⚠ Lokal säkerhetskopiering kunde inte starta: '+e.message);}
   }
