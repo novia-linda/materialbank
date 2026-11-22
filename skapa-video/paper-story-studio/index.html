@@ -1215,7 +1215,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
       pstTranscript=transcript;pstLoadedId=project.id;
       const select=$('pstTake');
       select.innerHTML='<option value="">Välj inspelning</option>'+transcript.takes.map(x=>'<option value="'+esc(x.takeId)+'">'+esc(x.takeId)+' · '+(Array.isArray(x.words)?x.words.length:0)+' ord</option>').join('');
-      if(transcript.takes.length)select.value=transcript.takes[transcript.takes.length-1].takeId;
+      if(transcript.takes.length){const preferred=transcript.takes.find(t=>t.mediaPath===project.voice?.path&&(t.words||[]).length)||[...transcript.takes].sort((a,b)=>(b.words?.length||0)-(a.words?.length||0))[0];select.value=preferred.takeId;}
       pstDrawTranscript();
       const total=transcript.takes.reduce((acc,x)=>acc+(x.words||[]).length,0);
       pstStatus('✓ '+total+' svenska ord med ungefärliga tidsstämplar. Tryck på ett ord för att sätta in det i texteditorn. Inga manuella textöverlägg har ändrats.');paperPipeline('ready','✓ '+total+' ord med tidsstämplar är klara. Text kan nu placeras på filmen.');
