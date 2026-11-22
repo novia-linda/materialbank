@@ -586,7 +586,22 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
       const current=await ghReadText(path);
       // Check the project version BEFORE uploading megabytes of media.
       if(current&&(!projectSha||openProjectPath!==path||current.sha!==projectSha)){
-        throw Error('Projektet har ändrats på GitHub eller öppnades inte därifrån. Din lokala säkerhetskopia finns kvar. Öppna först projektets senaste GitHub-version innan du försöker skriva över den.');
+        // Only merge non-conflicting recordings. Never silently overwrite a changed storyboard.
+        const remote=JSON.parse(current.text);
+        const sameStoryboard=remote.id===id&&JSON.stringify(remote.scenes||[])===JSON.stringify(project.scenes||[]);
+        if(!sameStoryboard){
+          throw Error('Storyboarden har ändrats på GitHub. Dina inspelningar är kvar i den lokala säkerhetskopian. Exportera det lokala projektet till Filer innan du öppnar den nya GitHub-versionen.');
+        }
+        const unique=new Map();
+        for(const t of remote.takes||[])if(t?.id)unique.set(t.id,t);
+        for(const t of project.takes||[])if(t?.id)unique.set(t.id,t);
+        project.takes=[...unique.values()];
+        if(!project.voice&&remote.voice)project.voice=remote.voice;
+        if(!project.recoveredAudio&&remote.recoveredAudio)project.recoveredAudio=remote.recoveredAudio;
+        if(!project.edits&&remote.edits)project.edits=remote.edits;
+        if(!project.visualCues&&remote.visualCues)project.visualCues=remote.visualCues;
+        projectSha=current.sha;openProjectPath=path;
+        githubStatus('Projektets originalbilder är oförändrade. Har förenat dina lokala inspelningar med den senaste GitHub-versionen.');
       }
       if(!current&&projectSha)throw Error('Projektfilen på GitHub saknas nu. Ingen inspelning raderas.');
       if(!window.confirm('Spara '+id+' och inspelningarna på GitHub? '+(githubRepo==='novia-linda/materialbank'?'Materialet blir offentligt.':'')))return {complete:false,cancelled:true};
