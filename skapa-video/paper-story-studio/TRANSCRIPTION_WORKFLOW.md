@@ -5,7 +5,7 @@
 1. Öppna projektet (t.ex. `PROJ-00140`) och spela in i **iPhone-läge**.
 2. Granska inspelningen. Tryck **Spara inspelningen för talanalys**. Den här uppladdningen kräver GitHub-PAT med Contents: Read and write.
 3. Appen laddar upp originalvideo, eventuellt separat ljud och `project.json` med dina sveptider. Inspelningarna behålls som separata tagningar.
-4. En GitHub Actions-körning startar när `project.json` uppdateras och skapar/uppdaterar `transcript.json` med svensk transkription och ungefärliga ordtidsstämplar. Detta använder `faster-whisper` på GitHub-runnern; ingen AI-API-nyckel behövs.
+4. En GitHub Actions-körning startar när `project.json` **eller en ny ljud-/videofil under `media/`** läggs upp. Den skapar/uppdaterar `transcript.json` med svensk transkription och ungefärliga ordtidsstämplar. Detta använder `faster-whisper` på GitHub-runnern; ingen AI-API-nyckel behövs. Även ljud som laddats upp utan projektmetadata kan återfinnas och transkriberas.
 5. Gå till **Förhandsvisa → Text på filmen** och tryck **Hämta talanalys**. Klicka på ord ur talanalysen eller skriv egna korta fraser. Du kan ändra start/slut, storlek, animation och dra texten på förhandsvisningen.
 6. Tryck **Spara text och projekt till GitHub**. Textöverläggen sparas i `words.json`.
 
@@ -28,3 +28,9 @@ ChatGPT behöver beakta `project.edits` (vilka delar av varje tagning som finns 
 - Den automatiska transkriberingen är en första uppskattning. Kontrollera ord och tidpunkter, särskilt efter omtagningar, pauser och tal i bakgrunden.
 - Om `novia-linda/materialbank` används är inspelningarna och transkriptionen offentligt tillgängliga.
 - Den automatiska bearbetningen sker på GitHub, inte inne i ChatGPT. ChatGPT kan analysera den genererade transkriptionen när du ber om det.
+
+## Status och delvis sparad inspelning
+
+I Förhandsvisa finns nu statusen **Inspelning → Talanalys → Text på filmen** och knappen **Kontrollera talanalys**. Projekt- och inspelningsmetadata sparas före `words.json`; en konflikt i textöverläggen stoppar inte längre projektfilen. Om en mediafil inte kunde laddas upp visas en varning och den behålls i den lokala säkerhetskopian.
+
+**PROJ-00140:** Den uppladdade ljudfilen `media/take-voice-mwri92ie-vq9cx.m4a` är återkopplad som berättarröst. GitHub Actions har skapat 369 svenska ord med tidsstämplar i `transcript.json`. Den ursprungliga kameravideon och de exakta svepmarkörerna saknades i GitHub, så bildtidslinjen behöver anpassas manuellt. I Förhandsvisa → Text på filmen finns knappen **Anpassa filmens längd till inspelningen**, som är en grov tidsanpassning, inte en rekonstruktion av svepningar.
