@@ -234,6 +234,8 @@ html,body,.app-shell,.phone-studio{overscroll-behavior-y:none}
 .paper-analysis-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .paper-analysis-actions a{font-size:12px;text-decoration:underline;color:#645245}
 
+.pst-voice-length{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.pst-voice-length small{font-size:11px;color:#8a7662;line-height:1.5;flex:1;min-width:180px}
 </style>
 </head>
 <body>
@@ -279,6 +281,7 @@ html,body,.app-shell,.phone-studio{overscroll-behavior-y:none}
             <button type="button" class="btn subtle compact" id="pstFetch">↻ Hämta talanalys</button>
           </div>
           <p class="pst-help" id="pstTranscriptStatus">Spara först inspelningen till GitHub. Automatisk svensk ordsynkronisering sparas sedan i transcript.json. Du kan också skriva text direkt här.</p>
+          <div class="pst-voice-length"><button type="button" id="pstFitAudio" class="btn subtle compact">↔ Anpassa filmens längd till inspelningen</button><small>Fördelar tiden ungefärligt mellan bilderna när ursprungliga sveptider saknas. Justera bildbytena efteråt.</small></div>
           <div class="pst-transcript-row"><label for="pstTake">Inspelning med tidsstämplar</label><select id="pstTake"><option value="">Välj inspelning</option></select></div>
           <div class="pst-transcript-words" id="pstTranscriptWords" aria-label="Välj ord ur talanalysen"><span class="pst-help">Här visas orden när talanalysen är klar.</span></div>
           <div class="pst-form">
@@ -1221,13 +1224,14 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
   }
   function pstInit(){
     $('pstFetch').addEventListener('click',pstFetchTranscript);
+    $('pstFitAudio').addEventListener('click',()=>{$('fitScenesToVoiceBtn').click();});
     $('pstTake').addEventListener('change',pstDrawTranscript);
     $('pstTranscriptWords').addEventListener('click',e=>{
       const b=e.target.closest('[data-pst-word]');if(!b)return;
       const take=pstSelectedTake();if(!take)return;
       const word=(take.words||[])[Number(b.dataset.pstWord)];if(!word)return;
       const bounds=pstMapWord(take.takeId,Number(word.start),Number(word.end));
-      if(!bounds){pstStatus('Ordet hör till en bortklippt del. Lägg till den delen i tidslinjen eller välj ett annat ord.');return;}
+      if(!bounds){pstStatus(take.takeId==='VOICE-MAIN'||take.takeId.startsWith('ORPHAN-')?'Det här ordet ligger efter den nuvarande bildtidslinjen. Använd Anpassa filmens längd till inspelningen, eller förläng scenerna manuellt.':'Ordet hör till en bortklippt del. Lägg till den delen i tidslinjen eller välj ett annat ord.');return;}
       pstResetInput();
       $('pstText').value=String(word.text||'').trim();
       $('pstStart').value=bounds.start.toFixed(2);
