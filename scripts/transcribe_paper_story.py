@@ -18,9 +18,14 @@ def changed_projects(root):
     prefix=ROOT.as_posix()+"/"
     found=set()
     for line in changed:
-        if line.startswith(prefix) and line.endswith("/project.json"):
-            name=line[len(prefix):].split("/")[0]
-            if PROJECT_ID.fullmatch(name):found.add(name)
+        if line.startswith(prefix):
+            rest=line[len(prefix):].split("/")
+            # A project update OR an uploaded audio/video file can trigger transcription.
+            if len(rest)>=2 and PROJECT_ID.fullmatch(rest[0]) and (
+                rest[1]=="project.json" or
+                (rest[1]=="media" and len(rest)==3 and MEDIA.fullmatch("media/"+rest[2]))
+            ):
+                found.add(rest[0])
     return sorted(found)
 
 def media_file(directory,relative):
@@ -39,13 +44,33 @@ def run(directory,load_model=None):
     except (OSError,ValueError):previous={}
     cached={str(x.get("takeId")):x for x in previous.get("takes",[]) if isinstance(x,dict)}
     entries=[];model=None
-    takes=list(project.get("takes") or [])
-    # Also support a voice-only recording made in the desktop editor.
+    takes=[t for t in (project.get("takes") or []) if isinstance(t,dict)]
     voice=project.get("voice") or {}
     voice_path=voice.get("path") if isinstance(voice,dict) else None
-    linked={str((t.get("audio") or {}).get("path") or (t.get("video") or {}).get("path")) for t in takes if isinstance(t,dict)}
-    if voice_path and voice_path not in linked:
+    referenced=set()
+    for take in takes:
+        for media in (take.get("audio") or {},take.get("video") or {}):
+            if isinstance(media,dict) and isinstance(media.get("path"),str):
+                referenced.add(media["path"])
+    if voice_path and voice_path not in referenced:
         takes.append({"id":"VOICE-MAIN","audio":{"path":voice_path}})
+        referenced.add(voice_path)
+    # Recover orphan media uploaded before project.json could be saved.
+    # Do not modify project.json or discard files just because a partial upload occurred.
+    media_dir=directory/"media"
+    if media_dir.exists():
+        for file in sorted(media_dir.iterdir()):
+            rel="media/"+file.name
+            if rel in referenced or not file.is_file() or not MEDIA.fullmatch(rel):
+                continue
+            if not file.name.startswith(("take-voice-","take-video-","voice-","camera-")):
+                continue
+            if media_file(directory,rel) is None:
+                continue
+            orphan_id="ORPHAN-"+hashlib.sha256(rel.encode("utf-8")).hexdigest()[:12]
+            info={"path":rel}
+            takes.append({"id":orphan_id,"audio":info} if file.suffix.lower() in (".m4a",".mp3",".wav",".ogg") else {"id":orphan_id,"video":info})
+            referenced.add(rel)
     for take in takes:
         if not isinstance(take,dict) or not take.get("id"):continue
         take_id=str(take["id"])
@@ -78,7 +103,7 @@ def run(directory,load_model=None):
                 if token.start is None or token.end is None or token.end<=token.start:continue
                 value=str(token.word).strip()
                 if value:words.append({"text":value,"start":round(float(token.start),2),"end":round(float(token.end),2)})
-        entries.append({"takeId":take_id,"mediaPath":candidate,"sha256":digest,"model":MODEL,"language":"sv","status":"ready","text":" ".join(filter(None,texts)),"words":words})
+        entries.append({"takeId":take_id,"mediaPath":candidate,"sha256":digest,"model":MODEL,"language":"sv","status":"ready","recoveredOrphan":take_id.startswith("ORPHAN-"),"text":" ".join(filter(None,texts)),"words":words})
     if entries==previous.get("takes",[]):
         print("No new takes in",directory.name)
         return False
