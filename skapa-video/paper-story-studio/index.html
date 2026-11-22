@@ -774,7 +774,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     if(!window.MediaRecorder){$('phoneSwipeStatus').textContent='Den här webbläsaren stöder inte inspelning';return;}
     const ready=await phoneEnableCamera();if(!ready)return;
     const videoMime=phoneChooseMime('video'),audioMime=phoneChooseMime('audio');
-    let main;try{main=new MediaRecorder(phoneStream,videoMime?{mimeType:videoMime,videoBitsPerSecond:1600000,audioBitsPerSecond:96000}:undefined);}catch(e){$('phoneSwipeStatus').textContent='Kunde inte starta video: '+e.message;return;}
+    let main;try{main=new MediaRecorder(phoneStream,videoMime?{mimeType:videoMime,videoBitsPerSecond:750000,audioBitsPerSecond:64000}:undefined);}catch(e){$('phoneSwipeStatus').textContent='Kunde inte starta video: '+e.message;return;}
     phoneMainRecorder=main;phoneAudioRecorder=null;phoneRecordingFailed=false;phoneVideoBlob=null;phoneAudioBlob=null;phoneLastTake=null;
     if(phoneVideoUrl){URL.revokeObjectURL(phoneVideoUrl);phoneVideoUrl='';}
     const videoParts=[],audioParts=[];
@@ -782,7 +782,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     phoneActiveTake={id:takeId,createdAt:new Date().toISOString(),projectId:project.id,events:[],video:null,audio:null,duration:0,sourceDefault:phoneSource};
     phoneStarted=performance.now();phoneActiveTake.events.push({at:0,type:'image',index:phoneImageIndex,sceneTitle:project.scenes[phoneImageIndex]?.title||''},{at:0,type:'cue',index:phoneNoteIndex,text:phoneNotes[phoneNoteIndex]?.text||''},{at:0,type:'source',value:phoneSource});
     recording={kind:'phone',rec:main,stream:phoneStream,index:phoneImageIndex};paperPipeline('recording','Spelar in på iPhone…');
-    main.addEventListener('dataavailable',e=>{if(e.data?.size)videoParts.push(e.data);});
+    let recordedVideoBytes=0;main.addEventListener('dataavailable',e=>{if(e.data?.size){videoParts.push(e.data);recordedVideoBytes+=e.data.size;if(recordedVideoBytes>30*1024*1024){$('phoneSwipeStatus').textContent='Videon närmar sig GitHubs 35 MB-gräns. Avsluta gärna den här delen och gör nästa som ny inspelning.';}}});
     main.addEventListener('error',e=>{phoneRecordingFailed=true;$('phoneSwipeStatus').textContent='Fel vid videoinspelning';console.error(e.error||e);});
     main.addEventListener('stop',()=>{
       const duration=phoneStamp(),mime=main.mimeType||videoMime||'video/mp4';
