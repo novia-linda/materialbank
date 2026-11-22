@@ -1,0 +1,1878 @@
+{
+  "version": 1,
+  "projectId": "PROJ-00140",
+  "language": "sv",
+  "model": "small",
+  "wordTimestampsAreApproximate": true,
+  "updatedAt": "2026-11-22T07:29:10.424541+00:00",
+  "takes": [
+    {
+      "takeId": "VOICE-MAIN",
+      "mediaPath": "media/take-voice-mwri92ie-vq9cx.m4a",
+      "sha256": "d3ce16bd37cbbe8bc6bc94355ea784a8f01e9d9c1311edc2df8c8ab21e7890b7",
+      "model": "small",
+      "language": "sv",
+      "status": "ready",
+      "recoveredOrphan": false,
+      "text": "En AI-agent och en AI-assistent, så det låter ju nästan som samma sak, men det finns en viss skillnad och det är det jag ska prata om nu. Den ena hjälper dig att svara på frågor, att tänka, att skapa. Det är den AI-assistenta. Men när det hamnar så har också möjlighet att agera, så det är där det kommer att bli, det är agent. Det är så att den assistenten agerar på egen hand. Den sitter och väntar på din fråga och hjälper dig att formulera ett svar eller även skapa någonting. Det kan vara ett dokument, en bild eller en text. Det kan vara ett kontext på B och med en sammanpå eller ett trevligt kundmejl. Men om vi pratar i stället om A i agenter, så är det en agent. Den får ett mål. Och en agent har också förmågan att planera nästa steg. Ni kan använda tillåtna verktyg. Och ni kan genomföra flera delar av en uppgift. Som exempel, vi har en kund som skickar ett mail om en affär med en assistent så får du hjälp att skriva svaret själv men behöver själv gleta upp prisuppgifterna och kolla att finns de produkterna i lager. En agent kan istället leda fram produktinformationen, kolla vad är priser? Har vi det i lager? Finns det mer detaljer om den här produkten? Och dessutom skapa en offert i vårt fästsystem till exempel? Håll från att det kommer ett mail, man kollar vad handlar det om? som går och kollar i färgsysten. Vi har vi produkterna i lager, bara i priser. Och sen skapar vi något färdigt. Där, här agerar vi, och det är ena känt. Det här sista. Även om agenten skulle kunna ge det helt själv, så att den även skulle skicka svaret till kunder. Så det är många, många bra att man ändå i slutet kollar. Du kan fortfarande välja vad som faktiskt skickas, så en assistent hjälper dig en bit på vägen. Men det finns en del saker du själv måste göra och kolla upp. Medan en agent hjälper dig i längre vägen. Så vi kan sammanfatta det så att en agent kan hjälpa det för att det är gjort men du behöver hålla kontroll.",
+      "words": [
+        {
+          "text": "En",
+          "start": 1.52,
+          "end": 2.2
+        },
+        {
+          "text": "AI",
+          "start": 2.2,
+          "end": 3.06
+        },
+        {
+          "text": "-agent",
+          "start": 3.06,
+          "end": 3.62
+        },
+        {
+          "text": "och",
+          "start": 3.62,
+          "end": 4.3
+        },
+        {
+          "text": "en",
+          "start": 4.3,
+          "end": 4.46
+        },
+        {
+          "text": "AI",
+          "start": 4.46,
+          "end": 4.84
+        },
+        {
+          "text": "-assistent,",
+          "start": 4.84,
+          "end": 5.64
+        },
+        {
+          "text": "så",
+          "start": 5.86,
+          "end": 6.44
+        },
+        {
+          "text": "det",
+          "start": 6.44,
+          "end": 7.1
+        },
+        {
+          "text": "låter",
+          "start": 7.1,
+          "end": 7.52
+        },
+        {
+          "text": "ju",
+          "start": 7.52,
+          "end": 7.66
+        },
+        {
+          "text": "nästan",
+          "start": 7.66,
+          "end": 7.94
+        },
+        {
+          "text": "som",
+          "start": 7.94,
+          "end": 8.22
+        },
+        {
+          "text": "samma",
+          "start": 8.22,
+          "end": 8.54
+        },
+        {
+          "text": "sak,",
+          "start": 8.54,
+          "end": 8.8
+        },
+        {
+          "text": "men",
+          "start": 8.84,
+          "end": 8.96
+        },
+        {
+          "text": "det",
+          "start": 8.96,
+          "end": 9.04
+        },
+        {
+          "text": "finns",
+          "start": 9.04,
+          "end": 9.16
+        },
+        {
+          "text": "en",
+          "start": 9.16,
+          "end": 9.34
+        },
+        {
+          "text": "viss",
+          "start": 9.34,
+          "end": 9.46
+        },
+        {
+          "text": "skillnad",
+          "start": 9.46,
+          "end": 9.86
+        },
+        {
+          "text": "och",
+          "start": 9.86,
+          "end": 10.2
+        },
+        {
+          "text": "det",
+          "start": 10.2,
+          "end": 10.32
+        },
+        {
+          "text": "är",
+          "start": 10.32,
+          "end": 10.38
+        },
+        {
+          "text": "det",
+          "start": 10.38,
+          "end": 10.48
+        },
+        {
+          "text": "jag",
+          "start": 10.48,
+          "end": 10.6
+        },
+        {
+          "text": "ska",
+          "start": 10.6,
+          "end": 10.68
+        },
+        {
+          "text": "prata",
+          "start": 10.68,
+          "end": 10.92
+        },
+        {
+          "text": "om",
+          "start": 10.92,
+          "end": 11.28
+        },
+        {
+          "text": "nu.",
+          "start": 11.28,
+          "end": 11.5
+        },
+        {
+          "text": "Den",
+          "start": 15.27,
+          "end": 15.47
+        },
+        {
+          "text": "ena",
+          "start": 15.47,
+          "end": 16.17
+        },
+        {
+          "text": "hjälper",
+          "start": 16.17,
+          "end": 17.51
+        },
+        {
+          "text": "dig",
+          "start": 17.51,
+          "end": 17.73
+        },
+        {
+          "text": "att",
+          "start": 17.73,
+          "end": 19.29
+        },
+        {
+          "text": "svara",
+          "start": 19.29,
+          "end": 20.97
+        },
+        {
+          "text": "på",
+          "start": 20.97,
+          "end": 21.15
+        },
+        {
+          "text": "frågor,",
+          "start": 21.15,
+          "end": 21.59
+        },
+        {
+          "text": "att",
+          "start": 22.29,
+          "end": 22.39
+        },
+        {
+          "text": "tänka,",
+          "start": 22.39,
+          "end": 23.23
+        },
+        {
+          "text": "att",
+          "start": 23.55,
+          "end": 23.67
+        },
+        {
+          "text": "skapa.",
+          "start": 23.67,
+          "end": 24.39
+        },
+        {
+          "text": "Det",
+          "start": 26.57,
+          "end": 26.97
+        },
+        {
+          "text": "är",
+          "start": 26.97,
+          "end": 27.11
+        },
+        {
+          "text": "den",
+          "start": 27.11,
+          "end": 27.23
+        },
+        {
+          "text": "AI",
+          "start": 27.23,
+          "end": 27.81
+        },
+        {
+          "text": "-assistenta.",
+          "start": 27.81,
+          "end": 28.69
+        },
+        {
+          "text": "Men",
+          "start": 28.69,
+          "end": 29.61
+        },
+        {
+          "text": "när",
+          "start": 29.61,
+          "end": 29.75
+        },
+        {
+          "text": "det",
+          "start": 29.75,
+          "end": 29.81
+        },
+        {
+          "text": "hamnar",
+          "start": 29.81,
+          "end": 30.15
+        },
+        {
+          "text": "så",
+          "start": 30.15,
+          "end": 30.67
+        },
+        {
+          "text": "har",
+          "start": 30.67,
+          "end": 30.79
+        },
+        {
+          "text": "också",
+          "start": 30.79,
+          "end": 30.93
+        },
+        {
+          "text": "möjlighet",
+          "start": 30.93,
+          "end": 31.67
+        },
+        {
+          "text": "att",
+          "start": 31.67,
+          "end": 32.25
+        },
+        {
+          "text": "agera,",
+          "start": 32.25,
+          "end": 33.01
+        },
+        {
+          "text": "så",
+          "start": 33.31,
+          "end": 33.99
+        },
+        {
+          "text": "det",
+          "start": 33.99,
+          "end": 34.17
+        },
+        {
+          "text": "är",
+          "start": 34.17,
+          "end": 34.23
+        },
+        {
+          "text": "där",
+          "start": 34.23,
+          "end": 34.41
+        },
+        {
+          "text": "det",
+          "start": 34.41,
+          "end": 34.61
+        },
+        {
+          "text": "kommer",
+          "start": 34.61,
+          "end": 34.79
+        },
+        {
+          "text": "att",
+          "start": 34.79,
+          "end": 35.07
+        },
+        {
+          "text": "det",
+          "start": 35.19,
+          "end": 35.41
+        },
+        {
+          "text": "är",
+          "start": 35.41,
+          "end": 35.63
+        },
+        {
+          "text": "agent.",
+          "start": 35.63,
+          "end": 36.07
+        },
+        {
+          "text": "Det",
+          "start": 39.28,
+          "end": 39.44
+        },
+        {
+          "text": "är",
+          "start": 39.44,
+          "end": 39.5
+        },
+        {
+          "text": "så",
+          "start": 39.5,
+          "end": 39.58
+        },
+        {
+          "text": "att",
+          "start": 39.58,
+          "end": 39.74
+        },
+        {
+          "text": "den",
+          "start": 39.74,
+          "end": 39.86
+        },
+        {
+          "text": "assistenten",
+          "start": 39.86,
+          "end": 40.78
+        },
+        {
+          "text": "agerar",
+          "start": 40.78,
+          "end": 42.14
+        },
+        {
+          "text": "på",
+          "start": 42.14,
+          "end": 42.42
+        },
+        {
+          "text": "egen",
+          "start": 42.42,
+          "end": 42.74
+        },
+        {
+          "text": "hand.",
+          "start": 42.74,
+          "end": 42.98
+        },
+        {
+          "text": "Den",
+          "start": 43.28,
+          "end": 43.38
+        },
+        {
+          "text": "sitter",
+          "start": 43.38,
+          "end": 43.54
+        },
+        {
+          "text": "och",
+          "start": 43.54,
+          "end": 43.76
+        },
+        {
+          "text": "väntar",
+          "start": 43.76,
+          "end": 44.06
+        },
+        {
+          "text": "på",
+          "start": 44.06,
+          "end": 44.22
+        },
+        {
+          "text": "din",
+          "start": 44.22,
+          "end": 44.34
+        },
+        {
+          "text": "fråga",
+          "start": 44.34,
+          "end": 44.84
+        },
+        {
+          "text": "och",
+          "start": 44.84,
+          "end": 45.4
+        },
+        {
+          "text": "hjälper",
+          "start": 45.4,
+          "end": 45.86
+        },
+        {
+          "text": "dig",
+          "start": 45.86,
+          "end": 46.14
+        },
+        {
+          "text": "att",
+          "start": 46.14,
+          "end": 47.12
+        },
+        {
+          "text": "formulera",
+          "start": 47.12,
+          "end": 47.88
+        },
+        {
+          "text": "ett",
+          "start": 47.88,
+          "end": 48.04
+        },
+        {
+          "text": "svar",
+          "start": 48.04,
+          "end": 48.44
+        },
+        {
+          "text": "eller",
+          "start": 48.44,
+          "end": 48.78
+        },
+        {
+          "text": "även",
+          "start": 48.78,
+          "end": 49.08
+        },
+        {
+          "text": "skapa",
+          "start": 49.08,
+          "end": 49.64
+        },
+        {
+          "text": "någonting.",
+          "start": 49.64,
+          "end": 50.2
+        },
+        {
+          "text": "Det",
+          "start": 51.08,
+          "end": 51.18
+        },
+        {
+          "text": "kan",
+          "start": 51.18,
+          "end": 51.28
+        },
+        {
+          "text": "vara",
+          "start": 51.28,
+          "end": 51.42
+        },
+        {
+          "text": "ett",
+          "start": 51.42,
+          "end": 51.7
+        },
+        {
+          "text": "dokument,",
+          "start": 51.7,
+          "end": 51.94
+        },
+        {
+          "text": "en",
+          "start": 52.74,
+          "end": 52.86
+        },
+        {
+          "text": "bild",
+          "start": 52.86,
+          "end": 53.2
+        },
+        {
+          "text": "eller",
+          "start": 53.2,
+          "end": 53.84
+        },
+        {
+          "text": "en",
+          "start": 53.84,
+          "end": 54.98
+        },
+        {
+          "text": "text.",
+          "start": 54.98,
+          "end": 55.8
+        },
+        {
+          "text": "Det",
+          "start": 55.8,
+          "end": 56.4
+        },
+        {
+          "text": "kan",
+          "start": 60.37,
+          "end": 60.55
+        },
+        {
+          "text": "vara",
+          "start": 60.55,
+          "end": 60.95
+        },
+        {
+          "text": "ett",
+          "start": 60.95,
+          "end": 61.27
+        },
+        {
+          "text": "kontext",
+          "start": 61.27,
+          "end": 61.55
+        },
+        {
+          "text": "på",
+          "start": 61.55,
+          "end": 61.97
+        },
+        {
+          "text": "B",
+          "start": 61.97,
+          "end": 62.21
+        },
+        {
+          "text": "och",
+          "start": 62.21,
+          "end": 62.35
+        },
+        {
+          "text": "med",
+          "start": 62.35,
+          "end": 62.49
+        },
+        {
+          "text": "en",
+          "start": 62.49,
+          "end": 62.61
+        },
+        {
+          "text": "sammanpå",
+          "start": 62.61,
+          "end": 63.25
+        },
+        {
+          "text": "eller",
+          "start": 63.25,
+          "end": 64.17
+        },
+        {
+          "text": "ett",
+          "start": 65.52,
+          "end": 65.88
+        },
+        {
+          "text": "trevligt",
+          "start": 65.88,
+          "end": 66.32
+        },
+        {
+          "text": "kundmejl.",
+          "start": 66.32,
+          "end": 67.38
+        },
+        {
+          "text": "Men",
+          "start": 70.8,
+          "end": 71.26
+        },
+        {
+          "text": "om",
+          "start": 71.26,
+          "end": 71.34
+        },
+        {
+          "text": "vi",
+          "start": 71.34,
+          "end": 71.44
+        },
+        {
+          "text": "pratar",
+          "start": 71.44,
+          "end": 71.72
+        },
+        {
+          "text": "i",
+          "start": 71.72,
+          "end": 71.9
+        },
+        {
+          "text": "stället",
+          "start": 71.9,
+          "end": 72.1
+        },
+        {
+          "text": "om",
+          "start": 72.1,
+          "end": 72.32
+        },
+        {
+          "text": "A",
+          "start": 72.32,
+          "end": 72.56
+        },
+        {
+          "text": "i",
+          "start": 72.56,
+          "end": 72.72
+        },
+        {
+          "text": "agenter,",
+          "start": 72.72,
+          "end": 73.2
+        },
+        {
+          "text": "så",
+          "start": 73.68,
+          "end": 73.86
+        },
+        {
+          "text": "är",
+          "start": 73.86,
+          "end": 73.94
+        },
+        {
+          "text": "det",
+          "start": 73.94,
+          "end": 74.02
+        },
+        {
+          "text": "agent.",
+          "start": 74.02,
+          "end": 75.02
+        },
+        {
+          "text": "Den",
+          "start": 75.76,
+          "end": 76.0
+        },
+        {
+          "text": "får",
+          "start": 76.0,
+          "end": 76.22
+        },
+        {
+          "text": "ett",
+          "start": 76.22,
+          "end": 76.5
+        },
+        {
+          "text": "mål.",
+          "start": 76.5,
+          "end": 77.14
+        },
+        {
+          "text": "Och",
+          "start": 79.32,
+          "end": 79.36
+        },
+        {
+          "text": "en",
+          "start": 79.36,
+          "end": 79.52
+        },
+        {
+          "text": "agent",
+          "start": 79.52,
+          "end": 79.8
+        },
+        {
+          "text": "har",
+          "start": 79.8,
+          "end": 80.0
+        },
+        {
+          "text": "också",
+          "start": 80.0,
+          "end": 80.2
+        },
+        {
+          "text": "förmågan",
+          "start": 80.2,
+          "end": 80.88
+        },
+        {
+          "text": "att",
+          "start": 80.88,
+          "end": 82.56
+        },
+        {
+          "text": "planera",
+          "start": 82.56,
+          "end": 83.24
+        },
+        {
+          "text": "nästa",
+          "start": 83.24,
+          "end": 83.68
+        },
+        {
+          "text": "steg.",
+          "start": 83.68,
+          "end": 84.16
+        },
+        {
+          "text": "Ni",
+          "start": 84.58,
+          "end": 85.0
+        },
+        {
+          "text": "kan",
+          "start": 85.0,
+          "end": 85.14
+        },
+        {
+          "text": "använda",
+          "start": 85.14,
+          "end": 85.78
+        },
+        {
+          "text": "tillåtna",
+          "start": 85.78,
+          "end": 86.76
+        },
+        {
+          "text": "verktyg.",
+          "start": 86.76,
+          "end": 87.64
+        },
+        {
+          "text": "Och",
+          "start": 88.88,
+          "end": 89.34
+        },
+        {
+          "text": "ni",
+          "start": 89.34,
+          "end": 89.8
+        },
+        {
+          "text": "kan",
+          "start": 89.8,
+          "end": 89.86
+        },
+        {
+          "text": "genomföra",
+          "start": 89.86,
+          "end": 90.46
+        },
+        {
+          "text": "flera",
+          "start": 90.46,
+          "end": 90.88
+        },
+        {
+          "text": "delar",
+          "start": 90.88,
+          "end": 91.68
+        },
+        {
+          "text": "av",
+          "start": 91.68,
+          "end": 92.16
+        },
+        {
+          "text": "en",
+          "start": 92.16,
+          "end": 92.3
+        },
+        {
+          "text": "uppgift.",
+          "start": 92.3,
+          "end": 92.78
+        },
+        {
+          "text": "Som",
+          "start": 92.78,
+          "end": 93.66
+        },
+        {
+          "text": "exempel,",
+          "start": 96.22,
+          "end": 96.78
+        },
+        {
+          "text": "vi",
+          "start": 97.38,
+          "end": 97.64
+        },
+        {
+          "text": "har",
+          "start": 97.64,
+          "end": 97.96
+        },
+        {
+          "text": "en",
+          "start": 97.96,
+          "end": 98.44
+        },
+        {
+          "text": "kund",
+          "start": 98.44,
+          "end": 98.76
+        },
+        {
+          "text": "som",
+          "start": 98.76,
+          "end": 99.1
+        },
+        {
+          "text": "skickar",
+          "start": 99.1,
+          "end": 99.64
+        },
+        {
+          "text": "ett",
+          "start": 99.64,
+          "end": 99.9
+        },
+        {
+          "text": "mail",
+          "start": 99.9,
+          "end": 100.24
+        },
+        {
+          "text": "om",
+          "start": 100.24,
+          "end": 100.82
+        },
+        {
+          "text": "en",
+          "start": 100.82,
+          "end": 101.88
+        },
+        {
+          "text": "affär",
+          "start": 101.88,
+          "end": 102.28
+        },
+        {
+          "text": "med",
+          "start": 102.28,
+          "end": 102.86
+        },
+        {
+          "text": "en",
+          "start": 109.03,
+          "end": 109.91
+        },
+        {
+          "text": "assistent",
+          "start": 109.91,
+          "end": 110.63
+        },
+        {
+          "text": "så",
+          "start": 110.63,
+          "end": 111.03
+        },
+        {
+          "text": "får",
+          "start": 111.03,
+          "end": 111.19
+        },
+        {
+          "text": "du",
+          "start": 111.19,
+          "end": 111.33
+        },
+        {
+          "text": "hjälp",
+          "start": 111.33,
+          "end": 111.77
+        },
+        {
+          "text": "att",
+          "start": 111.77,
+          "end": 112.15
+        },
+        {
+          "text": "skriva",
+          "start": 112.15,
+          "end": 112.75
+        },
+        {
+          "text": "svaret",
+          "start": 112.75,
+          "end": 113.17
+        },
+        {
+          "text": "själv",
+          "start": 113.17,
+          "end": 113.61
+        },
+        {
+          "text": "men",
+          "start": 113.61,
+          "end": 114.85
+        },
+        {
+          "text": "behöver",
+          "start": 114.85,
+          "end": 116.61
+        },
+        {
+          "text": "själv",
+          "start": 116.61,
+          "end": 117.27
+        },
+        {
+          "text": "gleta",
+          "start": 117.27,
+          "end": 118.13
+        },
+        {
+          "text": "upp",
+          "start": 118.13,
+          "end": 118.57
+        },
+        {
+          "text": "prisuppgifterna",
+          "start": 118.57,
+          "end": 120.69
+        },
+        {
+          "text": "och",
+          "start": 120.69,
+          "end": 121.91
+        },
+        {
+          "text": "kolla",
+          "start": 121.91,
+          "end": 122.17
+        },
+        {
+          "text": "att",
+          "start": 122.17,
+          "end": 122.41
+        },
+        {
+          "text": "finns",
+          "start": 122.41,
+          "end": 122.65
+        },
+        {
+          "text": "de",
+          "start": 122.65,
+          "end": 122.89
+        },
+        {
+          "text": "produkterna",
+          "start": 122.89,
+          "end": 123.61
+        },
+        {
+          "text": "i",
+          "start": 123.61,
+          "end": 123.71
+        },
+        {
+          "text": "lager.",
+          "start": 123.71,
+          "end": 124.13
+        },
+        {
+          "text": "En",
+          "start": 126.44,
+          "end": 127.26
+        },
+        {
+          "text": "agent",
+          "start": 127.26,
+          "end": 127.6
+        },
+        {
+          "text": "kan",
+          "start": 127.6,
+          "end": 127.88
+        },
+        {
+          "text": "istället",
+          "start": 127.88,
+          "end": 128.3
+        },
+        {
+          "text": "leda",
+          "start": 128.3,
+          "end": 129.44
+        },
+        {
+          "text": "fram",
+          "start": 129.44,
+          "end": 129.68
+        },
+        {
+          "text": "produktinformationen,",
+          "start": 129.68,
+          "end": 132.1
+        },
+        {
+          "text": "kolla",
+          "start": 132.26,
+          "end": 132.44
+        },
+        {
+          "text": "vad",
+          "start": 132.44,
+          "end": 132.64
+        },
+        {
+          "text": "är",
+          "start": 132.64,
+          "end": 132.72
+        },
+        {
+          "text": "priser?",
+          "start": 132.72,
+          "end": 133.42
+        },
+        {
+          "text": "Har",
+          "start": 133.84,
+          "end": 134.04
+        },
+        {
+          "text": "vi",
+          "start": 134.04,
+          "end": 134.18
+        },
+        {
+          "text": "det",
+          "start": 134.18,
+          "end": 134.3
+        },
+        {
+          "text": "i",
+          "start": 134.3,
+          "end": 134.52
+        },
+        {
+          "text": "lager?",
+          "start": 134.52,
+          "end": 135.06
+        },
+        {
+          "text": "Finns",
+          "start": 135.34,
+          "end": 135.44
+        },
+        {
+          "text": "det",
+          "start": 135.44,
+          "end": 135.56
+        },
+        {
+          "text": "mer",
+          "start": 135.56,
+          "end": 135.86
+        },
+        {
+          "text": "detaljer",
+          "start": 135.86,
+          "end": 137.18
+        },
+        {
+          "text": "om",
+          "start": 137.18,
+          "end": 137.56
+        },
+        {
+          "text": "den",
+          "start": 137.56,
+          "end": 137.68
+        },
+        {
+          "text": "här",
+          "start": 137.68,
+          "end": 137.88
+        },
+        {
+          "text": "produkten?",
+          "start": 137.88,
+          "end": 138.5
+        },
+        {
+          "text": "Och",
+          "start": 139.12,
+          "end": 139.18
+        },
+        {
+          "text": "dessutom",
+          "start": 139.18,
+          "end": 139.94
+        },
+        {
+          "text": "skapa",
+          "start": 139.94,
+          "end": 140.74
+        },
+        {
+          "text": "en",
+          "start": 140.74,
+          "end": 141.22
+        },
+        {
+          "text": "offert",
+          "start": 141.22,
+          "end": 141.78
+        },
+        {
+          "text": "i",
+          "start": 141.78,
+          "end": 142.06
+        },
+        {
+          "text": "vårt",
+          "start": 142.06,
+          "end": 142.48
+        },
+        {
+          "text": "fästsystem",
+          "start": 142.48,
+          "end": 143.18
+        },
+        {
+          "text": "till",
+          "start": 143.18,
+          "end": 143.36
+        },
+        {
+          "text": "exempel?",
+          "start": 143.36,
+          "end": 143.76
+        },
+        {
+          "text": "Håll",
+          "start": 144.62,
+          "end": 144.82
+        },
+        {
+          "text": "från",
+          "start": 144.82,
+          "end": 145.14
+        },
+        {
+          "text": "att",
+          "start": 145.14,
+          "end": 145.36
+        },
+        {
+          "text": "det",
+          "start": 145.36,
+          "end": 145.46
+        },
+        {
+          "text": "kommer",
+          "start": 145.46,
+          "end": 145.74
+        },
+        {
+          "text": "ett",
+          "start": 145.74,
+          "end": 146.1
+        },
+        {
+          "text": "mail,",
+          "start": 146.1,
+          "end": 146.56
+        },
+        {
+          "text": "man",
+          "start": 147.54,
+          "end": 147.88
+        },
+        {
+          "text": "kollar",
+          "start": 147.88,
+          "end": 148.28
+        },
+        {
+          "text": "vad",
+          "start": 148.28,
+          "end": 148.54
+        },
+        {
+          "text": "handlar",
+          "start": 148.54,
+          "end": 148.78
+        },
+        {
+          "text": "det",
+          "start": 148.78,
+          "end": 148.96
+        },
+        {
+          "text": "om?",
+          "start": 148.96,
+          "end": 149.44
+        },
+        {
+          "text": "som",
+          "start": 149.44,
+          "end": 149.6
+        },
+        {
+          "text": "går",
+          "start": 149.6,
+          "end": 150.76
+        },
+        {
+          "text": "och",
+          "start": 150.76,
+          "end": 150.96
+        },
+        {
+          "text": "kollar",
+          "start": 150.96,
+          "end": 151.1
+        },
+        {
+          "text": "i",
+          "start": 151.1,
+          "end": 151.24
+        },
+        {
+          "text": "färgsysten.",
+          "start": 151.24,
+          "end": 151.78
+        },
+        {
+          "text": "Vi",
+          "start": 151.96,
+          "end": 152.04
+        },
+        {
+          "text": "har",
+          "start": 152.04,
+          "end": 152.18
+        },
+        {
+          "text": "vi",
+          "start": 152.18,
+          "end": 152.36
+        },
+        {
+          "text": "produkterna",
+          "start": 152.36,
+          "end": 152.98
+        },
+        {
+          "text": "i",
+          "start": 152.98,
+          "end": 153.08
+        },
+        {
+          "text": "lager,",
+          "start": 153.08,
+          "end": 153.42
+        },
+        {
+          "text": "bara",
+          "start": 153.6,
+          "end": 153.74
+        },
+        {
+          "text": "i",
+          "start": 153.74,
+          "end": 153.84
+        },
+        {
+          "text": "priser.",
+          "start": 153.84,
+          "end": 154.32
+        },
+        {
+          "text": "Och",
+          "start": 155.06,
+          "end": 155.16
+        },
+        {
+          "text": "sen",
+          "start": 155.16,
+          "end": 155.3
+        },
+        {
+          "text": "skapar",
+          "start": 155.3,
+          "end": 155.74
+        },
+        {
+          "text": "vi",
+          "start": 155.74,
+          "end": 155.8
+        },
+        {
+          "text": "något",
+          "start": 155.8,
+          "end": 155.92
+        },
+        {
+          "text": "färdigt.",
+          "start": 155.92,
+          "end": 156.38
+        },
+        {
+          "text": "här",
+          "start": 157.28,
+          "end": 157.62
+        },
+        {
+          "text": "agerar",
+          "start": 157.62,
+          "end": 158.02
+        },
+        {
+          "text": "vi,",
+          "start": 158.02,
+          "end": 158.2
+        },
+        {
+          "text": "och",
+          "start": 158.38,
+          "end": 158.44
+        },
+        {
+          "text": "det",
+          "start": 158.44,
+          "end": 158.56
+        },
+        {
+          "text": "är",
+          "start": 158.56,
+          "end": 158.64
+        },
+        {
+          "text": "ena",
+          "start": 158.64,
+          "end": 158.76
+        },
+        {
+          "text": "känt.",
+          "start": 158.76,
+          "end": 159.08
+        },
+        {
+          "text": "Det",
+          "start": 164.52,
+          "end": 164.66
+        },
+        {
+          "text": "här",
+          "start": 164.66,
+          "end": 164.76
+        },
+        {
+          "text": "sista.",
+          "start": 164.76,
+          "end": 165.22
+        },
+        {
+          "text": "Även",
+          "start": 166.54,
+          "end": 166.8
+        },
+        {
+          "text": "om",
+          "start": 166.8,
+          "end": 166.94
+        },
+        {
+          "text": "agenten",
+          "start": 166.94,
+          "end": 167.54
+        },
+        {
+          "text": "skulle",
+          "start": 167.54,
+          "end": 168.1
+        },
+        {
+          "text": "kunna",
+          "start": 168.1,
+          "end": 168.84
+        },
+        {
+          "text": "ge",
+          "start": 168.84,
+          "end": 169.76
+        },
+        {
+          "text": "det",
+          "start": 169.76,
+          "end": 170.06
+        },
+        {
+          "text": "helt",
+          "start": 170.06,
+          "end": 170.66
+        },
+        {
+          "text": "själv,",
+          "start": 170.66,
+          "end": 171.08
+        },
+        {
+          "text": "så",
+          "start": 171.96,
+          "end": 172.06
+        },
+        {
+          "text": "att",
+          "start": 172.06,
+          "end": 172.24
+        },
+        {
+          "text": "den",
+          "start": 172.24,
+          "end": 172.32
+        },
+        {
+          "text": "även",
+          "start": 172.32,
+          "end": 172.48
+        },
+        {
+          "text": "skulle",
+          "start": 172.48,
+          "end": 172.76
+        },
+        {
+          "text": "skicka",
+          "start": 172.76,
+          "end": 173.58
+        },
+        {
+          "text": "svaret",
+          "start": 173.58,
+          "end": 173.98
+        },
+        {
+          "text": "till",
+          "start": 173.98,
+          "end": 174.38
+        },
+        {
+          "text": "kunder.",
+          "start": 174.38,
+          "end": 174.68
+        },
+        {
+          "text": "Så",
+          "start": 175.3,
+          "end": 175.54
+        },
+        {
+          "text": "det",
+          "start": 175.54,
+          "end": 175.6
+        },
+        {
+          "text": "är",
+          "start": 175.6,
+          "end": 175.66
+        },
+        {
+          "text": "många,",
+          "start": 175.66,
+          "end": 175.8
+        },
+        {
+          "text": "många",
+          "start": 175.98,
+          "end": 176.08
+        },
+        {
+          "text": "bra",
+          "start": 176.08,
+          "end": 176.38
+        },
+        {
+          "text": "att",
+          "start": 176.38,
+          "end": 176.9
+        },
+        {
+          "text": "man",
+          "start": 176.9,
+          "end": 177.06
+        },
+        {
+          "text": "ändå",
+          "start": 177.06,
+          "end": 177.72
+        },
+        {
+          "text": "i",
+          "start": 177.72,
+          "end": 178.44
+        },
+        {
+          "text": "slutet",
+          "start": 178.44,
+          "end": 178.9
+        },
+        {
+          "text": "kollar.",
+          "start": 178.9,
+          "end": 181.22
+        },
+        {
+          "text": "Du",
+          "start": 189.34,
+          "end": 190.02
+        },
+        {
+          "text": "kan",
+          "start": 190.02,
+          "end": 190.28
+        },
+        {
+          "text": "fortfarande",
+          "start": 190.28,
+          "end": 190.94
+        },
+        {
+          "text": "välja",
+          "start": 190.94,
+          "end": 191.26
+        },
+        {
+          "text": "vad",
+          "start": 191.26,
+          "end": 191.44
+        },
+        {
+          "text": "som",
+          "start": 191.44,
+          "end": 191.58
+        },
+        {
+          "text": "faktiskt",
+          "start": 191.58,
+          "end": 191.92
+        },
+        {
+          "text": "skickas,",
+          "start": 191.92,
+          "end": 192.68
+        },
+        {
+          "text": "så",
+          "start": 198.0,
+          "end": 198.28
+        },
+        {
+          "text": "en",
+          "start": 198.28,
+          "end": 198.52
+        },
+        {
+          "text": "assistent",
+          "start": 198.52,
+          "end": 199.8
+        },
+        {
+          "text": "hjälper",
+          "start": 199.8,
+          "end": 201.78
+        },
+        {
+          "text": "dig",
+          "start": 201.78,
+          "end": 201.94
+        },
+        {
+          "text": "en",
+          "start": 201.94,
+          "end": 202.08
+        },
+        {
+          "text": "bit",
+          "start": 202.08,
+          "end": 202.22
+        },
+        {
+          "text": "på",
+          "start": 202.22,
+          "end": 202.46
+        },
+        {
+          "text": "vägen.",
+          "start": 202.46,
+          "end": 202.86
+        },
+        {
+          "text": "Men",
+          "start": 204.56,
+          "end": 205.12
+        },
+        {
+          "text": "det",
+          "start": 205.12,
+          "end": 205.24
+        },
+        {
+          "text": "finns",
+          "start": 205.24,
+          "end": 205.4
+        },
+        {
+          "text": "en",
+          "start": 205.4,
+          "end": 205.76
+        },
+        {
+          "text": "del",
+          "start": 205.76,
+          "end": 205.92
+        },
+        {
+          "text": "saker",
+          "start": 205.92,
+          "end": 206.44
+        },
+        {
+          "text": "du",
+          "start": 206.44,
+          "end": 207.06
+        },
+        {
+          "text": "själv",
+          "start": 207.06,
+          "end": 207.4
+        },
+        {
+          "text": "måste",
+          "start": 207.4,
+          "end": 208.88
+        },
+        {
+          "text": "göra",
+          "start": 208.88,
+          "end": 209.8
+        },
+        {
+          "text": "och",
+          "start": 209.8,
+          "end": 210.1
+        },
+        {
+          "text": "kolla",
+          "start": 210.1,
+          "end": 210.26
+        },
+        {
+          "text": "upp.",
+          "start": 210.26,
+          "end": 210.6
+        },
+        {
+          "text": "Medan",
+          "start": 211.36,
+          "end": 211.82
+        },
+        {
+          "text": "en",
+          "start": 211.82,
+          "end": 212.08
+        },
+        {
+          "text": "agent",
+          "start": 212.08,
+          "end": 212.42
+        },
+        {
+          "text": "hjälper",
+          "start": 212.42,
+          "end": 213.68
+        },
+        {
+          "text": "dig",
+          "start": 213.68,
+          "end": 213.88
+        },
+        {
+          "text": "i",
+          "start": 213.88,
+          "end": 214.2
+        },
+        {
+          "text": "längre",
+          "start": 214.2,
+          "end": 214.82
+        },
+        {
+          "text": "vägen.",
+          "start": 214.82,
+          "end": 215.48
+        },
+        {
+          "text": "Så",
+          "start": 215.48,
+          "end": 216.34
+        },
+        {
+          "text": "vi",
+          "start": 219.45,
+          "end": 219.83
+        },
+        {
+          "text": "kan",
+          "start": 219.83,
+          "end": 219.91
+        },
+        {
+          "text": "sammanfatta",
+          "start": 219.91,
+          "end": 220.43
+        },
+        {
+          "text": "det",
+          "start": 220.43,
+          "end": 220.65
+        },
+        {
+          "text": "så",
+          "start": 220.65,
+          "end": 220.75
+        },
+        {
+          "text": "att",
+          "start": 220.75,
+          "end": 221.15
+        },
+        {
+          "text": "en",
+          "start": 221.15,
+          "end": 221.29
+        },
+        {
+          "text": "agent",
+          "start": 221.29,
+          "end": 221.79
+        },
+        {
+          "text": "kan",
+          "start": 221.79,
+          "end": 222.15
+        },
+        {
+          "text": "hjälpa",
+          "start": 222.15,
+          "end": 222.47
+        },
+        {
+          "text": "det",
+          "start": 222.47,
+          "end": 222.63
+        },
+        {
+          "text": "för",
+          "start": 222.63,
+          "end": 222.81
+        },
+        {
+          "text": "att",
+          "start": 222.81,
+          "end": 222.87
+        },
+        {
+          "text": "det",
+          "start": 222.87,
+          "end": 223.37
+        },
+        {
+          "text": "är",
+          "start": 223.37,
+          "end": 223.43
+        },
+        {
+          "text": "gjort",
+          "start": 223.43,
+          "end": 223.83
+        },
+        {
+          "text": "men",
+          "start": 223.83,
+          "end": 224.81
+        },
+        {
+          "text": "du",
+          "start": 224.81,
+          "end": 225.45
+        },
+        {
+          "text": "behöver",
+          "start": 225.45,
+          "end": 225.57
+        },
+        {
+          "text": "hålla",
+          "start": 225.57,
+          "end": 225.85
+        },
+        {
+          "text": "kontroll.",
+          "start": 225.85,
+          "end": 226.23
+        }
+      ]
+    },
+    {
+      "takeId": "ORPHAN-064212ac0491",
+      "mediaPath": "media/take-voice-mwr032pz-ie3lx.m4a",
+      "sha256": "a6b6de2baf3c7adf639c3586777bf4962f585b6d0bda9cf13908b34d839540f5",
+      "model": "small",
+      "language": "sv",
+      "status": "ready",
+      "recoveredOrphan": true,
+      "text": "",
+      "words": []
+    }
+  ]
+}
