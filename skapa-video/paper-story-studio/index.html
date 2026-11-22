@@ -224,6 +224,16 @@ html,body,.app-shell,.phone-studio{overscroll-behavior-y:none}
 .paper-local-tools .btn{min-height:32px;padding:5px 9px;font-size:11px}
 .paper-phone-safe{font-size:12px;line-height:1.45;color:#6f6253;margin:6px 0 10px}
 @media(max-width:520px){.paper-local-tools{gap:5px}.paper-local-tools .btn{min-height:32px}}
+
+
+.paper-analysis-state{background:#faf6ee;border:1px solid #dfd3c3;padding:12px;border-radius:9px;display:grid;gap:8px;margin-top:10px}
+.paper-analysis-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.paper-analysis-steps span{font-size:10px;text-align:center;color:#81776c;border:1px solid #dfd5c9;border-radius:6px;padding:8px 3px}
+.paper-analysis-steps span[data-active="true"]{border-color:#a85e49;color:#522b21;font-weight:800;background:#f2e5d9}
+.paper-analysis-state p{margin:0;font-size:12px;line-height:1.55;color:#63584b}
+.paper-analysis-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.paper-analysis-actions a{font-size:12px;text-decoration:underline;color:#645245}
+
 </style>
 </head>
 <body>
@@ -290,7 +300,13 @@ html,body,.app-shell,.phone-studio{overscroll-behavior-y:none}
             <button type="button" class="btn pale compact" id="pstSave">↑ Spara text och projekt till GitHub</button>
           </div>
         </section>
-        <section class="v23-panel v23-takes"><div class="v23-panel-top"><div><strong>Klipp och omtagningar</strong><p>Välj vilka delar som ska användas. Originalen behålls i projektet.</p></div><small id="v22Duration"></small></div><div id="v22Edits"></div></section>
+        <section class="paper-analysis-state" aria-label="Status för inspelning och talanalys">
+  <div class="paper-analysis-steps"><span id="paperAnalysisUpload">1. Inspelning</span><span id="paperAnalysisTranscribe">2. Talanalys</span><span id="paperAnalysisReady">3. Text på filmen</span></div>
+  <p id="paperAnalysisMessage" role="status">Spela in och spara på GitHub för att skapa tidsstämplad text.</p>
+  <div class="paper-analysis-actions"><button type="button" id="paperAnalysisCheck" class="btn subtle compact">↻ Kontrollera talanalys</button>
+  <a id="paperAnalysisActionsLink" target="_blank" rel="noopener noreferrer" href="https://github.com/novia-linda/materialbank/actions/workflows/paper-story-transcribe.yml">Se GitHub Actions</a></div>
+</section>
+<section class="v23-panel v23-takes"><div class="v23-panel-top"><div><strong>Klipp och omtagningar</strong><p>Välj vilka delar som ska användas. Originalen behålls i projektet.</p></div><small id="v22Duration"></small></div><div id="v22Edits"></div></section>
       </div>
     </section>
     <aside class="sidebar inspector-pane" aria-label="Redigera scen">
@@ -368,6 +384,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
   </section>
   <div class="phone-review" id="phoneReview" hidden>
     <h2>Inspelningen är färdig</h2><button type="button" id="v22ReviewSave" class="btn primary wide">↑ Spara inspelningen för talanalys</button><p id="phoneReviewInfo">Video och händelser finns nu i projektet.</p><p id="paperPhoneStatus" class="paper-phone-safe" role="status">Projekt och inspelningar säkerhetskopieras lokalt på denna telefon.</p>
+<p id="paperPhoneAnalysis" class="paper-phone-safe" role="status">Spara inspelningen till GitHub för tidsstämplade ord.</p>
     <video id="phoneReviewVideo" playsinline controls></video>
     <div class="phone-review-actions"><button type="button" id="phoneDownloadVideo" class="btn pale">↓ Video</button><button type="button" id="phoneDownloadAudio" class="btn subtle">↓ Ljud</button><button type="button" id="phoneDownloadEvents" class="btn subtle">↓ Tidsmarkörer</button></div>
     <button type="button" id="phoneSaveGithub" class="btn primary wide">↑ Spara inspelning och starta talanalys</button>
@@ -746,7 +763,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     const takeId=`TAKE-${new Date().toISOString().replace(/[-:.TZ]/g,'').slice(0,14)}`;
     phoneActiveTake={id:takeId,createdAt:new Date().toISOString(),projectId:project.id,events:[],video:null,audio:null,duration:0,sourceDefault:phoneSource};
     phoneStarted=performance.now();phoneActiveTake.events.push({at:0,type:'image',index:phoneImageIndex,sceneTitle:project.scenes[phoneImageIndex]?.title||''},{at:0,type:'cue',index:phoneNoteIndex,text:phoneNotes[phoneNoteIndex]?.text||''},{at:0,type:'source',value:phoneSource});
-    recording={kind:'phone',rec:main,stream:phoneStream,index:phoneImageIndex};
+    recording={kind:'phone',rec:main,stream:phoneStream,index:phoneImageIndex};paperPipeline('recording','Spelar in på iPhone…');
     main.addEventListener('dataavailable',e=>{if(e.data?.size)videoParts.push(e.data);});
     main.addEventListener('error',e=>{phoneRecordingFailed=true;$('phoneSwipeStatus').textContent='Fel vid videoinspelning';console.error(e.error||e);});
     main.addEventListener('stop',()=>{
@@ -761,7 +778,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
       $('phoneDownloadVideo').disabled=!phoneVideoBlob.size;
       $('phoneDownloadAudio').disabled=!phoneAudioBlob;
       $('phoneReviewStatus').textContent=phoneVideoBlob.size>35*1048576?'Videofilen är större än 35 MB: ladda ned lokalt och behåll originalet.':'Inspelningen och markörerna finns i projektet. Ingen fil är uppladdad ännu.';
-      updateAll();
+      updateAll();paperPipeline('local','Inspelningen är klar lokalt. Spara till GitHub för talanalys.');paperBackupSchedule(250);
     });
     if(audioMime){try{const audioTracks=phoneStream.getAudioTracks();if(audioTracks.length){const separateAudioStream=new MediaStream(audioTracks);
       const audioRec=new MediaRecorder(separateAudioStream,{mimeType:audioMime,audioBitsPerSecond:96000});phoneAudioRecorder=audioRec;
@@ -1092,7 +1109,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
   function pstMapWord(takeId,begin,end){
     const pieces=v22Timeline();
     // Voice-only recordings use the original storyboard clock.
-    if(!pieces&&takeId==='VOICE-MAIN'){
+    if(!pieces&&(takeId==='VOICE-MAIN'||String(takeId).startsWith('ORPHAN-'))){
       const endOfMovie=totalDuration();
       if(begin>=endOfMovie)return null;
       return {start:Math.max(0,begin),end:Math.min(endOfMovie,Math.max(begin+.08,end))};
@@ -1174,7 +1191,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     const b=$('pstFetch');b.disabled=true;b.textContent='Hämtar…';
     try{
       const res=await ghReadText(ghPath('transcript.json'));
-      if(!res){pstStatus('Ingen talanalys ännu. Spara inspelningen till GitHub och kontrollera arbetsflödet Paper Story under Actions.');return;}
+      if(!res){pstStatus('Ingen talanalys ännu. Spara inspelningen till GitHub och kontrollera arbetsflödet Paper Story under Actions.');paperPipeline('waiting','Väntar på GitHub Actions. transcript.json finns ännu inte.');return;}
       const transcript=JSON.parse(res.text);
       if(transcript.projectId!==project.id||!Array.isArray(transcript.takes))throw Error('Talanalysen hör till ett annat projekt eller har fel format.');
       pstTranscript=transcript;pstLoadedId=project.id;
@@ -1183,7 +1200,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
       if(transcript.takes.length)select.value=transcript.takes[transcript.takes.length-1].takeId;
       pstDrawTranscript();
       const total=transcript.takes.reduce((acc,x)=>acc+(x.words||[]).length,0);
-      pstStatus('✓ '+total+' svenska ord med ungefärliga tidsstämplar. Tryck på ett ord för att sätta in det i texteditorn. Inga manuella textöverlägg har ändrats.');
+      pstStatus('✓ '+total+' svenska ord med ungefärliga tidsstämplar. Tryck på ett ord för att sätta in det i texteditorn. Inga manuella textöverlägg har ändrats.');paperPipeline('ready','✓ '+total+' ord med tidsstämplar är klara. Text kan nu placeras på filmen.');
     }catch(e){pstStatus('Kunde inte hämta talanalys: '+e.message);}
     finally{b.disabled=false;b.textContent='↻ Hämta talanalys';}
   }
@@ -1382,7 +1399,83 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     }catch(e){paperBackupStatus('⚠ Lokal säkerhetskopiering kunde inte starta: '+e.message);}
   }
 
-  function init(){clothTex=createCloth();document.querySelector('.workspace').dataset.tab=activeTab;events();studioV2Events();updateAll();v22Init();v23Init();pstInit();paperBackupInit();status('Börja med story och storyboard i ChatGPT. Anslut GitHub och öppna projekt via ID.');}
+
+
+  // Real status comes from file saves and transcript.json, not an assumed GitHub Actions run.
+  let paperPipelineState='empty',paperCheckTimers=[];
+  function paperPipeline(stage,message){
+    paperPipelineState=stage;
+    const msg=message||({
+      empty:'Spela in och spara projektet på GitHub.',
+      recording:'Spelar in…',
+      local:'Inspelningen är klar lokalt. Spara på GitHub för att fortsätta.',
+      uploading:'Inspelningen laddas upp till GitHub.',
+      waiting:'Uppladdat. Väntar på talanalys från GitHub Actions.',
+      ready:'Talanalysen är klar. Öppna Text på filmen.',
+      partial:'Delvis sparat. Kontrollera meddelandet i appen.',
+      error:'Sparandet kunde inte slutföras. Ditt lokala utkast finns kvar.'
+    }[stage]||'Kontrollera GitHub-statusen.');
+    const a=$('paperAnalysisMessage'),b=$('paperPhoneAnalysis');
+    if(a)a.textContent=msg;
+    if(b)b.textContent=msg;
+    const states={upload:['recording','local','uploading','waiting','ready','partial'],transcribe:['waiting','ready'],ready:['ready']};
+    for(const [id,arr] of [
+      ['paperAnalysisUpload',states.upload],
+      ['paperAnalysisTranscribe',states.transcribe],
+      ['paperAnalysisReady',states.ready]
+    ]){
+      const el=$(id);if(el)el.dataset.active=String(arr.includes(stage));
+    }
+  }
+  function paperCurrentMedia(){
+    const paths=new Set();
+    for(const t of project.takes||[]){
+      if(t?.video?.path)paths.add(t.video.path);
+      if(t?.audio?.path)paths.add(t.audio.path);
+    }
+    if(project.voice?.path)paths.add(project.voice.path);
+    return paths;
+  }
+  async function paperStatusCheck(){
+    if(!project?.id||!/^PROJ-/.test(project.id))return;
+    if(!githubToken && githubRepo!=='novia-linda/materialbank'){
+      paperPipeline('waiting','Anslut GitHub för att kontrollera talanalysen i det privata projektet.');
+      return;
+    }
+    try{
+      const data=githubToken?await ghReadText(ghPath('transcript.json')):await ghReadPublicText(ghPath('transcript.json'));
+      if(!data){paperPipeline('waiting','Uppladdningen är registrerad eller pågår. GitHub har ännu inte skapat transcript.json. Kontrollera GitHub Actions vid behov.');return;}
+      const obj=JSON.parse(data.text);
+      if(obj.projectId!==project.id||!Array.isArray(obj.takes))throw Error('Transkriptionen har fel projekt-ID eller filformat');
+      const wanted=paperCurrentMedia();
+      const matching=obj.takes.filter(t=>t.status==='ready'&&Array.isArray(t.words)&&(!wanted.size||wanted.has(t.mediaPath)));
+      if(!matching.length){
+        paperPipeline('waiting','Tidigare talanalys finns, men inte för den senaste inspelningen. Väntar på en ny analys.');
+        return;
+      }
+      const count=matching.reduce((n,t)=>n+t.words.length,0);
+      paperPipeline('ready','✓ Talanalys klar: '+count+' ord med tidsstämplar. Öppna Text på filmen och klicka Hämta talanalys.');
+    }catch(e){
+      paperPipeline('waiting','Kunde inte verifiera talanalysen: '+e.message+'. Kontrollera GitHub Actions eller försök igen.');
+    }
+  }
+  function paperCheckTranscriptionSoon(){
+    for(const t of paperCheckTimers)clearTimeout(t);
+    paperCheckTimers=[];
+    for(const delay of [7000,20000,45000]){
+      paperCheckTimers.push(setTimeout(()=>{if(paperPipelineState!=='ready')paperStatusCheck();},delay));
+    }
+  }
+  function paperPipelineInit(){
+    $('paperAnalysisCheck').addEventListener('click',paperStatusCheck);
+    const link=$('paperAnalysisActionsLink');
+    if(/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(githubRepo)){
+      link.href='https://github.com/'+githubRepo+'/actions/workflows/paper-story-transcribe.yml';
+    }
+    paperPipeline('empty');
+  }
+
+  function init(){clothTex=createCloth();document.querySelector('.workspace').dataset.tab=activeTab;events();studioV2Events();updateAll();v22Init();v23Init();pstInit();paperPipelineInit();paperBackupInit();status('Börja med story och storyboard i ChatGPT. Anslut GitHub och öppna projekt via ID.');}
   init();
 })();
 
