@@ -115,7 +115,7 @@
   }
   async function cleanup(ctx){const body={message:'Paper Labs 01: remove temporary connection test',sha:ctx.sha,branch:ctx.branch};await api('DELETE',ctx.repo,ctx.token,pathFor(ctx.repo,ctx.path),body);}
   function record(label,passed,details){summary.push({label,passed,details});}
-  async function test(){if(busy||!verified)return;const {repo,token,branch}=verified;if(ui.repo.value.trim()!==repo.full||ui.token.value.trim()!==token){invalidate();result(ui.connectionResult,'bad','Kontrollera anslutningen igen','Fälten ändrades sedan den senaste verifieringen.');return;}
+  async function test(){if(busy||!verified)return;const {repo,token,branch}=verified;if(parseRepo(ui.repo.value).full.toLowerCase()!==repo.full.toLowerCase()||ui.token.value.trim()!==token){invalidate();result(ui.connectionResult,'bad','Kontrollera anslutningen igen','Fälten ändrades sedan den senaste verifieringen.');return;}
     lockInputs(true);clearSteps();clearResult(ui.testResult);ui.report.hidden=true;ui.cleanupPanel.hidden=true;pendingCleanup=null;summary=[];
     const id=new Date().toISOString().replace(/[^0-9]/g,'').slice(0,14)+'-'+unique();const path='paper-studio/_connection-tests/connect-'+id+'.json';const payload=JSON.stringify({app:'paper-labs-01',purpose:'temporary-read-write-delete-test',nonce:id,createdAt:new Date().toISOString()},null,2)+'\n';let sha=null,writePassed=false,readPassed=false,deletePassed=false;
     try{
