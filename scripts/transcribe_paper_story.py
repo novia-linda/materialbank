@@ -39,7 +39,14 @@ def run(directory,load_model=None):
     except (OSError,ValueError):previous={}
     cached={str(x.get("takeId")):x for x in previous.get("takes",[]) if isinstance(x,dict)}
     entries=[];model=None
-    for take in project.get("takes",[]):
+    takes=list(project.get("takes") or [])
+    # Also support a voice-only recording made in the desktop editor.
+    voice=project.get("voice") or {}
+    voice_path=voice.get("path") if isinstance(voice,dict) else None
+    linked={str((t.get("audio") or {}).get("path") or (t.get("video") or {}).get("path")) for t in takes if isinstance(t,dict)}
+    if voice_path and voice_path not in linked:
+        takes.append({"id":"VOICE-MAIN","audio":{"path":voice_path}})
+    for take in takes:
         if not isinstance(take,dict) or not take.get("id"):continue
         take_id=str(take["id"])
         audio=take.get("audio") or {}
