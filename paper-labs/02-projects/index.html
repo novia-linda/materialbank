@@ -6,12 +6,17 @@
 <meta name="color-scheme" content="light">
 <meta name="referrer" content="no-referrer">
 <meta name="description" content="Paper Labs 02: privat GitHub-projekthantering och selektiv import av manus, bilder, ljud, video och textlager.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src https://api.github.com; img-src 'self' data: blob:; media-src blob:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src https://api.github.com https://raw.githubusercontent.com; img-src 'self' data: blob:; media-src blob:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; object-src 'none'">
 <title>Paper Labs 02 · Projekthanteraren</title>
 <style id="demo-styles">:root{--paper:#f6f1e9;--ink:#29231d;--cream:#fffdfa;--muted:#82776b;--border:#dfd5ca;--red:#b34c3e;--red-soft:#f5e4dd;--sage:#486c59;--sage-soft:#e8f1e9;--shadow:0 6px 28px rgba(55,40,29,.06)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.52}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #b67b56;outline-offset:3px}a{color:var(--red)}.wrap{width:min(1100px,calc(100% - 38px));margin:0 auto}.topbar{border-bottom:1px solid var(--border);background:#fffaf5}.topbar .wrap{min-height:73px;display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-family:Georgia,serif;font-size:24px;font-weight:700;line-height:1.05;letter-spacing:-.6px}.brand small{font-family:inherit;color:var(--red);font-size:16px;font-weight:400}.brand-mark{display:inline-grid;place-items:center;width:36px;height:40px;background:#e8d7be;border:1px solid #cfbfae;transform:rotate(-6deg);font-size:20px;margin-right:12px;border-radius:6px}.top-actions{display:flex;align-items:center;gap:10px}.top-actions small{color:var(--muted)}.lock{border:1px solid #bccfc2;background:#edf6ed;color:#3e654e;font-weight:800;font-size:11px;padding:6px 10px;border-radius:16px;white-space:nowrap}.hero{padding:35px 0 20px}.eyebrow{text-transform:uppercase;color:#978472;letter-spacing:2px;font-weight:850;font-size:11px}.hero h1{font-family:Georgia,serif;font-weight:500;font-size:clamp(32px,4.5vw,54px);letter-spacing:-1.3px;line-height:1.14;margin:7px 0 10px}.hero p{max-width:700px;color:var(--muted);margin:0}.hero strong{color:var(--ink)}.panel{background:var(--cream);border:1px solid var(--border);border-radius:15px;padding:22px;box-shadow:var(--shadow);margin:16px 0}.panel h2{margin:0 0 13px;font-family:Georgia,serif;font-weight:550;font-size:26px}.panel h3{margin:0 0 10px;font-size:17px}.stephead{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0 0 15px}.steplabel{display:flex;align-items:center;gap:10px}.stepnum{height:32px;width:32px;display:grid;place-items:center;border:1px solid #cbbbab;background:#f0e7d9;color:#7b513a;font-weight:800;border-radius:9px}.stephead h2{margin:0;font-size:25px}.subtle{font-size:13px;color:var(--muted);margin:5px 0 14px}.form-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:5px;min-width:0}.field span{font-size:12px;font-weight:750;color:#65574a}.field input,.field textarea,.field select,.select{min-height:45px;padding:10px 11px;width:100%;border:1px solid #d8cabb;border-radius:9px;background:white;color:var(--ink)}.field input::placeholder,.field textarea::placeholder{color:#a99b8b}.field textarea{resize:vertical;min-height:185px;line-height:1.4;font:12px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace}.row{display:flex;flex-wrap:wrap;align-items:center;gap:9px}.row.between{justify-content:space-between}.btn{min-height:44px;border-radius:9px;padding:10px 16px;border:1px solid var(--border);background:white;color:var(--ink);font-weight:750}.btn:hover:not(:disabled){filter:brightness(.975)}.btn.primary{background:#28221d;color:white;border-color:#28221d}.btn.rust{background:var(--red);color:white;border-color:var(--red)}.btn.soft{background:#f5e8dc;border-color:#e7cfbc;color:#6d392f}.btn.small{font-size:12px;padding:7px 10px;min-height:36px}.btn.ghost{border:0;background:transparent;text-decoration:underline;font-size:13px}.btn.full{width:100%}.btn.secondary{background:#f8f1e9}.notice{padding:11px 13px;border-radius:9px;font-size:13px;border:1px solid #e5d5c4;background:#fbf3e7;color:#6f5847;margin:10px 0}.notice.good{border-color:#b9d4c4;background:var(--sage-soft);color:#335c44}.notice.error{background:#f8e9e6;border-color:#dcb9b2;color:#843d35}.notice[hidden],[hidden]{display:none!important}.mini{font-size:12px;color:var(--muted)}.caps{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:850;color:#948374}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.card{border:1px solid var(--border);border-radius:11px;padding:13px;background:white;min-height:86px}.card span{display:block;color:#6f6356;font-weight:800}.card strong{font-size:26px;font-family:Georgia,serif;font-weight:500;display:block;line-height:1.3}.card small{color:var(--muted)}.project-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}.project-head h2{margin:3px 0 0}.project-id{font:700 13px/1.5 ui-monospace,Consolas,monospace;color:#b34c3e}.project-bar{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.chip{background:#ede2d2;color:#665342;border-radius:20px;padding:4px 9px;font-weight:800;font-size:11px;white-space:nowrap}.tabs{display:flex;overflow-x:auto;gap:7px;border-bottom:1px solid var(--border);margin:14px 0 17px;padding-bottom:8px;scrollbar-width:thin}.tab{white-space:nowrap;min-height:43px;background:transparent;border:1px solid transparent;color:#7b6c5c;padding:10px 15px;border-radius:8px;font-weight:780}.tab[aria-selected="true"]{background:#f4e5db;border-color:#e0c7b8;color:#873f34}.tabpanels>.tabpanel:not([hidden]){display:block}.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px}.selection-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.select-item{display:flex;gap:10px;align-items:center;border:1px solid var(--border);background:#fff;border-radius:10px;padding:11px 12px;cursor:pointer;min-height:61px}.select-item:hover{border-color:#c8aa9a}.select-item input{height:18px;width:18px;accent-color:var(--red);flex:none}.select-item .title{display:block;font-size:13px;font-weight:750}.select-item small{display:block;font-size:11px;color:var(--muted)}.select-item.off{opacity:.6}.radio-row{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0}.radio-pill{display:flex;align-items:center;gap:7px;font-weight:700;font-size:13px}.radio-pill input{accent-color:var(--red)}.section-divider{border:0;border-top:1px solid var(--border);margin:18px 0}.item-list{list-style:none;margin:12px 0;padding:0;display:grid;gap:7px}.item-list li{display:flex;justify-content:space-between;align-items:center;gap:7px;border:1px solid var(--border);border-radius:8px;background:#fffaf5;padding:9px 11px;font-size:12px}.item-list small{color:var(--muted)}.status-area{max-height:260px;overflow:auto;background:#27221d;border-radius:9px;padding:12px;color:#eadfce;font:12px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-line}.status-area:empty:before{content:'Här visas resultat från GitHub.';color:#c7b6a0}.modal-backdrop{position:fixed;inset:0;background:#1c1813a8;z-index:50;display:grid;place-items:center;padding:16px}.modal{background:#fffcf7;border:1px solid #e1d4c6;max-width:660px;width:100%;max-height:90dvh;overflow:auto;border-radius:16px;padding:21px;box-shadow:0 18px 70px #0004}.modal h2{font:500 27px Georgia,serif;margin:0 0 9px}.modal p{font-size:14px;color:var(--muted)}.footer{border-top:1px solid var(--border);margin-top:38px;padding:18px 0 30px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:var(--muted);font-size:12px}.loading{display:inline-flex;align-items:center;gap:7px}.spinner{width:14px;height:14px;border-radius:50%;border:2px solid #bba798;border-top-color:var(--red);animation:spin .7s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.hidden-visually{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.split-header{display:flex;align-items:center;justify-content:space-between;gap:8px}.loading-flag{color:#b24c3d;font-size:12px;font-weight:700}.right{text-align:right}.notice-list{padding-left:19px;margin:7px 0}.step-available{border-color:#bfd3c3}.select-info{padding:10px 12px;margin:10px 0;border:1px dashed #d4c6b8;border-radius:8px;font-size:12px;color:#6e5e4d}.text-preview{padding:10px 12px;white-space:pre-wrap;font-size:12px;color:#65594d;background:#fcf8f1;border:1px solid #e8ddce;border-radius:7px;max-height:150px;overflow:auto}.file-input{background:#f9f3ec!important}.pill{font-size:11px;background:#f4eadf;border:1px solid #e5d4c4;border-radius:20px;padding:4px 9px}.pill.good{background:#e7efe9;border-color:#c9ddcc;color:#3d654b}.pill.warn{background:#f7e7e1;border-color:#e9c4bd;color:#953f35}.disabled-overlay{opacity:.65}body.busy{cursor:progress}body.busy button:not(#disconnect):not(.allowed-while-busy){pointer-events:none;opacity:.65}.workspace-note{font-size:12px;color:#857565;line-height:1.55}.empty{font-size:13px;color:var(--muted);border:1px dashed #d8c8b6;border-radius:9px;padding:15px}.folder-crumb{font:12px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere;color:#907e6b}.source-actions{display:flex;flex-wrap:wrap;gap:9px;margin:13px 0 0}.danger-text{color:#9f463b}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
 @media(max-width:750px){.form-grid,.duo{grid-template-columns:1fr}.cards{grid-template-columns:repeat(3,1fr)}.panel{padding:16px}.wrap{width:min(100% - 26px,720px)}.hero{padding:25px 0 12px}.topbar .wrap{min-height:65px}.brand{font-size:20px}.brand small{font-size:13px}.stephead h2{font-size:23px}.selection-list{grid-template-columns:1fr 1fr}.tabs{margin:11px 0}.project-head{display:block}.project-bar{margin-top:11px}}
 @media(max-width:470px){.selection-list{grid-template-columns:1fr}.cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.card{padding:9px;min-height:77px}.card strong{font-size:21px}.card span{font-size:11px}.top-actions small{display:none}.btn{padding:9px 11px}.panel h2{font-size:23px}.tab{font-size:12px;padding:9px 11px}.hero h1{font-size:33px}}
+
+.legacy-migration{margin-top:18px;padding:17px;border:1px solid #d8cbbf;border-left:4px solid #ab6453;border-radius:9px;background:#fcf6ec}
+.legacy-migration h3{margin:5px 0 8px;font-size:19px}
+.legacy-migration .mini{margin-top:11px;line-height:1.55;white-space:pre-line}
+.legacy-migration .btn{width:100%;margin-top:10px}
 </style>
 </head>
 <body>
@@ -31,7 +36,14 @@
   <div><div class="caps">Öppna befintligt</div><p class="subtle">Välj ett privat projekt. Du får markera vad som ska läsas in innan något öppnas.</p><label class="field"><span>Projekt i privata repot</span><select id="existingProjectsSelect"><option value="">Inga projekt inlästa</option></select></label><div class="row" style="margin-top:10px"><button class="btn primary" id="openProjectBtn">Öppna med urval</button><span class="mini" id="projectCount"></span></div></div>
   <div><div class="caps">Skapa nytt</div><p class="subtle">Ett tomt projekt skapas först lokalt. Du bestämmer själv när det sparas till GitHub.</p><div class="form-grid" style="grid-template-columns:1fr 1.6fr"><label class="field"><span>Projekt-ID</span><input id="newProjectId" value="PROJ-00141" spellcheck="false" autocapitalize="characters"></label><label class="field"><span>Projekttitel</span><input id="newProjectTitle" value="Ny berättelse" maxlength="100"></label></div><div class="row" style="margin-top:10px"><button class="btn soft" id="createProjectBtn">＋ Skapa nytt projekt</button></div></div>
  </div>
- <div class="notice" id="projectMessage" role="status" hidden></div>
+ <div class="legacy-migration" aria-labelledby="legacy140Title">
+  <div class="caps">Överför äldre projekt</div>
+  <h3 id="legacy140Title">Projekt 140 – från Materialbanken till privata data</h3>
+  <p class="subtle">Engångsöverföring av sex bilder, två ljudinspelningar, storyboard, transkription och originalfiler. Kopiorna lagras endast i <strong>novia-linda/data</strong>. Det offentliga originalet raderas inte.</p>
+  <button type="button" id="migrateLegacy140Btn" class="btn soft">↓ Importera PROJ-00140 till privata data</button>
+  <p class="mini" id="migrateLegacy140Status" role="status" aria-live="polite">Kräver anslutning med PAT. Öppna och granska projektet här efter slutförd överföring.</p>
+</div>
+<div class="notice" id="projectMessage" role="status" hidden></div>
 </section>
 <section class="panel" id="workspacePanel" hidden aria-labelledby="workspaceTitle">
  <div class="project-head"><div><div class="eyebrow">Aktivt arbetsprojekt</div><h2 id="workspaceTitle">Projekt</h2><div class="row"><span class="project-id" id="workspaceId">PROJ-00000</span><span id="workspaceState" class="pill">Lokalt utkast</span></div></div><button class="btn small" id="projectInfoBtn">ⓘ Mappstruktur</button></div>
@@ -146,7 +158,122 @@ async function performSave(keys){if(busy)return;setBusy(true);let successes=[];t
 async function checkRemote(){if(!current)return;try{setBusy(true);const meta=await fetchProjectMeta(current.id);if(!meta){info('Projektet finns inte på GitHub ännu.','normal','saveMessage');return;}if(meta.sha!==current.metaSha){info('GitHub har en nyare project.json. Spara ditt utkast i JSON och öppna om projektet.','error','saveMessage');return;}const changed=[];for(const key of current.loaded){const file=await getFile(projPath(current.id,categoryFile(key)));if((file?.sha||null)!==(current.partShas[key]||null))changed.push(key);}info(changed.length?'Några delar har ändrats på GitHub: '+changed.join(', '):'✓ Ingen versionskonflikt i de inlästa filerna.',changed.length?'error':'good','saveMessage');}catch(e){info('Kunde inte kontrollera versioner: '+e.message,'error','saveMessage');}finally{setBusy(false);}}
 function downloadCopy(){if(!current)return;const data={note:'Lokal JSON-säkerhetskopia. Innehåller endast metadata och referenser, inte mediafilernas bytes.',project:{id:current.id,title:current.title,createdAt:current.createdAt,updatedAt:current.updatedAt},loaded:[...current.loaded],parts:Object.fromEntries([...current.loaded].map(key=>[key,current.parts[key]]))};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=current.id+'-local-copy.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000);}
 function renderFolders(){const body='<p>Alla filer sparas i privata <strong>'+escapeHTML(session.repo)+'</strong> under följande mapp:</p><div class="folder-crumb">'+escapeHTML(projPath(current.id))+'/</div><ul>'+['project.json','storyboard.json','media/images.json + media/images/*','media/videos.json + media/videos/*','media/audio.json + media/audio/*','timing.json','overlays.json'].map(x=>'<li><code>'+escapeHTML(x)+'</code></li>').join('')+'</ul><p class="mini">Omarkerade delar skrivs inte över. Ersatt media ligger kvar i Git-historiken. Appen flyttar aldrig automatiskt gammalt material från det offentliga repot.</p>';showModal('Så lagras projektet',body,[{text:'Stäng',primary:true}]);}
-function bind(){setConnection(false);$('connectBtn').addEventListener('click',connect);$('disconnectBtn').addEventListener('click',clearConnection);$('refreshProjectsBtn').addEventListener('click',()=>refreshProjects().catch(e=>info(e.message,'error')));$('openProjectBtn').addEventListener('click',openSelect);$('createProjectBtn').addEventListener('click',()=>createProject());$('projectInfoBtn').addEventListener('click',renderFolders);$('workspaceTitleInput').addEventListener('change',e=>{if(!current)return;const next=e.target.value.trim();if(!next){e.target.value=current.title;return;}current.title=next;current.metaDirty=true;renderOverview();$('workspaceTitle').textContent=next;$('workspaceState').textContent='Osparade ändringar';$('workspaceState').className='pill warn';});$('overviewSaveBtn').addEventListener('click',()=>switchTab('save'));$('downloadProjectBtn').addEventListener('click',downloadCopy);for(const tabBtn of document.querySelectorAll('[data-tab]'))tabBtn.addEventListener('click',()=>switchTab(tabBtn.dataset.tab));$('editCategory').addEventListener('change',renderCategoryEditor);$('prepareImportBtn').addEventListener('click',prepareImport);$('saveProjectBtn').addEventListener('click',saveProject);$('checkRemoteBtn').addEventListener('click',checkRemote);document.querySelectorAll('[data-check-toggle]').forEach(btn=>btn.addEventListener('click',()=>{const target=btn.dataset.checkToggle==='import'?'importChecks':'saveChecks',list=[...$(target).querySelectorAll('input:not(:disabled)')],all=list.every(el=>el.checked);list.forEach(el=>el.checked=!all);updateSelectionInfo();}));$('modalClose').addEventListener('click',hideModal);$('modalBackdrop').addEventListener('click',e=>{if(e.target===$('modalBackdrop'))hideModal();});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('modalBackdrop').hidden)hideModal();});window.addEventListener('beforeunload',e=>{if(current&&(current.dirty.size||current.metaDirty)){e.preventDefault();e.returnValue='';}});}
+// One-time, user-authorized migration of Paper Story PROJ-00140 from public materialbank.
+// The PAT is only sent to the selected PRIVATE repository's GitHub Contents API.
+const LEGACY_140_SOURCE='https://raw.githubusercontent.com/novia-linda/materialbank/main/skapa-video/paper-story-studio/projects/PROJ-00140/';
+const LEGACY_140_MEDIA=[
+ {name:'01_fragan.webp',kind:'images',size:142806,sha:'d9d21b095473fc176a71d6e451286c1ccfa9b62e'},
+ {name:'02_ai_assistent.webp',kind:'images',size:143334,sha:'5f0b4d4bc12a1cdc073475e4e784d90211b23b2f'},
+ {name:'03_ai_agent.webp',kind:'images',size:139308,sha:'ae0d44d6b8293b3bebe7042d784db71f54518f1b'},
+ {name:'04_exempel_mejl.webp',kind:'images',size:169120,sha:'cdfbdad7a4fda4312b9e8407f0fcb21c3331abbb'},
+ {name:'05_exempel_agent.webp',kind:'images',size:181960,sha:'c030777b2b4bd14088b3f5c250685c585de0805f'},
+ {name:'06_sammanfattning.webp',kind:'images',size:176648,sha:'8d55fa2234679826c0e7d3694f1e6f3ca71b789f'},
+ {name:'take-voice-mwr032pz-ie3lx.m4a',kind:'audio',size:34064,sha:'bd07e3a2fa4541516d6478ae1be71433199d57dd'},
+ {name:'take-voice-mwri92ie-vq9cx.m4a',kind:'audio',size:2727009,sha:'01f743859bdf60af4f2a0ab585f652c77246709b'}
+];
+function migrationProgress(message){$('migrateLegacy140Status').textContent=message;log('PROJ-00140: '+message);}
+async function migrationPublicFile(relative){
+  if(!/^(?:project\.json|words\.json|transcript\.json|README\.md|media\/[A-Za-z0-9._-]+)$/.test(relative))throw Error('Ogiltig källfil.');
+  const response=await fetch(LEGACY_140_SOURCE+relative,{cache:'no-store',redirect:'error'});
+  if(!response.ok)throw Error('Kunde inte hämta den offentliga originalfilen '+relative+' (HTTP '+response.status+').');
+  return new Uint8Array(await response.arrayBuffer());
+}
+async function migrationSha(bytes){
+  const header=new TextEncoder().encode('blob '+bytes.length+'\0');
+  const joined=new Uint8Array(header.length+bytes.length);
+  joined.set(header,0);joined.set(bytes,header.length);
+  const digest=new Uint8Array(await crypto.subtle.digest('SHA-1',joined));
+  return Array.from(digest,b=>b.toString(16).padStart(2,'0')).join('');
+}
+async function migrationUpload(relative,bytes,expectedSha){
+  const target=projPath('PROJ-00140',relative);
+  const digest=await migrationSha(bytes);
+  if(expectedSha&&digest!==expectedSha)throw Error('Kontrollsumman stämmer inte för '+relative+'. Ingen felaktig fil skrivs.');
+  const previous=await getFile(target);
+  if(previous){if(previous.sha!==digest)throw Error('En annan fil finns redan i privata repot: '+relative+'. Inget skrivs över.');return 'fanns redan';}
+  const remoteSha=await putBinary(target,bytesToBase64(bytes));
+  if(remoteSha!==digest)throw Error('GitHub bekräftade en annan fil än förväntat: '+relative);
+  const verified=await getFile(target);
+  if(verified?.sha!==digest)throw Error('Kunde inte verifiera den privat sparade filen '+relative);
+  return 'verifierad';
+}
+async function migrateLegacy140(){
+  if(busy)return;
+  if(!session.private||session.repo.toLowerCase()!=='novia-linda/data'){
+    migrationProgress('Stopp: anslut först det privata repot novia-linda/data med din PAT.');return;
+  }
+  if(current&&(current.dirty.size||current.metaDirty)){
+    migrationProgress('Spara eller exportera dina osparade ändringar innan du startar en annan import.');return;
+  }
+  if(!confirm('Importera hela PROJ-00140 från offentliga Materialbanken till PRIVATA novia-linda/data? Projektet sparas i App 02-format med original och transkription bevarade. Den offentliga kopian lämnas orörd.'))return;
+  const button=$('migrateLegacy140Btn');button.disabled=true;setBusy(true);
+  let completed=0;
+  try{
+    if(await fetchProjectMeta('PROJ-00140'))throw Error('PROJ-00140 finns redan i privata data-repot. Jag skriver inte över det. Öppna projektet via listan.');
+    migrationProgress('Läser de offentliga originalfilerna. Ingen PAT skickas till Materialbanken.');
+    const raw={};for(const name of ['project.json','words.json','transcript.json','README.md'])raw[name]=await migrationPublicFile(name);
+    const decoder=new TextDecoder();
+    const old=JSON.parse(decoder.decode(raw['project.json'])),words=JSON.parse(decoder.decode(raw['words.json'])),transcript=JSON.parse(decoder.decode(raw['transcript.json']));
+    if(old.id!=='PROJ-00140'||!Array.isArray(old.scenes)||old.scenes.length!==6)throw Error('Källprojektets scenstruktur är inte som förväntat.');
+    if(words.projectId!==old.id||!Array.isArray(words.words)||transcript.projectId!==old.id||!Array.isArray(transcript.takes))throw Error('Transkriptions- eller textfilen hör inte till projekt 140.');
+    const mediaRaw=new Map();
+    for(const [i,item] of LEGACY_140_MEDIA.entries()){
+      migrationProgress('Kontrollerar originalmedia '+(i+1)+' av '+LEGACY_140_MEDIA.length+'…');
+      const bytes=await migrationPublicFile('media/'+item.name);
+      if(bytes.length!==item.size||(await migrationSha(bytes))!==item.sha)throw Error('Originalfilens storlek eller SHA stämmer inte: '+item.name);
+      mediaRaw.set(item.name,bytes);
+    }
+    // Convert to the shared Paper Labs project schema, preserving old JSON verbatim in legacy/.
+    const images=LEGACY_140_MEDIA.filter(x=>x.kind==='images').map((item,i)=>({id:'img-'+String(i+1).padStart(2,'0'),name:item.name,path:'media/images/'+item.name,mime:'image/webp',size:item.size,sha:item.sha}));
+    const audio=LEGACY_140_MEDIA.filter(x=>x.kind==='audio').map((item,i)=>({id:'aud-'+String(i+1).padStart(2,'0'),name:item.name,path:'media/audio/'+item.name,mime:'audio/mp4',size:item.size,sha:item.sha}));
+    const scenes=old.scenes.map((original,i)=>{
+      const item=clone(original);delete item.imageUrl;
+      item.id=item.id||'scene-'+String(i+1).padStart(2,'0');
+      item.imageId=images[i].id;item.imagePath=images[i].path;
+      return item;
+    });
+    const sourceVoice=String(old.voice?.path||'').split('/').pop();
+    const voice=audio.find(a=>a.name===sourceVoice);
+    if(!voice)throw Error('Berättarrösten saknas bland de kopierade ljudfilerna.');
+    const categories=Object.fromEntries(FIELDS.map(f=>[f.key,f.file]));
+    const sourceStamp=transcript.updatedAt||'2026-11-22T07:29:10.424541+00:00';
+    const files={
+      'storyboard.json':{schemaVersion:1,scenes,voiceAudioId:voice.id},
+      'media/images.json':{schemaVersion:1,items:images},
+      'media/audio.json':{schemaVersion:1,items:audio},
+      'media/videos.json':{schemaVersion:1,items:[]},
+      'timing.json':{schemaVersion:1,events:[],edits:[],note:'Originalet på GitHub saknade kamera- och sveptider. Inga tider har hittats på.'},
+      'overlays.json':{schemaVersion:1,items:(words.words||[]).map((w,i)=>({...clone(w),id:w.id||'word-'+i}))},
+      'transcripts/transcript.json':transcript,
+      'legacy/source-map.json':{schemaVersion:1,source:'novia-linda/materialbank',sourcePath:'skapa-video/paper-story-studio/projects/PROJ-00140',media:LEGACY_140_MEDIA.map(x=>({from:'media/'+x.name,to:'media/'+x.kind+'/'+x.name,sha:x.sha,size:x.size})),note:'Offentligt original kvarstår. Raw originalfiler återfinns i legacy/.'}
+    };
+    const prepared=[];
+    for(const item of LEGACY_140_MEDIA)prepared.push({path:'media/'+item.kind+'/'+item.name,bytes:mediaRaw.get(item.name),sha:item.sha});
+    for(const [path,data] of Object.entries(files))prepared.push({path,bytes:new TextEncoder().encode(JSON.stringify(data,null,2)+'\n')});
+    for(const name of ['project.json','words.json','transcript.json','README.md'])prepared.push({path:'legacy/'+name,bytes:raw[name]});
+    // A project.json is only committed after every dependent file has been verified.
+    const meta={schemaVersion:1,id:'PROJ-00140',title:old.title,createdAt:sourceStamp,updatedAt:sourceStamp,layout:'paper-studio-v1',categories,migration:{from:'novia-linda/materialbank',sourceProjectId:'PROJ-00140',sourceProjectFormat:old.version||1,transcript:'transcripts/transcript.json',originals:'legacy/',note:'createdAt är känt datum för källtranskriptionen; ursprungligt projekts skapelsedatum saknas.'}};
+    prepared.push({path:'project.json',bytes:new TextEncoder().encode(JSON.stringify(meta,null,2)+'\n')});
+    for(const item of prepared){
+      migrationProgress('Sparar och verifierar '+(completed+1)+' av '+prepared.length+': '+item.path);
+      const result=await migrationUpload(item.path,item.bytes,item.sha);
+      completed++;
+      log('  ✓ '+item.path+': '+result);
+    }
+    const final=await fetchProjectMeta('PROJ-00140');
+    if(!final||final.value?.migration?.sourceProjectId!=='PROJ-00140')throw Error('Sista kontrollen av privat project.json misslyckades.');
+    const privateTranscript=await getJSON(projPath('PROJ-00140','transcripts/transcript.json'));
+    if(privateTranscript.value?.takes?.length!==transcript.takes.length)throw Error('Transkriptionen kunde inte läsas tillbaka.');
+    migrationProgress('✓ KLART! '+LEGACY_140_MEDIA.length+' mediafiler, '+scenes.length+' scener och transkriptionen har verifierats i privata '+session.repo+'. Öppna nu PROJ-00140 i projektlistan.');
+    await refreshProjects();
+    $('existingProjectsSelect').value='PROJ-00140';
+    info('✓ PROJ-00140 finns nu i privata data-repot. Originalet i Materialbanken har inte ändrats.','good');
+    log('✓ PRIVAT MIGRERING VERIFIERAD');
+  }catch(e){
+    migrationProgress('⚠ Överföringen blev inte helt klar efter '+completed+' sparade/verifierade filer: '+e.message+'\nFiler som redan sparats raderas inte. Tryck igen för att försöka återuppta utan att skriva över dem.');
+  }finally{setBusy(false);button.disabled=false;}
+}
+function bind(){setConnection(false);$('connectBtn').addEventListener('click',connect);$('disconnectBtn').addEventListener('click',clearConnection);$('refreshProjectsBtn').addEventListener('click',()=>refreshProjects().catch(e=>info(e.message,'error')));$('openProjectBtn').addEventListener('click',openSelect);$('createProjectBtn').addEventListener('click',()=>createProject());$('migrateLegacy140Btn').addEventListener('click',migrateLegacy140);$('projectInfoBtn').addEventListener('click',renderFolders);$('workspaceTitleInput').addEventListener('change',e=>{if(!current)return;const next=e.target.value.trim();if(!next){e.target.value=current.title;return;}current.title=next;current.metaDirty=true;renderOverview();$('workspaceTitle').textContent=next;$('workspaceState').textContent='Osparade ändringar';$('workspaceState').className='pill warn';});$('overviewSaveBtn').addEventListener('click',()=>switchTab('save'));$('downloadProjectBtn').addEventListener('click',downloadCopy);for(const tabBtn of document.querySelectorAll('[data-tab]'))tabBtn.addEventListener('click',()=>switchTab(tabBtn.dataset.tab));$('editCategory').addEventListener('change',renderCategoryEditor);$('prepareImportBtn').addEventListener('click',prepareImport);$('saveProjectBtn').addEventListener('click',saveProject);$('checkRemoteBtn').addEventListener('click',checkRemote);document.querySelectorAll('[data-check-toggle]').forEach(btn=>btn.addEventListener('click',()=>{const target=btn.dataset.checkToggle==='import'?'importChecks':'saveChecks',list=[...$(target).querySelectorAll('input:not(:disabled)')],all=list.every(el=>el.checked);list.forEach(el=>el.checked=!all);updateSelectionInfo();}));$('modalClose').addEventListener('click',hideModal);$('modalBackdrop').addEventListener('click',e=>{if(e.target===$('modalBackdrop'))hideModal();});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('modalBackdrop').hidden)hideModal();});window.addEventListener('beforeunload',e=>{if(current&&(current.dirty.size||current.metaDirty)){e.preventDefault();e.returnValue='';}});}
 bind();
 })();
 </script>
