@@ -552,7 +552,41 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     throw Error('GitHub returnerade inget filinnehåll.');
   }
   async function ghReadText(path){try{const res=await ghRequest(ghApi(path));const ob=await res.json();if(ob.type!=='file')throw Error('Sökvägen är inte en fil.');let content;if(ob.content&&ob.encoding==='base64'){content=new TextDecoder().decode(base64ToBytes(ob.content));}else{const r=await ghRequest(ghApi(path),{headers:{Accept:'application/vnd.github.raw+json'}});content=await r.text();}return {text:content,sha:ob.sha};}catch(e){if((e.status===404||e.status===403)&&githubRepo==='novia-linda/materialbank'){const publicFile=await ghReadPublicText(path);if(publicFile)return publicFile;}if(e.status===404)return null;throw e;}}
-  async function ghReadMedia(path){const resp=await ghRequest(ghApi(path),{headers:{Accept:'application/vnd.github.raw+json'}});const type=resp.headers.get('content-type')||'';if(type.includes('application/json')){const ob=await resp.json();if(!ob.content)throw Error('Mediefilen kunde inte läsas via GitHub API.');const inferred=path.match(/\.([a-z0-9]+)$/i)?.[1]||'mp4';return new Blob([base64ToBytes(ob.content)],{type:inferred==='webm'?'video/webm':inferred==='m4a'?'audio/mp4':inferred==='mp4'?'video/mp4':'application/octet-stream'});}return await resp.blob();}
+  async function ghReadMedia(path){
+    // GitHub's Contents API returns no inline base64 data for files over 1 MB.
+    // Always prefer the actual binary file; never hand JSON metadata to the audio player.
+    const ext=path.split('.').pop().toLowerCase();
+    const mime=({m4a:'audio/mp4',mp3:'audio/mpeg',wav:'audio/wav',ogg:'audio/ogg',webm:'video/webm',mp4:'video/mp4'})[ext]||'application/octet-stream';
+    function verified(buffer){
+      if(!buffer||buffer.byteLength<32)throw Error('Mediefilen från GitHub är tom.');
+      const first=new Uint8Array(buffer.slice(0,24));
+      const lead=String.fromCharCode(...first.slice(0,Math.min(first.length,12)));
+      if(lead.trimStart().startsWith('{')||lead.trimStart().startsWith('<')||lead.includes('"message"'))
+        throw Error('GitHub returnerade ett felmeddelande i stället för ljud/video.');
+      return new Blob([buffer],{type:mime});
+    }
+    const encoded=path.split('/').map(encodeURIComponent).join('/');
+    if(githubRepo==='novia-linda/materialbank'){
+      const publicUrl='https://raw.githubusercontent.com/novia-linda/materialbank/main/'+encoded;
+      try{
+        const response=await fetch(publicUrl,{cache:'no-store'});
+        if(response.ok)return verified(await response.arrayBuffer());
+      }catch(e){console.warn('Public raw file fallback',e);}
+    }
+    const resp=await ghRequest(ghApi(path),{headers:{Accept:'application/vnd.github+json'}});
+    const info=await resp.json();
+    if(info.type!=='file')throw Error('Sökvägen är inte en mediefil.');
+    if(info.encoding==='base64'&&info.content)
+      return verified(base64ToBytes(info.content).buffer);
+    // Larger assets have content:null/encoding:none. Use the signed download URL.
+    if(info.download_url){
+      const headers=githubRepo==='novia-linda/materialbank'?{}:{Authorization:'Bearer '+githubToken};
+      const raw=await fetch(info.download_url,{headers,cache:'no-store'});
+      if(!raw.ok)throw Error('GitHubs mediefil kunde inte laddas ned (HTTP '+raw.status+').');
+      return verified(await raw.arrayBuffer());
+    }
+    throw Error('GitHub gav ingen läsbar mediefil. Prova att hämta filen till Filer och importera den.');
+  }
   async function ghWrite(path,blob,expectedSha=null){if(blob.size>35*1024*1024)throw Error(`Mediefilen är ${(blob.size/1048576).toFixed(1)} MB. För denna första version: högst 35 MB per fil. Ladda ned och behåll originalet lokalt.`);
     const content=await toBase64(blob),body={message:`Paper Story Studio: ${projectIdentifier(project.id)} ${path.split('/').pop()}`,content,branch:'main'};
     if(expectedSha)body.sha=expectedSha;
@@ -658,7 +692,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     }finally{busyGithub=false;}
   }
     async function fetchWordsGithub(){if(!githubToken){connectGithubModal();return;}try{const id=setProjectID($('projectIdInput').value);const r=await ghReadText(ghPath('words.json'));if(!r)throw Error(`Inga ord finns ännu för ${id}.`);const obj=JSON.parse(r.text);project.words=normaliseWords(Array.isArray(obj)?obj:obj.words);wordsSha=r.sha;selectedWordId='';listWords();renderAt(time);status(`Hämtade ${project.words.length} tidsstämplade ord från GitHub.`);}catch(e){status(`Kunde inte hämta orden: ${e.message}`);}}
-  async function ensureMedia(path){if(!path)return null;if(mediaBlobs.has(path))return mediaBlobs.get(path);if(!githubToken)return null;try{const blob=await ghReadMedia(ghPath(path));keepMedia(path,blob,false);return blob;}catch(e){status(`Kunde inte läsa ${path}: ${e.message}`);return null;}}
+  async function ensureMedia(path){if(!path)return null;if(mediaBlobs.has(path))return mediaBlobs.get(path);if(!githubToken&&githubRepo!=='novia-linda/materialbank')return null;try{const blob=await ghReadMedia(ghPath(path));keepMedia(path,blob,false);return blob;}catch(e){status(`Kunde inte läsa ${path}: ${e.message}`);return null;}}
   async function loadVoiceMedia(){if(!project.voice?.path)return;const voicePath=project.voice.path;if(!(await ensureMedia(voicePath)))return;setVoicePlayback(voicePath);}
   function setVoicePlayback(path){const url=getMediaURL(path);if(!url)return;if(!audioEl){audioEl=new Audio();audioEl.preload='auto';}audioEl.pause();audioEl.src=url;audioEl.preload='auto';audioEl.onloadedmetadata=()=>{if(Number.isFinite(audioEl.duration)&&audioEl.duration>0)status('Röstfil inläst ('+fmt(audioEl.duration)+').');};audioEl.onerror=()=>status('Röstfilen kunde inte spelas upp.');audioUrl=url;$('voiceResult').src=url;$('voiceResult').hidden=false;$('downloadVoiceBtn').disabled=false;$('audioInfo').textContent='Berättarröst: '+path.split('/').pop();}
   function setVoiceBlob(blob,name){const path=createMediaPath('voice',blob,'audio');keepMedia(path,blob,true);project.voice={path,mime:blob.type,name:name||path.split('/').pop()};setVoicePlayback(path);status('Rösten är inspelad. Spara i GitHub eller hämta ljudfilen till din iPhone.');}
