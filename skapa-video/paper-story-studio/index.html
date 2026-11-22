@@ -1099,9 +1099,37 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     if(shouldPlay&&el.paused){el.play().catch(err=>{if(exporting){status('Ljudet kunde inte starta: '+err.message);} });}
     else if(!shouldPlay&&!el.paused)el.pause();v22ActiveId=part.takeId;return el;
   }
+
+  // Synchronise the recorded voice for microphone-only takes and clip ranges.
+  // The original audio file stays untouched; mediaIn/mediaOut are timestamps in the original.
+  const v25AudioLoading=new Set();
+  let v25AudioStartPending=false;
+  function v25SyncAudio(t,shouldPlay){
+    const part=sceneAt(t),take=part.takeId?v22Take(part.takeId):null,path=take?.audio?.path;
+    if(!path)return;
+    const url=getMediaURL(path);
+    if(!url){
+      if(!v25AudioLoading.has(path)){
+        v25AudioLoading.add(path);
+        ensureMedia(path).then(blob=>{v25AudioLoading.delete(path);if(blob&&!exporting)renderAt(time);else if(!blob)status('Ljudfilen kunde inte hämtas från GitHub.');}).catch(()=>v25AudioLoading.delete(path));
+      }
+      return;
+    }
+    if(!audioEl){audioEl=new Audio();audioEl.preload='auto';}
+    if(audioEl.src!==url){audioEl.pause();audioEl.src=url;audioEl.load();}
+    const position=part.mediaIn+Math.max(0,Math.min(Number(t)||0,part.end)-part.start);
+    if(audioEl.readyState>=1&&Math.abs((audioEl.currentTime||0)-position)>.36){
+      try{audioEl.currentTime=position;}catch(e){}
+    }
+    if(shouldPlay&&audioEl.paused&&!v25AudioStartPending){
+      v25AudioStartPending=true;
+      audioEl.play().catch(e=>status('Safari kunde inte starta ljudet. Tryck på Spela igen: '+e.message)).finally(()=>{v25AudioStartPending=false;});
+    }else if(!shouldPlay&&!audioEl.paused)audioEl.pause();
+  }
   const v22OriginalRenderAt=renderAt;
   renderAt=function(t){const segments=v22Timeline();if(!segments){v22OriginalRenderAt(t);return;}
     const pos=sceneAt(t),scene=project.scenes[pos.idx],video=v22SyncMedia(t,playing||exporting);
+    if(pos.takeId&&!v22Take(pos.takeId)?.video?.path)v25SyncAudio(t,playing||exporting);
     ctx.clearRect(0,0,W,H);
     if(pos.source==='camera'){
       ctx.drawImage(clothTex,0,0,W,H);drawPaper(ctx,36,198,648,908,pos.idx+11);ctx.save();paperPath(ctx,66,223,588,855,pos.idx+10);ctx.clip();ctx.fillStyle='#d8cdbf';ctx.fillRect(66,223,588,855);
@@ -1117,11 +1145,11 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
   const v22OriginalPause=pause,v22OriginalPlay=play,v22OriginalAudioClock=setAudioClock,v22OriginalStopAudio=stopAudio,v22OriginalResumeAudio=resumeAudio;
   pause=function(){v22OriginalPause();for(const v of v22Videos.values())if(!v.paused)v.pause();};
   play=function(){if(!v22Timeline()){v22OriginalPlay();return;}if(exporting)return;if(playing){pause();return;}
-    if(time>=totalDuration()-.01)time=0;playing=true;v22SyncMedia(time,true);playStart=performance.now()-time*1000;
+    if(time>=totalDuration()-.01)time=0;playing=true;const pos=sceneAt(time);if(pos.takeId&&!v22Take(pos.takeId)?.video?.path)v25SyncAudio(time,true);else v22SyncMedia(time,true);playStart=performance.now()-time*1000;
     $('playBtn').textContent='Ⅱ';$('playBtn').setAttribute('aria-label','Pausa');tick();};
-  setAudioClock=function(t){if(v22Timeline()){v22SyncMedia(t,false);return;}v22OriginalAudioClock(t);};
+  setAudioClock=function(t){if(v22Timeline()){const pos=sceneAt(t);if(pos.takeId&&!v22Take(pos.takeId)?.video?.path)v25SyncAudio(t,false);else v22SyncMedia(t,false);return;}v22OriginalAudioClock(t);};
   stopAudio=function(){v22OriginalStopAudio();for(const v of v22Videos.values())if(!v.paused)v.pause();};
-  resumeAudio=function(){if(v22Timeline()){v22SyncMedia(time,true);return Promise.resolve();}return v22OriginalResumeAudio();};
+  resumeAudio=function(){if(v22Timeline()){const pos=sceneAt(time);if(pos.takeId&&!v22Take(pos.takeId)?.video?.path)v25SyncAudio(time,true);else v22SyncMedia(time,true);return Promise.resolve();}return v22OriginalResumeAudio();};
   const v22OriginalImport=importProject;
   importProject=function(obj){v22OriginalImport(obj);project.edits=Array.isArray(obj.edits)?obj.edits.filter(x=>x&&typeof x.takeId==='string'&&Number(x.out)>Number(x.in)).map(e=>({takeId:e.takeId,in:Number(e.in),out:Number(e.out)})):undefined;project.visualCues=Array.isArray(obj.visualCues)?obj.visualCues.filter(x=>x&&typeof x.takeId==='string'&&['camera','paper'].includes(x.source)&&Number.isFinite(Number(x.at))).map(x=>({takeId:x.takeId,at:Number(x.at),source:x.source})):[];v22Videos.forEach(v=>{v.pause();v.removeAttribute('src');v.load();v.remove();});v22Videos.clear();v22AudioNodes.clear();if(v22AudioGraph){v22AudioGraph.context.close().catch(()=>{});v22AudioGraph=null;}updateAll();v22ShowEdits();v23DisplayChoices();};
   const v22OriginalOpen=openGithubProject;
@@ -1169,7 +1197,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     await context.resume();return destination.stream.getAudioTracks()[0]||null;
   }
   async function v22Export(){if(exporting)return;pause();
-    if(!(project.takes||[]).some(t=>t?.video?.path)&&(project.voice?.path||(project.takes||[]).some(t=>t?.audio?.path))){
+    if(!v22Edits().some(e=>v22Take(e.takeId)?.video?.path)&&(project.voice?.path||(project.takes||[]).some(t=>t?.audio?.path))){
       status('Ljudläget är aktivt. Lyssna och redigera nu; videoexporten gör vi senare.');
       showModal('Vi börjar med ljudet','<p>Din berättarröst, bildbyten och ordtider sparas först till GitHub. Videoexporten aktiverar vi i nästa steg när ljudflödet fungerar helt.</p>',[{label:'Fortsätt med ljudet',primary:true,click:hideModal}]);
       return;
