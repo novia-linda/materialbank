@@ -375,7 +375,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     <div class="phone-camera-top"><span id="phoneClock">00:00</span><span id="phoneRecordSignal">KAMERA AV</span></div>
     </section>
     <div class="phone-camera-controls phone-record-bar">
-      <button id="phoneEnableCam" type="button" class="phone-quiet">Kamera</button>
+      <button id="phoneAudioOnlyBtn" type="button" class="phone-quiet" aria-pressed="true">🎙 Bara ljud</button><button id="phoneEnableCam" type="button" class="phone-quiet" aria-pressed="false">📹 Kamera + ljud</button>
       <button id="phoneRecord" type="button" class="phone-start">● Spela in</button>
       <button id="phoneStop" type="button" class="phone-stop" hidden>■ Stoppa</button>
       <button id="phoneCameraOnScreen" type="button" class="phone-quiet" aria-label="Välj kamerabilden till den färdiga filmen">Visa mig</button>
@@ -388,7 +388,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
   <div class="phone-review" id="phoneReview" hidden>
     <h2>Inspelningen är färdig</h2><button type="button" id="v22ReviewSave" class="btn primary wide">↑ Spara inspelningen för talanalys</button><p id="phoneReviewInfo">Video och händelser finns nu i projektet.</p><p id="paperPhoneStatus" class="paper-phone-safe" role="status">Projekt och inspelningar säkerhetskopieras lokalt på denna telefon.</p>
 <p id="paperPhoneAnalysis" class="paper-phone-safe" role="status">Spara inspelningen till GitHub för tidsstämplade ord.</p>
-    <video id="phoneReviewVideo" playsinline controls></video>
+    <audio id="phoneReviewAudio" controls preload="metadata" hidden style="display:block;width:100%;margin:10px 0"></audio><video id="phoneReviewVideo" playsinline controls></video>
     <div class="phone-review-actions"><button type="button" id="phoneDownloadVideo" class="btn pale">↓ Video</button><button type="button" id="phoneDownloadAudio" class="btn subtle">↓ Ljud</button><button type="button" id="phoneDownloadEvents" class="btn subtle">↓ Tidsmarkörer</button></div>
     <button type="button" id="phoneSaveGithub" class="btn primary wide">↑ Spara inspelning och starta talanalys</button>
     <button type="button" id="v22Retake" class="btn pale wide">↺ Spela in en ny del / omtagning</button><button type="button" id="phoneReviewClose" class="btn subtle wide">Efterredigera tidslinjen</button>
@@ -726,7 +726,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
   // iPhone recording: one sequence of grouped speaker cues, each tied to a paper image.
   // A swipe past the final cue of a scene advances the corresponding image automatically.
   // Both cue and image transitions are time-stamped for post-production.
-  let phoneStream=null,phoneNoteIndex=0,phoneImageIndex=0,phoneNotes=[],phoneSource='paper';
+  let phoneStream=null,phoneNoteIndex=0,phoneImageIndex=0,phoneNotes=[],phoneSource='paper',phoneRecordKind='audio';
   let phoneMainRecorder=null,phoneAudioRecorder=null,phoneActiveTake=null,phoneStarted=0,phoneClockTimer=null;
   let phoneVideoBlob=null,phoneAudioBlob=null,phoneVideoUrl='',phoneLastTake=null,phoneRecordingFailed=false;
   const phoneCanvas=$('phonePaperCanvas'),phoneCtx=phoneCanvas.getContext('2d');
@@ -794,7 +794,23 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     phoneNoteIndex=Math.max(0,phoneNotes.findIndex(n=>n.scene===selected));phoneSource='paper';$('phoneReview').hidden=true;
     phoneScreen(true);phoneSetCueFontSize(phoneCueFontSize);phoneUpdate();$('phoneRecordSignal').textContent='KAMERA AV';$('phoneClock').textContent='00:00';
     $('phoneSwipeStatus').textContent='Nästa stödpunkt · bilden följer automatiskt';
-    await phoneEnableCamera();}
+    phoneSelectRecordMode('audio');}
+  function phoneSelectRecordMode(mode){
+    if(phoneMainRecorder||recording){$('phoneSwipeStatus').textContent='Stoppa inspelningen innan du byter läge.';return;}
+    const next=mode==='video'?'video':'audio';
+    phoneRecordKind=next;phoneSource='paper';
+    $('phoneAudioOnlyBtn').setAttribute('aria-pressed',String(next==='audio'));
+    $('phoneEnableCam').setAttribute('aria-pressed',String(next==='video'));
+    $('phoneRecord').textContent=next==='audio'?'● Spela in ljud':'● Spela in video';
+    $('phoneCam').hidden=next==='audio';
+    $('phoneCameraOnScreen').hidden=next==='audio';
+    $('phoneCamFallback').hidden=false;
+    $('phoneCamFallback').textContent=next==='audio'?'🎙 Ljudläge – ingen kamerainspelning':'Kamera + mikrofon';
+    $('phoneRecordSignal').textContent=next==='audio'?'MIKROFON REDO':'KAMERA AV';
+    $('phoneEnableCam').hidden=false;
+    if(next==='audio')phoneCloseStream();
+    phoneUpdate();
+  }
   async function phoneEnableCamera(){if(phoneStream?.active)return true;
     if(!navigator.mediaDevices?.getUserMedia){$('phoneRecordSignal').textContent='INGEN KAMERA';$('phoneSwipeStatus').textContent='Kamera kräver säker HTTPS-anslutning';return false;}
     try{phoneStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:{ideal:960},height:{ideal:1280},aspectRatio:{ideal:3/4},frameRate:{ideal:24}},audio:{echoCancellation:true,noiseSuppression:true}});
@@ -806,6 +822,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
   function phoneSetClock(){const n=Math.floor(phoneElapsed());$('phoneClock').textContent=`${phonePad(Math.floor(n/60))}:${phonePad(n%60)}`;}
   async function phoneRecordStart(){if(phoneMainRecorder||recording){return;}
     if(!window.MediaRecorder){$('phoneSwipeStatus').textContent='Den här webbläsaren stöder inte inspelning';return;}
+    if(phoneRecordKind==='audio')return phoneAudioOnlyStart();
     const ready=await phoneEnableCamera();if(!ready)return;
     const videoMime=phoneChooseMime('video'),audioMime=phoneChooseMime('audio');
     let main;try{main=new MediaRecorder(phoneStream,videoMime?{mimeType:videoMime,videoBitsPerSecond:750000,audioBitsPerSecond:64000}:undefined);}catch(e){$('phoneSwipeStatus').textContent='Kunde inte starta video: '+e.message;return;}
@@ -842,6 +859,98 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     $('phoneRecord').hidden=true;$('phoneStop').hidden=false;$('phoneRecordSignal').classList.add('is-recording');$('phoneRecordSignal').textContent='● REC';$('phoneClock').textContent='00:00';$('phoneSwipeStatus').textContent='Svep för nästa punkt – bilden följer';
     phoneClockTimer=setInterval(phoneSetClock,230);
   }
+
+  async function phoneAudioOnlyStart(){
+    if(phoneMainRecorder||recording)return;
+    if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder){
+      $('phoneSwipeStatus').textContent='Safari behöver tillgång till mikrofonen för ljudinspelning.';return;
+    }
+    let stream,main;
+    try{
+      stream=await navigator.mediaDevices.getUserMedia({video:false,audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}});
+      const mime=phoneChooseMime('audio');
+      main=new MediaRecorder(stream,mime?{mimeType:mime,audioBitsPerSecond:64000}:{audioBitsPerSecond:64000});
+    }catch(e){
+      if(stream)stream.getTracks().forEach(t=>t.stop());
+      $('phoneSwipeStatus').textContent='Kunde inte starta mikrofonen: '+e.message;
+      return;
+    }
+    phoneStream=stream;phoneMainRecorder=main;phoneAudioRecorder=null;
+    phoneRecordingFailed=false;phoneAudioBlob=null;phoneVideoBlob=null;phoneLastTake=null;
+    const chunks=[],takeId='TAKE-'+new Date().toISOString().replace(/[-:.TZ]/g,'').slice(0,14);
+    phoneActiveTake={id:takeId,createdAt:new Date().toISOString(),projectId:project.id,
+      mode:'audio',events:[],audio:null,video:null,duration:0,sourceDefault:'paper'};
+    phoneStarted=performance.now();
+    phoneActiveTake.events.push(
+      {at:0,type:'image',index:phoneImageIndex,sceneTitle:project.scenes[phoneImageIndex]?.title||''},
+      {at:0,type:'cue',index:phoneNoteIndex,text:phoneNotes[phoneNoteIndex]?.text||''},
+      {at:0,type:'source',value:'paper'}
+    );
+    recording={kind:'phone-audio',rec:main,stream,index:phoneImageIndex};
+    paperPipeline('recording','Spelar in ljud på iPhone. Bildbyten och meningar tidsstämplas.');
+    let size=0,tooLarge=false;
+    main.addEventListener('dataavailable',e=>{
+      if(!e.data?.size)return;
+      chunks.push(e.data);size+=e.data.size;
+      if(size>=24*1024*1024&&!tooLarge){
+        tooLarge=true;
+        $('phoneSwipeStatus').textContent='Ljudfilen närmar sig GitHub-gränsen. Avslutar säkert…';
+        if(main.state==='recording')phoneRecordStop();
+      }
+    });
+    main.addEventListener('error',e=>{
+      phoneRecordingFailed=true;
+      $('phoneSwipeStatus').textContent='Fel vid ljudinspelningen – kontrollera den sparade filen.';
+      console.warn('Audio only MediaRecorder error',e.error||e);
+    });
+    main.addEventListener('stop',()=>{
+      const duration=phoneStamp(),blob=new Blob(chunks,{type:main.mimeType||'audio/mp4'});
+      stream.getTracks().forEach(t=>t.stop());
+      phoneStream=null;
+      phoneAudioBlob=blob;phoneVideoBlob=null;
+      if(phoneActiveTake){
+        phoneActiveTake.duration=duration;
+        phoneActiveTake.events.push({at:duration,type:'end'});
+        if(blob.size){
+          const path=createMediaPath('take-voice',blob,'audio');
+          keepMedia(path,blob,true);
+          phoneActiveTake.audio={path,mime:blob.type,size:blob.size};
+          project.voice={path,mime:blob.type,name:takeId+'-berättarröst'};
+          project.activeAudioTakeId=takeId;
+          setVoicePlayback(path);
+          $('phoneReviewAudio').src=getMediaURL(path);
+          $('phoneReviewAudio').hidden=false;
+          $('phoneReviewVideo').hidden=true;
+        }
+        project.takes=Array.isArray(project.takes)?project.takes:[];
+        project.takes.push(phoneActiveTake);
+        phoneLastTake=phoneActiveTake;
+      }
+      phoneMainRecorder=null;recording=null;phoneActiveTake=null;phoneStarted=0;
+      $('phoneRecord').hidden=false;$('phoneStop').hidden=true;
+      $('phoneRecordSignal').classList.remove('is-recording');
+      $('phoneRecordSignal').textContent=blob.size?'LJUD KLART':'INGET LJUD';
+      $('phoneReview').hidden=false;
+      $('phoneReviewInfo').textContent=takeId+' · '+duration.toFixed(1)+' sek · '+(blob.size/1048576).toFixed(2)+' MB · '+(phoneLastTake?.events.length||0)+' tidsmarkörer.';
+      $('phoneDownloadVideo').hidden=true;
+      $('phoneDownloadAudio').disabled=!blob.size;
+      $('phoneReviewStatus').textContent=blob.size?'✓ Ljudfilen finns lokalt. Spara till GitHub för automatisk transkription.':'Ingen ljudfil skapades. Försök spela in igen.';
+      paperPipeline('local','Ljudet finns lokalt. Spara till GitHub för tidsstämplad svensk text.');
+      updateAll();paperBackupSchedule(200);
+    });
+    try{main.start(250);}catch(e){
+      stream.getTracks().forEach(t=>t.stop());
+      phoneStream=null;phoneMainRecorder=null;phoneActiveTake=null;recording=null;phoneStarted=0;
+      $('phoneSwipeStatus').textContent='Inspelningen kunde inte starta: '+e.message;
+      return;
+    }
+    $('phoneRecord').hidden=true;$('phoneStop').hidden=false;
+    $('phoneRecordSignal').classList.add('is-recording');
+    $('phoneRecordSignal').textContent='● LJUD REC';
+    $('phoneClock').textContent='00:00';
+    $('phoneSwipeStatus').textContent='Svep för nästa mening – bildbyten sparas med ljudet';
+    phoneClockTimer=setInterval(phoneSetClock,230);
+  }
   function phoneRecordStop(){if(phoneMainRecorder&&phoneMainRecorder.state==='recording'){
       if(phoneClockTimer)clearInterval(phoneClockTimer);phoneClockTimer=null;
       // Finish audio before the video finalization callback so the data can be attached to the take.
@@ -856,7 +965,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     if(!phoneLastTake){$('phoneReviewStatus').textContent='Ingen färdig inspelning att spara.';return;}
     if(!githubToken){$('phoneReviewStatus').textContent='Anslut först GitHub med din PAT.';connectGithubModal();return;}
     const a=$('phoneSaveGithub'),b=$('v22ReviewSave');a.disabled=true;b.disabled=true;
-    $('phoneReviewStatus').textContent='Sparar video, ljud och sveptider på GitHub…';
+    $('phoneReviewStatus').textContent=phoneLastTake?.mode==='audio'?'Sparar ljud och sveptider på GitHub…':'Sparar video, ljud och sveptider på GitHub…';
     try{
       if(phoneAudioRecorder&&!phoneAudioBlob){
         await new Promise(resolve=>{
@@ -867,7 +976,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
       }
       const saved=await saveGithubProject();
       if(saved?.complete){
-        $('phoneReviewStatus').textContent='✓ Video, ljud och tidsmarkörer är sparade på GitHub. Talanalysen kan nu starta.';
+        $('phoneReviewStatus').textContent=(phoneLastTake?.mode==='audio'?'✓ Ljudfilen och dina bildbyten':'✓ Video, ljud och tidsmarkörer')+' är sparade på GitHub. Talanalysen kan nu starta.';
       }else if(saved?.metadataSaved){
         $('phoneReviewStatus').textContent='⚠ Projektets tidsmarkörer är sparade, men några filer eller textöverlägg saknas. Kontrollera GitHub-statusen och försök igen.';
       }else if(saved?.cancelled){
@@ -878,7 +987,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     }finally{a.disabled=false;b.disabled=false;}
   }
     function phoneModeEvents(){
-    $('phoneModeBtn').addEventListener('click',phoneOpen);$('phoneExit').addEventListener('click',phoneExit);$('phoneEnableCam').addEventListener('click',phoneEnableCamera);$('phoneRecord').addEventListener('click',phoneRecordStart);$('phoneStop').addEventListener('click',phoneRecordStop);
+    $('phoneModeBtn').addEventListener('click',phoneOpen);$('phoneExit').addEventListener('click',phoneExit);$('phoneAudioOnlyBtn').addEventListener('click',()=>phoneSelectRecordMode('audio'));$('phoneEnableCam').addEventListener('click',async()=>{phoneSelectRecordMode('video');await phoneEnableCamera();});$('phoneRecord').addEventListener('click',phoneRecordStart);$('phoneStop').addEventListener('click',phoneRecordStop);
     $('phoneCuePrev').addEventListener('click',()=>phoneCueShift(-1));$('phoneCueNext').addEventListener('click',()=>phoneCueShift(1));
     $('phoneTextSmaller').addEventListener('click',()=>phoneSetCueFontSize(phoneCueFontSize-2));
     $('phoneTextLarger').addEventListener('click',()=>phoneSetCueFontSize(phoneCueFontSize+2));
