@@ -1252,7 +1252,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
       projectSha=data.projectSha||null;wordsSha=data.wordsSha||null;openProjectPath=data.openProjectPath||'';
       selected=Math.max(0,Math.min(project.scenes.length-1,Number(data.selected)||0));
       time=Math.max(0,Math.min(totalDuration(),Number(data.time)||0));
-      activeTab=['scenes','preview','inspector'].includes(data.activeTab)?data.activeTab:'preview';
+      activeTab=['scenes','preview','editor'].includes(data.activeTab)?data.activeTab:'preview';
       document.querySelector('.workspace').dataset.tab=activeTab;
       document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===activeTab));
       $('projectIdInput').value=project.id;
