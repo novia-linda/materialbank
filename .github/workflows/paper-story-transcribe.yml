@@ -5,6 +5,12 @@ on:
     branches: [main]
     paths:
       - 'skapa-video/paper-story-studio/projects/**/project.json'
+      - 'skapa-video/paper-story-studio/projects/**/media/*.m4a'
+      - 'skapa-video/paper-story-studio/projects/**/media/*.mp3'
+      - 'skapa-video/paper-story-studio/projects/**/media/*.wav'
+      - 'skapa-video/paper-story-studio/projects/**/media/*.ogg'
+      - 'skapa-video/paper-story-studio/projects/**/media/*.mp4'
+      - 'skapa-video/paper-story-studio/projects/**/media/*.webm'
   workflow_dispatch:
     inputs:
       project_id:
