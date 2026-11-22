@@ -1,0 +1,60 @@
+name: Paper Story - tal till tidsstampel
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'skapa-video/paper-story-studio/projects/**/project.json'
+  workflow_dispatch:
+    inputs:
+      project_id:
+        description: 'Projekt att transkribera, till exempel PROJ-00140'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: paper-story-transcription
+  cancel-in-progress: false
+
+jobs:
+  transcribe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Hamta projekt och ljudfiler
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          persist-credentials: true
+      - name: Installera Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installera taligenkanning
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install 'faster-whisper>=1.1,<2'
+      - name: Transkribera svensk inspelning med ordtider
+        env:
+          PROJECT_ID: ${{ inputs.project_id }}
+        run: |
+          if [ -n "$PROJECT_ID" ]; then
+            python scripts/transcribe_paper_story.py --project-id "$PROJECT_ID"
+          else
+            python scripts/transcribe_paper_story.py
+          fi
+      - name: Spara resultat till transcript.json
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add 'skapa-video/paper-story-studio/projects'
+          if git diff --cached --quiet; then
+            echo 'Inga nya ord att spara'
+            exit 0
+          fi
+          git commit -m 'Paper Story: svensk transkription med ordtider'
+          git pull --rebase origin main
+          git push origin HEAD:main
