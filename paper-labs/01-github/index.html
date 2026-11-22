@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f7f5f0">
+  <meta name="description" content="Paper Labs 01: testa en säker GitHub PAT-koppling till ditt privata repository.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src https://api.github.com; img-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <title>Paper Labs · 01 GitHub-koppling</title>
+  <style id="demo-styles">
+    :root { color-scheme:light; --paper:#f7f5f0;--ink:#262624;--muted:#666660;--subtle:#85837b;--line:#dedbd3;--panel:#fffefa;--soft:#eeeae2;--accent:#b45042;--accent-dark:#86372f;--good:#246d52;--warning:#a36a21;--error:#a33e38;--radius:14px; }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+    button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:wait;opacity:.55}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #b4504280;outline-offset:3px}a{color:var(--accent-dark);text-underline-offset:3px}
+    .shell{max-width:850px;margin:auto;padding:0 23px 80px}.mast{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:28px 0 24px;border-bottom:1px solid var(--line)}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:800;letter-spacing:-.035em}.logo{height:40px;width:40px;display:grid;place-items:center;background:#dcd1bf;border:1px solid #cbbba9;color:#583e2b;border-radius:7px;transform:rotate(-4deg);font-family:Georgia,serif;font-style:italic;font-size:23px}.lab-index{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:800}
+    .hero{padding:38px 0 27px}.eyebrow{text-transform:uppercase;letter-spacing:.15em;color:var(--accent-dark);font-size:11px;font-weight:800;margin:0 0 12px}.hero h1{font-size:clamp(34px,6.7vw,56px);line-height:1.06;letter-spacing:-.055em;margin:0 0 14px;font-weight:740}.hero p{max-width:660px;margin:0;color:#58564f;font-size:clamp(15px,2.5vw,18px);line-height:1.65}
+    .flow{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;max-width:620px;margin:25px 0 2px}.flow .node{border:1px solid var(--line);padding:14px;background:var(--panel);border-radius:9px;min-height:80px}.node small{display:block;text-transform:uppercase;font-size:10px;color:var(--subtle);font-weight:800;letter-spacing:.08em}.node strong{display:block;font-size:14px;margin-top:4px}.flow .arrow{font-size:24px;color:var(--accent)}
+    .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:25px;margin-top:19px;box-shadow:0 2px 12px #49413008}.heading{display:flex;align-items:flex-start;gap:12px;margin-bottom:20px}.num{flex:0 0 34px;width:34px;height:34px;border:1px solid #d0c7b6;background:#f3eee5;border-radius:9px;display:grid;place-items:center;font-size:14px;color:#7a5443;font-weight:850}.heading h2{font-size:20px;letter-spacing:-.025em;line-height:1.3;margin:1px 0 4px}.heading p{font-size:13px;color:var(--muted);margin:0}
+    .fields{display:grid;gap:16px}.field label{display:block;font-size:13px;font-weight:760;margin-bottom:6px}.field .help{margin:7px 0 0;color:var(--subtle);font-size:12px;line-height:1.45}.field input{width:100%;height:51px;border:1px solid #c8c3b8;background:#fff;color:var(--ink);padding:0 14px;border-radius:8px;font-size:16px;outline:none}.field input:focus{border-color:var(--accent);box-shadow:0 0 0 3px #b450421d}.secret-row{display:flex;gap:7px}.secret-row input{min-width:0;flex:1}.secret-row .minor{flex:0 0 69px}
+    .actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:22px}.btn{min-height:46px;border:1px solid var(--line);background:white;color:var(--ink);border-radius:8px;padding:11px 17px;font-size:14px;font-weight:750;white-space:normal;text-align:center;line-height:1.25;transition:background .12s,border-color .12s,transform .12s}.btn:hover:not(:disabled){border-color:#bcb4a7;background:#faf8f5}.btn:active:not(:disabled){transform:translateY(1px)}.btn.primary{background:var(--ink);border-color:var(--ink);color:#fff}.btn.primary:hover:not(:disabled){background:#44403b}.btn.accent{background:var(--accent);border-color:var(--accent);color:white}.btn.accent:hover:not(:disabled){background:var(--accent-dark)}.btn.minor{font-size:12px;min-height:49px;padding:9px}
+    .state{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--muted);font-weight:650}.dot{display:inline-block;flex:0 0 9px;width:9px;height:9px;border-radius:50%;background:#aaa59a}.state[data-tone=good] .dot{background:var(--good)}.state[data-tone=error] .dot{background:var(--error)}.state[data-tone=working] .dot{background:var(--warning)}
+    .result{border-radius:9px;padding:13px 14px;margin-top:17px;border:1px solid #ded9cf;background:#f8f6f0;font-size:13px;line-height:1.5;color:#575249}.result[hidden]{display:none!important}.result.good{border-color:#b7d6c6;background:#f2faf5;color:#225c43}.result.bad{border-color:#e8b8b1;background:#fff6f3;color:#873f34}.result strong{font-weight:800}.result p{margin:4px 0 0}.result code{overflow-wrap:anywhere;color:inherit}
+    .test-steps{display:grid;gap:0;margin-top:13px}.test-step{border-bottom:1px solid var(--line);padding:13px 0;display:flex;align-items:center;gap:12px}.test-step:last-child{border-bottom:0}.step-icon{height:26px;width:26px;display:grid;place-items:center;border-radius:50%;background:#e9e6df;color:#6d685e;font-size:13px;font-weight:800}.test-step[data-state=good] .step-icon{background:#e0f0e6;color:var(--good)}.test-step[data-state=bad] .step-icon{background:#fde1de;color:var(--error)}.test-step[data-state=working] .step-icon{background:#f3e9d1;color:var(--warning)}.test-step strong{display:block;font-size:13px}.test-step small{display:block;color:var(--subtle);font-size:12px}.test-step .step-message{margin-left:auto;color:var(--muted);font-size:12px;text-align:right;max-width:160px}
+    .cleanup{margin-top:12px;display:grid;gap:9px;padding:12px;border:1px solid #efc5b3;background:#fff4ef;border-radius:9px}.cleanup[hidden]{display:none}.cleanup p{margin:0;font-size:13px}.cleanup code{word-break:break-all;font-size:12px}
+    .safe{border-left:3px solid #c0b19b;background:#f2eee6;padding:12px 15px;margin-top:22px;border-radius:0 9px 9px 0}.safe strong{font-size:13px}.safe p{font-size:12px;margin:3px 0 0;color:#6e665b;line-height:1.55}
+    .next{display:flex;gap:12px;align-items:flex-start;margin:25px 0 0;color:#726b61;font-size:13px}.next svg{flex:0 0 20px;margin-top:1px}.footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);margin-top:40px;padding:19px 0 0;color:var(--subtle);font-size:11px}.footer a{color:inherit}
+    @media (min-width:690px){.fields{grid-template-columns:1fr 1fr;gap:20px}.field.secret-field{grid-column:1 / -1}.panel{padding:29px}.panel .actions{gap:12px}}
+    @media (max-width:480px){.shell{padding:0 15px 46px}.mast{padding:17px 0}.hero{padding:30px 3px 12px}.flow{gap:8px}.flow .node{padding:11px;min-height:74px}.panel{padding:19px 16px;margin-top:15px}.heading{gap:10px}.heading h2{font-size:18px}.actions .btn{flex:1}.test-step .step-message{max-width:105px;font-size:11px}.footer{flex-direction:column;gap:6px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+  </style>
+</head>
+<body>
+<main class="shell">
+  <header class="mast">
+    <div class="brand"><div class="logo" aria-hidden="true">P</div><div>paper <span style="color:var(--accent)">labs</span></div></div>
+    <div class="lab-index">App 01 / GitHub</div>
+  </header>
+  <section class="hero">
+    <p class="eyebrow">Testlabb · Grundfunktion</p>
+    <h1>GitHub-kopplingen.</h1>
+    <p>En sak i taget. Kontrollera att våra framtida Paper Studio-appar kan läsa och skriva i <strong>ditt privata data-repository</strong> — utan att några projektfiler hamnar på den publika Materialbanken.</p>
+    <div class="flow" aria-label="Offentlig appkod ansluter direkt till privat lagring">
+      <div class="node"><small>Offentlig · Pages</small><strong>Materialbanken</strong></div>
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="node"><small>Privat · PAT</small><strong>Ditt data-repo</strong></div>
+    </div>
+  </section>
+
+  <section class="panel" aria-labelledby="connect-heading">
+    <div class="heading"><span class="num">01</span><div><h2 id="connect-heading">Anslut ditt privata repository</h2><p>Fyll i repository och GitHub-token. Ingen information lagras efter att sidan stängts.</p></div></div>
+    <div class="fields">
+      <div class="field"><label for="repository">Repository (ägare/namn)</label>
+        <input id="repository" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="novia-linda/ditt-privata-repo" aria-describedby="repo-help" required>
+        <p class="help" id="repo-help">Exempel: <code>novia-linda/datareport</code> — ange det exakta namnet som står i GitHub.</p>
+      </div>
+      <div class="field secret-field"><label for="token">Fine-grained PAT</label>
+        <div class="secret-row"><input id="token" type="password" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Klistra in din PAT här" aria-describedby="token-help" required><button id="toggleSecret" type="button" class="btn minor" aria-label="Visa token" aria-pressed="false">Visa</button></div>
+        <p class="help" id="token-help">Klistra in token <strong>här i appen</strong>, aldrig i ChatGPT. Den används endast i anrop direkt till <code>api.github.com</code>.</p>
+      </div>
+    </div>
+    <div class="actions"><button id="checkButton" class="btn primary" type="button">Kontrollera anslutningen</button><button id="disconnectButton" class="btn" type="button">Rensa token</button><div class="state" id="connectionState" data-tone="idle" role="status"><span class="dot" aria-hidden="true"></span><span id="connectionLabel">Inte ansluten</span></div></div>
+    <div id="connectionResult" class="result" hidden aria-live="polite"></div>
+    <div class="safe"><strong>Privat från början.</strong><p>Appen accepterar endast ett repository som GitHub bekräftar är <em>privat</em>. PAT sparas inte i cookies, localStorage, sessionStorage, IndexedDB eller GitHub-filer. All appkod ligger offentligt, men inga personliga projektdata gör det.</p></div>
+  </section>
+
+  <section class="panel" aria-labelledby="test-heading">
+    <div class="heading"><span class="num">02</span><div><h2 id="test-heading">Testa läsning och skrivning</h2><p>Ett enda test skapar en liten fil i det privata repot, läser tillbaka den och raderar den.</p></div></div>
+    <div class="test-steps" aria-label="Test av GitHub-behörigheter">
+      <div class="test-step" id="stepWrite" data-state="idle"><div class="step-icon" aria-hidden="true">1</div><div><strong>Skriv testfil</strong><small>PUT · endast i privat repo</small></div><span class="step-message">Inte testat</span></div>
+      <div class="test-step" id="stepRead" data-state="idle"><div class="step-icon" aria-hidden="true">2</div><div><strong>Läs tillbaka innehållet</strong><small>GET · kontroll av filens data</small></div><span class="step-message">Inte testat</span></div>
+      <div class="test-step" id="stepDelete" data-state="idle"><div class="step-icon" aria-hidden="true">3</div><div><strong>Radera testfilen</strong><small>DELETE · automatisk städning</small></div><span class="step-message">Inte testat</span></div>
+    </div>
+    <div class="actions"><button id="runTestButton" class="btn accent" type="button" disabled>Kör läs- och skrivtest</button><button id="copyReport" class="btn" type="button" hidden>Kopiera testresultat</button></div>
+    <div id="testResult" class="result" hidden aria-live="polite"></div>
+    <div id="cleanupPanel" class="cleanup" hidden>
+      <strong>Testfilen kunde inte städas bort automatiskt.</strong>
+      <p>Filen finns i det privata repot på:</p><code id="cleanupPath"></code>
+      <button id="retryCleanup" class="btn" type="button">Försök radera testfilen igen</button>
+    </div>
+  </section>
+  <section class="next">
+    <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    <span><strong>När alla tre test är gröna</strong> har vi en verifierad grund för delapp 02 – Projekthanteraren. Den här appen ska inte kunna läsa dina andra projektfiler, redigera media eller spela in ljud.</span>
+  </section>
+  <footer class="footer"><span>Paper Labs 01 · Testverktyg för GitHub PAT</span><span>Ingen backend · Ingen tokenlagring · Endast privat datatest</span></footer>
+</main>
+<script id="demo-script">
+(()=>{
+  'use strict';
+  const API='https://api.github.com';
+  const $=id=>document.getElementById(id);
+  const ui={repo:$('repository'),token:$('token'),toggle:$('toggleSecret'),check:$('checkButton'),disconnect:$('disconnectButton'),connectionState:$('connectionState'),connectionLabel:$('connectionLabel'),connectionResult:$('connectionResult'),run:$('runTestButton'),testResult:$('testResult'),report:$('copyReport'),cleanupPanel:$('cleanupPanel'),cleanupPath:$('cleanupPath'),retryCleanup:$('retryCleanup')};
+  let verified=null,busy=false,pendingCleanup=null,summary=[];
+  const steps={write:$('stepWrite'),read:$('stepRead'),delete:$('stepDelete')};
+
+  function setStep(name,state,message){const step=steps[name];step.dataset.state=state;step.querySelector('.step-message').textContent=message||({idle:'Inte testat',working:'Arbetar…',good:'Godkänd',bad:'Misslyckades'}[state]||state);step.querySelector('.step-icon').textContent={idle:{write:'1',read:'2',delete:'3'},working:{write:'…',read:'…',delete:'…'},good:{write:'✓',read:'✓',delete:'✓'},bad:{write:'!',read:'!',delete:'!'}}[state][name];}
+  function setConnection(state,label){ui.connectionState.dataset.tone=state;ui.connectionLabel.textContent=label;}
+  function result(where,kind,title,description){where.hidden=false;where.className='result '+(kind==='good'?'good':kind==='bad'?'bad':'');where.replaceChildren();const strong=document.createElement('strong');strong.textContent=title;where.appendChild(strong);if(description){const p=document.createElement('p');p.textContent=description;where.appendChild(p);}}
+  function clearResult(where){where.hidden=true;where.textContent='';where.className='result';}
+  function clearSteps(){for(const name of Object.keys(steps))setStep(name,'idle');}
+  function lockInputs(lock){busy=lock;for(const element of [ui.repo,ui.token,ui.check,ui.disconnect,ui.run,ui.toggle])element.disabled=lock||element===ui.run&&!verified;ui.retryCleanup.disabled=lock;}
+  function invalidate(){if(busy)return;verified=null;ui.run.disabled=true;setConnection('idle','Inte kontrollerad');clearResult(ui.connectionResult);clearResult(ui.testResult);ui.report.hidden=true;clearSteps();}
+  function parseRepo(value){const str=value.trim().replace(/^https:\/\/github\.com\//i,'').replace(/\/$/,'');const parts=str.split('/');if(parts.length!==2||parts.some(part=>!/^[A-Za-z0-9_.-]{1,100}$/.test(part)||part==='.'||part==='..'))throw new Error('Skriv repository som ägare/namn, till exempel novia-linda/datareport.');return {owner:parts[0],name:parts[1],full:parts.join('/')};}
+  function pathFor(repo,path){return '/repos/'+encodeURIComponent(repo.owner)+'/'+encodeURIComponent(repo.name)+(path?'/contents/'+path.split('/').map(encodeURIComponent).join('/'):'');}
+  function explainError(status,message){if(status===401)return 'PAT-koden är ogiltig eller har slutat gälla (401).';if(status===403)return 'GitHub nekade åtkomsten (403). Kontrollera Contents-behörighet och att PAT har tillgång till repositoryt.';if(status===404)return 'GitHub hittar inte repositoryt med denna token (404). Kontrollera exakt namn och Selected repositories i PAT-inställningen.';if(status===409)return 'GitHub rapporterar en konflikt (409). Försök igen eller kontrollera testfilen.';if(status===422)return 'GitHub avvisade ändringen (422). Kontrollera repositoryets inställningar och branch-skydd.';return 'GitHub svarade HTTP '+status+(message?': '+String(message).slice(0,130):'.');}
+  async function api(method,repo,token,path,body){const url=API+path;const headers={'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Authorization':'Bearer '+token};if(body!==undefined)headers['Content-Type']='application/json';let response;try{response=await fetch(url,{method,headers,body:body===undefined?undefined:JSON.stringify(body),cache:'no-store',redirect:'error'});}catch(error){throw new Error('Kunde inte nå api.github.com. Kontrollera internetanslutningen och försök igen.');}let data=null;const text=await response.text();try{data=text?JSON.parse(text):null;}catch{data=null;}if(!response.ok){const err=new Error(explainError(response.status,data?.message));err.status=response.status;throw err;}return data;}
+  function encode(text){const bytes=new TextEncoder().encode(text);let binary='';for(let i=0;i<bytes.length;i++)binary+=String.fromCharCode(bytes[i]);return btoa(binary);}
+  function decode(data){if(!data||data.encoding!=='base64'||typeof data.content!=='string')throw new Error('GitHub skickade inte tillbaka läsbart testinnehåll.');const binary=atob(data.content.replace(/\s/g,''));const bytes=new Uint8Array(binary.length);for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);return new TextDecoder().decode(bytes);}
+  const unique=()=>{const v=crypto.getRandomValues(new Uint8Array(6));return [...v].map(n=>n.toString(16).padStart(2,'0')).join('');};
+  function context(){const repo=parseRepo(ui.repo.value);const token=ui.token.value.trim();if(!token)throw new Error('Klistra in din PAT i fältet ovanför.');return {repo,token};}
+  async function verify(){if(busy)return;lockInputs(true);setConnection('working','Kontrollerar…');ui.report.hidden=true;clearResult(ui.connectionResult);clearResult(ui.testResult);clearSteps();verified=null;
+    try{const {repo,token}=context();const data=await api('GET',repo,token,pathFor(repo));if(data.full_name?.toLowerCase()!==repo.full.toLowerCase())throw new Error('GitHub svarade med ett annat repository än det du angav.');if(data.private!==true)throw new Error('Detta repository är offentligt. Inga testfiler skapas här. Välj ditt privata data-repository.');if(!data.default_branch)throw new Error('GitHub kunde inte ange repositoryts standardbranch.');verified={repo,token,branch:data.default_branch,checkedAt:Date.now()};setConnection('good','Privat repo verifierat');result(ui.connectionResult,'good','Ansluten till ett privat repository','GitHub bekräftade '+repo.full+' · standardbranch: '+data.default_branch+'. Nu kan du testa läsning och skrivning.');}
+    catch(error){setConnection('error','Anslutningen misslyckades');result(ui.connectionResult,'bad','Kunde inte ansluta',error.message);}
+    finally{lockInputs(false);ui.run.disabled=!verified;}
+  }
+  async function cleanup(ctx){const body={message:'Paper Labs 01: remove temporary connection test',sha:ctx.sha,branch:ctx.branch};await api('DELETE',ctx.repo,ctx.token,pathFor(ctx.repo,ctx.path),body);}
+  function record(label,passed,details){summary.push({label,passed,details});}
+  async function test(){if(busy||!verified)return;const {repo,token,branch}=verified;if(ui.repo.value.trim()!==repo.full||ui.token.value.trim()!==token){invalidate();result(ui.connectionResult,'bad','Kontrollera anslutningen igen','Fälten ändrades sedan den senaste verifieringen.');return;}
+    lockInputs(true);clearSteps();clearResult(ui.testResult);ui.report.hidden=true;ui.cleanupPanel.hidden=true;pendingCleanup=null;summary=[];
+    const id=new Date().toISOString().replace(/[^0-9]/g,'').slice(0,14)+'-'+unique();const path='paper-studio/_connection-tests/connect-'+id+'.json';const payload=JSON.stringify({app:'paper-labs-01',purpose:'temporary-read-write-delete-test',nonce:id,createdAt:new Date().toISOString()},null,2)+'\n';let sha=null,writePassed=false,readPassed=false,deletePassed=false;
+    try{
+      setStep('write','working');const created=await api('PUT',repo,token,pathFor(repo,path),{message:'Paper Labs 01: temporary connection test',content:encode(payload),branch});sha=created?.content?.sha;if(!sha)throw new Error('GitHub bekräftade inte filens SHA efter skapandet.');writePassed=true;setStep('write','good','Sparad i privat repo');record('Skriv',true,'Testfil skapad');
+      setStep('read','working');let fetched=null;for(let tries=0;tries<3;tries++){try{fetched=await api('GET',repo,token,pathFor(repo,path)+'?ref='+encodeURIComponent(branch));break;}catch(e){if(e.status!==404||tries===2)throw e;await new Promise(resolve=>setTimeout(resolve,350));}}
+      if(decode(fetched)!==payload)throw new Error('Den återlästa filen matchade inte innehållet som sparades.');readPassed=true;setStep('read','good','Innehållet stämde');record('Läs',true,'Testinnehållet verifierat');
+    }catch(error){if(!writePassed){setStep('write','bad','Se meddelandet');record('Skriv',false,error.message);}else{setStep('read','bad','Se meddelandet');record('Läs',false,error.message);}result(ui.testResult,'bad','Testet är inte helt godkänt',error.message);}
+    finally{
+      if(sha){setStep('delete','working');const cleanupCtx={repo,token,branch,path,sha};try{await cleanup(cleanupCtx);deletePassed=true;setStep('delete','good','Testfil borttagen');record('Radera',true,'Testfil städad');}catch(error){pendingCleanup=cleanupCtx;setStep('delete','bad','Måste raderas');record('Radera',false,error.message);ui.cleanupPath.textContent=path;ui.cleanupPanel.hidden=false;result(ui.testResult,'bad','Testfilen är kvar i ditt privata repository',error.message+' Prova knappen för att radera igen, eller öppna filen i GitHub och radera den manuellt.');}}
+      else {setStep('delete','idle','Ingen fil att radera');}
+      if(writePassed&&readPassed&&deletePassed){result(ui.testResult,'good','Alla tre kontroller är godkända','Skrivning, läsning och radering fungerade. Testfilen är borttagen. Nu har vi en verifierad koppling till det privata repot.');}
+      else if(!ui.testResult.hidden){/* Retain the specific warning above. */}
+      else result(ui.testResult,'bad','Testet blev inte helt klart','Se vilka steg som behöver rättas till.');
+      ui.report.hidden=false;lockInputs(false);
+    }
+  }
+  async function retryCleanup(){if(!pendingCleanup||busy)return;lockInputs(true);try{await cleanup(pendingCleanup);pendingCleanup=null;ui.cleanupPanel.hidden=true;setStep('delete','good','Testfil borttagen');record('Radera',true,'Borttagen vid nytt försök');result(ui.testResult,'good','Testfilen är borttagen','Raderingen fungerar nu. Läs- och skrivresultatet ovan gäller fortfarande.');}catch(error){result(ui.testResult,'bad','Kunde inte radera testfilen',error.message+' Filen finns under sökvägen ovan.');}finally{lockInputs(false);ui.report.hidden=false;}}
+  async function copyReport(){const stamp=new Date().toISOString();const lines=['Paper Labs 01 · testresultat',stamp,'Repository: '+(verified?.repo.full||'(inte verifierat)'),'Privat: '+(verified?'ja':'ej verifierat'),'Steg:'];for(const name of ['write','read','delete']){const node=steps[name];lines.push(name+' = '+node.dataset.state+' ('+node.querySelector('.step-message').textContent+')');}lines.push('OBS: Ingen PAT ingår i rapporten.');const report=lines.join('\n');try{await navigator.clipboard.writeText(report);ui.report.textContent='✓ Kopierat';setTimeout(()=>{ui.report.textContent='Kopiera testresultat';},1800);}catch{result(ui.testResult,'bad','Kunde inte kopiera rapporten','Markera och kopiera texten manuellt om din webbläsare blockerar kopiering.');}}
+  ui.check.addEventListener('click',verify);ui.run.addEventListener('click',test);ui.retryCleanup.addEventListener('click',retryCleanup);ui.report.addEventListener('click',copyReport);
+  ui.toggle.addEventListener('click',()=>{const reveal=ui.token.type==='password';ui.token.type=reveal?'text':'password';ui.toggle.textContent=reveal?'Dölj':'Visa';ui.toggle.setAttribute('aria-pressed',String(reveal));ui.toggle.setAttribute('aria-label',reveal?'Dölj token':'Visa token');});
+  ui.repo.addEventListener('input',invalidate);ui.token.addEventListener('input',invalidate);
+  ui.disconnect.addEventListener('click',()=>{ui.token.value='';ui.token.type='password';ui.toggle.textContent='Visa';ui.toggle.setAttribute('aria-pressed','false');invalidate();ui.token.focus();});
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'){ui.token.type='password';ui.toggle.textContent='Visa';ui.toggle.setAttribute('aria-pressed','false');}});
+  window.addEventListener('pageshow',event=>{if(event.persisted){ui.token.value='';ui.repo.value='';invalidate();}});
+  // Deliberately no localStorage, sessionStorage, IndexedDB, cookies, analytics or external libraries.
+})();
+</script>
+</body>
+</html>
