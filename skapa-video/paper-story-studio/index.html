@@ -191,6 +191,31 @@
 .v22-take-actions{display:flex;gap:7px;flex-wrap:wrap}.v22-take-actions button{min-height:34px;background:white;border:1px solid #decfbc;border-radius:6px;padding:5px 12px;font-size:12px}
 .v22-mini{font-size:11px;color:#75675a}
 @media(max-width:600px){.v23-panel{margin:10px 7px;padding:12px}.v23-panel-top{flex-direction:column}.v23-switch-actions{flex-wrap:nowrap}.v23-pill{flex:1;font-size:11px;padding:9px 7px}}
+
+
+/* v2.5 – Text på filmen: a small editor directly in the Preview tab. */
+.pst-panel{display:flex;flex-direction:column;gap:12px}
+.pst-panel .pst-help{color:#807363;font-size:12px;line-height:1.5;margin:0}
+.pst-transcript-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.pst-transcript-row label,.pst-form label{font-size:12px;font-weight:750;color:#594c40}
+.pst-transcript-row select{flex:1;min-width:150px}
+.pst-panel select,.pst-panel input{padding:9px 11px;min-height:38px;background:#fffdf9;border:1px solid #dbd0c0;border-radius:7px;color:#302720;font-size:14px;max-width:100%}
+.pst-panel input[type=number]{width:100%}
+.pst-transcript-words{display:flex;flex-wrap:wrap;gap:5px;align-items:flex-start;max-height:132px;overflow:auto;border:1px solid #e3d9cc;border-radius:8px;background:#faf6ee;padding:9px}
+.pst-transcript-words button{padding:6px 8px;min-height:32px;border:1px solid #d7c5af;border-radius:6px;background:#fff9ee;color:#574737;cursor:pointer;font-size:12px}
+.pst-transcript-words button:hover,.pst-transcript-words button:focus-visible{border-color:#b94740;background:#fae6d9}
+.pst-form{display:grid;gap:10px}
+.pst-form>input{width:100%}
+.pst-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.pst-grid label{display:flex;flex-direction:column;gap:4px}
+.pst-actions{display:flex;flex-wrap:wrap;gap:8px}
+.pst-actions button{flex:1;min-width:115px}
+.pst-existing{display:grid;gap:6px;max-height:190px;overflow:auto}
+.pst-overlay-item{display:flex;align-items:center;gap:6px;padding:7px 8px;border:1px solid #e4d9cb;background:#fffdf9;border-radius:7px}
+.pst-overlay-item span{flex:1;min-width:0;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;font-size:12px}
+.pst-overlay-item button{border:1px solid #dcc7b5;background:#faf1e8;border-radius:6px;min-height:35px;padding:5px 9px}
+@media(max-width:390px){.pst-grid{grid-template-columns:1fr 1fr}.pst-actions button{min-width:100px}.pst-transcript-row{display:grid;grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -228,6 +253,34 @@
           <div class="v23-timestamp"><span id="v23NowTime">00:00</span><span id="v23CurrentMode">Ladda eller spela in en video först</span></div>
           <div id="v23Changes" class="v23-changes" aria-live="polite"></div>
           <button type="button" id="v23Reset" class="btn subtle compact">↺ Använd inspelningens originalval</button>
+        </section>
+
+        <section class="v23-panel pst-panel" id="pstTextPanel" aria-label="Text på filmen och talanalys">
+          <div class="v23-panel-top">
+            <div><strong>Text på filmen</strong><p>Skriv egna korta texter eller välj ord ur den tidsstämplade inspelningen. Dra sedan texten på förhandsvisningen.</p></div>
+            <button type="button" class="btn subtle compact" id="pstFetch">↻ Hämta talanalys</button>
+          </div>
+          <p class="pst-help" id="pstTranscriptStatus">Spara först inspelningen till GitHub. Automatisk svensk ordsynkronisering sparas sedan i transcript.json. Du kan också skriva text direkt här.</p>
+          <div class="pst-transcript-row"><label for="pstTake">Inspelning med tidsstämplar</label><select id="pstTake"><option value="">Välj inspelning</option></select></div>
+          <div class="pst-transcript-words" id="pstTranscriptWords" aria-label="Välj ord ur talanalysen"><span class="pst-help">Här visas orden när talanalysen är klar.</span></div>
+          <div class="pst-form">
+            <label for="pstText">Text att visa på filmen</label>
+            <input id="pstText" maxlength="80" placeholder="Exempel: AI-AGENT eller PLANERAR">
+            <div class="pst-grid">
+              <label>Start (sek)<input id="pstStart" type="number" min="0" step="0.05" value="0"></label>
+              <label>Slut (sek)<input id="pstEnd" type="number" min="0.1" step="0.05" value="2"></label>
+              <label>Placering<select id="pstPosition"><option value="lower">Nedre delen</option><option value="center">Mitten</option><option value="upper">Överst</option><option value="keep">Behåll fri placering</option></select></label>
+              <label>Textstorlek<select id="pstSize"><option value="38">Liten</option><option value="54" selected>Mellan</option><option value="76">Stor</option></select></label>
+              <label>Animation<select id="pstAnimation"><option value="pop">Poppa fram</option><option value="rise">Glid upp</option><option value="fade">Tona in</option></select></label>
+            </div>
+            <div class="pst-actions">
+              <button type="button" id="pstUseCurrent" class="btn subtle compact">◉ Använd aktuell tid</button>
+              <button type="button" id="pstAdd" class="btn primary compact">＋ Lägg text på filmen</button>
+              <button type="button" id="pstNew" class="btn subtle compact">Ny text</button>
+            </div>
+            <div class="pst-existing" id="pstExisting" aria-label="Dina textöverlägg"></div>
+            <button type="button" class="btn pale compact" id="pstSave">↑ Spara text och projekt till GitHub</button>
+          </div>
         </section>
         <section class="v23-panel v23-takes"><div class="v23-panel-top"><div><strong>Klipp och omtagningar</strong><p>Välj vilka delar som ska användas. Originalen behålls i projektet.</p></div><small id="v22Duration"></small></div><div id="v22Edits"></div></section>
       </div>
@@ -946,7 +999,145 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
   // Exiting a take should reveal the post-production controls on small screens.
   const v23OriginalPhoneExit=phoneExit;
   phoneExit=function(){const active=!!phoneMainRecorder;v23OriginalPhoneExit();if(active||!$('phoneStudio').hidden)return;activeTab='preview';document.querySelector('.workspace').dataset.tab='preview';document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab==='preview'));v23DisplayChoices();};
-  function init(){clothTex=createCloth();document.querySelector('.workspace').dataset.tab=activeTab;events();studioV2Events();updateAll();v22Init();v23Init();status('Börja med story och storyboard i ChatGPT. Anslut GitHub och öppna projekt via ID.');}
+
+
+  // Transcript times refer to the raw take; text overlays refer to the edited movie timeline.
+  let pstTranscript=null,pstLoadedId="",pstEditingId="";
+  function pstStatus(message){$('pstTranscriptStatus').textContent=message;}
+  function pstMapWord(takeId,begin,end){
+    const pieces=v22Timeline();
+    if(!pieces)return null;
+    for(const piece of pieces){
+      if(piece.takeId!==takeId || begin>=piece.mediaOut || end<=piece.mediaIn)continue;
+      const localStart=Math.max(begin,piece.mediaIn);
+      const localEnd=Math.min(end,piece.mediaOut);
+      const globalStart=piece.start+(localStart-piece.mediaIn);
+      const globalEnd=piece.start+(localEnd-piece.mediaIn);
+      return {start:Math.max(0,globalStart),end:Math.max(globalStart+.08,globalEnd)};
+    }
+    return null;
+  }
+  function pstSelectedTake(){
+    const takeId=$('pstTake').value;
+    return (pstTranscript && Array.isArray(pstTranscript.takes)?pstTranscript.takes:[]).find(x=>x.takeId===takeId)||null;
+  }
+  function pstDrawTranscript(){
+    const take=pstSelectedTake(),box=$('pstTranscriptWords');
+    if(!take){box.innerHTML='<span class="pst-help">Välj en inspelning. Då visas dess ord med tidpunkter.</span>';return;}
+    const words=Array.isArray(take.words)?take.words:[];
+    if(!words.length){box.innerHTML='<span class="pst-help">Inga ord kunde urskiljas i inspelningen.</span>';return;}
+    box.innerHTML=words.slice(0,350).map((w,i)=>'<button type="button" data-pst-word="'+i+'" title="'+esc((Number(w.start)||0).toFixed(2))+' sek">'+esc(w.text||'')+'</button>').join('');
+    if(words.length>350)box.innerHTML+='<span class="pst-help">Visar de första 350 orden.</span>';
+  }
+  function pstResetInput(){
+    pstEditingId="";
+    $('pstText').value='';
+    $('pstStart').value=Math.max(0,time).toFixed(2);
+    $('pstEnd').value=(Math.max(0,time)+2).toFixed(2);
+    $('pstPosition').value='lower';
+    $('pstSize').value='54';
+    $('pstAnimation').value='pop';
+    $('pstAdd').textContent='＋ Lägg text på filmen';
+  }
+  function pstRefresh(){
+    const box=$('pstExisting');
+    if(!box)return;
+    const overlays=Array.isArray(project.words)?project.words:[];
+    box.innerHTML=overlays.length?overlays.map(w=>'<div class="pst-overlay-item"><span title="'+esc(w.text)+'"><b>'+esc(w.text)+'</b> · '+Number(w.start).toFixed(1)+'–'+Number(w.end).toFixed(1)+' s</span><button type="button" data-pst-edit="'+esc(w.id)+'" aria-label="Ändra '+esc(w.text)+'">Ändra</button><button type="button" data-pst-del="'+esc(w.id)+'" aria-label="Ta bort '+esc(w.text)+'">✕</button></div>').join(''):'<span class="pst-help">Ingen text på filmen ännu. Lägg till några ord eller en kort fras.</span>';
+  }
+  function pstEdit(id){
+    const w=(project.words||[]).find(x=>x.id===id);
+    if(!w)return;
+    pstEditingId=id;selectedWordId=id;
+    $('pstText').value=w.text;
+    $('pstStart').value=Number(w.start).toFixed(2);
+    $('pstEnd').value=Number(w.end).toFixed(2);
+    $('pstSize').value=String([38,54,76].reduce((a,b)=>Math.abs(b-w.size)<Math.abs(a-w.size)?b:a));
+    $('pstPosition').value='keep';
+    $('pstAnimation').value=w.animation;
+    $('pstAdd').textContent='✓ Spara textändring';
+    time=w.start+.02;
+    updateAll();pstRefresh();
+  }
+  function pstSaveOverlay(){
+    const value=$('pstText').value.trim();
+    const start=Number($('pstStart').value),end=Number($('pstEnd').value);
+    if(!value){pstStatus('Skriv först ett ord eller en kort fras.');return;}
+    if(!Number.isFinite(start)||!Number.isFinite(end)||start<0||end<=start||end>totalDuration()+.1){
+      pstStatus('Ange en giltig start och sluttid inom filmens längd.');return;
+    }
+    const placement=$('pstPosition').value;
+    const existing=(project.words||[]).find(x=>x.id===pstEditingId);
+    const coords=placement==='upper'?{x:.5,y:.23}:placement==='center'?{x:.5,y:.51}:{x:.5,y:.77};
+    const id=existing?existing.id:('p'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)).slice(0,26);
+    const w={id,text:value,start:Number(start.toFixed(2)),end:Number(end.toFixed(2)),x:existing&&placement==='keep'?existing.x:coords.x,y:existing&&placement==='keep'?existing.y:coords.y,size:Number($('pstSize').value),animation:$('pstAnimation').value};
+    project.words=normaliseWords(existing?(project.words||[]).map(x=>x.id===id?w:x):[...(project.words||[]),w]);
+    selectedWordId=id;pstEditingId=id;
+    time=Math.min(totalDuration(),start+.04);
+    updateAll();pstEdit(id);
+    pstStatus('Texten är tillagd på filmen. Dra den i förhandsvisningen eller ändra tiderna och spara till GitHub.');
+  }
+  async function pstFetchTranscript(){
+    if(!githubToken){connectGithubModal();return;}
+    if(!/^PROJ-/.test(project.id)){pstStatus('Öppna ett projekt från GitHub först.');return;}
+    const b=$('pstFetch');b.disabled=true;b.textContent='Hämtar…';
+    try{
+      const res=await ghReadText(ghPath('transcript.json'));
+      if(!res){pstStatus('Ingen talanalys ännu. Spara inspelningen till GitHub och kontrollera arbetsflödet Paper Story under Actions.');return;}
+      const transcript=JSON.parse(res.text);
+      if(transcript.projectId!==project.id||!Array.isArray(transcript.takes))throw Error('Talanalysen hör till ett annat projekt eller har fel format.');
+      pstTranscript=transcript;pstLoadedId=project.id;
+      const select=$('pstTake');
+      select.innerHTML='<option value="">Välj inspelning</option>'+transcript.takes.map(x=>'<option value="'+esc(x.takeId)+'">'+esc(x.takeId)+' · '+(Array.isArray(x.words)?x.words.length:0)+' ord</option>').join('');
+      if(transcript.takes.length)select.value=transcript.takes[transcript.takes.length-1].takeId;
+      pstDrawTranscript();
+      const total=transcript.takes.reduce((acc,x)=>acc+(x.words||[]).length,0);
+      pstStatus('✓ '+total+' svenska ord med ungefärliga tidsstämplar. Tryck på ett ord för att sätta in det i texteditorn. Inga manuella textöverlägg har ändrats.');
+    }catch(e){pstStatus('Kunde inte hämta talanalys: '+e.message);}
+    finally{b.disabled=false;b.textContent='↻ Hämta talanalys';}
+  }
+  function pstInit(){
+    $('pstFetch').addEventListener('click',pstFetchTranscript);
+    $('pstTake').addEventListener('change',pstDrawTranscript);
+    $('pstTranscriptWords').addEventListener('click',e=>{
+      const b=e.target.closest('[data-pst-word]');if(!b)return;
+      const take=pstSelectedTake();if(!take)return;
+      const word=(take.words||[])[Number(b.dataset.pstWord)];if(!word)return;
+      const bounds=pstMapWord(take.takeId,Number(word.start),Number(word.end));
+      if(!bounds){pstStatus('Ordet hör till en bortklippt del. Lägg till den delen i tidslinjen eller välj ett annat ord.');return;}
+      pstResetInput();
+      $('pstText').value=String(word.text||'').trim();
+      $('pstStart').value=bounds.start.toFixed(2);
+      $('pstEnd').value=Math.min(totalDuration(),Math.max(bounds.end,bounds.start+1.8)).toFixed(2);
+      time=bounds.start;renderAt(time);
+      pstStatus('Ordet hittat vid '+bounds.start.toFixed(2)+' sekunder i den färdiga tidslinjen. Ändra gärna texten och tryck Lägg text på filmen.');
+    });
+    $('pstUseCurrent').addEventListener('click',()=>{
+      $('pstStart').value=Number(time).toFixed(2);
+      $('pstEnd').value=Math.min(totalDuration(),time+2).toFixed(2);
+    });
+    $('pstAdd').addEventListener('click',pstSaveOverlay);
+    $('pstNew').addEventListener('click',pstResetInput);
+    $('pstExisting').addEventListener('click',e=>{
+      const b=e.target.closest('button');if(!b)return;
+      if(b.dataset.pstEdit){pstEdit(b.dataset.pstEdit);return;}
+      if(b.dataset.pstDel){
+        if(!window.confirm('Ta bort textöverlägget från filmen?'))return;
+        project.words=(project.words||[]).filter(w=>w.id!==b.dataset.pstDel);
+        if(selectedWordId===b.dataset.pstDel)selectedWordId='';
+        pstResetInput();updateAll();pstRefresh();pstStatus('Texten är borttagen från filmen (originalinspelningen är oförändrad).');
+      }
+    });
+    $('pstSave').addEventListener('click',()=>saveGithubProject());
+    $('scrubber').addEventListener('input',()=>{
+      if(!pstEditingId){$('pstStart').value=Number(time).toFixed(2);$('pstEnd').value=Math.min(totalDuration(),time+2).toFixed(2);}
+    });
+    const oldOpen=openGithubProject;
+    openGithubProject=async function(){await oldOpen();pstTranscript=null;pstLoadedId='';$('pstTake').innerHTML='<option value="">Välj inspelning</option>';pstDrawTranscript();pstResetInput();pstRefresh();};
+    pstResetInput();pstRefresh();
+  }
+
+  function init(){clothTex=createCloth();document.querySelector('.workspace').dataset.tab=activeTab;events();studioV2Events();updateAll();v22Init();v23Init();pstInit();status('Börja med story och storyboard i ChatGPT. Anslut GitHub och öppna projekt via ID.');}
   init();
 })();
 
