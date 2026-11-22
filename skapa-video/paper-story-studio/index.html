@@ -1019,6 +1019,12 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
   function pstStatus(message){$('pstTranscriptStatus').textContent=message;}
   function pstMapWord(takeId,begin,end){
     const pieces=v22Timeline();
+    // Voice-only recordings use the original storyboard clock.
+    if(!pieces&&takeId==='VOICE-MAIN'){
+      const endOfMovie=totalDuration();
+      if(begin>=endOfMovie)return null;
+      return {start:Math.max(0,begin),end:Math.min(endOfMovie,Math.max(begin+.08,end))};
+    }
     if(!pieces)return null;
     for(const piece of pieces){
       if(piece.takeId!==takeId || begin>=piece.mediaOut || end<=piece.mediaIn)continue;
