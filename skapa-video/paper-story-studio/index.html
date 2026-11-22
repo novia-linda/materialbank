@@ -7,7 +7,7 @@
   <title>Paper Story Studio – visuella förklaringsfilmer</title>
   <style id="demo-styles">
 :root{--ink:#242320;--muted:#777269;--red:#bf4339;--cream:#f7f4ee;--linen:#e4dbca;--line:#e8e1d6;--surface:#fffefa;--panel:#fdfbf7;--shadow:0 12px 40px rgba(54,40,22,.08)}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--cream);color:var(--ink);font-family:Inter,"Avenir Next",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}body{font-size:14px}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #c87761;outline-offset:2px}button:disabled{opacity:.55;cursor:not-allowed}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;overscroll-behavior-y:none;background:var(--cream);color:var(--ink);font-family:Inter,"Avenir Next",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}body{font-size:14px}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #c87761;outline-offset:2px}button:disabled{opacity:.55;cursor:not-allowed}
 .app-shell{height:100dvh;min-height:660px;display:flex;flex-direction:column;overflow:hidden}.topbar{height:72px;flex-shrink:0;background:var(--surface);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 24px}.brand{display:flex;align-items:center;gap:13px}.brand-mark{font-family:Georgia,serif;background:#eadbca;color:#2e2b29;border:1px solid #e0d2bf;width:39px;height:39px;display:grid;place-items:center;font-size:25px;border-radius:5px;transform:rotate(-5deg)}.brand strong{display:block;font-family:Georgia,serif;font-size:21px;font-weight:700;letter-spacing:-.7px}.brand strong span{font-weight:400;color:var(--red)}.brand small{display:block;font-size:10px;letter-spacing:.4px;color:var(--muted);margin-top:2px}.top-actions{display:flex;align-items:center;gap:8px}.style-pill{font-size:10px;font-weight:700;letter-spacing:.8px;color:#6b6256;border:1px solid var(--line);padding:8px 10px;border-radius:999px;background:#fbf8f1;white-space:nowrap}.style-dot{display:inline-block;width:7px;height:7px;background:var(--red);border-radius:50%;margin-right:3px}.style-pill .lock{font-size:7px;margin-left:5px;color:#b6a995}.btn{border:1px solid #d9d2c8;background:var(--surface);color:#3f3a34;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:9px 12px;font-weight:600;font-size:12px;transition:background .2s ease,transform .2s ease}.btn:hover{background:#f0e9df}.btn:active,.icon-btn:active{transform:translateY(1px)}.btn.subtle{background:#fffefa}.btn.primary{background:var(--ink);color:#fffdf8;border-color:var(--ink)}.btn.primary:hover{background:#473a32}.btn.pale{background:#f4e6db;border-color:#ebd8c8;color:#513629}.btn.dashed{border-style:dashed;background:transparent;color:#756858}.btn.danger{border-color:#ead8d3;color:#a64a43}.btn.wide{width:100%}.btn.compact{min-height:30px;font-size:11px;padding:6px 9px}.icon-btn{width:35px;height:35px;border:1px solid var(--line);background:var(--surface);border-radius:7px;display:grid;place-items:center;font-size:20px;color:#6c6156}.icon-btn:hover{background:#f2ede6}.workspace{flex:1;display:grid;grid-template-columns:267px minmax(380px,1fr) 314px;min-height:0}.sidebar{background:var(--panel);min-width:0;display:flex;flex-direction:column;padding:20px 16px;overflow:hidden}.scenes-pane{border-right:1px solid var(--line)}.inspector-pane{border-left:1px solid var(--line)}.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.section-head small,.preview-head small{color:#a0978b;font-size:10px;font-weight:800;letter-spacing:1.6px}.section-head h2{margin:3px 0 0;font-size:17px;letter-spacing:-.45px}.section-head h2 span{font-size:12px;background:#f0e9e0;color:#8a8076;padding:2px 7px;border-radius:20px;margin-left:4px}.scene-list{overflow-y:auto;flex:1;padding:3px 3px 10px 0;scrollbar-color:#d0c5b7 transparent;scrollbar-width:thin}.scene-item{border:1px solid #e9e2d7;background:#fffefa;border-radius:8px;padding:9px;margin-bottom:10px;display:flex;align-items:start;gap:10px;cursor:pointer}.scene-item.active{border-color:#b8594c;box-shadow:0 0 0 1px #b8594c;background:#fff9f4}.scene-thumb{flex-shrink:0;width:55px;height:98px;border-radius:3px;object-fit:cover;background:#d8c9b4;border:1px solid #dfd6ca}.scene-info{display:flex;flex:1;flex-direction:column;gap:5px;min-width:0}.scene-topline{font-weight:700;font-size:10px;color:#ad8478}.scene-name{font-size:12px;font-weight:700;line-height:1.35;overflow-wrap:anywhere}.scene-meta{font-size:10px;color:#938a7e}.mini-actions{display:flex;gap:3px;margin-top:auto}.mini-actions button{width:21px;height:22px;border:1px solid #ede8e0;border-radius:4px;background:#faf7f0;color:#807468;font-size:11px}.sidebar-foot{border-top:1px solid var(--line);margin-top:15px;padding-top:12px;color:#898176;line-height:1.65;font-size:11px}.sidebar-foot p{margin:0}.sidebar-foot b{color:#6d6258}.preview-pane{background:#f0ece4;display:flex;flex-direction:column;min-width:0;min-height:0;padding:15px 24px}.preview-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.preview-head h1{font-family:Georgia,serif;font-size:20px;letter-spacing:-.4px;margin:2px 0 0;font-weight:500}.video-size{color:#938a7c;font-size:11px;white-space:nowrap}.video-size span{color:#c3b9ae}.stage-wrap{flex:1;min-height:110px;display:flex;align-items:center;justify-content:center;overflow:hidden}.stage{height:100%;max-height:100%;aspect-ratio:9/16;position:relative;overflow:hidden;background:#d8c8b3;box-shadow:0 8px 32px #47382f27;border:4px solid #fffdf8;border-radius:3px}.stage canvas{width:100%;height:100%;object-fit:contain;display:block}.stage-tag{position:absolute;bottom:12px;left:12px;background:#ffffffd8;color:#453e38;font-size:10px;font-weight:800;letter-spacing:.7px;border-radius:3px;padding:5px 7px}.player{flex-shrink:0;min-height:162px;padding:6px 0 0}.transport{display:flex;align-items:center;gap:8px}.play-btn{width:36px;height:36px;background:#302c29;color:white;border:0;border-radius:50%;font-size:15px;display:grid;place-items:center}.transport .icon-btn{border:0;background:transparent;font-size:25px}.timecode{font-size:11px;font-variant-numeric:tabular-nums;color:#74695f;font-weight:700}.flex-spacer{flex:1}#scrubber{width:100%;accent-color:#b64c44;height:4px;margin:12px 0 15px;cursor:pointer}.timeline-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;color:#4e453e;font-size:11px}.timeline-head span{color:#938679;font-size:10px}.timeline{display:flex;gap:7px;overflow-x:auto;padding-bottom:8px;scrollbar-width:thin;scrollbar-color:#cbbfaf transparent}.timeline-item{flex-shrink:0;background:#fdfaf5;border:1px solid #dfd5c9;border-radius:5px;min-width:95px;max-width:180px;text-align:left;padding:7px 9px;display:flex;flex-direction:column;gap:3px;height:48px}.timeline-item.active{border:2px solid #bf574c;padding:6px 8px;background:#fffaf4}.timeline-item strong{font-size:10px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.timeline-item small{font-size:9px;color:#897d70}.inspector-head{flex-shrink:0}.number-tag{width:35px;height:35px;display:grid;place-items:center;background:#f3ebe2;border:1px solid #e7ddd0;color:#826d5d;border-radius:5px;font-family:Georgia,serif;font-size:17px}.inspector-scroll{overflow:auto;scrollbar-width:thin;scrollbar-color:#d0c5b7 transparent;padding:0 3px 18px 0}.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}.field label{font-size:11px;font-weight:750;color:#554d43}.field input:not([type=file]),.field select,.field textarea,.modal textarea{width:100%;border:1px solid #e2dbd1;border-radius:6px;background:#fffefa;color:#352f2a;padding:9px 10px;min-height:37px;font-size:12px;resize:vertical}.field textarea{line-height:1.45}.field select{padding:9px 6px}.field input[type=file],.inspector-group input[type=file]{width:100%;font-size:11px;color:#887b6e}.field input[type=file]::file-selector-button,.inspector-group input[type=file]::file-selector-button{border:1px solid #ddd0c0;padding:6px 8px;background:#f7f1e9;border-radius:5px;margin-right:8px}.field small,.inspector-group small{color:#8b8074;font-size:10px;line-height:1.55}.field.optional{display:none}.field.optional.visible{display:flex}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.grid2>div{min-width:0}.grid2 label{display:block;margin-bottom:6px}.scene-actions{display:flex;gap:8px}.scene-actions .btn{flex:1;font-size:11px}.inspector-scroll hr{border:0;border-top:1px solid var(--line);margin:21px 0}.inspector-group h3{font-size:13px;margin:0 0 7px}.inspector-group p{font-size:11px;line-height:1.6;color:#8b7e70;margin:0 0 10px}.inspector-group .hint{font-size:10px;color:#968877;margin:8px 0}.inspector-group .stack{display:grid;gap:7px}.inspector-group>small{display:block;margin-top:7px}.statusbar{flex-shrink:0;background:#fdfbf7;min-height:26px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px;padding:4px 18px;font-size:10px;color:#998e80}.mobile-tabs{display:none}.modal-backdrop{position:fixed;inset:0;z-index:20;background:#2c231ec2;display:grid;place-items:center;padding:20px}.modal-backdrop[hidden]{display:none}.modal{background:#fffefa;border-radius:11px;width:min(560px,100%);max-height:min(750px,90dvh);display:flex;flex-direction:column;box-shadow:0 30px 90px #0005;overflow:hidden}.modal header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:17px 22px}.modal h2{font-family:Georgia,serif;margin:0;font-size:23px}.modal-body{overflow:auto;padding:20px 22px;line-height:1.6;color:#514941;font-size:13px}.modal-body p:first-child{margin-top:0}.modal-body ol{padding-left:20px}.modal-body li{margin-bottom:9px}.modal textarea{height:240px;min-height:180px;font-family:ui-monospace,monospace;line-height:1.5}.modal-footer{display:flex;justify-content:flex-end;gap:9px;padding:14px 22px;border-top:1px solid var(--line)}
 @media(max-width:1280px){.workspace{grid-template-columns:220px minmax(330px,1fr) 285px}.sidebar{padding:14px 10px}.preview-pane{padding:13px 15px}.tablet-hide{display:none}}
 @media(max-width:990px){.workspace{grid-template-columns:200px minmax(270px,1fr) 254px}.style-pill{display:none}.sidebar{padding:12px 9px}.preview-pane{padding:10px}.preview-head h1{font-size:17px}}
@@ -216,6 +216,14 @@
 .pst-overlay-item button{border:1px solid #dcc7b5;background:#faf1e8;border-radius:6px;min-height:35px;padding:5px 9px}
 @media(max-width:390px){.pst-grid{grid-template-columns:1fr 1fr}.pst-actions button{min-width:100px}.pst-transcript-row{display:grid;grid-template-columns:1fr}}
 
+
+/* Local, private crash-recovery. No GitHub PAT or access token is persisted. */
+html,body,.app-shell,.phone-studio{overscroll-behavior-y:none}
+.paper-local-tools{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-top:7px}
+#paperLocalStatus{font-size:11px;color:#6b665f;font-weight:600}
+.paper-local-tools .btn{min-height:32px;padding:5px 9px;font-size:11px}
+.paper-phone-safe{font-size:12px;line-height:1.45;color:#6f6253;margin:6px 0 10px}
+@media(max-width:520px){.paper-local-tools{gap:5px}.paper-local-tools .btn{min-height:32px}}
 </style>
 </head>
 <body>
@@ -240,7 +248,7 @@
       <div class="sidebar-foot"><p><b>En idé per scen.</b> Appen håller ihop färger, material, illustrationer och typografi.</p></div>
     </aside>
     <section class="preview-pane" aria-label="Förhandsvisning">
-      <div class="preview-head"><div><small>FILMSTUDIO</small><h1 id="projectTitleDisplay">Från svar till handling</h1><div class="project-id-caption" id="projectIdDisplay">PROJ-DEMO · börja i ChatGPT</div></div><div class="video-size">9:16 <span>·</span> 720 × 1280</div></div>
+      <div class="preview-head"><div><small>FILMSTUDIO</small><h1 id="projectTitleDisplay">Från svar till handling</h1><div class="project-id-caption" id="projectIdDisplay">PROJ-DEMO · börja i ChatGPT</div><div class="paper-local-tools"><span id="paperLocalStatus" role="status">Lokalt säkerhetsskydd startar…</span><button type="button" id="paperRestoreBtn" class="btn subtle compact">↶ Återställ utkast</button></div></div><div class="video-size">9:16 <span>·</span> 720 × 1280</div></div>
       <div class="stage-wrap"><div class="stage"><canvas id="previewCanvas" width="720" height="1280" aria-label="Förhandsvisning av scenen"></canvas><span class="stage-tag" id="stageTag">SCEN 1 / 5</span></div></div>
       <div class="player">
         <div class="transport"><button class="play-btn" id="playBtn" type="button" aria-label="Spela upp">▶</button><button class="icon-btn" id="restartBtn" type="button" aria-label="Från början" title="Från början">↺</button><span class="timecode" id="timecode">00:00 / 00:19</span><span class="flex-spacer"></span><button class="btn subtle compact" id="pngBtn" type="button" title="Spara den aktuella bilden">↓ PNG-bild</button></div>
@@ -359,7 +367,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     <button id="phoneCueNext" type="button" aria-label="Nästa stödpunkt">›</button>
   </section>
   <div class="phone-review" id="phoneReview" hidden>
-    <h2>Inspelningen är färdig</h2><button type="button" id="v22ReviewSave" class="btn primary wide">↑ Spara inspelningen för talanalys</button><p id="phoneReviewInfo">Video och händelser finns nu i projektet.</p>
+    <h2>Inspelningen är färdig</h2><button type="button" id="v22ReviewSave" class="btn primary wide">↑ Spara inspelningen för talanalys</button><p id="phoneReviewInfo">Video och händelser finns nu i projektet.</p><p id="paperPhoneStatus" class="paper-phone-safe" role="status">Projekt och inspelningar säkerhetskopieras lokalt på denna telefon.</p>
     <video id="phoneReviewVideo" playsinline controls></video>
     <div class="phone-review-actions"><button type="button" id="phoneDownloadVideo" class="btn pale">↓ Video</button><button type="button" id="phoneDownloadAudio" class="btn subtle">↓ Ljud</button><button type="button" id="phoneDownloadEvents" class="btn subtle">↓ Tidsmarkörer</button></div>
     <button type="button" id="phoneSaveGithub" class="btn primary wide">↑ Spara inspelning och starta talanalys</button>
@@ -464,7 +472,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
   function filename(value){return String(value||'projekt').toLocaleLowerCase('sv').normalize('NFKD').replace(/[^a-z0-9 -]/g,'').replace(/\s+/g,'-').slice(0,64)||'projekt';}
   function downloadBlob(blob,name){const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),60000);}
   function downloadJSON(){pause();const json=JSON.stringify(project,null,2);downloadBlob(new Blob([json],{type:'application/json'}),filename(project.title)+'.json');status('Projektet sparades som JSON. Bilder är inkluderade, ljudfilen är inte inkluderad.');}
-  function importProject(object){if(!object||typeof object!=='object'||!Array.isArray(object.scenes)||!object.scenes.length)throw new Error('Hittar ingen giltig lista med scener.');pause();const id=object.id||object.projectId||project.id||'PROJ-DEMO';projectSha=null;wordsSha=null;openProjectPath='';project={version:2,id:projectIdentifier(id),title:cleanText(object.title||object.projectName||'Mitt pappersprojekt',90),style:{id:'paper-ink-v1',name:'Papper & tusch',locked:true},scenes:object.scenes.slice(0,45).map(normalizeScene),voice:object.voice&&typeof object.voice.path==='string'&&/^media\/[A-Za-z0-9._-]+$/.test(object.voice.path)?{path:object.voice.path,mime:cleanText(object.voice.mime,90),name:cleanText(object.voice.name,160)}:null,words:normaliseWords(object.words),takes:Array.isArray(object.takes)?object.takes:[]};selectedWordId='';selected=0;time=.1;updateAll();status(`Projektet öppnades: ${project.scenes.length} scener, stilen är bevarad.`);}
+  function importProject(object){if(!object||typeof object!=='object'||!Array.isArray(object.scenes)||!object.scenes.length)throw new Error('Hittar ingen giltig lista med scener.');pause();const id=object.id||object.projectId||project.id||'PROJ-DEMO';projectSha=null;wordsSha=null;openProjectPath='';project={version:2,id:projectIdentifier(id),title:cleanText(object.title||object.projectName||'Mitt pappersprojekt',90),style:{id:'paper-ink-v1',name:'Papper & tusch',locked:true},scenes:object.scenes.slice(0,45).map(normalizeScene),voice:object.voice&&typeof object.voice.path==='string'&&/^media\/[A-Za-z0-9._-]+$/.test(object.voice.path)?{path:object.voice.path,mime:cleanText(object.voice.mime,90),name:cleanText(object.voice.name,160)}:null,words:normaliseWords(object.words),takes:Array.isArray(object.takes)?object.takes:[],...(Array.isArray(object.edits)?{edits:object.edits}:{}),...(Array.isArray(object.visualCues)?{visualCues:object.visualCues}:{})};selectedWordId='';selected=0;time=.1;updateAll();status(`Projektet öppnades: ${project.scenes.length} scener, stilen är bevarad.`);}
   function stripFences(v){return String(v).trim().replace(/^```(?:json)?\s*/i,'').replace(/\s*```$/,'').trim();}
   function copyText(s){if(navigator.clipboard?.writeText)return navigator.clipboard.writeText(s).catch(()=>fallbackCopy(s));return Promise.resolve(fallbackCopy(s));}
   function fallbackCopy(s){const a=document.createElement('textarea');a.value=s;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();const ok=document.execCommand('copy');a.remove();if(!ok)throw new Error('Kopiering fungerar inte här.');}
@@ -531,7 +539,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     const res=await ghRequest(ghApi(path),{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});return (await res.json()).content?.sha||null;
   }
   function getMediaURL(path){if(!path)return '';if(mediaUrls.has(path))return mediaUrls.get(path);const blob=mediaBlobs.get(path);if(!blob)return '';const url=URL.createObjectURL(blob);mediaUrls.set(path,url);return url;}
-  function keepMedia(path,blob,pending=false){if(!/^media\/[A-Za-z0-9._-]+$/.test(path))throw Error('Ogiltig sökväg för mediefil.');if(mediaUrls.has(path)){URL.revokeObjectURL(mediaUrls.get(path));mediaUrls.delete(path);}mediaBlobs.set(path,blob);if(pending)pendingUploads.add(path);return getMediaURL(path);}
+  function keepMedia(path,blob,pending=false){if(!/^media\/[A-Za-z0-9._-]+$/.test(path))throw Error('Ogiltig sökväg för mediefil.');if(mediaUrls.has(path)){URL.revokeObjectURL(mediaUrls.get(path));mediaUrls.delete(path);}mediaBlobs.set(path,blob);if(pending)pendingUploads.add(path);if(paperBackupActive&&!paperBackupRestoring)paperBackupMedia(path,blob,pending);return getMediaURL(path);}
   function mimeExt(type,kind){const m=String(type||'');if(m.includes('webm'))return 'webm';if(kind==='video')return 'mp4';if(m.includes('ogg'))return 'ogg';if(m.includes('mpeg'))return 'mp3';if(m.includes('wav'))return 'wav';return 'm4a';}
   function createMediaPath(prefix,blob,kind){return `media/${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,7)}.${mimeExt(blob.type,kind)}`;}
   function githubStatus(msg){$('githubProjectInfo').textContent=msg;status(msg);}
@@ -1156,7 +1164,159 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     pstResetInput();pstRefresh();
   }
 
-  function init(){clothTex=createCloth();document.querySelector('.workspace').dataset.tab=activeTab;events();studioV2Events();updateAll();v22Init();v23Init();pstInit();status('Börja med story och storyboard i ChatGPT. Anslut GitHub och öppna projekt via ID.');}
+
+  // Paper Story local crash-recovery: drafts AND actual recorded media in IndexedDB.
+  // PAT tokens are NEVER stored in this database or in a project snapshot.
+  let paperBackupActive=false,paperBackupRestoring=false,paperBackupDbPromise=null,paperBackupTimer=null;
+  let paperBackupQueue=Promise.resolve(),paperBackupWritten="",paperBackupProblem="";
+  const paperDbName='paper-story-studio-recovery-v1';
+  function paperBackupStatus(message){
+    const el=$('paperLocalStatus');if(el)el.textContent=message;
+    const phone=$('paperPhoneStatus');if(phone)phone.textContent=message;
+  }
+  function paperBackupDb(){
+    if(paperBackupDbPromise)return paperBackupDbPromise;
+    if(!window.indexedDB)return Promise.reject(Error('Lokal datalagring stöds inte i den här webbläsaren.'));
+    paperBackupDbPromise=new Promise((resolve,reject)=>{
+      const request=indexedDB.open(paperDbName,1);
+      request.onupgradeneeded=()=>{
+        const db=request.result;
+        if(!db.objectStoreNames.contains('drafts'))db.createObjectStore('drafts',{keyPath:'id'});
+        if(!db.objectStoreNames.contains('media')){
+          const store=db.createObjectStore('media',{keyPath:'key'});
+          store.createIndex('projectId','projectId',{unique:false});
+        }
+      };
+      request.onsuccess=()=>resolve(request.result);
+      request.onerror=()=>reject(request.error||Error('Kunde inte öppna lokal lagring.'));
+      request.onblocked=()=>reject(Error('Lokal lagring är låst av en annan flik.'));
+    }).catch(e=>{paperBackupDbPromise=null;throw e;});
+    return paperBackupDbPromise;
+  }
+  async function paperBackupRequest(store,mode,action){
+    const db=await paperBackupDb();
+    return new Promise((resolve,reject)=>{
+      const tx=db.transaction(store,mode);
+      let output,request;
+      try{request=action(tx.objectStore(store));}catch(e){tx.abort();reject(e);return;}
+      if(request){request.onsuccess=()=>{output=request.result;};}
+      tx.oncomplete=()=>resolve(output);
+      tx.onerror=()=>reject(tx.error||Error('Det lokala sparandet misslyckades.'));
+      tx.onabort=()=>reject(tx.error||Error('Det lokala sparandet avbröts.'));
+    });
+  }
+  function paperBackupProjectId(){return /^PROJ-[A-Z0-9_-]{1,36}$/.test(String(project?.id||''))&&project.id!=='PROJ-DEMO'?project.id:null;}
+  function paperBackupMedia(path,blob,pending=false){
+    const id=paperBackupProjectId();
+    if(!id||!blob?.size)return;
+    const key=id+'::'+path;
+    paperBackupQueue=paperBackupQueue.catch(()=>{}).then(async()=>{
+      await paperBackupRequest('media','readwrite',store=>store.put({key,projectId:id,path,blob,pending,updatedAt:Date.now()}));
+    }).catch(e=>{paperBackupProblem=e.message;paperBackupStatus('⚠ Kunde inte säkerhetskopiera ljud/video lokalt. Spara till GitHub eller Filer.');});
+    paperBackupSchedule(600);
+  }
+  async function paperBackupDraft(){
+    const id=paperBackupProjectId();
+    if(!id||paperBackupRestoring)return;
+    const data={id,updatedAt:Date.now(),project:JSON.parse(JSON.stringify(project)),selected,time,
+      activeTab,githubRepo,projectRoot,projectSha,wordsSha,openProjectPath,pendingUploads:[...pendingUploads]};
+    await paperBackupRequest('drafts','readwrite',store=>store.put(data));
+    paperBackupWritten=id;
+    paperBackupStatus('✓ Lokalt sparat '+new Date(data.updatedAt).toLocaleTimeString('sv-FI',{hour:'2-digit',minute:'2-digit'}));
+  }
+  function paperBackupSchedule(ms=900){
+    if(!paperBackupActive||paperBackupRestoring||!paperBackupProjectId())return;
+    if(paperBackupTimer)clearTimeout(paperBackupTimer);
+    paperBackupTimer=setTimeout(()=>{
+      paperBackupTimer=null;
+      paperBackupQueue=paperBackupQueue.catch(()=>{}).then(()=>paperBackupDraft())
+        .catch(e=>{paperBackupProblem=e.message;paperBackupStatus('⚠ Lokalt sparande misslyckades. Spara till GitHub.');});
+    },ms);
+  }
+  function paperBackupList(){return paperBackupRequest('drafts','readonly',store=>store.getAll()).then(x=>Array.isArray(x)?x:[]);}
+  async function paperBackupRestore(id){
+    if(recording||phoneMainRecorder){paperBackupStatus('Stoppa inspelningen innan du återställer ett projekt.');return false;}
+    const data=await paperBackupRequest('drafts','readonly',store=>store.get(id));
+    if(!data||!data.project||!Array.isArray(data.project.scenes))throw Error('Utkastet finns inte kvar på den här enheten.');
+    paperBackupRestoring=true;
+    try{
+      pause();
+      for(const url of mediaUrls.values())URL.revokeObjectURL(url);
+      mediaBlobs.clear();mediaUrls.clear();pendingUploads.clear();
+      cameraEl.pause();cameraEl.removeAttribute('src');cameraEl.load();cameraPath='';
+      importProject(data.project);
+      githubRepo=data.githubRepo||githubRepo;
+      projectRoot=data.projectRoot||projectRoot;
+      projectSha=data.projectSha||null;wordsSha=data.wordsSha||null;openProjectPath=data.openProjectPath||'';
+      selected=Math.max(0,Math.min(project.scenes.length-1,Number(data.selected)||0));
+      time=Math.max(0,Math.min(totalDuration(),Number(data.time)||0));
+      activeTab=['scenes','preview','inspector'].includes(data.activeTab)?data.activeTab:'preview';
+      document.querySelector('.workspace').dataset.tab=activeTab;
+      document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===activeTab));
+      $('projectIdInput').value=project.id;
+      $('projectIdDisplay').textContent=project.id;
+      $('projectTitleDisplay').textContent=project.title;
+      const saved=await paperBackupRequest('media','readonly',store=>store.index('projectId').getAll(id));
+      for(const item of saved||[]){if(item?.blob?.size&&/^media\/[A-Za-z0-9._-]+$/.test(item.path))keepMedia(item.path,item.blob,false);}
+      for(const rel of data.pendingUploads||[])if(mediaBlobs.has(rel))pendingUploads.add(rel);
+      const last=(project.takes||[]).at(-1);
+      phoneLastTake=last||null;
+      phoneVideoBlob=last?.video?.path?mediaBlobs.get(last.video.path)||null:null;
+      phoneAudioBlob=last?.audio?.path?mediaBlobs.get(last.audio.path)||null:null;
+      if(phoneVideoBlob){
+        if(phoneVideoUrl)URL.revokeObjectURL(phoneVideoUrl);
+        phoneVideoUrl=URL.createObjectURL(phoneVideoBlob);
+        $('phoneReviewVideo').src=phoneVideoUrl;
+      }
+      if(project.voice?.path&&mediaBlobs.has(project.voice.path))setVoicePlayback(project.voice.path);
+      phoneNotes=phoneBuildNotes();
+      phoneNoteIndex=0;phoneImageIndex=selected;
+      updateAll();
+      if(typeof v22RenderEdits==='function')v22RenderEdits();
+      if(typeof v23DisplayChoices==='function')v23DisplayChoices();
+      if(typeof pstRefresh==='function')pstRefresh();
+      paperBackupStatus('✓ Återställt lokalt: '+project.id);
+      status('Återställde '+project.id+' från denna enhet, inklusive '+(saved||[]).length+' ljud- och mediefiler. PAT är inte sparad.');
+      return true;
+    }finally{paperBackupRestoring=false;}
+  }
+  async function paperBackupMenu(){
+    try{
+      const drafts=(await paperBackupList()).filter(d=>d.project?.scenes?.length).sort((a,b)=>b.updatedAt-a.updatedAt);
+      if(!drafts.length){showModal('Lokala utkast','<p>Inga lokalt sparade utkast finns på denna enhet ännu. GitHub-projekt påverkas inte.</p>',[{label:'Stäng',click:hideModal}]);return;}
+      const html='<p>Välj vilket utkast du vill återställa. Originalen på GitHub ändras inte.</p>'+
+        drafts.map(d=>'<button type="button" class="btn subtle wide" data-paper-recover="'+esc(d.id)+'" style="margin-top:8px;justify-content:flex-start;text-align:left">↶ '+esc(d.id)+' · '+esc(d.project.title||'Utan titel')+' · '+new Date(d.updatedAt).toLocaleString('sv-FI')+'</button>').join('')+
+        '<p class="hint">Lagringen finns endast i den här webbläsaren. Rensa inte webbplatsdata om du vill behålla utkasten.</p>';
+      showModal('Återställ lokalt utkast',html,[{label:'Stäng',click:hideModal}]);
+      $('modalContent').addEventListener('click',async e=>{
+        const btn=e.target.closest('[data-paper-recover]');if(!btn)return;
+        btn.disabled=true;
+        try{await paperBackupRestore(btn.dataset.paperRecover);hideModal();paperBackupSchedule(250);}
+        catch(err){paperBackupStatus('⚠ Återställning misslyckades: '+err.message);btn.disabled=false;}
+      },{once:true});
+    }catch(e){paperBackupStatus('⚠ Lokal återställning är inte tillgänglig: '+e.message);}
+  }
+  async function paperBackupInit(){
+    $('paperRestoreBtn').addEventListener('click',paperBackupMenu);
+    try{
+      const db=await paperBackupDb();
+      const drafts=(await paperBackupList()).filter(d=>d.project?.scenes?.length).sort((a,b)=>b.updatedAt-a.updatedAt);
+      if(drafts.length)await paperBackupRestore(drafts[0].id);
+      else paperBackupStatus('Lokalt autosparande är aktivt');
+      paperBackupActive=true;
+      // Periodic JSON snapshots, plus immediate media backups on completed recordings.
+      setInterval(()=>paperBackupSchedule(120),7000);
+      document.addEventListener('input',()=>paperBackupSchedule(800),true);
+      document.addEventListener('change',()=>paperBackupSchedule(400),true);
+      document.addEventListener('click',()=>paperBackupSchedule(1200),true);
+      document.addEventListener('pointerup',()=>paperBackupSchedule(600),true);
+      document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')paperBackupSchedule(0);});
+      window.addEventListener('pagehide',()=>paperBackupSchedule(0));
+      window.addEventListener('beforeunload',e=>{if(phoneMainRecorder||recording){e.preventDefault();e.returnValue='';}});
+    }catch(e){paperBackupStatus('⚠ Lokal säkerhetskopiering kunde inte starta: '+e.message);}
+  }
+
+  function init(){clothTex=createCloth();document.querySelector('.workspace').dataset.tab=activeTab;events();studioV2Events();updateAll();v22Init();v23Init();pstInit();paperBackupInit();status('Börja med story och storyboard i ChatGPT. Anslut GitHub och öppna projekt via ID.');}
   init();
 })();
 
