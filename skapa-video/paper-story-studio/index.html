@@ -236,6 +236,28 @@ html,body,.app-shell,.phone-studio{overscroll-behavior-y:none}
 
 .pst-voice-length{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .pst-voice-length small{font-size:11px;color:#8a7662;line-height:1.5;flex:1;min-width:180px}
+
+/* Sound-first recording view: two large panels and no unused camera box. */
+.phone-studio[data-record-kind="audio"] .phone-paper{
+  grid-column:1 / -1;border-right:0;
+}
+.phone-studio[data-record-kind="audio"] .phone-camera{display:none}
+.phone-studio[data-record-kind="audio"] .phone-record-bar{gap:6px}
+.phone-studio[data-record-kind="audio"] .phone-record-bar button{font-size:clamp(10px,1.6dvh,13px);padding:7px 4px}
+.phone-audio-time{
+  display:none;position:absolute;top:9px;left:9px;z-index:4;
+  background:#fff8e8e8;color:#473021;border:1px solid #cab8a2;
+  border-radius:7px;padding:6px 9px;font-size:13px;font-weight:800;
+  box-shadow:0 1px 7px #4b38221a;
+}
+.phone-studio[data-record-kind="audio"] .phone-audio-time{display:block}
+@media(max-width:720px){
+  .preview-pane{overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+  .preview-pane .stage-wrap{flex:0 0 auto;height:auto;min-height:0;max-height:none;overflow:visible;padding:10px 0}
+  .preview-pane .stage{width:min(calc(100vw - 45px),390px);height:auto;max-height:none;aspect-ratio:9/16;flex:0 0 auto}
+  .preview-pane .player{flex:0 0 auto;min-height:162px}
+}
+
 </style>
 </head>
 <body>
@@ -366,7 +388,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     <div class="phone-zone-tip" id="phoneCueTip">Prickarna visar hur många meningar som hör till den här bilden.</div>
   </section>
   <section class="phone-paper" id="phonePaperZone" aria-label="Aktuell pappersbild, byts automatiskt med stödtexten">
-    <canvas id="phonePaperCanvas" width="720" height="1280" aria-label="Pappersbild som ska synas"></canvas>
+    <canvas id="phonePaperCanvas" width="720" height="1280" aria-label="Pappersbild som ska synas"></canvas><span class="phone-audio-time" id="phoneAudioClock" aria-live="off">🎙 00:00</span>
     <div class="phone-paper-caption"><span id="phoneVisualLabel">BILD 1 / 5</span><span>Följer stödtexten automatiskt</span></div>
   </section>
   <section class="phone-camera" aria-label="Kameraförhandsvisning">
@@ -798,7 +820,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
   function phoneSelectRecordMode(mode){
     if(phoneMainRecorder||recording){$('phoneSwipeStatus').textContent='Stoppa inspelningen innan du byter läge.';return;}
     const next=mode==='video'?'video':'audio';
-    phoneRecordKind=next;phoneSource='paper';
+    phoneRecordKind=next;phoneSource='paper';$('phoneStudio').dataset.recordKind=next;
     $('phoneAudioOnlyBtn').setAttribute('aria-pressed',String(next==='audio'));
     $('phoneEnableCam').setAttribute('aria-pressed',String(next==='video'));
     $('phoneRecord').textContent=next==='audio'?'● Spela in ljud':'● Spela in video';
@@ -819,7 +841,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     }catch(e){$('phoneRecordSignal').textContent='KAMERA EJ TILLGÄNGLIG';$('phoneSwipeStatus').textContent='Kontrollera kameratillstånd i Safari';console.warn('Camera permission',e);return false;}}
   function phoneCloseStream(){if(phoneStream){phoneStream.getTracks().forEach(t=>t.stop());phoneStream=null;}$('phoneCam').pause();$('phoneCam').srcObject=null;$('phoneCamFallback').hidden=false;$('phoneEnableCam').hidden=false;}
   function phoneChooseMime(kind){const variants=kind==='video'?['video/mp4;codecs=avc1.42E01E,mp4a.40.2','video/mp4','video/webm;codecs=vp8,opus','video/webm']:['audio/mp4;codecs=mp4a.40.2','audio/mp4','audio/webm;codecs=opus','audio/webm'];return variants.find(m=>MediaRecorder.isTypeSupported?.(m))||'';}
-  function phoneSetClock(){const n=Math.floor(phoneElapsed());$('phoneClock').textContent=`${phonePad(Math.floor(n/60))}:${phonePad(n%60)}`;}
+  function phoneSetClock(){const n=Math.floor(phoneElapsed()),value=`${phonePad(Math.floor(n/60))}:${phonePad(n%60)}`;$('phoneClock').textContent=value;$('phoneAudioClock').textContent='🎙 '+value;}
   async function phoneRecordStart(){if(phoneMainRecorder||recording){return;}
     if(!window.MediaRecorder){$('phoneSwipeStatus').textContent='Den här webbläsaren stöder inte inspelning';return;}
     if(phoneRecordKind==='audio')return phoneAudioOnlyStart();
@@ -838,7 +860,7 @@ Sista raden, sedan nästa bild."></textarea><small>Skriv naturliga, färdiga men
     main.addEventListener('stop',()=>{
       const duration=phoneStamp(),mime=main.mimeType||videoMime||'video/mp4';
       phoneVideoBlob=new Blob(videoParts,{type:mime});const path=createMediaPath('take-video',phoneVideoBlob,'video');
-      if(phoneVideoBlob.size){keepMedia(path,phoneVideoBlob,true);phoneActiveTake.video={path,mime,size:phoneVideoBlob.size};phoneVideoUrl=URL.createObjectURL(phoneVideoBlob);$('phoneReviewVideo').src=phoneVideoUrl;}
+      if(phoneVideoBlob.size){keepMedia(path,phoneVideoBlob,true);phoneActiveTake.video={path,mime,size:phoneVideoBlob.size};phoneVideoUrl=URL.createObjectURL(phoneVideoBlob);$('phoneReviewVideo').src=phoneVideoUrl;$('phoneReviewVideo').hidden=false;$('phoneReviewAudio').hidden=true;$('phoneDownloadVideo').hidden=false;}
       phoneActiveTake.duration=duration;phoneActiveTake.events.push({at:duration,type:'end'});
       project.takes=Array.isArray(project.takes)?project.takes:[];project.takes.push(phoneActiveTake);phoneLastTake=phoneActiveTake;
       phoneMainRecorder=null;recording=null;phoneActiveTake=null;phoneStarted=0;
