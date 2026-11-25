@@ -1,5 +1,14 @@
 # Ändringslogg
 
+## v0.12 · 2026-11-25
+
+- Nytt verktyg **+ Nästa steg** i Bildsamling för att duplicera skärmbild och behålla, tona ned eller rensa tidigare markeringar.
+- Stegnumrerade bilder kan redigeras var för sig; tidigare steg bevaras, säkerhetsmaskeringar förblir täckande.
+- Redigerbart projektformat v4 sparar och läser en hel bildserie med delad bildkälla. Äldre v3-projekt stöds fortsatt.
+- Stegnummer och valfri stegbeskrivning medföljer publik GitHub-logg och manifest.
+- PWA-cache v0.12.
+
+
 ## v0.11 · 2026-11-25
 
 - Korrigerat träffområdet för textrutor: musen kan nu markera och dra i hela den synliga textrutan, inte enbart nära dess övre vänstra punkt.

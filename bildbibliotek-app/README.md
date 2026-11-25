@@ -67,3 +67,9 @@ Zoomverktygen visas som standard inte som en egen rad. Klicka på **förstorings
 - Textens klickyta är nu hela den ritade textrutan, med 6 skärmpixlars tolerans även när visningszoomen är låg. Tidigare användes endast en liten osynlig punkt i textrutans hörn.
 - Efter att du lagt till text växlar appen automatiskt till **Flytta** och väljer den nya etiketten. Klicka och dra någonstans i den för att placera den. Du kan också välja den via **Objekt & lager**.
 - Valda lager får företräde vid direktdrag på överlappande objekt. Pixlarnas placering, skärmbildens upplösning och exporten påverkas inte av ändringen.
+
+## v0.12 – Bildserier / Nästa steg
+
+Markera en skärmbild och klicka **+ Nästa steg** i Bildsamling. Välj att behålla, tona ned (standard) eller ta bort gamla markeringar; lägg till en valfri stegbeskrivning. Appen skapar en ny, redigerbar bild med `-steg-02` i filnamnet, sedan `-steg-03` och så vidare. Tidigare steg finns kvar. Nya markeringar får alltid full styrka. Säkerhetsmaskeringar förblir helt opaka även när andra markeringar tonas ned.
+
+Från ett bildseriesteg sparar **Spara redigerbart projekt** hela serien som en v4-projektfil. Bildkällorna lagras en gång och varje stegs lager sparas separat. **Öppna projekt** stöder äldre v3-enkla bilder och v4-serier. GitHub-uppladdningens logg och manifest inkluderar bildseriens stegnummer och beskrivning. Detta kräver ingen inloggning förrän vid GitHub-publicering. PWA-cache v0.12.

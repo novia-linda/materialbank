@@ -127,8 +127,55 @@ function saveHistory(){const it=current();if(!it)return;state.undo.push({id:it.i
 async function restoreSnapshot(s){const it=current();if(!it||s.id!==it.id)return;it.src=s.src;it.img=await loadImage(s.src);it.shapes=clone(s.shapes);it.crop=s.crop?clone(s.crop):null;it.steps=s.steps;state.chosen=-1;render();}
 async function undo(){const it=current();if(!it||!state.undo.length)return;const s=state.undo.pop();state.redo.push({id:it.id,src:it.src,shapes:clone(it.shapes),crop:it.crop,steps:it.steps});await restoreSnapshot(s);}
 async function redo(){const it=current();if(!it||!state.redo.length)return;const s=state.redo.pop();state.undo.push({id:it.id,src:it.src,shapes:clone(it.shapes),crop:it.crop,steps:it.steps});await restoreSnapshot(s);}
+
+function nextSeriesStep(source){
+ if(!source)return 1;
+ if(!source.series)return 2;
+ return Math.max(0,...state.images.filter(it=>it.series?.id===source.series.id).map(it=>Number(it.series.step)||0))+1;
+}
+function openSeriesEditor(){
+ const it=current();if(!it)return;
+ const n=nextSeriesStep(it);
+ $('seriesTarget').textContent='Utifrån "'+it.name+'" skapas steg '+n+'. Alla tidigare bilder bevaras.';
+ $('seriesStepLabel').value='';
+ document.querySelector('input[name="seriesMode"][value="fade"]').checked=true;
+ $('seriesDialog').showModal();$('seriesStepLabel').focus();
+}
+function createNextSeriesStep(){
+ const it=current();if(!it)return;
+ const mode=document.querySelector('input[name="seriesMode"]:checked')?.value||'fade';
+ const label=$('seriesStepLabel').value.trim().slice(0,140);
+ const seriesId=it.series?.id||'serie-'+nowStamp();
+ const baseName=it.series?.baseName||normalize(it.name.replace(/-steg-\d+(?:-\d+)?$/,''));
+ const step=nextSeriesStep(it);
+ if(!it.series)it.series={id:seriesId,step:1,baseName,label:''};
+ const nameStem=normalize(baseName+'-steg-'+String(step).padStart(2,'0'));
+ let name=nameStem,suffix=2;
+ while(state.images.some(image=>image.name===name))name=normalize(nameStem+'-'+suffix++);
+ const shapes=mode==='clear'?[]:clone(it.shapes).map(shape=>{
+  if(mode!=='fade')return shape;
+  if(shape.kind==='mask')return {...shape,opacity:1};
+  return {...shape,opacity:Math.min(Number.isFinite(shape.opacity)?shape.opacity:1,.28)};
+ });
+ const oldAlt=String(it.alt||it.name).replace(/^Steg\s+\d+\s*[:–-]\s*/i,'');
+ const next={id:nowStamp(),name,alt:label?'Steg '+step+': '+label:'Steg '+step+': '+oldAlt,
+  src:it.src,img:it.img,shapes,crop:null,steps:mode==='clear'?1:it.steps,
+  series:{id:seriesId,step,baseName,label}};
+ let idx=state.images.findLastIndex(img=>img.series?.id===seriesId);
+ if(idx<0)idx=state.active;
+ state.images.splice(idx+1,0,next);
+ $('seriesDialog').close();selectImage(idx+1);setTool('select');
+ text('toolTip','Steg '+step+' klart. Lägg till nya markeringar och fortsätt serien.');
+ notify('Steg '+step+' har skapats. Den föregående bilden finns kvar.');
+}
+function initSeriesEditor(){
+ $('nextSeriesStep').addEventListener('click',openSeriesEditor);
+ $('seriesCancel').addEventListener('click',()=>$('seriesDialog').close());
+ $('seriesClose').addEventListener('click',()=>$('seriesDialog').close());
+ $('seriesCreate').addEventListener('click',createNextSeriesStep);
+}
 function selectImage(index){closePreviewZoomPanel();if(index<0||index>=state.images.length){state.active=-1;state.previewZoom=null;state.panView=false;state.panDrag=null;$('canvasStage').hidden=true;$('canvas').hidden=true;$('empty').hidden=false;renderList();renderLayers();updateZoomPanel();updatePreviewControls();return;}state.active=index;clearHistory();state.drawing=null;state.crop=null;state.previewZoom=null;state.panView=false;state.panDrag=null;const it=current();FIELDS.fileName.value=it.name;FIELDS.altText.value=it.alt;$('empty').hidden=true;$('canvasStage').hidden=false;$('canvas').hidden=false;$('removeImage').disabled=false;$('applyCrop').disabled=true;$('cancelCrop').disabled=true;$('stepStart').value=it.steps||1;renderList();render();$('canvasHost').scrollLeft=0;$('canvasHost').scrollTop=0;}
-function renderList(){const list=$('imageList');list.replaceChildren();state.images.forEach((it,i)=>{const b=document.createElement('button');b.className='image-item'+(i===state.active?' active':'');b.type='button';const im=document.createElement('img');im.src=it.src;const x=document.createElement('div');const title=document.createElement('strong');title.textContent=it.name||'image';const detail=document.createElement('small');detail.textContent=(it.img?.naturalWidth||'')+' x '+(it.img?.naturalHeight||'')+' px';x.append(title,detail);b.append(im,x);b.addEventListener('click',()=>selectImage(i));list.append(b);});text('count',state.images.length+' bilder');if(!state.images.length){const p=document.createElement('p');p.className='muted small';p.textContent='Inga bilder \u00e4nnu.';list.append(p);$('removeImage').disabled=true;}}
+function renderList(){const list=$('imageList');list.replaceChildren();state.images.forEach((it,i)=>{const b=document.createElement('button');b.className='image-item'+(i===state.active?' active':'');b.type='button';const im=document.createElement('img');im.src=it.src;const x=document.createElement('div');const title=document.createElement('strong');title.textContent=it.name||'image';const detail=document.createElement('small');detail.textContent=(it.series?'Steg '+it.series.step+' · ':'')+(it.img?.naturalWidth||'')+' x '+(it.img?.naturalHeight||'')+' px'+(it.series?.label?' · '+it.series.label:'');x.append(title,detail);b.append(im,x);b.addEventListener('click',()=>selectImage(i));list.append(b);});text('count',state.images.length+' bilder');$('nextSeriesStep').disabled=!current();if(!state.images.length){const p=document.createElement('p');p.className='muted small';p.textContent='Inga bilder \u00e4nnu.';list.append(p);$('removeImage').disabled=true;}}
 function point(evt){const r=canvas.getBoundingClientRect();return{x:(evt.clientX-r.left)*canvas.width/r.width,y:(evt.clientY-r.top)*canvas.height/r.height};}
 
 function textLayout(s,W,measureCtx=ctx){
@@ -196,7 +243,7 @@ function resizeZoomSource(s,handle,p,W,H){const b=bbox(s),min=Math.max(12,screen
 }
 function updateZoomPanel(){const s=current()?.shapes?.[state.chosen];const active=!!s&&s.kind==='zoom';$('zoomPanel').hidden=!active;$('showZoomSource').checked=state.zoomGuidesVisible;}
 function resetSelectedZoom(){const it=current(),s=it?.shapes?.[state.chosen];if(!s||s.kind!=='zoom')return;saveHistory();const l=zoomLens(s,it.img.naturalWidth,it.img.naturalHeight),w=l.r,h=l.r;const b=bbox(s),mx=(b.left+b.right)/2,my=(b.top+b.bottom)/2;const x=Math.max(0,Math.min(it.img.naturalWidth-w,mx-w/2)),y=Math.max(0,Math.min(it.img.naturalHeight-h,my-h/2));it.shapes[state.chosen]={...s,x,y,x2:x+w,y2:y+h};render();}
-function drawShape(c,s,W,H,base){const x=s.x,y=s.y,x2=s.x2??x,y2=s.y2??y;const w=Math.max(2,s.width||7);const col=s.color||'#cc583f';c.save();c.lineWidth=w;c.lineJoin='round';c.strokeStyle=col;c.fillStyle=col;
+function drawShape(c,s,W,H,base){const x=s.x,y=s.y,x2=s.x2??x,y2=s.y2??y;const w=Math.max(2,s.width||7);const col=s.color||'#cc583f';const alpha=s.kind==='mask'?1:(Number.isFinite(s.opacity)?Math.max(0,Math.min(1,s.opacity)):1);c.save();c.globalAlpha=alpha;c.lineWidth=w;c.lineJoin='round';c.strokeStyle=col;c.fillStyle=col;
  switch(s.kind){case'arrow':{c.beginPath();c.moveTo(x,y);c.lineTo(x2,y2);c.stroke();const ang=Math.atan2(y2-y,x2-x),hd=Math.max(14,w*4.4);c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-hd*Math.cos(ang-.52),y2-hd*Math.sin(ang-.52));c.lineTo(x2-hd*Math.cos(ang+.52),y2-hd*Math.sin(ang+.52));c.closePath();c.fill();break;}
  case'box':case'ellipse':{const b=bbox(s);c.beginPath();if(s.kind==='box')c.roundRect(b.left,b.top,b.right-b.left,b.bottom-b.top,Math.min(12,w*2));else c.ellipse((b.left+b.right)/2,(b.top+b.bottom)/2,Math.max(1,(b.right-b.left)/2),Math.max(1,(b.bottom-b.top)/2),0,0,Math.PI*2);c.stroke();break;}
  
@@ -217,8 +264,8 @@ function drawShape(c,s,W,H,base){const x=s.x,y=s.y,x2=s.x2??x,y2=s.y2??y;const w
   break;
  }
  case'number':{const r=Math.max(24,W/60),fs=Math.max(18,Math.round(r*.95));c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fill();c.lineWidth=Math.max(3,w/2);c.strokeStyle='#fff';c.stroke();c.fillStyle='#fff';c.font='bold '+fs+'px Segoe UI,Arial';c.textAlign='center';c.textBaseline='middle';c.fillText(String(s.number||1),x,y+1);break;}
- case'text':{const m=textLayout(s,W,c),{size,lines,pad}=m;c.font='bold '+size+'px Segoe UI,Arial';c.fillStyle='#fff';c.globalAlpha=.93;c.fillRect(x,y,m.width,m.height);c.globalAlpha=1;c.lineWidth=Math.max(2,w/2);c.strokeStyle=col;c.strokeRect(x,y,m.width,m.height);c.fillStyle='#243c38';lines.forEach((line,i)=>c.fillText(line,x+pad,y+pad+size*(i*1.35+1)));break;}
- case'highlight':{const b=bbox(s);c.fillStyle=col;c.globalAlpha=.22;c.fillRect(b.left,b.top,b.right-b.left,b.bottom-b.top);c.globalAlpha=.9;c.lineWidth=Math.max(2,w/2);c.strokeRect(b.left,b.top,b.right-b.left,b.bottom-b.top);break;}
+ case'text':{const m=textLayout(s,W,c),{size,lines,pad}=m;c.font='bold '+size+'px Segoe UI,Arial';c.fillStyle='#fff';c.globalAlpha=alpha*.93;c.fillRect(x,y,m.width,m.height);c.globalAlpha=alpha;c.lineWidth=Math.max(2,w/2);c.strokeStyle=col;c.strokeRect(x,y,m.width,m.height);c.fillStyle='#243c38';lines.forEach((line,i)=>c.fillText(line,x+pad,y+pad+size*(i*1.35+1)));break;}
+ case'highlight':{const b=bbox(s);c.fillStyle=col;c.globalAlpha=alpha*.22;c.fillRect(b.left,b.top,b.right-b.left,b.bottom-b.top);c.globalAlpha=alpha*.9;c.lineWidth=Math.max(2,w/2);c.strokeRect(b.left,b.top,b.right-b.left,b.bottom-b.top);break;}
  case'mask':{const b=bbox(s);c.fillStyle='#232b2e';c.fillRect(b.left,b.top,b.right-b.left,b.bottom-b.top);break;}
  case'spotlight':{const b=bbox(s);c.beginPath();c.rect(0,0,W,H);c.rect(b.left,b.top,Math.max(1,b.right-b.left),Math.max(1,b.bottom-b.top));c.fillStyle='rgba(6,20,24,.53)';c.fill('evenodd');c.strokeStyle='#fff';c.lineWidth=Math.max(3,w/2);c.strokeRect(b.left,b.top,b.right-b.left,b.bottom-b.top);break;}
 case'zoom':{
@@ -437,8 +484,48 @@ function toBlob(canvas,type){return new Promise((resolve,reject)=>canvas.toBlob(
 async function exportOne(it){const W=it.img.naturalWidth,H=it.img.naturalHeight,[outW,outH]=sizeOut(it);const src=document.createElement('canvas');src.width=W;src.height=H;drawIn(src.getContext('2d'),it);const target=document.createElement('canvas');target.width=outW;target.height=outH;const dst=target.getContext('2d');dst.fillStyle='#ffffff';dst.fillRect(0,0,outW,outH);const fit=$('fitMode').value;const scale=fit==='cover'?Math.max(outW/W,outH/H):Math.min(outW/W,outH/H);const dW=W*scale,dH=H*scale;dst.drawImage(src,(outW-dW)/2,(outH-dH)/2,dW,dH);return{blob:await toBlob(target,$('fileType').value),width:outW,height:outH,extension:$('fileType').value==='png'?'png':'jpg'};}
 function download(blob,filename){const link=document.createElement('a');const url=URL.createObjectURL(blob);link.href=url;link.download=filename;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);}
 async function saveImage(){const it=current();if(!it)return;try{const x=await exportOne(it);download(x.blob,it.name+'.'+x.extension);notify('Bilden sparades lokalt: '+it.name+'.'+x.extension);}catch(e){alert(e.message);}}
-function saveProject(){const it=current();if(!it)return;const project={app:'github-bildbibliotek',version:3,date:new Date().toISOString(),item:{name:it.name,alt:it.alt,src:it.src,shapes:it.shapes,steps:it.steps}};download(new Blob([JSON.stringify(project,null,2)],{type:'application/json'}),it.name+'.bildprojekt.json');notify('Redigerbart projekt sparat lokalt.');}
-async function openProject(file){const d=JSON.parse(await file.text());if(d.app!=='github-bildbibliotek'||d.version!==3||!d.item||!d.item.src.startsWith('data:image/'))throw Error('Filen \u00e4r inte ett Bildbibliotek-projekt av version 3.');const image=await loadImage(d.item.src);state.images.push({id:nowStamp(),name:normalize(d.item.name),alt:d.item.alt||'',src:d.item.src,img:image,shapes:d.item.shapes||[],steps:d.item.steps||1,crop:null});selectImage(state.images.length-1);}
+function saveProject(){
+ const it=current();if(!it)return;
+ if(!it.series){
+  const project={app:'github-bildbibliotek',version:3,date:new Date().toISOString(),item:{name:it.name,alt:it.alt,src:it.src,shapes:it.shapes,steps:it.steps}};
+  download(new Blob([JSON.stringify(project,null,2)],{type:'application/json'}),it.name+'.bildprojekt.json');
+  notify('Redigerbart bildprojekt sparat lokalt.');return;
+ }
+ const group=state.images.filter(image=>image.series?.id===it.series.id).sort((a,b)=>a.series.step-b.series.step);
+ const assets=[],indices=new Map();
+ const items=group.map(image=>{
+  if(!indices.has(image.src)){indices.set(image.src,assets.length);assets.push(image.src);}
+  return {name:image.name,alt:image.alt,sourceIndex:indices.get(image.src),
+    shapes:image.shapes,steps:image.steps,series:image.series};
+ });
+ const data={app:'github-bildbibliotek',version:4,date:new Date().toISOString(),assets,items};
+ download(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),(it.series.baseName||it.name)+'-bildserie.bildprojekt.json');
+ notify('Bildserie med '+items.length+' steg sparad. Alla steg finns i projektfilen.');
+}
+async function openProject(file){
+ const d=JSON.parse(await file.text());
+ if(d.app!=='github-bildbibliotek')throw Error('Filen är inte ett Bildbibliotek-projekt.');
+ if(d.version===3){
+  if(!d.item||typeof d.item.src!=='string'||!d.item.src.startsWith('data:image/'))throw Error('Ogiltigt bildprojekt av version 3.');
+  const img=await loadImage(d.item.src);
+  state.images.push({id:nowStamp(),name:normalize(d.item.name),alt:d.item.alt||'',src:d.item.src,img,shapes:Array.isArray(d.item.shapes)?d.item.shapes:[],steps:d.item.steps||1,crop:null});
+  selectImage(state.images.length-1);return;
+ }
+ if(d.version!==4||!Array.isArray(d.assets)||!Array.isArray(d.items)||!d.items.length||d.items.length>100||!d.assets.length||d.assets.length>100)throw Error('Ogiltigt bildserieprojekt: stöder version 3 och 4.');
+ if(!d.assets.every(src=>typeof src==='string'&&src.startsWith('data:image/'))||!d.items.every(item=>Number.isInteger(item.sourceIndex)&&item.sourceIndex>=0&&item.sourceIndex<d.assets.length))throw Error('Bildseriens bildreferenser är ogiltiga.');
+ const images=await Promise.all(d.assets.map(src=>loadImage(src)));
+ if(images.some(img=>img.naturalWidth>6500||img.naturalHeight>6500||img.naturalWidth*img.naturalHeight>26000000))throw Error('En bild i serien är för stor.');
+ const groupId='serie-'+nowStamp();
+ const group=d.items.map((item,i)=>{
+  const series=item.series||{};
+  return {id:nowStamp(),name:normalize(item.name,'steg-'+(i+1)),alt:String(item.alt||'').slice(0,300),
+    src:d.assets[item.sourceIndex],img:images[item.sourceIndex],shapes:Array.isArray(item.shapes)?clone(item.shapes):[],
+    steps:Number(item.steps)||1,crop:null,
+    series:{id:groupId,step:Number(series.step)||i+1,baseName:normalize(series.baseName||d.items[0].name),label:String(series.label||'').slice(0,140)}};
+ });
+ state.images.push(...group);selectImage(state.images.length-group.length);
+ notify('Bildserie med '+group.length+' steg öppnad.');
+}
 function encode64(buffer){const bytes=new Uint8Array(buffer);let ret='';const size=16384;for(let i=0;i<bytes.length;i+=size)ret+=String.fromCharCode(...bytes.subarray(i,i+size));return btoa(ret);}
 function githubHeaders(token){return{'Accept':'application/vnd.github+json','Authorization':'Bearer '+token,'X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'};}
 async function githubCall(base,route,token,method='GET',data){let response;try{response=await fetch(base+route,{method,headers:githubHeaders(token),body:data?JSON.stringify(data):undefined,cache:'no-store'});}catch(e){throw Error('Kunde inte n\u00e5 GitHub. Kontrollera n\u00e4tverket och webbl\u00e4sarens till\u00e5telser.');}const info=await response.json().catch(()=>({}));if(!response.ok)throw Error('GitHub '+response.status+': '+String(info.message||response.statusText).slice(0,250));return info;}
@@ -469,7 +556,7 @@ async function publish(){if(state.busy)return;if(!state.images.length){alert('L\
   const ref=await githubCall(git,'/git/ref/heads/'+info.branch,token);const head=ref.object.sha;const latest=await githubCall(git,'/git/commits/'+head,token);
   for(let i=0;i<finalFiles.length;i++){const f=finalFiles[i];notify('Laddar upp '+(i+1)+' / '+finalFiles.length+': '+f.filename);const encoded=encode64(await f.blob.arrayBuffer());const blob=await githubCall(git,'/git/blobs',token,'POST',{content:encoded,encoding:'base64'});entries.push({path:f.path,mode:'100644',type:'blob',sha:blob.sha});}
   const rawBase='https://raw.githubusercontent.com/'+info.owner+'/'+info.repo+'/'+info.branch+'/';const lines=['# Senaste bilduppladdningen','','Skapad: '+new Date().toLocaleString('sv-SE'),'Repo: '+info.owner+'/'+info.repo,'Projekt: '+$('project').value.trim(),'Batch: '+folder,'','## Bilder'];const manifest=[];
-  for(const f of finalFiles){const url=rawBase+f.path.split('/').map(encodeURIComponent).join('/');lines.push('','### '+f.it.name,'- Fil: `'+f.path+'`','- Storlek: '+f.width+' x '+f.height+' px','- Beskrivning: '+(f.it.alt||f.it.name),'- Bildl\u00e4nk: '+url,'- Markdown: `!['+(f.it.alt||f.it.name).replace(/\]/g,'')+']('+url+')`','- HTML: `<img src="'+url+'" alt="'+(f.it.alt||f.it.name).replace(/"/g,'')+'">`');manifest.push({name:f.it.name,description:f.it.alt,filename:f.filename,path:f.path,url,width:f.width,height:f.height});}
+  for(const f of finalFiles){const url=rawBase+f.path.split('/').map(encodeURIComponent).join('/');lines.push('','### '+f.it.name,'- Fil: `'+f.path+'`','- Storlek: '+f.width+' x '+f.height+' px','- Beskrivning: '+(f.it.alt||f.it.name),'- Bildl\u00e4nk: '+url,'- Markdown: `!['+(f.it.alt||f.it.name).replace(/\]/g,'')+']('+url+')`','- HTML: `<img src="'+url+'" alt="'+(f.it.alt||f.it.name).replace(/"/g,'')+'">`');if(f.it.series)lines.push('- Bildserie: steg '+f.it.series.step+(f.it.series.label?' – '+f.it.series.label:''));manifest.push({name:f.it.name,description:f.it.alt,filename:f.filename,path:f.path,url,width:f.width,height:f.height,...(f.it.series?{series:{id:f.it.series.id,step:f.it.series.step,label:f.it.series.label||''}}:{})});}
   lines.push('','## Prompt till ChatGPT','','H\u00e4mta senaste bilduppladdningen i `'+info.owner+'/'+info.repo+'` och bygg en Notion SOURCE + renderer-instruktion. Jag beskriver stegen och du kopplar de uppladdade bilderna till r\u00e4tt instruktion.');
   const md=lines.join('\n')+'\n',manifestObj={schema:'github-bildbibliotek-03',created:new Date().toISOString(),repository:info.owner+'/'+info.repo,branch:info.branch,batch:folder,images:manifest};
   const logItems=[{path:folder+'/uppladdningslogg.md',content:md},{path:folder+'/manifest.json',content:JSON.stringify(manifestObj,null,2)},{path:'notion-bilder/senaste-uppladdning.md',content:md}];
@@ -479,7 +566,7 @@ async function publish(){if(state.busy)return;if(!state.images.length){alert('L\
   state.lastLog=md;state.published=manifestObj;$('logPreview').textContent=md;$('copyLog').disabled=false;$('downloadLog').disabled=false;$('netStatus').textContent='Publicerat p\u00e5 GitHub';notify('Klart! '+manifest.length+' bild(er) och en logg har lagts i en gemensam commit.');
  }catch(e){notify('Ingen bekr\u00e4ftad publicering: '+e.message,true);}finally{state.busy=false;$('publish').disabled=false;}
 }
-function init(){setupTheme();renderList();buildPalettes();renderLayers();initializeShortcutEditor();initPreviewControls();
+function init(){setupTheme();renderList();buildPalettes();renderLayers();initializeShortcutEditor();initPreviewControls();initSeriesEditor();
  $('showZoomSource').addEventListener('change',e=>{state.zoomGuidesVisible=e.target.checked;render();});
  $('resetZoom').addEventListener('click',resetSelectedZoom);
  $('toggleLayers').addEventListener('click',()=>{const el=$('layersPanel');el.hidden=!el.hidden;$('toggleLayers').setAttribute('aria-expanded',String(!el.hidden));$('toggleLayers').textContent=el.hidden?'+ Visa lager':'− Dölj lager';});
@@ -489,7 +576,7 @@ function init(){setupTheme();renderList();buildPalettes();renderLayers();initial
  $('color').addEventListener('change',e=>recolorSelected(e.target.value));$('stroke').addEventListener('change',updateSelectedStroke);
 document.querySelectorAll('[data-tool]').forEach(b=>b.addEventListener('click',()=>setTool(b.dataset.tool)));canvas.addEventListener('pointerdown',mouseDown);canvas.addEventListener('pointermove',mouseMove);canvas.addEventListener('pointerup',mouseUp);canvas.addEventListener('pointercancel',()=>{state.dragging=null;state.drawing=null;state.panDrag=null;$('canvasHost').classList.remove('is-panning');render();});$('applyCrop').addEventListener('click',applyCrop);$('cancelCrop').addEventListener('click',cancelCrop);$('undo').addEventListener('click',undo);$('redo').addEventListener('click',redo);$('removeShape').addEventListener('click',removeShape);$('stroke').addEventListener('input',()=>text('strokeValue',$('stroke').value));$('imageInput').addEventListener('change',async e=>{await addFiles(e.target.files);e.target.value='';});$('addImages').addEventListener('click',()=>$('imageInput').click());$('emptyPick').addEventListener('click',()=>$('imageInput').click());$('pasteImage').addEventListener('click',async()=>{try{if(!navigator.clipboard?.read)throw Error('Anv\u00e4nd Ctrl+V i appen eller v\u00e4lj en bild.');const items=await navigator.clipboard.read();for(const it of items){for(const type of it.types){if(type.startsWith('image/')){const blob=await it.getType(type);await addFiles([new File([blob],'skarmklipp-'+nowStamp()+'.png',{type:blob.type})]);return;}}}throw Error('Ingen bild hittades i urklipp.');}catch(e){alert(e.message||'Anv\u00e4nd Ctrl+V i appen.');}});
  document.addEventListener('paste',async e=>{for(const it of e.clipboardData?.items||[]){if(it.type.startsWith('image/')){e.preventDefault();const f=it.getAsFile();if(f)await addFiles([new File([f], 'skarmklipp-'+nowStamp()+'.png',{type:f.type})]);return;}}});
- document.addEventListener('keydown',e=>{if($('shortcutDialog').open)return;const tg=e.target?.tagName;const editing=['INPUT','TEXTAREA','SELECT'].includes(tg);if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!editing){e.preventDefault();undo();return;}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='y'&&!editing){e.preventDefault();redo();return;}if(editing||e.ctrlKey||e.metaKey||e.altKey)return;if(e.key==='Delete'||e.key==='Backspace'){removeShape();return;}
+ document.addEventListener('keydown',e=>{if($('shortcutDialog').open||$('seriesDialog').open)return;const tg=e.target?.tagName;const editing=['INPUT','TEXTAREA','SELECT'].includes(tg);if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!editing){e.preventDefault();undo();return;}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='y'&&!editing){e.preventDefault();redo();return;}if(editing||e.ctrlKey||e.metaKey||e.altKey)return;if(e.key==='Delete'||e.key==='Backspace'){removeShape();return;}
  if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)&&state.tool==='select'&&state.chosen>=0){
    const it=current();if(it){e.preventDefault();const s=it.shapes[state.chosen],d=e.shiftKey?10:1;
    const dx=e.key==='ArrowLeft'?-d:e.key==='ArrowRight'?d:0,dy=e.key==='ArrowUp'?-d:e.key==='ArrowDown'?d:0;
@@ -506,5 +593,5 @@ window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();def
 $('installApp').addEventListener('click',async()=>{if(!deferredInstall)return;await deferredInstall.prompt();deferredInstall=null;$('installApp').hidden=true;});
 window.addEventListener('appinstalled',()=>{$('installApp').hidden=true;});
 if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost' || location.hostname==='127.0.0.1'))navigator.serviceWorker.register('./sw.js',{scope:'./'}).catch(()=>{});
-window.__testBildbibliotek={state,loadImage,addFiles,addImageFile,exportOne,drawShape,render,selectImage,selectShape,renderLayers,zoomLens,zoomHandleAt,resizeZoomSource,moveZoomSource,setTheme,recolorSelected,reorderShape,buildPalettes,shortcutLayout,shortcutSummary,openShortcutEditor,textLayout,bbox,hit,mouseDown,mouseMove,mouseUp,previewFitScale,previewScale,setPreviewZoom,changePreviewZoom,fitPreview,togglePanView,togglePreviewZoomPanel,closePreviewZoomPanel,publish,undo,redo,sizeOut,repoInfo,connectGithub,disconnectGithub,get isConnected(){return isConnected;}};
+window.__testBildbibliotek={state,loadImage,addFiles,addImageFile,exportOne,drawShape,render,selectImage,selectShape,renderLayers,zoomLens,zoomHandleAt,resizeZoomSource,moveZoomSource,setTheme,recolorSelected,reorderShape,buildPalettes,shortcutLayout,shortcutSummary,openShortcutEditor,nextSeriesStep,createNextSeriesStep,openSeriesEditor,saveProject,openProject,textLayout,bbox,hit,mouseDown,mouseMove,mouseUp,previewFitScale,previewScale,setPreviewZoom,changePreviewZoom,fitPreview,togglePanView,togglePreviewZoomPanel,closePreviewZoomPanel,publish,undo,redo,sizeOut,repoInfo,connectGithub,disconnectGithub,get isConnected(){return isConnected;}};
 })();
