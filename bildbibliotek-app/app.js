@@ -130,7 +130,18 @@ async function redo(){const it=current();if(!it||!state.redo.length)return;const
 function selectImage(index){closePreviewZoomPanel();if(index<0||index>=state.images.length){state.active=-1;state.previewZoom=null;state.panView=false;state.panDrag=null;$('canvasStage').hidden=true;$('canvas').hidden=true;$('empty').hidden=false;renderList();renderLayers();updateZoomPanel();updatePreviewControls();return;}state.active=index;clearHistory();state.drawing=null;state.crop=null;state.previewZoom=null;state.panView=false;state.panDrag=null;const it=current();FIELDS.fileName.value=it.name;FIELDS.altText.value=it.alt;$('empty').hidden=true;$('canvasStage').hidden=false;$('canvas').hidden=false;$('removeImage').disabled=false;$('applyCrop').disabled=true;$('cancelCrop').disabled=true;$('stepStart').value=it.steps||1;renderList();render();$('canvasHost').scrollLeft=0;$('canvasHost').scrollTop=0;}
 function renderList(){const list=$('imageList');list.replaceChildren();state.images.forEach((it,i)=>{const b=document.createElement('button');b.className='image-item'+(i===state.active?' active':'');b.type='button';const im=document.createElement('img');im.src=it.src;const x=document.createElement('div');const title=document.createElement('strong');title.textContent=it.name||'image';const detail=document.createElement('small');detail.textContent=(it.img?.naturalWidth||'')+' x '+(it.img?.naturalHeight||'')+' px';x.append(title,detail);b.append(im,x);b.addEventListener('click',()=>selectImage(i));list.append(b);});text('count',state.images.length+' bilder');if(!state.images.length){const p=document.createElement('p');p.className='muted small';p.textContent='Inga bilder \u00e4nnu.';list.append(p);$('removeImage').disabled=true;}}
 function point(evt){const r=canvas.getBoundingClientRect();return{x:(evt.clientX-r.left)*canvas.width/r.width,y:(evt.clientY-r.top)*canvas.height/r.height};}
-function bbox(s){if(s.kind==='shortcut'){const l=shortcutLayout(s,canvas.width||1600);return{left:s.x,top:s.y,right:s.x+l.width,bottom:s.y+l.height};}return {left:Math.min(s.x,s.x2??s.x),top:Math.min(s.y,s.y2??s.y),right:Math.max(s.x,s.x2??s.x),bottom:Math.max(s.y,s.y2??s.y)};}
+
+function textLayout(s,W,measureCtx=ctx){
+ const size=s.font||Math.max(23,Math.round(W/45));
+ const lines=String(s.text||'').split('\n');
+ measureCtx.save();
+ measureCtx.font='bold '+size+'px Segoe UI,Arial';
+ const widest=Math.max(20,...lines.map(line=>measureCtx.measureText(line).width));
+ measureCtx.restore();
+ const pad=size*.32;
+ return {size,lines,pad,width:widest+2*pad,height:size*1.35*lines.length+pad*2};
+}
+function bbox(s){if(s.kind==='text'){const m=textLayout(s,canvas.width||current()?.img?.naturalWidth||1600);return{left:s.x,top:s.y,right:s.x+m.width,bottom:s.y+m.height};}if(s.kind==='shortcut'){const l=shortcutLayout(s,canvas.width||1600);return{left:s.x,top:s.y,right:s.x+l.width,bottom:s.y+l.height};}return {left:Math.min(s.x,s.x2??s.x),top:Math.min(s.y,s.y2??s.y),right:Math.max(s.x,s.x2??s.x),bottom:Math.max(s.y,s.y2??s.y)};}
 
 function shortcutLayout(s,W){
  const steps=Array.isArray(s.steps)&&s.steps.length?s.steps:[['Ctrl','Shift','S']];
@@ -162,7 +173,7 @@ function zoomHandlePoints(s){const b=bbox(s),mx=(b.left+b.right)/2,my=(b.top+b.b
 function screenToImagePx(px=1){const r=canvas.getBoundingClientRect();return px*(canvas.width/(r.width||canvas.width));}
 function zoomHandleAt(s,p){const limit=screenToImagePx(12);for(const [name,x,y] of zoomHandlePoints(s)){if(Math.hypot(x-p.x,y-p.y)<=limit)return name;}return null;}
 function pointInSource(s,p){const b=bbox(s);return p.x>=b.left&&p.x<=b.right&&p.y>=b.top&&p.y<=b.bottom;}
-function hit(s,p){if(s.hidden)return false;if(s.kind==='zoom')return isOverZoomLens(s,p);const b=bbox(s);const r=s.kind==='number'?Math.max(35,canvas.width/45):22;return p.x>=b.left-r&&p.x<=b.right+r&&p.y>=b.top-r&&p.y<=b.bottom+r;}
+function hit(s,p){if(s.hidden)return false;if(s.kind==='zoom')return isOverZoomLens(s,p);const b=bbox(s);const margin=Math.max(1,screenToImagePx(6));const r=s.kind==='number'?Math.max(24,canvas.width/60)+margin:margin;return p.x>=b.left-r&&p.x<=b.right+r&&p.y>=b.top-r&&p.y<=b.bottom+r;}
 // Everything in this helper is editor-only. drawIn() never invokes it on an export canvas.
 function drawZoomGuides(c,s,W,H){
  const b=bbox(s),l=zoomLens(s,W,H),px=screenToImagePx();c.save();
@@ -206,7 +217,7 @@ function drawShape(c,s,W,H,base){const x=s.x,y=s.y,x2=s.x2??x,y2=s.y2??y;const w
   break;
  }
  case'number':{const r=Math.max(24,W/60),fs=Math.max(18,Math.round(r*.95));c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fill();c.lineWidth=Math.max(3,w/2);c.strokeStyle='#fff';c.stroke();c.fillStyle='#fff';c.font='bold '+fs+'px Segoe UI,Arial';c.textAlign='center';c.textBaseline='middle';c.fillText(String(s.number||1),x,y+1);break;}
- case'text':{const size=s.font||Math.max(23,Math.round(W/45));c.font='bold '+size+'px Segoe UI,Arial';let lines=String(s.text||'').split('\n'),maxWidth=Math.max(20,...lines.map(l=>c.measureText(l).width)),pad=size*.32;const h=size*1.35*lines.length+pad*2;c.fillStyle='#fff';c.globalAlpha=.93;c.fillRect(x,y,maxWidth+2*pad,h);c.globalAlpha=1;c.lineWidth=Math.max(2,w/2);c.strokeStyle=col;c.strokeRect(x,y,maxWidth+2*pad,h);c.fillStyle='#243c38';lines.forEach((line,i)=>c.fillText(line,x+pad,y+pad+size*(i*1.35+1)));break;}
+ case'text':{const m=textLayout(s,W,c),{size,lines,pad}=m;c.font='bold '+size+'px Segoe UI,Arial';c.fillStyle='#fff';c.globalAlpha=.93;c.fillRect(x,y,m.width,m.height);c.globalAlpha=1;c.lineWidth=Math.max(2,w/2);c.strokeStyle=col;c.strokeRect(x,y,m.width,m.height);c.fillStyle='#243c38';lines.forEach((line,i)=>c.fillText(line,x+pad,y+pad+size*(i*1.35+1)));break;}
  case'highlight':{const b=bbox(s);c.fillStyle=col;c.globalAlpha=.22;c.fillRect(b.left,b.top,b.right-b.left,b.bottom-b.top);c.globalAlpha=.9;c.lineWidth=Math.max(2,w/2);c.strokeRect(b.left,b.top,b.right-b.left,b.bottom-b.top);break;}
  case'mask':{const b=bbox(s);c.fillStyle='#232b2e';c.fillRect(b.left,b.top,b.right-b.left,b.bottom-b.top);break;}
  case'spotlight':{const b=bbox(s);c.beginPath();c.rect(0,0,W,H);c.rect(b.left,b.top,Math.max(1,b.right-b.left),Math.max(1,b.bottom-b.top));c.fillStyle='rgba(6,20,24,.53)';c.fill('evenodd');c.strokeStyle='#fff';c.lineWidth=Math.max(3,w/2);c.strokeRect(b.left,b.top,b.right-b.left,b.bottom-b.top);break;}
@@ -366,7 +377,7 @@ function buildPalettes(){const container=$('paletteRows');container.replaceChild
  row.append(header,swatches);container.append(row);
  }syncPaletteSelection();}
 
-function setTool(tool){if(state.panView){state.panView=false;state.panDrag=null;updatePanView();}state.tool=tool;state.drawing=null;if(tool!=='select'){state.chosen=-1;$('color').value=state.markColor||DEFAULT_MARK_COLORS[state.theme];syncPaletteSelection();}
+function setTool(tool){canvas.style.cursor='';if(state.panView){state.panView=false;state.panDrag=null;updatePanView();}state.tool=tool;state.drawing=null;if(tool!=='select'){state.chosen=-1;$('color').value=state.markColor||DEFAULT_MARK_COLORS[state.theme];syncPaletteSelection();}
  document.querySelectorAll('[data-tool]').forEach(b=>b.classList.toggle('active',b.dataset.tool===tool));
  const map={number:'Klicka för att placera 1, 2, 3 ...',text:'Klicka för att lägga till text',zoom:'Klicka för 2× zoom, eller dra ett eget källområde',spotlight:'Dra för att framhäva en del',mask:'Täck hela den hemliga texten',select:'Markera en zoomlins – dra källrutan eller dess handtag för att justera utsnittet'};
  text('toolTip',map[tool]||'Dra med musen över bilden.');render();}
@@ -379,12 +390,13 @@ function mouseDown(e){const it=current();if(!it)return;canvas.setPointerCapture?
     handle=zoomHandleAt(selected,p);
     if(handle){chosen=prev;mode='resize';}else if(isOverZoomLens(selected,p)){chosen=prev;mode='lens';}else if(pointInSource(selected,p)){chosen=prev;mode='source';}
   }
-  if(chosen<0){for(let i=it.shapes.length-1;i>=0;i--){if(hit(it.shapes[i],p)){chosen=i;mode=it.shapes[i].kind==='zoom'?'lens':'shape';break;}}}
+  if(chosen<0&&selected&&selected.kind!=='zoom'&&hit(selected,p)){chosen=prev;mode='shape';}
+   if(chosen<0){for(let i=it.shapes.length-1;i>=0;i--){if(hit(it.shapes[i],p)){chosen=i;mode=it.shapes[i].kind==='zoom'?'lens':'shape';break;}}}
   state.chosen=chosen;
   if(chosen>=0){saveHistory();state.dragging={point:p,base:clone(it.shapes[chosen]),mode,handle};syncSelectedControls();}
   render();return;
  }
- if(tool==='number'||tool==='text'){if(tool==='number'){saveHistory();const n=Math.max(1,Number($('stepStart').value)||1);it.shapes.push({kind:'number',x:p.x,y:p.y,color:$('color').value,width:Number($('stroke').value),number:n});it.steps=n+1;$('stepStart').value=it.steps;}else{const s=prompt('Text för etiketten (kort text):');if(!s)return;saveHistory();it.shapes.push({kind:'text',x:p.x,y:p.y,text:s.slice(0,120),color:$('color').value,width:Number($('stroke').value)});}state.chosen=-1;render();return;}
+ if(tool==='number'||tool==='text'){if(tool==='number'){saveHistory();const n=Math.max(1,Number($('stepStart').value)||1);it.shapes.push({kind:'number',x:p.x,y:p.y,color:$('color').value,width:Number($('stroke').value),number:n});it.steps=n+1;$('stepStart').value=it.steps;state.chosen=-1;render();}else{const s=prompt('Text för etiketten (kort text):');if(!s)return;saveHistory();it.shapes.push({kind:'text',x:p.x,y:p.y,text:s.slice(0,120),color:$('color').value,width:Number($('stroke').value)});state.chosen=it.shapes.length-1;setTool('select');text('toolTip','Textrutan är vald. Dra den med musen till rätt plats, eller använd piltangenterna.');}return;}
  state.drawing={kind:tool,x:p.x,y:p.y,x2:p.x,y2:p.y,color:$('color').value,width:Number($('stroke').value)};render();
 }
 function mouseMove(e){const it=current();if(!it)return;if(state.panView){if(state.panDrag){const host=$('canvasHost');host.scrollLeft=state.panDrag.left-(e.clientX-state.panDrag.x);host.scrollTop=state.panDrag.top-(e.clientY-state.panDrag.y);}return;}const p=point(e);
@@ -396,7 +408,8 @@ function mouseMove(e){const it=current();if(!it)return;if(state.panView){if(stat
   else it.shapes[state.chosen]=dragShape(b,dx,dy);
   render();return;
  }
- if(state.drawing){state.drawing.x2=p.x;state.drawing.y2=p.y;render();}
+ if(state.drawing){state.drawing.x2=p.x;state.drawing.y2=p.y;render();return;}
+ if(state.tool==='select'&&!state.panView){canvas.style.cursor=it.shapes.some(s=>hit(s,p))?'move':'default';}
 }
 function constrainedRect(s){const t=$('cropRatio').value;if(t==='free')return s;const [w,h]=t.split(':').map(Number),ratio=w/h;const p={...s};let dx=p.x2-p.x,dy=p.y2-p.y,sx=Math.sign(dx)||1,sy=Math.sign(dy)||1;dx=Math.abs(dx);dy=Math.abs(dy);if(dx/dy>ratio)dx=dy*ratio;else dy=dx/ratio;p.x2=Math.min(canvas.width,Math.max(0,p.x+sx*dx));p.y2=Math.min(canvas.height,Math.max(0,p.y+sy*dy));return p;}
 function mouseUp(e){const it=current();if(!it)return;if(state.panDrag){state.panDrag=null;$('canvasHost').classList.remove('is-panning');return;}if(state.panView)return;
@@ -493,5 +506,5 @@ window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();def
 $('installApp').addEventListener('click',async()=>{if(!deferredInstall)return;await deferredInstall.prompt();deferredInstall=null;$('installApp').hidden=true;});
 window.addEventListener('appinstalled',()=>{$('installApp').hidden=true;});
 if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost' || location.hostname==='127.0.0.1'))navigator.serviceWorker.register('./sw.js',{scope:'./'}).catch(()=>{});
-window.__testBildbibliotek={state,loadImage,addFiles,addImageFile,exportOne,drawShape,render,selectImage,selectShape,renderLayers,zoomLens,zoomHandleAt,resizeZoomSource,moveZoomSource,setTheme,recolorSelected,reorderShape,buildPalettes,shortcutLayout,shortcutSummary,openShortcutEditor,previewFitScale,previewScale,setPreviewZoom,changePreviewZoom,fitPreview,togglePanView,togglePreviewZoomPanel,closePreviewZoomPanel,publish,undo,redo,sizeOut,repoInfo,connectGithub,disconnectGithub,get isConnected(){return isConnected;}};
+window.__testBildbibliotek={state,loadImage,addFiles,addImageFile,exportOne,drawShape,render,selectImage,selectShape,renderLayers,zoomLens,zoomHandleAt,resizeZoomSource,moveZoomSource,setTheme,recolorSelected,reorderShape,buildPalettes,shortcutLayout,shortcutSummary,openShortcutEditor,textLayout,bbox,hit,mouseDown,mouseMove,mouseUp,previewFitScale,previewScale,setPreviewZoom,changePreviewZoom,fitPreview,togglePanView,togglePreviewZoomPanel,closePreviewZoomPanel,publish,undo,redo,sizeOut,repoInfo,connectGithub,disconnectGithub,get isConnected(){return isConnected;}};
 })();

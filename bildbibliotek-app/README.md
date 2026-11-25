@@ -61,3 +61,9 @@ Välj **Novia Design** (svart, vitt, grått och Novia-rött) eller **Kursmateria
 ## v0.10 – hopfällbar visningszoom
 
 Zoomverktygen visas som standard inte som en egen rad. Klicka på **förstoringsglaset uppe till höger i bildförhandsvisningen** för att öppna den kompakta panelen med `−`, reglage, `+`, `Anpassa`, `100 %` och `Flytta vy`. Ikonen, krysset, Escape eller klick utanför stänger den. **Flytta vy** stänger panelen automatiskt och låter dig dra runt i bilden. Zoomvärden och originalexport påverkas inte av att panelen öppnas/stängs. PWA cache v0.10.
+
+## v0.11 – Textetiketter kan flyttas med mus
+
+- Textens klickyta är nu hela den ritade textrutan, med 6 skärmpixlars tolerans även när visningszoomen är låg. Tidigare användes endast en liten osynlig punkt i textrutans hörn.
+- Efter att du lagt till text växlar appen automatiskt till **Flytta** och väljer den nya etiketten. Klicka och dra någonstans i den för att placera den. Du kan också välja den via **Objekt & lager**.
+- Valda lager får företräde vid direktdrag på överlappande objekt. Pixlarnas placering, skärmbildens upplösning och exporten påverkas inte av ändringen.

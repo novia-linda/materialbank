@@ -1,5 +1,14 @@
 # Ändringslogg
 
+## v0.11 · 2026-11-25
+
+- Korrigerat träffområdet för textrutor: musen kan nu markera och dra i hela den synliga textrutan, inte enbart nära dess övre vänstra punkt.
+- Textetiketter går automatiskt till Flytta-läge och markeras när de skapas.
+- Valt lager prioriteras vid klick på överlappande objekt, och muspekaren visar när objekt kan flyttas.
+- Förbättrad träffmarginal vid visningszoom samt klickyta för numrerade steg. Export och bildprojektformat oförändrade.
+- PWA-cache v0.11.
+
+
 ## v0.10 · 2026-11-25
 
 - Visningszoom ligger nu bakom en liten ikon uppe till höger i bildens förhandsvisning.

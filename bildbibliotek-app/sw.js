@@ -1,5 +1,5 @@
 // Offline cache contains ONLY public app assets, never screenshots, GitHub API responses or access keys.
-const CACHE='bildbibliotek-pwa-v010';
+const CACHE='bildbibliotek-pwa-v011';
 const CORE=['./','./index.html','./app.js','./style.css','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(names=>Promise.all(names.filter(n=>n.startsWith('bildbibliotek-pwa-')&&n!==CACHE).map(n=>caches.delete(n)))).then(()=>self.clients.claim()));});
