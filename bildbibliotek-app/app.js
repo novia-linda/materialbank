@@ -90,8 +90,26 @@ function setPreviewZoom(value,clientX,clientY){
 function changePreviewZoom(factor,x,y){setPreviewZoom(previewScale()*factor,x,y);}
 function fitPreview(){if(!current())return;state.previewZoom=null;applyPreviewScale();$('canvasHost').scrollLeft=0;$('canvasHost').scrollTop=0;}
 function updatePanView(){updatePreviewControls();if(!state.panView)$('canvasHost').classList.remove('is-panning');}
-function togglePanView(){if(!current())return;const next=!state.panView;if(next)setTool('select');state.panView=next;state.panDrag=null;updatePanView();}
+function togglePanView(){if(!current())return;const next=!state.panView;if(next)setTool('select');state.panView=next;state.panDrag=null;updatePanView();if(next)closePreviewZoomPanel();}
+
+function closePreviewZoomPanel(returnFocus=false){
+ const panel=$('previewZoomPanel'),toggle=$('previewZoomToggle');
+ if(!panel||panel.hidden)return;
+ panel.hidden=true;toggle.setAttribute('aria-expanded','false');
+ toggle.setAttribute('aria-label','Visa visningszoom');toggle.title='Visa visningszoom';
+ if(returnFocus)toggle.focus();
+}
+function togglePreviewZoomPanel(){
+ const panel=$('previewZoomPanel'),toggle=$('previewZoomToggle'),open=panel.hidden;
+ panel.hidden=!open;toggle.setAttribute('aria-expanded',String(open));
+ toggle.setAttribute('aria-label',open?'Dölj visningszoom':'Visa visningszoom');
+ toggle.title=open?'Dölj visningszoom':'Visa visningszoom';
+}
 function initPreviewControls(){
+ $('previewZoomToggle').addEventListener('click',togglePreviewZoomPanel);
+ $('previewZoomClose').addEventListener('click',()=>closePreviewZoomPanel(true));
+ document.addEventListener('pointerdown',e=>{if(!$('canvasPreview').contains(e.target))closePreviewZoomPanel();});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('previewZoomPanel').hidden){e.preventDefault();closePreviewZoomPanel(true);}});
  $('previewZoomIn').addEventListener('click',()=>changePreviewZoom(1.25));
  $('previewZoomOut').addEventListener('click',()=>changePreviewZoom(.8));
  $('previewZoomSlider').addEventListener('input',e=>setPreviewZoom(Number(e.target.value)/100));
@@ -109,7 +127,7 @@ function saveHistory(){const it=current();if(!it)return;state.undo.push({id:it.i
 async function restoreSnapshot(s){const it=current();if(!it||s.id!==it.id)return;it.src=s.src;it.img=await loadImage(s.src);it.shapes=clone(s.shapes);it.crop=s.crop?clone(s.crop):null;it.steps=s.steps;state.chosen=-1;render();}
 async function undo(){const it=current();if(!it||!state.undo.length)return;const s=state.undo.pop();state.redo.push({id:it.id,src:it.src,shapes:clone(it.shapes),crop:it.crop,steps:it.steps});await restoreSnapshot(s);}
 async function redo(){const it=current();if(!it||!state.redo.length)return;const s=state.redo.pop();state.undo.push({id:it.id,src:it.src,shapes:clone(it.shapes),crop:it.crop,steps:it.steps});await restoreSnapshot(s);}
-function selectImage(index){if(index<0||index>=state.images.length){state.active=-1;state.previewZoom=null;state.panView=false;state.panDrag=null;$('canvasStage').hidden=true;$('canvas').hidden=true;$('empty').hidden=false;renderList();renderLayers();updateZoomPanel();updatePreviewControls();return;}state.active=index;clearHistory();state.drawing=null;state.crop=null;state.previewZoom=null;state.panView=false;state.panDrag=null;const it=current();FIELDS.fileName.value=it.name;FIELDS.altText.value=it.alt;$('empty').hidden=true;$('canvasStage').hidden=false;$('canvas').hidden=false;$('removeImage').disabled=false;$('applyCrop').disabled=true;$('cancelCrop').disabled=true;$('stepStart').value=it.steps||1;renderList();render();$('canvasHost').scrollLeft=0;$('canvasHost').scrollTop=0;}
+function selectImage(index){closePreviewZoomPanel();if(index<0||index>=state.images.length){state.active=-1;state.previewZoom=null;state.panView=false;state.panDrag=null;$('canvasStage').hidden=true;$('canvas').hidden=true;$('empty').hidden=false;renderList();renderLayers();updateZoomPanel();updatePreviewControls();return;}state.active=index;clearHistory();state.drawing=null;state.crop=null;state.previewZoom=null;state.panView=false;state.panDrag=null;const it=current();FIELDS.fileName.value=it.name;FIELDS.altText.value=it.alt;$('empty').hidden=true;$('canvasStage').hidden=false;$('canvas').hidden=false;$('removeImage').disabled=false;$('applyCrop').disabled=true;$('cancelCrop').disabled=true;$('stepStart').value=it.steps||1;renderList();render();$('canvasHost').scrollLeft=0;$('canvasHost').scrollTop=0;}
 function renderList(){const list=$('imageList');list.replaceChildren();state.images.forEach((it,i)=>{const b=document.createElement('button');b.className='image-item'+(i===state.active?' active':'');b.type='button';const im=document.createElement('img');im.src=it.src;const x=document.createElement('div');const title=document.createElement('strong');title.textContent=it.name||'image';const detail=document.createElement('small');detail.textContent=(it.img?.naturalWidth||'')+' x '+(it.img?.naturalHeight||'')+' px';x.append(title,detail);b.append(im,x);b.addEventListener('click',()=>selectImage(i));list.append(b);});text('count',state.images.length+' bilder');if(!state.images.length){const p=document.createElement('p');p.className='muted small';p.textContent='Inga bilder \u00e4nnu.';list.append(p);$('removeImage').disabled=true;}}
 function point(evt){const r=canvas.getBoundingClientRect();return{x:(evt.clientX-r.left)*canvas.width/r.width,y:(evt.clientY-r.top)*canvas.height/r.height};}
 function bbox(s){if(s.kind==='shortcut'){const l=shortcutLayout(s,canvas.width||1600);return{left:s.x,top:s.y,right:s.x+l.width,bottom:s.y+l.height};}return {left:Math.min(s.x,s.x2??s.x),top:Math.min(s.y,s.y2??s.y),right:Math.max(s.x,s.x2??s.x),bottom:Math.max(s.y,s.y2??s.y)};}
@@ -475,5 +493,5 @@ window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();def
 $('installApp').addEventListener('click',async()=>{if(!deferredInstall)return;await deferredInstall.prompt();deferredInstall=null;$('installApp').hidden=true;});
 window.addEventListener('appinstalled',()=>{$('installApp').hidden=true;});
 if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost' || location.hostname==='127.0.0.1'))navigator.serviceWorker.register('./sw.js',{scope:'./'}).catch(()=>{});
-window.__testBildbibliotek={state,loadImage,addFiles,addImageFile,exportOne,drawShape,render,selectImage,selectShape,renderLayers,zoomLens,zoomHandleAt,resizeZoomSource,moveZoomSource,setTheme,recolorSelected,reorderShape,buildPalettes,shortcutLayout,shortcutSummary,openShortcutEditor,previewFitScale,previewScale,setPreviewZoom,changePreviewZoom,fitPreview,togglePanView,publish,undo,redo,sizeOut,repoInfo,connectGithub,disconnectGithub,get isConnected(){return isConnected;}};
+window.__testBildbibliotek={state,loadImage,addFiles,addImageFile,exportOne,drawShape,render,selectImage,selectShape,renderLayers,zoomLens,zoomHandleAt,resizeZoomSource,moveZoomSource,setTheme,recolorSelected,reorderShape,buildPalettes,shortcutLayout,shortcutSummary,openShortcutEditor,previewFitScale,previewScale,setPreviewZoom,changePreviewZoom,fitPreview,togglePanView,togglePreviewZoomPanel,closePreviewZoomPanel,publish,undo,redo,sizeOut,repoInfo,connectGithub,disconnectGithub,get isConnected(){return isConnected;}};
 })();

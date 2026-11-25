@@ -1,5 +1,13 @@
 # Ändringslogg
 
+## v0.10 · 2026-11-25
+
+- Visningszoom ligger nu bakom en liten ikon uppe till höger i bildens förhandsvisning.
+- Zoomreglage, plus/minus, Anpassa, 100 % och Flytta vy öppnas i en kompakt panel utan att ta vertikalt utrymme.
+- Panelen stängs med samma ikon, kryss, Escape eller genom att klicka utanför. Aktivering av Flytta vy stänger panelen automatiskt.
+- Originalbild, markeringar och export påverkas inte. PWA-cache uppdaterad till v0.10.
+
+
 ## v0.9 · 2026-11-25
 
 - Visningszoom med ut/in, reglage, Anpassa och 100 % originalstorlek.

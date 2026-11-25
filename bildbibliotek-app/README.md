@@ -57,3 +57,7 @@ Välj **Novia Design** (svart, vitt, grått och Novia-rött) eller **Kursmateria
 - **✋ Flytta vy** gör det möjligt att dra över stora bilder utan att lägga till eller flytta ritobjekt; Ctrl + mushjul zoomar kring pekaren. Vanlig rullning fungerar också.
 - Bildfilens pixlar, markeringarnas koordinater, exporterad PNG/JPEG och GitHub-publicerade filer påverkas inte av visningszoom. Det befintliga **Zoom**-verktyget för exporterade förstoringslinser är separat.
 - Bakåtkompatibelt med `.bildprojekt.json` v3. PWA-cache v0.9.
+
+## v0.10 – hopfällbar visningszoom
+
+Zoomverktygen visas som standard inte som en egen rad. Klicka på **förstoringsglaset uppe till höger i bildförhandsvisningen** för att öppna den kompakta panelen med `−`, reglage, `+`, `Anpassa`, `100 %` och `Flytta vy`. Ikonen, krysset, Escape eller klick utanför stänger den. **Flytta vy** stänger panelen automatiskt och låter dig dra runt i bilden. Zoomvärden och originalexport påverkas inte av att panelen öppnas/stängs. PWA cache v0.10.
