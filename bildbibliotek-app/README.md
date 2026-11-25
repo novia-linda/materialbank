@@ -35,3 +35,11 @@ I Chromium testades följande mot ett syntetiskt skärmklipp: 9 paletter/45 fär
 Välj **Novia Design** (svart, vitt, grått och Novia-rött) eller **Kursmaterial** (mjukare palett) överst i appen. Läget sparas lokalt. Endast nya objekt får ny standardfärg; befintliga objekt ändras inte.
 
 **Zoom:** Klicka för att lägga in 2×-standardlins eller dra ett anpassat källområde. Markera zoomobjektet och dra den grå källrutan, dess hörn-/sidhandtag eller den runda linsen var för sig. Källrutans redigeringshjälp kommer aldrig med i exporten. För rutor och pilar, använd vanliga verktyg.
+
+## Nytt i v0.7 – Tangentbordsgenvägar
+
+- **⌨ Genväg** (eller K) öppnar en editor med två lägen: tangenter samtidigt (`Ctrl + Shift + S`) och steg i följd (`Alt → H → V`).
+- Välj tangenter manuellt eller spela in i tangentfångaren. På mobil används manuella val.
+- Du kan justera storlek och flytta det färdiga objektet, ändra det via **Objekt & lager**, dölja det och ångra ändringar.
+- Genvägen följer med vid PNG/JPEG-export, GitHub-uppladdning och i sparade `.bildprojekt.json`; tidigare projekt fungerar fortsatt.
+- Den installerade PWA:n använder cache-version `bildbibliotek-pwa-v07`.
