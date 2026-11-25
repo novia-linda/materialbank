@@ -116,3 +116,25 @@
 :root[data-theme="novia"] .palette-row.novia-palette{border-left:3px solid #ff1325;padding-left:10px;background:#fafafa}
 :root[data-theme="novia"] .palette-swatch.current{outline-color:#ff1325}
 :root[data-theme="novia"] .palette-row.novia-palette strong{color:#000}
+
+/* v0.9: view-only zoom and pan; exported bitmap remains unchanged */
+.preview-zoom-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px;padding:9px 10px;border:1px solid #dbe5df;border-radius:9px;background:#f8faf8}
+.preview-zoom-title{font-size:12px;font-weight:700;color:#344840;margin-right:3px}
+.preview-zoom-bar .button{min-width:34px;min-height:34px;font-weight:700}
+.preview-zoom-bar input[type=range]{width:clamp(110px,19vw,240px);accent-color:#527b6c;cursor:pointer}
+#previewZoomValue{display:inline-block;min-width:58px;font-size:13px;font-weight:700;color:#263f38;font-variant-numeric:tabular-nums;text-align:center}
+.preview-zoom-hint{font-size:11px;color:#71817b;margin-left:auto}
+.preview-zoom-bar button.is-active{background:#dcece5;border-color:#789f90}
+.preview-zoom-bar :disabled{opacity:.45;cursor:not-allowed}
+.canvas-host{margin-top:6px;justify-content:flex-start;align-items:flex-start;overscroll-behavior:contain}
+.canvas-host .empty-state{margin:auto}
+.canvas-stage{display:flex;align-items:center;justify-content:center;flex:0 0 auto;min-width:100%;min-height:100%;box-sizing:border-box}
+.canvas-stage[hidden]{display:none!important}
+.canvas-stage #canvas{max-width:none;max-height:none;object-fit:fill;flex:0 0 auto}
+.canvas-host.pan-view #canvas{cursor:grab}
+.canvas-host.pan-view.is-panning #canvas{cursor:grabbing}
+:root[data-theme="novia"] .preview-zoom-bar{border-radius:0;background:#f5f5f5;border-color:#ccc}
+:root[data-theme="novia"] .preview-zoom-title,:root[data-theme="novia"] #previewZoomValue{color:#000}
+:root[data-theme="novia"] .preview-zoom-bar input[type=range]{accent-color:#ff1325}
+:root[data-theme="novia"] .preview-zoom-bar button.is-active{background:#fff;border-color:#ff1325;box-shadow:inset 0 -3px 0 #ff1325}
+@media(max-width:680px){.preview-zoom-bar{gap:6px}.preview-zoom-bar input[type=range]{width:115px}.preview-zoom-hint{margin:0;flex-basis:100%}}

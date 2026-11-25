@@ -50,3 +50,10 @@ Välj **Novia Design** (svart, vitt, grått och Novia-rött) eller **Kursmateria
 - **Novia Design** ger alltid `#FF1325` som startfärg för **nya** markeringar när designläget väljs. Befintliga objekt behåller sina färger.
 - Att välja en äldre markering med annan färg ändrar inte standardfärgen för kommande nya objekt; ett verktygsbyte återställer senast aktivt vald ritfärg.
 - Paletten markerar den färg som visas i färgväljaren. PWA-cache: `bildbibliotek-pwa-v08`.
+
+## v0.9 – Visningszoom för stora bilder
+
+- Knapp `−`, zoomreglage, `+`, **Anpassa** och **100 %** zoomar enbart arbetsytans förhandsvisning. En nyvald bild anpassas automatiskt till fönstret.
+- **✋ Flytta vy** gör det möjligt att dra över stora bilder utan att lägga till eller flytta ritobjekt; Ctrl + mushjul zoomar kring pekaren. Vanlig rullning fungerar också.
+- Bildfilens pixlar, markeringarnas koordinater, exporterad PNG/JPEG och GitHub-publicerade filer påverkas inte av visningszoom. Det befintliga **Zoom**-verktyget för exporterade förstoringslinser är separat.
+- Bakåtkompatibelt med `.bildprojekt.json` v3. PWA-cache v0.9.

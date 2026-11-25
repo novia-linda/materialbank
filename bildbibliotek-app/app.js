@@ -1,7 +1,7 @@
 'use strict';
 (()=>{
 const $=id=>document.getElementById(id);
-const state={images:[],active:-1,tool:'select',drawing:null,crop:null,chosen:-1,dragging:null,undo:[],redo:[],lastLog:'',published:null,busy:false,zoomGuidesVisible:true,theme:'course',markColor:'#7d9c85'};
+const state={images:[],active:-1,tool:'select',drawing:null,crop:null,chosen:-1,dragging:null,undo:[],redo:[],lastLog:'',published:null,busy:false,zoomGuidesVisible:true,theme:'course',markColor:'#7d9c85',previewZoom:null,panView:false,panDrag:null};
 const canvas=$('canvas'),ctx=canvas.getContext('2d',{willReadFrequently:false});
 const FIELDS={fileName:$('fileName'),altText:$('altText')};
 const DEFAULT_MARK_COLORS={novia:'#ff1325',course:'#7d9c85'};
@@ -44,12 +44,72 @@ function loadImage(src){return new Promise((resolve,reject)=>{const im=new Image
 function readFile(f){return new Promise((resolve,reject)=>{const fr=new FileReader();fr.onload=()=>resolve(fr.result);fr.onerror=reject;fr.readAsDataURL(f);});}
 async function addImageFile(file){if(!file||!file.type.startsWith('image/'))return;const data=await readFile(file);const image=await loadImage(data);if(image.naturalWidth>6500||image.naturalHeight>6500||image.naturalWidth*image.naturalHeight>26000000)throw Error('Bilden \u00e4r mycket stor. Anv\u00e4nd ett mindre sk\u00e4rmklipp.');const item={id:nowStamp(),name:normalize(file.name.replace(/\.[^.]+$/,'')),alt:'',src:canvasData(image),img:image,shapes:[],crop:null,steps:1};state.images.push(item);selectImage(state.images.length-1);}
 async function addFiles(files){let n=0;for(const file of Array.from(files||[])){try{await addImageFile(file);n++;}catch(e){alert((file?.name||'Bild')+': '+e.message);}}if(n)notify(n+' bild(er) tillagda. Inget har publicerats.');}
+
+const PREVIEW_MIN=.02,PREVIEW_MAX=4;
+function clampView(v,a,b){return Math.max(a,Math.min(b,v));}
+function previewFitScale(){
+ const it=current(),host=$('canvasHost');if(!it||!host)return 1;
+ return clampView(Math.min(1,(host.clientWidth-36)/it.img.naturalWidth,(host.clientHeight-36)/it.img.naturalHeight),PREVIEW_MIN,PREVIEW_MAX);
+}
+function previewScale(){return state.previewZoom===null?previewFitScale():state.previewZoom;}
+function updatePreviewControls(){
+ const enabled=!!current();
+ for(const id of ['previewZoomOut','previewZoomIn','previewZoomSlider','previewZoomFit','previewZoomActual','previewPan'])$(id).disabled=!enabled;
+ const scale=enabled?previewScale():1;
+ $('previewZoomValue').textContent=enabled?(scale<.1?(scale*100).toFixed(1):Math.round(scale*100))+' %':'–';
+ $('previewZoomSlider').value=String(clampView(Math.round(scale*100),2,400));
+ $('previewZoomFit').classList.toggle('is-active',enabled&&state.previewZoom===null);
+ $('previewZoomFit').setAttribute('aria-pressed',String(enabled&&state.previewZoom===null));
+ $('previewPan').classList.toggle('is-active',enabled&&state.panView);
+ $('previewPan').setAttribute('aria-pressed',String(enabled&&state.panView));
+ $('canvasHost').classList.toggle('pan-view',enabled&&state.panView);
+}
+function applyPreviewScale(){
+ const it=current(),host=$('canvasHost'),stage=$('canvasStage');
+ if(!it||stage.hidden){updatePreviewControls();return;}
+ const scale=previewScale();
+ const w=Math.max(1,Math.round(it.img.naturalWidth*scale)),h=Math.max(1,Math.round(it.img.naturalHeight*scale));
+ canvas.style.width=w+'px';canvas.style.height=h+'px';
+ stage.style.width=Math.max(host.clientWidth,w+36)+'px';
+ stage.style.height=Math.max(host.clientHeight,h+36)+'px';
+ updatePreviewControls();
+}
+function setPreviewZoom(value,clientX,clientY){
+ if(!current())return;
+ const host=$('canvasHost'),before=canvas.getBoundingClientRect(),hostRect=host.getBoundingClientRect();
+ const x=Number.isFinite(clientX)?clientX:hostRect.left+host.clientWidth/2;
+ const y=Number.isFinite(clientY)?clientY:hostRect.top+host.clientHeight/2;
+ const relX=before.width?clampView((x-before.left)/before.width,0,1):.5;
+ const relY=before.height?clampView((y-before.top)/before.height,0,1):.5;
+ state.previewZoom=clampView(Number(value)||previewFitScale(),PREVIEW_MIN,PREVIEW_MAX);
+ applyPreviewScale();
+ const after=canvas.getBoundingClientRect();
+ host.scrollLeft+=after.left+relX*after.width-x;
+ host.scrollTop+=after.top+relY*after.height-y;
+}
+function changePreviewZoom(factor,x,y){setPreviewZoom(previewScale()*factor,x,y);}
+function fitPreview(){if(!current())return;state.previewZoom=null;applyPreviewScale();$('canvasHost').scrollLeft=0;$('canvasHost').scrollTop=0;}
+function updatePanView(){updatePreviewControls();if(!state.panView)$('canvasHost').classList.remove('is-panning');}
+function togglePanView(){if(!current())return;const next=!state.panView;if(next)setTool('select');state.panView=next;state.panDrag=null;updatePanView();}
+function initPreviewControls(){
+ $('previewZoomIn').addEventListener('click',()=>changePreviewZoom(1.25));
+ $('previewZoomOut').addEventListener('click',()=>changePreviewZoom(.8));
+ $('previewZoomSlider').addEventListener('input',e=>setPreviewZoom(Number(e.target.value)/100));
+ $('previewZoomFit').addEventListener('click',fitPreview);
+ $('previewZoomActual').addEventListener('click',()=>setPreviewZoom(1));
+ $('previewPan').addEventListener('click',togglePanView);
+ const host=$('canvasHost');
+ host.addEventListener('wheel',e=>{if(!current()||!(e.ctrlKey||e.metaKey))return;e.preventDefault();changePreviewZoom(e.deltaY<0?1.15:1/1.15,e.clientX,e.clientY);},{passive:false});
+ if(typeof ResizeObserver!=='undefined')new ResizeObserver(()=>{if(current())applyPreviewScale();}).observe(host);
+ else window.addEventListener('resize',()=>{if(current())applyPreviewScale();});
+ updatePreviewControls();
+}
 function clearHistory(){state.undo=[];state.redo=[];state.chosen=-1;}
 function saveHistory(){const it=current();if(!it)return;state.undo.push({id:it.id,src:it.src,shapes:clone(it.shapes),crop:it.crop?clone(it.crop):null,steps:it.steps});if(state.undo.length>35)state.undo.shift();state.redo=[];}
 async function restoreSnapshot(s){const it=current();if(!it||s.id!==it.id)return;it.src=s.src;it.img=await loadImage(s.src);it.shapes=clone(s.shapes);it.crop=s.crop?clone(s.crop):null;it.steps=s.steps;state.chosen=-1;render();}
 async function undo(){const it=current();if(!it||!state.undo.length)return;const s=state.undo.pop();state.redo.push({id:it.id,src:it.src,shapes:clone(it.shapes),crop:it.crop,steps:it.steps});await restoreSnapshot(s);}
 async function redo(){const it=current();if(!it||!state.redo.length)return;const s=state.redo.pop();state.undo.push({id:it.id,src:it.src,shapes:clone(it.shapes),crop:it.crop,steps:it.steps});await restoreSnapshot(s);}
-function selectImage(index){if(index<0||index>=state.images.length){state.active=-1;$('canvas').hidden=true;$('empty').hidden=false;renderList();renderLayers();updateZoomPanel();return;}state.active=index;clearHistory();state.drawing=null;state.crop=null;const it=current();FIELDS.fileName.value=it.name;FIELDS.altText.value=it.alt;$('empty').hidden=true;$('canvas').hidden=false;$('removeImage').disabled=false;$('applyCrop').disabled=true;$('cancelCrop').disabled=true;$('stepStart').value=it.steps||1;renderList();render();}
+function selectImage(index){if(index<0||index>=state.images.length){state.active=-1;state.previewZoom=null;state.panView=false;state.panDrag=null;$('canvasStage').hidden=true;$('canvas').hidden=true;$('empty').hidden=false;renderList();renderLayers();updateZoomPanel();updatePreviewControls();return;}state.active=index;clearHistory();state.drawing=null;state.crop=null;state.previewZoom=null;state.panView=false;state.panDrag=null;const it=current();FIELDS.fileName.value=it.name;FIELDS.altText.value=it.alt;$('empty').hidden=true;$('canvasStage').hidden=false;$('canvas').hidden=false;$('removeImage').disabled=false;$('applyCrop').disabled=true;$('cancelCrop').disabled=true;$('stepStart').value=it.steps||1;renderList();render();$('canvasHost').scrollLeft=0;$('canvasHost').scrollTop=0;}
 function renderList(){const list=$('imageList');list.replaceChildren();state.images.forEach((it,i)=>{const b=document.createElement('button');b.className='image-item'+(i===state.active?' active':'');b.type='button';const im=document.createElement('img');im.src=it.src;const x=document.createElement('div');const title=document.createElement('strong');title.textContent=it.name||'image';const detail=document.createElement('small');detail.textContent=(it.img?.naturalWidth||'')+' x '+(it.img?.naturalHeight||'')+' px';x.append(title,detail);b.append(im,x);b.addEventListener('click',()=>selectImage(i));list.append(b);});text('count',state.images.length+' bilder');if(!state.images.length){const p=document.createElement('p');p.className='muted small';p.textContent='Inga bilder \u00e4nnu.';list.append(p);$('removeImage').disabled=true;}}
 function point(evt){const r=canvas.getBoundingClientRect();return{x:(evt.clientX-r.left)*canvas.width/r.width,y:(evt.clientY-r.top)*canvas.height/r.height};}
 function bbox(s){if(s.kind==='shortcut'){const l=shortcutLayout(s,canvas.width||1600);return{left:s.x,top:s.y,right:s.x+l.width,bottom:s.y+l.height};}return {left:Math.min(s.x,s.x2??s.x),top:Math.min(s.y,s.y2??s.y),right:Math.max(s.x,s.x2??s.x),bottom:Math.max(s.y,s.y2??s.y)};}
@@ -163,7 +223,7 @@ function drawIn(c,it,temporary=null){const W=it.img.naturalWidth,H=it.img.natura
  }
  const cr=state.crop||(temporary?.kind==='crop'?temporary:null);if(cr&&c===ctx){const b=bbox(cr);c.save();c.strokeStyle='#f0ad3c';c.lineWidth=Math.max(3,W/350);c.setLineDash([18,12]);c.strokeRect(b.left,b.top,b.right-b.left,b.bottom-b.top);c.restore();}
 }
-function render(){const it=current();if(!it)return;canvas.width=it.img.naturalWidth;canvas.height=it.img.naturalHeight;drawIn(ctx,it,state.drawing);text('imageInfo',it.img.naturalWidth+' x '+it.img.naturalHeight+' px | '+it.shapes.length+' markeringar');renderLayers();updateZoomPanel();}
+function render(){const it=current();if(!it)return;canvas.width=it.img.naturalWidth;canvas.height=it.img.naturalHeight;drawIn(ctx,it,state.drawing);text('imageInfo',it.img.naturalWidth+' x '+it.img.naturalHeight+' px | '+it.shapes.length+' markeringar');renderLayers();updateZoomPanel();applyPreviewScale();}
 
 const SHAPE_LABELS={arrow:'Pil',box:'Ruta',ellipse:'Ring',number:'Steg',text:'Text',shortcut:'Genväg',highlight:'Markering',spotlight:'Fokus',zoom:'Zoom',mask:'Maskering'};
 const SHAPE_SYMBOLS={arrow:'↗',box:'□',ellipse:'○',number:'①',text:'T',shortcut:'⌨',highlight:'▧',spotlight:'◉',zoom:'⊕',mask:'■'};
@@ -288,12 +348,12 @@ function buildPalettes(){const container=$('paletteRows');container.replaceChild
  row.append(header,swatches);container.append(row);
  }syncPaletteSelection();}
 
-function setTool(tool){state.tool=tool;state.drawing=null;if(tool!=='select'){state.chosen=-1;$('color').value=state.markColor||DEFAULT_MARK_COLORS[state.theme];syncPaletteSelection();}
+function setTool(tool){if(state.panView){state.panView=false;state.panDrag=null;updatePanView();}state.tool=tool;state.drawing=null;if(tool!=='select'){state.chosen=-1;$('color').value=state.markColor||DEFAULT_MARK_COLORS[state.theme];syncPaletteSelection();}
  document.querySelectorAll('[data-tool]').forEach(b=>b.classList.toggle('active',b.dataset.tool===tool));
  const map={number:'Klicka för att placera 1, 2, 3 ...',text:'Klicka för att lägga till text',zoom:'Klicka för 2× zoom, eller dra ett eget källområde',spotlight:'Dra för att framhäva en del',mask:'Täck hela den hemliga texten',select:'Markera en zoomlins – dra källrutan eller dess handtag för att justera utsnittet'};
  text('toolTip',map[tool]||'Dra med musen över bilden.');render();}
 function dragShape(s,dx,dy){return{...s,x:s.x+dx,y:s.y+dy,x2:s.x2===undefined?undefined:s.x2+dx,y2:s.y2===undefined?undefined:s.y2+dy,lensX:Number.isFinite(s.lensX)?s.lensX+dx:s.lensX,lensY:Number.isFinite(s.lensY)?s.lensY+dy:s.lensY};}
-function mouseDown(e){const it=current();if(!it)return;const p=point(e),tool=state.tool;canvas.setPointerCapture?.(e.pointerId);
+function mouseDown(e){const it=current();if(!it)return;canvas.setPointerCapture?.(e.pointerId);if(state.panView){const host=$('canvasHost');state.panDrag={x:e.clientX,y:e.clientY,left:host.scrollLeft,top:host.scrollTop};host.classList.add('is-panning');return;}const p=point(e),tool=state.tool;
  if(tool==='select'){
   const prev=state.chosen;let chosen=-1,mode='shape',handle=null;
   const selected=it.shapes[prev];
@@ -309,7 +369,7 @@ function mouseDown(e){const it=current();if(!it)return;const p=point(e),tool=sta
  if(tool==='number'||tool==='text'){if(tool==='number'){saveHistory();const n=Math.max(1,Number($('stepStart').value)||1);it.shapes.push({kind:'number',x:p.x,y:p.y,color:$('color').value,width:Number($('stroke').value),number:n});it.steps=n+1;$('stepStart').value=it.steps;}else{const s=prompt('Text för etiketten (kort text):');if(!s)return;saveHistory();it.shapes.push({kind:'text',x:p.x,y:p.y,text:s.slice(0,120),color:$('color').value,width:Number($('stroke').value)});}state.chosen=-1;render();return;}
  state.drawing={kind:tool,x:p.x,y:p.y,x2:p.x,y2:p.y,color:$('color').value,width:Number($('stroke').value)};render();
 }
-function mouseMove(e){const it=current();if(!it)return;const p=point(e);
+function mouseMove(e){const it=current();if(!it)return;if(state.panView){if(state.panDrag){const host=$('canvasHost');host.scrollLeft=state.panDrag.left-(e.clientX-state.panDrag.x);host.scrollTop=state.panDrag.top-(e.clientY-state.panDrag.y);}return;}const p=point(e);
  if(state.dragging&&state.chosen>=0){const d=state.dragging,b=d.base,dx=p.x-d.point.x,dy=p.y-d.point.y;
   if(d.mode==='lens'){
    const l=zoomLens(b,canvas.width,canvas.height);it.shapes[state.chosen]={...b,lensX:l.cx+dx,lensY:l.cy+dy};
@@ -321,7 +381,7 @@ function mouseMove(e){const it=current();if(!it)return;const p=point(e);
  if(state.drawing){state.drawing.x2=p.x;state.drawing.y2=p.y;render();}
 }
 function constrainedRect(s){const t=$('cropRatio').value;if(t==='free')return s;const [w,h]=t.split(':').map(Number),ratio=w/h;const p={...s};let dx=p.x2-p.x,dy=p.y2-p.y,sx=Math.sign(dx)||1,sy=Math.sign(dy)||1;dx=Math.abs(dx);dy=Math.abs(dy);if(dx/dy>ratio)dx=dy*ratio;else dy=dx/ratio;p.x2=Math.min(canvas.width,Math.max(0,p.x+sx*dx));p.y2=Math.min(canvas.height,Math.max(0,p.y+sy*dy));return p;}
-function mouseUp(e){const it=current();if(!it)return;
+function mouseUp(e){const it=current();if(!it)return;if(state.panDrag){state.panDrag=null;$('canvasHost').classList.remove('is-panning');return;}if(state.panView)return;
  if(state.dragging){state.dragging=null;render();return;}if(!state.drawing)return;
  const s=state.drawing;state.drawing=null;
  if(s.kind==='crop'){state.crop=constrainedRect(s);$('applyCrop').disabled=false;$('cancelCrop').disabled=false;render();return;}
@@ -388,7 +448,7 @@ async function publish(){if(state.busy)return;if(!state.images.length){alert('L\
   state.lastLog=md;state.published=manifestObj;$('logPreview').textContent=md;$('copyLog').disabled=false;$('downloadLog').disabled=false;$('netStatus').textContent='Publicerat p\u00e5 GitHub';notify('Klart! '+manifest.length+' bild(er) och en logg har lagts i en gemensam commit.');
  }catch(e){notify('Ingen bekr\u00e4ftad publicering: '+e.message,true);}finally{state.busy=false;$('publish').disabled=false;}
 }
-function init(){setupTheme();renderList();buildPalettes();renderLayers();initializeShortcutEditor();
+function init(){setupTheme();renderList();buildPalettes();renderLayers();initializeShortcutEditor();initPreviewControls();
  $('showZoomSource').addEventListener('change',e=>{state.zoomGuidesVisible=e.target.checked;render();});
  $('resetZoom').addEventListener('click',resetSelectedZoom);
  $('toggleLayers').addEventListener('click',()=>{const el=$('layersPanel');el.hidden=!el.hidden;$('toggleLayers').setAttribute('aria-expanded',String(!el.hidden));$('toggleLayers').textContent=el.hidden?'+ Visa lager':'− Dölj lager';});
@@ -396,7 +456,7 @@ function init(){setupTheme();renderList();buildPalettes();renderLayers();initial
  $('layerDelete').addEventListener('click',removeShape);$('layerEditText').addEventListener('click',()=>{if(current()?.shapes?.[state.chosen]?.kind==='shortcut')openShortcutEditor(state.chosen);else editSelectedText();});
  $('togglePalettes').addEventListener('click',()=>{const el=$('palettePanel');el.hidden=!el.hidden;$('togglePalettes').setAttribute('aria-expanded',String(!el.hidden));$('togglePalettes').textContent=el.hidden?'+ Färgpaletter':'− Dölj paletter';});
  $('color').addEventListener('change',e=>recolorSelected(e.target.value));$('stroke').addEventListener('change',updateSelectedStroke);
-document.querySelectorAll('[data-tool]').forEach(b=>b.addEventListener('click',()=>setTool(b.dataset.tool)));canvas.addEventListener('pointerdown',mouseDown);canvas.addEventListener('pointermove',mouseMove);canvas.addEventListener('pointerup',mouseUp);canvas.addEventListener('pointercancel',()=>{state.dragging=null;state.drawing=null;render();});$('applyCrop').addEventListener('click',applyCrop);$('cancelCrop').addEventListener('click',cancelCrop);$('undo').addEventListener('click',undo);$('redo').addEventListener('click',redo);$('removeShape').addEventListener('click',removeShape);$('stroke').addEventListener('input',()=>text('strokeValue',$('stroke').value));$('imageInput').addEventListener('change',async e=>{await addFiles(e.target.files);e.target.value='';});$('addImages').addEventListener('click',()=>$('imageInput').click());$('emptyPick').addEventListener('click',()=>$('imageInput').click());$('pasteImage').addEventListener('click',async()=>{try{if(!navigator.clipboard?.read)throw Error('Anv\u00e4nd Ctrl+V i appen eller v\u00e4lj en bild.');const items=await navigator.clipboard.read();for(const it of items){for(const type of it.types){if(type.startsWith('image/')){const blob=await it.getType(type);await addFiles([new File([blob],'skarmklipp-'+nowStamp()+'.png',{type:blob.type})]);return;}}}throw Error('Ingen bild hittades i urklipp.');}catch(e){alert(e.message||'Anv\u00e4nd Ctrl+V i appen.');}});
+document.querySelectorAll('[data-tool]').forEach(b=>b.addEventListener('click',()=>setTool(b.dataset.tool)));canvas.addEventListener('pointerdown',mouseDown);canvas.addEventListener('pointermove',mouseMove);canvas.addEventListener('pointerup',mouseUp);canvas.addEventListener('pointercancel',()=>{state.dragging=null;state.drawing=null;state.panDrag=null;$('canvasHost').classList.remove('is-panning');render();});$('applyCrop').addEventListener('click',applyCrop);$('cancelCrop').addEventListener('click',cancelCrop);$('undo').addEventListener('click',undo);$('redo').addEventListener('click',redo);$('removeShape').addEventListener('click',removeShape);$('stroke').addEventListener('input',()=>text('strokeValue',$('stroke').value));$('imageInput').addEventListener('change',async e=>{await addFiles(e.target.files);e.target.value='';});$('addImages').addEventListener('click',()=>$('imageInput').click());$('emptyPick').addEventListener('click',()=>$('imageInput').click());$('pasteImage').addEventListener('click',async()=>{try{if(!navigator.clipboard?.read)throw Error('Anv\u00e4nd Ctrl+V i appen eller v\u00e4lj en bild.');const items=await navigator.clipboard.read();for(const it of items){for(const type of it.types){if(type.startsWith('image/')){const blob=await it.getType(type);await addFiles([new File([blob],'skarmklipp-'+nowStamp()+'.png',{type:blob.type})]);return;}}}throw Error('Ingen bild hittades i urklipp.');}catch(e){alert(e.message||'Anv\u00e4nd Ctrl+V i appen.');}});
  document.addEventListener('paste',async e=>{for(const it of e.clipboardData?.items||[]){if(it.type.startsWith('image/')){e.preventDefault();const f=it.getAsFile();if(f)await addFiles([new File([f], 'skarmklipp-'+nowStamp()+'.png',{type:f.type})]);return;}}});
  document.addEventListener('keydown',e=>{if($('shortcutDialog').open)return;const tg=e.target?.tagName;const editing=['INPUT','TEXTAREA','SELECT'].includes(tg);if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!editing){e.preventDefault();undo();return;}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='y'&&!editing){e.preventDefault();redo();return;}if(editing||e.ctrlKey||e.metaKey||e.altKey)return;if(e.key==='Delete'||e.key==='Backspace'){removeShape();return;}
  if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)&&state.tool==='select'&&state.chosen>=0){
@@ -415,5 +475,5 @@ window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();def
 $('installApp').addEventListener('click',async()=>{if(!deferredInstall)return;await deferredInstall.prompt();deferredInstall=null;$('installApp').hidden=true;});
 window.addEventListener('appinstalled',()=>{$('installApp').hidden=true;});
 if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost' || location.hostname==='127.0.0.1'))navigator.serviceWorker.register('./sw.js',{scope:'./'}).catch(()=>{});
-window.__testBildbibliotek={state,loadImage,addFiles,addImageFile,exportOne,drawShape,render,selectImage,selectShape,renderLayers,zoomLens,zoomHandleAt,resizeZoomSource,moveZoomSource,setTheme,recolorSelected,reorderShape,buildPalettes,shortcutLayout,shortcutSummary,openShortcutEditor,publish,undo,redo,sizeOut,repoInfo,connectGithub,disconnectGithub,get isConnected(){return isConnected;}};
+window.__testBildbibliotek={state,loadImage,addFiles,addImageFile,exportOne,drawShape,render,selectImage,selectShape,renderLayers,zoomLens,zoomHandleAt,resizeZoomSource,moveZoomSource,setTheme,recolorSelected,reorderShape,buildPalettes,shortcutLayout,shortcutSummary,openShortcutEditor,previewFitScale,previewScale,setPreviewZoom,changePreviewZoom,fitPreview,togglePanView,publish,undo,redo,sizeOut,repoInfo,connectGithub,disconnectGithub,get isConnected(){return isConnected;}};
 })();

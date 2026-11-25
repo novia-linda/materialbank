@@ -1,5 +1,13 @@
 # Ändringslogg
 
+## v0.9 · 2026-11-25
+
+- Visningszoom med ut/in, reglage, Anpassa och 100 % originalstorlek.
+- Flytta vy för panoreringsdrag och Ctrl + mushjul för zoom kring pekaren.
+- Ny zoom gäller endast arbetsytans CSS-storlek och påverkar varken export, källbild, objektkoordinater eller befintlig förstorningslins.
+- PWA-cache v0.9.
+
+
 ## v0.8 · 2026-11-25
 
 - Novias officiella färger och kompletterande gråtoner tillagda i färgpaletten; tidigare designpaletter behålls.
