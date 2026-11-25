@@ -1,0 +1,18 @@
+{
+  "schema": "github-bildbibliotek-03",
+  "created": "2026-11-25T13:26:10.330Z",
+  "repository": "novia-linda/materialbank",
+  "branch": "main",
+  "batch": "notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-26-08-f6ed",
+  "images": [
+    {
+      "name": "powerbi-slicer",
+      "description": "",
+      "filename": "01-powerbi-slicer.png",
+      "path": "notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-26-08-f6ed/01-powerbi-slicer.png",
+      "url": "https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-26-08-f6ed/01-powerbi-slicer.png",
+      "width": 243,
+      "height": 437
+    }
+  ]
+}
