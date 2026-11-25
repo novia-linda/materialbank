@@ -1,0 +1,18 @@
+{
+  "schema": "github-bildbibliotek-03",
+  "created": "2026-11-25T13:08:02.749Z",
+  "repository": "novia-linda/materialbank",
+  "branch": "main",
+  "batch": "notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-08-00-8141",
+  "images": [
+    {
+      "name": "table-power-bi",
+      "description": "",
+      "filename": "01-table-power-bi.png",
+      "path": "notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-08-00-8141/01-table-power-bi.png",
+      "url": "https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-08-00-8141/01-table-power-bi.png",
+      "width": 248,
+      "height": 432
+    }
+  ]
+}

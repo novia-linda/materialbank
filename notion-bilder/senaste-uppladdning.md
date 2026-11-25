@@ -1,19 +1,19 @@
 # Senaste bilduppladdningen
 
-Skapad: 2026-11-25 15:03:15
+Skapad: 2026-11-25 15:08:02
 Repo: novia-linda/materialbank
 Projekt: kursmaterial/skarmbilder
-Batch: notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-03-13-cd60
+Batch: notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-08-00-8141
 
 ## Bilder
 
-### kolla-relationer-powerbi
-- Fil: `notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-03-13-cd60/01-kolla-relationer-powerbi.png`
-- Storlek: 1717 x 690 px
-- Beskrivning: kolla-relationer-powerbi
-- Bildlänk: https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-03-13-cd60/01-kolla-relationer-powerbi.png
-- Markdown: `![kolla-relationer-powerbi](https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-03-13-cd60/01-kolla-relationer-powerbi.png)`
-- HTML: `<img src="https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-03-13-cd60/01-kolla-relationer-powerbi.png" alt="kolla-relationer-powerbi">`
+### table-power-bi
+- Fil: `notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-08-00-8141/01-table-power-bi.png`
+- Storlek: 248 x 432 px
+- Beskrivning: table-power-bi
+- Bildlänk: https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-08-00-8141/01-table-power-bi.png
+- Markdown: `![table-power-bi](https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-08-00-8141/01-table-power-bi.png)`
+- HTML: `<img src="https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-08-00-8141/01-table-power-bi.png" alt="table-power-bi">`
 
 ## Prompt till ChatGPT
 
