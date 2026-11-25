@@ -1,19 +1,19 @@
 # Senaste bilduppladdningen
 
-Skapad: 2026-11-25 10:45:46
+Skapad: 2026-11-25 15:03:15
 Repo: novia-linda/materialbank
 Projekt: kursmaterial/skarmbilder
-Batch: notion-bilder/kursmaterial/skarmbilder/2026-11-25T08-45-40-dd82
+Batch: notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-03-13-cd60
 
 ## Bilder
 
-### arbeta-smartare-med-copilot-i-outlook
-- Fil: `notion-bilder/kursmaterial/skarmbilder/2026-11-25T08-45-40-dd82/01-arbeta-smartare-med-copilot-i-outlook.png`
-- Storlek: 1672 x 941 px
-- Beskrivning: arbeta-smartare-med-copilot-i-outlook
-- Bildlänk: https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-25T08-45-40-dd82/01-arbeta-smartare-med-copilot-i-outlook.png
-- Markdown: `![arbeta-smartare-med-copilot-i-outlook](https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-25T08-45-40-dd82/01-arbeta-smartare-med-copilot-i-outlook.png)`
-- HTML: `<img src="https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-25T08-45-40-dd82/01-arbeta-smartare-med-copilot-i-outlook.png" alt="arbeta-smartare-med-copilot-i-outlook">`
+### kolla-relationer-powerbi
+- Fil: `notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-03-13-cd60/01-kolla-relationer-powerbi.png`
+- Storlek: 1717 x 690 px
+- Beskrivning: kolla-relationer-powerbi
+- Bildlänk: https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-03-13-cd60/01-kolla-relationer-powerbi.png
+- Markdown: `![kolla-relationer-powerbi](https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-03-13-cd60/01-kolla-relationer-powerbi.png)`
+- HTML: `<img src="https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-25T13-03-13-cd60/01-kolla-relationer-powerbi.png" alt="kolla-relationer-powerbi">`
 
 ## Prompt till ChatGPT
 
