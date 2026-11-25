@@ -1,0 +1,18 @@
+{
+  "schema": "github-bildbibliotek-03",
+  "created": "2026-11-25T08:45:46.865Z",
+  "repository": "novia-linda/materialbank",
+  "branch": "main",
+  "batch": "notion-bilder/kursmaterial/skarmbilder/2026-11-25T08-45-40-dd82",
+  "images": [
+    {
+      "name": "arbeta-smartare-med-copilot-i-outlook",
+      "description": "",
+      "filename": "01-arbeta-smartare-med-copilot-i-outlook.png",
+      "path": "notion-bilder/kursmaterial/skarmbilder/2026-11-25T08-45-40-dd82/01-arbeta-smartare-med-copilot-i-outlook.png",
+      "url": "https://raw.githubusercontent.com/novia-linda/materialbank/main/notion-bilder/kursmaterial/skarmbilder/2026-11-25T08-45-40-dd82/01-arbeta-smartare-med-copilot-i-outlook.png",
+      "width": 1672,
+      "height": 941
+    }
+  ]
+}
