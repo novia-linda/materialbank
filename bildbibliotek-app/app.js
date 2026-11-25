@@ -1,14 +1,15 @@
 'use strict';
 (()=>{
 const $=id=>document.getElementById(id);
-const state={images:[],active:-1,tool:'select',drawing:null,crop:null,chosen:-1,dragging:null,undo:[],redo:[],lastLog:'',published:null,busy:false,zoomGuidesVisible:true,theme:'course'};
+const state={images:[],active:-1,tool:'select',drawing:null,crop:null,chosen:-1,dragging:null,undo:[],redo:[],lastLog:'',published:null,busy:false,zoomGuidesVisible:true,theme:'course',markColor:'#7d9c85'};
 const canvas=$('canvas'),ctx=canvas.getContext('2d',{willReadFrequently:false});
 const FIELDS={fileName:$('fileName'),altText:$('altText')};
 const DEFAULT_MARK_COLORS={novia:'#ff1325',course:'#7d9c85'};
 function setTheme(theme){
  theme=theme==='novia'?'novia':'course';state.theme=theme;document.documentElement.dataset.theme=theme;
  document.querySelectorAll('[data-theme-choice]').forEach(b=>{const active=b.dataset.themeChoice===theme;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});
- $('color').value=DEFAULT_MARK_COLORS[theme];
+ state.markColor=DEFAULT_MARK_COLORS[theme];$('color').value=state.markColor;
+ syncPaletteSelection();
  document.querySelector('meta[name=theme-color]').content=theme==='novia'?'#fafafa':'#f5f5f1';
  try{localStorage.setItem('bildbibliotek-theme',theme);}catch(_){}
 }
@@ -17,6 +18,8 @@ function setupTheme(){let saved='course';try{saved=localStorage.getItem('bildbib
 // Exact color-role values from Notion Design, 2026-11-20.
 // The design concepts are optional visual palettes; the course profiles carry semantic roles.
 const COLOR_PALETTES=[
+ {name:'Novia · Officiell baspalett',kind:'novia',colors:[['Novia-röd','#FF1325'],['Svart','#000000'],['Vit','#FFFFFF'],['Märkesgrå','#E5E5E5'],['Linjegrå','#CCCCCC']]},
+ {name:'Novia · Neutrala gråtoner',kind:'novia',colors:[['Nästan vit','#FAFAFA'],['Ljusgrå','#EAEAEA'],['Mörk grå','#3D3D3D'],['Mörk linjegrå','#4C4C4C'],['Mellangrå','#7F7F7F']]},
   {name:'DES-01 · Nordisk Salvia',source:'https://app.notion.com/p/415814b52e62815f81f4c3edd5e0b68a',colors:[['Text','#31433A'],['Salvia','#7D9C85'],['Ljus salvia','#D9E6DC'],['Sand','#EBDDD0'],['Linje','#CCD9CF']]},
   {name:'DES-02 · Terrakotta Redaktionell',source:'https://app.notion.com/p/415814b52e6281678c71ec04341d7c92',colors:[['Text','#463A33'],['Terrakotta','#BD7758'],['Ljus terrakotta','#E8CAB7'],['Puder','#F3E6DD'],['Linje','#E1D6CE']]},
   {name:'DES-03 · Blå Klarhet',source:'https://app.notion.com/p/415814b52e628186bd3bc102373c6752',colors:[['Text','#213E55'],['Blå','#3F80B1'],['Aqua','#BCE0EA'],['Ljusblå','#E7F3FA'],['Linje','#CEDDE6']]},
@@ -167,7 +170,7 @@ const SHAPE_SYMBOLS={arrow:'↗',box:'□',ellipse:'○',number:'①',text:'T',s
 function syncSelectedControls(){
  const it=current(),s=it?.shapes?.[state.chosen];
  if(!s)return;
- if(/^#[a-fA-F0-9]{6}$/.test(s.color||''))$('color').value=s.color;
+ if(/^#[a-fA-F0-9]{6}$/.test(s.color||'')){$('color').value=s.color;syncPaletteSelection();}
  if(s.width){$('stroke').value=s.width;text('strokeValue',s.width);}
 }
 function selectShape(i){const it=current();if(!it)return;state.chosen=Math.max(-1,Math.min(i,it.shapes.length-1));setTool('select');syncSelectedControls();render();}
@@ -192,7 +195,7 @@ function renderLayers(){
  const bg=document.createElement('div');bg.className='layer-background';bg.innerHTML='<span aria-hidden="true">▧</span><span>Bakgrundsbild · låst</span>';list.append(bg);
 }
 function reorderShape(step){const it=current(),i=state.chosen;if(!it||i<0)return;const j=i+step;if(j<0||j>=it.shapes.length)return;saveHistory();[it.shapes[i],it.shapes[j]]=[it.shapes[j],it.shapes[i]];state.chosen=j;render();}
-function recolorSelected(value){const it=current(),s=it?.shapes?.[state.chosen];$('color').value=value;if(s && s.color!==value){saveHistory();s.color=value;render();}}
+function recolorSelected(value){const it=current(),s=it?.shapes?.[state.chosen];state.markColor=value.toLowerCase();$('color').value=state.markColor;syncPaletteSelection();if(s && (s.color||'').toLowerCase()!==state.markColor){saveHistory();s.color=state.markColor;render();}}
 function updateSelectedStroke(){const it=current(),s=it?.shapes?.[state.chosen];if(!s)return;const value=Number($('stroke').value);if(s.width!==value){saveHistory();s.width=value;render();}}
 function editSelectedText(){const it=current(),s=it?.shapes?.[state.chosen];if(!s||s.kind!=='text')return;const updated=prompt('Ändra textetikett',s.text||'');if(updated!==null && updated.trim() && updated!==s.text){saveHistory();s.text=updated.slice(0,120);render();}}
 
@@ -271,15 +274,21 @@ function initializeShortcutEditor(){
  });
 }
 
+function syncPaletteSelection(){
+ const active=$('color')?.value?.toLowerCase();
+ document.querySelectorAll('.palette-swatch').forEach(btn=>{const on=btn.dataset.color.toLowerCase()===active;btn.classList.toggle('current',on);btn.setAttribute('aria-pressed',String(on));});
+}
 function buildPalettes(){const container=$('paletteRows');container.replaceChildren();for(const palette of COLOR_PALETTES){
- const row=document.createElement('div');row.className='palette-row';
- const header=document.createElement('a');header.textContent=palette.name;header.href=palette.source;header.target='_blank';header.rel='noopener noreferrer';header.title='Se färgvärden och designguide i Notion';
+ const row=document.createElement('div');row.className='palette-row'+(palette.kind==='novia'?' novia-palette':'');
+ const header=document.createElement(palette.source?'a':'strong');header.textContent=palette.name;
+ if(palette.source){header.href=palette.source;header.target='_blank';header.rel='noopener noreferrer';header.title='Se färgvärden och designguide i Notion';}
+ else header.title='Novias officiella färgprofil';
  const swatches=document.createElement('div');swatches.className='palette-swatches';
  for(const [label,hex] of palette.colors){const btn=document.createElement('button');btn.type='button';btn.className='palette-swatch';btn.style.backgroundColor=hex;btn.title=label+' · '+hex;btn.setAttribute('aria-label',palette.name+' – '+label+' '+hex);btn.dataset.color=hex;btn.addEventListener('click',()=>recolorSelected(hex));swatches.append(btn);}
  row.append(header,swatches);container.append(row);
-}}
+ }syncPaletteSelection();}
 
-function setTool(tool){state.tool=tool;state.drawing=null;if(tool!=='select')state.chosen=-1;
+function setTool(tool){state.tool=tool;state.drawing=null;if(tool!=='select'){state.chosen=-1;$('color').value=state.markColor||DEFAULT_MARK_COLORS[state.theme];syncPaletteSelection();}
  document.querySelectorAll('[data-tool]').forEach(b=>b.classList.toggle('active',b.dataset.tool===tool));
  const map={number:'Klicka för att placera 1, 2, 3 ...',text:'Klicka för att lägga till text',zoom:'Klicka för 2× zoom, eller dra ett eget källområde',spotlight:'Dra för att framhäva en del',mask:'Täck hela den hemliga texten',select:'Markera en zoomlins – dra källrutan eller dess handtag för att justera utsnittet'};
  text('toolTip',map[tool]||'Dra med musen över bilden.');render();}

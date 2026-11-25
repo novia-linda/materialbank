@@ -43,3 +43,10 @@ Välj **Novia Design** (svart, vitt, grått och Novia-rött) eller **Kursmateria
 - Du kan justera storlek och flytta det färdiga objektet, ändra det via **Objekt & lager**, dölja det och ångra ändringar.
 - Genvägen följer med vid PNG/JPEG-export, GitHub-uppladdning och i sparade `.bildprojekt.json`; tidigare projekt fungerar fortsatt.
 - Den installerade PWA:n använder cache-version `bildbibliotek-pwa-v07`.
+
+## v0.8 – Novias färgpalett och standardfärg
+
+- Novias officiella färger finns först bland färgpaletterna: röd `#FF1325`, svart `#000000`, vit `#FFFFFF`, grå `#E5E5E5` och linjegrå `#CCCCCC`. Kompletterande neutrala gråtoner är grupperade nedanför.
+- **Novia Design** ger alltid `#FF1325` som startfärg för **nya** markeringar när designläget väljs. Befintliga objekt behåller sina färger.
+- Att välja en äldre markering med annan färg ändrar inte standardfärgen för kommande nya objekt; ett verktygsbyte återställer senast aktivt vald ritfärg.
+- Paletten markerar den färg som visas i färgväljaren. PWA-cache: `bildbibliotek-pwa-v08`.

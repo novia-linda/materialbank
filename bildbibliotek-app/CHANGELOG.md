@@ -1,5 +1,13 @@
 # Ändringslogg
 
+## v0.8 · 2026-11-25
+
+- Novias officiella färger och kompletterande gråtoner tillagda i färgpaletten; tidigare designpaletter behålls.
+- Novia Design använder `#FF1325` som standard för nya markeringar vid val av läge.
+- Markering av ett äldre objekt påverkar inte ritverktygets standardfärg. Vald färg markeras i paletten.
+- PWA-cache uppdaterad till v0.8.
+
+
 ## v0.7 · 2026-11-25
 
 - Nytt verktyg **⌨ Genväg** med två lägen: samtidigt (`Ctrl + Shift + S`) eller stegvis (`Alt → H → V`).

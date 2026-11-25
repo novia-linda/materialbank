@@ -107,3 +107,12 @@
 :root[data-theme="novia"] .shortcut-modifiers button.active{background:#000;color:#fff;border-color:#ff1325}
 :root[data-theme="novia"] .shortcut-capture{background:#f5f5f5;border-color:#777;color:#111}
 @media(max-width:650px){.shortcut-dialog{min-width:0;padding:13px}.shortcut-mode{flex-direction:column}.shortcut-fields .shortcut-size{margin-left:0}.shortcut-actions .button{flex:1;white-space:normal}}
+
+/* v0.8 – officiell Novia-palett och indikator för vald färg */
+.palette-row.novia-palette{grid-column:1/-1;justify-content:flex-start;flex-wrap:wrap;gap:9px 17px}
+.palette-row.novia-palette strong,.palette-row strong{font-size:11px;font-weight:700;white-space:normal;min-width:160px;color:#222}
+.palette-row.novia-palette .palette-swatches{flex-wrap:wrap}
+.palette-swatch.current{outline:2px solid #456f67;outline-offset:2px;transform:none}
+:root[data-theme="novia"] .palette-row.novia-palette{border-left:3px solid #ff1325;padding-left:10px;background:#fafafa}
+:root[data-theme="novia"] .palette-swatch.current{outline-color:#ff1325}
+:root[data-theme="novia"] .palette-row.novia-palette strong{color:#000}
