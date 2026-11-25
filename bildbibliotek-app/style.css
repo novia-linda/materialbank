@@ -76,3 +76,34 @@
 :root[data-theme="novia"] dialog{border-radius:0}
 @media(max-width:1400px){.site-head{flex-wrap:wrap}.head-actions{flex-wrap:wrap}}
 @media(max-width:700px){.head-actions{width:100%}.theme-switcher{width:100%;justify-content:center}.theme-switcher-title{padding-left:4px}.zoom-panel label{white-space:normal}}
+
+/* v0.7 - editable keyboard shortcut overlays */
+.shortcut-dialog{max-width:min(96vw,720px);min-width:min(90vw,520px)}
+.shortcut-mode{display:flex;flex-wrap:wrap;gap:8px 20px;border:1px solid #d9e4dd;border-radius:8px;padding:12px;margin:12px 0}
+.shortcut-mode legend{font-size:12px;font-weight:700;padding:0 7px}
+.shortcut-mode label{display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer}
+.shortcut-mode input{accent-color:#527b6c}
+.shortcut-capture{width:100%;border:1px dashed #749b8d;border-radius:8px;background:#edf5ef;padding:13px;min-height:46px;color:#244c43;font-size:13px;font-weight:700}
+.shortcut-capture:focus{outline:3px solid #719b91;background:#dfeee7}
+.shortcut-modifiers{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}
+.shortcut-modifiers button{border:1px solid #a4b4ad;background:#fff;color:#2b4038;border-radius:6px;min-height:38px;padding:7px 12px;font-weight:700}
+.shortcut-modifiers button.active{background:#243d35;color:white;border-color:#243d35}
+.shortcut-fields{display:flex;align-items:end;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.shortcut-fields label{display:flex;flex-direction:column;gap:3px;font-size:12px;font-weight:600}
+.shortcut-fields .shortcut-size{margin-left:auto;flex-direction:row;align-items:center;gap:8px}
+.shortcut-fields select{min-width:130px}
+.shortcut-fields input[type=range]{width:90px;accent-color:#527b6c}
+.shortcut-steps{max-height:170px;overflow:auto;display:grid;gap:5px;margin-bottom:10px}
+.shortcut-steps[hidden]{display:none}
+.shortcut-step{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 10px;background:#f4f6f5;border:1px solid #e2e7e5;border-radius:6px;font-size:12px}
+.shortcut-preview-wrap{background:#f4f6f7;border:1px solid #d9e1df;border-radius:9px;padding:12px;margin:12px 0}
+.shortcut-preview-wrap strong{font-size:12px}
+.shortcut-preview{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:11px 0;min-height:42px;color:#3a5550}
+.shortcut-preview kbd{display:inline-flex;align-items:center;justify-content:center;min-height:35px;border:1px solid #b9c7c3;border-bottom:3px solid #9baaa5;border-radius:6px;background:white;color:#243a33;font-size:13px;font-weight:700;padding:6px 12px}
+.shortcut-separator{font-weight:800;color:#5b7068}
+.shortcut-actions{display:flex;gap:10px;justify-content:flex-end}
+:root[data-theme="novia"] .shortcut-mode,:root[data-theme="novia"] .shortcut-preview-wrap{border-radius:0}
+:root[data-theme="novia"] .shortcut-capture,:root[data-theme="novia"] .shortcut-modifiers button,:root[data-theme="novia"] .shortcut-preview kbd{border-radius:0}
+:root[data-theme="novia"] .shortcut-modifiers button.active{background:#000;color:#fff;border-color:#ff1325}
+:root[data-theme="novia"] .shortcut-capture{background:#f5f5f5;border-color:#777;color:#111}
+@media(max-width:650px){.shortcut-dialog{min-width:0;padding:13px}.shortcut-mode{flex-direction:column}.shortcut-fields .shortcut-size{margin-left:0}.shortcut-actions .button{flex:1;white-space:normal}}
