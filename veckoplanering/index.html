@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; connect-src https://api.github.com; style-src 'unsafe-inline'; script-src 'sha256-KDAWGa1bzcUcFgwGijyLuwX+rrdsajf8AFUlHeT+YCo='">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; connect-src https://api.github.com; style-src 'unsafe-inline'; script-src 'sha256-o0Nn2GAHFZDrgoldk8zM4qK3IjoQ5gmNzlFghHG2c30='">
 <title>Veckovyn · Arbetsplanering</title>
 <style>
 :root{color-scheme:light;--bg:#f4f3ee;--ink:#26372e;--muted:#536259;--line:#d9ded5;--paper:#fffefb;--hour:64px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,sans-serif}main{max-width:1450px;margin:auto;padding:24px clamp(15px,3vw,42px) 40px}header,.toolbar,.stats,.legend,.actions,.keyline{display:flex;gap:12px;align-items:center;flex-wrap:wrap}header{justify-content:space-between;align-items:end;margin-bottom:20px}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:750;color:#476553}h1,h2,p{margin:0}h1{font:clamp(2.5rem,6vw,4.4rem)/1 Georgia,serif;letter-spacing:-.055em;margin:3px 0 8px}header p,small,.muted{color:var(--muted)}button,input,textarea{font:inherit}button,.input{border:1px solid #aebcb1;border-radius:9px;background:var(--paper);color:var(--ink);padding:8px 12px}button{cursor:pointer;font-weight:610}button:disabled{opacity:.55;cursor:not-allowed}button:hover:not(:disabled){background:#e7eee7}button.primary{background:#324e3d;color:white;border-color:#324e3d}button.primary:hover:not(:disabled){background:#23392c}button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #794826;outline-offset:2px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}.toolbar{justify-content:space-between}.keyline label,.field{display:grid;gap:5px}.keyline input{max-width:100%;width:245px}#week{width:103px;text-align:center;font-variant-numeric:tabular-nums}#status{min-height:1.5em;margin:10px 0;color:#476553}#status.error,#editMessage{color:#8c3727}#editMessage{white-space:pre-wrap}#empty{padding:28px;margin-top:14px}#plan{margin-top:14px}.stats{margin:12px 0}.stat{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:6px 11px}.stat strong{font-size:1.03rem}.legend{gap:8px;margin:12px 0}.legend span,.tag{border-radius:6px;padding:3px 8px;font-size:.77rem;background:var(--fill,#edf0ea);color:var(--fg,#283b31)}.weekgrid{display:grid;grid-template-columns:48px repeat(7,minmax(0,1fr));border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--paper)}.dayHead,.deadlineCell{padding:7px 6px;border-left:1px solid var(--line)}.dayHead strong{display:block}.deadlineCell{border-top:1px solid var(--line);min-height:5px;display:grid;align-content:start;gap:4px}.track,.hourrail{position:relative;height:var(--height);border-top:1px solid var(--line)}.track{border-left:1px solid var(--line);background:repeating-linear-gradient(to bottom,transparent 0 calc(var(--hour) - 1px),#edf0ea calc(var(--hour) - 1px) var(--hour))}.weekend{background-color:#f5f5f0}.hourrail span{position:absolute;left:7px;font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums}.block{background:var(--fill);color:var(--fg);border:1px solid var(--edge);border-left:4px solid var(--edge);border-radius:6px;text-align:left;padding:4px 5px;line-height:1.17;width:100%;display:block;overflow:hidden}.block:hover:not(:disabled){background:var(--fill);filter:brightness(.95)}.block strong{font-size:.83rem;overflow-wrap:anywhere}.block time{font-size:.69rem;display:block;margin-bottom:2px}.track .block{position:absolute;top:var(--top);height:var(--size);left:var(--left);width:var(--width)}.track .mini{padding:0 3px;line-height:1.1}.track .mini strong{font-size:.64rem}.block.done{opacity:.68}.booked{--fill:#dce9e0;--edge:#779783;--fg:#244638}.ai{--fill:#e9e4f4;--edge:#a997bf;--fg:#4b3b61}.design{--fill:#f4e5d8;--edge:#be9a7d;--fg:#69452f}.digi{--fill:#dfeaf0;--edge:#8baab9;--fg:#334e63}.admin{--fill:#f3ebcc;--edge:#bea967;--fg:#5b4d25}.buffer{--fill:#edf0eb;--edge:#9ca79a;--fg:#414e43}.deadline{--fill:#f6e0e1;--edge:#c48a8e;--fg:#732e36}.other{--fill:#e6eae6;--edge:#87978a;--fg:#26372e}.list{display:none}.list section{display:grid;gap:6px;padding:12px 0;border-top:1px solid var(--line)}.list .block{min-height:45px;padding:8px 10px}.list .block strong{font-size:.92rem}dialog{color:var(--ink);background:var(--paper);max-width:min(470px,calc(100% - 25px));width:100%;border:1px solid var(--line);border-radius:14px;padding:21px}dialog::backdrop{background:#17271fb0}dialog h2{font:2rem/1.12 Georgia,serif;margin:8px 0}dialog p,dialog a,dialog .field,dialog .actions{margin-top:12px}dialog textarea{width:100%;resize:vertical;min-height:95px;padding:9px;border:1px solid #aebcb1;border-radius:7px;background:#fff}dialog a{display:inline-block;color:#244b39}.close{margin-left:auto;display:block}.check{display:flex;align-items:center;gap:8px;margin-top:14px}.check input{width:19px;height:19px;accent-color:#405f4a}.actions{justify-content:flex-end}.dateGroup{display:flex;gap:7px;flex-wrap:wrap}.dateGroup button{min-width:43px}[hidden]{display:none!important}@media(max-width:900px){.weekgrid{display:none}.list{display:block}.toolbar{align-items:flex-start}.keyline{width:100%}}@media(max-width:520px){main{padding-top:14px}.keyline input{width:100%}.keyline label{width:100%}.keyline button{min-height:41px}.stats,.legend{gap:5px}}
@@ -47,9 +47,6 @@
 @media(max-width:900px){.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.filters .searchField{grid-column:1/-1}}@media(max-width:460px){.filters{grid-template-columns:1fr}.filters .searchField{grid-column:auto}}
 
 .weekPick{font-variant-numeric:tabular-nums;white-space:nowrap}
-.weekFooter{position:sticky;bottom:max(6px,env(safe-area-inset-bottom));z-index:4;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin-top:12px;padding:7px 9px;background:#f4f3ee;border:1px solid var(--line);border-radius:11px;box-shadow:0 2px 9px #26372e13}
-.weekFooter #lowerPrev{justify-self:start}.weekFooter #lowerNext{justify-self:end}
-.weekFooter button{min-height:40px;padding:6px 11px}
 #calendarDialog{max-width:min(430px,calc(100% - 20px))}
 #calendarDialog h2{font-size:1.65rem}
 .calendarHead{display:grid;grid-template-columns:42px 1fr 42px;align-items:center;text-align:center;gap:8px;margin:10px 0}
@@ -62,7 +59,7 @@
 .monthGrid .outside button{color:#67756d}.monthGrid button.todayDate{outline:1px solid #678d72;outline-offset:-2px}
 .calendarManual{display:flex;gap:8px;align-items:end;flex-wrap:wrap;margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
 .calendarManual .field{margin-top:0}.calendarManual #week{width:110px}.calendarManual button{min-height:38px}.calendarManual .today{margin-left:auto}
-@media(max-width:500px){.weekFooter .navText{display:none}.weekFooter button{min-width:43px}.monthGrid{border-spacing:2px}#calendarDialog{padding:14px}}
+@media(max-width:500px){.monthGrid{border-spacing:2px}#calendarDialog{padding:14px}}
 
 .typeField{position:relative}.typeMenu{position:relative;color:var(--ink)}.typeMenu summary{display:flex;align-items:center;justify-content:space-between;gap:6px;list-style:none;cursor:pointer;min-height:38px;line-height:1.25}.typeMenu summary::-webkit-details-marker{display:none}
 .typeMenu summary span:first-child{overflow-wrap:anywhere}.typeMenu summary span:last-child{flex:none}.typeMenu[open] summary{outline:2px solid #91a79a;outline-offset:1px}
@@ -75,7 +72,7 @@
 .topActions .viewtabs{width:auto;margin:0;padding:0;border:0;background:none}.topActions .viewtabs button{border:1px solid var(--line);background:var(--paper)}
 .topActions .viewtabs button[aria-pressed=true]{display:none}.connectDot{display:inline-block;width:7px;height:7px;margin-right:6px;border-radius:50%;background:#61736a;vertical-align:middle}.connectDot.on{background:#346a46}
 main{padding-top:12px}.planbody{margin-top:0}#plan{margin-top:0}.weekviews{grid-column:2;grid-row:1}#budget{grid-column:1;grid-row:1}#weekExtras{padding-top:8px}
-#weekExtras #subtitle{font-weight:700}#status.error{position:fixed;z-index:8;bottom:64px;right:12px;padding:9px 12px;border:1px solid #b47a70;border-radius:8px;background:#fff6f3;max-width:min(480px,calc(100% - 24px));box-shadow:0 3px 12px #26372e25}
+#weekExtras #subtitle{font-weight:700}#status.error{position:fixed;z-index:8;bottom:12px;right:12px;padding:9px 12px;border:1px solid #b47a70;border-radius:8px;background:#fff6f3;max-width:min(480px,calc(100% - 24px));box-shadow:0 3px 12px #26372e25}
 #githubDialog .keyline{margin-top:10px}#githubDialog .keyline input{width:100%}#githubDialog .keyline label{flex:1 1 190px}
 @media(max-width:1100px){.weekviews,#budget{grid-column:1;grid-row:auto}}
 @media(max-width:500px){main{padding-top:6px;padding-left:7px;padding-right:7px}.compactTop{gap:4px;padding:4px}.compactTop .dateGroup,.topActions{gap:3px}.compactTop .dateGroup button:not(.weekPick){min-width:29px}.compactTop button{font-size:.8rem}.topActions button{padding-inline:6px}.connectDot{margin-right:4px}}
@@ -109,11 +106,6 @@ main{padding-top:12px}.planbody{margin-top:0}#plan{margin-top:0}.weekviews{grid-
 <section id="plan" hidden aria-label="Veckoplan">
 <div class="planbody"><div class="weekviews"><div id="weekgrid" class="weekgrid"></div><div id="list" class="list"></div></div><aside id="budget" class="panel budget" aria-label="Veckans Admin, Digimentor, planering och rättning"></aside></div>
 </section>
-<nav id="weekFooter" class="weekFooter" aria-label="Byt vecka i kalendern" hidden>
-<button id="lowerPrev" aria-label="Föregående vecka">← <span class="navText">Föregående vecka</span></button>
-<button id="lowerPick" class="weekPick" aria-haspopup="dialog" aria-label="Välj vecka i kalendern">Välj vecka ▾</button>
-<button id="lowerNext" aria-label="Nästa vecka"><span class="navText">Nästa vecka</span> →</button>
-</nav>
 <p id="status" role="status" aria-live="polite"></p>
 <section id="weekExtras" aria-label="Veckosammanfattning och hjälp" hidden>
 <p id="subtitle">Läs och uppdatera din privata veckoplan.</p>
@@ -221,7 +213,7 @@ function calendarWeek(t){
  return y+'-W'+pad(Math.floor((thursday-monday(y))/(7*dayMs))+1);
 }
 function reflectWeek(key){
- for(const id of ['weekPick','lowerPick']){
+ for(const id of ['weekPick']){
   $(id).textContent=key+' ▾';
   $(id).setAttribute('aria-label','Välj vecka i kalendern, vald vecka '+key);
  }
@@ -244,7 +236,7 @@ function status(s,error=false){
  $('status').textContent=s;$('status').classList.toggle('error',error);
  if($('githubDialog').open)$('githubMessage').textContent=s;
 }
-function lock(b){busy=b;for(const id of ['prev','next','show','week','reload','disconnect','save','token','done','comment','close','logOpen','logClose','logDay','logStart','logEnd','logType','logComment','logSave','editKind','editDay','editStart','editEnd','modeWeek','modeTable','weekPick','lowerPick','lowerPrev','lowerNext','weekToday','prevMonth','nextMonth','githubOpen','closeGithub'])$(id).disabled=b;$('connect').querySelector('button').disabled=b;}
+function lock(b){busy=b;for(const id of ['prev','next','show','week','reload','disconnect','save','token','done','comment','close','logOpen','logClose','logDay','logStart','logEnd','logType','logComment','logSave','editKind','editDay','editStart','editEnd','modeWeek','modeTable','weekPick','weekToday','prevMonth','nextMonth','githubOpen','closeGithub'])$(id).disabled=b;$('connect').querySelector('button').disabled=b;}
 function connected(v){
  $('connect').hidden=v;$('connected').hidden=!v;
  $('githubDot').classList.toggle('on',v);
@@ -627,8 +619,8 @@ async function persistBlock(id,base,patch,fromDialog){
 }
 $('connect').addEventListener('submit',e=>{e.preventDefault();if(busy)return;token=$('token').value.trim();$('token').value='';load();});
 $('disconnect').onclick=()=>{if($('githubDialog').open)$('githubDialog').close();token='';$('token').value='';connected(false);resetTable();clearPlan('Anslut till GitHub för att visa din plan. Nyckeln sparas inte när du stänger eller laddar om sidan.');status('Frånkopplad.');};
-$('prev').onclick=$('lowerPrev').onclick=()=>shift(-1);
-$('next').onclick=$('lowerNext').onclick=()=>shift(1);
+$('prev').onclick=()=>shift(-1);
+$('next').onclick=()=>shift(1);
 $('show').onclick=()=>pickWeek($('week').value);
 $('reload').onclick=()=>{if($('githubDialog').open)$('githubDialog').close();return load();};
 $('githubOpen').onclick=()=>{
@@ -670,7 +662,6 @@ function syncView(){
  $('modeWeek').setAttribute('aria-pressed',String(!table));
  $('modeTable').setAttribute('aria-pressed',String(table));
  $('weekControls').hidden=table;
- $('weekFooter').hidden=table||!token;
  $('plan').hidden=table||!data;
  $('weekExtras').hidden=table||!data;
  $('tableView').hidden=!table||!token;
@@ -938,7 +929,7 @@ function renderMonth(){
  $('prevMonth').disabled=y===2000&&m===0;
  $('nextMonth').disabled=y===2099&&m===11;
 }
-$('weekPick').onclick=$('lowerPick').onclick=showCalendar;
+$('weekPick').onclick=showCalendar;
 $('prevMonth').onclick=()=>shiftMonth(-1);$('nextMonth').onclick=()=>shiftMonth(1);
 $('weekToday').onclick=()=>pickWeek(calendarWeek(+today));
 $('closeCalendar').onclick=()=>$('calendarDialog').close();
