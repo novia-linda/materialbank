@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; connect-src https://api.github.com; style-src 'unsafe-inline'; script-src 'sha256-RlEoLoqvq2ZpckQZIIoI4PRVtkRCgawkEAj+wlqapio='">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; connect-src https://api.github.com; style-src 'unsafe-inline'; script-src 'sha256-wOG6Q84iWH6/46VPp4nHL9soHyUu+n2QyqfAE95zxM8='">
 <title>Veckovyn · Arbetsplanering</title>
 <style>
 :root{color-scheme:light;--bg:#f4f3ee;--ink:#26372e;--muted:#536259;--line:#d9ded5;--paper:#fffefb;--hour:64px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,sans-serif}main{max-width:1450px;margin:auto;padding:24px clamp(15px,3vw,42px) 40px}header,.toolbar,.stats,.legend,.actions,.keyline{display:flex;gap:12px;align-items:center;flex-wrap:wrap}header{justify-content:space-between;align-items:end;margin-bottom:20px}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:750;color:#476553}h1,h2,p{margin:0}h1{font:clamp(2.5rem,6vw,4.4rem)/1 Georgia,serif;letter-spacing:-.055em;margin:3px 0 8px}header p,small,.muted{color:var(--muted)}button,input,textarea{font:inherit}button,.input{border:1px solid #aebcb1;border-radius:9px;background:var(--paper);color:var(--ink);padding:8px 12px}button{cursor:pointer;font-weight:610}button:disabled{opacity:.55;cursor:not-allowed}button:hover:not(:disabled){background:#e7eee7}button.primary{background:#324e3d;color:white;border-color:#324e3d}button.primary:hover:not(:disabled){background:#23392c}button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #794826;outline-offset:2px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}.toolbar{justify-content:space-between}.keyline label,.field{display:grid;gap:5px}.keyline input{max-width:100%;width:245px}#week{width:103px;text-align:center;font-variant-numeric:tabular-nums}#status{min-height:1.5em;margin:10px 0;color:#476553}#status.error,#editMessage{color:#8c3727}#editMessage{white-space:pre-wrap}#empty{padding:28px;margin-top:14px}#plan{margin-top:14px}.stats{margin:12px 0}.stat{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:6px 11px}.stat strong{font-size:1.03rem}.legend{gap:8px;margin:12px 0}.legend span,.tag{border-radius:6px;padding:3px 8px;font-size:.77rem;background:var(--fill,#edf0ea);color:var(--fg,#283b31)}.weekgrid{display:grid;grid-template-columns:48px repeat(7,minmax(0,1fr));border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--paper)}.dayHead,.deadlineCell{padding:7px 6px;border-left:1px solid var(--line)}.dayHead strong{display:block}.deadlineCell{border-top:1px solid var(--line);min-height:5px;display:grid;align-content:start;gap:4px}.track,.hourrail{position:relative;height:var(--height);border-top:1px solid var(--line)}.track{border-left:1px solid var(--line);background:repeating-linear-gradient(to bottom,transparent 0 calc(var(--hour) - 1px),#edf0ea calc(var(--hour) - 1px) var(--hour))}.weekend{background-color:#f5f5f0}.hourrail span{position:absolute;left:7px;font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums}.block{background:var(--fill);color:var(--fg);border:1px solid var(--edge);border-left:4px solid var(--edge);border-radius:6px;text-align:left;padding:4px 5px;line-height:1.17;width:100%;display:block;overflow:hidden}.block:hover:not(:disabled){background:var(--fill);filter:brightness(.95)}.block strong{font-size:.83rem;overflow-wrap:anywhere}.block time{font-size:.69rem;display:block;margin-bottom:2px}.track .block{position:absolute;top:var(--top);height:var(--size);left:var(--left);width:var(--width)}.track .mini{padding:0 3px;line-height:1.1}.track .mini strong{font-size:.64rem}.block.done{opacity:.68}.booked{--fill:#dce9e0;--edge:#779783;--fg:#244638}.ai{--fill:#e9e4f4;--edge:#a997bf;--fg:#4b3b61}.design{--fill:#f4e5d8;--edge:#be9a7d;--fg:#69452f}.digi{--fill:#dfeaf0;--edge:#8baab9;--fg:#334e63}.admin{--fill:#f3ebcc;--edge:#bea967;--fg:#5b4d25}.buffer{--fill:#edf0eb;--edge:#9ca79a;--fg:#414e43}.deadline{--fill:#f6e0e1;--edge:#c48a8e;--fg:#732e36}.other{--fill:#e6eae6;--edge:#87978a;--fg:#26372e}.list{display:none}.list section{display:grid;gap:6px;padding:12px 0;border-top:1px solid var(--line)}.list .block{min-height:45px;padding:8px 10px}.list .block strong{font-size:.92rem}dialog{color:var(--ink);background:var(--paper);max-width:min(470px,calc(100% - 25px));width:100%;border:1px solid var(--line);border-radius:14px;padding:21px}dialog::backdrop{background:#17271fb0}dialog h2{font:2rem/1.12 Georgia,serif;margin:8px 0}dialog p,dialog a,dialog .field,dialog .actions{margin-top:12px}dialog textarea{width:100%;resize:vertical;min-height:95px;padding:9px;border:1px solid #aebcb1;border-radius:7px;background:#fff}dialog a{display:inline-block;color:#244b39}.close{margin-left:auto;display:block}.check{display:flex;align-items:center;gap:8px;margin-top:14px}.check input{width:19px;height:19px;accent-color:#405f4a}.actions{justify-content:flex-end}.dateGroup{display:flex;gap:7px;flex-wrap:wrap}.dateGroup button{min-width:43px}[hidden]{display:none!important}@media(max-width:900px){.weekgrid{display:none}.list{display:block}.toolbar{align-items:flex-start}.keyline{width:100%}}@media(max-width:520px){main{padding-top:14px}.keyline input{width:100%}.keyline label{width:100%}.keyline button{min-height:41px}.stats,.legend{gap:5px}}
@@ -67,32 +67,43 @@
 .typeField{position:relative}.typeMenu{position:relative;color:var(--ink)}.typeMenu summary{display:flex;align-items:center;justify-content:space-between;gap:6px;list-style:none;cursor:pointer;min-height:38px;line-height:1.25}.typeMenu summary::-webkit-details-marker{display:none}
 .typeMenu summary span:first-child{overflow-wrap:anywhere}.typeMenu summary span:last-child{flex:none}.typeMenu[open] summary{outline:2px solid #91a79a;outline-offset:1px}
 .typeOptions{z-index:6;position:absolute;top:calc(100% + 4px);left:0;min-width:max(100%,180px);background:var(--paper);padding:6px;border-radius:9px;border:1px solid var(--line);box-shadow:0 7px 18px #26372e24}.typeOptions label{display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:5px;white-space:nowrap}.typeOptions label:first-child{border-bottom:1px solid var(--line);border-radius:0;font-weight:700}.typeOptions label:hover{background:#eaf0e9}.typeOptions input{width:16px;height:16px;min-width:16px;margin:0;accent-color:#405f4a}
+
+.visuallyHidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.compactTop{display:flex;align-items:center;gap:8px;justify-content:space-between;flex-wrap:wrap;padding:6px 8px;margin-bottom:6px}
+.compactTop .dateGroup{gap:4px}.compactTop .dateGroup button{min-height:36px;padding:5px 8px}.compactTop .dateGroup button:not(.weekPick){min-width:34px}
+.topActions{display:flex;align-items:center;gap:5px;margin-left:auto}.topActions button{min-height:36px;padding:5px 8px;white-space:nowrap}
+.topActions .viewtabs{width:auto;margin:0;padding:0;border:0;background:none}.topActions .viewtabs button{border:1px solid var(--line);background:var(--paper)}
+.topActions .viewtabs button[aria-pressed=true]{display:none}.connectDot{display:inline-block;width:7px;height:7px;margin-right:6px;border-radius:50%;background:#61736a;vertical-align:middle}.connectDot.on{background:#346a46}
+main{padding-top:12px}.planbody{margin-top:0}#plan{margin-top:0}.weekviews{grid-column:2;grid-row:1}#budget{grid-column:1;grid-row:1}#weekExtras{padding-top:8px}
+#weekExtras #subtitle{font-weight:700}#status.error{position:fixed;z-index:8;bottom:64px;right:12px;padding:9px 12px;border:1px solid #b47a70;border-radius:8px;background:#fff6f3;max-width:min(480px,calc(100% - 24px));box-shadow:0 3px 12px #26372e25}
+#githubDialog .keyline{margin-top:10px}#githubDialog .keyline input{width:100%}#githubDialog .keyline label{flex:1 1 190px}
+@media(max-width:1100px){.weekviews,#budget{grid-column:1;grid-row:auto}}
+@media(max-width:500px){main{padding-top:6px;padding-left:7px;padding-right:7px}.compactTop{gap:4px;padding:4px}.compactTop .dateGroup,.topActions{gap:3px}.compactTop .dateGroup button:not(.weekPick){min-width:29px}.compactTop button{font-size:.8rem}.topActions button{padding-inline:6px}.connectDot{margin-right:4px}}
 </style>
 </head>
 <body>
 <main>
-<header><div><div class="eyebrow">Arbetsplanering · finsk tid</div><h1>Veckovyn</h1><p id="subtitle">Läs och uppdatera din privata veckoplan.</p></div></header>
-<section class="panel toolbar" aria-label="Vecka och anslutning">
+<h1 class="visuallyHidden">Veckovyn</h1>
+<section class="panel compactTop" aria-label="Vecka och anslutning">
 <div class="dateGroup" id="weekControls"><button id="prev" aria-label="Föregående vecka">‹</button><button id="weekPick" class="weekPick" aria-haspopup="dialog" aria-label="Välj vecka i kalendern">Välj vecka ▾</button><button id="next" aria-label="Nästa vecka">›</button></div>
-<form class="keyline" id="connect" autocomplete="off">
-<label>Privat GitHub-nyckel (PAT)<input id="token" type="password" class="input" autocomplete="off" spellcheck="false" required></label>
-<button type="submit" class="primary">Anslut</button>
-</form>
-<div id="connected" class="keyline" hidden><button id="reload">Hämta senaste</button><button id="disconnect">Koppla från</button></div>
+<div class="topActions"><button id="githubOpen" aria-haspopup="dialog" aria-label="Anslut till GitHub"><span id="githubDot" class="connectDot" aria-hidden="true"></span>GitHub</button><nav class="viewtabs" aria-label="Välj vy"><button id="modeWeek" aria-pressed="true">Veckovy</button><button id="modeTable" aria-pressed="false">Tabellvy</button></nav>
+</div>
 </section>
-<nav class="viewtabs" aria-label="Välj vy"><button id="modeWeek" aria-pressed="true">Veckovy</button><button id="modeTable" aria-pressed="false">Tabellvy</button></nav>
-<p id="status" role="status" aria-live="polite"></p>
 <section id="empty" class="panel"><p id="emptyText">Anslut till GitHub för att visa din plan. Nyckeln sparas inte när du stänger eller laddar om sidan.</p></section>
 <section id="plan" hidden aria-label="Veckoplan">
-<p id="summary" class="muted"></p><div id="stats" class="stats"></div><div id="legend" class="legend" aria-label="Teckenförklaring"></div>
-<div class="logbar"><button id="logOpen">Logga tid</button><small class="desktop">Dra ett planeringsblock för att flytta det, eller dra i nederkanten för att ändra längden. Dra över tomma kvartar för att logga tid.</small><small class="mobile">Tryck på ett planeringsblock för att ändra dag, tid eller typ.</small></div>
-<div class="planbody"><aside id="budget" class="panel budget" aria-label="Veckans Admin, Digimentor, planering och rättning"></aside><div class="weekviews"><div id="weekgrid" class="weekgrid"></div><div id="list" class="list"></div></div></div>
+<div class="planbody"><div class="weekviews"><div id="weekgrid" class="weekgrid"></div><div id="list" class="list"></div></div><aside id="budget" class="panel budget" aria-label="Veckans Admin, Digimentor, planering och rättning"></aside></div>
 </section>
 <nav id="weekFooter" class="weekFooter" aria-label="Byt vecka i kalendern" hidden>
 <button id="lowerPrev" aria-label="Föregående vecka">← <span class="navText">Föregående vecka</span></button>
 <button id="lowerPick" class="weekPick" aria-haspopup="dialog" aria-label="Välj vecka i kalendern">Välj vecka ▾</button>
 <button id="lowerNext" aria-label="Nästa vecka"><span class="navText">Nästa vecka</span> →</button>
 </nav>
+<p id="status" role="status" aria-live="polite"></p>
+<section id="weekExtras" aria-label="Veckosammanfattning och hjälp" hidden>
+<p id="subtitle">Läs och uppdatera din privata veckoplan.</p>
+<p id="summary" class="muted"></p><div id="stats" class="stats"></div><div id="legend" class="legend" aria-label="Teckenförklaring"></div>
+<div class="logbar"><button id="logOpen">Logga tid</button><small class="desktop">Dra ett planeringsblock för att flytta det, eller dra i nederkanten för att ändra längden. Dra över tomma kvartar för att logga tid.</small><small class="mobile">Tryck på ett planeringsblock för att ändra dag, tid eller typ.</small></div>
+</section>
 <section id="tableView" class="panel" aria-labelledby="tableTitle" hidden>
 <div class="tableHeader"><div><h2 id="tableTitle">Kalenderregister</h2><p class="muted"><small>Bokningar, deadlines och egna arbetsblock från dina privata veckofiler.</small></p></div></div>
 <div class="filters">
@@ -152,6 +163,16 @@
 <div class="calendarManual"><label class="field"><small>Eller skriv vecka</small><input id="week" class="input" aria-label="Vecka, exempel 2027-W02" maxlength="8" spellcheck="false"></label><button id="show">Visa vecka</button><button class="today" id="weekToday">I dag</button></div>
 <p id="calendarNotice" class="warning" role="status"></p>
 </dialog>
+<dialog id="githubDialog" aria-labelledby="githubTitle">
+<button class="close" id="closeGithub" aria-label="Stäng GitHub-panel">×</button>
+<h2 id="githubTitle">GitHub-anslutning</h2>
+<form class="keyline" id="connect" autocomplete="off">
+<label>Privat GitHub-nyckel (PAT)<input id="token" type="password" class="input" autocomplete="off" spellcheck="false" required></label>
+<button type="submit" class="primary">Anslut</button>
+</form>
+<div id="connected" class="keyline" hidden><button id="reload">Hämta senaste</button><button id="disconnect">Koppla från</button></div>
+<p id="githubMessage" class="muted" role="status" aria-live="polite"></p>
+</dialog>
 <script>
 'use strict';
 (()=>{
@@ -198,9 +219,18 @@ function shift(delta){
  const key=calendarWeek(t);
  if(parseWeek(key))return pickWeek(key);
 }
-function status(s,error=false){$('status').textContent=s;$('status').classList.toggle('error',error)}
-function lock(b){busy=b;for(const id of ['prev','next','show','week','reload','disconnect','save','token','done','comment','close','logOpen','logClose','logDay','logStart','logEnd','logType','logComment','logSave','editKind','editDay','editStart','editEnd','modeWeek','modeTable','weekPick','lowerPick','lowerPrev','lowerNext','weekToday','prevMonth','nextMonth'])$(id).disabled=b;$('connect').querySelector('button').disabled=b;}
-function connected(v){$('connect').hidden=v;$('connected').hidden=!v;}
+function status(s,error=false){
+ $('status').textContent=s;$('status').classList.toggle('error',error);
+ if($('githubDialog').open)$('githubMessage').textContent=s;
+}
+function lock(b){busy=b;for(const id of ['prev','next','show','week','reload','disconnect','save','token','done','comment','close','logOpen','logClose','logDay','logStart','logEnd','logType','logComment','logSave','editKind','editDay','editStart','editEnd','modeWeek','modeTable','weekPick','lowerPick','lowerPrev','lowerNext','weekToday','prevMonth','nextMonth','githubOpen','closeGithub'])$(id).disabled=b;$('connect').querySelector('button').disabled=b;}
+function connected(v){
+ $('connect').hidden=v;$('connected').hidden=!v;
+ $('githubDot').classList.toggle('on',v);
+ $('githubOpen').setAttribute('aria-label',v?'GitHub anslutet, hantera anslutning':'Anslut till GitHub');
+ $('githubOpen').title=v?'GitHub anslutet':'Anslut till GitHub';
+ if(v&&$('githubDialog').open)$('githubDialog').close();
+}
 const minutes=s=>{const [h,m]=s.split(':').map(Number);return h*60+m};
 const hr=n=>n%60===0?n/60+' h':Math.floor(n/60)+' h '+n%60+' min';
 const hh=n=>pad(Math.floor(n/60))+':'+pad(n%60);
@@ -575,10 +605,19 @@ async function persistBlock(id,base,patch,fromDialog){
  finally{lock(false)}
 }
 $('connect').addEventListener('submit',e=>{e.preventDefault();if(busy)return;token=$('token').value.trim();$('token').value='';load();});
-$('disconnect').onclick=()=>{token='';$('token').value='';connected(false);resetTable();clearPlan('Anslut till GitHub för att visa din plan. Nyckeln sparas inte när du stänger eller laddar om sidan.');status('Frånkopplad.');};
+$('disconnect').onclick=()=>{if($('githubDialog').open)$('githubDialog').close();token='';$('token').value='';connected(false);resetTable();clearPlan('Anslut till GitHub för att visa din plan. Nyckeln sparas inte när du stänger eller laddar om sidan.');status('Frånkopplad.');};
 $('prev').onclick=$('lowerPrev').onclick=()=>shift(-1);
 $('next').onclick=$('lowerNext').onclick=()=>shift(1);
-$('show').onclick=()=>pickWeek($('week').value);$('reload').onclick=load;
+$('show').onclick=()=>pickWeek($('week').value);
+$('reload').onclick=()=>{if($('githubDialog').open)$('githubDialog').close();return load();};
+$('githubOpen').onclick=()=>{
+ if(busy)return;
+ $('githubMessage').textContent=token?'Ansluten till privata GitHub.':'Nyckeln sparas inte när du stänger eller laddar om sidan.';
+ $('githubDialog').showModal();
+};
+$('closeGithub').onclick=()=>{if(!busy)$('githubDialog').close();};
+$('githubDialog').addEventListener('close',()=>{$('token').value='';});
+$('githubDialog').addEventListener('cancel',e=>{if(busy)e.preventDefault();});
 $('week').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();pickWeek($('week').value);}});
 $('close').onclick=close;$('detail').addEventListener('cancel',e=>{e.preventDefault();close();});
 $('detail').addEventListener('close',()=>{$('comment').value='';$('blockInfo').textContent='';active=null;});
@@ -612,6 +651,7 @@ function syncView(){
  $('weekControls').hidden=table;
  $('weekFooter').hidden=table||!token;
  $('plan').hidden=table||!data;
+ $('weekExtras').hidden=table||!data;
  $('tableView').hidden=!table||!token;
  $('empty').hidden=table?!!token:!!data;
 }
