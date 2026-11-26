@@ -4,13 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; connect-src https://api.github.com; style-src 'unsafe-inline'; script-src 'sha256-KQK4KiCpwUsiyVMUSUZp9UxEjseVcMlqrKuWyCsey9w='">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; connect-src https://api.github.com; style-src 'unsafe-inline'; script-src 'sha256-uk/vUZXnP1xPrTehmTFEvO9boYLfAGI+Fjnkk4ZMziI='">
 <title>Veckovyn · Arbetsplanering</title>
 <style>
 :root{color-scheme:light;--bg:#f4f3ee;--ink:#26372e;--muted:#536259;--line:#d9ded5;--paper:#fffefb;--hour:64px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,sans-serif}main{max-width:1450px;margin:auto;padding:24px clamp(15px,3vw,42px) 40px}header,.toolbar,.stats,.legend,.actions,.keyline{display:flex;gap:12px;align-items:center;flex-wrap:wrap}header{justify-content:space-between;align-items:end;margin-bottom:20px}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:750;color:#476553}h1,h2,p{margin:0}h1{font:clamp(2.5rem,6vw,4.4rem)/1 Georgia,serif;letter-spacing:-.055em;margin:3px 0 8px}header p,small,.muted{color:var(--muted)}button,input,textarea{font:inherit}button,.input{border:1px solid #aebcb1;border-radius:9px;background:var(--paper);color:var(--ink);padding:8px 12px}button{cursor:pointer;font-weight:610}button:disabled{opacity:.55;cursor:not-allowed}button:hover:not(:disabled){background:#e7eee7}button.primary{background:#324e3d;color:white;border-color:#324e3d}button.primary:hover:not(:disabled){background:#23392c}button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #794826;outline-offset:2px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}.toolbar{justify-content:space-between}.keyline label,.field{display:grid;gap:5px}.keyline input{max-width:100%;width:245px}#week{width:103px;text-align:center;font-variant-numeric:tabular-nums}#status{min-height:1.5em;margin:10px 0;color:#476553}#status.error,#editMessage{color:#8c3727}#editMessage{white-space:pre-wrap}#empty{padding:28px;margin-top:14px}#plan{margin-top:14px}.stats{margin:12px 0}.stat{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:6px 11px}.stat strong{font-size:1.03rem}.legend{gap:8px;margin:12px 0}.legend span,.tag{border-radius:6px;padding:3px 8px;font-size:.77rem;background:var(--fill,#edf0ea);color:var(--fg,#283b31)}.weekgrid{display:grid;grid-template-columns:48px repeat(7,minmax(0,1fr));border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--paper)}.dayHead,.deadlineCell{padding:7px 6px;border-left:1px solid var(--line)}.dayHead strong{display:block}.deadlineCell{border-top:1px solid var(--line);min-height:5px;display:grid;align-content:start;gap:4px}.track,.hourrail{position:relative;height:var(--height);border-top:1px solid var(--line)}.track{border-left:1px solid var(--line);background:repeating-linear-gradient(to bottom,transparent 0 calc(var(--hour) - 1px),#edf0ea calc(var(--hour) - 1px) var(--hour))}.weekend{background-color:#f5f5f0}.hourrail span{position:absolute;left:7px;font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums}.block{background:var(--fill);color:var(--fg);border:1px solid var(--edge);border-left:4px solid var(--edge);border-radius:6px;text-align:left;padding:4px 5px;line-height:1.17;width:100%;display:block;overflow:hidden}.block:hover:not(:disabled){background:var(--fill);filter:brightness(.95)}.block strong{font-size:.83rem;overflow-wrap:anywhere}.block time{font-size:.69rem;display:block;margin-bottom:2px}.track .block{position:absolute;top:var(--top);height:var(--size);left:var(--left);width:var(--width)}.track .mini{padding:0 3px;line-height:1.1}.track .mini strong{font-size:.64rem}.block.done{opacity:.68}.booked{--fill:#dce9e0;--edge:#779783;--fg:#244638}.ai{--fill:#e9e4f4;--edge:#a997bf;--fg:#4b3b61}.design{--fill:#f4e5d8;--edge:#be9a7d;--fg:#69452f}.digi{--fill:#dfeaf0;--edge:#8baab9;--fg:#334e63}.admin{--fill:#f3ebcc;--edge:#bea967;--fg:#5b4d25}.buffer{--fill:#edf0eb;--edge:#9ca79a;--fg:#414e43}.deadline{--fill:#f6e0e1;--edge:#c48a8e;--fg:#732e36}.other{--fill:#e6eae6;--edge:#87978a;--fg:#26372e}.list{display:none}.list section{display:grid;gap:6px;padding:12px 0;border-top:1px solid var(--line)}.list .block{min-height:45px;padding:8px 10px}.list .block strong{font-size:.92rem}dialog{color:var(--ink);background:var(--paper);max-width:min(470px,calc(100% - 25px));width:100%;border:1px solid var(--line);border-radius:14px;padding:21px}dialog::backdrop{background:#17271fb0}dialog h2{font:2rem/1.12 Georgia,serif;margin:8px 0}dialog p,dialog a,dialog .field,dialog .actions{margin-top:12px}dialog textarea{width:100%;resize:vertical;min-height:95px;padding:9px;border:1px solid #aebcb1;border-radius:7px;background:#fff}dialog a{display:inline-block;color:#244b39}.close{margin-left:auto;display:block}.check{display:flex;align-items:center;gap:8px;margin-top:14px}.check input{width:19px;height:19px;accent-color:#405f4a}.actions{justify-content:flex-end}.dateGroup{display:flex;gap:7px;flex-wrap:wrap}.dateGroup button{min-width:43px}[hidden]{display:none!important}@media(max-width:900px){.weekgrid{display:none}.list{display:block}.toolbar{align-items:flex-start}.keyline{width:100%}}@media(max-width:520px){main{padding-top:14px}.keyline input{width:100%}.keyline label{width:100%}.keyline button{min-height:41px}.stats,.legend{gap:5px}}
 
 .planbody{margin-top:10px;display:grid;grid-template-columns:155px minmax(0,1fr);gap:13px;align-items:start}.weekviews{min-width:0}.budget{font-size:.85rem}.budget h3{margin:0 0 9px;font-size:.95rem}.budget p+p{margin-top:9px}.budgetRow{padding:7px 0;border-bottom:1px solid var(--line)}.budgetRow strong{display:block}.logbar{margin-top:10px}.logbar small{display:block;margin-top:5px}.track{user-select:none;cursor:cell}.track:hover{background-image:repeating-linear-gradient(to bottom,transparent 0 15px,#dce4dc 15px 16px)}.track .block{cursor:pointer;z-index:1}.quarterPick{position:absolute;left:2px;right:2px;background:#bfd8c8;border:2px solid #41694f;border-radius:5px;pointer-events:none;z-index:2}.logFields{display:grid;grid-template-columns:1fr 1fr;gap:8px}.logFields .wide{grid-column:1/-1}.logFields select{width:100%;font:inherit}.warning{color:#8c3727}.logbar .mobile{display:none}
 @media(max-width:1100px){.planbody{grid-template-columns:1fr}.budget{display:flex;gap:10px 20px;align-items:center;flex-wrap:wrap}.budget h3,.budget p+p{margin:0}.budgetRow{border:0;padding:0}}@media(max-width:900px){.logbar .desktop{display:none}.logbar .mobile{display:block}}
+
+.legendItem{display:inline-flex;align-items:center;gap:6px;padding:3px 6px 3px 0;color:var(--muted);font-size:.8rem;line-height:1.2}
+.swatch{display:block;flex:none;width:18px;height:14px;border-radius:4px;border:1px solid var(--edge);background:var(--fill)}
+.block.role-fixed,.swatch.role-fixed{background:#d3e4d8;border-color:#648571;color:#244638}
+.block.role-fixed:hover:not(:disabled){background:#caddcf}
+.block.role-planned,.swatch.role-planned{background:#fff;border:2px solid var(--outline,var(--edge));border-left-width:4px}
+.block.role-planned:hover:not(:disabled){background:#fff;filter:none;box-shadow:inset 0 0 0 1px var(--outline,var(--edge))}
+.ai{--outline:#8a75a5}.design{--outline:#a77a59}.other{--outline:#74887b}
+.block.role-protected,.swatch.role-protected{background:repeating-linear-gradient(135deg,#f5f6f3 0 4px,#e3e8e2 4px 6px);color:#414e43}
+.block.role-protected:hover:not(:disabled){background:repeating-linear-gradient(135deg,#f5f6f3 0 4px,#e3e8e2 4px 6px)}
+.block.role-due,.block.role-logged,.swatch.role-due,.swatch.role-logged{background:#fff;border:1px dashed var(--edge);border-left:3px solid var(--edge)}
+.block.role-due:hover:not(:disabled),.block.role-logged:hover:not(:disabled){background:#fff;filter:none}
 </style>
 </head>
 <body>
@@ -27,7 +39,7 @@
 <p id="status" role="status" aria-live="polite"></p>
 <section id="empty" class="panel"><p id="emptyText">Anslut till GitHub för att visa din plan. Nyckeln sparas inte när du stänger eller laddar om sidan.</p></section>
 <section id="plan" hidden aria-label="Veckoplan">
-<p id="summary" class="muted"></p><div id="stats" class="stats"></div><div id="legend" class="legend"></div>
+<p id="summary" class="muted"></p><div id="stats" class="stats"></div><div id="legend" class="legend" aria-label="Teckenförklaring"></div>
 <div class="logbar"><button id="logOpen">Logga tid</button><small class="desktop">Dra över lediga kvartar i en dagkolumn, eller välj tid via knappen.</small><small class="mobile">Välj dag och tid i kvartar med knappen.</small></div>
 <div class="planbody"><aside id="budget" class="panel budget" aria-label="Veckobudget för Admin och Digimentor"></aside><div class="weekviews"><div id="weekgrid" class="weekgrid"></div><div id="list" class="list"></div></div></div>
 </section>
@@ -83,6 +95,15 @@ const hr=n=>n%60===0?n/60+' h':Math.floor(n/60)+' h '+n%60+' min';
 const hh=n=>pad(Math.floor(n/60))+':'+pad(n%60);
 const dateLabel=s=>Number(s.slice(8))+'.'+Number(s.slice(5,7))+'.';
 const category=b=>Object.hasOwn(labels,b.category)?b.category:'other';
+function role(b){
+ if(category(b)==='buffer')return 'protected';
+ if(category(b)==='deadline'||!b.start)return 'due';
+ if(b.origin==='log')return 'logged';
+ if(category(b)==='booked'||b.source==='Peppi')return 'fixed';
+ return 'planned';
+}
+const roles={fixed:'Bokat',planned:'Planerad arbetstid',protected:'Skyddad lektionsluft',due:'Deadline',logged:'Loggad tid'};
+
 const labelOf=k=>typeof data?.categoryLabels?.[k]==='string'?data.categoryLabels[k]:labels[k];
 function urlOf(p){return repo+'/contents/veckoplanering/veckor/'+p+'.json'}
 async function github(url, method='GET',body){
@@ -139,11 +160,13 @@ async function load(){
  }finally{lock(false)}
 }
 function makeBlock(b,compact=false){
- const btn=node('button','block '+category(b)+(b.done?' done':'')+(compact?' mini':''));
+ const kind=role(b);
+ const btn=node('button','block '+category(b)+' role-'+kind+(b.done?' done':'')+(compact?' mini':''));
  btn.dataset.block=b.id;btn.type='button';
  if(!compact)btn.append(node('time','',b.start?b.start+'–'+b.end:'Hela dagen · utan klockslag'));
  btn.append(node('strong','',(b.done?'✓ ':'')+b.title));
- btn.setAttribute('aria-label',(b.done?'Klart: ':'')+b.title+(b.start?', '+b.start+' till '+b.end:''));
+ btn.setAttribute('aria-label',roles[kind]+': '+(b.done?'klart, ':'')+b.title+(b.start?', '+b.start+' till '+b.end:''));
+ btn.title=roles[kind]+': '+b.title;
  btn.addEventListener('click',()=>open(b.id));return btn;
 }
 function layout(items){
@@ -176,8 +199,14 @@ function render(){
   return e;
  });
  $('budget').replaceChildren(node('h3','','Flexibel tid'),...summaryRows,...(budgetValues.some(n=>n!==null)?[node('p','muted',hr(remaining)+' kvar att använda')]:[]));
- const used=new Set(data.blocks.map(category));
- $('legend').replaceChildren(...Object.entries(labels).filter(([k])=>used.has(k)).map(([k])=>node('span',k,labelOf(k))));
+ const used=new Set(data.blocks.map(role));
+ const examples=[['fixed','booked','Bokat'],['planned','ai','Förberedelse och rättning'],['protected','buffer',roles.protected],['due','deadline',roles.due],['logged','digi',roles.logged]];
+ $('legend').replaceChildren(...examples.filter(([k])=>used.has(k)||k==='fixed'||k==='planned').map(([k,c,title])=>{
+  const row=node('div','legendItem');
+  const swatch=node('i','swatch '+c+' role-'+k);
+  swatch.setAttribute('aria-hidden','true');row.append(swatch,node('div','',title));return row;
+ }));
+
  const daily=ds.map(d=>data.blocks.filter(b=>b.date===d).sort((a,b)=>(a.start||'').localeCompare(b.start||'')));
  const low=Math.min(480,...timed.map(b=>Math.floor(minutes(b.start)/60)*60));
  const high=Math.max(1080,...timed.map(b=>Math.ceil(minutes(b.end)/60)*60));
@@ -283,7 +312,7 @@ async function saveLog(){
 function open(id){
  const b=data?.blocks.find(x=>x.id===id);if(!b)return;
  active={id,done:!!b.done,comment:typeof b.comment==='string'?b.comment:''};
- $('blockTag').className='tag '+category(b);$('blockTag').textContent=labelOf(category(b));
+ $('blockTag').className='tag '+category(b);$('blockTag').textContent=[roles[role(b)],labelOf(category(b))].filter((v,i,a)=>a.indexOf(v)===i).join(' · ');
  $('blockTitle').textContent=b.title;$('blockTime').textContent=dateLabel(b.date)+' · '+(b.start?b.start+'–'+b.end:'Inget klockslag');
  const meta=[b.detail,b.courseCode?'Kurs: '+b.courseCode:null,b.lessonId?'Lektions-ID: '+b.lessonId:null,b.source?'Källa: '+b.source:null].filter(Boolean);
  $('blockInfo').textContent=meta.join(' · ');$('blockLink').hidden=true;$('blockLink').removeAttribute('href');
