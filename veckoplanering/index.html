@@ -99,6 +99,24 @@ main{padding-top:12px}.planbody{margin-top:0}#plan{margin-top:0}.weekviews{grid-
  .weekFooter button{min-height:44px;padding:5px 11px}.weekFooter #lowerPrev{justify-self:start}.weekFooter #lowerNext{justify-self:end}
  #status.error{bottom:64px}
 }
+
+/* Allow portrait layouts to shrink to the device width without page zoom. */
+@media(max-width:600px){
+ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+ main{width:100%;min-width:0}
+ .compactTop,#plan,#weekExtras,#tableView,.planbody,.weekviews,.list,.list section,#budget,.weekFooter{min-width:0;max-width:100%}
+ .planbody,.list section{grid-template-columns:minmax(0,1fr)}
+ .list .block{min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+ .list .block strong,#budget,#weekExtras,.regCard,.typeMenu summary{overflow-wrap:anywhere}
+ .compactTop .dateGroup,.topActions{min-width:0;max-width:100%;flex-wrap:wrap}
+ .weekFooter{grid-template-columns:minmax(44px,1fr) minmax(0,auto) minmax(44px,1fr)}
+ .weekFooter button{min-width:44px;min-height:44px;max-width:100%;padding:4px 8px;font-size:.9rem}
+ .weekFooter .edgeArrow{font-size:1.15rem}
+}
+@media(max-width:480px){
+ .weekFooter .edgeLabel{display:none}
+ .weekFooter #lowerPrev,.weekFooter #lowerNext{width:44px}
+}
 </style>
 </head>
 <body>
@@ -114,9 +132,9 @@ main{padding-top:12px}.planbody{margin-top:0}#plan{margin-top:0}.weekviews{grid-
 <div class="planbody"><div class="weekviews"><div id="weekgrid" class="weekgrid"></div><div id="list" class="list"></div></div><aside id="budget" class="panel budget" aria-label="Veckans Admin, Digimentor, planering och rättning"></aside></div>
 </section>
 <nav id="weekFooter" class="weekFooter" aria-label="Byt vecka i kalendern" hidden>
-<button id="lowerPrev" aria-label="Föregående vecka">← Föregående</button>
+<button id="lowerPrev" aria-label="Föregående vecka"><span class="edgeArrow" aria-hidden="true">←</span><span class="edgeLabel"> Föregående</span></button>
 <button id="lowerPick" class="weekPick" aria-haspopup="dialog" aria-label="Välj vecka i kalendern">Välj vecka ▾</button>
-<button id="lowerNext" aria-label="Nästa vecka">Nästa →</button>
+<button id="lowerNext" aria-label="Nästa vecka"><span class="edgeLabel">Nästa </span><span class="edgeArrow" aria-hidden="true">→</span></button>
 </nav>
 <p id="status" role="status" aria-live="polite"></p>
 <section id="weekExtras" aria-label="Veckosammanfattning och hjälp" hidden>
