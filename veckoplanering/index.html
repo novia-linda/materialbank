@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; connect-src https://api.github.com; style-src 'unsafe-inline'; script-src 'sha256-uk/vUZXnP1xPrTehmTFEvO9boYLfAGI+Fjnkk4ZMziI='">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; connect-src https://api.github.com; style-src 'unsafe-inline'; script-src 'sha256-EFvG138PbYciXZm2vTrFpuflCrGX8U7bwnAyjIbbxpo='">
 <title>Veckovyn · Arbetsplanering</title>
 <style>
 :root{color-scheme:light;--bg:#f4f3ee;--ink:#26372e;--muted:#536259;--line:#d9ded5;--paper:#fffefb;--hour:64px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,sans-serif}main{max-width:1450px;margin:auto;padding:24px clamp(15px,3vw,42px) 40px}header,.toolbar,.stats,.legend,.actions,.keyline{display:flex;gap:12px;align-items:center;flex-wrap:wrap}header{justify-content:space-between;align-items:end;margin-bottom:20px}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:750;color:#476553}h1,h2,p{margin:0}h1{font:clamp(2.5rem,6vw,4.4rem)/1 Georgia,serif;letter-spacing:-.055em;margin:3px 0 8px}header p,small,.muted{color:var(--muted)}button,input,textarea{font:inherit}button,.input{border:1px solid #aebcb1;border-radius:9px;background:var(--paper);color:var(--ink);padding:8px 12px}button{cursor:pointer;font-weight:610}button:disabled{opacity:.55;cursor:not-allowed}button:hover:not(:disabled){background:#e7eee7}button.primary{background:#324e3d;color:white;border-color:#324e3d}button.primary:hover:not(:disabled){background:#23392c}button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #794826;outline-offset:2px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}.toolbar{justify-content:space-between}.keyline label,.field{display:grid;gap:5px}.keyline input{max-width:100%;width:245px}#week{width:103px;text-align:center;font-variant-numeric:tabular-nums}#status{min-height:1.5em;margin:10px 0;color:#476553}#status.error,#editMessage{color:#8c3727}#editMessage{white-space:pre-wrap}#empty{padding:28px;margin-top:14px}#plan{margin-top:14px}.stats{margin:12px 0}.stat{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:6px 11px}.stat strong{font-size:1.03rem}.legend{gap:8px;margin:12px 0}.legend span,.tag{border-radius:6px;padding:3px 8px;font-size:.77rem;background:var(--fill,#edf0ea);color:var(--fg,#283b31)}.weekgrid{display:grid;grid-template-columns:48px repeat(7,minmax(0,1fr));border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--paper)}.dayHead,.deadlineCell{padding:7px 6px;border-left:1px solid var(--line)}.dayHead strong{display:block}.deadlineCell{border-top:1px solid var(--line);min-height:5px;display:grid;align-content:start;gap:4px}.track,.hourrail{position:relative;height:var(--height);border-top:1px solid var(--line)}.track{border-left:1px solid var(--line);background:repeating-linear-gradient(to bottom,transparent 0 calc(var(--hour) - 1px),#edf0ea calc(var(--hour) - 1px) var(--hour))}.weekend{background-color:#f5f5f0}.hourrail span{position:absolute;left:7px;font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums}.block{background:var(--fill);color:var(--fg);border:1px solid var(--edge);border-left:4px solid var(--edge);border-radius:6px;text-align:left;padding:4px 5px;line-height:1.17;width:100%;display:block;overflow:hidden}.block:hover:not(:disabled){background:var(--fill);filter:brightness(.95)}.block strong{font-size:.83rem;overflow-wrap:anywhere}.block time{font-size:.69rem;display:block;margin-bottom:2px}.track .block{position:absolute;top:var(--top);height:var(--size);left:var(--left);width:var(--width)}.track .mini{padding:0 3px;line-height:1.1}.track .mini strong{font-size:.64rem}.block.done{opacity:.68}.booked{--fill:#dce9e0;--edge:#779783;--fg:#244638}.ai{--fill:#e9e4f4;--edge:#a997bf;--fg:#4b3b61}.design{--fill:#f4e5d8;--edge:#be9a7d;--fg:#69452f}.digi{--fill:#dfeaf0;--edge:#8baab9;--fg:#334e63}.admin{--fill:#f3ebcc;--edge:#bea967;--fg:#5b4d25}.buffer{--fill:#edf0eb;--edge:#9ca79a;--fg:#414e43}.deadline{--fill:#f6e0e1;--edge:#c48a8e;--fg:#732e36}.other{--fill:#e6eae6;--edge:#87978a;--fg:#26372e}.list{display:none}.list section{display:grid;gap:6px;padding:12px 0;border-top:1px solid var(--line)}.list .block{min-height:45px;padding:8px 10px}.list .block strong{font-size:.92rem}dialog{color:var(--ink);background:var(--paper);max-width:min(470px,calc(100% - 25px));width:100%;border:1px solid var(--line);border-radius:14px;padding:21px}dialog::backdrop{background:#17271fb0}dialog h2{font:2rem/1.12 Georgia,serif;margin:8px 0}dialog p,dialog a,dialog .field,dialog .actions{margin-top:12px}dialog textarea{width:100%;resize:vertical;min-height:95px;padding:9px;border:1px solid #aebcb1;border-radius:7px;background:#fff}dialog a{display:inline-block;color:#244b39}.close{margin-left:auto;display:block}.check{display:flex;align-items:center;gap:8px;margin-top:14px}.check input{width:19px;height:19px;accent-color:#405f4a}.actions{justify-content:flex-end}.dateGroup{display:flex;gap:7px;flex-wrap:wrap}.dateGroup button{min-width:43px}[hidden]{display:none!important}@media(max-width:900px){.weekgrid{display:none}.list{display:block}.toolbar{align-items:flex-start}.keyline{width:100%}}@media(max-width:520px){main{padding-top:14px}.keyline input{width:100%}.keyline label{width:100%}.keyline button{min-height:41px}.stats,.legend{gap:5px}}
@@ -19,8 +19,6 @@
 .block.role-planned,.swatch.role-planned{background:#fff;border:2px solid var(--outline,var(--edge));border-left-width:4px}
 .block.role-planned:hover:not(:disabled){background:#fff;filter:none;box-shadow:inset 0 0 0 1px var(--outline,var(--edge))}
 .ai{--outline:#8a75a5}.design{--outline:#a77a59}.other{--outline:#74887b}
-.block.role-protected,.swatch.role-protected{background:repeating-linear-gradient(135deg,#f5f6f3 0 4px,#e3e8e2 4px 6px);color:#414e43}
-.block.role-protected:hover:not(:disabled){background:repeating-linear-gradient(135deg,#f5f6f3 0 4px,#e3e8e2 4px 6px)}
 .block.role-due,.block.role-logged,.swatch.role-due,.swatch.role-logged{background:#fff;border:1px dashed var(--edge);border-left:3px solid var(--edge)}
 .block.role-due:hover:not(:disabled),.block.role-logged:hover:not(:disabled){background:#fff;filter:none}
 </style>
@@ -69,7 +67,7 @@
 'use strict';
 (()=>{
 const $=id=>document.getElementById(id), node=(tag,cls,txt)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e};
-const labels={booked:'Bokat',ai:'Kursutveckling',design:'Material och projekt',digi:'Digimentor',admin:'Admin',buffer:'Lektionsluft',deadline:'Deadline',other:'Övrigt'};
+const labels={booked:'Bokat',ai:'Kursutveckling',design:'Material och projekt',digi:'Digimentor',admin:'Admin',deadline:'Deadline',other:'Övrigt'};
 const repo='https://api.github.com/repos/novia-linda/data', dayMs=86400000;
 const weekdays=['Måndag','Tisdag','Onsdag','Torsdag','Fredag','Lördag','Söndag'];
 let token='', data=null, current='', busy=false, active=null;
@@ -96,13 +94,12 @@ const hh=n=>pad(Math.floor(n/60))+':'+pad(n%60);
 const dateLabel=s=>Number(s.slice(8))+'.'+Number(s.slice(5,7))+'.';
 const category=b=>Object.hasOwn(labels,b.category)?b.category:'other';
 function role(b){
- if(category(b)==='buffer')return 'protected';
  if(category(b)==='deadline'||!b.start)return 'due';
  if(b.origin==='log')return 'logged';
  if(category(b)==='booked'||b.source==='Peppi')return 'fixed';
  return 'planned';
 }
-const roles={fixed:'Bokat',planned:'Planerad arbetstid',protected:'Skyddad lektionsluft',due:'Deadline',logged:'Loggad tid'};
+const roles={fixed:'Bokat',planned:'Planerad arbetstid',due:'Deadline',logged:'Loggad tid'};
 
 const labelOf=k=>typeof data?.categoryLabels?.[k]==='string'?data.categoryLabels[k]:labels[k];
 function urlOf(p){return repo+'/contents/veckoplanering/veckor/'+p+'.json'}
@@ -182,15 +179,14 @@ function render(){
  const p=parseWeek(current), ds=Array.from({length:7},(_,i)=>iso(new Date(p.start+i*dayMs)));
  $('subtitle').textContent='Vecka '+p.w+' · '+dateLabel(ds[0])+'–'+dateLabel(ds[6])+p.year;
  $('summary').textContent=data.summary||'';
- const timed=data.blocks.filter(b=>b.start), actionable=data.blocks.filter(b=>category(b)!=='buffer');
+ const actionable=data.blocks.filter(b=>b.category!=='buffer'), timed=actionable.filter(b=>b.start);
  const sum=timed.reduce((acc,b)=>acc+minutes(b.end)-minutes(b.start),0);
- const buffer=timed.filter(b=>category(b)==='buffer').reduce((acc,b)=>acc+minutes(b.end)-minutes(b.start),0);
  const target=Number.isFinite(data.targetMinutes)?data.targetMinutes:2400;
  const budgetKeys=['admin','digi'];
  const budgetValues=budgetKeys.map(k=>Number.isInteger(data.budgets?.[k])&&data.budgets[k]>=0?data.budgets[k]:null);
  const loggedValues=budgetKeys.map(k=>timed.filter(b=>b.category===k&&(b.origin==='log'||b.done)).reduce((acc,b)=>acc+minutes(b.end)-minutes(b.start),0));
  const remaining=budgetValues.reduce((acc,n,i)=>acc+(n===null?0:Math.max(0,n-loggedValues[i])),0);
- const stats=[['I schemat',hr(sum)],['Veckoram',hr(target)],['Skyddad luft',buffer+' min (ingår)'],['Gjorda',actionable.filter(b=>b.done).length+' / '+actionable.length]];
+ const stats=[['I schemat',hr(sum)],['Veckoram',hr(target)],['Gjorda',actionable.filter(b=>b.done).length+' / '+actionable.length]];
  $('stats').replaceChildren(...stats.map(([name,value])=>{const e=node('div','stat');e.append(node('small','',name+' '),node('strong','',value));return e;}));
  const summaryRows=budgetKeys.map((k,i)=>{
   const e=node('div','budgetRow');const n=budgetValues[i], used=loggedValues[i];
@@ -199,22 +195,22 @@ function render(){
   return e;
  });
  $('budget').replaceChildren(node('h3','','Flexibel tid'),...summaryRows,...(budgetValues.some(n=>n!==null)?[node('p','muted',hr(remaining)+' kvar att använda')]:[]));
- const used=new Set(data.blocks.map(role));
- const examples=[['fixed','booked','Bokat'],['planned','ai','Förberedelse och rättning'],['protected','buffer',roles.protected],['due','deadline',roles.due],['logged','digi',roles.logged]];
+ const used=new Set(actionable.map(role));
+ const examples=[['fixed','booked','Bokat'],['planned','ai','Förberedelse och rättning'],['due','deadline',roles.due],['logged','digi',roles.logged]];
  $('legend').replaceChildren(...examples.filter(([k])=>used.has(k)||k==='fixed'||k==='planned').map(([k,c,title])=>{
   const row=node('div','legendItem');
   const swatch=node('i','swatch '+c+' role-'+k);
   swatch.setAttribute('aria-hidden','true');row.append(swatch,node('div','',title));return row;
  }));
 
- const daily=ds.map(d=>data.blocks.filter(b=>b.date===d).sort((a,b)=>(a.start||'').localeCompare(b.start||'')));
+ const daily=ds.map(d=>actionable.filter(b=>b.date===d).sort((a,b)=>(a.start||'').localeCompare(b.start||'')));
  const low=Math.min(480,...timed.map(b=>Math.floor(minutes(b.start)/60)*60));
  const high=Math.max(1080,...timed.map(b=>Math.ceil(minutes(b.end)/60)*60));
  const grid=$('weekgrid'), list=$('list');
  grid.replaceChildren();list.replaceChildren();
  grid.style.setProperty('--height',((high-low)/60*64)+'px');
  grid.append(node('div','dayHead','Tid'),...ds.map((d,i)=>{const e=node('div','dayHead'+(i>4?' weekend':''));e.append(node('strong','',weekdays[i]),node('small','',dateLabel(d)));return e;}));
- if(data.blocks.some(b=>!b.start))grid.append(node('small','deadlineCell','Heldag'),...daily.map((bs,i)=>{const e=node('div','deadlineCell'+(i>4?' weekend':''));e.append(...bs.filter(b=>!b.start).map(b=>makeBlock(b,true)));return e;}));
+ if(actionable.some(b=>!b.start))grid.append(node('small','deadlineCell','Heldag'),...daily.map((bs,i)=>{const e=node('div','deadlineCell'+(i>4?' weekend':''));e.append(...bs.filter(b=>!b.start).map(b=>makeBlock(b,true)));return e;}));
  const rail=node('div','hourrail');
  for(let n=low;n<high;n+=60){const e=node('span','',hh(n));e.style.top=((n-low)/60*64)+'px';rail.append(e);}
  grid.append(rail);
@@ -236,7 +232,7 @@ function render(){
   grid.append(track);
  });
 }
-const overlap=(blocks,day,start,end)=>blocks.some(b=>b.date===day&&b.start&&minutes(b.start)<end&&minutes(b.end)>start);
+const overlap=(blocks,day,start,end)=>blocks.some(b=>b.category!=='buffer'&&b.date===day&&b.start&&minutes(b.start)<end&&minutes(b.end)>start);
 function dragRange(blocks,day,a,b){
  let l=a,r=a+15,d=Math.sign(b-a)*15;
  for(let t=a+d;d&&(d>0?t<=b:t>=b);t+=d){
@@ -288,7 +284,7 @@ async function saveLog(){
  if(!dates.includes(date)||!['admin','digi'].includes(k)||![a,b].every(n=>Number.isInteger(n)&&n%15===0)||a<0||b>1440||b<=a){
   fail('Välj en starttid och en senare sluttid i 15-minuterssteg.');return;
  }
- const collision='Tiden överlappar ett annat block eller skyddad lektionsluft. Välj en ledig tid.';
+ const collision='Tiden överlappar ett annat block. Välj en ledig tid.';
  const block={id:'log-'+crypto.randomUUID(),date,start,end,category:k,title:labels[k],detail:'Efterhandsloggad tid',done:true,comment,origin:'log'};
  lock(true);fail('Sparar …');
  try{
@@ -310,14 +306,14 @@ async function saveLog(){
  finally{lock(false)}
 }
 function open(id){
- const b=data?.blocks.find(x=>x.id===id);if(!b)return;
+ const b=data?.blocks.find(x=>x.id===id);if(!b||b.category==='buffer')return;
  active={id,done:!!b.done,comment:typeof b.comment==='string'?b.comment:''};
  $('blockTag').className='tag '+category(b);$('blockTag').textContent=[roles[role(b)],labelOf(category(b))].filter((v,i,a)=>a.indexOf(v)===i).join(' · ');
  $('blockTitle').textContent=b.title;$('blockTime').textContent=dateLabel(b.date)+' · '+(b.start?b.start+'–'+b.end:'Inget klockslag');
  const meta=[b.detail,b.courseCode?'Kurs: '+b.courseCode:null,b.lessonId?'Lektions-ID: '+b.lessonId:null,b.source?'Källa: '+b.source:null].filter(Boolean);
  $('blockInfo').textContent=meta.join(' · ');$('blockLink').hidden=true;$('blockLink').removeAttribute('href');
  try{const u=new URL(b.url);if(u.protocol==='https:'&&['app.notion.com','www.notion.so','notion.so'].includes(u.hostname)){$('blockLink').href=u.href;$('blockLink').hidden=false;}}catch{}
- $('done').checked=active.done;$('comment').value=active.comment;$('editor').hidden=category(b)==='buffer';$('editMessage').textContent='';
+ $('done').checked=active.done;$('comment').value=active.comment;$('editor').hidden=false;$('editMessage').textContent='';
  $('detail').showModal();
 }
 function changes(){return active?Object.fromEntries(Object.entries({done:$('done').checked,comment:$('comment').value}).filter(([k,v])=>v!==active[k])):{}}
