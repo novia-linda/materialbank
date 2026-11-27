@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="app-revision" content="rattning-2-tentor">
+<meta name="app-revision" content="rattning-3-planering">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; connect-src https://api.github.com; frame-src 'self'; style-src 'unsafe-inline'; script-src 'sha256-i6Hi1RucUBqPfoIjAQMHIqEZLzQKFQu1vxG831IMGuk='">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; connect-src https://api.github.com; frame-src 'self'; style-src 'unsafe-inline'; script-src 'sha256-UXkoGaFB/LrJtmKVkEFguulQOuj30WrPRSRnu7eoDjo='">
 <title>Veckovyn · Arbetsplanering</title>
 <style>
 :root{color-scheme:light;--bg:#f4f3ee;--ink:#26372e;--muted:#536259;--line:#d9ded5;--paper:#fffefb;--hour:64px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,sans-serif}main{max-width:1450px;margin:auto;padding:24px clamp(15px,3vw,42px) 40px}header,.toolbar,.stats,.legend,.actions,.keyline{display:flex;gap:12px;align-items:center;flex-wrap:wrap}header{justify-content:space-between;align-items:end;margin-bottom:20px}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:750;color:#476553}h1,h2,p{margin:0}h1{font:clamp(2.5rem,6vw,4.4rem)/1 Georgia,serif;letter-spacing:-.055em;margin:3px 0 8px}header p,small,.muted{color:var(--muted)}button,input,textarea{font:inherit}button,.input{border:1px solid #aebcb1;border-radius:9px;background:var(--paper);color:var(--ink);padding:8px 12px}button{cursor:pointer;font-weight:610}button:disabled{opacity:.55;cursor:not-allowed}button:hover:not(:disabled){background:#e7eee7}button.primary{background:#324e3d;color:white;border-color:#324e3d}button.primary:hover:not(:disabled){background:#23392c}button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #794826;outline-offset:2px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}.toolbar{justify-content:space-between}.keyline label,.field{display:grid;gap:5px}.keyline input{max-width:100%;width:245px}#week{width:103px;text-align:center;font-variant-numeric:tabular-nums}#status{min-height:1.5em;margin:10px 0;color:#476553}#status.error,#editMessage{color:#8c3727}#editMessage{white-space:pre-wrap}#empty{padding:28px;margin-top:14px}#plan{margin-top:14px}.stats{margin:12px 0}.stat{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:6px 11px}.stat strong{font-size:1.03rem}.legend{gap:8px;margin:12px 0}.legend span,.tag{border-radius:6px;padding:3px 8px;font-size:.77rem;background:var(--fill,#edf0ea);color:var(--fg,#283b31)}.weekgrid{display:grid;grid-template-columns:48px repeat(7,minmax(0,1fr));border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--paper)}.dayHead,.deadlineCell{padding:7px 6px;border-left:1px solid var(--line)}.dayHead strong{display:block}.deadlineCell{border-top:1px solid var(--line);min-height:5px;display:grid;align-content:start;gap:4px}.track,.hourrail{position:relative;height:var(--height);border-top:1px solid var(--line)}.track{border-left:1px solid var(--line);background:repeating-linear-gradient(to bottom,transparent 0 calc(var(--hour) - 1px),#edf0ea calc(var(--hour) - 1px) var(--hour))}.weekend{background-color:#f5f5f0}.hourrail span{position:absolute;left:7px;font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums}.block{background:var(--fill);color:var(--fg);border:1px solid var(--edge);border-left:4px solid var(--edge);border-radius:6px;text-align:left;padding:4px 5px;line-height:1.17;width:100%;display:block;overflow:hidden}.block:hover:not(:disabled){background:var(--fill);filter:brightness(.95)}.block strong{font-size:.83rem;overflow-wrap:anywhere}.block time{font-size:.69rem;display:block;margin-bottom:2px}.track .block{position:absolute;top:var(--top);height:var(--size);left:var(--left);width:var(--width)}.track .mini{padding:0 3px;line-height:1.1}.track .mini strong{font-size:.64rem}.block.done{opacity:.68}.booked{--fill:#dce9e0;--edge:#779783;--fg:#244638}.ai{--fill:#e9e4f4;--edge:#a997bf;--fg:#4b3b61}.design{--fill:#f4e5d8;--edge:#be9a7d;--fg:#69452f}.digi{--fill:#dfeaf0;--edge:#8baab9;--fg:#334e63}.admin{--fill:#f3ebcc;--edge:#bea967;--fg:#5b4d25}.buffer{--fill:#edf0eb;--edge:#9ca79a;--fg:#414e43}.deadline{--fill:#f6e0e1;--edge:#c48a8e;--fg:#732e36}.other{--fill:#e6eae6;--edge:#87978a;--fg:#26372e}.list{display:none}.list section{display:grid;gap:6px;padding:12px 0;border-top:1px solid var(--line)}.list .block{min-height:45px;padding:8px 10px}.list .block strong{font-size:.92rem}dialog{color:var(--ink);background:var(--paper);max-width:min(470px,calc(100% - 25px));width:100%;border:1px solid var(--line);border-radius:14px;padding:21px}dialog::backdrop{background:#17271fb0}dialog h2{font:2rem/1.12 Georgia,serif;margin:8px 0}dialog p,dialog a,dialog .field,dialog .actions{margin-top:12px}dialog textarea{width:100%;resize:vertical;min-height:95px;padding:9px;border:1px solid #aebcb1;border-radius:7px;background:#fff}dialog a{display:inline-block;color:#244b39}.close{margin-left:auto;display:block}.check{display:flex;align-items:center;gap:8px;margin-top:14px}.check input{width:19px;height:19px;accent-color:#405f4a}.actions{justify-content:flex-end}.dateGroup{display:flex;gap:7px;flex-wrap:wrap}.dateGroup button{min-width:43px}[hidden]{display:none!important}@media(max-width:900px){.weekgrid{display:none}.list{display:block}.toolbar{align-items:flex-start}.keyline{width:100%}}@media(max-width:520px){main{padding-top:14px}.keyline input{width:100%}.keyline label{width:100%}.keyline button{min-height:41px}.stats,.legend{gap:5px}}
@@ -179,6 +179,7 @@ main{padding-top:12px}.planbody{margin-top:0}#plan{margin-top:0}.weekviews{grid-
 #gradeDialog :is(input:not([type=checkbox]),select,textarea){font-size:16px}
 #gradeMessage{color:#8c3727;white-space:pre-wrap}
 @media(max-width:560px){.gradeFilters{grid-template-columns:repeat(2,minmax(0,1fr))}.gradeFilters label{font-size:.86rem}.gradeFilters select{font-size:16px}.gradeCard button{grid-template-columns:minmax(0,1fr)}.gradeInputs{gap:5px}.gradeInputs input{padding-inline:7px}}
+.gradeSchedule{margin:12px 0 0;border:1px solid var(--line);border-radius:9px;padding:7px 10px 10px;min-width:0}.gradeSchedule legend{padding:0 4px;font-weight:650}.gradeScheduleFields{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:8px;min-width:0}.gradeScheduleFields .field{margin:0 0 6px;min-width:0}.gradeScheduleFields input{display:block;min-width:0;width:100%}.gradeSchedule small{display:block}.gradeSchedule button{font-size:.82rem;margin-top:6px;padding:4px 8px}.gradeName .gradePlanBadge{color:#375b3e;font-weight:650}
 </style>
 </head>
 <body>
@@ -247,6 +248,15 @@ main{padding-top:12px}.planbody{margin-top:0}#plan{margin-top:0}.weekviews{grid-
 </div>
 <label class="field">Färdigt<select id="gradeEstimate" class="input"><option value="">Räkna från antal</option><option value="0">Ca 0 %</option><option value="25">Ca 25 %</option><option value="50">Ca 50 %</option><option value="75">Ca 75 %</option><option value="100">Ca 100 %</option></select></label>
 <label class="check"><input id="gradeDone" type="checkbox"> Markera som färdigrättad i båda vyerna</label>
+<fieldset class="gradeSchedule">
+<legend>Planera rättning</legend>
+<div class="gradeScheduleFields">
+<label class="field">Datum<input id="gradePlanDate" class="input" type="date" min="2000-01-01" max="2099-12-31"></label>
+<label class="field">Tid (valfritt)<input id="gradePlanTime" class="input" type="time"></label>
+</div>
+<small>Sparas som en uppgift på Guldstigen. Rensa datumet för att ta bort uppgiften där.</small>
+<button id="gradePlanClear" type="button">Ta bort planering</button>
+</fieldset>
 <label class="field">Kommentar på gruppnivå<textarea id="gradeNote" maxlength="600" rows="2" placeholder="T.ex. inväntar åtkomst till två inlämningar"></textarea></label>
 <small>Undvik namn, initialer och andra uppgifter som kan identifiera studerande.</small>
 <p id="gradeMessage" role="status"></p>
@@ -371,7 +381,7 @@ function status(s,error=false){
  $('status').textContent=s;$('status').classList.toggle('error',error);
  if($('githubDialog').open)$('githubMessage').textContent=s;
 }
-function lock(b){busy=b;for(const id of ['prev','next','show','week','reload','disconnect','save','token','done','comment','close','logOpen','logClose','logDay','logStart','logEnd','logType','logComment','logSave','editKind','editDay','editStart','editEnd','modeWeek','modeTable','modeGold','modeGrade','gradeClose','gradeSave','gradeGroup','gradeSubmitted','gradeMarked','gradeEstimate','gradeNote','gradeDone','weekPick','lowerPick','lowerPrev','lowerNext','weekToday','prevMonth','nextMonth','githubOpen','closeGithub','logCourse','logWork','customCourse','logTaskPlus','editTaskPlus','emptyLog','quickTodoClose','quickTodoText','quickTodoSave'])$(id).disabled=b;$('connect').querySelector('button').disabled=b;for(const el of document.querySelectorAll('.taskInputRow input,.taskInputRow button'))el.disabled=b;}
+function lock(b){busy=b;for(const id of ['prev','next','show','week','reload','disconnect','save','token','done','comment','close','logOpen','logClose','logDay','logStart','logEnd','logType','logComment','logSave','editKind','editDay','editStart','editEnd','modeWeek','modeTable','modeGold','modeGrade','gradeClose','gradeSave','gradeGroup','gradeSubmitted','gradeMarked','gradeEstimate','gradePlanDate','gradePlanTime','gradePlanClear','gradeNote','gradeDone','weekPick','lowerPick','lowerPrev','lowerNext','weekToday','prevMonth','nextMonth','githubOpen','closeGithub','logCourse','logWork','customCourse','logTaskPlus','editTaskPlus','emptyLog','quickTodoClose','quickTodoText','quickTodoSave'])$(id).disabled=b;$('connect').querySelector('button').disabled=b;for(const el of document.querySelectorAll('.taskInputRow input,.taskInputRow button'))el.disabled=b;}
 function connected(v){
  $('connect').hidden=v;$('connected').hidden=!v;
  $('githubDot').classList.toggle('on',v);
@@ -1108,15 +1118,18 @@ $('mobileSort').onchange=()=>{
  sortTable={key,dir:direction==='-1'?-1:1};renderTable();
 };
 let gradeEdit=null;
-const gradeFields={group:'gradeGroup',submitted:'gradeSubmitted',marked:'gradeMarked',estimate:'gradeEstimate',note:'gradeNote',done:'gradeDone'};
+const gradeFields={group:'gradeGroup',submitted:'gradeSubmitted',marked:'gradeMarked',estimate:'gradeEstimate',note:'gradeNote',done:'gradeDone',planDate:'gradePlanDate',planTime:'gradePlanTime'};
 const gradeNumbers=new Set(['group','submitted','marked','estimate']);
 function gradeValue(b,k){
  if(k==='done')return !!b.done;
  const v=b.grading?.[k];
  if(k==='note')return typeof v==='string'?v:'';
+ if(k==='planDate')return isTodoDate(v)?v:'';
+ if(k==='planTime')return validGradeTime(v)?v:'';
  if(!Number.isSafeInteger(v)||v<0||v>9999)return null;
  return k!=='estimate'||[0,25,50,75,100].includes(v)?v:null;
 }
+function validGradeTime(v){return typeof v==='string'&&/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(v);}
 function gradeKind(b){
  const t=regType(b);
  if(t==='deadline')return t;
@@ -1172,6 +1185,8 @@ function renderGrades(){
   const card=node('article','gradeCard'),btn=node('button'),name=node('span','gradeName'),state=node('span','gradeProgress'),bar=node('progress','gradeTrack');
   const courseName=[...new Set(regCourses(b).map(c=>c.name))].filter(c=>!b.title.startsWith(c+' ·'));
   name.append(node('strong','',b.title),node('small','',[gradeKind(b)==='exam'?'Tent':'Inlämning',gradeStamp(b),...courseName].join(' · ')));
+  const plan=gradeValue(b,'planDate'), time=gradeValue(b,'planTime');
+  if(plan)name.append(node('small','gradePlanBadge','Rättning planerad '+dateLabel(plan)+plan.slice(0,4)+(time?' kl. '+time:'')));
   const p=gradeProgress(b);bar.max=100;bar.value=p.value;bar.setAttribute('aria-hidden','true');
   state.append(bar,node('small','',p.text));
   btn.type='button';btn.append(name,state);btn.onclick=()=>openGrade(b);card.append(btn);list.append(card);
@@ -1184,8 +1199,12 @@ function openGrade(b){
   if(k==='done')$(id).checked=gradeEdit.base[k];else $(id).value=gradeEdit.base[k]??'';
  }
  $('gradeDialogTitle').textContent=b.title;$('gradeDate').textContent=gradeStamp(b);
- $('gradeMessage').textContent='';$('gradeDialog').showModal();
+ syncGradePlanForm();$('gradeMessage').textContent='';$('gradeDialog').showModal();
 }
+function syncGradePlanForm(){$('gradePlanClear').hidden=!$('gradePlanDate').value&&!$('gradePlanTime').value;}
+$('gradePlanDate').addEventListener('input',()=>{if(!$('gradePlanDate').value)$('gradePlanTime').value='';syncGradePlanForm();});
+$('gradePlanTime').addEventListener('input',syncGradePlanForm);
+$('gradePlanClear').onclick=()=>{$('gradePlanDate').value='';$('gradePlanTime').value='';syncGradePlanForm();$('gradePlanDate').focus();};
 function gradeFormValues(){
  return Object.fromEntries(Object.entries(gradeFields).map(([k,id])=>[k,k==='done'?$(id).checked:gradeNumbers.has(k)?($(id).value===''?null:Number($(id).value)):$(id).value.trim()]));
 }
@@ -1201,11 +1220,31 @@ $('gradeDialog').addEventListener('cancel',e=>{e.preventDefault();closeGrade();}
 $('gradeDialog').addEventListener('close',()=>{gradeEdit=null;$('gradeNote').value='';$('gradeDialogTitle').textContent='';$('gradeDate').textContent='';$('gradeMessage').textContent='';});
 for(const id of ['gradeCourse','gradeWhen','gradeKind','gradeFilter'])$(id).addEventListener('change',renderGrades);
 function checkGradeCounts(values){
- const {group,submitted,marked}=values;
+ const {group,submitted,marked,planDate,planTime}=values;
+ if(planDate&&!isTodoDate(planDate)||planTime&&!validGradeTime(planTime))return 'Välj ett giltigt datum och klockslag.';
+ if(planTime&&!planDate)return 'Välj ett datum för rättningen innan du anger klockslag.';
  if(group!==null&&submitted!==null&&submitted>group)return 'Antalet inlämnade kan inte vara större än gruppen.';
  if(marked!==null&&(submitted!==null&&marked>submitted||group!==null&&marked>group))return 'Antalet rättade kan inte vara större än antalet inlämnade eller gruppens storlek.';
  return '';
 }
+function updateGradePlan(b,todo){
+ const date=gradeValue(b,'planDate'), time=gradeValue(b,'planTime');
+ const old=b.grading?.planTaskId;
+ const task=typeof old==='string'?todo.tasks.find(t=>t.id===old):null;
+ const tasks=todo.tasks.filter(t=>!task||t.id!==task.id);
+ if(date){
+  const id=task?.id||crypto.randomUUID();
+  const head=(time?time+' · ':'')+'Rätta: ';
+  let title=[...(head+b.title)].slice(0,136).join('');
+  // Keep the UTF-16 length within the shared task-file limit, including for emoji.
+  while(title.length>137)title=[...title].slice(0,-1).join('');
+  if(title!==head+b.title)title+='…';
+  tasks.push({...task,id,date,title,done:!!task?.done});
+  b.grading.planTaskId=id;
+ }else delete b.grading.planTaskId;
+ return validateTodo({...todo,tasks});
+}
+
 $('gradeForm').addEventListener('submit',async e=>{
  e.preventDefault();
  if(busy||!token||!gradeEdit)return;
@@ -1213,11 +1252,22 @@ $('gradeForm').addEventListener('submit',async e=>{
  if(!Object.keys(patch).length){$('gradeDialog').close();return;}
  const err=checkGradeCounts(gradeFormValues());if(err){$('gradeMessage').textContent=err;return;}
  const {id,week,base}=gradeEdit;
+ const syncGold=Object.hasOwn(patch,'planDate')||Object.hasOwn(patch,'planTime');
+ if(syncGold)Object.assign(patch,{planDate:$('gradePlanDate').value,planTime:$('gradePlanTime').value});
  lock(true);$('gradeMessage').textContent='Sparar …';
  try{
   await assertPrivate();
   for(let i=0;i<3;i++){
-   const latest=await read(week), b=latest.doc.blocks.find(row=>row.id===id);
+   let parent, treeBase, oldTodo, newTodo, latest;
+   if(syncGold){
+    const ref=await github(repo+'/git/ref/heads/main');
+    parent=ref.object?.sha;
+    if(!shaOK(parent))throw Error('Kunde inte fastställa den privata huvudgrenen.');
+    const [commit,w,t]=await Promise.all([github(repo+'/git/commits/'+parent),read(week,parent),readTodo(parent)]);
+    treeBase=commit.tree?.sha;latest=w;oldTodo=t.doc;
+    if(!shaOK(treeBase))throw Error('Kunde inte läsa den privata huvudgrenen.');
+   }else latest=await read(week);
+   const b=latest.doc.blocks.find(row=>row.id===id);
    if(!b||!gradeKind(b))throw Error('Posten finns inte längre på samma plats. Hämta om rättningslistan.');
    for(const [k,v] of Object.entries(patch)){
     const remote=gradeValue(b,k);
@@ -1229,12 +1279,27 @@ $('gradeForm').addEventListener('submit',async e=>{
     if(k==='done'){b.done=v;continue;}
     b.grading={...b.grading,[k]:v};
    }
+   if(syncGold)newTodo=updateGradePlan(b,oldTodo);
    valid(latest.doc,week);
-   try{await github(urlOf(week),'PUT',{message:'Uppdatera rättning '+week,branch:'main',sha:latest.sha,content:bytes(JSON.stringify(latest.doc,null,2)+'\n')});}
-   catch(x){if(i<2&&[409,422].includes(x.code)&&(await read(week)).sha!==latest.sha)continue;throw x;}
+   try{
+    if(syncGold){
+     const treeEntries=[[weekPath(week),latest.doc],[taskPath,newTodo]].map(([path,doc])=>({path,mode:'100644',type:'blob',content:JSON.stringify(doc,null,2)+'\n'}));
+     const tree=await github(repo+'/git/trees','POST',{base_tree:treeBase,tree:treeEntries});
+     if(!shaOK(tree.sha))throw Error('Kunde inte förbereda sparandet.');
+     const commit=await github(repo+'/git/commits','POST',{message:'Planera rättning och uppdatera Guldstigen',tree:tree.sha,parents:[parent]});
+     if(!shaOK(commit.sha))throw Error('Kunde inte förbereda sparandet.');
+     await github(repo+'/git/refs/heads/main','PATCH',{sha:commit.sha,force:false});
+    }else await github(urlOf(week),'PUT',{message:'Uppdatera rättning '+week,branch:'main',sha:latest.sha,content:bytes(JSON.stringify(latest.doc,null,2)+'\n')});
+   }catch(x){
+    if(i<2&&[409,422].includes(x.code)){
+     if(syncGold?(await github(repo+'/git/ref/heads/main')).object?.sha!==parent:(await read(week)).sha!==latest.sha)continue;
+    }
+    throw x;
+   }
+   if(newTodo){todoPending++;todoDoc=newTodo;todoError='';goldSnapshot();}
    whole=[...whole.filter(row=>row.week!==week),...latest.doc.blocks.filter(row=>row.category!=='buffer').map(row=>({...row,week}))];
    if(current===week){data=latest.doc;render();}
-   buildFilters();renderTable();buildGradeCourses();renderGrades();$('gradeDialog').close();status('Rättningen är sparad i privata GitHub.');return;
+   buildFilters();renderTable();buildGradeCourses();renderGrades();$('gradeDialog').close();status(syncGold?(patch.planDate?'Rättningen är planerad och syns på Guldstigen.':'Planerad rättning togs bort från Guldstigen.'):'Rättningen är sparad i privata GitHub.');return;
   }
  }catch(x){$('gradeMessage').textContent=explain(x,'save');}
  finally{lock(false);syncView()}
