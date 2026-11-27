@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="app-revision" content="iphone-width-3">
+<meta name="app-revision" content="guldstigen-logg-2">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; connect-src https://api.github.com; frame-src 'self'; style-src 'unsafe-inline'; script-src 'sha256-toboYcM3WmBXTEwWuZLI8dRVei2YTOOt+uaoelfUFg0='">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; connect-src https://api.github.com; frame-src 'self'; style-src 'unsafe-inline'; script-src 'sha256-sJ3AFQQ7S4P6Oa736C20jkzl/tojPsKpVNJDvD25StI='">
 <title>Veckovyn · Arbetsplanering</title>
 <style>
 :root{color-scheme:light;--bg:#f4f3ee;--ink:#26372e;--muted:#536259;--line:#d9ded5;--paper:#fffefb;--hour:64px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,sans-serif}main{max-width:1450px;margin:auto;padding:24px clamp(15px,3vw,42px) 40px}header,.toolbar,.stats,.legend,.actions,.keyline{display:flex;gap:12px;align-items:center;flex-wrap:wrap}header{justify-content:space-between;align-items:end;margin-bottom:20px}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:750;color:#476553}h1,h2,p{margin:0}h1{font:clamp(2.5rem,6vw,4.4rem)/1 Georgia,serif;letter-spacing:-.055em;margin:3px 0 8px}header p,small,.muted{color:var(--muted)}button,input,textarea{font:inherit}button,.input{border:1px solid #aebcb1;border-radius:9px;background:var(--paper);color:var(--ink);padding:8px 12px}button{cursor:pointer;font-weight:610}button:disabled{opacity:.55;cursor:not-allowed}button:hover:not(:disabled){background:#e7eee7}button.primary{background:#324e3d;color:white;border-color:#324e3d}button.primary:hover:not(:disabled){background:#23392c}button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #794826;outline-offset:2px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}.toolbar{justify-content:space-between}.keyline label,.field{display:grid;gap:5px}.keyline input{max-width:100%;width:245px}#week{width:103px;text-align:center;font-variant-numeric:tabular-nums}#status{min-height:1.5em;margin:10px 0;color:#476553}#status.error,#editMessage{color:#8c3727}#editMessage{white-space:pre-wrap}#empty{padding:28px;margin-top:14px}#plan{margin-top:14px}.stats{margin:12px 0}.stat{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:6px 11px}.stat strong{font-size:1.03rem}.legend{gap:8px;margin:12px 0}.legend span,.tag{border-radius:6px;padding:3px 8px;font-size:.77rem;background:var(--fill,#edf0ea);color:var(--fg,#283b31)}.weekgrid{display:grid;grid-template-columns:48px repeat(7,minmax(0,1fr));border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--paper)}.dayHead,.deadlineCell{padding:7px 6px;border-left:1px solid var(--line)}.dayHead strong{display:block}.deadlineCell{border-top:1px solid var(--line);min-height:5px;display:grid;align-content:start;gap:4px}.track,.hourrail{position:relative;height:var(--height);border-top:1px solid var(--line)}.track{border-left:1px solid var(--line);background:repeating-linear-gradient(to bottom,transparent 0 calc(var(--hour) - 1px),#edf0ea calc(var(--hour) - 1px) var(--hour))}.weekend{background-color:#f5f5f0}.hourrail span{position:absolute;left:7px;font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums}.block{background:var(--fill);color:var(--fg);border:1px solid var(--edge);border-left:4px solid var(--edge);border-radius:6px;text-align:left;padding:4px 5px;line-height:1.17;width:100%;display:block;overflow:hidden}.block:hover:not(:disabled){background:var(--fill);filter:brightness(.95)}.block strong{font-size:.83rem;overflow-wrap:anywhere}.block time{font-size:.69rem;display:block;margin-bottom:2px}.track .block{position:absolute;top:var(--top);height:var(--size);left:var(--left);width:var(--width)}.track .mini{padding:0 3px;line-height:1.1}.track .mini strong{font-size:.64rem}.block.done{opacity:.68}.booked{--fill:#dce9e0;--edge:#779783;--fg:#244638}.ai{--fill:#e9e4f4;--edge:#a997bf;--fg:#4b3b61}.design{--fill:#f4e5d8;--edge:#be9a7d;--fg:#69452f}.digi{--fill:#dfeaf0;--edge:#8baab9;--fg:#334e63}.admin{--fill:#f3ebcc;--edge:#bea967;--fg:#5b4d25}.buffer{--fill:#edf0eb;--edge:#9ca79a;--fg:#414e43}.deadline{--fill:#f6e0e1;--edge:#c48a8e;--fg:#732e36}.other{--fill:#e6eae6;--edge:#87978a;--fg:#26372e}.list{display:none}.list section{display:grid;gap:6px;padding:12px 0;border-top:1px solid var(--line)}.list .block{min-height:45px;padding:8px 10px}.list .block strong{font-size:.92rem}dialog{color:var(--ink);background:var(--paper);max-width:min(470px,calc(100% - 25px));width:100%;border:1px solid var(--line);border-radius:14px;padding:21px}dialog::backdrop{background:#17271fb0}dialog h2{font:2rem/1.12 Georgia,serif;margin:8px 0}dialog p,dialog a,dialog .field,dialog .actions{margin-top:12px}dialog textarea{width:100%;resize:vertical;min-height:95px;padding:9px;border:1px solid #aebcb1;border-radius:7px;background:#fff}dialog a{display:inline-block;color:#244b39}.close{margin-left:auto;display:block}.check{display:flex;align-items:center;gap:8px;margin-top:14px}.check input{width:19px;height:19px;accent-color:#405f4a}.actions{justify-content:flex-end}.dateGroup{display:flex;gap:7px;flex-wrap:wrap}.dateGroup button{min-width:43px}[hidden]{display:none!important}@media(max-width:900px){.weekgrid{display:none}.list{display:block}.toolbar{align-items:flex-start}.keyline{width:100%}}@media(max-width:520px){main{padding-top:14px}.keyline input{width:100%}.keyline label{width:100%}.keyline button{min-height:41px}.stats,.legend{gap:5px}}
@@ -154,6 +154,8 @@ main{padding-top:12px}.planbody{margin-top:0}#plan{margin-top:0}.weekviews{grid-
  #goldView{min-width:0}#goldFrame{display:block;width:100%;border:0;height:540px;color-scheme:light}.goldSync{min-height:0;color:#506951;font-size:.78rem;margin:4px 0}.goldSync:empty{display:none}
  .todoCell{min-width:0;display:grid;align-content:start;gap:3px;padding:6px 4px;background:#eff2e7;border-top:1px solid var(--line);border-left:1px solid var(--line)}.todoRail{font-size:.62rem;overflow-wrap:anywhere}.todoDay{background:#eff2e7;display:grid;gap:5px;border:1px solid #d6dfcc;border-radius:8px;padding:7px;min-width:0}.todoDay:empty{display:none}.todoTask{display:flex;align-items:flex-start;gap:4px;font-size:.72rem;min-width:0;overflow-wrap:anywhere;color:#294333}.todoTask input{flex:none;margin:2px 1px 0 0;accent-color:#3f6547}.todoTask input:checked+span{text-decoration:line-through;color:var(--muted)}.todoLink{align-self:start;justify-self:start;max-width:100%;overflow-wrap:anywhere;background:transparent;border:0;color:#365640;font-size:.72rem;padding:5px 2px;text-align:left}.todoEmpty{display:grid;gap:6px;margin:8px 0}.todoDay .todoTask,.todoDay .todoLink{font-size:.88rem}.todoDay .todoTask{min-height:35px;align-items:center}.todoDay .todoTask input{width:19px;height:19px}.todoDay .todoLink{min-height:40px}
  @media(max-width:500px){.topActions{margin-left:0}.topActions button{min-height:39px}.topActions .viewtabs button{min-height:39px}}
+.taskEditor{grid-column:1/-1;border:1px solid #d3deca;border-radius:10px;margin:6px 0 0;padding:8px;min-width:0}.taskEditor legend{padding:0 5px;font-weight:760}.taskEditor p{margin:0 0 6px;font-size:.8rem}.taskInputs{display:grid;gap:6px}.taskInputRow{display:grid;grid-template-columns:minmax(0,1fr) 39px;gap:5px}.taskInputRow input{width:100%;min-width:0}.taskInputRow button{padding:4px;font-size:1.05rem}.taskPlus{margin-top:7px}.taskEditor .todoTask{margin-bottom:7px;min-height:26px;font-size:.88rem}.taskEditor .todoTask input{width:18px;height:18px}.workLog{--edge:#799478;--fg:#36573b}.courseNote{font-size:.76rem;color:#536259}.emptyLog{margin-top:9px}
+@media(max-width:600px){#logDialog,#detail{max-height:92svh;padding:14px}#logDialog .actions,#detail .actions{position:sticky;bottom:-14px;background:var(--paper);border-top:1px solid var(--line);margin-inline:-14px;padding:7px 14px;z-index:1}}
 </style>
 </head>
 <body>
@@ -164,7 +166,7 @@ main{padding-top:12px}.planbody{margin-top:0}#plan{margin-top:0}.weekviews{grid-
 <div class="topActions"><button id="githubOpen" aria-haspopup="dialog" aria-label="Anslut till GitHub"><span id="githubDot" class="connectDot" aria-hidden="true"></span>GitHub</button><nav class="viewtabs" aria-label="Välj vy"><button id="modeWeek" aria-pressed="true">Veckovy</button><button id="modeTable" aria-pressed="false">Tabellvy</button><button id="modeGold" aria-pressed="false">✦ Guldstigen</button></nav>
 </div>
 </section>
-<section id="empty" class="panel"><p id="emptyText">Anslut till GitHub för att visa din plan. Nyckeln sparas inte när du stänger eller laddar om sidan.</p></section>
+<section id="empty" class="panel"><p id="emptyText">Anslut till GitHub för att visa din plan. Nyckeln sparas inte när du stänger eller laddar om sidan.</p><button id="emptyLog" class="emptyLog" hidden>Logga tid</button></section>
 <p id="goldSync" class="goldSync" role="status"></p><section id="todoOnly" aria-label="Att göra den här veckan" hidden></section>
 <section id="goldView" aria-label="Guldstigen" hidden><iframe id="goldFrame" title="Guldstigen och att göra-listan" referrerpolicy="no-referrer"></iframe></section>
 <section id="plan" hidden aria-label="Veckoplan">
@@ -212,6 +214,7 @@ main{padding-top:12px}.planbody{margin-top:0}#plan{margin-top:0}.weekviews{grid-
 <label class="field">Till<select class="input" id="editEnd"></select></label>
 </div><label class="check"><input id="done" type="checkbox"> Markera som gjord</label>
 <label class="field">Egen kommentar<textarea id="comment" maxlength="4000" placeholder="Skriv en anteckning …"></textarea></label>
+<fieldset class="taskEditor" id="blockTasks" hidden><legend>Uppgifter i blocket</legend><p>Varje uppgift bockas av separat, här eller i Guldstigen.</p><div id="attachedNow"></div><div id="editTaskRows" class="taskInputs"></div><button id="editTaskPlus" class="taskPlus" type="button">＋ Lägg till uppgift</button></fieldset>
 <p id="editMessage" role="status" aria-live="polite"></p>
 <div class="actions"><button id="save" class="primary">Spara i GitHub</button></div></div>
 </dialog>
@@ -222,8 +225,13 @@ main{padding-top:12px}.planbody{margin-top:0}#plan{margin-top:0}.weekviews{grid-
 <label class="field wide">Dag<select class="input" id="logDay"></select></label>
 <label class="field">Från<select class="input" id="logStart"></select></label>
 <label class="field">Till<select class="input" id="logEnd"></select></label>
-<label class="field wide">Kategori<select class="input" id="logType"><option value="admin">Admin</option><option value="digi">Digimentor</option></select></label>
+<label class="field wide">Kategori<select class="input" id="logType"><option value="admin">Admin</option><option value="digi">Digimentor</option><option value="course">Kursarbete</option></select></label>
+<div id="courseFields" class="wide logFields" hidden>
+<label class="field wide">Kurs<select class="input" id="logCourse"></select><small class="courseNote" id="courseNote" aria-live="polite"></small></label>
+<label class="field wide" id="customCourseField" hidden>Kursnamn<input id="customCourse" class="input" type="text" maxlength="120" autocomplete="off"></label>
+<label class="field wide">Arbete<select class="input" id="logWork"><option value="plan">Planering</option><option value="grading">Rättning</option></select></label></div>
 <label class="field wide">Kommentar (valfri)<textarea id="logComment" maxlength="4000"></textarea></label>
+<fieldset class="taskEditor"><legend>Uppgifter i blocket</legend><p>Valfritt. Sparas på vald dag i Guldstigen. Du kan lägga till flera.</p><div id="logTaskRows" class="taskInputs"></div><button id="logTaskPlus" class="taskPlus" type="button">＋ Lägg till uppgift</button></fieldset>
 </div><p id="logMessage" class="warning" role="status" aria-live="polite"></p>
 <div class="actions"><button id="logSave" type="submit" class="primary">Spara i GitHub</button></div>
 </form></dialog>
@@ -262,7 +270,7 @@ const $=id=>document.getElementById(id), node=(tag,cls,txt)=>{const e=document.c
 const labels={booked:'Bokat',ai:'Kursutveckling',design:'Material och projekt',digi:'Digimentor',admin:'Admin',deadline:'Deadline',other:'Övrigt'};
 const repo='https://api.github.com/repos/novia-linda/data', dayMs=86400000;
 const weekdays=['Måndag','Tisdag','Onsdag','Torsdag','Fredag','Lördag','Söndag'];
-let token='', data=null, current='', busy=false, active=null;
+let token='', data=null, current='', busy=false, active=null, missingWeek=null;
 const initialView=new URL(location.href).searchParams.get('view');let mode=['table','gold'].includes(initialView)?initialView:'week';
 let whole=[], filtered=[], loadedTable=false, sortTable={key:'date',dir:1}, exportRows=[];
 let pickerMonth=0;
@@ -305,14 +313,14 @@ function status(s,error=false){
  $('status').textContent=s;$('status').classList.toggle('error',error);
  if($('githubDialog').open)$('githubMessage').textContent=s;
 }
-function lock(b){busy=b;for(const id of ['prev','next','show','week','reload','disconnect','save','token','done','comment','close','logOpen','logClose','logDay','logStart','logEnd','logType','logComment','logSave','editKind','editDay','editStart','editEnd','modeWeek','modeTable','modeGold','weekPick','lowerPick','lowerPrev','lowerNext','weekToday','prevMonth','nextMonth','githubOpen','closeGithub'])$(id).disabled=b;$('connect').querySelector('button').disabled=b;}
+function lock(b){busy=b;for(const id of ['prev','next','show','week','reload','disconnect','save','token','done','comment','close','logOpen','logClose','logDay','logStart','logEnd','logType','logComment','logSave','editKind','editDay','editStart','editEnd','modeWeek','modeTable','modeGold','weekPick','lowerPick','lowerPrev','lowerNext','weekToday','prevMonth','nextMonth','githubOpen','closeGithub','logCourse','logWork','customCourse','logTaskPlus','editTaskPlus','emptyLog'])$(id).disabled=b;$('connect').querySelector('button').disabled=b;for(const el of document.querySelectorAll('.taskInputRow input,.taskInputRow button'))el.disabled=b;}
 function connected(v){
  $('connect').hidden=v;$('connected').hidden=!v;
  $('githubDot').classList.toggle('on',v);
  $('githubOpen').setAttribute('aria-label',v?'GitHub anslutet, hantera anslutning':'Anslut till GitHub');
  $('githubOpen').title=v?'GitHub anslutet':'Anslut till GitHub';
  if(v&&$('githubDialog').open)$('githubDialog').close();
- if(v)refreshTodo(true);else resetTodo();
+ if(v)refreshTodo(true);else{resetTodo();missingWeek=null;courseCache=null;courseFetch=null;}
 }
 const minutes=s=>{const [h,m]=s.split(':').map(Number);return h*60+m};
 const hr=n=>n%60===0?n/60+' h':Math.floor(n/60)+' h '+n%60+' min';
@@ -330,6 +338,7 @@ const roles={fixed:'Bokat',planned:'Planerad arbetstid',due:'Deadline',logged:'L
 const editable=b=>b.category!=='buffer'&&role(b)==='planned';
 const kindOf=b=>b.workKind==='grading'?'grading':'plan';
 const workLabels={plan:'Planering',grading:'Rättning'};
+const isCourseLog=b=>b?.origin==='log'&&['plan','grading'].includes(b.workKind);
 const duration=b=>minutes(b.end)-minutes(b.start);
 const dateRange=p=>Array.from({length:7},(_,i)=>iso(new Date(p.start+i*dayMs)));
 function workIcon(kind){
@@ -388,19 +397,19 @@ async function load(){
  lock(true);status('Hämtar från GitHub …');let stage='access';
  try{
   await assertPrivate();stage='read';current=p.key;const {doc}=await read(current);
-  data=doc;render();connected(true);status('Visar senaste sparade versionen från GitHub.');
+  missingWeek=null;data=doc;render();connected(true);status('Visar senaste sparade versionen från GitHub.');
  }catch(e){
-  if(stage==='read'&&e.code===404){clearPlan('Ingen plan har lagts in för '+p.key+'.');connected(true);status('Ingen veckofil hittades.');}
-  else{clearPlan('Veckan kunde inte visas.');status(explain(e,stage),true);if(stage==='access'||e.code===401){token='';connected(false);}}
+  if(stage==='read'&&e.code===404){missingWeek=p.key;clearPlan('Ingen plan har lagts in för '+p.key+'.');connected(true);status('Ingen veckofil hittades.');}
+  else{missingWeek=null;clearPlan('Veckan kunde inte visas.');status(explain(e,stage),true);if(stage==='access'||e.code===401){token='';connected(false);}}
  }finally{lock(false);syncView()}
 }
 function makeBlock(b,compact=false){
  const kind=role(b);
- const btn=node('button','block '+category(b)+' role-'+kind+(b.done?' done':'')+(compact?' mini':''));
+ const btn=node('button','block '+category(b)+(isCourseLog(b)?' workLog':'')+' role-'+kind+(b.done?' done':'')+(compact?' mini':''));
  btn.dataset.block=b.id;btn.type='button';
  if(!compact)btn.append(node('time','',b.start?b.start+'–'+b.end:'Hela dagen · utan klockslag'));
  const heading=node('strong');
- if(editable(b))heading.append(workIcon(kindOf(b)));
+ if(editable(b)||isCourseLog(b))heading.append(workIcon(kindOf(b)));
  heading.append(node('span','',(b.done?'✓ ':'')+b.title));
  btn.append(heading);
  btn.setAttribute('aria-label',(editable(b)?workLabels[kindOf(b)]:roles[kind])+': '+(b.done?'klart, ':'')+b.title+(b.start?', '+b.start+' till '+b.end:''));
@@ -456,6 +465,8 @@ function render(){
   for(const b of blocks)group.set(b.title,(group.get(b.title)||0)+duration(b));
   if(group.size){const list=node('ul');for(const [name,m] of group)list.append(node('li','',name+' · '+hr(m)));row.append(list);}
   side.append(row);
+  const logged=timed.filter(b=>isCourseLog(b)&&kindOf(b)===k);
+  if(logged.length){const done=node('p','workLine');done.append(workIcon(k),node('strong','',workLabels[k]+' · '+hr(logged.reduce((sum,b)=>sum+duration(b),0))+' loggat'));side.append(done);}
  }
  $('budget').replaceChildren(node('h3','','Admin och Digimentor'),...summaryRows,...(budgetValues.some(n=>n!==null)?[node('p','muted',hr(remaining)+' kvar att använda')]:[]),side);
  const used=new Set(actionable.map(role));
@@ -581,48 +592,146 @@ function enablePlanGesture(el,b,tracks,low,high){
 }
 function option(value,label=value){const o=node('option','',label);o.value=value;return o;}
 function openLog(day,start,end){
- if(busy||!data)return;
+ if(busy||!token||(!data&&missingWeek!==current))return;
  const p=parseWeek(current);const dates=Array.from({length:7},(_,i)=>iso(new Date(p.start+i*dayMs)));
  $('logDay').replaceChildren(...dates.map((d,i)=>option(d,weekdays[i]+' '+dateLabel(d))));
  $('logStart').replaceChildren(...Array.from({length:96},(_,i)=>option(hh(i*15))));
  $('logEnd').replaceChildren(...Array.from({length:96},(_,i)=>option(hh((i+1)*15))));
- $('logDay').value=day||dates[0];$('logStart').value=hh(start??480);$('logEnd').value=hh(end??495);
+ $('logDay').value=day||(dates.includes(todayText)?todayText:dates[0]);$('logStart').value=hh(start??480);$('logEnd').value=hh(end??495);
  $('logType').value='admin';$('logComment').value='';$('logMessage').textContent='';
+ $('logTaskRows').replaceChildren();$('customCourse').value='';$('logWork').value='plan';fillCourses('');syncCourseFields(false);
  $('logDialog').showModal();
 }
 function closeLog(){
  if(busy)return;
- if($('logComment').value&&!confirm('Stäng utan att spara kommentaren?'))return;
+ if(($('logComment').value||taskTexts('logTaskRows').length)&&!confirm('Stäng utan att spara uppgifterna och kommentaren?'))return;
  $('logDialog').close();
 }
-async function saveLog(){
- if(busy||!data)return;
- const date=$('logDay').value,start=$('logStart').value,end=$('logEnd').value,k=$('logType').value;
- const a=minutes(start),b=minutes(end),comment=$('logComment').value.trim();
- const p=parseWeek(current), dates=Array.from({length:7},(_,i)=>iso(new Date(p.start+i*dayMs)));
- const fail=s=>{$('logMessage').textContent=s;};
- if(!dates.includes(date)||!['admin','digi'].includes(k)||![a,b].every(n=>Number.isInteger(n)&&n%15===0)||a<0||b>1440||b<=a){
-  fail('Välj en starttid och en senare sluttid i 15-minuterssteg.');return;
+let courseCache=null,courseFetch=null;
+function courseChoices(){
+ const found=new Map();
+ for(const c of [...(courseCache||[]),...((data?.blocks||[]).flatMap(regCourses)),...whole.flatMap(regCourses)]){
+  if(c.code&&c.name&&!c.code.startsWith('work:')&&c.code!=='custom')found.set(c.code,c);
  }
- const collision='Tiden överlappar ett annat block. Välj en ledig tid.';
- const block={id:'log-'+crypto.randomUUID(),date,start,end,category:k,title:labels[k],detail:'Efterhandsloggad tid',done:true,comment,origin:'log'};
- lock(true);fail('Sparar …');
- try{
-  await assertPrivate();
-  for(let attempt=0;attempt<3;attempt++){
-   const latest=await read(current);
-   if(overlap(latest.doc.blocks,date,a,b))throw new Error(collision);
-   latest.doc.blocks.push(block);
-   valid(latest.doc,current);
-   try{
-    await github(urlOf(current),'PUT',{message:'Logga arbetstid '+current,branch:'main',sha:latest.sha,content:bytes(JSON.stringify(latest.doc,null,2)+'\n')});
-    data=latest.doc;loadedTable=false;$('logDialog').close();render();status('Tiden är loggad i privata GitHub.');return;
-   }catch(e){
-    if(attempt<2&&(e.code===409||e.code===422)){const newer=await read(current);if(newer.sha!==latest.sha)continue;}
-    throw e;
+ return [...found.values()].sort((a,b)=>a.name.localeCompare(b.name,'sv')||a.code.localeCompare(b.code));
+}
+function fillCourses(value=$('logCourse').value){
+ const choices=courseChoices();
+ $('logCourse').replaceChildren(option('','Välj kurs …'),...choices.map(c=>option(c.code,c.name===c.code?c.name:c.name+' · '+c.code)),option('custom','Annan kurs …'));
+ if([...$('logCourse').options].some(o=>o.value===value))$('logCourse').value=value;
+}
+function syncCourseFields(fetch=true){
+ const show=$('logType').value==='course', custom=show&&$('logCourse').value==='custom';
+ $('courseFields').hidden=!show;$('customCourseField').hidden=!custom;
+ $('logCourse').required=show;$('customCourse').required=custom;
+ if(fetch&&show)void loadCourses();
+}
+async function loadCourses(){
+ if(courseCache||loadedTable){fillCourses();return;}
+ if(!token||courseFetch)return;
+ const key=token;const job=(async()=>{
+  $('courseNote').textContent='Hämtar kurser från veckorna …';
+  try{
+   await assertPrivate();
+   const head=await github(repo+'/commits/main');
+   if(!/^[a-f0-9]{40}$/i.test(head.sha))throw Error();
+   const entries=await github(repo+'/contents/veckoplanering/veckor?ref='+head.sha);
+   const keys=entries.filter(f=>f.type==='file').map(f=>f.name.replace(/\.json$/,'')).filter(parseWeek).slice(-90);
+   let next=0;const found=new Map();
+   await Promise.all(Array.from({length:Math.min(5,keys.length)},async()=>{
+    while(next<keys.length&&key===token){try{const x=await read(keys[next++],head.sha);for(const c of x.doc.blocks.flatMap(regCourses))found.set(c.code,c)}catch{}}
+   }));
+   if(key===token){courseCache=[...found.values()];fillCourses();$('courseNote').textContent='Välj Annan kurs om du inte hittar din kurs.';}
+  }catch{if(key===token)$('courseNote').textContent='Kurser från den här veckan visas. Använd Annan kurs vid behov.';}
+ })();
+ courseFetch=job;await job;if(job===courseFetch)courseFetch=null;
+}
+$('logType').onchange=()=>syncCourseFields();
+$('logCourse').onchange=()=>syncCourseFields(false);
+function addTaskField(id){
+ if(busy)return;const rows=$(id);if(rows.children.length>=25)return;
+ const row=node('div','taskInputRow'), text=node('input','input'), remove=node('button','','×');
+ text.type='text';text.maxLength=140;text.placeholder='Vad vill du göra?';text.autocomplete='off';text.setAttribute('aria-label','Ny uppgift');
+ remove.type='button';remove.setAttribute('aria-label','Ta bort uppgiftsfältet');remove.onclick=()=>{if(!busy)row.remove()};row.append(text,remove);rows.append(row);text.focus();
+}
+function taskTexts(id){return [...$(id).querySelectorAll('input')].map(e=>e.value.trim()).filter(Boolean)}
+$('logTaskPlus').onclick=()=>addTaskField('logTaskRows');$('editTaskPlus').onclick=()=>addTaskField('editTaskRows');
+function blockTaskList(b){
+ $('blockTasks').hidden=b.origin!=='log';$('editTaskRows').replaceChildren();paintAttached(b);
+}
+function paintAttached(b){
+ const slot=$('attachedNow');slot.replaceChildren();if(!b||b.origin!=='log')return;
+ if(!todoDoc){slot.append(node('small','','Uppgifter hämtas från Guldstigen när listan är ansluten.'));return}
+ for(const t of todoDoc.tasks.filter(t=>t.blockId===b.id&&t.date===b.date)){
+  const label=node('label','todoTask'),box=node('input');box.type='checkbox';box.checked=!!t.done;
+  box.onchange=async()=>{const want=box.checked;box.checked=!!t.done;try{await changeTodo({operation:'done',taskId:t.id,date:t.date,done:want});$('editMessage').textContent=want?'Uppgiften är klar.':'Uppgiften är öppen igen.';}catch(e){$('editMessage').textContent=e.message}};
+  label.append(box,node('span','',t.title));slot.append(label);
+ }
+}
+const shaOK=x=>typeof x==='string'&&/^[a-f0-9]{40}$/i.test(x);
+const weekPath=key=>'veckoplanering/veckor/'+key+'.json', taskPath='guldstigen/uppgifter.json';
+async function readWeekForLog(ref='main'){
+ try{return await read(current,ref)}
+ catch(e){if(e.code!==404||missingWeek!==current)throw e;const p=parseWeek(current);return {doc:{schemaVersion:1,week:current,monday:dateRange(p)[0],timezone:'Europe/Helsinki',blocks:[]},sha:null}}
+}
+async function saveBlockAndTasks(block,tasks,{addBlock,patch={},base=null}){
+ await assertPrivate();
+ for(let k=0;k<3;k++){
+  const head=await github(repo+'/git/ref/heads/main');
+  if(!shaOK(head.object?.sha))throw Error('Kunde inte fastställa den privata huvudgrenen.');
+  const parent=head.object.sha;
+  const [commit,week,todo]=await Promise.all([github(repo+'/git/commits/'+parent),readWeekForLog(parent),readTodo(parent)]);
+  if(!shaOK(commit.tree?.sha))throw Error('Kunde inte läsa den privata huvudgrenen.');
+  if(addBlock){
+   if(overlap(week.doc.blocks,block.date,minutes(block.start),minutes(block.end)))throw Error('Tiden överlappar ett annat block. Välj en ledig tid.');
+   week.doc.blocks.push(block);
+  }else{
+   const existing=week.doc.blocks.find(x=>x.id===block.id&&x.date===block.date&&x.origin==='log');
+   if(!existing)throw Error('Blocket finns inte längre på samma datum. Hämta senaste veckan.');
+   for(const [key,value] of Object.entries(patch)){
+    const remote=key==='done'?!!existing.done:(existing.comment||'');
+    if(remote!==base[key]&&remote!==value)throw Error('Blocket ändrades på en annan enhet. Hämta senaste veckan och försök igen.');
+    existing[key]=value;
    }
   }
- }catch(e){fail(explain(e,'save'));}
+  valid(week.doc,current);
+  const next=validateTodo({...todo.doc,tasks:[...todo.doc.tasks,...tasks]});
+  const entries=[[taskPath,next],...(addBlock||Object.keys(patch).length?[[weekPath(current),week.doc]]:[])].map(([path,doc])=>({path,mode:'100644',type:'blob',content:JSON.stringify(doc,null,2)+'\n'}));
+  const tree=await github(repo+'/git/trees','POST',{base_tree:commit.tree.sha,tree:entries});if(!shaOK(tree.sha))throw Error('Kunde inte förbereda sparandet.');
+  const write=await github(repo+'/git/commits','POST',{message:'Spara tidsblock och Guldstigen',tree:tree.sha,parents:[parent]});if(!shaOK(write.sha))throw Error('Kunde inte förbereda sparandet.');
+  try{await github(repo+'/git/refs/heads/main','PATCH',{sha:write.sha,force:false});return {week:week.doc,todo:next}}
+  catch(e){if(k===2||![409,422].includes(e.code))throw e;const headNow=await github(repo+'/git/ref/heads/main');if(headNow.object?.sha===parent)throw e}
+ }
+}
+function taskRecords(titles,block){return titles.map(title=>({id:crypto.randomUUID(),date:block.date,title,done:false,blockId:block.id}))}
+function applyLog(result,tasks){data=result.week;missingWeek=null;loadedTable=false;if(result.todo){todoPending++;todoDoc=result.todo;todoError='';goldSnapshot();}render();status(tasks.length?'Sparat. Uppgifterna finns också i Guldstigen.':'Tiden är loggad i privata GitHub.')}
+async function saveLog(){
+ if(busy||!token||(!data&&missingWeek!==current))return;
+ const date=$('logDay').value,start=$('logStart').value,end=$('logEnd').value,k=$('logType').value,kind=$('logWork').value;
+ const a=minutes(start),b=minutes(end),comment=$('logComment').value.trim(),titles=taskTexts('logTaskRows');
+ const fail=s=>{$('logMessage').textContent=s;};
+ if(!validPlacement(date,start,end)||!['admin','digi','course'].includes(k)){fail('Välj en starttid och en senare sluttid i 15-minuterssteg.');return;}
+ const choice=k==='course'&&($('logCourse').value==='custom'?{name:$('customCourse').value.trim()}:courseChoices().find(c=>c.code===$('logCourse').value));
+ if(k==='course'&&(!choice?.name||!['plan','grading'].includes(kind))){fail('Välj en kurs eller skriv ett kursnamn.');return}
+ const block={id:'log-'+crypto.randomUUID(),date,start,end,category:choice?'other':k,title:choice?choice.name+' · '+workLabels[kind]:labels[k],detail:'Efterhandsloggad tid',done:true,comment,origin:'log',...(choice?{workKind:kind,courseName:choice.name,...(choice.code?{courseCode:choice.code,courses:[choice]}:{})}:{})};
+ const tasks=taskRecords(titles,block);
+ lock(true);fail('Sparar …');
+ try{
+  let result;
+  if(tasks.length)result=await saveBlockAndTasks(block,tasks,{addBlock:true});
+  else{
+   await assertPrivate();
+   for(let i=0;i<3;i++){
+    const latest=await readWeekForLog();
+    if(overlap(latest.doc.blocks,date,a,b))throw Error('Tiden överlappar ett annat block. Välj en ledig tid.');
+    latest.doc.blocks.push(block);valid(latest.doc,current);
+    try{await github(urlOf(current),'PUT',{message:'Logga arbetstid '+current,branch:'main',...(latest.sha?{sha:latest.sha}:{}),content:bytes(JSON.stringify(latest.doc,null,2)+'\n')});
+     result={week:latest.doc};break;
+    }catch(e){if(i===2||![409,422].includes(e.code))throw e;if((await readWeekForLog()).sha===latest.sha)throw e;}
+   }
+  }
+  $('logDialog').close();applyLog(result,tasks);
+ }catch(e){fail(explain(e,'save'))}
  finally{lock(false)}
 }
 function open(id){
@@ -642,7 +751,7 @@ function open(id){
  $('blockInfo').textContent=meta.join(' · ');$('blockLink').hidden=true;$('blockLink').removeAttribute('href');
  try{const u=new URL(b.url);if(u.protocol==='https:'&&['app.notion.com','www.notion.so','notion.so'].includes(u.hostname)){$('blockLink').href=u.href;$('blockLink').hidden=false;}}catch{}
  $('done').checked=active.done;$('comment').value=active.comment;$('editor').hidden=false;$('editMessage').textContent='';
- $('detail').showModal();
+ blockTaskList(b);$('detail').showModal();
 }
 function changes(){
  if(!active)return {};
@@ -652,10 +761,16 @@ function changes(){
  if(['date','start','end'].some(k=>Object.hasOwn(patch,k)))Object.assign(patch,{date:form.date,start:form.start,end:form.end});
  return patch;
 }
-function close(){if(!busy&&(!Object.keys(changes()).length||confirm('Stäng utan att spara ändringarna?')))$('detail').close()}
+function close(){if(!busy&&((!Object.keys(changes()).length&&!taskTexts('editTaskRows').length)||confirm('Stäng utan att spara ändringarna?')))$('detail').close()}
 async function save(){
  if(busy||!active||$('editor').hidden)return;
- const patch=changes();
+ const patch=changes(), block=data?.blocks.find(x=>x.id===active.id), titles=taskTexts('editTaskRows');
+ if(titles.length&&block?.origin==='log'){
+  const tasks=taskRecords(titles,block);lock(true);$('editMessage').textContent='Sparar …';
+  try{const result=await saveBlockAndTasks(block,tasks,{addBlock:false,patch,base:active});$('detail').close();applyLog(result,tasks);}
+  catch(e){$('editMessage').textContent=explain(e,'save');}finally{lock(false)}
+  return;
+ }
  if(!Object.keys(patch).length){$('detail').close();return;}
  return persistBlock(active.id,active,patch,true);
 }
@@ -709,7 +824,7 @@ $('week').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();
 $('close').onclick=close;$('detail').addEventListener('cancel',e=>{e.preventDefault();close();});
 $('detail').addEventListener('close',()=>{$('comment').value='';$('blockInfo').textContent='';active=null;});
 $('save').onclick=save;
-$('logOpen').onclick=()=>openLog();
+$('logOpen').onclick=$('emptyLog').onclick=()=>openLog();
 $('logClose').onclick=closeLog;
 $('logDialog').addEventListener('cancel',e=>{e.preventDefault();closeLog();});
 $('logDialog').addEventListener('close',()=>{$('logComment').value='';});
@@ -739,7 +854,7 @@ function syncView(){
  $('plan').hidden=!week||!data;
  $('weekExtras').hidden=!week||!data;
  $('tableView').hidden=!table||!token;
- $('empty').hidden=gold||(table?!!token:!!data);
+ $('empty').hidden=gold||(table?!!token:!!data);$('emptyLog').hidden=!week||!!data||!token||missingWeek!==current;
  $('goldView').hidden=!gold;$('goldSync').hidden=table;
  $('todoOnly').hidden=!week||!!data||!todoDoc;
  if(gold&&!$('goldFrame').hasAttribute('src'))$('goldFrame').src='../guldstigen/?embed=1&v=week-1';
@@ -1027,8 +1142,8 @@ function validateTodo(d){
  }
  return d;
 }
-async function readTodo(){
- const f=await github(todoURL+'?ref=main');
+async function readTodo(ref='main'){
+ const f=await github(todoURL+'?ref='+encodeURIComponent(ref));
  if(f.type!=='file'||f.encoding!=='base64'||typeof f.content!=='string'||f.content.length>1400000||!(/^[a-f0-9]{40}$/i.test(f.sha)))throw Error('Guldstigens privata fil gick inte att läsa.');
  const raw=Uint8Array.from(atob(f.content.replace(/\s/g,'')),c=>c.charCodeAt(0));
  return {doc:validateTodo(JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(raw))),sha:f.sha};
@@ -1093,6 +1208,7 @@ function fillTodo(slot,day){
 }
 function paintTodo(){
  $('goldSync').textContent=todoError;
+ if($('detail').open&&active)paintAttached(data?.blocks.find(b=>b.id===active.id));
  for(const slot of document.querySelectorAll('[data-todo-date]'))fillTodo(slot,slot.dataset.todoDate);
  const p0=parseWeek(current), hasTasks=!!(p0&&todoDoc?.tasks.some(t=>dateRange(p0).includes(t.date)));
  for(const slot of document.querySelectorAll('[data-todo-rail],.todoCell'))slot.hidden=!hasTasks;
