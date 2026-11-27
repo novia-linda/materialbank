@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="app-revision" content="guldstigen-logg-2">
+<meta name="app-revision" content="guldstigen-logg-4">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; connect-src https://api.github.com; frame-src 'self'; style-src 'unsafe-inline'; script-src 'sha256-sJ3AFQQ7S4P6Oa736C20jkzl/tojPsKpVNJDvD25StI='">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; connect-src https://api.github.com; frame-src 'self'; style-src 'unsafe-inline'; script-src 'sha256-fnkqeNx3Uh9MI8bAU3HZnJUmJtXFdSXqvJD2C3hfPFc='">
 <title>Veckovyn · Arbetsplanering</title>
 <style>
 :root{color-scheme:light;--bg:#f4f3ee;--ink:#26372e;--muted:#536259;--line:#d9ded5;--paper:#fffefb;--hour:64px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,sans-serif}main{max-width:1450px;margin:auto;padding:24px clamp(15px,3vw,42px) 40px}header,.toolbar,.stats,.legend,.actions,.keyline{display:flex;gap:12px;align-items:center;flex-wrap:wrap}header{justify-content:space-between;align-items:end;margin-bottom:20px}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:750;color:#476553}h1,h2,p{margin:0}h1{font:clamp(2.5rem,6vw,4.4rem)/1 Georgia,serif;letter-spacing:-.055em;margin:3px 0 8px}header p,small,.muted{color:var(--muted)}button,input,textarea{font:inherit}button,.input{border:1px solid #aebcb1;border-radius:9px;background:var(--paper);color:var(--ink);padding:8px 12px}button{cursor:pointer;font-weight:610}button:disabled{opacity:.55;cursor:not-allowed}button:hover:not(:disabled){background:#e7eee7}button.primary{background:#324e3d;color:white;border-color:#324e3d}button.primary:hover:not(:disabled){background:#23392c}button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #794826;outline-offset:2px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}.toolbar{justify-content:space-between}.keyline label,.field{display:grid;gap:5px}.keyline input{max-width:100%;width:245px}#week{width:103px;text-align:center;font-variant-numeric:tabular-nums}#status{min-height:1.5em;margin:10px 0;color:#476553}#status.error,#editMessage{color:#8c3727}#editMessage{white-space:pre-wrap}#empty{padding:28px;margin-top:14px}#plan{margin-top:14px}.stats{margin:12px 0}.stat{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:6px 11px}.stat strong{font-size:1.03rem}.legend{gap:8px;margin:12px 0}.legend span,.tag{border-radius:6px;padding:3px 8px;font-size:.77rem;background:var(--fill,#edf0ea);color:var(--fg,#283b31)}.weekgrid{display:grid;grid-template-columns:48px repeat(7,minmax(0,1fr));border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--paper)}.dayHead,.deadlineCell{padding:7px 6px;border-left:1px solid var(--line)}.dayHead strong{display:block}.deadlineCell{border-top:1px solid var(--line);min-height:5px;display:grid;align-content:start;gap:4px}.track,.hourrail{position:relative;height:var(--height);border-top:1px solid var(--line)}.track{border-left:1px solid var(--line);background:repeating-linear-gradient(to bottom,transparent 0 calc(var(--hour) - 1px),#edf0ea calc(var(--hour) - 1px) var(--hour))}.weekend{background-color:#f5f5f0}.hourrail span{position:absolute;left:7px;font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums}.block{background:var(--fill);color:var(--fg);border:1px solid var(--edge);border-left:4px solid var(--edge);border-radius:6px;text-align:left;padding:4px 5px;line-height:1.17;width:100%;display:block;overflow:hidden}.block:hover:not(:disabled){background:var(--fill);filter:brightness(.95)}.block strong{font-size:.83rem;overflow-wrap:anywhere}.block time{font-size:.69rem;display:block;margin-bottom:2px}.track .block{position:absolute;top:var(--top);height:var(--size);left:var(--left);width:var(--width)}.track .mini{padding:0 3px;line-height:1.1}.track .mini strong{font-size:.64rem}.block.done{opacity:.68}.booked{--fill:#dce9e0;--edge:#779783;--fg:#244638}.ai{--fill:#e9e4f4;--edge:#a997bf;--fg:#4b3b61}.design{--fill:#f4e5d8;--edge:#be9a7d;--fg:#69452f}.digi{--fill:#dfeaf0;--edge:#8baab9;--fg:#334e63}.admin{--fill:#f3ebcc;--edge:#bea967;--fg:#5b4d25}.buffer{--fill:#edf0eb;--edge:#9ca79a;--fg:#414e43}.deadline{--fill:#f6e0e1;--edge:#c48a8e;--fg:#732e36}.other{--fill:#e6eae6;--edge:#87978a;--fg:#26372e}.list{display:none}.list section{display:grid;gap:6px;padding:12px 0;border-top:1px solid var(--line)}.list .block{min-height:45px;padding:8px 10px}.list .block strong{font-size:.92rem}dialog{color:var(--ink);background:var(--paper);max-width:min(470px,calc(100% - 25px));width:100%;border:1px solid var(--line);border-radius:14px;padding:21px}dialog::backdrop{background:#17271fb0}dialog h2{font:2rem/1.12 Georgia,serif;margin:8px 0}dialog p,dialog a,dialog .field,dialog .actions{margin-top:12px}dialog textarea{width:100%;resize:vertical;min-height:95px;padding:9px;border:1px solid #aebcb1;border-radius:7px;background:#fff}dialog a{display:inline-block;color:#244b39}.close{margin-left:auto;display:block}.check{display:flex;align-items:center;gap:8px;margin-top:14px}.check input{width:19px;height:19px;accent-color:#405f4a}.actions{justify-content:flex-end}.dateGroup{display:flex;gap:7px;flex-wrap:wrap}.dateGroup button{min-width:43px}[hidden]{display:none!important}@media(max-width:900px){.weekgrid{display:none}.list{display:block}.toolbar{align-items:flex-start}.keyline{width:100%}}@media(max-width:520px){main{padding-top:14px}.keyline input{width:100%}.keyline label{width:100%}.keyline button{min-height:41px}.stats,.legend{gap:5px}}
@@ -156,6 +156,7 @@ main{padding-top:12px}.planbody{margin-top:0}#plan{margin-top:0}.weekviews{grid-
  @media(max-width:500px){.topActions{margin-left:0}.topActions button{min-height:39px}.topActions .viewtabs button{min-height:39px}}
 .taskEditor{grid-column:1/-1;border:1px solid #d3deca;border-radius:10px;margin:6px 0 0;padding:8px;min-width:0}.taskEditor legend{padding:0 5px;font-weight:760}.taskEditor p{margin:0 0 6px;font-size:.8rem}.taskInputs{display:grid;gap:6px}.taskInputRow{display:grid;grid-template-columns:minmax(0,1fr) 39px;gap:5px}.taskInputRow input{width:100%;min-width:0}.taskInputRow button{padding:4px;font-size:1.05rem}.taskPlus{margin-top:7px}.taskEditor .todoTask{margin-bottom:7px;min-height:26px;font-size:.88rem}.taskEditor .todoTask input{width:18px;height:18px}.workLog{--edge:#799478;--fg:#36573b}.courseNote{font-size:.76rem;color:#536259}.emptyLog{margin-top:9px}
 @media(max-width:600px){#logDialog,#detail{max-height:92svh;padding:14px}#logDialog .actions,#detail .actions{position:sticky;bottom:-14px;background:var(--paper);border-top:1px solid var(--line);margin-inline:-14px;padding:7px 14px;z-index:1}}
+.taskInputRow{grid-template-columns:22px minmax(0,1fr) 39px;align-items:center}.taskInputRow input[type=checkbox]{width:18px;height:18px;accent-color:#3f6547;margin:0 2px;cursor:pointer}.taskInputRow input[type=text]{min-width:0}
 </style>
 </head>
 <body>
@@ -214,7 +215,7 @@ main{padding-top:12px}.planbody{margin-top:0}#plan{margin-top:0}.weekviews{grid-
 <label class="field">Till<select class="input" id="editEnd"></select></label>
 </div><label class="check"><input id="done" type="checkbox"> Markera som gjord</label>
 <label class="field">Egen kommentar<textarea id="comment" maxlength="4000" placeholder="Skriv en anteckning …"></textarea></label>
-<fieldset class="taskEditor" id="blockTasks" hidden><legend>Uppgifter i blocket</legend><p>Varje uppgift bockas av separat, här eller i Guldstigen.</p><div id="attachedNow"></div><div id="editTaskRows" class="taskInputs"></div><button id="editTaskPlus" class="taskPlus" type="button">＋ Lägg till uppgift</button></fieldset>
+<fieldset class="taskEditor" id="blockTasks" hidden><legend>Uppgifter i blocket</legend><p>Du kan bocka av även nya uppgifter här. Nya rader sparas när du trycker på Spara i GitHub.</p><div id="attachedNow"></div><div id="editTaskRows" class="taskInputs"></div><button id="editTaskPlus" class="taskPlus" type="button">＋ Lägg till uppgift</button></fieldset>
 <p id="editMessage" role="status" aria-live="polite"></p>
 <div class="actions"><button id="save" class="primary">Spara i GitHub</button></div></div>
 </dialog>
@@ -231,7 +232,7 @@ main{padding-top:12px}.planbody{margin-top:0}#plan{margin-top:0}.weekviews{grid-
 <label class="field wide" id="customCourseField" hidden>Kursnamn<input id="customCourse" class="input" type="text" maxlength="120" autocomplete="off"></label>
 <label class="field wide">Arbete<select class="input" id="logWork"><option value="plan">Planering</option><option value="grading">Rättning</option></select></label></div>
 <label class="field wide">Kommentar (valfri)<textarea id="logComment" maxlength="4000"></textarea></label>
-<fieldset class="taskEditor"><legend>Uppgifter i blocket</legend><p>Valfritt. Sparas på vald dag i Guldstigen. Du kan lägga till flera.</p><div id="logTaskRows" class="taskInputs"></div><button id="logTaskPlus" class="taskPlus" type="button">＋ Lägg till uppgift</button></fieldset>
+<fieldset class="taskEditor"><legend>Uppgifter i blocket</legend><p>Valfritt. Lägg till och bocka av flera uppgifter. De sparas på vald dag i Guldstigen.</p><div id="logTaskRows" class="taskInputs"></div><button id="logTaskPlus" class="taskPlus" type="button">＋ Lägg till uppgift</button></fieldset>
 </div><p id="logMessage" class="warning" role="status" aria-live="polite"></p>
 <div class="actions"><button id="logSave" type="submit" class="primary">Spara i GitHub</button></div>
 </form></dialog>
@@ -485,8 +486,6 @@ function render(){
  grid.style.setProperty('--height',((high-low)/60*64)+'px');
  grid.append(node('div','dayHead','Tid'),...ds.map((d,i)=>{const e=node('div','dayHead'+(i>4?' weekend':''));e.append(node('strong','',weekdays[i]),node('small','',dateLabel(d)));return e;}));
  if(actionable.some(b=>!b.start))grid.append(node('small','deadlineCell','Heldag'),...daily.map((bs,i)=>{const e=node('div','deadlineCell'+(i>4?' weekend':''));e.append(...bs.filter(b=>!b.start).map(b=>makeBlock(b,true)));return e;}));
- const todoRail=node('div','todoCell todoRail','Att göra');todoRail.dataset.todoRail='1';grid.append(todoRail);
- for(let i=0;i<ds.length;i++){const cell=node('div','todoCell');cell.dataset.todoDate=ds[i];grid.append(cell);}
  const rail=node('div','hourrail');
  for(let n=low;n<high;n+=60){const e=node('span','',hh(n));e.style.top=((n-low)/60*64)+'px';rail.append(e);}
  grid.append(rail);
@@ -510,6 +509,8 @@ function render(){
   setupTrack(track,ds[i],bs,low,high);
   grid.append(track);
  });
+ const todoRail=node('div','todoCell todoRail','Att göra');todoRail.dataset.todoRail='1';grid.append(todoRail);
+ for(let i=0;i<ds.length;i++){const cell=node('div','todoCell');cell.dataset.todoDate=ds[i];grid.append(cell);}
  syncView();paintTodo();
 }
 const overlap=(blocks,day,start,end,skip)=>blocks.some(b=>b.id!==skip&&b.category!=='buffer'&&b.date===day&&b.start&&minutes(b.start)<end&&minutes(b.end)>start);
@@ -604,7 +605,7 @@ function openLog(day,start,end){
 }
 function closeLog(){
  if(busy)return;
- if(($('logComment').value||taskTexts('logTaskRows').length)&&!confirm('Stäng utan att spara uppgifterna och kommentaren?'))return;
+ if(($('logComment').value||taskDrafts('logTaskRows').length)&&!confirm('Stäng utan att spara uppgifterna och kommentaren?'))return;
  $('logDialog').close();
 }
 let courseCache=null,courseFetch=null;
@@ -650,11 +651,15 @@ $('logType').onchange=()=>syncCourseFields();
 $('logCourse').onchange=()=>syncCourseFields(false);
 function addTaskField(id){
  if(busy)return;const rows=$(id);if(rows.children.length>=25)return;
- const row=node('div','taskInputRow'), text=node('input','input'), remove=node('button','','×');
+ const row=node('div','taskInputRow'), check=node('input'), text=node('input','input'), remove=node('button','','×');
+ check.type='checkbox';check.setAttribute('aria-label','Markera den nya uppgiften som gjord');
  text.type='text';text.maxLength=140;text.placeholder='Vad vill du göra?';text.autocomplete='off';text.setAttribute('aria-label','Ny uppgift');
- remove.type='button';remove.setAttribute('aria-label','Ta bort uppgiftsfältet');remove.onclick=()=>{if(!busy)row.remove()};row.append(text,remove);rows.append(row);text.focus();
+ text.oninput=()=>check.setAttribute('aria-label',text.value.trim()?'Markera som gjord: '+text.value.trim():'Markera den nya uppgiften som gjord');
+ remove.type='button';remove.setAttribute('aria-label','Ta bort uppgiftsfältet');remove.onclick=()=>{if(!busy)row.remove()};row.append(check,text,remove);rows.append(row);text.focus();
 }
-function taskTexts(id){return [...$(id).querySelectorAll('input')].map(e=>e.value.trim()).filter(Boolean)}
+function taskDrafts(id){
+ return [...$(id).children].map(row=>({title:row.querySelector('input[type=text]').value.trim(),done:row.querySelector('input[type=checkbox]').checked})).filter(t=>t.title);
+}
 $('logTaskPlus').onclick=()=>addTaskField('logTaskRows');$('editTaskPlus').onclick=()=>addTaskField('editTaskRows');
 function blockTaskList(b){
  $('blockTasks').hidden=b.origin!=='log';$('editTaskRows').replaceChildren();paintAttached(b);
@@ -703,12 +708,12 @@ async function saveBlockAndTasks(block,tasks,{addBlock,patch={},base=null}){
   catch(e){if(k===2||![409,422].includes(e.code))throw e;const headNow=await github(repo+'/git/ref/heads/main');if(headNow.object?.sha===parent)throw e}
  }
 }
-function taskRecords(titles,block){return titles.map(title=>({id:crypto.randomUUID(),date:block.date,title,done:false,blockId:block.id}))}
+function taskRecords(drafts,block){return drafts.map(({title,done})=>({id:crypto.randomUUID(),date:block.date,title,done,blockId:block.id}))}
 function applyLog(result,tasks){data=result.week;missingWeek=null;loadedTable=false;if(result.todo){todoPending++;todoDoc=result.todo;todoError='';goldSnapshot();}render();status(tasks.length?'Sparat. Uppgifterna finns också i Guldstigen.':'Tiden är loggad i privata GitHub.')}
 async function saveLog(){
  if(busy||!token||(!data&&missingWeek!==current))return;
  const date=$('logDay').value,start=$('logStart').value,end=$('logEnd').value,k=$('logType').value,kind=$('logWork').value;
- const a=minutes(start),b=minutes(end),comment=$('logComment').value.trim(),titles=taskTexts('logTaskRows');
+ const a=minutes(start),b=minutes(end),comment=$('logComment').value.trim(),titles=taskDrafts('logTaskRows');
  const fail=s=>{$('logMessage').textContent=s;};
  if(!validPlacement(date,start,end)||!['admin','digi','course'].includes(k)){fail('Välj en starttid och en senare sluttid i 15-minuterssteg.');return;}
  const choice=k==='course'&&($('logCourse').value==='custom'?{name:$('customCourse').value.trim()}:courseChoices().find(c=>c.code===$('logCourse').value));
@@ -761,10 +766,10 @@ function changes(){
  if(['date','start','end'].some(k=>Object.hasOwn(patch,k)))Object.assign(patch,{date:form.date,start:form.start,end:form.end});
  return patch;
 }
-function close(){if(!busy&&((!Object.keys(changes()).length&&!taskTexts('editTaskRows').length)||confirm('Stäng utan att spara ändringarna?')))$('detail').close()}
+function close(){if(!busy&&((!Object.keys(changes()).length&&!taskDrafts('editTaskRows').length)||confirm('Stäng utan att spara ändringarna?')))$('detail').close()}
 async function save(){
  if(busy||!active||$('editor').hidden)return;
- const patch=changes(), block=data?.blocks.find(x=>x.id===active.id), titles=taskTexts('editTaskRows');
+ const patch=changes(), block=data?.blocks.find(x=>x.id===active.id), titles=taskDrafts('editTaskRows');
  if(titles.length&&block?.origin==='log'){
   const tasks=taskRecords(titles,block);lock(true);$('editMessage').textContent='Sparar …';
   try{const result=await saveBlockAndTasks(block,tasks,{addBlock:false,patch,base:active});$('detail').close();applyLog(result,tasks);}
