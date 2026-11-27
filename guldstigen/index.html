@@ -2,7 +2,7 @@
 <html lang="sv">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; connect-src https://api.github.com; img-src data:; style-src 'unsafe-inline'; script-src 'sha256-JXWYS4vyNnPGTMg+Ojwv+Q8ucu2jJb2ic4YZQUadxaY='">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; connect-src https://api.github.com; img-src data:; style-src 'unsafe-inline'; script-src 'sha256-5VDFC4P6ihPbAu5XV2rkMIap52yVQKnk0bjFlUMW+JA='">
 <meta name="theme-color" content="#f7f3e8"><title>Guldstigen · Dagens äventyr</title>
 <style>
 :root{color-scheme:light;--bg:#f7f3e8;--paper:#fffdf5;--ink:#263d32;--muted:#566658;--line:#d9dec9;--forest:#264a3a;--gold:#f7cb69;--fern:#e3ecd7;font-family:system-ui,sans-serif;color:var(--ink);background:var(--bg)}
@@ -12,6 +12,7 @@ dialog{width:min(450px,calc(100% - 26px));border:1px solid var(--line);border-ra
 @media(max-width:740px){.layout{display:flex;flex-direction:column;gap:12px}.layout>.card{width:100%}.top{min-height:62px}.intro{padding:17px 0 13px}.panel{padding:13px}}
 @media(max-width:450px){main{padding-inline:10px}.top{gap:5px}.controls{gap:4px}.controls .btn{padding:7px 9px;font-size:.8rem}.brand{font-size:.88rem;gap:6px}.brand-coin{width:26px;height:26px}.daybar{width:100%}.daybar input{max-width:140px}.mapBadge{top:8px;left:8px}.mapFoot{padding:8px 10px}.mapFoot p{font-size:.75rem}.pin{width:44px;height:44px;font-size:.84rem}}
 @media(prefers-reduced-motion:reduce){.avatar{transition:none}.avatar.hop svg{animation:none}.floatCoin{animation:none}.floatCoin .medal{transform:translate(-50%,-145%)}}
+.views{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px}.views .btn[aria-pressed=true]{background:var(--forest);color:white;border-color:var(--forest)}.list-mode .layout{display:block;max-width:690px}.plainTask{display:flex;gap:10px;align-items:center;padding:10px;min-height:44px;background:#f5f5e9;border-radius:9px;cursor:pointer}.plainTask input{inline-size:20px;block-size:20px;flex:none;accent-color:var(--forest)}.plainTask .isChecked{text-decoration:line-through;color:var(--muted)}.inlineStatus{min-height:1.2em;color:#385a3e;font-size:.85rem;margin-top:8px}.inlineStatus.error{color:#893727}.embedded{background:transparent}.embedded main{padding:0;max-width:none}.embedded .top{min-height:49px;justify-content:flex-end}.embedded .brand,.embedded #github{display:none}.embedded .intro{padding-top:8px}.embedded .intro h1{font-size:clamp(2rem,7vw,3.5rem)}.embedded .footer{border:0;padding-top:0}
 </style>
 </head>
 <body><main>
@@ -23,8 +24,9 @@ dialog{width:min(450px,calc(100% - 26px));border:1px solid var(--line);border-ra
 <div><p class="eyebrow" id="date-label"></p><h1 id="page-title">Dagens äventyr</h1><p>En liten uppgift, ett litet pling.</p></div>
 <div class="daybar" aria-label="Välj dag"><button id="prev" class="btn round" type="button" aria-label="Föregående dag">‹</button><input id="day" aria-label="Välj datum" type="date" min="2000-01-01" max="2099-12-31"><button id="next" class="btn round" type="button" aria-label="Nästa dag">›</button><button id="today" class="btn quiet" type="button">I dag</button></div>
 </section>
+<nav class="views" aria-label="Visning av uppgifter"><button id="show-map" class="btn" type="button" aria-pressed="true">✦ Karta</button><button id="show-list" class="btn" type="button" aria-pressed="false">✓ Att göra-lista</button></nav>
 <div class="layout">
-<section class="card" aria-label="Äventyrskarta">
+<section id="map-panel" class="card" aria-label="Äventyrskarta">
 <div class="land" id="land">
 <svg class="world" viewBox="0 0 600 375" preserveAspectRatio="none" aria-hidden="true">
 <defs>
@@ -62,10 +64,10 @@ dialog{width:min(450px,calc(100% - 26px));border:1px solid var(--line);border-ra
 <progress class="meter" id="meter" max="1" value="0" aria-label="Dagens framsteg"></progress><p id="progress-summary" class="sub"></p>
 <div class="selected"><p class="eyebrow" id="spot-label">Vid start</p><h3 id="spot-title"></h3><p class="sub" id="spot-detail"></p><button class="btn primary" id="complete" type="button" hidden></button></div>
 <ul class="tasks" id="tasks" aria-label="Uppgifter för vald dag"></ul>
-<form id="add-form" class="add"><label for="new-task">Lägg till ett stopp</label><div class="fieldrow"><input class="text" id="new-task" type="text" maxlength="140" autocomplete="off" required placeholder="Till exempel: Planera lektionen"><button class="btn" id="add-btn" type="submit">+ Lägg till</button></div></form>
+<form id="add-form" class="add"><label for="new-task">Lägg till ett stopp</label><div class="fieldrow"><input class="text" id="new-task" type="text" maxlength="140" autocomplete="off" required placeholder="Till exempel: Planera lektionen"><button class="btn" id="add-btn" type="submit">+ Lägg till</button></div></form><p id="inline-status" class="inlineStatus" role="status"></p>
 </section>
 </div>
-<p class="status" id="status" role="status"></p>
+
 <footer class="footer"><span class="chip" id="mode">Demoläge</span><span id="source">Låtsasuppgifter. Ändringar i demon stannar i den här webbläsaren.</span></footer>
 </main>
 <dialog id="connect" aria-labelledby="connect-title"><form id="connect-form" autocomplete="off"><div class="dialogtop"><h2 id="connect-title">Privat GitHub-lista</h2><button class="btn round" id="close" type="button" aria-label="Stäng">×</button></div>
@@ -77,13 +79,24 @@ dialog{width:min(450px,calc(100% - 26px));border:1px solid var(--line);border-ra
 'use strict';
 (() => {
  const $=id=>document.getElementById(id), el=(tag,cls,value)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(value!=null)n.textContent=value;return n};
- const ui={day:$('day'),open:$('github'),dlg:$('connect'),key:$('pat'),form:$('connect-form'),link:$('connect-btn'),notice:$('connection-status'),disconnect:$('disconnect'),refresh:$('refresh'),status:$('status'),audio:$('audio'),avatar:$('avatar'),land:$('land'),pins:$('pins'),tasks:$('tasks'),action:$('complete'),add:$('add-btn'),draft:$('new-task')};
+ const ui={day:$('day'),open:$('github'),dlg:$('connect'),key:$('pat'),form:$('connect-form'),link:$('connect-btn'),notice:$('connection-status'),disconnect:$('disconnect'),refresh:$('refresh'),status:$('inline-status'),audio:$('audio'),avatar:$('avatar'),land:$('land'),pins:$('pins'),tasks:$('tasks'),action:$('complete'),add:$('add-btn'),draft:$('new-task')};
  const base='https://api.github.com/repos/novia-linda/data', file=base+'/contents/guldstigen/uppgifter.json', branch='main', demoStorage='guldstigen-demo-v1', audioStorage='guldstigen-sound-v1';
  const fmtDate=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Helsinki',year:'numeric',month:'2-digit',day:'2-digit'});
  const fmtLabel=new Intl.DateTimeFormat('sv-FI',{timeZone:'UTC',weekday:'long',day:'numeric',month:'long'});
  const today=()=>fmtDate.format(Date.now()), asDate=d=>new Date(d+'T12:00:00Z');
  const validDate=d=>typeof d==='string'&&/^20\d{2}-\d{2}-\d{2}$/.test(d)&&Number.isFinite(+asDate(d))&&asDate(d).toISOString().slice(0,10)===d;
  const shifts=(d,delta)=>{const t=asDate(d);t.setUTCDate(t.getUTCDate()+delta);return t.toISOString().slice(0,10)};
+ const params=new URLSearchParams(location.search), embedded=params.get('embed')==='1'&&parent!==window;
+ const channel='guldstigen-v1', pending=new Map();
+ let listMode=params.get('list')==='1', sourceError='', bridgeConnected=false, seq=0;
+ const post=(type,detail={})=>parent.postMessage({channel,type,...detail},location.origin);
+ function request(operation,fields){
+  return new Promise((resolve,reject)=>{
+   const id=++seq, timer=setTimeout(()=>{pending.delete(id);reject(Error('Inget svar från Veckovyn. Hämta listan igen innan du försöker på nytt.'))},85000);
+   pending.set(id,{resolve,reject,timer});post('change',{id,operation,...fields});
+  });
+ }
+ if(embedded)document.documentElement.classList.add('embedded');
  const position=[[.16,.82],[.32,.72],[.44,.58],[.60,.46],[.74,.35],[.87,.26]];
  let date=today(), selected=null, page=0, remote=null, secret='', busy=false, sound=true, audioCtx=null, demoSaved=true;
  const newId=()=>globalThis.crypto.randomUUID?crypto.randomUUID():Array.from(crypto.getRandomValues(new Uint8Array(16)),n=>n.toString(16).padStart(2,'0')).join('');
@@ -103,8 +116,8 @@ dialog{width:min(450px,calc(100% - 26px));border:1px solid var(--line);border-ra
  try{const data=readStored(demoStorage);demo=data?validate(JSON.parse(data)):example()}catch{demo=example()}
  sound=readStored(audioStorage)!=='off';
  function notice(value,error=false){ui.status.textContent=value;ui.status.classList.toggle('error',error)}
- function setBusy(value){busy=value;ui.link.disabled=value;ui.refresh.disabled=value;ui.disconnect.disabled=value;$('close').disabled=value;ui.action.disabled=value;ui.add.disabled=value;ui.open.disabled=value;}
- const view=()=>((remote||demo).tasks.filter(t=>t.date===date));
+ function setBusy(value){busy=value;for(const box of ui.tasks.querySelectorAll('input'))box.disabled=value;ui.link.disabled=value;ui.refresh.disabled=value;ui.disconnect.disabled=value;$('close').disabled=value;ui.action.disabled=value;ui.add.disabled=value;ui.open.disabled=value;}
+ const view=()=>((remote||(embedded&&bridgeConnected?{tasks:[]}:demo)).tasks.filter(t=>t.date===date));
  function place(e,p){e.style.setProperty('--x',(p[0]*100)+'%');e.style.setProperty('--y',(p[1]*100)+'%')}
  function animateHop(){ui.avatar.classList.remove('hop');void ui.avatar.offsetWidth;ui.avatar.classList.add('hop')}
  function reward(p){
@@ -126,6 +139,10 @@ dialog{width:min(450px,calc(100% - 26px));border:1px solid var(--line);border-ra
  }
  function updateSound(){ui.audio.setAttribute('aria-pressed',String(sound));ui.audio.textContent=sound?'♪ Ljud på':'♪ Ljud av'}
  function render(){
+  document.body.classList.toggle('list-mode',listMode);
+  $('map-panel').hidden=listMode;$('show-list').setAttribute('aria-pressed',String(listMode));$('show-map').setAttribute('aria-pressed',String(!listMode));
+  $('show-map').hidden=false;ui.audio.hidden=listMode;
+  ui.add.disabled=busy||(embedded&&bridgeConnected&&!remote);ui.draft.disabled=embedded&&bridgeConnected&&!remote;
   const list=view(), same=date===today(), done=list.filter(t=>t.done).length, pageMax=Math.max(0,Math.ceil(list.length/position.length)-1);
   page=Math.max(0,Math.min(page,pageMax));ui.day.value=date;$('prev').disabled=!validDate(shifts(date,-1));$('next').disabled=!validDate(shifts(date,1));
   $('date-label').textContent=fmtLabel.format(asDate(date));$('page-title').textContent=same?'Dagens äventyr':'Äventyr för dagen';
@@ -139,7 +156,13 @@ dialog{width:min(450px,calc(100% - 26px));border:1px solid var(--line);border-ra
    b.setAttribute('aria-pressed',String(item.id===selected));place(b,position[i]);return b;
   }));
   ui.tasks.replaceChildren(...list.map((item,i)=>{
-   const li=el('li'),b=el('button','taskButton'+(item.done?' completed':''));
+   const li=el('li');
+   if(listMode){
+    const label=el('label','plainTask'),check=el('input');check.type='checkbox';check.checked=!!item.done;check.disabled=busy;
+    const title=el('span','taskName'+(item.done?' isChecked':''),item.title);label.append(check,title);li.append(label);
+    check.onchange=()=>saveDone(item,check.checked,true);return li;
+   }
+   const b=el('button','taskButton'+(item.done?' completed':''));
    b.type='button';b.dataset.id=item.id;b.setAttribute('aria-pressed',String(item.id===selected));
    const icon=el('span','taskIcon',item.done?'✓':i+1);icon.setAttribute('aria-hidden','true');
    b.append(icon,el('span','taskName',item.title));
@@ -151,10 +174,10 @@ dialog{width:min(450px,calc(100% - 26px));border:1px solid var(--line);border-ra
   $('spot-label').textContent=t?'Stopp '+(index+1):'Vid start';
   $('spot-title').textContent=t?t.title:list.length?'Vart vill du gå?':'En tom stig, helt okej.';
   $('spot-detail').textContent=t?(t.done?'✦ Du hittade ett guldmynt!':'När du är klar väntar ett guldmynt.'):(list.length?'Välj ett stopp på kartan eller i listan.':'Lägg till ett stopp om du vill.');
-  ui.action.hidden=!t;ui.action.textContent=t?.done?'Ångra klar':'✓ Klart! Hämta myntet';
+  $('spot-title').parentElement.hidden=listMode;ui.action.hidden=!t||listMode;ui.action.textContent=t?.done?'Ångra klar':'✓ Klart! Hämta myntet';
   ui.action.classList.toggle('primary',!t?.done);
-  $('mode').textContent=remote?'Privat GitHub-lista':'Demoläge';
-  $('source').textContent=remote?'Din lista sparas i det privata GitHub-repot.':demoSaved?'Låtsasuppgifter. Ändringar i demon stannar i den här webbläsaren.':'Demoändringar sparas bara tills du stänger sidan.';
+  $('mode').textContent=remote?'Privat GitHub-lista':bridgeConnected?'GitHub anslutet':'Demoläge';
+  $('source').textContent=sourceError||((embedded&&bridgeConnected&&!remote)?'Hämtar din privata lista …':remote?'Din lista sparas i det privata GitHub-repot.':demoSaved?'Låtsasuppgifter. Ändringar i demon stannar i den här webbläsaren.':'Demoändringar sparas bara tills du stänger sidan.');
   $('credential').hidden=!!remote;ui.key.required=!remote;ui.link.hidden=!!remote;ui.disconnect.hidden=!remote;ui.refresh.hidden=!remote;
  }
  function select(id,container){
@@ -163,6 +186,8 @@ dialog{width:min(450px,calc(100% - 26px));border:1px solid var(--line);border-ra
  }
  for(const container of [ui.pins,ui.tasks])container.addEventListener('click',e=>{const b=e.target.closest('button[data-id]');if(b)select(b.dataset.id,container)});
  function switchDate(d){if(!validDate(d)){ui.day.value=date;return}date=d;selected=null;page=0;notice('');render()}
+ $('show-map').onclick=()=>{listMode=false;render()};
+ $('show-list').onclick=()=>{listMode=true;render()};
  ui.day.addEventListener('change',()=>switchDate(ui.day.value));$('prev').onclick=()=>switchDate(shifts(date,-1));$('next').onclick=()=>switchDate(shifts(date,1));$('today').onclick=()=>switchDate(today());
  $('back-page').onclick=()=>{page--;render()};$('next-page').onclick=()=>{page++;render()};
  ui.audio.onclick=()=>{sound=!sound;storeLocal(audioStorage,sound?'on':'off');updateSound();if(sound)unlockSound()};
@@ -211,23 +236,25 @@ dialog{width:min(450px,calc(100% - 26px));border:1px solid var(--line);border-ra
   e.preventDefault();if(busy)return;const title=ui.draft.value.trim(), target=date, id=newId();if(!title){ui.draft.focus();return}
   setBusy(true);
   try{
-   await change(d=>({data:{...d,tasks:[...d.tasks,{id,date:target,title,done:false}]}}));
+   if(embedded&&bridgeConnected)await request('add',{taskId:id,date:target,title});
+   else await change(d=>({data:{...d,tasks:[...d.tasks,{id,date:target,title,done:false}]}}));
    if(target===date){selected=id;page=Math.floor(view().findIndex(t=>t.id===id)/position.length)}
    ui.draft.value='';notice('Ett nytt stopp på stigen.');
   }catch(e){notice(e.message,true)}finally{setBusy(false);render()}
  });
- ui.action.onclick=async ()=>{
-  const item=view().find(x=>x.id===selected);if(!item||busy)return;const desired=!item.done, target=date;
-  if(desired)unlockSound();setBusy(true);
+ ui.action.onclick=()=>{const item=view().find(x=>x.id===selected);if(item)saveDone(item,!item.done,false)};
+ async function saveDone(item,desired,quiet){
+  if(busy)return;const target=date;
+  if(desired&&!quiet)unlockSound();setBusy(true);
   try{
-   const value=await change(d=>{
+   const value=embedded&&bridgeConnected?await request('done',{taskId:item.id,date:target,done:desired}):await change(d=>{
     const existing=d.tasks.find(t=>t.id===item.id&&t.date===target);
     if(!existing)throw Error('Det stoppet finns inte längre på den här dagen. Listan har uppdaterats.');
     if(!!existing.done===desired)return {data:d,value:false};
     return {data:{...d,tasks:d.tasks.map(t=>t.id===item.id?{...t,done:desired}:t)},value:true};
    });
    render();
-   if(value&&desired){const i=view().findIndex(t=>t.id===item.id)-page*position.length;if(target===date&&i>=0&&i<position.length)reward(position[i]);notice('Pling! Ett guldmynt och 10 poäng.')}
+   if(value&&desired){const i=view().findIndex(t=>t.id===item.id)-page*position.length;if(!quiet&&target===date&&i>=0&&i<position.length)reward(position[i]);notice(quiet?'Klart! Ett guldmynt i Guldstigen.':'Pling! Ett guldmynt och 10 poäng.')}
    else if(value)notice('Stoppet är öppet igen.');else notice('Stoppets status var redan uppdaterad.');
   }catch(e){notice(e.message,true)}finally{setBusy(false);render()}
  };
@@ -248,6 +275,27 @@ dialog{width:min(450px,calc(100% - 26px));border:1px solid var(--line);border-ra
   try{await verifyPrivate(secret);remote=(await retrieve(secret)).data;notice('Din lista är uppdaterad.');setBusy(false);ui.dlg.close();render()}
   catch(e){ui.notice.textContent=e.message}finally{setBusy(false)}
  };
+ if(embedded){
+  window.addEventListener('message',e=>{
+   const m=e.data;
+   if(e.origin!==location.origin||e.source!==parent||m?.channel!==channel)return;
+   if(m.type==='snapshot'){
+    if(bridgeConnected!==!!m.connected){selected=null;page=0;ui.draft.value='';notice('')}
+    bridgeConnected=!!m.connected;sourceError=String(m.error||'');
+    remote=m.doc?validate(m.doc):null;
+    if(validDate(m.date)){date=m.date;selected=null;page=0;}
+    if(m.list===true)listMode=true;
+    render();
+   }
+   if(m.type==='result'){
+    const p=pending.get(m.id);if(!p)return;clearTimeout(p.timer);pending.delete(m.id);
+    if(m.error)p.reject(Error(m.error));else p.resolve(m.value);
+   }
+  });
+  const reportHeight=()=>post('height',{height:Math.ceil(document.querySelector('main').getBoundingClientRect().height)+2});
+  new ResizeObserver(reportHeight).observe(document.querySelector('main'));window.addEventListener('resize',reportHeight);
+  post('ready');reportHeight();
+ }
  updateSound();render();
 })();
 </script>
